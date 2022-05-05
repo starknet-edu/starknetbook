@@ -91,14 +91,24 @@ The nodes themselves listen for and [validate blocks and transactions](./bitcoin
 Alice's valueble information is now replicated on thousands of machines across the globe, and she can validate that everything is acurate herself.
 <p align="center">🎉<strong>NO DELEGATION OF TRUST</strong>🎉</p>
 Let's revisit the trilemna. What did we giveup to get this trustless data security?
+
 - miners expend energy as they attempt to get the nonce
 - for full trustless verification EACH node must replicate the state by
   - hashing the merkle tree of transactions
   - hashing the block header
   
-For a naive demonstration of "The Evolution of Data Security" run the following:
+For a naive demonstration of "The Evolution of Data Security" run the following([to install go](https://go.dev/doc/install)):
 ```
 cd bitcoin/block_verification
 curl https://blockchain.info/rawblock/0000000000000000000836929e872bb5a678546b0a19900b974c206c338f0947 > rawBTCBlock.json
 GO111MODULE=off go test ./... -bench=. -count 5
 ```
+
+<h2 align="center"> Smart Contracts</h2>
+To extend our previous example. Let's say "The Bank" wants to create applications surrounding things like payment terms, liens, and even enforcement.
+This traditionally will be engineered by a development team(either in-house or outsourced), to implement the business logic in any number of programming languages and will enact state changes on the distributed database described above.
+The trust delegation issues outlined above not only still remain, but their is no transparency into how this business logic is implemented or maintained.
+
+Smart Contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html) as a transaction protocol that executes the terms of a contract, giving all parties transparency into the rule set and execution. Bitcoin facilitates a limited version of [smart contracts](https://ethereum.org/en/whitepaper/#scripting), but the expressive smart contract model of Ethereum has been more widely adopted.
+
+### [Ethereum](./ethereum/README.md)
