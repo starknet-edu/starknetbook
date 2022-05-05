@@ -12,7 +12,7 @@ The primer section of this course is not only designed to cover introductory con
 Each section will involve drilling down on a high level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in code. 
 
 <div align="center">
-    <img src="../misc/plat.png">
+    <img src="../misc/plat2.png">
 </div>
 
 These code examples will be named by the programming language in which they are implemented, for example bitcoin block verification in Golang:
