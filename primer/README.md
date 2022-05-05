@@ -105,10 +105,10 @@ GO111MODULE=off go test ./... -bench=. -count 5
 ```
 
 <h2 align="center"> Smart Contracts</h2>
+Smart Contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html) as a transaction protocol that executes the terms of a contract, giving all parties transparency into the rule set and execution. Bitcoin facilitates a limited version of [smart contracts](https://ethereum.org/en/whitepaper/#scripting), but the expressive smart contract model of Ethereum has been more widely adopted.
+<br>
 To extend our previous example. Let's say "The Bank" wants to create applications surrounding things like payment terms, liens, and even enforcement.
 This traditionally will be engineered by a development team(either in-house or outsourced), to implement the business logic in any number of programming languages and will enact state changes on the distributed database described above.
 The trust delegation issues outlined above not only still remain, but their is no transparency into how this business logic is implemented or maintained.
-
-Smart Contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html) as a transaction protocol that executes the terms of a contract, giving all parties transparency into the rule set and execution. Bitcoin facilitates a limited version of [smart contracts](https://ethereum.org/en/whitepaper/#scripting), but the expressive smart contract model of Ethereum has been more widely adopted.
 
 ### [Ethereum](./ethereum/README.md)
