@@ -7,12 +7,12 @@
 4. [Rollups](./rollups/README.md)
 
 ### Overview [(slides)](https://docs.google.com/presentation/d/1-ykeFFRwI2JTIyXAKd2AmVSIUnbjPk7EdfpHxL3CxYs/edit?usp=sharing)
-The primer section of this course is not only designed to cover introductory concepts upon which Cairo and StarkNet rest, but also to help you get acquainted with the format of the course. 
+This primer section is not only designed to cover introductory concepts upon which Cairo and StarkNet rest, but also to help you get acquainted with the format of the course. 
 
-Each section will involve drilling down on a high level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in code. 
+Each section will involve drilling down on a high level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in a "relatively" simple code example: 
 
 <div align="center">
-    <img src="../misc/plat2.png">
+    <img src="../misc/plat.png">
 </div>
 
 These code examples will be named by the programming language in which they are implemented, for example bitcoin block verification in Golang:
