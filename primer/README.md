@@ -2,8 +2,8 @@
 
 ### Tenets
 1. [Bitcoin](./bitcoin/README.md)
-2. [Ethereum](./ethereum/README.md)
-3. [Smart Contracts](./smart_contracts/README.md)
+2. [Smart Contracts](#smart_contracts)
+3. [Ethereum](./ethereum/README.md)
 4. [Rollups](./rollups/README.md)
 
 <h2 align="center"> Overview <br><a href="https://docs.google.com/</h3>presentation/d/1-ykeFFRwI2JTIyXAKd2AmVSIUnbjPk7EdfpHxL3CxYs/edit?usp=sharing">(slides)</a><a href="https://www.youtube.com/watch?v=DrBJ9LWvsOQ">(video)</a></h2>
@@ -104,7 +104,7 @@ curl https://blockchain.info/rawblock/0000000000000000000836929e872bb5a678546b0a
 GO111MODULE=off go test ./... -bench=. -count 5
 ```
 
-<h2 align="center"> Smart Contracts</h2>
+<h2 align="center" id="smart_contracts"> Smart Contracts</h2>
 
 Smart Contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html) as a transaction protocol that executes the terms of a contract, giving all parties transparency into the rule set and execution. Bitcoin facilitates a limited version of [smart contracts](https://ethereum.org/en/whitepaper/#scripting), but the expressive smart contract model of Ethereum has been more widely adopted.
 <br><br>
