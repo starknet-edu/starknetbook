@@ -6,7 +6,7 @@
 3. [Ethereum](./ethereum/README.md)
 4. [Rollups](./rollups/README.md)
 
-<h2 align="center"> Overview <br><a href="https://docs.google.com/</h3>presentation/d/1-ykeFFRwI2JTIyXAKd2AmVSIUnbjPk7EdfpHxL3CxYs/edit?usp=sharing">(slides)</a><a href="https://www.youtube.com/watch?v=DrBJ9LWvsOQ">(video)</a></h2>
+<h2 align="center"> Overview <br><a href="https://docs.google.com/</h3>presentation/d/1-ykeFFRwI2JTIyXAKd2AmVSIUnbjPk7EdfpHxL3CxYs/edit?usp=sharing">(slides)</a><br><a href="https://www.youtube.com/watch?v=DrBJ9LWvsOQ">(video)</a></h2>
 This primer is not only designed to cover introductory concepts upon which Cairo and StarkNet are built, but also to help you get acquainted with the format of the course. 
 
 Each section will involve drilling down on a high level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example: 
@@ -49,8 +49,8 @@ Let's read that information:
 time cat bank.yaml
 ```
 
-It is obviously very fast to read and write this data to your disk, and [complex business logic](https://www.postgresql.org/) can be optimized on your disk. BUT let's say you get your disk too close to a big ACME magnet, you can say bye bye Alice's bank account information.
-<p align="center">💡<strong>Let's replicate Alice's account on another computer</strong>💡<br>After all how many big ACME magnets can there really be?</p>
+It is obviously very fast to read and write this data to your disk, and [complex business logic](https://www.postgresql.org/) can be optimized on your disk, BUT let's say you get your disk too close to a large ACME magnet. Alice can say bye bye to all her valueble bank account information.
+<p align="center">💡<strong>Let's replicate Alice's account on another computer</strong>💡<br>(After all how many large ACME magnets can there really be?)</p>
 
 Sender Questions:
 - How do I locate a recieving host to send to?
@@ -68,7 +68,7 @@ These problems form the basis of distributed systems and distributed computing a
 
 Let's look briefly at how one of the more popular distributed databases [CassandraDB](https://cassandra.apache.org/doc/latest/cassandra/getting_started/configuring.html) handles these issues. *Note: when configuring the system we whitelist the `seed nodes` that will make up our trusted cluster that partake in a limited peer-to-peer [gossip](https://www.linkedin.com/pulse/gossip-protocol-inside-apache-cassandra-soham-saha).*
 <br>
-Once the distributed database is setup we have "Fault Tolerance" for our valueble piece of data `alice_account: 5.00`. If someone accidently brings their big ACME magnet into one datacenter, we have our data easily accesible on another host. Blockchains are not the only systems that make trade-offs, so what did we give up for this new fault tolerance?
+Once the distributed database is setup we have "Fault Tolerance" for our valueble piece of data `alice_account: 5.00`. If someone accidently brings their large ACME magnet into one datacenter, we have our data easily accesible on another host. Blockchains are not the only systems that make trade-offs, so what did we give up for this new fault tolerance?
 
 Banks Perspective:
 - Network overhead impacts performace
