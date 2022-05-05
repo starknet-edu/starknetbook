@@ -1,10 +1,25 @@
 <h1 align="center">Bitcoin</h1>
 
-### Overview
+### [Proof of Work](./proof_of_work)
+```
+cd proof_of_work/go
+go run main.go
+```
 
-### Mine
+### [Block Verification](./block_verification)
+```
+cd block_verification/
+curl https://blockchain.info/rawblock/0000000000000000000836929e872bb5a678546b0a19900b974c206c338f0947 > rawBTCBlock.json
+cd go/
+go run *.go
+```
 
-### Verify
+Run verify benchmark
+```
+cd verify/go/
+go test -bench=. -count 5
+```
+
 
 #### Sources:
 - https://github.com/bitcoin/bitcoin
