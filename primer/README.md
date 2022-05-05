@@ -16,10 +16,12 @@ Each section will involve drilling down on a high level concept as it pertains t
 </div>
 
 These code examples will be named by the programming language in which they are implemented, for example bitcoin block verification in Golang:
-- [./bitcoin/block_verify/go](./bitcoin/block_verify/go)
+<div align="center">
+    <a href="./bitcoin/block_verify/go">./bitcoin/block_verify/go</a>
+</div>
 
-The topics covered in this course have been disected in hundreds of ways by thousands of people smarter than me, so wherever possible I will be linking to those resources and not reinventing the circle thingy. Large sections of text will therefore be dedicated to how these concepts interplay with StarkNet/Cairo.
+The topics covered in this course have been disected in hundreds of ways by thousands of people smarter than me, so wherever possible I will be linking to those resources and not reinventing the circle thingy. The text you find in this repo will therefore be dedicated to how these concepts interplay with StarkNet/Cairo.
 
-Standing on shoulders of giants blah blah blah lets get to the good stuff
+***Standing on the shoulders of giants blah blah blah lets get to the good stuff***
 
-#### [Bitcoin](./bitcoin/README.md)
+### [Bitcoin](./bitcoin/README.md)
