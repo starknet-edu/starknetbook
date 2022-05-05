@@ -1,3 +1,5 @@
 *.txt
 
 tmp/
+**/*.json
+**/*.txt

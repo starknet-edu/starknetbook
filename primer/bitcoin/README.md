@@ -16,7 +16,7 @@ go run *.go
 
 Run verify benchmark
 ```
-cd verify/go/
+cd block_verification/go/
 go test -bench=. -count 5
 ```
 
