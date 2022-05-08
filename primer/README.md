@@ -26,7 +26,7 @@ The topics covered in this primer have been disected in hundreds of ways by thou
 
 <h3 align="center"> What are we solving for?</h3>
 The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics these systems have typically given up scalability(usability). Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating: blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.
-There have been many attempts at solving the trilemma and there will be many more. In this course you will learn how StarkWare attempts to tackle the trillemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge SNARK proofs.
+There have been many attempts at solving the trilemma and there will be many more. In this course you will learn how StarkWare attempts to tackle the trillemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
 
 <h2 align="center"> Evolution of Data Security</h2>
 <div align="center">
