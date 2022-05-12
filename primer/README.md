@@ -1,6 +1,6 @@
 <h1 align="center">Primer</h1>
 
-### Tenets
+### Topics
 1. [Bitcoin](./bitcoin/README.md)
 2. [Smart Contracts](#smart_contracts)
 3. [Ethereum](./ethereum/README.md)
@@ -26,6 +26,7 @@ The topics covered in this primer have been disected in hundreds of ways by thou
 
 <h3 align="center"> What are we solving for?</h3>
 The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics these systems have typically given up scalability(usability). Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating: blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.
+
 There have been many attempts at solving the trilemma and there will be many more. In this course you will learn how StarkWare attempts to tackle the trillemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge SNARK proofs.
 
 <h2 align="center"> Evolution of Data Security</h2>
@@ -47,7 +48,7 @@ time cat bank.yaml
 ```
 
 It is obviously very fast to read and write this data to your disk, and [complex business logic](https://www.postgresql.org/) can be optimized on your disk, BUT let's say you get your disk too close to a large ACME magnet. Alice can say bye bye to all her valueble bank account information.
-<p align="center">💡<strong>Let's replicate Alice's account on another computer</strong>💡<br>(After all how many large ACME magnets can there really be?)</p>
+<p align="center">💡<strong>Let's replicate Alice's account on another computer</strong>💡</p>
 
 Sender Questions:
 - How do I locate a recieving host to send to?
@@ -107,3 +108,6 @@ Smart Contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/r
 <br>
 
 ### [Ethereum](./ethereum/README.md)
+
+
+<h2 align="center" id="smart_contracts"> Rollups</h2>
