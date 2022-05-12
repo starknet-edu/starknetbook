@@ -15,11 +15,13 @@
 
 
 ### Route
-1. [Primer](./primer/README.md)
-2. [STARKs(camp_I)](./camp_I/README.md)
-3. [Cairo(camp_II)](./camp_II/README.md)
-4. [StarkNet(camp_III)](./camp_III/README.md)
-5. [Advanced(camp_IV)](./camp_IV/README.md)
+0. [Primer](./primer/README.md)
+1. [STARKs(camp_I)](./camp_I/README.md)
+2. [Cairo(camp_II)](./camp_II/README.md)
+3. [Rollups](./camp_III/README.md) (Rollups, validiums, challenges, landscape, snarks, starks)
+4. [StarkNet(camp_IV-I)](./camp_IV/README.md) (Block structure, frequency, transactions, account abstraction, curve, signature, verifier, prover, fees, cli, storage)
+5. [StarkNet(camp_IV-II)] (Smart contract patterns, useful tools, programming best practices, IDEs, tutorials) 
+6. [Peering into the future(camp_IV)](./camp_V/README.md) (Data availbility, volition, recursion, decentralization, licensing)
 
 ### Overview
 Basecamp is a curriculum built to teach the fundamental building blocks of the Cairo programming language and StarkNet development.
