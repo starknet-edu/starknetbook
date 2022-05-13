@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"math"
 	"strings"
+	"net/http"
 	"math/big"
 	"encoding/hex"
-	// "crypto/sha256"
+	"encoding/json"
 )
+
+const BTC_EXPLORER_URL = "https://blockchain.info/rawblock/"
 
 type Block struct {
 	Hash         string   `json:"hash"`
@@ -147,4 +150,21 @@ func (block Block) GetMerkleRootQuiet() (root []byte) {
 	} else {
 		return Reverse(merklePass[0])
 	}
+}
+
+func pullBlock(blockHash string) Block {
+	client := &http.Client {}
+	req, err := http.NewRequest(http.MethodGet, BTC_EXPLORER_URL + blockHash, nil)
+	if err != nil {
+	  panic(err.Error())
+	}
+	res, err := client.Do(req)
+	if err != nil {
+		panic(err.Error())
+	}
+	defer res.Body.Close()
+
+	var block Block
+	json.NewDecoder(res.Body).Decode(&block)
+	return block
 }

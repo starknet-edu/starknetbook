@@ -19,8 +19,8 @@
 1. [STARKs(camp_I)](./camp_I/README.md)
 2. [Cairo(camp_II)](./camp_II/README.md)
 3. [Rollups(camp III)](./camp_III/README.md)
-4. [StarkNet(camp_IV part 1)](./camp_IV/README.md)
-5. [StarkNet(camp_IV part 2)](./camp_IV/README.md)
+4. [StarkNet(camp_IV p1)](./camp_IV/README.md#p1)
+5. [StarkNet(camp_IV p2)](./camp_IV/README.md#p2)
 6. [Peering into the future(camp_V)](./camp_V/README.md)
 
 ### Overview

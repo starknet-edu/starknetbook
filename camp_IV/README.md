@@ -1,7 +1,7 @@
 <h1 align="center">StarkNet(Camp IV)</h1>
 
 ### Topics
-**Part 1**
+<strong id="p1">Part 1</strong>
 <ol>
     <li><a>Blocks</a></a>
     <li><a>Transactions</a></a>
@@ -15,7 +15,7 @@
     <li><a>Accounts</a></a>
 </ol>
 
-**Part 2**
+<strong id="p2">Part 1</strong>
 <ol>
     <li><a>Smart Contracts</a></a>
     <li><a>Tooling</a></a>

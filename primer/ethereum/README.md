@@ -3,6 +3,9 @@
 #### Sources:
 - https://ethereum.org/en/whitepaper
 - https://ethereum.github.io/yellowpaper/paper.pdf
+- https://ethereum.org/en/developers/docs/evm/opcodes
+- https://jellopaper.org/evm
+- https://github.com/zhangchiqing/merkle-patricia-trie
 
 ---
 upper_tags: [protocol, peer_to_peer, network, ledger, database, cryptocurrency, virtual_machine]

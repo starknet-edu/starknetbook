@@ -2,26 +2,15 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"math"
 	"bytes"
 	"strings"
-	"encoding/json"
 	"crypto/sha256"
 )
 
 func main() {
-    rawBlockFile, err := os.ReadFile("../rawBTCBlock.json")
-	if err != nil {
-		panic(err.Error())
-	}
-	var block Block
-	err = json.Unmarshal(rawBlockFile, &block)
-	if err != nil {
-		panic(err.Error())
-	}
+	block := pullBlock("0000000000000000000836929e872bb5a678546b0a19900b974c206c338f0947")
 
-	// first we will trust the merkle root
 	hash, err := block.HashBlock()
 	if err != nil {
 		panic(err.Error())

@@ -10,6 +10,10 @@ the GitHub issues section [Issues](https://github.com/starknet-edu/basecamp/issu
 and contributors can submit [Pull
 Requests](https://github.com/starknet-edu/basecamp/pulls) for review by the maintainers.
 
+### Style Guide:
+- when naming a subdirectory use "snake_case" and do not use acronyms
+- keep subdirectory names as simple and concept oriented as possible
+
 ### General Work-Flow
  We recommend the following work-flow for contributors:
  
