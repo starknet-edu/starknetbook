@@ -176,7 +176,7 @@ GO111MODULE=off go test ./... -bench=. -count 5
 <h2 align="center" id="smart_contracts">Smart Contracts</h2>
 
 Smart contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html) as a transaction protocol that executes the terms of a contract, giving all parties transparency into the rule set and execution. Bitcoin facilitates a limited version of [smart contracts](https://ethereum.org/en/whitepaper/#scripting), but the expressive smart contract model of Ethereum has been more widely adopted.
-<br>
+
 In our evolution of data security this gives utility to the already secure data of Alice's bank account. Alice would be able interact with a smart contract to read and approve the terms of a loan against her "bank account" and she is the only entity that can control/approve those terms.  
 
 <h2 align="center">Ethereum</h2>

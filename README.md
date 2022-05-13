@@ -1,6 +1,6 @@
 <div align="center">
     <img src="./misc/basecamp.png" style="width: 300px">
-    <h1>StarkNet Basecamp</h1>
+    <h1>StarkNet Basecam</h1>
 </div>
 
 <p align="center">
@@ -13,8 +13,8 @@
     </span>
 </p>
 
-
 ### Route
+
 0. [Primer](./primer/README.md)
 1. [STARKs(camp_I)](./camp_I/README.md)
 2. [Cairo(camp_II)](./camp_II/README.md)
@@ -24,12 +24,15 @@
 6. [Peering into the future(camp_V)](./camp_V/README.md)
 
 ### Overview
+
 Basecamp is a curriculum built to teach the fundamental building blocks of the Cairo programming language and StarkNet development.
 
 ### Issues
+
 If you find an issue/bug or have a feature request please submit an issue here
 [Issues](https://github.com/starknet-edu/basecamp/issues)
 
 ### Contributing
+
 If you are looking to contribute, please head to the
-[Contributing](https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md) section. We would especially love PRs including alternate programming language for the examples included in this repository. 
+[Contributing](https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md) section. We would especially love PRs including alternate programming language for the examples included in this repository.

@@ -1,27 +1,31 @@
 <h1 align="center">Bitcoin</h1>
 
 ### [Proof of Work](./proof_of_work)
-```
+
+```bash
 cd proof_of_work/go
 go run main.go
 ```
 
 ### [Block Verification](./block_verification)
-```
+
+```bash
 cd bitcoin/block_verification
 GO111MODULE=off go test ./... -bench=. -count 5
 ```
 
 Run verify benchmark
-```
+
+```bash
 cd block_verification/go/
 go test -bench=. -count 5
 ```
 
-#### Sources:
-- https://github.com/bitcoin/bitcoin
-- https://bitcoin.org/bitcoin.pdf
-- https://developer.bitcoin.org/reference/block_chain.html
+#### Sources
+
+- <https://github.com/bitcoin/bitcoin>
+- <https://bitcoin.org/bitcoin.pdf>
+- <https://developer.bitcoin.org/reference/block_chain.html>
 
 ---
 upper_tags: [protocol, peer_to_peer, network, ledger, database, cryptocurrency]
