@@ -6,7 +6,7 @@
 3. [Ethereum](./ethereum/README.md)
 4. [Rollups](./rollups/README.md)
 
-<h2 align="center"> Overview <br><a href="https://docs.google.com/</h3>presentation/d/1-ykeFFRwI2JTIyXAKd2AmVSIUnbjPk7EdfpHxL3CxYs/edit?usp=sharing">(slides, </a><a href="https://www.youtube.com/watch?v=DrBJ9LWvsOQ">video)</a></h2>
+<h2 align="center"> Overview <br><a href="https://docs.google.com/presentation/d/1-ykeFFRwI2JTIyXAKd2AmVSIUnbjPk7EdfpHxL3CxYs/edit?usp=sharing">(slides, </a><a href="https://www.youtube.com/watch?v=DrBJ9LWvsOQ">video)</a></h2>
 This primer is not only designed to cover introductory concepts upon which Cairo and StarkNet are built, but also to help you get acquainted with the format of the course. Each section will involve drilling down on a high-level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example: 
 
 <div align="center">
