@@ -27,7 +27,7 @@ The topics covered in this primer have been disected in hundreds of ways by thou
 <h3 align="center"> What are we solving for?</h3>
 The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics these systems have typically given up scalability(usability). Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating: blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.
 
-There have been many attempts at solving the trilemma and there will be many more. In this course you will learn how StarkWare attempts to tackle the trillemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge SNARK proofs.
+There have been many attempts at solving the trilemma and there will be many more. In this course you will learn how StarkWare attempts to tackle the trillemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
 <p align="center">🎯<strong>Goals: </strong>secure, inclusively accountable, decentralized, scalable, expressive🎯</p>
 
 <h2 align="center"> Evolution of Data Security</h2>
@@ -48,7 +48,7 @@ Let's read that information:
 time cat bank.yaml
 ```
 
-It is obviously very fast to read and write this data to your disk, and [complex business logic](https://www.postgresql.org/) can be optimized on your disk, BUT let's say you get your disk too close to a large ACME magnet. Alice can say bye bye to all her valueble bank account information.
+It is obviously very fast to read and write this data to your disk, and [complex business logic](https://www.postgresql.org/) can be optimized on your disk, BUT let's say you get your disk too close to a large ACME magnet. Alice can say bye bye to all her valuable bank account information.
 <p align="center">🎯<strong>Goals: </strong><s style="color: red">secure</s>, <s style="color: red">inclusively accountable</s>, <s style="color: red">decentralized</s>, <span style="color: green">scalable</span>, <span style="color: green">expressive</span>🎯</p>
 <p align="center">💡<strong>Let's replicate Alice's account on another computer</strong>💡</p>
 
@@ -68,7 +68,7 @@ These problems form the basis of distributed systems and distributed computing a
 
 Let's look briefly at how one of the more popular distributed databases [CassandraDB](https://cassandra.apache.org/doc/latest/cassandra/getting_started/configuring.html) handles these issues. *Note: when configuring the system we whitelist the `seed nodes` that will make up our trusted cluster that partake in a limited peer-to-peer [gossip](https://www.linkedin.com/pulse/gossip-protocol-inside-apache-cassandra-soham-saha).*
 <br>
-Once the distributed database is setup we have "Fault Tolerance" for our valueble piece of data `alice_account: 5.00`. If someone accidently brings their large ACME magnet into one datacenter, we have our data easily accesible on another host. Blockchains are not the only systems that make trade-offs, so what did we give up for this new fault tolerance?
+Once the distributed database is setup we have "Fault Tolerance" for our valuable piece of data `alice_account: 5.00`. If someone accidently brings their large ACME magnet into one datacenter, we have our data easily accesible on another host. Blockchains are not the only systems that make trade-offs, so what did we give up for this new fault tolerance?
 
 Banks Perspective:
 - Network overhead impacts performace
@@ -86,12 +86,12 @@ Alice's Perspective:
 <p align="center">💡<strong>Let's replicate Alice's account on ANY computer</strong>💡</p>
 
 ### [Bitcoin](./bitcoin/README.md)
-In order to avoid the delegation of trust as we do in traditional systems Bitcoin brings various computer science concepts together with [game theoretics](https://en.wikipedia.org/wiki/Game_theory) to create a truly peer-to-peer network. Alice's information gets formatted as a [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output) and is stored by all of the [nodes](https://bitnodes.io) on the Bitcoin network.
+In order to avoid the delegation of trust as we do in traditional systems Bitcoin brings various computer science concepts together with [game theory](https://en.wikipedia.org/wiki/Game_theory) to create a truly peer-to-peer network. Alice's information gets formatted as a [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output) and is stored by all of the [nodes](https://bitnodes.io) on the Bitcoin network.
 
 The nodes themselves listen for and [validate](./bitcoin/block_verifcation) blocks of transactions that are broadcast to the network by the miner of that block. The nodes trust the miner based on their valid [proof of work](./bitcoin/proof_of_work) and the network collectively agrees on a set of canonical updates to the state of the Bitcoin ledger and the state of Alice's account.
-Alice's valueble information is now replicated on thousands of machines across the globe, and she can validate that everything is acurate herself by rehashing the merkle tree of every block of transactions from genesis to now.
+Alice's valuable information is now replicated on thousands of machines across the globe, and she can validate that everything is acurate herself by rehashing the merkle tree of every block of transactions from genesis to now.
 <p align="center">🎉<strong>NO DELEGATION OF TRUST</strong>🎉</p>
-Let's revisit the trilemna. What did we giveup to get this trustless data security?
+Let's revisit the trillemma. What did we giveup to get this trustless data security?
 
 - miners expend energy as they attempt to get the nonce
 - for full trustless verification EACH node must replicate the canonical state by
@@ -118,7 +118,7 @@ In our evolution of data security this gives utility to the already secure data 
 
 Ethereum offers a platform to implement these smart contracts with the use of the [Ethereum Virtual Machine](./ethereum/ethereum_virtual_machine). In the ethereum paradigm Alice's bank account information is stored in a 20-byte address called an [account](https://ethereum.org/en/whitepaper/#ethereum-accounts). Transaction then update the canonical state by interacting with these accounts. Since the accounts are smart contracts executing code each transaction specifies a limit on how many computational steps of code execution it can use. The fundamental unit of computation is gas and a computational step usually costs 1 gas. There is a 5 gas fee for every byte in the transaction data. Contracts can send [messages](https://ethereum.org/en/whitepaper/#messages). 
 
-Trilemna visit: what did we give up to add expressivity?
+trillemma visit: what did we give up to add expressivity?
 - Although Ethereum full nodes can simply store the state instead of the entire blockchain history, every transaction still needs to be processed by every node in the network.
 - Centralization risk if the blockhain size gets too large, only those with access to large machines can maintain an accurate record
 
