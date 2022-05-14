@@ -9,16 +9,11 @@ go run main.go
 
 ### [Block Verification](./block_verification)
 
-```bash
-cd bitcoin/block_verification
-GO111MODULE=off go test ./... -bench=. -count 5
-```
-
 Run verify benchmark
 
 ```bash
 cd block_verification/go/
-go test -bench=. -count 5
+GO111MODULE=off go test ./... -bench=. -count 5
 ```
 
 #### Sources

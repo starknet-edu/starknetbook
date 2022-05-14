@@ -10,7 +10,7 @@ import (
 	"encoding/json"
 )
 
-const BTC_EXPLORER_URL = "https://blockchain.info/rawblock/"
+const BTC_EXPLORER_URL = "https://blockchain.info"
 
 type Block struct {
 	Hash         string   `json:"hash"`
@@ -154,7 +154,7 @@ func (block Block) GetMerkleRootQuiet() (root []byte) {
 
 func pullBlock(blockHash string) Block {
 	client := &http.Client {}
-	req, err := http.NewRequest(http.MethodGet, BTC_EXPLORER_URL + blockHash, nil)
+	req, err := http.NewRequest(http.MethodGet, BTC_EXPLORER_URL + "/rawblock/" + blockHash, nil)
 	if err != nil {
 	  panic(err.Error())
 	}

@@ -32,4 +32,9 @@ func BenchmarkReadFile(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		_, _ = os.ReadFile("bank.txt")
 	}
+
+	err = os.Remove("bank.txt")
+	if err != nil {
+		panic(err.Error())
+	}
 }
