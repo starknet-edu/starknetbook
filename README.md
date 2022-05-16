@@ -1,6 +1,6 @@
 <div align="center">
     <img src="./misc/basecamp.png" style="width: 300px">
-    <h1>StarkNet Basecam</h1>
+    <h1>StarkNet Basecamp</h1>
 </div>
 
 <p align="center">
@@ -29,6 +29,7 @@ Basecamp is a curriculum built to teach the fundamental building blocks of the C
 ### Setup
 
 Camp_II will require the basic cairo-lang [setup](https://www.cairo-lang.org/docs/quickstart.html)
+
 Camp_III will require the ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7)
 
 ### Issues
