@@ -20,7 +20,7 @@
 2. [Camp_II: Cairo](./camp_II/README.md)
 3. [Camp_III: StarkNet](./camp_III/README.md)
 4. [Camp_IV: BUIDL](./camp_IV/README.md)
-5. [Peering into the future(camp_V)](./camp_V/README.md)
+5. [Camp_V: Peering into the future](./camp_V/README.md)
 
 ### Overview
 
