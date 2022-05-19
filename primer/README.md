@@ -188,9 +188,11 @@ In our evolution of data security this gives utility to the already secure data 
 
 <h2 align="center">Ethereum</h2>
 
-Ethereum offers a platform to implement these smart contracts with the use of the [Ethereum Virtual Machine](./ethereum/ethereum_virtual_machine). In the ethereum paradigm Alice's bank account information is stored in a 20-byte address called an [account](https://ethereum.org/en/whitepaper/#ethereum-accounts). Her account balance along with a few more fields(nonce, storageRoot, codeHash) become a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric". 
+Ethereum offers a platform to implement these smart contracts with the use of the [Ethereum Virtual Machine](./ethereum/ethereum_virtual_machine). In the ethereum paradigm Alice's bank account information is stored in a 20-byte address called an [account](https://ethereum.org/en/whitepaper/#ethereum-accounts). Her account balance along with a few more fields(nonce, storageRoot, codeHash) become a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric".
 
-This Trie is a specific type of tree that encodes a "key" as a path of common prefixes to its corresponding "value". So Alice's Bank Account can be found at an address("key") that points to an account("value") in Ethereum's World State(Trie). The tree structure of the Trie allows us to obtain a cryptographic hash of each node all the way up to a single hash corresponding to the "root" similar to the Merkle tree we saw in the Bitcoin block verification. For an example of the MPT data structure you can use this diagram for reference:
+This Trie is a specific type of tree that encodes a "key" as a path of common prefixes to its corresponding "value". So Alice's Bank Account can be found at an address("key") that points to an account("value") in Ethereum's World State(Trie). The tree structure of the Trie allows us to obtain a cryptographic hash of each node all the way up to a single hash corresponding to the "root" similar to the Merkle tree we saw in the Bitcoin block verification.
+
+For an example of the MPT data structure you can use this diagram for reference:
 
 <div align="center">
     <img src="../misc/trie.png">
@@ -203,9 +205,9 @@ cd ethereum/block_verification/go
 go run *.go
 ```
 
-Ethereum then propogates its state by applying transactions to it which interact with the accounts. Alice in this case would have a public/private key pair to manager her "externally owned account" and can sign transactions that involve her balance or interacting with other contracts in the state. 
+Ethereum then propogates its state by applying transactions to it which interact with the accounts. Alice in this case would have a public/private key pair to manager her "externally owned account" and can sign transactions that involve her balance or interacting with other contracts in the state.
 
-In addition to EOAs Ethereum has "contract accounts" which are controlled by the contract code associated with them. Everytime this contract account receives a message its code begins to execute the bytecode that is stored as a value in the account storage Trie.
+In addition to EOAs Ethereum has "contract accounts" which are controlled by the contract code associated with them. Everytime teh contract account receives a message the bytecode that is stored as an RLP encoded value in the account storage Trie begins to execute according to the rules of the EVM.
 
 Trillemma visit: what did we give up to add expressivity?
 
