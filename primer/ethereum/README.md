@@ -7,6 +7,8 @@
 - <https://ethereum.org/en/developers/docs/evm/opcodes>
 - <https://jellopaper.org/evm>
 - <https://github.com/zhangchiqing/merkle-patricia-trie>
+- <https://eth.wiki/fundamentals/patricia-tree>
+- <https://github.com/ethereum/go-ethereum>
 
 ---
 upper_tags: [protocol, peer_to_peer, network, ledger, database, cryptocurrency, virtual_machine]
