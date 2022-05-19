@@ -213,10 +213,11 @@ Trillemma visit: what did we give up to add expressivity?
 
 - Although Ethereum full nodes can simply store the state(Trie) instead of the entire blockchain history, every transaction still needs to be processed by every node in the network.
 - Centralization risk if the blockhain size gets too large, only those with access to large machines can maintain an accurate record
+- Alice has to pay $100 to use the money in her account
 
-Full Node Size: 700 GB
+Full Node Size: ~700 GB
 
-Archive Node Size: 10 TB
+Archive Node Size: ~10 TB
 
 <p align="center">
     🎯
@@ -235,8 +236,27 @@ Archive Node Size: 10 TB
 </p>
 
 <h2 align="center"> Rollups</h2>
+As demand for block space increases the cost to execute on L1 will become increasingly expensive, and until certain pruning mechanisms are implemented
+we can expect the state of the L1 to continue to bloat over time. This means that increasingly robust machines will be requires to maintain the state
+and subsequently verify the blocks. 
 
-<https://vitalik.ca/general/2021/01/05/rollup.html>
+Rollups are one solution in which business logic is executed and stored in a protocol outside the Ethereum context and then
+proves its succesful execution in the Ethereum context.
+
+Typically this involves compressing a larger number of transactions at this "Layer 2" and commiting the state diffs to a smart contract deployed on "Layer 1".
+For full interoperability with the L1 rollups also typically implement a messaging component for deposits/withdrawls.
+
+There are currently two types of rollups that are being widely adopted:
+- Optimistic Rollups
+- ZK Rollups
+
+Vitalik provides a very good comparison [here](https://vitalik.ca/general/2021/01/05/rollup.html#optimistic-rollups-vs-zk-rollups), and touches on the last pieces of our long
+trilemma journey:
+***No matter how large the computation, the proof can be very quickly verified on-chain.***
+
+
+This allows Alice to move her money freely between L1 and L2(...soon to be L3) and operate on an low-cost, expressive blockchain layer.
+All while inheritting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
 
 <p align="center">
     🎯
@@ -247,4 +267,9 @@ Archive Node Size: 10 TB
     <span style="color: green">scalable</span>,
     <span style="color: green">expressive</span>
     🎯
+</p>
+
+
+<p align="center">
+    🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
 </p>
