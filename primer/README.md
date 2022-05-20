@@ -26,7 +26,7 @@ This primer is inteded to cover introductory concepts upon which Cairo and Stark
     <img src="../misc/plat.png">
 </div>
 
-Code examples will be named by the programming language in which they are implemented, for example Bitcoin block verification in Golang:
+Code examples will be named by the programming language in which they are implemented, for example Bitcoin block verification in [Golang](https://go.dev/doc/install)(if you can implement these example in other languages we would love a PR):
 <div align="center">
     <a href="./bitcoin/block_verification/go">bitcoin/block_verification/go</a>
 </div>
@@ -182,7 +182,7 @@ Let's revisit the trillemma. What did we giveup to get this trustless data secur
 
 Full Node Size: ~405GB
   
-For a naive demonstration of "The Evolution of Data Security" run the following([to install go](https://go.dev/doc/install)):
+For a naive demonstration of "The Evolution of Data Security" run the following:
 
 ```bash
 cd bitcoin/block_verification/go && go mod tidy
