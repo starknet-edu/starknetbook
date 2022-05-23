@@ -38,13 +38,6 @@ The topics covered in this primer have been disected in hundreds of ways by thou
 </div>
 
 <h3 align="center"> What are we solving for?</h3>
-<<<<<<< HEAD
-The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics these systems have typically given up scalability(usability). Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
-
-<p align="center">
-    blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure
-</p>
-=======
 The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics, blockchain systems have been forced to make large trade offs which impact usability. Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
 
 <div align="center">
@@ -53,7 +46,6 @@ The advent of blockchain technology has given the world computational systems wi
 
 In this course you will learn how StarkWare attempts to tackle the Blockchain Trillemma and provide a system that is
 inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
->>>>>>> b24b213dcbd3235417115355f0f7d1b8209b2b1a
 
 <p align="center">
     🎯
@@ -267,14 +259,9 @@ Archive Node Size: ~10 TB
 </p>
 
 <h2 align="center"> Rollups</h2>
-<<<<<<< HEAD
-As demand for block space increases the cost to execute on L1 will become increasingly expensive, and until certain pruning mechanisms are implemented
-we can expect the state of the L1 to continue to bloat over time. This means that increasingly robust machines will be requires to maintain the state
-=======
 
 As demand for block space increases the cost to execute on `Layer 1`(full consensus protocols e.g. Bitcoin, Ethereum) will become increasingly expensive, and until certain [state expiry mechanisms](https://notes.ethereum.org/@vbuterin/verkle_and_state_expiry_proposal) are implemented
 we can expect the state of the L1 to continue to bloat over time. This will require increasingly robust machine to maintain the state
->>>>>>> b24b213dcbd3235417115355f0f7d1b8209b2b1a
 and subsequently verify the blocks.
 
 Rollups are one solution in which business logic is executed and stored in a protocol outside the Ethereum context and then
@@ -291,11 +278,8 @@ There are currently two types of rollups that are being widely adopted:
 Vitalik provides a good comparison of the two [here](https://vitalik.ca/general/2021/01/05/rollup.html#optimistic-rollups-vs-zk-rollups), and touches on the final pieces of our long
 trilemma journey:
 
-<<<<<<< HEAD
-=======
 ***No matter how large the computation, the proof can be very quickly verified on-chain.***
 
->>>>>>> b24b213dcbd3235417115355f0f7d1b8209b2b1a
 This allows Alice to move her money freely between L1 and L2(...soon to be L3) and operate on an low-cost, expressive blockchain layer.
 All while inheritting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
 
