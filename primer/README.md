@@ -40,9 +40,11 @@ The topics covered in this primer have been disected in hundreds of ways by thou
 <h3 align="center"> What are we solving for?</h3>
 The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics, blockchain systems have been forced to make large trade offs which impact usability. Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
 
+<br>
 <div align="center">
     <em>blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.</em>
 </div>
+<br>
 
 In this course you will learn how StarkWare attempts to tackle the Blockchain Trillemma and provide a system that is
 inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
