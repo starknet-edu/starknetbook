@@ -38,13 +38,18 @@ The topics covered in this primer have been disected in hundreds of ways by thou
 </div>
 
 <h3 align="center"> What are we solving for?</h3>
-The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics these systems have typically given up scalability(usability). Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating: blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.
+The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics these systems have typically given up scalability(usability). Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
+
+<p align="center">
+    blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure
+</p>
 
 There have been many attempts at solving the trilemma and there will be many more. In this course you will learn how StarkWare attempts to tackle the trillemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
 <p align="center">
     🎯
     <strong>Goals: </strong>
-    secure, inclusively accountable, decentralized, scalable, expressive🎯
+    secure, inclusively accountable, decentralized, scalable, expressive
+    🎯
 </p>
 
 <h2 align="center"> Evolution of Data Security</h2>
@@ -238,7 +243,7 @@ Archive Node Size: ~10 TB
 <h2 align="center"> Rollups</h2>
 As demand for block space increases the cost to execute on L1 will become increasingly expensive, and until certain pruning mechanisms are implemented
 we can expect the state of the L1 to continue to bloat over time. This means that increasingly robust machines will be requires to maintain the state
-and subsequently verify the blocks. 
+and subsequently verify the blocks.
 
 Rollups are one solution in which business logic is executed and stored in a protocol outside the Ethereum context and then
 proves its succesful execution in the Ethereum context.
@@ -247,13 +252,13 @@ Typically this involves compressing a larger number of transactions at this "Lay
 For full interoperability with the L1 rollups also typically implement a messaging component for deposits/withdrawls.
 
 There are currently two types of rollups that are being widely adopted:
+
 - Optimistic Rollups
 - ZK Rollups
 
 Vitalik provides a very good comparison [here](https://vitalik.ca/general/2021/01/05/rollup.html#optimistic-rollups-vs-zk-rollups), and touches on the last pieces of our long
 trilemma journey:
 ***No matter how large the computation, the proof can be very quickly verified on-chain.***
-
 
 This allows Alice to move her money freely between L1 and L2(...soon to be L3) and operate on an low-cost, expressive blockchain layer.
 All while inheritting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
@@ -268,7 +273,6 @@ All while inheritting the highest form of data security evolution from the L1 an
     <span style="color: green">expressive</span>
     🎯
 </p>
-
 
 <p align="center">
     🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
