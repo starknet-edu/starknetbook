@@ -1,3 +1,5 @@
+import sympy
+from sympy.core.numbers import igcdex
 
 # Can represent a bit pattern with a polynomial
 # 111 can be represented by
@@ -32,6 +34,13 @@
 #          (8x^2 + 3x + 2) / (-x + 2)
 
 # our clock is a finite field 
-hours = 13
 
-print("DAYS: ", )
+def div_mod(n, m, p):
+    """
+    Finds a nonnegative integer x < p such that (m * x) % p == n.
+    """
+    a, b, c = igcdex(m, p)
+    assert c == 1
+    return (n * a) % p
+
+hours = 13

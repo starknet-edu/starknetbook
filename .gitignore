@@ -5,3 +5,5 @@ tmp/
 **/*.txt
 
 **/*.sum
+
+*/**/__pycache__
