@@ -99,3 +99,10 @@ f_eval = [f(d) for d in eval_domain]
 print("Constraint 1: ", a[0], f(g**0))
 print("Constraint 2: ", a[len(a)-1], f(g**1022))
 print("Constraint 2: ", a[7], (f(g**6)**2 + f(g**5)**2))
+
+print("Root Constraint 1: ", f(g**0) - 1)
+print("Root Constraint 2: ", f(g**1022) - FieldElement(2338775057))
+# to shift a row we multiply by the generator
+x = g**5
+print("Root Constraint 2: ", f((g**2)*x) - f(g*x)**2 - f(x)**2)
+

@@ -2,19 +2,22 @@
 
 ### TMP
 
-SCALABLE: 
+SCALABLE:
+
 - refers to the fact that two things happen simultaneously
 - the prover has a running time that is at most quasilinear to the size of computation
-    - SNARKs the prover is allowed to have prohibitively expensive complexity
+  - SNARKs the prover is allowed to have prohibitively expensive complexity
 - verification time is poly-logarithmic in the size of computation
 
 Transparent:
+
 - all verifiers messages are just publicly sampled random coins
 - no trusted setup procedure is neeed to instantiate a proof system no toxic waste
-- compilation pipeline, 
+- compilation pipeline,
 
 Computation Pipeline:
-- Computation 
+
+- Computation
 ----> arithmetization
 - Arithmetic Constraint System
 ----> interpolation
@@ -32,7 +35,7 @@ What are we "proving"?
     Goal being to transform the computation into a format that enables resource-constrained verifier to verify its integrity
     Possible to study more types of resources, entabld quits, non-determinsim, oracles
 
-Prime number p,  and use the elements from 0 -> p-1, 
+Prime number p,  and use the elements from 0 -> p-1,
 
 #### Sources
 
