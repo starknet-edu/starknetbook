@@ -1,12 +1,12 @@
 import sys
 
-sys.path.append('../')
+sys.path.append('../../')
 
-from stark101utils.channel import Channel
-from stark101utils.merkle import MerkleTree
-from stark101utils.field import FieldElement
+from stark101utils.python.channel import Channel
+from stark101utils.python.merkle import MerkleTree
+from stark101utils.python.field import FieldElement
 from low_degree_extension import generate_interpolate_extend
-from stark101utils.polynomial import X, prod
+from stark101utils.python.polynomial import X, prod
 
 def polynomial_constraints():
     ####################

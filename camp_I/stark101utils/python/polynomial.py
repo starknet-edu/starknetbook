@@ -28,8 +28,8 @@ except ModuleNotFoundError:
     # not available, simply return the iterator itself.
     tqdm = lambda x: x
 
-from stark101utils.field import FieldElement
-from stark101utils.list_utils import remove_trailing_elements, scalar_operation, two_lists_tuple_operation
+from stark101utils.python.field import FieldElement
+from stark101utils.python.list_utils import remove_trailing_elements, scalar_operation, two_lists_tuple_operation
 
 
 def trim_trailing_zeros(p):

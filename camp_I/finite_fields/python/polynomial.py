@@ -1,10 +1,10 @@
 import sys
 
-sys.path.append('../')
+sys.path.append('../../')
 
 from random import randint
-from stark101utils.polynomial import X, Polynomial
-from stark101utils.field import FieldElement
+from stark101utils.python.polynomial import X, Polynomial
+from stark101utils.python.field import FieldElement
 
 # The degree of a polynomial is the highest degree of any term
 
