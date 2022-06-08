@@ -1,7 +1,10 @@
 *.txt
 
 tmp/
-**/*.json
+**/*_compiled.json
+**/*_abi.json
+**/*.bin
+
 **/*.txt
 
 **/*.sum
