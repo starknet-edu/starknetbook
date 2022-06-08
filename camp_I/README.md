@@ -25,12 +25,7 @@
 </h2>
 
 ### TODO:
-- python clock modulus(modular arithmatic)
-- code: quasi-linear proving time
-- code: poly-logarithmic verification time
-- code: logarithic
-- code: bitwise add vs felt add
-- code: felt overflow vs int overflow
+
 
 <h2 align="center" id="zk_proofs">Zero Knowledge Proofs</h2>
 

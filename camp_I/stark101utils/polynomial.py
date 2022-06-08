@@ -28,8 +28,8 @@ except ModuleNotFoundError:
     # not available, simply return the iterator itself.
     tqdm = lambda x: x
 
-from stark101.field import FieldElement
-from stark101.list_utils import remove_trailing_elements, scalar_operation, two_lists_tuple_operation
+from stark101utils.field import FieldElement
+from stark101utils.list_utils import remove_trailing_elements, scalar_operation, two_lists_tuple_operation
 
 
 def trim_trailing_zeros(p):
@@ -291,3 +291,49 @@ class Polynomial:
 
 # The python representation of the formal variable x.
 X = Polynomial.X()
+
+def calculate_lagrange_polynomials(x_values):
+    """
+    Given the x_values for evaluating some polynomials, it computes part of the lagrange polynomials
+    required to interpolate a polynomial over this domain.
+    """
+    lagrange_polynomials = []
+    monomials = [Polynomial.monomial(1, FieldElement.one()) -
+                 Polynomial.monomial(0, x) for x in x_values]
+    numerator = prod(monomials)
+    for j in tqdm(range(len(x_values))):
+        # In the denominator, we have:
+        # (x_j-x_0)(x_j-x_1)...(x_j-x_{j-1})(x_j-x_{j+1})...(x_j-x_{len(X)-1})
+        denominator = prod([x_values[j] - x for i, x in enumerate(x_values) if i != j])
+        # Numerator is a bit more complicated, since we need to compute a poly multiplication here.
+        # Similarly to the denominator, we have:
+        # (x-x_0)(x-x_1)...(x-x_{j-1})(x-x_{j+1})...(x-x_{len(X)-1})
+        cur_poly, _ = numerator.qdiv(monomials[j].scalar_mul(denominator))
+        lagrange_polynomials.append(cur_poly)
+    return lagrange_polynomials
+
+
+def interpolate_poly_lagrange(y_values, lagrange_polynomials):
+    """
+    :param y_values: y coordinates of the points.
+    :param lagrange_polynomials: the polynomials obtained from calculate_lagrange_polynomials.
+    :return: the interpolated poly/
+    """
+    poly = Polynomial([])
+    for j, y_value in enumerate(y_values):
+        poly += lagrange_polynomials[j].scalar_mul(y_value)
+    return poly
+
+
+def interpolate_poly(x_values, y_values):
+    """
+    Returns a polynomial of degree < len(x_values) that evaluates to y_values[i] on x_values[i] for
+    all i.
+    """
+    assert len(x_values) == len(y_values)
+    assert all(isinstance(val, FieldElement) for val in x_values),\
+        'Not all x_values are FieldElement'
+    lp = calculate_lagrange_polynomials(x_values)
+    assert all(isinstance(val, FieldElement) for val in y_values),\
+        'Not all y_values are FieldElement'
+    return interpolate_poly_lagrange(y_values, lp)

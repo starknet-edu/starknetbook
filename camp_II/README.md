@@ -25,4 +25,4 @@
 #### Sources
 
 - <https://eprint.iacr.org/2021/1063.pdf>
-<https://github.com/lambdaclass/circom_export_to_cairo>
+- <https://github.com/lambdaclass/circom_export_to_cairo>

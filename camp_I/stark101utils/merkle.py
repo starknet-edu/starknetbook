@@ -18,7 +18,7 @@
 from hashlib import sha256
 from math import log2, ceil
 
-from stark101.field import FieldElement
+from stark101utils.field import FieldElement
 
 
 class MerkleTree(object):
