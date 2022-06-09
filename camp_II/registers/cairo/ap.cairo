@@ -10,13 +10,13 @@
 
 # init main function
 func main():
-    [ap] = 100
-    [ap + 2] = 200
+    [ap] = 100; ap++
+    # [ap + 2] = 200
     # 2 memory accesses = 10 cells
 
     # Of the 3 values in an instruction, you can choose either an address of the form ap + off 
     # or fp + off where off is a constant offset in the range [−2^15, 2^15)
-    [ap + 32767] = 400
+    # [ap + 32767] = 400
     # [ap + 32768] = 400
     ret
 end
