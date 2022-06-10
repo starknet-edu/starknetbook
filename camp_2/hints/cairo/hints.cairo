@@ -9,7 +9,7 @@
 # cairo-run --program hints_compiled.json --print_output --layout=small --program_input=input.json
 func main(output_ptr : felt*) -> (output_ptr : felt*):
     # hints are code run in cairo programs
-    %{ print("Hello World!") %}
+    # %{ print("Hello World!") %}
 
     # they can access the memory of the program
     %{

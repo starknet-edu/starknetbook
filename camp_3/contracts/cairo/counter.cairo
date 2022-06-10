@@ -20,10 +20,10 @@ end
 #
 # view decorator declaring a function that only queries the state
 #
-@view
 # name the function, declare zero function arguments, include the required implicit arguments 
+# declare function return type
+@view
 func get_count{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (
-    # declare function return type
     count : felt
 ):
     let (count) = counter.read()
