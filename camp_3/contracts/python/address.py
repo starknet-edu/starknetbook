@@ -8,23 +8,14 @@ from starkware.starknet.core.os.class_hash import compute_class_hash
 from starkware.starknet.services.api.contract_class import ContractClass
 
 CONTRACT_ADDRESS_PREFIX = from_bytes(b"STARKNET_CONTRACT_ADDRESS")
-
-
-def get_contract_class(compiled_contract_name: str) -> ContractClass:
-    main_dir_path = os.path.dirname(__file__)
-    file_path = os.path.join(main_dir_path, compiled_contract_name)
-
-    with open(file_path, "r") as fp:
-        return ContractClass.loads(data=fp.read())
-
+CONTRACT_NAME = "counter"
 
 def calculate_contract_address(
     salt: int,
-    contract_class: ContractClass,
+    class_hash: int,
     constructor_calldata: Sequence[int],
     deployer_address: int,
 ) -> int:
-    class_hash = compute_class_hash(contract_class=contract_class, hash_func=pedersen_hash)
     constructor_calldata_hash = compute_hash_on_elements(
         data=constructor_calldata, hash_func=pedersen_hash
     )
@@ -40,10 +31,14 @@ def calculate_contract_address(
     )
 
 # must be in cairo environment
-os.system("starknet-compile ../cairo/counter.cairo --output counter_compiled.json")
+os.system("starknet-compile {}.cairo --output {}_compiled.json".format("../cairo/" + CONTRACT_NAME, CONTRACT_NAME))
 
-counter_class = ContractClass.loads(data=open("counter_compiled.json", "r").read())
+# compute contract class and class hash
+contract_class = ContractClass.loads(data=open("{}_compiled.json".format(CONTRACT_NAME), "r").read())
+class_hash = compute_class_hash(contract_class=contract_class, hash_func=pedersen_hash)
 
-address = calculate_contract_address(0, counter_class, [], 0)
+# calculate contract address
+address = calculate_contract_address(0, class_hash, [], 0)
 
-print("Contract Address: 0x{:x}".format(address))
+print("\n\tClass Hash: 0x{:x}\n".format(address))
+print("\tContract Address: 0x{:x}\n".format(address))
