@@ -22,8 +22,8 @@
 <div align="center">
     <h2>Overview</h2>
     <a href="https://docs.google.com/presentation/d/1Rrh8c4TC8g18PcADQ6YaXNogC7NM1j33RXF-b8Bwn-E/edit?usp=sharing">(slides)</a>
+    <br>
     <img src="../misc/starkNetOverview.jpg">
-
 </div>
 
 [StarkNet](https://docs.starknet.io/docs/Intro) is a permissionless Layer 2 ZK-Rollup that supports smart contracts based on [Cairo](../camp_2).

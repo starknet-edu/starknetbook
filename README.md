@@ -16,11 +16,11 @@
 ### Route
 
 0. [Primer](./primer/README.md)
-1. [Camp_I: STARKs](./camp_I/README.md)
-2. [Camp_II: Cairo](./camp_II/README.md)
-3. [Camp_III: StarkNet](./camp_III/README.md)
-4. [Camp_IV: BUIDL](./camp_IV/README.md)
-5. [Camp_V: Peering into the future](./camp_V/README.md)
+1. [Camp_1: STARKs](./camp_1/README.md)
+2. [Camp_2: Cairo](./camp_2/README.md)
+3. [Camp_3: StarkNet](./camp_3/README.md)
+4. [Camp_4: BUIDL](./camp_4/README.md)
+5. [Camp_5: Peering into the future](./camp_5/README.md)
 
 ### Overview
 
@@ -28,9 +28,9 @@ Basecamp is a curriculum built to teach the fundamental building blocks of the C
 
 ### Setup
 
-Camp_II will require the basic cairo-lang [setup](https://www.cairo-lang.org/docs/quickstart.html)
+Camp_2 will require the basic cairo-lang [setup](https://www.cairo-lang.org/docs/quickstart.html)
 
-Camp_III will require the ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7)
+Camp_3 will require the ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7)
 
 ### Issues
 
