@@ -3,12 +3,13 @@
 # starknet-compile storage.cairo --output storage_compiled.json
 # starknet deploy --gateway_url http://localhost:5050 --contract storage_compiled.json
 from starkware.cairo.common.cairo_builtins import HashBuiltin, SignatureBuiltin
-# from starkware.starknet.common.syscalls import storage_read, storage_write
 from starkware.starknet.common.syscalls import storage_read
+from starkware.cairo.common.hash import hash2
 
 const SINGLE_KEY = 0x259a7ae4e23df025d5bead0bbd3eb2b756283fc3088b592e179533be7dd1251
 const MULTI_KEY = 0x12871215cdec46a1b610066e09151ccd5eed3824ebe4ba02596c69361a2f91
 const STRUCT_KEY = 0x1f071b583a1f24f97d31c8451c71ff92a697bc29fdbbee219fd19d325703adf
+const MAPPING_KEY = 0x338fd2e7646d570c5c310eaf05ca39446bd5679dff96ec529ca657a3c214bb8
 
 struct Custom:
     member left : felt
@@ -26,6 +27,10 @@ func single_store() -> (res : felt):
 end
 
 @storage_var
+func mapping_store(idx : felt) -> (res : felt):
+end
+
+@storage_var
 func multi_store() -> (res : (left : felt, right : felt)):
 end
 
@@ -35,7 +40,9 @@ end
 
 @constructor
 func constructor{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}():
-    single_store.write(123)
+    single_store.write(1)
+    mapping_store.write(100, 123)
+    mapping_store.write(200, 567)
     multi_store.write((left=456, right=789))
     struct_store.write(Custom(left=101112, center=131415, right=161718))
 
@@ -48,6 +55,12 @@ end
 @view
 func get_single_store{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (value : felt):
     let (value) = single_store.read()
+    return (value)
+end
+
+@view
+func get_mapping_store{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(lookup : felt) -> (value : felt):
+    let (value) = mapping_store.read(idx=lookup)
     return (value)
 end
 
@@ -69,6 +82,13 @@ end
 @view
 func get_single_store_literal{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (value : felt):
     let (value) = storage_read(SINGLE_KEY)
+    return (value)
+end
+
+@view
+func get_mapping_store_literal{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(lookup : felt) -> (value : felt):
+    let (key) = hash2{hash_ptr=pedersen_ptr}(MAPPING_KEY, lookup)
+    let (value) = storage_read(key)
     return (value)
 end
 

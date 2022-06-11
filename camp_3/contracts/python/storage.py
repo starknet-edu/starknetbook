@@ -19,6 +19,10 @@ print("\nTotal Storage Slots: ", SLOTS)
 single_key = starknet_keccak(b'single_store')
 print("\n\tSingle Store's Key: 0x{:x}".format(single_key))
 
+# mapping variable first hash element(pedersen(this, index))
+mapping_key = starknet_keccak(b'mapping_store')
+print("\n\tMapping Store's 1st Hash Element: 0x{:x}".format(mapping_key))
+
 # multiple value continuous storage
 multi_key = starknet_keccak(b'multi_store')
 print("\n\tMulti Store's Key Left: 0x{:x}".format(multi_key))
