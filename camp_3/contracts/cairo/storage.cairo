@@ -1,3 +1,6 @@
+# Goerli Demo Contract:
+# Contract address: 0x022b0f298db2f1776f24cda70f431566d9ef1d0e54a52ee6d930b80ec8c55a62
+# Transaction hash: 0x4c5358076492f735956a02dd7d917972d28e2b33db98829f0b1a4928d0ceb20
 %lang starknet
 
 # starknet-compile storage.cairo --output storage_compiled.json
@@ -107,4 +110,29 @@ func get_struct_store_literal{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, 
     let (right) = storage_read(STRUCT_KEY+2)
 
     return (Custom(left, center, right))
+end
+
+
+#
+# '@external' functions can be used to write to contract storage
+#
+@external
+func update_single_store{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(value : felt):
+    single_store.write(value)
+
+    return ()
+end
+
+@external
+func update_multi_store{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(value : (left : felt, right : felt)):
+    multi_store.write(value)
+
+    return ()
+end
+
+@external
+func update_struct_store{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(value : Custom):
+    struct_store.write(value)
+
+    return ()
 end
