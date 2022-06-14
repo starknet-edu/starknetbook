@@ -14,6 +14,7 @@
     <li>Finite Field Arithmetic</li>
     <li>Polynomials</li>
     <li>ZK Terminology</li>
+    <li>Computational Integrity</li>
     <li>STARKs</li>
     <li>STARKs vs SNARKs</li>
 </ol>
@@ -65,6 +66,19 @@ A `succinct` proof system is one in which the verifier can run an order of magni
 `SNARKS`: Succint Non-Interactive Arguments of Knowledge
 
 `STARKs`: Scalable Transparent Arguments of Knowled
+
+<h2 align="center" id="computational_integrity">Computational Integrity</h2>
+
+The goal of these proof systems is to prove `computational integrity` to a verifier. Computational Integrity can be formalized as follow:
+
+***Statement of Computational Integrity = (S0, P, T, S1)***
+
+`S0`: Initial State
+`P`: Program that changes state
+`T`: Number of steps
+`S1`: Final State
+
+
 
 <h2 align="center" id="starks">STARKs</h2>
 

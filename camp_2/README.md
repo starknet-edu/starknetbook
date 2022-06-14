@@ -11,12 +11,13 @@
 
 <ol>
     <li>CLI</li>
-    <li>Computational Integrity</li>
     <li>C(pu)AIR(o)</li>
+    <li>Syntax</li>
     <li>Cairo VM</li>
 </ol>
 
-<h2 align="center" id="cairo_cli">CLI Cheatsheet</h2>
+<div align="center">
+    <h2 id="cairo_cli">CLI Cheatsheet</h2>
 
 | Command        | Description           |
 | ------------- |:-------------:|
@@ -26,9 +27,26 @@
 | cairo-format -i <span style="color:orange;">*.cairo*</span> | format/lint your cairo program |
 | cairo-sharp submit --source <span style="color:orange;">*.cairo*</span> --program_input input.json | compile cairo program and submit the fact to the SHARP |
 
-<h2 align="center" id="computational_integrity">Computational Integrity</h2>
+</div>
 
 <h2 align="center" id="cairolang">C(pu)AIR(o)</h2>
+
+As we saw in [Camp 1](../camp_1) the STARK Proof system is based on `AIR` or Algebraic Intermediate Representation of computation. The AIR is a is a list of polynomial constraints operating on a trace of finite field elements and the STARK Proof verifies there exists a trace that satisfies those constraints.
+
+Cairo stands for CPU AIR and consists of a single set of polynomial constraints such that the execution of a program on this architecture is valid. Cairo is a programming language for writing provalbe programs.
+
+***A practically-efficient Turing-complete STARK-Friendly CPU Architecture***
+
+`Practical`: Cairo supports conditional branches, memory, function calls, and recursion
+
+`Efficient`: Instruction set chosen so the corresponding AIR is efficient and optimized with `builtins`
+
+`Turing Complete`: Can simulate any Turing machine, as such supports any feasible computation
+
+<h2 align="center" id="computational_integrity">Computational Integrity</h2>
+STARKs
+
+<h2 align="center" id="syntax">Syntax</h2>
 
 <h3>FELTs</h3>
 <h3>Registers</h3>
