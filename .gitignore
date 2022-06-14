@@ -1,8 +1,16 @@
 *.txt
-
+node_modules/
+.build/
+cache/
+.idea/
+artifacts/
+starknet-artifacts/
+.pytest_cache/
+build/
 tmp/
-**/*_compiled.json
-**/*_abi.json
+package-lock.json
+**/*compiled.json
+**/*abi.json
 **/*.bin
 
 **/*.txt

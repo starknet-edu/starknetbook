@@ -1,0 +1,12 @@
+["protostar.config"]
+protostar_version = "0.1.0"
+
+["protostar.project"]
+libs_path = "lib"
+
+["protostar.contracts"]
+main = [
+    "./contracts/contract_final.cairo",
+]
+["protostar.build"]
+cairo_path = ["~/.local/lib/python3.8/site-packages/"]

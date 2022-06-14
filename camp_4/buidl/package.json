@@ -1,0 +1,45 @@
+{
+  "name": "buidl",
+  "scripts": {
+    "build": "npm run clean && npm run kawaii && npm run compile && npm run prettier && npm run lint",
+    "clean": "rm -rf starknet-artifacts",
+    "compile": "npx hardhat starknet-compile",
+    "compile-debug": "npx hardhat starknet-compile --disable-hint-validation",
+    "devnet": "starknet-devnet 2> /dev/null &",
+    "kawaii": "cairo-format -i contracts/*.cairo",
+    "lint": "eslint --fix --ext .ts .",
+    "prettier": "prettier --write .",
+    "stop-devnet": "pkill starknet-devnet || /bin/true",
+    "test": "npm run compile && npm run devnet && npx hardhat test && npm run stop-devnet",
+    "test-debug": "npm run compile-debug && npm run devnet && npx hardhat test && npm run stop-devnet"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.6",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@shardlabs/starknet-hardhat-plugin": "^0.5.5",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^12.20.48",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "chai": "^4.3.6",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-promise": "^5.2.0",
+    "ethereum-waffle": "^3.4.4",
+    "ethers": "^5.6.8",
+    "hardhat": "^2.9.9",
+    "prettier": "^2.7.0",
+    "prettier-plugin-solidity": "^1.0.0-beta.19",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
