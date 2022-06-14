@@ -83,3 +83,15 @@ python3 finite_fields/python/polynomial.py
 <h4>Queries</h4>
 
 <h3>Proof</h3>
+
+<hr>
+
+#### Sources
+
+[<https://eprint.iacr.org/2018/046.pdf>
+, <https://vitalik.ca/general/2017/11/09/starks_part_1.html>
+, <https://github.com/starkware-libs/ethSTARK>
+, <https://consensys.net/blog/blockchain-explained/zero-knowledge-proofs-starks-vs-snarks/>
+, <https://aszepieniec.github.io/stark-anatomy/>
+, <https://github.com/elibensasson/libSTARK>
+, <https://eprint.iacr.org/2021/582.pdf>]
