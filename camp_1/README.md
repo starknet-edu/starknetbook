@@ -10,25 +10,13 @@
 ### Topics
 
 <ol>
-    <li>ZK Terminology</li>
     <li>Modular Arithmetic</li>
     <li>Finite Field Arithmetic</li>
     <li>Polynomials</li>
+    <li>ZK Terminology</li>
     <li>STARKs</li>
     <li>STARKs vs SNARKs</li>
 </ol>
-
-<h2 align="center" id="zk_terminology">ZK Terminology</h2>
-
-Zero Knowledge Proof Systems are proof systems in which there is secret information known to the `prover` that is not known to the `verifier`, and the verifier is still convinced of the computational claim.
-
-A `non-interactive` proof system is an abstract machine that models computation between the two parties(prover and verifier). Messages are sent in [one direction](https://www.youtube.com/watch?v=QJO3ROT-A4E) until the verifier is convinced of the computational claim.
-
-A `succinct` proof system is one in which the verifier can run an order of magnitute aster than a naive re-execution of the program
-
-`SNARKS`: Succint Non-Interactive Arguments of Knowledge
-
-`STARKs`: Scalable Transparent Arguments of Knowledge
 
 <div align="center">
     <h2 id="modular_arithmetic">Modular Arithmetic</h2>
@@ -65,6 +53,18 @@ For an example of how Polynomials can be built and expressed in code run:
 ```bash
 python3 finite_fields/python/polynomial.py
 ```
+
+<h2 align="center" id="zk_terminology">ZK Terminology</h2>
+
+Zero Knowledge Proof Systems are proof systems in which there is secret information known to the `prover` that is not known to the `verifier`, and the verifier is still convinced of the computational claim.
+
+A `non-interactive` proof system is an abstract machine that models computation between the two parties(prover and verifier). Messages are sent in [one direction](https://www.youtube.com/watch?v=QJO3ROT-A4E) until the verifier is convinced of the computational claim.
+
+A `succinct` proof system is one in which the verifier can run an order of magnitute aster than a naive re-execution of the program
+
+`SNARKS`: Succint Non-Interactive Arguments of Knowledge
+
+`STARKs`: Scalable Transparent Arguments of Knowled
 
 <h2 align="center" id="starks">STARKs</h2>
 
