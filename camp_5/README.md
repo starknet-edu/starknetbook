@@ -1,4 +1,11 @@
-<h1 align="center">Camp 5: Peering into the future</h1>
+<div align="center">
+    <h1>Camp 5: Peering into the Future</h1>
+
+|Presentation|Video|Workshop
+|:----:|:----:|:----:|
+|-|-|-|
+
+</div>
 
 ### Topics
 
