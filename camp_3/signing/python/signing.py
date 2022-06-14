@@ -14,8 +14,9 @@ MAX_FEE = 0
 TESTNET = from_bytes(b"SN_GOERLI")
 PRIVATE=0x879d7dad7f9df54e1474ccf572266bba36d40e3202c799d6c477506647c126
 
-def sign_transaction(addr, calldata):
-    nonce = get_nonce(addr)
+def sign_transaction(addr, calldata, nonce=None):
+    if nonce is None:
+        nonce = get_nonce(addr)
     calldata.append(nonce)
 
     exec_selector = get_selector_from_name("__execute__")

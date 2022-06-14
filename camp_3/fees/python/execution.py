@@ -1,3 +1,10 @@
+import json
+import requests
+import sys
+
+sys.path.append('../../contracts/python')
+from definitions import TRANSACTION_TRACE_ENDPOINT
+
 def _calc_inner_steps(resources):
     if len(resources) == 0:
         return 0
@@ -22,8 +29,8 @@ def _calc_inner_builtins(resources):
     return out
 
 def calculate_execution(tx_hash):
-    tx_trace_resp = requests.request("GET", TX_TRACE_URL+tx_hash).json()
+    tx_trace_resp = requests.request("GET", TRANSACTION_TRACE_ENDPOINT+tx_hash).json()
 
     steps = _calc_inner_steps([tx_trace_resp["function_invocation"]])
     builtins = _calc_inner_builtins([tx_trace_resp["function_invocation"]])
-    return (steps *.05), builtins
+    return (steps *.05) + builtins
