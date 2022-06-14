@@ -68,7 +68,7 @@ func get_mapping_store{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_c
 end
 
 @view
-func get_multi_store{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (value : (left : felt, right : felt)):
+func get_multi_store() -> (value : (left : felt, right : felt)):
     let (value) = multi_store.read()
     return (value)
 end

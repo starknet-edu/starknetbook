@@ -21,18 +21,20 @@ print("\n\tSingle Store's Key: 0x{:x}".format(single_key))
 
 # mapping variable first hash element(pedersen(this, index))
 mapping_key = starknet_keccak(b'mapping_store')
-print("\n\tMapping Store's 1st Hash Element: 0x{:x}".format(mapping_key))
+print("\n\tMapping Store's 1st Hash Element: 0x{:x}".format(pedersen_hash(mapping_key, 100)))
 
 # multiple value continuous storage
-multi_key = starknet_keccak(b'multi_store')
-print("\n\tMulti Store's Key Left: 0x{:x}".format(multi_key))
-print("\tMulti Store's Key Right: 0x{:x}".format(multi_key+1))
+# multi_key = starknet_keccak(b'multi_store')
+# print("\n\tMulti Store's Key Left: 0x{:x}".format(multi_key))
+# print("\tMulti Store's Key Right: 0x{:x}".format(multi_key+1))
 
-# struct value continuous storage
-struct_key = starknet_keccak(b'struct_store')
-print("\n\tStruct Store's Key Left: 0x{:x}".format(struct_key))
-print("\tStruct Store's Key Center: 0x{:x}".format(struct_key + 1))
-print("\tStruct Store's Key right: 0x{:x}\n".format(struct_key + 2))
+# # struct value continuous storage
+# struct_key = starknet_keccak(b'struct_store')
+# print("\n\tStruct Store's Key Left: 0x{:x}".format(struct_key))
+# print("\tStruct Store's Key Center: 0x{:x}".format(struct_key + 1))
+# print("\tStruct Store's Key right: 0x{:x}\n".format(struct_key + 2))
+
+
 
 #
 # deploy with starknet.py

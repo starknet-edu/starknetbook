@@ -28,6 +28,7 @@ print("\nAccount Address: 0x{}".format(account_addr))
 print("Contract Address: 0x{}\n".format(contract_addr))
 print("Storage Update TX ")
 print("\tStatus:\t\t\t", demo_tx.status)
+
 if "ACCEPT" in str(demo_tx.status):
     print("\tTransaction Index:\t", demo_tx.transaction_index)
     print("\tBlock Hash:\t\t 0x{:x}".format(demo_tx.block_hash))
@@ -50,9 +51,6 @@ if "ACCEPTED_ON_L1" in str(demo_tx.status):
     print("\tFees(Gas-{}): max - {} actual - {}".format(gas_price, demo_tx.transaction.max_fee/WEI_CONVERT, tx_receipt.actual_fee/WEI_CONVERT))
     print("\tExecution Gas: {}\n".format(execution_fees))
 
-    # n unique contracts and mm unique keys is
-    # 2 unique contracts + 2(4)
-    # w3 = web3.Web3(web3.HTTPProvider(GOERLI_NODE))
     print("\tAccount Update: ")
     for i in range(len(account_state)):
         print("\t\tkey {} -> value {}".format(account_state[i]["key"], int(account_state[i]["value"][2:], 16)))
