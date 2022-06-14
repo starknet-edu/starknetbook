@@ -3,7 +3,7 @@
 
 |Presentation|Video|Workshop
 |:----:|:----:|:----:|
-|[StarkNet](https://drive.google.com/file/d/1_AQq4ulTmB0VAszmauvYUHEVjwdAgMim/view?usp=sharing)|StarkNet Basecamp [p1](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|[StarkNet Messaging Bridge](https://github.com/starknet-edu/starknet-messaging-bridge)
+|[StarkNet](https://drive.google.com/file/d/1_AQq4ulTmB0VAszmauvYUHEVjwdAgMim/view?usp=sharing)|StarkNet Basecamp [p1](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|[StarkNet Messaging Bridge](https://github.com/starknet-edu/starknet-messaging-bridge)|
 
 </div>
 
