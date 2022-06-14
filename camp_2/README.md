@@ -1,4 +1,4 @@
-<h1 align="center">Camp II: Cairo</h1>
+<h1 align="center">Camp 2: Cairo</h1>
 
 ### Topics
 

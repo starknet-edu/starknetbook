@@ -1,4 +1,10 @@
-<h1 align="center">Primer</h1>
+<div align="center">
+    <h1>Primer</h1>
+
+|Presentation|Video|Definitions
+|:----:|:----:|:----:|
+|[Validity Rollups](https://drive.google.com/file/d/1UqYi482bpVyXO4nWkogmIXq281q70f6y/view?usp=sharing)|[StarkNet 101](https://www.youtube.com/watch?v=DrBJ9LWvsOQ)|[Perama Blog](https://perama-v.github.io/cairo/description)
+</div>
 
 ### Topics
 
@@ -7,19 +13,7 @@
 3. [Ethereum](./ethereum/README.md)
 4. [Rollups](./rollups/README.md)
 
-<h2 align="center">
-    Overview
-    <br>
-    <a href="https://docs.google.com/presentation/d/1-ykeFFRwI2JTIyXAKd2AmVSIUnbjPk7EdfpHxL3CxYs/edit?usp=sharing">
-    (slides,
-    </a>
-    <a href="https://www.youtube.com/watch?v=DrBJ9LWvsOQ">
-    video,
-    </a>
-    <a href="https://perama-v.github.io/cairo/description">
-    definitions)
-    </a>
-</h2>
+<h2 align="center">Overview</h2>
 This primer is inteded to cover introductory concepts upon which Cairo and StarkNet are built, and also to get you acquainted with the format of this course. Each section will involve drilling down on a high-level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example:
 
 <div align="center">

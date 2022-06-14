@@ -1,4 +1,4 @@
-<h1 align="center">Camp III: StarkNet</h1>
+<h1 align="center">Camp 3: StarkNet</h1>
 
 ### Topics
 
