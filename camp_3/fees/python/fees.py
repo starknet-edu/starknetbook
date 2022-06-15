@@ -59,9 +59,9 @@ def calculate_fee_demo():
     gas_price = get_gas_price()
     total_words = 2 * 2 + (2 * (len(calldata)+(nonce > 0)))
 
-    fee_estimate = int(gas_price) * COST_PER_WORD * total_words
+    storage_fee_estimate = int(gas_price) * COST_PER_WORD * total_words
 
     print("\nFee Estimate Calculated({:.02f} gp):".format(gas_price))
-    print("\t{} gwei - ${:.02f}\n".format(fee_estimate, (int(fee_estimate)/WEI_CONVERT)*ETH_PRICE))
+    print("\t{} gwei - ${:.02f}\n".format(storage_fee_estimate, (int(storage_fee_estimate)/WEI_CONVERT)*ETH_PRICE))
 
 calculate_fee_demo()
