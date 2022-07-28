@@ -78,9 +78,13 @@ The goal of these proof systems is to prove `computational integrity` to a verif
 `T`: Number of steps
 `S1`: Final State
 
-
-
 <h2 align="center" id="starks">STARKs</h2>
+
+`UNDER CONSTRUCTION`:
+
+While this seciton is being built we recommend reading this blog post series([1](https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71), [2](https://medium.com/starkware/arithmetization-i-15c046390862), [3](https://medium.com/starkware/arithmetization-ii-403c3b3f4355)) on the math behind STARKs.
+
+<hr>
 
 <h3>Arithmetization</h3>
 

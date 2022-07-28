@@ -32,6 +32,12 @@ Camp_2 will require the basic cairo-lang [setup](https://www.cairo-lang.org/docs
 
 Camp_3 will require the ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7)
 
+### Links
+
+- community: <https://community.starknet.io>
+- starknet docs: <https://docs.starknet.io>
+- cairo docs: <https://www.cairo-lang.org/docs>
+
 ### Issues
 
 If you find an issue/bug or have a feature request please submit an issue here

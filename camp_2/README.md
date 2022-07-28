@@ -43,6 +43,12 @@ Cairo stands for CPU AIR and consists of a single set of polynomial constraints 
 
 `Turing Complete`: Can simulate any Turing machine, as such supports any feasible computation
 
+`UNDER CONSTRUCTION`:
+
+While this seciton is being built we recommend reading the video session for this camp and the [cairo-lang docs](https://www.cairo-lang.org/docs/how_cairo_works/index.html).
+
+<hr>
+
 <h2 align="center" id="computational_integrity">Computational Integrity</h2>
 STARKs
 
@@ -56,6 +62,8 @@ STARKs
 <h3>SHARP</h3>
 
 <h2 align="center" id="cairo_vm">Cairo VM</h2>
+<h3><a href="https://github.com/FuzzingLabs/thoth">Disassembler(Thoth)</a></h3>
+<h3><a href="https://github.com/crytic/amarna">Amarna</a></h3>
 
 <hr>
 
@@ -64,4 +72,6 @@ STARKs
 [<https://eprint.iacr.org/2021/1063.pdf>
 , <https://arxiv.org/pdf/2109.14534.pdf>
 , <https://www.cairo-lang.org/cairo-for-blockchain-developers>
-, <https://www.cairo-lang.org/docs/how_cairo_works/index.html>]
+, <https://www.cairo-lang.org/docs/how_cairo_works/index.html>
+, <https://github.com/FuzzingLabs/thoth>
+, <https://github.com/crytic/amarna>]

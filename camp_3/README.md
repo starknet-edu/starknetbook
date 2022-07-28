@@ -49,6 +49,12 @@ warp transpile ERC20.sol WARP
 warp deploy ERC20.json
 ```
 
+`UNDER CONSTRUCTION`:
+
+While this seciton is being built we recommend reading the video session for this camp and the [starknet docs](https://docs.starknet.io).
+
+<hr>
+
 <h2 align="center" id="storage">Storage</h2>
 
 <h2 align="center" id="accounts">Accounts</h2>
@@ -63,4 +69,4 @@ The StarkNet OS is the Cairo program that runs StarkNet. The OS handles everythi
 
 #### Sources
 
-- <https://github.com/eqlabs/pathfinder/blob/2fe6f549a0b8b9923ed7a21cd1a588bc571657d6/crates/pathfinder/resources/fact_retrieval.py>
+[<https://github.com/eqlabs/pathfinder/blob/2fe6f549a0b8b9923ed7a21cd1a588bc571657d6/crates/pathfinder/resources/fact_retrieval.py>]
