@@ -69,7 +69,7 @@ class Proposal:
 
 
 # The path to the contract source code.
-CONTRACT_FILE = os.path.join("contracts", "contract.cairo")
+CONTRACT_FILE = os.path.join("contracts", "contract_final.cairo")
 MOCKERC20_FILE = os.path.join("contracts", "ERC20.cairo")
 
 signer1 = private_to_stark_key(123)
