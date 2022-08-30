@@ -20,7 +20,7 @@ This primer is inteded to cover introductory concepts upon which Cairo and Stark
     <img src="../misc/plat.png">
 </div>
 
-Code examples will be named by the programming language in which they are implemented, for example Bitcoin block verification in [Golang](https://go.dev/doc/install)(if you can implement these example in other languages we would love a PR):
+Code examples will be named by the programming language in which they are implemented, for example Bitcoin block verification in [Golang](https://go.dev/doc/install) (if you can implement these example in other languages we would love a PR):
 <div align="center">
     <a href="./bitcoin/block_verification/go">bitcoin/block_verification/go</a>
 </div>
@@ -34,6 +34,7 @@ The topics covered in this primer have been disected in hundreds of ways by thou
 <h3 align="center"> What are we solving for?</h3>
 The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics, blockchain systems have been forced to make large trade offs which impact usability. Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
 
+<br>
 <br>
 <div align="center">
     <em>blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.</em>
@@ -114,9 +115,9 @@ Once the distributed database is setup we gain "Fault Tolerance" for Alice's val
 
 Banks Perspective:
 
-- Network overhead impacts performace
-- Redundancy and replication impacts performace
-- Infrastructure maintenance($$$$)
+- Network overhead impacts performance
+- Redundancy and replication impacts performance
+- Infrastructure maintenance ($$$$)
 
 Alice's Perspective:
 
@@ -132,7 +133,7 @@ Alice's Perspective:
     <strong>Goals: </strong>
     <span style="color: yellow">secure</span>,
     <s style="color: red">inclusively accountable</s>,
-    <s style="color: red">decentralized</s>, that
+    <s style="color: red">decentralized</s>,
     <span style="color: green">scalable</span>,
     <span style="color: green">expressive</span>
     🎯
@@ -155,7 +156,7 @@ cd bitcoin/proof_of_work/go
 go run main.go
 ```
 
-The Bitcoin nodes themselves listen for and [validate](./bitcoin/block_verifcation) blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions(and their order) in that block. If one tx changes by even a single bit the merkle root will be completely different.
+The Bitcoin nodes themselves listen for and [validate](./bitcoin/block_verifcation) blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the merkle root will be completely different.
 
 ```bash
 # block verification example
@@ -207,9 +208,9 @@ Smart contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/r
 
 <h2 align="center">Ethereum</h2>
 
-Ethereum provides a platform to implement these smart contracts with the use of the [Ethereum Virtual Machine](./ethereum/ethereum_virtual_machine). In the Ethereum paradigm Alice's bank account information is stored in a 20-byte address called an [account](https://ethereum.org/en/whitepaper/#ethereum-accounts). Her account balance along with a few more fields(nonce, storageRoot, codeHash) become a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric".
+Ethereum provides a platform to implement these smart contracts with the use of the [Ethereum Virtual Machine](./ethereum/ethereum_virtual_machine). In the Ethereum paradigm Alice's bank account information is stored in a 20-byte address called an [account](https://ethereum.org/en/whitepaper/#ethereum-accounts). Her account balance along with a few more fields (nonce, storageRoot, codeHash) become a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric".
 
-This `Trie` is a specific type of tree that encodes a `key` as a path of common prefixes to its corresponding `value`. So Alice's Bank Account can be found at an address("key") that points to an account("value") in Ethereum's World State(trie). The tree structure of the trie allows us to obtain a cryptographic hash of each node all the way up to a single hash corresponding to the `root` similar to the Merkle tree we saw in the Bitcoin block verification.
+This `Trie` is a specific type of tree that encodes a `key` as a path of common prefixes to its corresponding `value`. So Alice's Bank Account can be found at an address("key") that points to an account ("value") in Ethereum's World State (trie). The tree structure of the trie allows us to obtain a cryptographic hash of each node all the way up to a single hash corresponding to the `root` similar to the Merkle tree we saw in the Bitcoin block verification.
 
 For an example of the MPT data structure you can use this diagram for reference:
 
@@ -256,7 +257,7 @@ Archive Node Size: ~10 TB
 
 <h2 align="center"> Rollups</h2>
 
-As demand for block space increases the cost to execute on `Layer 1`(full consensus protocols e.g. Bitcoin, Ethereum) will become increasingly expensive, and until certain [state expiry mechanisms](https://notes.ethereum.org/@vbuterin/verkle_and_state_expiry_proposal) are implemented
+As demand for block space increases the cost to execute on `Layer 1` (full consensus protocols e.g. Bitcoin, Ethereum) will become increasingly expensive, and until certain [state expiry mechanisms](https://notes.ethereum.org/@vbuterin/verkle_and_state_expiry_proposal) are implemented
 we can expect the state of the L1 to continue to bloat over time. This will require increasingly robust machine to maintain the state
 and subsequently verify the blocks.
 
@@ -276,7 +277,7 @@ trilemma journey:
 
 ***No matter how large the computation, the proof can be very quickly verified on-chain.***
 
-This allows Alice to move her money freely between L1 and L2(...soon to be L3) and operate on an low-cost, expressive blockchain layer.
+This allows Alice to move her money freely between L1 and L2 (...soon to be L3) and operate on an low-cost, expressive blockchain layer.
 All while inheritting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
 
 <p align="center">
