@@ -18,16 +18,24 @@
 
 <div align="center">
     <h2 id="cairo_cli">CLI Cheatsheet</h2>
-
-| Command        | Description           |
-| ------------- |:-------------:|
-| cairo-compile <span style="color:orange;">*.cairo*</span> --output <span style="color:orange;">*_compiled.json*</span> | compile cairo program |
-| cairo-run --program <span style="color:orange;">*_compiled.json*</span> --print_output --layout=small | run cairo program and output results |
-| cairo-hash-program --program <span style="color:orange;">*_compiled.json*</span> | output the KECCAK Fact of the cairo program |
-| cairo-format -i <span style="color:orange;">*.cairo*</span> | format/lint your cairo program |
-| cairo-sharp submit --source <span style="color:orange;">*.cairo*</span> --program_input input.json | compile cairo program and submit the fact to the SHARP |
-
 </div>
+
+```bash
+# compile cairo program
+cairo-compile example.cairo --output example_compiled.json
+
+# run cairo program and output results
+cairo-run --program=example_compiled.json --print_output --layout=small
+
+# output the KECCAK Fact of the cairo program
+cairo-hash-program --program=example_compiled.json
+
+# format/lint your cairo program
+cairo-format -i example.cairo
+
+# compile cairo program and submit the fact to the SHARP
+cairo-sharp submit --source example.cairo --program_input input.json
+```
 
 <h2 align="center" id="cairolang">C(pu)AIR(o)</h2>
 
