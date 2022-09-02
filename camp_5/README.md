@@ -74,7 +74,7 @@ Enables the parallelization of proofs.
 
 StarkNet continues to evolve, and we gradually shift our gaze towards decentralization. While we expect StarkNet to be decentralized only at the end of the year, it’s not too early to decide on the decentralization scheme.
 
-While every other decentralized network has only Sequencers, StarkNet has two components: Sequencers (that determine which transactions to execute) and Provers (that prove the correctness of the chosen transactions). A good decentralization approach is required to decentralize the Provers and answer questions like “who can publish proofs”’ or even “when do we publish proofs”? However, an approach that says: “let’s take some consensus algorithm for sequencing, and demand each sequencer to prove what he sequenced” is too naive and creates what we refer to as the "handoff problem.”
+While every other decentralized network has only Sequencers, StarkNet has two components: Sequencers (that determine which transactions to execute) and Provers (that prove the correctness of the chosen transactions). A good decentralization approach is required to decentralize the Provers and answer questions like “who can publish proofs” or even “when do we publish proofs”? However, an approach that says: “let’s take some consensus algorithm for sequencing, and demand each sequencer to prove what he sequenced” is too naive and creates what we refer to as the "handoff problem.”
 
 ***Design Goals:***
 
@@ -101,11 +101,10 @@ It's all about relationships and the goal is to focus on the builders, not what 
 
 <h3>Organizing Meetups</h3>
 
-Organizing a meetup is surprisingly time consuming you’ll probably have to do the first one
-one your own.
+Organizing a meetup is surprisingly time consuming you’ll probably have to do the first one on your own.
 
 Call for volunteers at the beginning at the end. When growing this group, ask for suggestions and ideas openly.
-When decisions drag on, step in to move the ball forward
+When decisions drag on, step in to move the ball forward.
 
 Steps:
 
@@ -135,7 +134,7 @@ Define Program (2-3h):
 - Co education is a great tool
 - Have people work in pair, 2 behind a single screen
 - If a question is recurrent, say “ask these girls they solved it”
-- Follow our repo to check new workshop
+- Follow our repo to check new workshops
 - Try to do them once before
 - If you are looking for a specific theme, ask us
 - Better yet, write your own
