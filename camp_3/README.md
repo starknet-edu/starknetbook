@@ -23,7 +23,7 @@
 
 <h2 align="center" id="tx_lifecycle">TX Lifecycle</h2>
 
-On StarkNet Alpha the two types of transactions are DEPLOY or INVOKEand they go through the following lifecycle as they are submitted from the clients to the sequencer:
+On StarkNet Alpha the two types of transactions are `DEPLOY` or `INVOKE`. They go through the following lifecycle as they are submitted from the clients to the sequencer:
 
 <div align="center">
     NOT_RECEIVED -> RECEIVED -> PENDING -> REJECTED || ACCEPTED_ON_L2 -> ACCEPTED_ON_L1
@@ -51,7 +51,7 @@ warp deploy ERC20.json
 
 `UNDER CONSTRUCTION`:
 
-While this seciton is being built we recommend reading the video session for this camp and the [starknet docs](https://docs.starknet.io).
+While this section is being built we recommend reading the video session for this camp and the [starknet docs](https://docs.starknet.io).
 
 <hr>
 
