@@ -61,7 +61,7 @@ Zero Knowledge Proof Systems are proof systems in which there is secret informat
 
 A `non-interactive` proof system is an abstract machine that models computation between the two parties(prover and verifier). Messages are sent in [one direction](https://www.youtube.com/watch?v=QJO3ROT-A4E) until the verifier is convinced of the computational claim.
 
-A `succinct` proof system is one in which the verifier can run an order of magnitute aster than a naive re-execution of the program
+A `succinct` proof system is one in which the verifier can run an order of magnitute faster than a naive re-execution of the program
 
 `SNARKS`: Succint Non-Interactive Arguments of Knowledge
 
@@ -82,7 +82,7 @@ The goal of these proof systems is to prove `computational integrity` to a verif
 
 `UNDER CONSTRUCTION`:
 
-While this seciton is being built we recommend reading this blog post series([1](https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71), [2](https://medium.com/starkware/arithmetization-i-15c046390862), [3](https://medium.com/starkware/arithmetization-ii-403c3b3f4355)) on the math behind STARKs.
+While this section is being built we recommend reading this blog post series([1](https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71), [2](https://medium.com/starkware/arithmetization-i-15c046390862), [3](https://medium.com/starkware/arithmetization-ii-403c3b3f4355)) on the math behind STARKs.
 
 <hr>
 
