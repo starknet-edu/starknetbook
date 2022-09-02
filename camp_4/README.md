@@ -21,7 +21,7 @@
 
 `UNDER CONSTRUCTION`:
 
-While this seciton is being built we recommend reading the video session for this camp and the [community resources page](https://github.com/gakonst/awesome-starknet).
+While this section is being built we recommend reading the video session for this camp and the [community resources page](https://github.com/gakonst/awesome-starknet).
 
 <hr>
 
