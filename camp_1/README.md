@@ -3,7 +3,7 @@
 
 |Presentation|Video|Workshop
 |:----:|:----:|:----:|
-|[STARKs](https://drive.google.com/file/d/1asONnOcSnRJwMXF-Zx1uJBdpbMrLYnmE/view?usp=sharing)|-|[STARK 101](https://starkware.co/stark-101)|
+|[STARKs](https://drive.google.com/file/d/1asONnOcSnRJwMXF-Zx1uJBdpbMrLYnmE/view?usp=sharing)|[Camp 1](https://www.youtube.com/watch?v=7p60e7RzuMs)|[STARK 101](https://starkware.co/stark-101)|
 
 </div>
 
