@@ -116,18 +116,16 @@ Particularly:
 
 This minimalistic set of instructions is called an Algebraic RISC (Reduced Instruction Set Computer); “Algebraic” refers to the fact that the supported operations are field operations. Using an Algebraic RISC allows us to construct an AIR for Cairo with only 51 trace cells per step. 
 
-One Cairo instruction may deal with up to 3 values from the memory: it can perform one arithmetic operation (either addition or multiplication) on two of them, and store the result in the third. In total, each instruction uses 4 memory accesses since it first uses one for fetching the instruction.
-
 
 <h3>Builtins</h3>
 
-The Algebraic RISC can simulate any Turing Machine and hence is Turing-complete (supports any feasible computation). However, implementing some basic operations, such as the comparison of elements, using only Cairo instructions would result in a lot of steps which damages the goal of minimizing the number of trace cells used. Consider that adding a new instruction to the Instruction Set has a cost even if this instruction is not used. To mitigate this without increasing the number of trace cells per instruction, Cairo introduces the notion of $builtins$.
+The Algebraic RISC can simulate any Turing Machine and hence is Turing-complete (supports any feasible computation). However, implementing some basic operations, such as the comparison of elements, using only Cairo instructions would result in a lot of steps which damages the goal of minimizing the number of trace cells used. Consider that adding a new instruction to the Instruction Set has a cost even if this instruction is not used. To mitigate this without increasing the number of trace cells per instruction, Cairo introduces the notion of builtins.
 
 > Builtins are predefined optimized low-level execution units which are added to the Cairo CPU board to perform predefined computations which are expensive to perform in vanilla Cairo (e.g., range-checks, Pedersen hash, ECDSA, …) ([How Cairo Works](https://starknet.io/docs/how_cairo_works/builtins.html#introduction)).
 
 The communication between the CPU and the builtins is done through memory: each builtin is assigned a continuous area in the memory and applies some constraints (depending on the builtin definition) on the memory cells in that area. In terms of building the AIR, it means that adding builtins does not affect the CPU constraints. It just means that the same memory is shared between the CPU and the builtins. To “invoke” a builtin, the Cairo program “communicates” with certain memory cells, and the builtin enforces some constraints on those memory cells. 
 
-For example, the `range-check` $builtin$ enforces that all the values for the memory cells in some fixed address range are within the range $[0, 2^{128})$. The memory cells constrained by the `range-check` $builtin$ are called "range-checked" cells.
+For example, the `range-check` builtin enforces that all the values for the memory cells in some fixed address range are within the range $[0, 2^{128})$. The memory cells constrained by the `range-check` builtin are called "range-checked" cells.
 
 In practical terms, a builtin is utilized by writing (and reading) the inputs to a dedicated memory segment accessed via the "builtin pointer": each builtin has its pointer to access the builtin's memory segment. Builtin pointers follow the name convention `<builtin name>_ptr`; e.g., `range_check_ptr`. In the Cairo case, the builtin directive adds the builtin pointers as parameters to main which can then be passed to any function making use of them. Builtin declarations appear at the top of the Cairo code file. They are declared with the `%builtins` directive, followed by the name of the builtins; e.g., `%builtin range_check`. In StarkNet contracts, it is not necessary to add them. 
 
@@ -210,36 +208,50 @@ At what moment did the `hash2` and `serialize_word` functions invoked the proper
 
 2. Second, the Cairo code reads or writes to the memory cells in the segments assigned to the `output` and `pedersen`.
 
-3. Finally, when a value is written in a memory cell inside a builtin segment, the builtin properties are invoked. For example, when a `struct HashBuiltin` is defined (you have to indicate `x` and `y`, see the structure of [`HashBuiltin`](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/cairo_builtins.cairo#L5)) then the Pedersen builtin enforces that $result == hash(x, y)$. We can then retrieve the value of `result` with `let result = hash_ptr.result;` as in the `hash2` function.
+3. Finally, when a value is written in a memory cell inside a builtin segment, the builtin properties are invoked. For example, when a `struct HashBuiltin` is defined (you have to indicate `x` and `y`, see the structure of [`HashBuiltin`](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/cairo_builtins.cairo#L5)) then the Pedersen builtin enforces that $result == hash(x, y)$. We can then retrieve the value of `result` with `let result = hash_ptr.result;` as in the `hash2` function. Whenever the program wishes to communicate information to the verifier, it can do so by writing it to a designated memory segment which can be accessed by using the `output` builtin (see more in [the docs](https://starknet.io/docs/how_cairo_works/program_input_and_output.html#id2)).
 
 
 <h3>Registers</h3>
 
 `UNDER CONSTRUCTION`
 
-An important question that assists to distinguish between Instruction Sets
-is: what values do the instructions operate on? There is no general-
-purpose registers and all the operands of an instruction are memory cells.
+We now that the Algebraic RISC operates on memory cells (there are no general purpose registers). One Cairo instruction may deal with up to 3 values from the memory: it can perform one arithmetic operation (either addition or multiplication) on two of them, and store the result in the third. In total, each instruction uses 4 memory accesses since it first uses one for fetching the instruction ([Cairo Whitepaper](https://eprint.iacr.org/2021/1063.pdf)).
 
+The Cairo CPU operates on 3 registers (`pc`, `ap`, and `fp`) that are used for specifying which memory cells the instruction operates on. For each of the 3 values in an instruction, you can choose either an address of the form $ap + off$ or $fp + off$ where $off$ is a constant offset in the range $[−215, 215)$. Thus, an instruction may involve any 3 memory cells out of $2 · 216 = 131072$. In many aspects, this is similar to having this many registers (implemented in a much cheaper way). An offset is an addition or substraction to a cell in the memory, e.g., $[fp - 1] = [ap - 2] + [fp + 4]$ where $-1$, $-2$ and $+4$ are offsets.
 
-A register, called the “program counter” (PC), points to a memory address. The CPU (1) fetches the value of that memory cell, (2) performs the instruction expressed by that value (which may affect memory cells or change the flow of the program by assigning a different value to PC), (3) moves PC to the next instruction and (4) repeats this process.
+The "allocation pointer" (ap) points to the first memory cell that has not been used by the program so far. Many instructions may increase their value by one to indicate that another memory cell has been used by the instruction.
 
+The “program counter” (PC) register points to the address in memory of the current Cairo instruction to be executed. The CPU (1) fetches the value of that memory cell, (2) performs the instruction expressed by that value (which may affect memory cells or change the flow of the program by assigning a different value to PC), (3) moves PC to the next instruction and (4) repeats this process. In other words, The program counter (pc) keeps the address of the current instruction. Usually it advances by 1 or 2 per instruction according to the size of the instruction (when the current instruction occupies two field elements, the program counter advances by 2 for the next instruction).
 
-The Cairo architecture, which defines the core of the deterministic Cairo machine, consists of a “CPU” that operates on 3 registers (`pc`, `ap`, and `fp`), and has access to the (read-only) memory ([Cairo Whitepaper](https://eprint.iacr.org/2021/1063.pdf)).
+When a function starts the "frame pointer" register (fp) is initialized to the current value of ap. During the entire scope of the function (excluding inner function calls) the value of fp remains constant. In particular, when a function, foo, calls an inner function, bar, the value of fp changes when bar starts but is restored when bar ends. The idea is that ap may change in an unknown way when an inner function is called, so it cannot reliably be used to access the original function’s local variables and arguments anymore after that. Thus, fp serves as an anchor to access these values.
 
-* The **Allocation Pointer (ap)**, by convention, points to the first memory cell that has not been used by the program so far. Many instructions may increase their value by one to indicate that another memory cell has been used by the instruction.
-* The **Program Counter (pc)** contains the address in memory of the current Cairo instruction to be executed.
-
-
-In Cairo, there are no general-purpose registers, and all the operands of an instruction are memory cells. One Cairo instruction may deal with up to 3 values from the memory and perform one arithmetic operation (either addition or multiplication) on two of them, and store the result in the third ([Cairo Whitepaper](https://eprint.iacr.org/2021/1063.pdf)).
-
-Cairo has 2 address registers, called ap and fp, which are used for specifying which memory cells the instruction operates on. For each of the 3 values in an instruction, you can choose either an address of the form ap + off or fp + off where off is a constant offset in the range [−215, 215). Thus, an instruction may involve any 3 memory cells out of 2 · 216 = 131072. In many aspects, this is similar to having this many registers (implemented in a much cheaper way).
 
 
 <h3>Types/References</h3>
 
 
 <h3>Hints</h3>
+
+`UNDER CONSTRUCTION`
+
+Python code can be invoked with the %{ %} block called a hint, which is executed right before the next Cairo instruction. The hint can interact with the program’s variables/memory as shown in the following code sample. Note that the hint is not actually part of the Cairo program, and can thus be replaced by a malicious prover. We can run a Cairo program with the --program_input flag, which allows providing a json input file that can be referenced inside a hint ([Cairo documentation](https://starknet.io/docs/reference/syntax.html#hints)).
+
+```Rust
+alloc_locals;
+%{ memory[ap] = 100 %}  // Assign to memory.
+[ap] = [ap], ap++;  // Increment ap after using it in the hint.
+assert [ap - 1] = 100;  // Assert the value has some property.
+
+local a;
+let b = 7;
+%{
+    # Assigns the value '9' to the local variable 'a'.
+    ids.a = 3 ** 2
+    c = ids.b * 2  # Read a reference inside a hint.
+%}
+```
+Note that you can access the address of a pointer to a struct using ids.struct_ptr.address_ and you can use memory[addr] for the value of the memory cell at address addr.
+
 <h3>SHARP</h3>
 
 <h2 align="center" id="cairo_vm">Cairo VM</h2>
