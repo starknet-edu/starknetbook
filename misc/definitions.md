@@ -1,7 +1,7 @@
 ## Definitions
 
 <h3 id="zero_knowledge_proof_system">Zero Knowledge Proof System</h3>
-A proof system in which there is secret information known to the prover and not known to the verifier, and the verfier is still convinced of the computational claim without learning any information about the inputs or secrets.
+A proof system in which there is secret information known to the prover and not known to the verifier, and the verifier is still convinced of the computational claim without learning any information about the inputs or secrets.
 
 <h3 id="interactive_proof_system">Interactive Proof System</h3>
 An abstract machine that models computation as the exchange of messages between two parties: a prover and a verifier. Messages are sent BIDIRECTIONALLY between the verifier and prover until the verifier has an answer to the problem and has "convinced" itself that it is correct.
@@ -33,10 +33,10 @@ O(log(n)^k)
 <h3 id="oracles">Oracles</h3>
 
 <h3 id="turing_complete">Turing Complete</h3>
-A system of data-manipulation rules that can be used to simulate any model of computation describing an abstrat machine.
+A system of data-manipulation rules that can be used to simulate any model of computation describing an abstract machine.
 
 <h3 id="succinct">Succinct</h3>
-A proof system in which the verifier can run an order of magnituted faste than a naive re-execution of the program. This typically requires short proofs.
+A proof system in which the verifier can run an order of magnitude faster than a naive re-execution of the program. This typically requires short proofs.
 
 <h3 id="air">AIR</h3>
 Algebraic Intermediate Representation
@@ -51,4 +51,4 @@ Interactive Oracle Proof
 Algebraic Execution Trace
 
 <h3 id="interpolation">Interpolation</h3>
-Finding a representation of the arithetic constraint system in terms of polynomials during the STARK compilation pipeline.
+Finding a representation of the arithmetic constraint system in terms of polynomials during the STARK compilation pipeline.
