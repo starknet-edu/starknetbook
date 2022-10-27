@@ -1,8 +1,8 @@
 %builtins output pedersen range_check
 
-// To compile and run (print memory):
-// cairo-compile builtins/cairo/hash.cairo --output hash.json  
-// cairo-run --program felt_compiled.json --print_output --layout=small --print_memory
+// To compile and run:
+// cairo-compile builtins/cairo/hash.cairo --output hash_compiled.json  
+// cairo-run --program hash_compiled.json --print_output --layout=small
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 
