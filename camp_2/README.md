@@ -3,7 +3,7 @@
 
 |Presentation|Video|Workshop
 |:----:|:----:|:----:|
-|[Cairo](https://drive.google.com/file/d/1rYQ6VZGcqEkm2ZJ2vtGetEiyQ4VwoUE4/view?usp=sharing)|[Cairo Basecamp](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing)|[StarkNet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)|
+|[Cairo](https://drive.google.com/file/d/1nXi1ZLPM-19kXpCxwOMLQU_GMzlNYMNZ/view?usp=sharing)|[Cairo Basecamp](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing)|[StarkNet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)|
 
 </div>
 
