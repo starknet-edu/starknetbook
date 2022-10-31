@@ -2,9 +2,19 @@
 
 ### [Proof of Work](./proof_of_work)
 
+In `GO`:
+
 ```bash
 cd proof_of_work/go
 go run main.go
+```
+
+In `Python`:
+
+```bash
+# proof of work example
+cd proof_of_work/python
+python main.py
 ```
 
 ### [Block Verification](./block_verification)
