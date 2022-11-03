@@ -68,7 +68,7 @@ STARKs
 
 In most of your code (unless you intend to write very algebraic code), you won't have to deal with the fact that the values in Cairo are felts and you can treat them as if they were normal integers ([Cairo documentation](https://www.cairo-lang.org/docs/hello_cairo/intro.html#the-primitive-type-field-element-felt)). The field element (felt) is the only data type that exists in Cairo, you can even omit its explicit declaration; when the type of a variable or argument is not specified, it is automatically assigned the type felt. Addresses are also stored as felts.
 
-A felt can be negative or zero, and can be a large integer: specifically, it can be in the range $-X < felt < X$, where $X = (2^{251} + 17) * (2^{192} + 1)$ . Any value that is not within its range will cause an “overflow”: an error that occurs when a program, Cairo, receives a number or value outside the scope of its ability to handle. Thus, when we add, subtract or multiply and the result is outside the felt's range, there is an overflow.
+A felt can be negative or zero, and can be a large integer: specifically, it can be in the range $-X < felt < X$, where $X = 2^{251} + 17* 2^{192} + 1$ . Any value that is not within its range will cause an “overflow”: an error that occurs when a program, Cairo, receives a number or value outside the scope of its ability to handle. Thus, when we add, subtract or multiply and the result is outside the felt's range, there is an overflow.
 
 Compile and run [felt.cairo](./felts/cairo/felt.cairo) with:
 
@@ -91,7 +91,7 @@ Program output:
 
 `FELT_SIZE = 2**251 + 17 * 2**192 + 1` is just outside the range of values a felt can take, then it will overflow to `0` as evidenced when running `serialize_word(FELT_SIZE)`. 
 
-The most important difference between integers and field elements is division: Division of felts is not the integer division in many programming languages; the integral part of the quotient is returned (so you get $(7 / 3 = 2)$. As long as the numerator is a multiple of the denominator, it will behave as you expect $(6 / 3 = 2)$. If this is not the case, for example when we divide $7/3$, it will result in a felt $x$ that satisfies $(3 * x = 7)$; specifically, $x=1206167596222043737899107594365023368541035738443865566657697352045290673496$. It won’t be $2.3333$ because $x$ has to be an integer and since $3 * x$ is larger than $2**251 + 17 * 2**192 + 1$ it will overflow to exactly $7$. In other words, when we are using modular arithmetic, unless the denominator is zero, there will always be an integer $x$ satisfying $denominator * x = numerator$.
+The most important difference between integers and field elements is division: Division of felts is not the integer division in many programming languages; the integral part of the quotient is returned (so you get $(7 / 3 = 2)$. As long as the numerator is a multiple of the denominator, it will behave as you expect $(6 / 3 = 2)$. If this is not the case, for example when we divide $7/3$, it will result in a felt $x$ that satisfies $(3 * x = 7)$; specifically, $x=1206167596222043737899107594365023368541035738443865566657697352045290673496$. It won’t be $2.3333$ because $x$ has to be an integer and since $3 * x$ is larger than $2^{251} + 17 * 2^{192} + 1$ it will overflow to exactly $7$. In other words, when we are using modular arithmetic, unless the denominator is zero, there will always be an integer $x$ satisfying $denominator * x = numerator$.
 
 
 <h3>The Cairo Intruction Set (Algebraic RISC)</h3>

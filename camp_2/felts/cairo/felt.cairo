@@ -1,4 +1,4 @@
-// In the context of Cairo, when we say “a field element” we mean an integer in the range -P/2 < x P/2
+// In the context of Cairo, when we say “a field element” we mean an integer in the range -P/2 < x < P/2
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
@@ -10,8 +10,8 @@ const FELT_SIZE = 2**251 + 17 * 2**192 + 1;
 func main{output_ptr : felt*}(){
     // FELT_SIZE operations
     serialize_word(FELT_SIZE); // will be 0
-    serialize_word(FELT_SIZE/2 + 1); // will be 0
-    serialize_word(FELT_SIZE/2 - 1); // will be 0
+    serialize_word(FELT_SIZE/2 + 1); // will be 1
+    serialize_word(FELT_SIZE/2 - 1); // will be -1
     serialize_word(FELT_SIZE - 1); // will be -1
     serialize_word(FELT_SIZE + 1); // will be +1
 
