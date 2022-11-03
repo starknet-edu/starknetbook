@@ -1,20 +1,16 @@
-import { HardhatUserConfig } from "hardhat/types";
 import "@shardlabs/starknet-hardhat-plugin";
 
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-const config: HardhatUserConfig = {
+const config = {
   starknet: {
-    venv: "active",
-    network: "devnet",
+    network: "integrated-devnet",
   },
   networks: {
-    devnet: {
-      url: "http://127.0.0.1:5050/",
-    },
-    testnet: {
-      url: "https://alpha4.starknet.io/",
+    integratedDevnet: {
+      url: "http://127.0.0.1:5050",
+      dockerizedVersion: "latest",
+      args: ["--lite-mode", "--gas-price", "2000000000", "--seed", "1"],
+      stdout: "STDOUT",
+      stderr: "/dev/null",
     },
   },
 };
