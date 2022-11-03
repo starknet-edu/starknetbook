@@ -21,6 +21,7 @@ func main(output_ptr: felt*) -> (output_ptr: felt*) {
 
     // return the new value of the output_ptr
     // which was advanced by 3
-    [ap] = output_ptr + 3, ap++;
-    ret;
+    let output_ptr = output_ptr + 3;
+
+    return(output_ptr = output_ptr);
 }
