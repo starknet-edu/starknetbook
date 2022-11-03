@@ -27,27 +27,27 @@ describe("Multisig", async function () {
 
   before(async () => {
     account1 = await starknet.getAccountFromAddress(
-      "0x2109334107efc348a86e72fc3c313061c599e359d46d7b2cd48d22415585b24",
+      "0x7d2f37b75a5e779f7da01c22acee1b66c39e8ba470ee5448f05e1462afcedb4",
       "0xcd613e30d8f16adf91b7584a2265b1f5",
       "OpenZeppelin"
     );
     account2 = await starknet.getAccountFromAddress(
-      "0x7a578ffc71480273c4283a007ead8ae92c1242b02e652d93a4afc0da11ee0b4",
+      "0x433732229ce8222824e40d3b13db581634918fba9e8e733eee866b8a7d29ab4",
       "0x1e2feb89414c343c1027c4d1c386bbc4",
       "OpenZeppelin"
     );
     account3 = await starknet.getAccountFromAddress(
-      "0x6e6320bd27219d0889092987d6d630b78781d118a7b25ab36bbe4de7d984dee",
+      "0x3fc938163a76e0ed09ff6ef3364fb3f01f6aff6bbd8620d1466a3b3d3104c68",
       "0x78e510617311d8a3c2ce6f447ed4d57b",
       "OpenZeppelin"
     );
     account4 = await starknet.getAccountFromAddress(
-      "0x2e6011ebab72e33eb75881f969584491fde2240b709ed02cefef9fcb9f9f150",
+      "0x6c78b4a63bdba556902114f35c453d6927b4958db3dd48ac158f45f89638a5b",
       "0x35bf992dc9e9c616612e7696a6cecc1b",
       "OpenZeppelin"
     );
     account5 = await starknet.getAccountFromAddress(
-      "0x5b74e49305fa73170b68e09e4ed329b56bd2bfee3d66ea45fbf1eaa13e590cf",
+      "0x506e3a2c337bd50760cef67a172d2f27ac7d805cb5e44dd698a2f65889fe15a",
       "0xe4b06ce60741c7a87ce42c8218072e8c",
       "OpenZeppelin"
     );
