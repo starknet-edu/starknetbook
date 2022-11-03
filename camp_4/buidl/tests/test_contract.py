@@ -1,7 +1,6 @@
 from contextlib import contextmanager
 from dataclasses import dataclass
 import os
-from pprint import pprint
 import pytest
 from starkware.starknet.testing.starknet import Starknet
 from starkware.crypto.signature.signature import private_to_stark_key
@@ -96,15 +95,13 @@ class CairoContractTest(TestCase):
         cls.maxDiff = None
         await cls.multisig.create_proposal(
             amount=(1, 0), to_=signer1, targetERC20=cls.mockERC20.contract_address
-        ).invoke(caller_address=signer1)
+        ).execute(caller_address=signer1)
 
     @contextmanager
     def raisesCairoError(self, error_message):
         with self.assertRaises(StarkException) as error_msg:
             yield error_msg
-        self.assertTrue(
-            f"Error message: {error_message}" in str(error_msg.exception.message)
-        )
+        self.assertTrue(f"Error message: {error_message}" in str(error_msg.exception.message))
 
     @pytest.mark.asyncio
     async def test_create_propsal_should_work(self):
@@ -130,7 +127,7 @@ class CairoContractTest(TestCase):
         with self.raisesCairoError("Only signer"):
             await self.multisig.create_proposal(
                 amount=(1, 0), to_=signer1, targetERC20=self.mockERC20.contract_address
-            ).invoke(caller_address=signer5)
+            ).execute(caller_address=signer5)
 
     @pytest.mark.asyncio
     async def test_sign_proposal(self):
@@ -145,9 +142,7 @@ class CairoContractTest(TestCase):
         expected_event = SignedProposal(signer2, Uint256(0, 0), signer_nb=Uint256(2, 0))
 
         # signer signs proposal should work
-        res = await self.multisig.sign_proposal(proposal_nb=(0, 0)).invoke(
-            caller_address=signer2
-        )
+        res = await self.multisig.sign_proposal(proposal_nb=(0, 0)).execute(caller_address=signer2)
         execution_info = await self.multisig.view_proposal(proposal_nb=(0, 0)).call()
 
         self.assertEqual(res.main_call_events.pop(), expected_event)
@@ -160,27 +155,19 @@ class CairoContractTest(TestCase):
 
         # signer has already signed should not work
         with self.raisesCairoError("Sender has already signed"):
-            await self.multisig.sign_proposal(proposal_nb=(0, 0)).invoke(
-                caller_address=signer2
-            )
+            await self.multisig.sign_proposal(proposal_nb=(0, 0)).execute(caller_address=signer2)
 
         # unknown tries to sign should not work
         with self.raisesCairoError("Only signer"):
-            await self.multisig.sign_proposal(proposal_nb=(0, 0)).invoke(
-                caller_address=signer5
-            )
+            await self.multisig.sign_proposal(proposal_nb=(0, 0)).execute(caller_address=signer5)
 
         # unknown tries to sign unknown proposal, should not work
         with self.raisesCairoError("Only signer"):
-            await self.multisig.sign_proposal(proposal_nb=(1, 0)).invoke(
-                caller_address=signer5
-            )
+            await self.multisig.sign_proposal(proposal_nb=(1, 0)).execute(caller_address=signer5)
 
         # signer tries to sign unknown proposal should not work
         with self.raisesCairoError("Proposal doesn't exist"):
-            await self.multisig.sign_proposal(proposal_nb=(1, 0)).invoke(
-                caller_address=signer1
-            )
+            await self.multisig.sign_proposal(proposal_nb=(1, 0)).execute(caller_address=signer1)
 
         # signer signs proposal and executes it
         expected_result = Proposal(
@@ -192,16 +179,12 @@ class CairoContractTest(TestCase):
             timestamp=0,
         )
         expected_end_balance = Uint256(low=1, high=0)
-        expected_signer_event = SignedProposal(
-            signer3, Uint256(0, 0), signer_nb=Uint256(3, 0)
-        )
+        expected_signer_event = SignedProposal(signer3, Uint256(0, 0), signer_nb=Uint256(3, 0))
         expected_execute_event = ExecutedProposal(
             signer3, Uint256(1, 0), signer1, self.mockERC20.contract_address
         )
 
-        res = await self.multisig.sign_proposal(proposal_nb=(0, 0)).invoke(
-            caller_address=signer3
-        )
+        res = await self.multisig.sign_proposal(proposal_nb=(0, 0)).execute(caller_address=signer3)
         execution_info = await self.multisig.view_proposal(proposal_nb=(0, 0)).call()
         end_balance = await self.mockERC20.balanceOf(account=signer1).call()
         signer = await self.multisig.view_approved_signer(
