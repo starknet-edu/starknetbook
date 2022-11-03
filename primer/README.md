@@ -150,10 +150,20 @@ Bitcoin brings various computer science concepts together with [game theory](htt
 
 The nodes trust the block producer based on its valid [proof of work](./bitcoin/proof_of_work) and the network collectively agrees on a set of canonical updates to the state of the Bitcoin ledger and the state of Alice's account.
 
+In `GO`:
+
 ```bash
 # proof of work example
 cd bitcoin/proof_of_work/go
 go run main.go
+```
+
+In `Python`:
+
+```bash
+# proof of work example
+cd bitcoin/proof_of_work/python
+python main.py
 ```
 
 The Bitcoin nodes themselves listen for and [validate](./bitcoin/block_verifcation) blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the merkle root will be completely different.
