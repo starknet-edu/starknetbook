@@ -14,7 +14,7 @@ MAX_FEE = 0
 TESTNET = from_bytes(b"SN_GOERLI")
 PRIVATE=0x879d7dad7f9df54e1474ccf572266bba36d40e3202c799d6c477506647c126
 
-def sign_transaction(addr, calldata, nonce=None):
+def sign_transaction_v0(addr, calldata, nonce=None):
     if nonce is None:
         nonce = get_nonce(addr)
     calldata.append(nonce)
@@ -43,7 +43,7 @@ def demo_stark_signing():
 
     print("\nRandom Private Key({}bits): 0x{:x}".format(len(bin(priv)), priv))
     print("Random Public Key({}bits): 0x{:x}".format(len(bin(pub)), pub))
-    print("Message Hash(0x{:X}, 0x{:X}): 0x{:x}({}bits)\n".format(first_elem, second_elem, msg_hash, len(bin(msg_hash))))
+    print("Message Hash(0x{:X}, 0x{:X}): 0x{:x}({} bits)\n".format(first_elem, second_elem, msg_hash, len(bin(msg_hash))))
 
     signature = sign(msg_hash, priv)
     print("\n\tSignature -")
@@ -52,4 +52,4 @@ def demo_stark_signing():
 
     print("\n\t Verify - ", verify(msg_hash, signature[0], signature[1], pub))
 
-# demo_stark_signing()
+demo_stark_signing()
