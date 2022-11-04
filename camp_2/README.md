@@ -281,7 +281,7 @@ Segment relocation table:
 4     340
 ```
 
-The table shows the actual (not relative) addresses of the memory cells used by each segment after relocation. Segments 3-4 are empty segments used to return values ​​from `fp` and `pc`. As you can see, the memory ends up being continuous: for example segment 2 starts at cell 29, when segment 1 ends and continues to cell 338, remember we set the value to `[ap+300]` so that the cells 40-337 were automatically filled by the prover. Then segment 2 starts at the next address, 339.
+The table shows the actual (not relative) addresses of the memory cells used by each segment after relocation. Segments 3-4 are empty segments used to return values ​​from `fp` and `pc`. As you can see, the memory ends up being continuous: for example segment 1 starts at cell 29, when segment 0 ends and continues to cell 338, remember we set the value to `[ap+300]` so that the cells 40-337 were automatically filled by the prover. Then segment 2 starts at the next address, 339.
 
 
 <h3>Types/References</h3>
