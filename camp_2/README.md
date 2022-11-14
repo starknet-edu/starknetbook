@@ -283,6 +283,16 @@ Segment relocation table:
 
 The table shows the actual (not relative) addresses of the memory cells used by each segment after relocation. Segments 3-4 are empty segments used to return values ​​from `fp` and `pc`. As you can see, the memory ends up being continuous: for example segment 1 starts at cell 29, when segment 0 ends and continues to cell 338, remember we set the value to `[ap+300]` so that the cells 40-337 were automatically filled by the prover. Then segment 2 starts at the next address, 339.
 
+<h3>Recursion instead of loops and an example of implications</h3>
+
+As stated in the Cairo documentation [here](https://www.cairo-lang.org/docs/hello_cairo/intro.html?highlight=loops#recursion-instead-of-loops), we should avoid loops when using Cairo. The main underlying reason is :
+
+> You may have noticed that we’ve used recursion in the code above rather than the loop structure you may have expected. The main reason for this is that the Cairo memory is immutable – once you write the value of a memory cell, this cell cannot change in the future.
+
+Having said that, a developer not coming with a Solidity background might be puzzled by some implications of this property. This is the case when using [storage mappings](https://www.cairo-lang.org/docs/hello_starknet/more_features.html?highlight=mapping). One good example is [this one](https://github.com/starknet-edu/starknet-cairo-101/blob/47c8bd04e762f3c469d6d8d24b169b5145ba9acc/contracts/ex13.cairo#L144) where a storage mapping is filled with some input array provided by the user at contract creation time. In order to validate ex13 of [starknet-cairo-101](https://github.com/starknet-edu/starknet-cairo-101), you will have to find the transaction corresponding to the creation of the contract and reverse-engineer the values in the `values_mapped_secret_storage` storage mapping based on what has been passed to the contract constructor. In order to do so, you will have to have a deep understanding of the type of recursion used. 
+
+Please, nagivate to [recursion/cairo/recursion.cairo](./recursion/cairo/recursion.cairo) and read the code as well with comments to have two examples of recursions. One of which is applicable to how storage mappings deal with it. Instructions on how to compile and run the program are embedded in [recursion/cairo/recursion.cairo](./recursion/cairo/recursion.cairo). 
+
 
 <h3>Types/References</h3>
 
