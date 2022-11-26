@@ -26,6 +26,7 @@ class FieldElement:
     """
     Represents an element of F_(3 * 2**30 + 1).
     """
+
     k_modulus = 3 * 2**30 + 1
     # k_modulus = 13
     generator_val = 5
@@ -49,7 +50,9 @@ class FieldElement:
 
     def __repr__(self):
         # Choose the shorter representation between the positive and negative values of the element.
-        return repr((self.val + self.k_modulus//2) % self.k_modulus - self.k_modulus//2)
+        return repr(
+            (self.val + self.k_modulus // 2) % self.k_modulus - self.k_modulus // 2
+        )
 
     def __eq__(self, other):
         if isinstance(other, int):
@@ -67,7 +70,9 @@ class FieldElement:
     def typecast(other):
         if isinstance(other, int):
             return FieldElement(other)
-        assert isinstance(other, FieldElement), f'Type mismatch: FieldElement and {type(other)}.'
+        assert isinstance(
+            other, FieldElement
+        ), f"Type mismatch: FieldElement and {type(other)}."
         return other
 
     def __neg__(self):

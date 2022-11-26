@@ -1,14 +1,18 @@
-import os
 import asyncio
-from requests import get
+import os
 
+from requests import get
 from starkware.cairo.lang.vm.crypto import pedersen_hash
-from starkware.starknet.core.os.block_hash.block_hash import calculate_block_hash, calculate_event_hash
+from starkware.starknet.core.os.block_hash.block_hash import (
+    calculate_block_hash, calculate_event_hash)
 from starkware.starknet.definitions.general_config import StarknetGeneralConfig
+
 
 # curl 'https://alpha-mainnet.starknet.io/feeder_gateway/get_block?blockNumber=2629'
 async def main():
-    data = get("https://alpha-mainnet.starknet.io/feeder_gateway/get_block?blockNumber=2629").json()
+    data = get(
+        "https://alpha-mainnet.starknet.io/feeder_gateway/get_block?blockNumber=2629"
+    ).json()
 
     txHashes = []
     txSignatures = []
@@ -17,7 +21,9 @@ async def main():
     for tx in data["transactions"]:
         txHashes.append(int(tx["transaction_hash"], 16))
         if "signature" in tx and len(tx["signature"]):
-            txSignatures.append([int(tx["signature"][0], 16), int(tx["signature"][1], 16)])
+            txSignatures.append(
+                [int(tx["signature"][0], 16), int(tx["signature"][1], 16)]
+            )
         else:
             txSignatures.append([])
 
@@ -27,10 +33,7 @@ async def main():
             tx_data = [int(d, 16) for d in e["data"]]
 
             evHash = calculate_event_hash(
-                int(e["from_address"], 16),
-                keys,
-                tx_data,
-                pedersen_hash
+                int(e["from_address"], 16), keys, tx_data, pedersen_hash
             )
             eventHashes.append(evHash)
 
@@ -44,10 +47,11 @@ async def main():
         txHashes,
         txSignatures,
         eventHashes,
-        pedersen_hash
+        pedersen_hash,
     )
     print("Fetched Hash: ", data["block_hash"])
     print("Calculated Hash: 0x%x" % (hash))
-    print("Match: " , int(data["block_hash"], 16) == hash)
+    print("Match: ", int(data["block_hash"], 16) == hash)
+
 
 asyncio.run(main())

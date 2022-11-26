@@ -1,17 +1,18 @@
-import os
 import json
-import web3
-import requests
+import os
 import sys
 
-sys.path.append('../../fees/python')
-sys.path.append('../../contracts/python')
-from execution import calculate_execution
+import requests
+import web3
+
+sys.path.append("../../fees/python")
+sys.path.append("../../contracts/python")
 from definitions import STATE_UPDATE_ENDPOINT
-from fees import WEI_CONVERT, COST_PER_WORD
+from execution import calculate_execution
+from fees import COST_PER_WORD, WEI_CONVERT
 from starknet_py.net.client import Client
 
-TX=0x38d6ed8a35638b3947fa0a6cee902127cbebcdaba5705010599bc6979eb2456
+TX = 0x38D6ED8A35638B3947FA0A6CEE902127CBEBCDABA5705010599BC6979EB2456
 
 client = Client("testnet")
 
@@ -41,28 +42,44 @@ if "ACCEPTED_ON_L1" in str(demo_tx.status):
     # fetch state update/diffs for block
     #
     tx_receipt = client.get_transaction_receipt_sync(TX)
-    state_update = requests.request("GET", STATE_UPDATE_ENDPOINT+str(demo_tx.block_number)).json()
+    state_update = requests.request(
+        "GET", STATE_UPDATE_ENDPOINT + str(demo_tx.block_number)
+    ).json()
     account_state = state_update["state_diff"]["storage_diffs"][account_addr]
     contract_state = state_update["state_diff"]["storage_diffs"][contract_addr]
 
     #
     # calculate fees
     #
-    gas_price = block.gas_price/WEI_CONVERT
-    total_words = 2 * 2 + (2 * (len(account_state)+len(contract_state)))
+    gas_price = block.gas_price / WEI_CONVERT
+    total_words = 2 * 2 + (2 * (len(account_state) + len(contract_state)))
     calldata_fee = int(gas_price) * COST_PER_WORD * total_words
     execution_fees = calculate_execution("0x{:x}".format(TX))
 
     print("\nTransaction Info: ")
-    print("\tFees(Gas-{:.02f}): max - {:.02f} actual - {:.02f}".format(gas_price, demo_tx.transaction.max_fee/WEI_CONVERT, tx_receipt.actual_fee/WEI_CONVERT))
+    print(
+        "\tFees(Gas-{:.02f}): max - {:.02f} actual - {:.02f}".format(
+            gas_price,
+            demo_tx.transaction.max_fee / WEI_CONVERT,
+            tx_receipt.actual_fee / WEI_CONVERT,
+        )
+    )
     print("\tExecution Fee: {}".format(execution_fees))
     print("\tCalldata Fee: {}\n".format(calldata_fee))
 
     print("\tAccount Update: ")
     for i in range(len(account_state)):
-        print("\t\tkey {} -> value {}".format(account_state[i]["key"], int(account_state[i]["value"][2:], 16)))
+        print(
+            "\t\tkey {} -> value {}".format(
+                account_state[i]["key"], int(account_state[i]["value"][2:], 16)
+            )
+        )
 
     print("\n\tContract Update: ")
     for i in range(len(contract_state)):
-        print("\t\tkey {} -> value {}".format(contract_state[i]["key"], int(contract_state[i]["value"][2:], 16)))
+        print(
+            "\t\tkey {} -> value {}".format(
+                contract_state[i]["key"], int(contract_state[i]["value"][2:], 16)
+            )
+        )
     print()
