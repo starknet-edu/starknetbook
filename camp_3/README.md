@@ -589,8 +589,12 @@ Then we simply call elements inside the `matrix_array` in different ways. For ex
 
 It's not that complicated but it's satisfying enough.
 
+Congratulations! We already have an intermediate level from Cairo. Cairo is to StarkNet what Solidity is to Ethereum. Let's go and deploy some contracts.
+
 
 <h2 align="center" id="starknet_contracts">StarkNet Contracts</h2>
+
+> “StarkNet is a permissionless decentralized ZK-Rollup operating as an L2 network over Ethereum, where any dApp can achieve unlimited scale for its computation, without compromising Ethereum’s composability and security.” - [StarkNet Documentation](https://starknet.io/docs/hello_starknet/index.html#hello-starknet).
 
 Contracts on StarkNet are written in Cairo. You can transpile a Solidity contract to Cairo via [Warp](https://github.com/NethermindEth/warp), or use EVM bytecode using the Kakarot ZKEVM. However, the real power of StarkNet will be harness by contracts written in Cairo itself.
 
