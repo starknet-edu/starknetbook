@@ -16,7 +16,7 @@
 
 
 from hashlib import sha256
-from math import log2, ceil
+from math import ceil, log2
 
 from stark101utils.python.field import FieldElement
 
@@ -28,7 +28,7 @@ class MerkleTree(object):
 
     def __init__(self, data):
         assert isinstance(data, list)
-        assert len(data) > 0, 'Cannot construct an empty Merkle Tree.'
+        assert len(data) > 0, "Cannot construct an empty Merkle Tree."
         num_leaves = 2 ** ceil(log2(len(data)))
         self.data = data + [FieldElement(0)] * (num_leaves - len(data))
         self.height = int(log2(num_leaves))
@@ -47,7 +47,7 @@ class MerkleTree(object):
         # prefix, as well as the MSB.
         for bit in bin(node_id)[3:]:
             cur, auth = self.facts[cur]
-            if bit == '1':
+            if bit == "1":
                 auth, cur = cur, auth
             decommitment.append(auth)
         return decommitment
@@ -77,7 +77,7 @@ def verify_decommitment(leaf_id, leaf_data, decommitment, root):
     node_id = leaf_id + leaf_num
     cur = sha256(str(leaf_data).encode()).hexdigest()
     for bit, auth in zip(bin(node_id)[3:][::-1], decommitment[::-1]):
-        if bit == '0':
+        if bit == "0":
             h = cur + auth
         else:
             h = auth + cur

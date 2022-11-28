@@ -3,9 +3,10 @@ sha256 - Used for creating hash.
 time - Used for getting current timestamp.
 json - For encoding the block content.
 """
-from hashlib import sha256
-import time
 import json
+import time
+from hashlib import sha256
+
 
 class Block:
     """
@@ -29,7 +30,7 @@ class Block:
 
     """
 
-    def __init__(self, index, transactions, timestamp, previous_hash = '', nonce = 0):
+    def __init__(self, index, transactions, timestamp, previous_hash="", nonce=0):
         """
         __init__
         --------
@@ -63,6 +64,7 @@ class Block:
         """
         encoded_block = json.dumps(self.__dict__, sort_keys=True).encode()
         return sha256(encoded_block).hexdigest()
+
 
 class Blockchain:
     """
@@ -110,14 +112,14 @@ class Blockchain:
         Creates the Genesis Block of the Blockchain.
 
         """
-        genesis_block = Block(0, ['Genesis Block'], time.time(), '')
+        genesis_block = Block(0, ["Genesis Block"], time.time(), "")
         genesis_block.hash = genesis_block.create_hash()
         print('Mining the block containing "Genesis Block"')
-        while not genesis_block.hash.startswith('0' * self.difficulty):
+        while not genesis_block.hash.startswith("0" * self.difficulty):
             genesis_block.nonce += 1
             genesis_block.hash = genesis_block.create_hash()
-            print(genesis_block.hash, end='\r')
-        print(genesis_block.hash + '\n')
+            print(genesis_block.hash, end="\r")
+        print(genesis_block.hash + "\n")
         self.chain.append(genesis_block)
 
     @property
@@ -143,11 +145,11 @@ class Blockchain:
         """
         length = len(self.chain)
         for i in range(length):
-            print("Block: "+str(self.chain[i].index))
-            print("Previous Hash: "+self.chain[i].previous_hash)
-            print("Transaction: "+' '.join(self.chain[i].transactions))
-            print("Nonce: "+str(self.chain[i].nonce))
-            print("Hash: "+self.chain[i].hash + '\n')
+            print("Block: " + str(self.chain[i].index))
+            print("Previous Hash: " + self.chain[i].previous_hash)
+            print("Transaction: " + " ".join(self.chain[i].transactions))
+            print("Nonce: " + str(self.chain[i].nonce))
+            print("Hash: " + self.chain[i].hash + "\n")
 
     def proof_of_work(self, block):
         """
@@ -166,11 +168,11 @@ class Blockchain:
         """
         block.nonce = 0
         created_hash = block.create_hash()
-        while not created_hash.startswith('0' * self.difficulty):
+        while not created_hash.startswith("0" * self.difficulty):
             block.nonce += 1
             created_hash = block.create_hash()
-            print(created_hash, end='\r')
-        print(created_hash + '\n')
+            print(created_hash, end="\r")
+        print(created_hash + "\n")
         return created_hash
 
     def add_block(self, block, proof):
@@ -214,7 +216,10 @@ class Blockchain:
         True if validation passes, False otherwise.
 
         """
-        return block_hash.startswith('0' * self.difficulty) and block_hash == block.create_hash()
+        return (
+            block_hash.startswith("0" * self.difficulty)
+            and block_hash == block.create_hash()
+        )
 
     def add_new_transaction(self, transactions):
         """
@@ -246,15 +251,18 @@ class Blockchain:
 
         last_block = self.last_block
 
-        new_block = Block(index = last_block.index + 1,
-                        transactions = self.unconfirmed_transactions,
-                        timestamp = time.time(),
-                        previous_hash = last_block.hash)
+        new_block = Block(
+            index=last_block.index + 1,
+            transactions=self.unconfirmed_transactions,
+            timestamp=time.time(),
+            previous_hash=last_block.hash,
+        )
 
         proof = self.proof_of_work(new_block)
         self.add_block(new_block, proof)
         self.unconfirmed_transactions = []
         return new_block.index
+
 
 def main():
     """
@@ -274,5 +282,6 @@ def main():
 
     bitcoin.print_block()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()

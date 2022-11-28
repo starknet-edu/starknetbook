@@ -1,14 +1,15 @@
 import os
 from typing import Callable, Sequence
 
-from starkware.python.utils import from_bytes
-from starkware.cairo.lang.vm.crypto import pedersen_hash
-from starkware.starknet.core.os.class_hash import compute_class_hash
 from starkware.cairo.common.hash_state import compute_hash_on_elements
+from starkware.cairo.lang.vm.crypto import pedersen_hash
+from starkware.python.utils import from_bytes
+from starkware.starknet.core.os.class_hash import compute_class_hash
 from starkware.starknet.services.api.contract_class import ContractClass
 
 CONTRACT_ADDRESS_PREFIX = from_bytes(b"STARKNET_CONTRACT_ADDRESS")
 CONTRACT_NAME = "counter"
+
 
 def calculate_contract_address(
     salt: int,
@@ -30,8 +31,13 @@ def calculate_contract_address(
         hash_func=pedersen_hash,
     )
 
+
 # must be in cairo environment
-os.system("starknet-compile {}.cairo --output {}_compiled.json".format("../cairo/" + CONTRACT_NAME, CONTRACT_NAME))
+os.system(
+    "starknet-compile {}.cairo --output {}_compiled.json".format(
+        "../cairo/" + CONTRACT_NAME, CONTRACT_NAME
+    )
+)
 
 # -------------------------------------------------------------------------------------------------------
 # Contract Classes - StarkNet seperates contracts into classes(definition) and instances(implementation)
@@ -41,7 +47,9 @@ os.system("starknet-compile {}.cairo --output {}_compiled.json".format("../cairo
 # - Declare: calles are added with a 'declare' call
 # - library_call: to use the functionality of a declared class w/o deploying
 # -------------------------------------------------------------------------------------------------------
-contract_class = ContractClass.loads(data=open("{}_compiled.json".format(CONTRACT_NAME), "r").read())
+contract_class = ContractClass.loads(
+    data=open("{}_compiled.json".format(CONTRACT_NAME), "r").read()
+)
 class_hash = compute_class_hash(contract_class=contract_class, hash_func=pedersen_hash)
 
 # calculate contract address

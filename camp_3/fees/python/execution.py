@@ -1,15 +1,19 @@
 import json
-import requests
 import sys
 
-sys.path.append('../../contracts/python')
+import requests
+
+sys.path.append("../../contracts/python")
 from definitions import TRANSACTION_TRACE_ENDPOINT
+
 
 def _calc_inner_steps(resources):
     if len(resources) == 0:
         return 0
 
-    out = resources[0]["execution_resources"]["n_steps"] + _calc_inner_steps(resources[0]["internal_calls"])
+    out = resources[0]["execution_resources"]["n_steps"] + _calc_inner_steps(
+        resources[0]["internal_calls"]
+    )
     return out
 
 
@@ -20,17 +24,36 @@ def _calc_inner_builtins(resources):
         return 0
 
     res = 0
-    res += (resources[0]["execution_resources"]["builtin_instance_counter"]["pedersen_builtin"] * .4)
-    res += (resources[0]["execution_resources"]["builtin_instance_counter"]["range_check_builtin"] * .4)
-    res += (resources[0]["execution_resources"]["builtin_instance_counter"]["ecdsa_builtin"] * 25.6)
-    res += (resources[0]["execution_resources"]["builtin_instance_counter"]["bitwise_builtin"] * 12.8)
+    res += (
+        resources[0]["execution_resources"]["builtin_instance_counter"][
+            "pedersen_builtin"
+        ]
+        * 0.4
+    )
+    res += (
+        resources[0]["execution_resources"]["builtin_instance_counter"][
+            "range_check_builtin"
+        ]
+        * 0.4
+    )
+    res += (
+        resources[0]["execution_resources"]["builtin_instance_counter"]["ecdsa_builtin"]
+        * 25.6
+    )
+    res += (
+        resources[0]["execution_resources"]["builtin_instance_counter"][
+            "bitwise_builtin"
+        ]
+        * 12.8
+    )
 
     out = res + _calc_inner_builtins(resources[0]["internal_calls"])
     return out
 
+
 def calculate_execution(tx_hash):
-    tx_trace_resp = requests.request("GET", TRANSACTION_TRACE_ENDPOINT+tx_hash).json()
+    tx_trace_resp = requests.request("GET", TRANSACTION_TRACE_ENDPOINT + tx_hash).json()
 
     steps = _calc_inner_steps([tx_trace_resp["function_invocation"]])
     builtins = _calc_inner_builtins([tx_trace_resp["function_invocation"]])
-    return (steps *.05) + builtins
+    return (steps * 0.05) + builtins

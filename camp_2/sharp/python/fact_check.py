@@ -4,7 +4,7 @@ from web3 import Web3
 
 # Pedersen hash of the compiled program
 # - cairo-hash-program --program builtins_compiled.json
-program_hash = 0x23ceff06ccba63f4eb8ec58999972b1be1924e48f50f4fa32d04a350dfe211
+program_hash = 0x23CEFF06CCBA63F4EB8EC58999972B1BE1924E48F50F4FA32D04A350DFE211
 
 # output of field elements from the cairo program run
 program_output = [100, 200, 300]

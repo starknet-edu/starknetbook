@@ -21,6 +21,7 @@ A polynomial interface with the functionality required for STARK101.
 
 import operator
 from functools import reduce
+
 try:
     from tqdm import tqdm
 except ModuleNotFoundError:
@@ -29,7 +30,9 @@ except ModuleNotFoundError:
     tqdm = lambda x: x
 
 from stark101utils.python.field import FieldElement
-from stark101utils.python.list_utils import remove_trailing_elements, scalar_operation, two_lists_tuple_operation
+from stark101utils.python.list_utils import (remove_trailing_elements,
+                                             scalar_operation,
+                                             two_lists_tuple_operation)
 
 
 def trim_trailing_zeros(p):
@@ -48,7 +51,7 @@ def prod(values):
         return 1
     if len_values == 1:
         return values[0]
-    return prod(values[:len_values // 2]) * prod(values[len_values // 2:])
+    return prod(values[: len_values // 2]) * prod(values[len_values // 2 :])
 
 
 def latex_monomial(exponent, coef, var):
@@ -58,12 +61,12 @@ def latex_monomial(exponent, coef, var):
     if exponent == 0:
         return str(coef)
     if coef == 1:
-        coef = ''
+        coef = ""
     if coef == -1:
-        coef = '-'
+        coef = "-"
     if exponent == 1:
-        return f'{coef}{var}'
-    return f'{coef}{var}^{{{exponent}}}'
+        return f"{coef}{var}"
+    return f"{coef}{var}^{{{exponent}}}"
 
 
 class Polynomial:
@@ -78,7 +81,7 @@ class Polynomial:
         """
         return cls([FieldElement.zero(), FieldElement.one()])
 
-    def __init__(self, coefficients, var='x'):
+    def __init__(self, coefficients, var="x"):
         # Internally storing the coefficients in self.poly, least-significant (i.e. free term)
         # first, so $9 - 3x^2 + 19x^5$ is represented internally by the list  [9, 0, -3, 0, 0, 19].
         # Note that coefficients is copied, so the caller may freely modify the given argument.
@@ -90,8 +93,8 @@ class Polynomial:
         Returns a LaTeX representation of the Polynomial, for Jupyter.
         """
         if not self.poly:
-            return '$0$'
-        res = ['$']
+            return "$0$"
+        res = ["$"]
         first = True
         for exponent, coef in enumerate(self.poly):
             if coef == 0:
@@ -101,14 +104,14 @@ class Polynomial:
                 first = False
                 res.append(monomial)
                 continue
-            oper = '+'
-            if monomial[0] == '-':
-                oper = '-'
+            oper = "+"
+            if monomial[0] == "-":
+                oper = "-"
                 monomial = monomial[1:]
             res.append(oper)
             res.append(monomial)
-        res.append('$')
-        return ' '.join(res)
+        res.append("$")
+        return " ".join(res)
 
     def __eq__(self, other):
         try:
@@ -126,22 +129,32 @@ class Polynomial:
             other = FieldElement(other)
         if isinstance(other, FieldElement):
             other = Polynomial([other])
-        assert isinstance(other, Polynomial), f'Type mismatch: Polynomial and {type(other)}.'
+        assert isinstance(
+            other, Polynomial
+        ), f"Type mismatch: Polynomial and {type(other)}."
         return other
 
     def __add__(self, other):
         other = Polynomial.typecast(other)
-        return Polynomial(two_lists_tuple_operation(
-            self.poly, other.poly, operator.add, FieldElement.zero()))
+        return Polynomial(
+            two_lists_tuple_operation(
+                self.poly, other.poly, operator.add, FieldElement.zero()
+            )
+        )
 
     __radd__ = __add__  # To support <int> + <Polynomial> (as in `1 + x + x**2`).
 
     def __sub__(self, other):
         other = Polynomial.typecast(other)
-        return Polynomial(two_lists_tuple_operation(
-            self.poly, other.poly, operator.sub, FieldElement.zero()))
+        return Polynomial(
+            two_lists_tuple_operation(
+                self.poly, other.poly, operator.sub, FieldElement.zero()
+            )
+        )
 
-    def __rsub__(self, other):  # To support <int> - <Polynomial> (as in `1 - x + x**2`).
+    def __rsub__(
+        self, other
+    ):  # To support <int> - <Polynomial> (as in `1 - x + x**2`).
         return -(self - other)
 
     def __neg__(self):
@@ -182,7 +195,7 @@ class Polynomial:
         """
         other = Polynomial.typecast(other)
         pol2 = trim_trailing_zeros(other.poly)
-        assert pol2, 'Dividing by zero polynomial.'
+        assert pol2, "Dividing by zero polynomial."
         pol1 = trim_trailing_zeros(self.poly)
         if not pol1:
             return [], []
@@ -199,13 +212,13 @@ class Polynomial:
                 if rem[i] != FieldElement.zero():
                     last_non_zero = i
             # Eliminate trailing zeroes (i.e. make r end with its last non-zero coefficient).
-            rem = rem[:last_non_zero + 1]
+            rem = rem[: last_non_zero + 1]
             deg_dif = len(rem) - len(pol2)
         return Polynomial(trim_trailing_zeros(quotient)), Polynomial(rem)
 
     def __truediv__(self, other):
         div, mod = self.qdiv(other)
-        assert mod == 0, 'Polynomials are not divisible.'
+        assert mod == 0, "Polynomials are not divisible."
         return div
 
     def __mod__(self, other):
@@ -292,14 +305,17 @@ class Polynomial:
 # The python representation of the formal variable x.
 X = Polynomial.X()
 
+
 def calculate_lagrange_polynomials(x_values):
     """
     Given the x_values for evaluating some polynomials, it computes part of the lagrange polynomials
     required to interpolate a polynomial over this domain.
     """
     lagrange_polynomials = []
-    monomials = [Polynomial.monomial(1, FieldElement.one()) -
-                 Polynomial.monomial(0, x) for x in x_values]
+    monomials = [
+        Polynomial.monomial(1, FieldElement.one()) - Polynomial.monomial(0, x)
+        for x in x_values
+    ]
     numerator = prod(monomials)
     for j in tqdm(range(len(x_values))):
         # In the denominator, we have:
@@ -331,9 +347,11 @@ def interpolate_poly(x_values, y_values):
     all i.
     """
     assert len(x_values) == len(y_values)
-    assert all(isinstance(val, FieldElement) for val in x_values),\
-        'Not all x_values are FieldElement'
+    assert all(
+        isinstance(val, FieldElement) for val in x_values
+    ), "Not all x_values are FieldElement"
     lp = calculate_lagrange_polynomials(x_values)
-    assert all(isinstance(val, FieldElement) for val in y_values),\
-        'Not all y_values are FieldElement'
+    assert all(
+        isinstance(val, FieldElement) for val in y_values
+    ), "Not all y_values are FieldElement"
     return interpolate_poly_lagrange(y_values, lp)
