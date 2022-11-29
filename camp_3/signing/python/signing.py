@@ -4,12 +4,17 @@ sys.path.append("../../contracts/python")
 
 from account import get_nonce
 from starkware.cairo.lang.vm.crypto import pedersen_hash
-from starkware.crypto.signature.signature import (get_random_private_key,
-                                                  private_to_stark_key, sign,
-                                                  verify)
+from starkware.crypto.signature.signature import (
+    get_random_private_key,
+    private_to_stark_key,
+    sign,
+    verify,
+)
 from starkware.python.utils import from_bytes
 from starkware.starknet.core.os.transaction_hash.transaction_hash import (
-    TransactionHashPrefix, calculate_transaction_hash_common)
+    TransactionHashPrefix,
+    calculate_transaction_hash_common,
+)
 from starkware.starknet.public.abi import get_selector_from_name
 
 VERSION = 0

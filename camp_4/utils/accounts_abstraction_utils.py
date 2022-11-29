@@ -13,10 +13,10 @@ from starkware.starknet.core.os.transaction_hash.transaction_hash import (
     TransactionHashPrefix,
     calculate_transaction_hash_common,
 )
+from starkware.starknet.definitions.general_config import StarknetGeneralConfig
+from starkware.starknet.public.abi import get_selector_from_name
 from starkware.starknet.services.api.contract_class import ContractClass
 from starkware.starknet.services.api.gateway.transaction import InvokeFunction
-from starkware.starknet.public.abi import get_selector_from_name
-from starkware.starknet.definitions.general_config import StarknetGeneralConfig
 
 CONTRACT_ADDRESS_PREFIX = from_bytes(b"STARKNET_CONTRACT_ADDRESS")
 MAX_FEE = 3000000000000000

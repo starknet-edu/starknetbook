@@ -4,7 +4,9 @@ import os
 from requests import get
 from starkware.cairo.lang.vm.crypto import pedersen_hash
 from starkware.starknet.core.os.block_hash.block_hash import (
-    calculate_block_hash, calculate_event_hash)
+    calculate_block_hash,
+    calculate_event_hash,
+)
 from starkware.starknet.definitions.general_config import StarknetGeneralConfig
 
 
