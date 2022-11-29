@@ -1,290 +1,466 @@
 <div align="center">
-    <h1>Camp 4: BUIDL</h1>
-
-|Presentation|Video|Workshop
-|:----:|:----:|:----:|
-|-|-| [starknet-debug](https://github.com/starknet-edu/starknet-debug) |
+    <h1>Camp 4: Account Abstraction and L1-L2 Messaging</h1>
 
 </div>
 
 ### Topics
 
 <ol>
-    <li><a>Protostar</a></a>
-    <li><a>Nile</a></a>
-    <li><a>Hardhat</a></a>
-    <li><a>Nodes</a></a>
-    <li><a>Devnet</a></a>
-    <li><a>Testing</a></a>
-    <li><a>Libraries</a></a>
+    <li><a>If we don't have Account Abstraction, Ethereum is at stake</a></a>
+    <li><a>Building with Account Abstraction</a></a>
+    <li><a>Account Abstraction</a></a>
+    <li><a>L1-L2 Messaging</a></a>
 </ol>
 
 `UNDER CONSTRUCTION`:
 
-While this section is being built we recommend reading the video session for this camp and the [community resources page](https://github.com/gakonst/awesome-starknet).
-
-In this camp we will learn how to use some of the existing tooling for Cairo and StarkNet. Please notice there is more tooling being developed each month, here we will cover just a part.
-
-We are currently able to operate with the StarkNet Alpha. The recommended steps for deploying contracts are:
-
-1. Unit tests - You can use Protostar, Nile, or starknet.py.
-2. Devnet - Deploy in the [Shard Lab’s](https://github.com/Shard-Labs/starknet-devnet) `starknet-devnet`.
-3. Testnet - Deploy to the Goerli, `alpha-goerli`, or Goerli 2. You can use Protostar, Nile, Hardhat, and more.
-4. Mainnet - Deploy to Alpha StarkNet, `alpha-mainnnet`. Similar to the testnet.
-
-
 <hr>
 
-<h2 align="center" id="protostar"><a href="https://docs.swmansion.com/protostar">Protostar</a></h2>
+<h2 align="center" id="aa"><a>If we don't have Account Abstraction, Ethereum is at stake</a></h2>
 
-[Protostar](https://github.com/software-mansion/protostar) is a tool inspired by [Foundry](https://github.com/foundry-rs/foundry) and key to compile, test and deploy. Its use is recommended by most of the StarkNet community.
+**Disclaimers: This tutorial cites various stakeholders, any errors or misunderstandings in this tutorial are the fault of interpretation.*
 
-### Installing Protostar
+* Most Ethereum users use centralized exchanges because managing a self-custody wallet is difficult; this is not self-custody. The current status quo risks making the next wave of users dependent on centralized exchanges ([Julien, Devcon 6](https://www.youtube.com/watch?v=OwppworJGzs)).
+* The imminent arrival of quantum computers will force the cryptographic ecosystem to move to quantum-proof signatures. The stark curve is one way it can be done.
 
-At this point we already have `cairo-lang` installed.
+In 5 years it would be bizarre that we used to secure our assets by writing 12 words on paper. StarkNet is leading the way in implementing AA at the protocol level (not at the application level as with current EIPs on L1): it is the "proving ground" for what AA will look like in the future ([AA Panel, Devcon 6](https://app.devcon.org/schedule/9mvqce)).
 
-On Ubuntu or MacOS (not available for Windows) run the following command:
 
-`curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash`
+### What is Account Abstraction?
 
-Restart your terminal and run `protostar -v` to see the version of your `protostar` and `cairo-lang`.
+> Definition 1: AA is when a **smart contract can pay for its own transactions** ([Martin Triay, Devcon 6](https://www.youtube.com/watch?v=Osc_gwNW3Fw)). In other words, abstract contracts (or account smart contracts) can pay for transactions. Note, it is not the same as Externally Owned Accounts or Smart Wallets.
 
-If you later want to upgrade your protostar use `protostar upgrade`. If you run into installation problems I recommend that you review the [Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/installation).
+> Definition 2: AA is **validation abstraction**. In L1 there is only one way to validate transactions (retrieve an address from a signature, look at that address in the state, determine if the nonce is OK for the transaction that was sent and if the account has enough balance to perform the transaction). With AA, you **abstract the validation process**: use different types of signatures, cryptographic primitives, execution processes, etc. ([lightclient, Devcon 6](https://app.devcon.org/schedule/9mvqce)).
 
-### First steps with Protostar
+**Note: In computing, the term abstraction is used to generalize something. In this case, we are generalizing smart contracts: from the existence of Externally Owned Contracts (EOA) and Contract Accounts (CA) to simply smart contracts.*
 
-What does it mean to initialize a project with Protostar?
 
-- **Git**. A new directory (folder) will be created which will be a git repository (it will have a `.git` file).
-- `protostar.toml`. Here we will have information necessary to configure our project. Do you know Python? Well you know where we're going with this.
-- **Three src directories will be created** (where will your code be), lib (for external dependencies), and tests (where the tests will be).
+### So what?
 
-You can initialize your project with the `protostar init` command, or you can indicate that an existing project will use Protostar with `protostar init --existing`. Basically, you just need your directory to be a git repository and have a `protostar.toml` file with the project settings. We could even create the `protostar.toml` file ourselves from our text editor.
+According to:
+* Martin Triay (Open Zepellin), AA means [huge improvements in onboarding, user experience, and security](https://www.youtube.com/watch?v=Osc_gwNW3Fw). AA is the future of crypto UX and security.
+* Julien Niset (Argent), AA means scaling self-custody which is [a requirement for onboarding the next billion users](https://www.youtube.com/watch?v=OwppworJGzs).
+* Vitalik, [smart wallets should be the default](https://app.devcon.org/schedule/9mvqce) and AA is the key step. 
+* Yoav (Ethereum Foundation), [AA is key security](https://app.devcon.org/schedule/9mvqce).
+  
 
-Let's run `protostar init` to initialize a Protostar project. It asks us to indicate two things:
+###  Self-custody: own the keys, own the assets
 
-- `project directory name`: What is the name of the directory where your project is located?
-- `libraries directory name`: What is the name of the directory where external dependencies will be installed?
+Self-custody is hard and necessary. Crypto is about digital ownership: you own your assets. The principle is normally depicted with the motto: not your keys not your asset. The principle is great. However, the humans will always lose and forget passwords ([Julien, Devcon 6](https://www.youtube.com/watch?v=OwppworJGzs)). From experts to beginners, everyone looses their passwords or keys. It is as true since web2 and will keep being truth in web3. Julien goes as far as saying that "ordinary users should never handle key management, and if Ethereum doesn’t transition away from EOAs we’ll live in a world where only the few use self-custody and the rest use centralized exchanges" ([2022](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/)). 
 
-This is what the structure of our project looks like:
+In Ethereum, and other L1s, users lose their keys and recovery phrases; and that is it, the user can not recover her account's assets. There is no "I forgot my keys, help me recover my account." Whose idea was that the private key was a hard requirement? According to [Julien](https://www.youtube.com/watch?v=OwppworJGzs), the problem is at the heart of the EVM (Ethereum Virtual Machine). We will go back to this later. With AA the private key will soon be a thing of the past. 
 
+
+### Use cases (some of them, invent one!)
+AA promises to put programmability into every Ethereum wallet, and unlock new frontiers for both developers and users ([AA Panel, Devcon 6](https://app.devcon.org/schedule/9mvqce)). 
+
+Among other things, AA allows:
+* Social recovery: In case a user's private key is lost or compromised, AA allows wallets to add mechanisms to securely replace the key controlling the account. Never worry about seed phrases again ([Julien Niset, 2022](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/))!
+* Key rotation: If your keys are compromised, instead of moving all the assets, you can rotate the keys and that is it. (XXX look more about this)
+* Session keys: Signing with your face or finger to your cellphone or your favorite apps is possible with AA. Session keys are a set of permissions given to a website so, for example, you can sign in once and then the website can act on our behalf without you having to sign each time each transactions. This is Web2 experience.
+* Guardians: XXX
+* Custom transaction validation schemes.
+  * Different signature schemes: You can use ethereum signatures, Bitcoin signatures, both if you want. The user could prefer a more gas-efficient signature, or a quantum-resistant one.  Use the secure enclave of iOS and Android devices to turn every phone into a hardware wallet ([Martin Triay (Devcon 6)](https://www.youtube.com/watch?v=Osc_gwNW3Fw), [Julien (2022)](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/)).
+  * Multisignature: Change who can sign each week. Support fraud monitoring; inspect every transaction to make sure it complies to defined security rules, and prevent users from sending assets to a scam address or incorrect contract. ([Martin Triay (Devcon 6)](https://www.youtube.com/watch?v=Osc_gwNW3Fw), [Julien (2022)](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction)).
+
+These are just some ideas. More is still to come.
+
+### Security
+
+There are my ways AA helps security in Ethereum. The following were mentioned by [Yoav at Devcon 6](https://app.devcon.org/schedule/9mvqce):
+
+* Key management: Being able to add devices to your wallet so your wallet is not associated with the seed phrase, but if you loose your ohone you can access with your computer. This improves security,
+* Different signature and validation schemes: You could, for example, spend small amounts freely but if you are sending a large amount the dapp or wallet could ask for another type of signature similar to 2 Factor Authorization. This is common in centralized excahnges. 
+* Different security policies for different types of users: With EOAs (L1) we only have a single policy; if you have the key then do anything if you do not have it then you can not do anything. With AA, for example, we could create a security scheme for enterprise accounts and another one for individual users. Again, copy good practices in the banking and web2 sector.
+* Different security policies for different devices: For example, a phone can send a maximum amount of tokens and a computer there is a limit un less you validate in some way (2FA). For this to happen we need to be able to implement different signature schemes according to each device (e.g., a computer does not use the same curve as an android phone). The EOAs support only a type of curve which is incompatible with most devices. With AA you can use several devices with the same account. Users will not longer have a different wallet on each device; one for the computer, one for the phone, one for the Ledger. 
+
+### Why has it not been implemented in Ethereum's L1 yet?
+
+According to Julien Niset ([2022](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/)), the key is to eliminate EOAs. No EIP has yet addressed this. It is understandable since this would implicate multiple changes to the heart of the protocol; and day by day, as the value secured by Ethereum increases, implementing AA gets more difficult due to the coordination required ([Julien Niset, 2022](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/)).
+
+If it is so important, then why does Ethereum already supports it? This is an example of the limitations of the EVM that can be surpased by a new Virtual Machine such as the Cairo VM. Proposals to implement AA have been made since the early days of Ethereum and they have constantly been "repeatedly pushed back in favour of more urgent changes." ([Julien Niset, 2022](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/)). It is uncertain it will be implemented in next Ethereum versions even after the Merge.
+
+The creation of new L2 VMs focused on scalability allowed for advances in its implementation; StarkNet and ZKSync have native AA inspired by EIP4337, considered the best proposal by experts such as Argent's Julien Niset ([2022](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/)). It seems as if key proponents of AA, like Julien, have lost hope that EOAs are eliminated and AA is implemented at the core of Ethereum; Argent is now pushing for the widespread adoption of AA trough L2s like StarkNet.
+
+### Devcon 6
+
+AA was one of the hottest topics at Devcon 6 (2022). There were at least 6 talks, workshops and panels (one of them with Vitalik) on the subject. Of these two were addressed directly from AA on StarkNet, and they all acknowledge AA on StarkNet.
+* [Martin Triay, Open Zeppelin: Account Abstraction in StarkNet](https://www.youtube.com/watch?v=Osc_gwNW3Fw) (StarkNet oriented).
+* [Vitalik Buterin, David Hoffman (Bankless), Julien Niset (Argent), Yoav Weiss (Ethereum Foundation), lightclient (Geth): Account Abstraction Panel](https://www.youtube.com/watch?v=WsZBymiyT-8&feature=emb_imp_woyt).
+* [Liraz, Yoav Weiss (Ethereum Foundation): ELI5: Account Abstraction](https://www.youtube.com/watch?v=QuYZWJj65AY).
+* [(ETH Global) Yoav Weiss (Ethereum Foundation), Dror Tirosh: Ethereum Foundation 🛠 Account abstraction: building an ERC-4337 wallet](https://www.youtube.com/watch?v=xHWlJiL_iZA).
+* [Dror Tirosh, Liraz: Account Abstraction: Making Accounts Smarter](https://app.devcon.org/schedule/nz3pyp).
+* [Ivo Georgiev, Ambire Wallet: The Future of Wallets: MPC vs Smart Wallets](https://archive.devcon.org/archive/watch/6/the-future-of-wallets-mpc-vs-smart-wallets/?tab=YouTube).
+* [Danno Ferrin, Hedera Hashgrap: What Alternative Blockchains Compatibility with Ethereum Tooling Can Teach Us About Ethereum's Future](https://www.youtube.com/watch?v=KqE9HN4QGpM).
+  
+
+<h2 align="center" id="building"><a>Building with Account Abstraction</a></h2>
+
+### AA is already here, enjoy! 
+
+Now that we know better the concept of AA, let's actually code it in StarkNet.
+
+As it was mentioned before, StarkNet possess AA natively. The design has been notably led by Starkware, Open Zeppellin, and Argent.
+
+### The proccess
+
+We will perform **counterfactual deployment**. That is:
+
+1. Calculate the account contract's address before deployment.
+
+A contract address in the StarkNet network is a unique identifier of the contract and is a hash of (more details in [the documentation](mentation/develop/Contracts/contract-address/) and [actual implementation in Python](https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/starknet/core/os/contract_address/contract_address.py#L40)):
+* Prefix - the ASCII encoding of the string “STARKNET_CONTRACT_ADDRESS”.
+* Deployer address - currently always zero.
+* Salt - random number (felt) used to distinguish between different instances of the contract.
+* Class hash - hash chain of the definition of the class (more [here](https://docs.starknet.io/documentation/develop/Contracts/contract-hash/)).
+* Constructor calldata hash - array hash of the inputs to the constructor.
+
+This means we can calculate the contract address of the account contract we want to deploy even before deploying. This is what we do when we initialize an account contract:
+
+```Bash
+starknet new_account --network alpha-goerli --account ALIAS --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 ```
-❯ tree -L 2
+
+This yields something like:
+
+```Bash
+Account address: 0x006b27f2455d175f1c9b39568838ee0c1dfba34ca29f489690e40ee69220f15c
+Public key: 0x07f90c757da3498bfa61b393e1048ace09d9729f9fc75d2a5dc6eb590852643e
+Move the appropriate amount of funds to the account, and then deploy the account
+by invoking the 'starknet deploy_account' command.
+
+NOTE: This is a modified version of the OpenZeppelin account contract. The signature is computed
+differently.
+```
+
+Now we have the account contract's address (([this is the line](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/wallets/open_zeppelin.py#L107) where the address is calculated in the repo)) that we can fund; if using the testnet we can use the [faucet](https://faucet.goerli.starknet.io/). We are using the default account contract structure created by Open Zeppelin (a bit modified) which you can find in the [third_party library](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo). In the next sections we will create our own account contracts. 
+
+2. Send funds to that address, eventhough it has no contract yet (it has not yet been deployed);
+
+For example, we can send funds using the [testnet faucet](https://faucet.goerli.starknet.io/).
+
+3. The contract pays for its deloyment transaction if it passes `__validate_deploy__`; and 
+
+Deploy the account contract with:
+
+```Bash
+starknet deploy_account --network alpha-goerli --account ALIAS --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+```
+
+If the conditions defined in the `__validate_deploy__` entrypoint are met, the account contract is deployed. In the case of the Open Zeppelin account contract the signature should be valid for the contract to be deployed:
+
+```Bash
+@external
+func __validate_deploy__{
+    syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr, ecdsa_ptr: SignatureBuiltin*
+}(class_hash: felt, contract_address_salt: felt, _public_key: felt) {
+    let (tx_info) = get_tx_info();
+    is_valid_signature(tx_info.transaction_hash, tx_info.signature_len, tx_info.signature);
+    return ();
+}
+```
+
+4. The account contract is deployed ([Martin Triay, (Devcon 6)](https://www.youtube.com/watch?v=Osc_gwNW3Fw)).
+
+If successfully deployed, we get:
+
+```Bash
+Sending the transaction with max_fee: 0.000000 ETH (323076307108 WEI).
+Sent deploy account contract transaction.
+
+Contract address: 0x006b27f2455d175f1c9b39568838ee0c1dfba34ca29f489690e40ee69220f15c
+Transaction hash: 0x3dc6e579d7b4204907de859d1a12e42132853b9827e7203487740d51e957eed
+```
+
+Please note currently the StarkNet CLI only works with the [OpenZeppelin account contract](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo). If we want to deploy our own account contracts we need to deploy them using a different method. More on the next sections. 
+
+Now we will examine the inner workings of the Open Zeppelin contract and proceed create our own account contracts.
+
+### Using the Open Zeppelin standards
+
+Although account contracts are nothing more than smart contracts, they have methods that set them apart from other smart contracts. This is the [Open Zeppelin IAccount contract interface](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.4.0b/src/openzeppelin/account/IAccount.cairo) adopted also by Argent (it implements [EIP-1271](https://eips.ethereum.org/EIPS/eip-1271)):
+
+```Rust
+struct Call {
+    to: felt,
+    selector: felt,
+    calldata_len: felt,
+    calldata: felt*,
+}
+
+// Tmp struct introduced while we wait for Cairo to support passing `[Call]` to __execute__
+struct CallArray {
+    to: felt,
+    selector: felt,
+    data_offset: felt,
+    data_len: felt,
+}
+
+
+@contract_interface
+namespace IAccount {
+    func supportsInterface(interfaceId: felt) -> (success: felt) {
+    }
+
+    func isValidSignature(hash: felt, signature_len: felt, signature: felt*) -> (isValid: felt) {
+    }
+
+    func __validate__(
+        call_array_len: felt, call_array: AccountCallArray*, calldata_len: felt, calldata: felt*
+    ) {
+    }
+
+    func __validate_declare__(class_hash: felt) {
+    }
+
+    func __execute__(
+        call_array_len: felt, call_array: AccountCallArray*, calldata_len: felt, calldata: felt*
+    ) -> (response_len: felt, response: felt*) {
+    }
+}
+```
+
+And this is the public API ([find the complete preset here](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.4.0b/src/openzeppelin/account/presets/Account.cairo)):
+
+```Rust
+namespace Account {
+    func constructor(publicKey: felt) {
+    }
+
+    func getPublicKey() -> (publicKey: felt) {
+    }
+
+    func supportsInterface(interfaceId: felt) -> (success: felt) {
+    }
+
+    func setPublicKey(newPublicKey: felt) {
+    }
+
+    func isValidSignature(hash: felt, signature_len: felt, signature: felt*) -> (isValid: felt) {
+    }
+
+    func __validate__(
+        call_array_len: felt, call_array: AccountCallArray*, calldata_len: felt, calldata: felt*
+    ) -> (response_len: felt, response: felt*) {
+    }
+
+    func __validate_declare__(
+        call_array_len: felt, call_array: AccountCallArray*, calldata_len: felt, calldata: felt*
+    ) -> (response_len: felt, response: felt*) {
+    }
+
+    func __execute__(
+        call_array_len: felt, call_array: AccountCallArray*, calldata_len: felt, calldata: felt*
+    ) -> (response_len: felt, response: felt*) {
+}
+```
+
+Note that the [default account contract](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo) used by StarkNet and mainly developed by Open Zeppelin has this same structure.
+
+Let's examine the entry points (functions):
+
+* `constructor`: It is not a requirement.
+  * `publicKey: felt`: While the interface is agnostic of signature validation schemes, this implementation assumes there’s a public-private key pair controlling the Account. That’s why the constructor function expects a `public_key` parameter to set it. Since there’s also a `setPublicKey()` method, accounts can be effectively transferred ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)).
+* `getPublicKey`: Returns the public key associated with the Account ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)).
+* `supportsInterface`: Returns TRUE if this contract implements the interface defined by `interfaceId`. Account contracts now implement ERC165 through static support (see [Account differentiation with ERC165](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts#account_differentiation_with_erc165)) ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)).
+* `setPublicKey`: Sets the public key that will control this Account. It can be used to rotate keys for security, change them in case of compromised keys or even transferring ownership of the account ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)).
+* `isValidSignature`: This function is inspired by EIP-1271 and returns TRUE if a given signature is valid, otherwise it reverts. In the future it will return FALSE if a given signature is invalid ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)).
+* `__validate__`: Allows you to define an arbitrary logic to determine if a transaction is valid or not. They can not read other contracts storage, this helps as anti-spam. For example, a lot of transactions can depend on the storage of a contract, therefore if the storage changes then everything that depends on it start failing. The account contract will first call `__validate__` upon receiving a transaction. It receives as arguments (calldata):
+  * `call_array_len: felt` - number of calls.
+  * `call_array: AccountCallArray*` - array representing each `Call`.
+  * `calldata_len: felt` - number of calldata parameters. Remember calldata are the arguments used to call a function.
+  * `calldata: felt*` - array representing the function parameters.
+* `__validate_declare__`: Validates the declaration signature prior to the declaration. As of Cairo v0.10.0, contract classes should be declared from an Account contract ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)). Declare transactions now require accounts to pay fees.
+  * `class_hash: felt`:
+* `__execute__`: This is the only external entrypoint to interact with the Account contract. If `__validate__` is successful `__execute__` will be called. Acts as the state-changing entry point for all user interaction with any contract, including managing the account contract itself ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)).
+  * Same arguments as `__validate__`. However, `__execute__` returns a transaction response.
+
+We are also using new structs:
+1. A single `Call`:
+
+```Rust
+struct Call {
+    to: felt
+    selector: felt
+    calldata_len: felt
+    calldata: felt*
+}
+```
+Where:
+
+* `to` is the address of the target contract of the message.
+* `selector` is the selector of the function to be called on the target contract.
+* `calldata_len` is the number of calldata parameters.
+* `calldata` is an array representing the function parameters ([Open Zeppelin Docs, 2022](https://docs.openzeppelin.com/contracts-cairo/0.5.0/accounts)).
+
+
+2. `AccountCallArray`, a calls array:
+
+```Rust
+struct AccountCallArray {
+    to: felt
+    selector: felt
+    data_offset: felt
+    data_len: felt
+}
+```
+Where:
+* `to` and `selector` are the same as in `Call`.
+* `data_offset` is the starting position of the calldata array that holds the `Call`'s calldata.
+* `data_len` is the number of calldata elements in the `Call`.
+
+
+###Counterfactual deployment from inside
+
+Let us deploy the default account contract, inspired by the Open Zeppelin implementation, with alias `second-account`, to the Goerli 2 testnet. The  `--wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount` flag indicates we will use the default account contract, currently we can only use this contract with the CLI.
+
+```Bash
+starknet new_account --feeder_gateway_url https://alpha4-2.starknet.io --gateway_url https://alpha4-2.starknet.io --network_id 1536727068981429685321 --account second-account --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+```
+
+We get:
+
+```Bash
+Account address: 0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9
+Public key: 0x066ed5a84f995a2dcd714b505dc165a8df71473ebc374dbe5fe973631198ba72
+Move the appropriate amount of funds to the account, and then deploy the account
+by invoking the 'starknet deploy_account' command.
+
+NOTE: This is a modified version of the OpenZeppelin account contract. The signature is computed
+differently.
+```
+
+[OPTIONAL] We can go deeper into examining the default Open Zeppelin account contract to get the class hash, salt and constructor calldata that are used to calculate its address. [`src/utils/contract_address.py`](../../../src/utils/contract_address.py) is a copy of the [`contract_address.py`](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/core/os/contract_address/contract_address.py) library from the Starkware library. We added print statements in the `calculate_contract_address()` function to get the class hash, salt, and constructor calldata. If you wish to use it, go to where your OS stores your Python packages (likely `site-packages`) and replace `/starkware/starknet/core/os/contract_address/contract_address.py` with our [`src/utils/contract_address.py`](../../../src/utils/contract_address.py). Then, when we defined our account contract with `starknet new_account ...` we also get:
+
+```Bash
+Class Hash: 895370652103566112291566439803611591116951595367594863638369163604569619773
+Salt: 462250451139519919709009935198618602877233823783070820758189518720702799406
+Constructor calldata: [2909704878250883580952868877137725986814034606621060536770963048574421088882]
+```
+
+All three properties are in felt format. You can manually convert them into their hex representations, if you wish, with the [stark-utils](https://www.stark-utils.xyz/converter) converter. The Open Zeppelin default account contract requires a public key in its constructor ([see implementation](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo#L105)), if we wish, with our own account contracts, we can not add this requirement. The contract we defined above has a public key `0x066ed5a84f995a2dcd714b505dc165a8df71473ebc374dbe5fe973631198ba72` once we converted the above felt into hex format.
+
+Calculating the address is the key of this first step in counterfactual deployment. Remember, it has not yet been deployed, we only calculated the address and added this new account to the `.starknet_accounts/starknet_open_zeppelin_accounts.json` file. It is key to closely follow the `starknet_open_zeppelin_accounts.json` since there we can find our created account contracts; you will find it in your root directory, for example, `/Users/espejelomar/.starknet_accounts/starknet_open_zeppelin_accounts.json`. `starknet_open_zeppelin_accounts.json` shows relevant information for the creation of each account contract. For example, for the `first-account` we created previously we have:
+
+```Bash
+"1536727068981429685321": {
+        "second-account": {
+            "private_key": "XXX",
+            "public_key": "0x66ed5a84f995a2dcd714b505dc165a8df71473ebc374dbe5fe973631198ba72",
+            "salt": "0x1059fde2a4da7c421dd6dbe8af873a2977c6008c7a09e61db1c5a45d25ede2e",
+            "address": "0x2b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9",
+            "deployed": false
+        }
+    },
+```
+`1536727068981429685321` is the chain_id for goerli. Note it says `"deployed": false` since we have not deployed the contract. 
+
+If we use the same compiled code, salt (this is the main function of the salt), and constructor call data then we should be able to calculate the same address. The `get_address` function in [`src/utils/accounts_utils.py`](../../../src/utils/accounts_utils.py) (next step: create a new library for helping users more easily create account contracts 🚀) is able to calculate the address of any contract without deploying it. We will get the same address for the Open Zeppelin account contract if we get into Python mode in our terminal, `python3.9 -i src/utils/accounts_utils.py` (I am using `python 3.9`), and call (notice we reuse the `salt` and `constructor_calldata` we got above, and that we are using the compiled code of the default Open Zeppelin account contract in [`assets/compiled_open_zeppeling_account_contract.json`](../../../assets/compiled_open_zeppeling_account_contract.json).
+
+```Python
+get_address(
+    contract_path_and_name = "assets/compiled_open_zeppeling_account_contract.json",
+    salt = 462250451139519919709009935198618602877233823783070820758189518720702799406,
+    constructor_calldata = [2909704878250883580952868877137725986814034606621060536770963048574421088882],
+    deployer_address = 0,
+    compiled = True,
+)
+```
+
+We get:
+
+```Bash
+Account contract address: 0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9
+Class contract hash: 0x01fac3074c9d5282f0acc5c69a4781a1c711efea5e73c550c5d9fb253cf7fd3d
+Salt: 0x01059fde2a4da7c421dd6dbe8af873a2977c6008c7a09e61db1c5a45d25ede2e
+Constructor call data: [2909704878250883580952868877137725986814034606621060536770963048574421088882]
+
+Move the appropriate amount of funds to the account. Then deploy the account.
+```
+
+Everything matches, including the account contract address, to our calculation using `starknet new_account ...`. Great! We now know how we are able to calculate addresses before deploying. This is the most important part of counter factual deployment.
+
+Let's fund the calculated address. We can do this by bridging Goerli ETH from L1 to Goerli 2 in the L2. First, fund your L1 wallet with Goerli ETH (you can use the [Paradigm faucet](https://faucet.paradigm.xyz/api/auth/signin)). Now go into the [Goerli 2 contract in the L1](https://goerli.etherscan.io/address/0xaea4513378eb6023cf9ce730a26255d0e3f075b9#writeProxyContract) and in the external `deposit` function write the amount of ETH you wish to bridge and L2 recipient (our calculated contract address: 0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9). Now this contract can pay for its own deployment.
+
+We deploy the account contract to Goerli 2 using Protostar. Add (1) as input the constructor calldata, and (2) as salt our value we had before. If we do not specificate the salt value then Protostar generates a random value and we won´t deploy into our defined contract address.
+
+```Bash
+protostar deploy assets/compiled_open_zeppeling_account_contract.json --inputs 2909704878250883580952868877137725986814034606621060536770963048574421088882 --salt 462250451139519919709009935198618602877233823783070820758189518720702799406 --gateway-url https://alpha4-2.starknet.io --chain-id 1536727068981429685321
+```
+
+We get:
+
+```Bash
+[INFO] Deploy transaction was sent.
+Contract address: 0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9
+Transaction hash: 0x070326e2bed2746fe92847eacf9d04a05cf7b943369afb99f4ad09839f0281c0
+```
+
+The contract address is still the same. And now our contract is [deployed in Goerli 2](https://testnet-2.starkscan.co/contract/0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9#overview). Inside StarkScan go to the Portfolio tab to see the ETH we transferred to this address before the deployment.
+
+Now we dominate the Open Zeppelin account contract and how to counterfactually deploy it.
+
+*********
+**WIP** DISREGARD THE FOLLOWING
+*********
+
+
+### Examples
+
+Get the nonce with 
+
+```Bash
+starknet get_nonce --contract_address 0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9 --feeder_gateway_url https://alpha4-2.starknet.io --gateway_url https://alpha4-2.starknet.io --network_id 1536727068981429685321
+```
+
+This returns a `0`. What is a nonce? A sequential number attached to the account contract, that prevents transaction replay and guarantees the order of execution and uniqueness of the transaction hash.
+
+
+Deploy the voting contract with the contract we deployed as an admin and unique voter.
+
+```Bash
+protostar deploy build/vote.json --inputs 0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9 1 0x02b0fc135cae406bbc27766c189972dd3aae5fc79a66d5191a8d6ac76a0ce8f9 --gateway-url https://alpha4-2.starknet.io --chain-id 1536727068981429685321
+```
+
+We get:
+
+```Bash
+Contract address: 0x07d960d57c020be3bddba01fce139800590baf8e58b8abdb7b45bdf518b0a16e
+Transaction hash: 0x05c8b2a41b0d8fe7dccfa0cfe7be0281e2de22b3ba2dffd0a64c259b45e67171
+```
+
+Let's invoke with our new account contract.
+
+```Python
+sign_invoke_transaction(
+    contract_address=0x07D960D57C020BE3BDDBA01FCE139800590BAF8E58B8ABDB7B45BDF518B0A16E,
+    function_name="admin",
+    calldata=[],
+    signer_address=0x2B0FC135CAE406BBC27766C189972DD3AAE5FC79A66D5191A8D6AC76A0CE8F9,
+    private_key=0x7398FB40A1C5B537D97D1E8ED9439B3A3807F02814DDF501C7521AB84E5B4A7,
+)
+```
+
+Unlike Ethereum [EOAs](https://ethereum.org/en/developers/docs/accounts/#externally-owned-accounts-and-key-pairs), StarkNet accounts don't have a hard requirement on being managed by a public/private key pair.
+
+AA cares more about `who`(i.e. the contract address) rather than `how`(i.e. the signature).
+
+This leaves the ECDSA signature scheme up to the developer and is typically implemented using the [pedersen hash](https://docs.starknet.io/docs/Hashing/hash-functions) and native Stark curve:
+
+The `signature_1` contract has no concept of a public/private keypair. All the signing was done "off-chain" and yet with AA we're still able to operate a functioning account with a populated signature field.
+
+
+
+
 .
-├── lib
-├── protostar.toml
-├── src
-│   └── main.cairo
-└── tests
-    └── test_main.cairo
-```
-
-- Initially, information about the version of protostar used is found here `[“protostar.config“]`, where the external libraries used will be found.
-
-### Installing external dependencies (libraries)
-
-Protostar uses git submodules to install external dependencies. Soon it will be done with a package manager. Let's install a couple of dependencies.
-
-Installing `cairo-contracts` we indicate the repository where they are, that is, [github.com/OpenZeppelin/cairo-contracts](http://github.com/OpenZeppelin/cairo-contracts). Let's use `protostar install`:
-
-`protostar install https://github.com/OpenZeppelin/cairo-contracts`
-
-Let's install one more dependency, `cairopen_contracts`:
-
-`protostar install https://github.com/CairOpen/cairopen-contracts`
-
-Our new dependencies are stored in the `lib` directory:
-
-```
-❯ tree -L 2
 .
-├── lib
-│   ├── cairo_contracts
-│   └── cairopen_contracts
-├── protostar.toml
-├── src
-│   └── main.cairo
-└── tests
-    └── test_main.cairo
-```
+.
+.
+.
 
-Finally, add the following section to `protostar.toml`:
 
-```
-["protostar.shared_command_configs"]
-cairo-path = ["lib/cairo_contracts/src", "lib/cairopen_contracts/src"]
-```
 
-This allows Protostar to use those paths to find the libraries of interest. When you import, for example `from openzeppelin.access.ownable.library import Ownable`, Protostar will look for `Ownable` in the path `lib/cairo_contracts/src/openzeppelin/access/ownable/library`. If you change the name of the directory where you store your external dependencies then you would not use `lib` but the name of that directory.
+Unlike Ethereum where accounts are directly derived from a private key, there’s no native account concept on StarkNet.
 
-### Compiling
+Instead, signature validation has to be done at the contract level. To relieve smart contract applications such as ERC20 tokens or exchanges from this responsibility, we make use of Account contracts to deal with transaction authentication.
 
-In the past we have been compiling our contracts with `cairo-compile`. When we run `cairo-compile sum2Numbers.cairo --output x.json` to compile a Cairo `sum2Numbers.cairo` contract, the result is a new file in our working directory called `x.json`. The json file is used by `cairo-run` when we run our program.
-
-In Protostar we can compile all our StarkNet contracts at once with `protostar build`. But first we must indicate in the `[“protostar.contracts”]` section of `protostar.toml` the contracts we want to compile (or build). As we saw before, Protostar automatically creates a folder `src` where we can store our contracts. However, we can rename this folder or create our own. In basecamp we use a `contracts` folder where we store our contracts. We have a `contract_final.cairo` contract in our `contracts` folder. We write in `protostar.toml` that we want to compile the contract in `contracts/contract_final.cairo` and that we want to call it `main` once it is compiled:
-
-```
-["protostar.contracts"]
-main = [
-    "./contracts/contract_final.cairo",
-]
-```
-
-We run `protostar build`. We will see that we have a new `build` directory with an `main.json` file. This is what we were looking for!
-
-Moral: if your contract is not in the `[“protostar.contracts“]` section of `protostar.toml` it will not be compiled.
-
-> Note: You will not be able to compile pure Cairo code using `protostar build`. It is only for StarkNet contracts (they have the `%lang starknet` signal at the beginning). To compile and run pure Cairo applications you need to use `cairo-compile` and `cairo-run` ([see Cairo tutorial](3_cairo_basics.md). In following tutorials we will learn how to create StarkNet contracts.
-
-At this point we can move on to deploying StarkNet contracts with Protostar.
-
-### A primer on the `starknet-devnet`
-
-Transactions on the testnet take time to complete so it's best to start developing and testing locally. We will use the [devnet developed by Shard Labs](https://github.com/Shard-Labs/starknet-devnet). We can think of this step as an equivalent of Ganache. That is, it emulates the testnet (alpha goerli) of StarkNet. 
-
-Install using:
-
-`pip install starknet-devnet`
-
-Restart your terminal and run `starknet-devnet --version` to check that the installation was successful. Check that you have [the most up-to-date version](https://github.com/Shard-Labs/starknet-devnet/releases). If you don't have it then run `pip install --upgrade starknet-devnet`.
-
-Initialize the devnet in a separate shell (or tab) with `starknet-devnet --accounts 3 --gas-price 250 --seed 0`:
-
-```
-❯ starknet-devnet --accounts 3 --gas-price 250 --seed 0
-Account #0
-Address: 0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a
-Public key: 0x7e52885445756b313ea16849145363ccb73fb4ab0440dbac333cf9d13de82b9
-Private key: 0xe3e70682c2094cac629f6fbed82c07cd
-
-Account #1
-Address: 0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79
-Public key: 0x175666e92f540a19eb24fa299ce04c23f3b75cb2d2332e3ff2021bf6d615fa5
-Private key: 0xf728b4fa42485e3a0a5d2f346baa9455
-
-Account #2
-Address: 0x7447084f620ba316a42c72ca5b8eefb3fe9a05ca5fe6430c65a69ecc4349b3b
-Public key: 0x58100ffde2b924de16520921f6bfe13a8bdde9d296a338b9469dd7370ade6cb
-Private key: 0xeb1167b367a9c3787c65c1e582e2e662
-
-Initial balance of each account: 1000000000000000000000 WEI
-Seed to replicate this account sequence: 0
-WARNING: Use these accounts and their keys ONLY for local testing. DO NOT use them on mainnet or other live networks because you will LOSE FUNDS.
-
- * Listening on http://127.0.0.1:5050/ (Press CTRL+C to quit)
- ```
-
-You can run `curl http://127.0.0.1:5050/is_alive` to check if the devnet is active. If it is active you will receive `Alive!!!%` back.
-
-With this we are indicating that we will create three accounts and that the transactions will cost 250 wei per gas. We put a number in seed to have the same accounts every time we activate our devnet. These accounts are based on the code and standards developed by [Open Zepellin for Cairo](https://github.com/OpenZeppelin/cairo-contracts/tree/v0.2.1).
-
-It is key that we have at hand the address where our devnet is running. In the photo above it is: `http://127.0.0.1:5050/`. We will use it later.
-
-The interaction with the devnet and the testnet is very similar. If you want to see all the arguments available in the `starknet-devnet` call you can call `starknet-devnet --help`.
-
-### Deploying to the devnet and testnet
-
-Let's use a real example. When we initialize a Protostar project, a `main.cairo` contract is automatically created in the `src` directory. You can use it as an example of a contract to deploy to the devnet and then to the testnet. You just need to make sure that in `protostar.toml` you define what will be compiled. In this tutorial we are going to deploy a contract in [this repository](./contracts/contract_final.cairo). Also, please note that the configuration in this tutorial is different from the one you get when you run `protostar init`. This is merely for space issues. You should be able to follow the tutorial and run your contracts in your own project. In this `protostar.toml` we place:
-
-```
-["protostar.contracts"]
-main = [
-    "/contracts/contract_final.cairo",
-]
-```
-Run `protostar build` to compile and create the `build/main.json` that we will use for deployment.
-
-To deploy our contracts on the devnet using Protostar we can create configuration profiles. In the `protostar.toml` we create a section `[profile.devnet.protostar.deploy]` where we put the url where we deploy our devnet locally: `gateway-url=”http://127.0.0.1:5050/”` and `chain-id="1"`. For the testnet the section would be `[profile.testnet.protostar.deploy]` and we put `network="testnet"`.
-
-```
-[profile.devnet.protostar.deploy]
-gateway-url="http://127.0.0.1:5050/"
-chain-id="1"
-
-[profile.testnet.protostar.deploy]
-network="testnet"
-```
-
-For the devnet we run:
-
-```
-protostar -p devnet deploy build/main.json --inputs 1 222 333
-```
-
-After the `--inputs` flag we add the calldata of the constructor. In this case we are just using dummy values.
-
-For the testnet we run:
-
-```
-protostar -p testnet deploy build/main.json --inputs 1 222 333
-```
-
-Everything is intuitive, except perhaps:
-- `-p` refers to the profiles we created in `protostar.toml`
-- `--inputs` are the constructor arguments for the contract we are deploying. Don't worry in the next tutorial we learn what a constructor is. In this case the ERC721 constructor asks us for three felts (`name`, `symbol` and `owner`).
-
-We could also deploy without the help of the profiles in `protostar.toml`. In the case of the testnet it can be efficient because we just add `--network testnet`:
-
-```
-protostar deploy build/main.json --network testnet --inputs 1 222 333
-```
-
-But in the case of the devnet we would have to add two arguments so perhaps the profiles are more convenient:
-
-```
-protostar deploy build/main.json --gateway-url "http://127.0.0.1:5050/" --chain-id "1" --inputs 1 222 333
-```
-
-When we deploy to the devnet or testnet we get the contract address and the transaction hash:
-
-```
-Contract address: 0x002454c7b1f60f52a383963633dff767fd5372c43aad53028a5a8a2b9e04646d
-Transaction hash: 0x05a2f78261444b97b155417a5734210abe2ee1081b7f12f39f660321fd10e670
-```
-
-It is important to save the contract address as we will interact with it in following functions. We will review this in other tutorials.
-
-If you deployed to the testnet you can use the contract address to interact with your contract in an block explorer: [Voyager](https://goerli.voyager.online/) or [StarkScan](https://testnet.starkscan.co/). These block explorers are equivalent to [Etherscan](https://goerli.voyager.online/) for L1.
-
-The advantage of deploying to the devnet first is that we can interact more quickly with our contracts. For the testnet we will have to wait about a few minutes.
-
-## Deploying with the `starknet` CLI
-
-On the inside, Protostar is using the `starknet` CLI to deploy. There are times when we don't want to fully depend on Protostar, for example when there is an update from StarkNet and it hasn't been applied to the Protostar library yet.
-
-We will explore the `starknet` CLI in more detail later. For now let's see how to deploy the exact same contract.
-
-For the devnet, once you turned it on at the gateway http://127.0.0.1:5050, it would be:
-
-```
-starknet deploy --contract build/main.json --inputs 27424471826656371 4279885 1268012686959018685956609106358567178896598707960497706446056576062850827536 --gateway_url "http://127.0.0.1:5050" --no_wallet
-```
-
-For the testnet:
-
-```
-starknet deploy --contract build/main.json --inputs 27424471826656371 4279885 1268012686959018685956609106358567178896598707960497706446056576062850827536 --network alpha-goerli --no_wallet
-```
-
-In both cases we get the contract address and the transaction hash; same as deploying with Protostar.
-
-
-<h2 align="center" id="nile"><a href="https://github.com/OpenZeppelin/nile">Nile</a></h2>
-
-<h2 align="center" id="hardhat"><a href="https://github.com/Shard-Labs/starknet-hardhat-plugin">Hardhat</a></h2>
-
-<h2 align="center" id="nodes">Nodes</h2>
-
-### [Pathfinder](https://github.com/eqlabs/pathfinder)
-
-### [Juno](https://github.com/NethermindEth/juno)
-
-<h2 align="center" id="devnet"><a href="https://github.com/Shard-Labs/starknet-devnet">Devnet</a></h2>
-
-<h2 align="center" id="testing">Testing</h2>
-
-<h2 align="center" id="libraries">Libraries</h2>
-
-#### Sources
-
-[<https://github.com/gakonst/awesome-starknet>]
