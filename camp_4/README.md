@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>Camp 5: Peering into the Future</h1>
+    <h1>Camp 4: Peering into the Future</h1>
 
 |Presentation|Video|Workshop|
 |:----:|:----:|:----:|

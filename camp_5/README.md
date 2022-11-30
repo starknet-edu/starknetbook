@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>Camp 6: The Cairo CLI and VM</h1>
+    <h1>Camp 5: Cairo</h1>
 
 |Presentation|Video|Workshop
 |:----:|:----:|:----:|

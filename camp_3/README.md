@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>Camp 3: Deeper into StarkNet</h1>
+    <h1>Camp 3: StarkNet</h1>
 
 |Presentation|Video|Workshop
 |:----:|:----:|:----:|

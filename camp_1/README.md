@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>Camp 1: Writing Cairo and deploying in StarkNet</h1>
+    <h1>Camp 1: Getting Started</h1>
 
 |Presentation|Video|Workshop
 |:----:|:----:|:----:|
