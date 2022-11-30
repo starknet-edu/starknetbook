@@ -15,13 +15,13 @@ Developers that finish this Camp will be able to build their own Cairo smart con
 ### Topics
 
 <ol>
-    <li>Writing Cairo</li>
-    <li>StarkNet Contracts</li>
-    <li>Storage</li>
+    <li><a href="#cairo">Writing Cairo</a></li>
+    <li><a href="#starknet">StarkNet Contracts</a></li>
+    <li><a href="#storage">Storage</a></li>
 </ol>
 
 
-<h2 align="center" id="Writing Cairo">Writing Cairo</h2>
+<h2 align="center" id="cairo">Writing Cairo</h2>
 
 ### Add two numbers
 
@@ -583,7 +583,7 @@ It's not that complicated but it's satisfying enough.
 Congratulations! We already have an intermediate level from Cairo. Cairo is to StarkNet what Solidity is to Ethereum. Let's go and deploy some contracts.
 
 
-<h2 align="center" id="starknet_contracts">StarkNet Contracts</h2>
+<h2 align="center" id="starknet">StarkNet Contracts</h2>
 
 > “StarkNet is a permissionless decentralized ZK-Rollup operating as an L2 network over Ethereum, where any dApp can achieve unlimited scale for its computation, without compromising Ethereum’s composability and security.” - [StarkNet Documentation](https://starknet.io/docs/hello_starknet/index.html#hello-starknet).
 

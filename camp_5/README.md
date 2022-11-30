@@ -10,10 +10,11 @@
 ### Topics
 
 <ol>
-    <li>CLI</li>
-    <li>C(pu)AIR(o)</li>
-    <li>Syntax</li>
-    <li>Cairo VM</li>
+    <li><a href="#cairo_cli">CLI</a></li>
+    <li><a href="#cairolang">C(pu)AIR(o)</a></li>
+    <li><a href="#computational_integrity">Computational Integrity</a></li>
+    <li><a href="#syntax">Syntax</a></li>
+    <li><a href="#cairo_vm">Cairo VM</a></li>
 </ol>
 
 <div align="center">

@@ -10,13 +10,13 @@
 ### Topics
 
 <ol>
-    <li><a>Protostar</a></a>
-    <li><a>Nile</a></a>
-    <li><a>Hardhat</a></a>
-    <li><a>Nodes</a></a>
-    <li><a>Devnet</a></a>
-    <li><a>Testing</a></a>
-    <li><a>Libraries</a></a>
+    <li><a href="#protostar">Protostar</a></a>
+    <li><a href="#nile">Nile</a></a>
+    <li><a href="#hardhat">Hardhat</a></a>
+    <li><a href="#nodes">Nodes</a></a>
+    <li><a href="#devnet">Devnet</a></a>
+    <li><a href="#testing">Testing</a></a>
+    <li><a href="#libraries">Libraries</a></a>
 </ol>
 
 `UNDER CONSTRUCTION`:

@@ -10,13 +10,12 @@
 ### Topics
 
 <ol>
-    <li>Modular Arithmetic</li>
-    <li>Finite Field Arithmetic</li>
-    <li>Polynomials</li>
-    <li>ZK Terminology</li>
-    <li>Computational Integrity</li>
-    <li>STARKs</li>
-    <li>STARKs vs SNARKs</li>
+    <li><a href="#modular_arithmetic">Modular Arithmetic</a></li>
+    <li><a href="#finite_fields">Finite Field Arithmetic</a></li>
+    <li><a href="#polynomials">Polynomials</a></li>
+    <li><a href="#zk_terminology">ZK Terminology</a></li>
+    <li><a href="#computational_integrity">Computational Integrity</a></li>
+    <li><a href="#starks">STARKs</a></li>
 </ol>
 
 <div align="center">

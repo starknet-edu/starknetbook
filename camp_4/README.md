@@ -10,11 +10,11 @@
 ### Topics
 
 <ol>
-    <li><a>Data Availability</a></a>
-    <li><a>Recursion</a></a>
-    <li><a>Throughput</a></a>
-    <li><a>Decentralization</a></a>
-    <li><a>Building Community</a></a>
+    <li><a href="#data_availability">Data Availability</a></a>
+    <li><a href="#recursion">Recursion</a></a>
+    <li><a href="#throughput">Throughput</a></a>
+    <li><a href="#decentralization">Decentralization</a></a>
+    <li><a href="#community">Building Community</a></a>
 </ol>
 
 <h2 align="center" id="data_availability">Data Availability</h2>
@@ -48,7 +48,8 @@ The data availability problem:
 - composability implications
 
 <div align="center">
-    <h2 id="recurison">Recursion</h2>
+
+<h2 id="recursion">Recursion</h2>
 
 [video](https://www.youtube.com/watch?v=hjTCIT9BGkA), [slides](https://docs.google.com/presentation/d/e/2PACX-1vRbnDDuGdjcMaUAg1rRztGsLpGhtPsMX1vCKk-sX4v0cHMZdOMWZh177qXYM8lacqGoSJ4X8NvEg8RX/pub?slide=id.g12fb33eb0c0_0_386)
 </div>
