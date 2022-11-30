@@ -10,13 +10,13 @@
 ### Topics
 
 <ol>
-    <li>Blocks</li>
-    <li>The Lifecycle of Transactions</li>
-    <li>StarkNet OS</li>
-    <li>State Transition/Fees</li>
-    <li>Account Contracts</li>
-    <li>Account Abstraction</li>
-    <li>L1-L2 Messaging</li>
+    <li><a href="#blocks">Blocks</a></li>
+    <li><a href="#tx_lifecycle">The Lifecycle of Transactions</a></li>
+    <li><a href="#starknet_os">StarkNet OS</a></li>
+    <li><a href="#state">State Transition/Fees</a></li>
+    <li><a href="#accounts">Account Contracts</a></li>
+    <li><a href="#aa">Account Abstraction</a></li>
+    <li><a href="#l1l2">L1-L2 Messaging</a></li>
 </ol>
 
 <h2 align="center" id="blocks">Blocks</h2>
