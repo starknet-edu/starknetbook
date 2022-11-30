@@ -21,13 +21,12 @@ Basecamp is a curriculum built to teach the fundamental building blocks of the C
 ### Route
 
 0. [Primer](./primer/README.md)
-1. [Camp 1: Writing Cairo and deploying in StarkNet](./camp_1/README.md)
-2. [Camp 2: BUIDL and tooling](./camp_2/README.md)
-3. [Camp 3: Deeper into StarkNet](./camp_3/README.md)
-4. [Camp 4: Account Abstraction and L1-L2 Messaging](./camp_4/README.md)
-5. [Camp 5: Peering into the future](./camp_5/README.md)
-6. [Camp 6: The Cairo CLI and VM](./camp_6/README.md)
-7. [Camp 7: Zero Knowledge and STARKS](./camp_7/README.md)
+1. [Camp 1: Getting Started](./camp_1/README.md)
+2. [Camp 2: BUIDL and Tooling](./camp_2/README.md)
+3. [Camp 3: StarkNet](./camp_3/README.md)
+4. [Camp 4: Peering into the future](./camp_4/README.md)
+5. [Camp 5: Cairo](./camp_5/README.md)
+6. [Camp 6: STARKs](./camp_6/README.md)
 
 ### Where to start?
 
@@ -35,14 +34,14 @@ Everybody has different goals in their Cairo and StarkNet journey. Follow this g
 
 * ...want to start coding scalable and descentralized smart contracts right away? **Camps 1 and 2**.
 * ...have a hackathon next week? **Camps 1 and 2**.
-* ...want to go deeper into StarkNet's power? **Go on to Camps 3 - 5**.
-* ...want to explore how STARKs and Cairo are created? **Go on to camps 6 - 7**.
+* ...want to go deeper into StarkNet's power? **Go on to Camps 3 - 4**.
+* ...want to explore how STARKs and Cairo are created? **Go on to camps 5 - 6**.
 
 ### Setup
 
-Camp_2 will require the basic cairo-lang [setup](https://www.cairo-lang.org/docs/quickstart.html)
+* Basic cairo-lang [setup](https://www.cairo-lang.org/docs/quickstart.html).
+* Ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7).
 
-Camp_3 will require the ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7)
 
 ### Links
 
@@ -56,11 +55,6 @@ If you find an issue/bug or have a feature request please submit an issue here
 [Issues](https://github.com/starknet-edu/basecamp/issues)
 
 Do you have a question? Join our [Discord server](https://starknet.io/discord), register, and join channel #tutorials-support.
-
-### Contributing
-
-If you are looking to contribute, please head to the
-[Contributing](https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md) section. We would especially love PRs including alternate programming language for the examples included in this repository.
 
 ### Contributing
 
