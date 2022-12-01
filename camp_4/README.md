@@ -1,9 +1,9 @@
 <div align="center">
     <h1>Camp 4: Peering into the Future</h1>
 
-|Presentation|Video|Workshop|
+|Presentation|Video|Try what you learned|
 |:----:|:----:|:----:|
-|[B E Y O N D](https://drive.google.com/file/d/1LOvpX8mXvXIXaj2eybQz6ZvnvtkiTi8n/view?usp=sharing)|[video](https://drive.google.com/file/d/1o8vbsAWQs0VndlUWhmsKckdyNr7HYeCx/view?usp=sharing)| local meetups/mentoship |
+|[B E Y O N D](https://drive.google.com/file/d/1LOvpX8mXvXIXaj2eybQz6ZvnvtkiTi8n/view?usp=sharing)|[video](https://drive.google.com/file/d/1o8vbsAWQs0VndlUWhmsKckdyNr7HYeCx/view?usp=sharing)|  |
 
 </div>
 

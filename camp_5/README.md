@@ -1,9 +1,9 @@
 <div align="center">
     <h1>Camp 5: Cairo</h1>
 
-|Presentation|Video|Workshop
+|Presentation|Video|Try what you learned
 |:----:|:----:|:----:|
-|[Cairo](https://drive.google.com/file/d/1nXi1ZLPM-19kXpCxwOMLQU_GMzlNYMNZ/view?usp=sharing)|[Cairo Basecamp](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing)|[StarkNet Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)|
+|[September 2022](https://drive.google.com/file/d/1nXi1ZLPM-19kXpCxwOMLQU_GMzlNYMNZ/view?usp=sharing)|[Cairo Basecamp (September 2022)](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing)||
 
 </div>
 

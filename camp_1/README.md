@@ -1,15 +1,17 @@
 <div align="center">
     <h1>Camp 1: Getting Started</h1>
 
-|Presentation|Video|Workshop
+|Presentation|Video|Try what you learned
 |:----:|:----:|:----:|
-|[StarkNet](https://drive.google.com/file/d/1_AQq4ulTmB0VAszmauvYUHEVjwdAgMim/view?usp=sharing)|StarkNet Basecamp [p1 (the structure could be different)](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|[StarkNet Messaging Bridge](https://github.com/starknet-edu/starknet-messaging-bridge)|
+|[September 2022](https://drive.google.com/file/d/1_AQq4ulTmB0VAszmauvYUHEVjwdAgMim/view?usp=sharing)|StarkNet Basecamp [p1 (September 2022)](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2 (September 2022)](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|Finish the gamified [StarkNet-Cairo 101](https://github.com/starknet-edu/starknet-cairo-101) tutorial. Code your own [ERC721 (NFT)](https://github.com/starknet-edu/starknet-erc721), or [ERC20](https://github.com/starknet-edu/starknet-erc20)|
 
 </div>
 
 ### Objetive
 
 Developers that finish this Camp will be able to build their own Cairo smart contracts and deploy them on the StarkNet network. We will learn everything required to code in Cairo, the language to operate on the Cairo OS (more on this on a later Camp). Then we will create and deploy a not-that-simple contract to allow DAO members to vote entirely on-chain.
+
+After finishing this tutorial, try to hone your skills by earning all the points in the [Cairo 101](https://github.com/starknet-edu/starknet-cairo-101) workshop, code your own [ERC721 (NFT)](https://github.com/starknet-edu/starknet-erc721), or deploy a customized [ERC20](https://github.com/starknet-edu/starknet-erc20). 
 
 
 ### Topics

@@ -1,9 +1,9 @@
 <div align="center">
     <h1>Camp 3: StarkNet</h1>
 
-|Presentation|Video|Workshop
+|Presentation|Video|Try what you learned
 |:----:|:----:|:----:|
-|[StarkNet](https://drive.google.com/file/d/1_AQq4ulTmB0VAszmauvYUHEVjwdAgMim/view?usp=sharing)|StarkNet Basecamp [p1](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|[StarkNet Messaging Bridge](https://github.com/starknet-edu/starknet-messaging-bridge)|
+|[September 2022](https://drive.google.com/file/d/1_AQq4ulTmB0VAszmauvYUHEVjwdAgMim/view?usp=sharing)|StarkNet Basecamp [p1 (September 2022)](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2 (September 2022)](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|Make your own [Messaging Bridge](https://github.com/starknet-edu/starknet-messaging-bridge). Test your [Account Abstraction capacity](https://github.com/starknet-edu/starknet-accounts)|
 
 </div>
 

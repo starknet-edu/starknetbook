@@ -1,9 +1,9 @@
 <div align="center">
     <h1>Camp 6: STARKs</h1>
 
-|Presentation|Video|Workshop
+|Presentation|Video|Try what you learned
 |:----:|:----:|:----:|
-|[STARKs](https://drive.google.com/file/d/1asONnOcSnRJwMXF-Zx1uJBdpbMrLYnmE/view?usp=sharing)|[Camp 1](https://www.youtube.com/watch?v=7p60e7RzuMs)|[STARK 101](https://starkware.co/stark-101)|
+|[September 2022](https://drive.google.com/file/d/1asONnOcSnRJwMXF-Zx1uJBdpbMrLYnmE/view?usp=sharing)|[Camp 1 (September 2022)](https://www.youtube.com/watch?v=7p60e7RzuMs)|Go hardcore with StarkWare's [STARK 101](https://starkware.co/stark-101)|
 
 </div>
 

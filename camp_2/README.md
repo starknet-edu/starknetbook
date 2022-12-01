@@ -1,9 +1,9 @@
 <div align="center">
     <h1>Camp 2: BUIDL and tooling</h1>
 
-|Presentation|Video|Workshop
+|Presentation|Video|Try what you learned
 |:----:|:----:|:----:|
-|-|-| [starknet-debug](https://github.com/starknet-edu/starknet-debug) |
+|-|-|Test your debugging capabilities with [starknet-debug](https://github.com/starknet-edu/starknet-debug)|
 
 </div>
 
