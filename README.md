@@ -20,28 +20,23 @@ Basecamp is a curriculum built to teach the fundamental building blocks of the C
 
 ### Route
 
-0. [Primer](./primer/README.md)
-1. [Camp 1: Getting Started](./camp_1/README.md)
-2. [Camp 2: BUIDL and Tooling](./camp_2/README.md)
-3. [Camp 3: StarkNet](./camp_3/README.md)
-4. [Camp 4: Peering into the future](./camp_4/README.md)
-5. [Camp 5: Cairo](./camp_5/README.md)
-6. [Camp 6: STARKs](./camp_6/README.md)
+0. [Primer](./primer/)
+1. [Camp 1: Getting Started](./camp_1/)
+2. [Camp 2: BUIDL and Tooling](./camp_2/)
+3. [Camp 3: StarkNet](./camp_3/)
+4. [Camp 4: Peering into the future](./camp_4/)
+5. [Camp 5: Cairo](./camp_5/)
+6. [Camp 6: STARKs](./camp_6/)
 
 ### Where to start?
 
 Everybody has different goals in their Cairo and StarkNet journey. Follow this guide to continue trough the Basecamp; do you...
 
+* ...want to set up your environement? [Go here](./camp_1/README.md#setup)
 * ...want to start coding scalable and descentralized smart contracts right away? **Camps 1 and 2**.
 * ...have a hackathon next week? **Camps 1 and 2**.
 * ...want to go deeper into StarkNet's power? **Go on to Camps 3 - 4**.
 * ...want to explore how STARKs and Cairo are created? **Go on to camps 5 - 6**.
-
-### Setup
-
-* Basic cairo-lang [setup](https://www.cairo-lang.org/docs/quickstart.html).
-* Ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7).
-* Setting up a StarkNet dev environment with [Python](https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-python-e4c61c1e8da6?source=collection_home---5------1-----------------------) or [Docker](https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-docker-19955188bb20?source=collection_home---5------0-----------------------)
 
 
 ### Links

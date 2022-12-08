@@ -17,10 +17,17 @@ After finishing this tutorial, try to hone your skills by earning all the points
 ### Topics
 
 <ol>
+    <li><a href="#setup">Setting up your environment</a></li>
     <li><a href="#cairo">Writing Cairo</a></li>
     <li><a href="#starknet">StarkNet Contracts</a></li>
     <li><a href="#storage">Storage</a></li>
 </ol>
+
+<h2 align="center" id="setup">Setting up your environment</h2>
+
+* Basic cairo-lang [setup](https://www.cairo-lang.org/docs/quickstart.html).
+* Ultimate development environment [setup](https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7).
+* Setting up a StarkNet dev environment with [Python](https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-python-e4c61c1e8da6?source=collection_home---5------1-----------------------) or [Docker](https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-docker-19955188bb20?source=collection_home---5------0-----------------------)
 
 
 <h2 align="center" id="cairo">Writing Cairo</h2>

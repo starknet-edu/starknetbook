@@ -12,7 +12,7 @@ package-lock.json
 **/*compiled.json
 **/*abi.json
 **/*.bin
-
+*.DS_STORE*
 **/*.txt
 
 **/*.sum
