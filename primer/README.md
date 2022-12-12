@@ -74,7 +74,7 @@ Let's read that information:
 time cat bank.yaml
 ```
 
-It's obviously very fast to read and write this data from our local disk, and powerful [database mechanisms](https://www.postgresql.org) can be applied to optimize accesss to the data. BUT if you drop your computer or get too close to a large ACME magnet Alice looses her valuable bank account information.
+It's obviously very fast to read and write this data from our local disk, and powerful [database mechanisms](https://www.postgresql.org) can be applied to optimize accesss to the data. BUT if you drop your computer or get too close to a large ACME magnet Alice loses her valuable bank account information.
 <p align="center">
     🎯
     <strong>Goals: </strong>
