@@ -1,7 +1,7 @@
 
 ### New structure proposal
 
-0. [Primer](./primer/)
+0. [Primer](./primer/) - Ben & Henri
    1. Bitcoin
    2. Smart Contracts
    3. Ethereum
@@ -10,8 +10,9 @@
    6. A Primer on ZKEVMs and Alternative VMs
    7. Elliptic curve cryptography
    8. Hashing
-1. [Camp 1: Getting Started](./camp_1/)
+1. [Camp 1: Getting Started](./camp_1/) - Omar
    1. Setting up your environment
+        A. Something else
    2. Writing Cairo
    3. StarkNet Contracts
    4. Cairo syntax
@@ -27,7 +28,7 @@
    14. Customizing an account contract
    15. What is an ERC20? (starknet-erc20)
    16. What is an ERC721? (starknet-erc721)
-2. [Camp 2: BUIDL and Tooling](./camp_2/)
+2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook
    1. Tools:
    2. Devnet
    2. Protostar
@@ -43,7 +44,7 @@
    9. Best practices
    8. Testing
    9. Libraries
-3. [Camp 3: StarkNet](./camp_3/)
+3. [Camp 3: StarkNet](./camp_3/) - David
    1. Blocks
    2. The Lifecycle of Transactions
    3. StarkNet OS
@@ -59,21 +60,25 @@
    13. Verifiers in Cairo
    14. Hints
    15. Fee calculation and paying for fees
-4. [Camp 4: Peering into the future](./camp_4/)
+4. [Camp 4: Peering into the future](./camp_4/) - David
    1. Data Availability
-   2. Recursion
+   2. Recursion / Fractal scaling
    3. Throughput
    4. Decentralization
    5. Building Community
-5. [Camp 5: Cairo](./camp_5/)
+   6. Fee market
+   7. 
+5. [Camp 5: Cairo](./camp_5/) - Ben
    1. C(pu)AIR(o)
    2. Computational Integrity
    3. Syntax
    4. Cairo VM
-6. [Camp 6: STARKs](./camp_6/)
+6. [Camp 6: STARKs](./camp_6/) - Omar & Henri
    1. Modular Arithmetic
    2. Finite Field Arithmetic
    3. Polynomials
    4. Computational Integrity
    5. Zero Knowledge Proofs Basics
    6. STARKs
+7. Lost & found
+    1. Add items that were in your category, but you don't want in
