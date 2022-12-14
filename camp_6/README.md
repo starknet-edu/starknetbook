@@ -223,6 +223,25 @@ Given a specific first term for a Collatz sequence, a simple computer program ca
 
 The details, however, matter a great deal. While there are many ways in which an execution trace (and a set of polynomial constraints) may describe a specific computation, only a handful of them result in a small STARK proof which can be constructed efficiently. Much of the effort in StarkWare is devoted to designing reductions that lead to good polynomial constraints, which we call AIR (Algebraic Intermediate Representation), as much of the performance of our systems depends on it.
 
+### Step 2: Transform the execution trace and the set of polynomial constraints into a single low-degree polynomial
+
+Using a Fibonacci sequence, we will show how the prover can combine the execution trace and the polynomial constraints to obtain a polynomial that is guaranteed to be of low degree if and only if the execution trace satisfies the polynomial constraints that we started with. Moreover, we will show how the domain over which the polynomial is considered allows the verifier to evaluate it succinctly. We also briefly discuss how error correction codes play a role in STARKs.
+
+[XXX Should we add fine fields here? We will assume familiarity with finite groups, polynomials over finite fields, and the previous posts in this series.]
+
+Recall that our goal is to make it possible for a verifier to ask a prover a very small number of questions, and decide whether to accept or reject the proof with a guaranteed high level of accuracy. Ideally, the verifier would like to ask the prover to provide the values in a few (random) places in the execution trace, and check that the polynomial constraints hold for these places. A correct execution trace will naturally pass this test. However, it is not hard to construct a completely wrong execution trace, that violates the constraints only at a single place, and, doing so, reach a completely far and different outcome. Identifying this fault via a small number of random queries is highly improbable.
+
+Common techniques that address similar problems are [**Error Correction Codes**](https://en.wikipedia.org/wiki/Error_detection_and_correction).
+
+Error Correction Codes transform a set of strings, some of which may be very similar to one another, into a set of strings that are pairwise very different, by replacing the original strings with longer strings.
+
+Interestingly, polynomials can be used to construct good error correction codes, since two polynomials of degree d, evaluated on a domain that is considerably larger than $d$, are different almost everywhere (to see this, notice that the difference between distinct degree-$d$ polynomials is a non-zero polynomial of degree $d$, hence has at most $d$ zeros). Such codes are called **Reed-Solomon** codes.
+
+Observing that, we can extend the execution trace by thinking of it as an evaluation of a polynomial on some domain, and evaluating this same polynomial on a much larger domain. Extending in a similar fashion an incorrect execution trace, results in a vastly different string, which in turn makes it possible for the verifier to distinguish between these cases using a small number of queries.
+
+Our plan is therefore to 1) rephrase the execution trace as a polynomial, 2) extend it to a large domain, and 3) transform that, using the polynomial constraints, into yet another polynomial that is guaranteed to be of low degree if and only if the execution trace is valid.
+
+
 
 
 
