@@ -10,40 +10,46 @@
    6. A Primer on ZKEVMs and Alternative VMs
    7. Elliptic curve cryptography
    8. Hashing
+
 1. [Camp 1: Getting Started](./camp_1/) - Omar
+Camp's goal: the student will be able to code, deploy and interact with **quality** smart contracts that leverage the low-fees provided by StarkNet. They will get a proficient level in Cairo.
    1. Setting up your environment
-        A. Something else
-   2. Writing Cairo
-   3. StarkNet Contracts
-   4. Cairo syntax
-   5. Commonly used libraries
-   6. Recursion
-   7. Calling other contracts
-   8. L1/L2 interactions
-   9. Writing a dapp
-   10. Building a front end
-   11. Deploying an ERC20
-   12. Deploying an ERC721
-   13. Deploying a smart contract
-   14. Customizing an account contract
-   15. What is an ERC20? (starknet-erc20)
-   16. What is an ERC721? (starknet-erc721)
+   2. Cairo: Basics
+   3. StarkNet contracts basics
+   4. Basics of the starknet CLI
+      1. Deploying a smart contract
+   5. Calling other contracts
+   6. L1/L2 interactions
+   7. Deploying an ERC20
+   8. Deploying an ERC721
+   9.  Cairo: Intermediate
+      1. SOLID Cairo: OOP-like programming, and iterator pattern
+      2. Recursion
+
+Observations:
+* Omar: 
+  * The "Customizing an account contract" could be a bit too advanced for the Getting Started camp. I think it  could better go in Camp 3.
+  * The "Writing a dapp", "Building a front end" and "Libraries" parts could go in Camp 2 where we teach tooling.
+  * The "What is an ERC20? (starknet-erc20)" and "What is an ERC721? (starknet-erc721)" could already go inside the "Deploying an ERC20" and "Deploying an ERC721" sections.
+
+
 2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook
    1. Tools:
    2. Devnet
-   2. Protostar
-   3. Nile
-   4. Hardhat
-   5. Third party libraries
-   5. `starknet_py` 
-   6. `starknet.js`
-   7. Caigo
-   6. Open Zeppelin
-   7. Running a node
-   8. Indexing starknet
-   9. Best practices
-   8. Testing
-   9. Libraries
+   3. Protostar
+   4. Nile
+   5. Hardhat
+   6. Third party libraries
+   7. `starknet_py` 
+   8. `starknet.js`
+   9. Caigo
+   10. Open Zeppelin
+   11. Running a node
+   12. Indexing starknet
+   13. Best practices
+   14. Testing
+   15. Libraries
+
 3. [Camp 3: StarkNet](./camp_3/) - David
    1. Blocks
    2. The Lifecycle of Transactions
@@ -60,6 +66,7 @@
    13. Verifiers in Cairo
    14. Hints
    15. Fee calculation and paying for fees
+
 4. [Camp 4: Peering into the future](./camp_4/) - David
    1. Data Availability
    2. Recursion / Fractal scaling
@@ -68,17 +75,24 @@
    5. Building Community
    6. Fee market
    7. 
+
 5. [Camp 5: Cairo](./camp_5/) - Ben
    1. C(pu)AIR(o)
    2. Computational Integrity
    3. Syntax
    4. Cairo VM
+
 6. [Camp 6: STARKs](./camp_6/) - Omar & Henri
+   Camp's goal: the student will be able to understand the foundamental underpinnings of what is an STARKs and how it works. It is **not the goal** to make the student proficient in cryptography but to allow they to understand technical texts on ZK cryptography. 
    1. Modular Arithmetic
    2. Finite Field Arithmetic
    3. Polynomials
    4. Computational Integrity
    5. Zero Knowledge Proofs Basics
    6. STARKs
+
 7. Lost & found
-    1. Add items that were in your category, but you don't want in
+   Add items that were in your category, but you don't want in.
+   1. "Customizing an account contract" could go in Camp 3.
+   2. "Writing a dapp", "Building a front end" and "Libraries" parts could go in Camp 2 where we teach tooling.
+
