@@ -105,6 +105,146 @@ STARK has minimal cryptographic assumptions underlying its security: the existen
 * **Post-Quantum Security**: STARKs are plausibly secure against efficient quantum computers.
 * **Concrete Efficiency**: For a given computation, the STARK prover is at least 10x faster than both the SNARK and Bulletproofs prover. The STARK verifier is at least 2x faster than the SNARK verifier and more than 10x faster than the Bulletproof verifier. As StarkWare continues to optimize STARKs these ratios will likely improve. However, a STARK proof length is ~100x larger than the corresponding SNARK and ~20x larger than BulletProofs.
 
+To understand how STARKs are computed, we need to delve into the arithmetic of modular operations, finite fields, and polynomials. For this we will need to touch mathematical concepts that at first glance might seem complicated, however, you will see that it is easier than you thought.
+
+<div align="center">
+    <h2 id="modular_arithmetic">Modular Arithmetic</h2>
+    <p>A system of arithmetic for integers where numbers "wrap around" when reaching a certain value (aka 'modulus')</p>
+    <img src="../misc/modular.png">
+</div>
+
+A real-world example of modular arithmetic is time-keeping via a clock. When the hour of the day exceed the modulus(12) we "wrap" around and begin at zero.
+
+Example:
+
+```bash
+python3 finite_fields/python/modular_arithmetic.py
+```
+
+In other words, of an division we sometimes are more interested in the **remainder**. Here is where we use the operator named as **modulo operator** or simply **mod**. For example,  $13\bmod5 = 3$ because $\frac{13}{5}=2$ remainder $3$.
+
+Let's go trough a couple examples:
+
+- $-29\bmod3 = 1$
+
+If we divide $-29$ by $3$ we get a quotient of $9$ with a remainder of $-2$; we substract $-2$ from $3$ (our modulus) to get $1$.
+
+- $-9\bmod6 = 3$
+
+Divide $-9$ by $6$ to get $-1$ as quotient with a remainder of $-3$. We then substract $-3$ from $6$ to get $3$ as our result.
+
+- $7\bmod6 = 1$
+
+Divide $7$ by $6$ to get a quotient of $1$ with a remainder of $1$, our result.
+
+Note that the mod operator only gives positive numbers.
+
+Modular arithmetic is the stepping stone for Fine Field Arithmetic which will take us to understand elliptic curve cryptography, which in turn, gives us the signing and verification algorithms in Ethereum. Signing and verification are key for transactions in a blockchain.
+
+
+<h2 align="center" id="finite_fields">Finite Fields</h2>
+
+Much of today's practical cryptography is based on finite fields: a finite set of numbers with two operations (addition and multiplication from which we can define subtraction and division too). 
+
+The order or size of the field is usually called $p$ and is a prime number. This is a finite field of order $p$: $F_p =  \{0, 1, 2, ..., p–1 \}$. A finite field of order 3 would be: $F_3 =  \{0, 1, 2\}$.
+
+A finite field cannot contain sub-fields since their order is prime. Therefore, the fine field implements the principles of modular arithmetic over a large, irreducible prime number.
+
+Example:
+
+```bash
+python3 finite_fields/python/finite_field_arithmetic.py
+```
+
+A key property of the finite field is that if `a` and `b` are in the set, `a + b` and `a ⋅ b` should be in the set too. This is the **closed** property. Thus, if we have $F_3$ then the sum $1 + 2 = 3$ violates the closed property because $3$ is not in the set $F_3$. Something similar happens with the multiplication. 
+
+We need to make our finite field closed under arithmetic operations as addition, substraction, multiplication and division. Here is where modular arithmetic comes in handy. Most operations with finite fields will be using modular arithmetic. We represent a finite field addition as $+_f$ to distinguish it from a simple addition. We will do the same for the symbols of other arithmetic operators.
+
+Now, for our finite field $F_3$, $1$ $+_f$ $2$ $=$ $(1+2) \bmod 3$ $=$ $0$. Also $2$ $⋅_f$ $2$ $=$ $(2⋅2) \bmod 3$ $=$ $1$. Now we have close operations for our finite field.
+
+What about substraction? It is the same. For a finite field $F_3$, $1$ $-_f$ $2$ $=$ $(1-2) \bmod 3$ $=$ $2$. We are basically performing modular arithmetic where the the modulo is the finite field's order. For multiplication the case is similar.
+
+Addition, Multiplication, Exponentiation, and Substraction of fields are intuitive. However, Division of fields can be a bit challenging at the beginning. Let's begin with easy operations:
+* For the finite field $F_3$, $2$ $/_f$ $2$ $=$ $(2/2) \bmod 3$ $=$ $1$. It makes sense since $2/2=1$.
+* For the finite field $F_3$, $6$ $/_f$ $2$ $=$ $(0/2) \bmod 3$ $=$ $0$. It makes sense since $0/2=0$.
+* For the finite field $F_3$, the operation $1$ $/_f$ $0$ $=$ $(1/0) \bmod 3$ can not be performed since we can not divide by 0.
+* For the finite field $F_3$, $8$ $/_f$ $5$ $=$ $(2/2) \bmod 3$ $=$ $1$. It makes sense since $2/2=1$.
+
+Until now eveything seems ok. However, what happens when, for the finite field $F_5$, we divide $8$ $/_f$ $4$ $=$ $(3/4) \bmod 5$? The result is not trivial.
+
+
+
+
+
+
+
+<h2 align="center" id="finite_fields">Polynomial arithmetic</h2>
+
+Polynomial arithmetic deals with the addition, subtraction, multiplication, and division of polynomials.
+
+We can represent a bit pattern by a polynomial in, say, the variable $x$. Each power of $x$ in the polynomial can stand for a bit position in a bit pattern. For example, we can represent:
+* the bit pattern $111$ by the polynomial $x^{2} + x + 1$;
+* the bit pattern $101$ by the polynomial $x^{2} + 1$; and 
+* the pattern $011$ by the polynomial $x + 1$. 
+  
+Since all the bits in $111$ are set, we have all powers of $x$ up to 2 in the corresponding polynomial. On the other hand, in the bit pattern $101$, the second bit is not set, so the coefficient of $x$ in the polynomial is zero, which results in the polynomial $x^{2} + 1$. Finally, in the bit pattern $011$, since only the two least significant bits are set, the polynomial becomes $x + 1$.
+
+Representing bit patterns with polynomials will allow us to create a finite field with bit patterns.
+
+In general, a polynomial is an expression of the form:
+
+<div align="center">
+    <img src="../misc/poly1.png">
+</div>
+
+for some non-negative integer $n$ and where the coefficients $a_{0}$, $a_{1}$, $...$, $a_{n}$ are drawn from some designated set $S$. $S$ is called the coefficient set. $n$ marks de degree of the polynomial. A $0$-degree polynomial is called a constant polynomial.
+
+In reality, we do not have intentions of evaluating the value of a polynomial for a certain value of $x$. We will be dealing with finding the point at which these polynomials equal 0. 
+
+Polynomial arithmetic is quite simple. The more complex operation is the division which is not in the scope of this tutorial for now.
+
+<div align="center">
+    <img src="../misc/poly2.png">
+</div>
+
+We can define several polynomials belonging to the same field. For example, for the $F_2$ field, which only contains $0$ and $1$ as members, we can generate an infinite number of polynomials without caring for the their degree. That is, the members of the field only populate the coefficients of the polynomial without caring for the exponents.
+
+
+<div align="center">
+    <img src="../misc/poly6.png">
+</div>
+
+We can follow the same logic for polynomial arithmetic operations when the coefficients belong to finite field. We just need to remember the modular nature of finite fields. As an example, let's operate with polynomals whose coefficients belong to the $F_7$ field. You will notice that we are simply using field arithmetic within the coefficients.
+
+Addition:
+
+<div align="center">
+    <img src="../misc/poly3.png">
+</div>
+
+Substraction:
+
+<div align="center">
+    <img src="../misc/poly4.png">
+</div>
+
+Multiplication:
+
+<div align="center">
+    <img src="../misc/poly5.png">
+</div>
+
+Again the division case is out of the scope of this tutorial for now.
+
+A polynomial $f(x)$ over a field $F$ is called prime or irreducible if $f(x)$ cannot be expressed as a product of two polynomials. Both polynomials have to be part of $F$ and of a lower degree than $f(x)$. That is, an irreducible polynomial as a polynomial that cannot be factorized into lower-degree polynomials.
+
+
+The concept of generator, $g$, frequently appears in cryptography. A generator is an element in the subgroup whose powers span the entire subgroup. In easier words, it is a number that is capable of of generating the entire set or the entire field by exponentiating the generator. For example, for the field $Z_{13}$, a generator $g$ is $g=2$. Why? Because if we exponentiate $2$ we can get all the 13 elements in the field $Z_{13} = \{0,1,...,12\}$ (except for the 0). Notice $2^{0}\bmod13 = 1$, $2^{1}\bmod13 = 2$, $2^{2}\bmod13 = 4$, $2^{3}\bmod13 = 8$, $2^{4}\bmod13 = 3$, $2^{5}\bmod13 = 6$, and so on. Not all elements in a set can be generators, make the exercise and you will notice 3 is not a generator of the field $Z_{13}$.
+
+More generally, note that if $g$ is the generator of a field $Z_{n}$, then $Z_{n} = \{0, g^{0}, g^{1}, ..., g^{n-2}\}$ (because by exponentiating generator $g$ we can get each element in the field).
+
+
+
 <h2 align="center" id="trust">Arithmetization</h2>
 
 The goal of the STARK protocol is to verify computations succinctly and transparently. It follows three steps:
@@ -241,7 +381,300 @@ Observing that, we can extend the execution trace by thinking of it as an evalua
 
 Our plan is therefore to 1) rephrase the execution trace as a polynomial, 2) extend it to a large domain, and 3) transform that, using the polynomial constraints, into yet another polynomial that is guaranteed to be of low degree if and only if the execution trace is valid.
 
+**Toy Example: Boolean Execution Trace**
 
+Suppose that the CI statement in question is “The prover has a sequence of 512 numbers, all of which are either 0 or 1”, which we would like to verify by reading substantially less than 512 numbers. Let’s see what kind of execution trace and polynomial constraints express this toy example:
+
+1. The execution trace has $512$ rows, each row containing a single cell with either zero or one in it.
+2. The polynomial constraint we use here is simply $A_{ᵢ}⋅A_{ᵢ}-A_{ᵢ}=0$, where $A_{ᵢ}$ denotes the $i$-th cell in this single-column execution trace (a number is equal to its square if and only if it is either 0 or 1).
+
+In order to rephrase this execution trace in terms of polynomials, we specify the field we will be working in — we go with $Z_{₉₆₇₆₉}$, obtained from the set of integers ${0,1,…,96768}$ with addition and multiplication modulo $96769$. Next we pick a subgroup $G$ of $Z_{₉₆₇₆₉}^{*}$ (we use $F*$ to denote the multiplicative group of $F$; the multiplicative group is obtained by omitting the zero element from the field) such that $|G|=512$, and some generator $g$ of $G$. The existence of such a subgroup is guaranteed since $512$ divides the size of this group (which is $96768$).
+
+We now think of the elements in the execution trace as evaluations of some polynomial f(x) of degree less than 512 in the following way: the i-th cell contains the evaluation of f on the generator’s i-th power.
+
+Formally:
+
+<div align="center">
+    <img src="../misc/generator.png">
+</div>
+
+Such a polynomial of degree at most 512 can be computed by interpolation, and we then proceed to evaluate it on a much larger domain (choosing this domain’s size directly translates into the soundness error, the bigger it is — the smaller the soundness error), forming a special case of Reed-Solomon codeword.
+
+Lastly, we use this polynomial to create another one, whose low degreeness depends on the constraint being satisfied over the execution trace.
+
+To do so, we must go on a tangent and discuss roots of polynomials.
+
+A basic fact about polynomials and their roots is that if $p(x)$ is a polynomial, then $p(a)=0$ for some specific value $a$, if and only if there exists a polynomial $q(x)$ such that $(x-a)q(x)=p(x)$, and $deg(p)=deg(q)+1$.
+
+Moreover, for all $x≠a$, we can evaluate $q(x)$ by computing:
+
+<div align="center">
+    <img src="../misc/root.png">
+</div>
+
+By induction, a similar fact is true for $k$ roots. Namely, if $a_{ᵢ}$ is a root of p for all $i=0..k-1$, then there exists a polynomial $q$ of degree $deg(p)-k$, and in all but these $k$ values, it is exactly equal to:
+
+<div align="center">
+    <img src="../misc/kroots.png">
+</div>
+
+Rephrasing the polynomial constraint in terms of f yields the following polynomial:
+
+<div align="center">
+    <img src="../misc/polConstraint.png">
+</div>
+
+We have defined $f$ such that the roots of this expression are $1$, $g$, $g²$, $…$, $g⁵¹¹$ if and only if the cells in the execution trace are $0$ or $1$. We can define:
+
+<div align="center">
+    <img src="../misc/polConstraint2.png">
+</div>
+
+And we know from the previous paragraph that there exists a polynomial of degree at most $2·deg(f)-512$ that agrees with $p$ on all $x ∉{1, g, g^{2}, …, g^{511}}$ if and only if the execution trace is indeed a list of 512 bits (i.e., 0 or 1). Note that earlier on, the prover has extended the execution trace to a larger domain, so querying for the polynomial values in that domain is well defined.
+
+If there exists a protocol by which the prover can convince (such that the verifier is convinced if and only if the prover is not cheating) the verifier that this polynomial is of low degree, such that in it the verifier only asks for values outside the execution trace, then indeed the verifier will be convinced about the truthfulness of the CI statement only when it is true. In fact, in the next post, we will show a protocol that does exactly that, with some very small probability of error. For the time being — let’s take a look at another example, that is still simple, but not completely trivial, and see how the reduction works in that case.
+
+
+**Not so trivial example: Fibonacci**
+
+The example that we use next is that of correctly computing a Fibonacci sequence in $Z_{₉₆₇₆₉}$ to the $512$-th place. The sequence is defined formally by:
+
+<div align="center">
+    <img src="../misc/fibonacci1.png">
+</div>
+
+And our claim (i.e., the CI statement) is that $a_{₅₁₁}=62215$.
+
+We can create an execution trace for this CI statement by simply writing down all 512 numbers:
+
+<div align="center">
+    <img src="../misc/fibonacci2.png">
+</div>
+
+The polynomial constraints that we use are
+
+<div align="center">
+    <img src="../misc/fibonacci3.png">
+</div>
+
+Now we translate into Polynomials.
+
+Here, too, we define a polynomial $f(x)$ of degree at most $512$, such that the elements in the execution trace are evaluations of $f$ in powers of some generator $g$.
+
+Formally:
+
+<div align="center">
+    <img src="../misc/fibonacci4.png">
+</div>
+
+Expressing the polynomial constraints in terms of $f$ instead of $A$, we get:
+
+
+<div align="center">
+    <img src="../misc/fibonacci5.png">
+</div>
+
+
+Since a composition of polynomials is still a polynomial — substituting the $Aᵢ$ in the constraints with $f(gⁱ)$ still means these are polynomial constraints.
+
+Note that 1, 2, and 4 are constraints that refer to a single value of $f$, we refer to them as boundary constraints.
+
+The Fibonacci recurrence relation, in contrast, embodies a set of constraints over the entire execution trace, and it may be alternatively rephrased as:
+
+<div align="center">
+    <img src="../misc/fibonacci6.png">
+</div>
+
+The use of a generator to index the rows of the execution trace allows us to encode the notion of “next row” as a simple algebraic relation. If x is some row in the execution trace, then $gx$ is the next row, $g²x$ is the row after that, $g⁻¹x$ is the previous row and so on.
+
+The recurrence relation polynomial: $f(g²x)-f(gx)-f(x)$ is zero for every $x$ that indexes a row in the execution trace, except for the last two. It means that 1, $g$, $g²$, $…$, $g⁵⁰⁹$ are all roots of this recurrence relation polynomial (and it is of degree at most 510), so we can construct $q(x)$ as follows:
+
+<div align="center">
+    <img src="../misc/fibonacci7.png">
+</div>
+
+In STARK lore, this is often referred to as the composition polynomial. Indeed, when the original execution trace obeys the Fibonacci recurrence relation, this expression agrees with some polynomial whose degree is at most 2 (recall that the degree of f is at most 512) on all but these 510 values: 1, $g$, $g²$, $…$, $g⁵⁰⁹$. However, the term composition polynomial is somewhat misleading, as when the execution trace does not satisfy the polynomial constraint — the evaluations of this expression differ from any low degree polynomial in many places. In other words — it is close to a low-degree polynomial if and only if the original CI is correct, which indeed was our goal.
+
+This concludes the promised reduction, that translates the problem of checking whether certain polynomial constraints are satisfied over some execution trace, to the problem of checking whether some polynomial (known to the prover) is of low degree.
+
+Succinctness
+
+Having a very efficient verification technique is key to STARKs, and it can be seen as comprised of two parts — using a small number of queries, and having the verifier perform a small computation on each query. The former is achieved by error correction codes, which allow querying in very few places, and the latter we have sort of sweeped under the rug throughout this post, until now. The verifier’s work can be summed up as 1) querying the composition polynomial in random places, and 2) checking low-degreeness based on these queries. Low degreeness succinct checking will be handled in the next post, but what exactly do we mean by “querying the composition polynomial”? The avid reader may have been suspicious of this expression, and rightfully so. The prover, after all, may be malicious. When the verifier asks for the evaluation of the composition polynomial at some x, the prover may reply with the evaluation of some truly low-degree polynomial, that will pass any low-degree testing, but is not the composition polynomial.
+
+To prevent this, the verifier explicitly queries the Fibonacci execution trace at some row w by asking for the values of $f$ in three places: $f(w)$, $f(gw)$, $f(g²w)$.
+
+The verifier can now compute the value of the composition polynomial at w by:
+
+<div align="center">
+    <img src="../misc/succintness.png">
+</div>
+
+Where the numerator can be computed using the values obtained from the prover, and the denominator… well, there’s the rub (that was sweeped under the rug).
+
+On the one hand the denominator is completely independent of the execution trace, so the verifier can compute it before ever communicating with the prover.
+
+On the other hand, in practicality — the trace may be comprised of hundreds of thousands of rows, and computing the denominator would cost the verifier dearly in running time.
+
+Here’s where the arithmetization is crucial to succinctness — since calculating this expression for the special case where the powers of g form a subgroup can be done very efficiently if one notices that:
+
+<div align="center">
+    <img src="../misc/succintness2.png">
+</div>
+
+This equality is true because both sides are polynomials of degree $|G|$ whose roots are exactly the elements of $G$.
+
+Computing the right hand side of this equation seems to require a number of operations that is linear in $|G|$. However, if we resort to [exponentiation by squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring), the left hand side of this equation can be computed in running time that is logarithmic in $|G|$.
+
+And the actual denominator of the Fibonacci composition polynomial in question can be obtained by rewriting it as:
+
+<div align="center">
+    <img src="../misc/succintness3.png">
+</div>
+
+This seeming technicality stands at the core of the verifier being able to run in polylogarithmic time, and it is enabled only because we view the execution trace as evaluations of a polynomial over some subgroup of the field, and that the polynomial constraints in question hold over a subgroup.
+
+Similar tricks can be applied for more sophisticated execution traces, but it is crucial that the repeating pattern of the constraint coincides with some subgroup of the field.
+
+More Constraints, More Columns!
+
+The examples in this post were deliberately simple, to highlight key aspects of arithmetization. A natural question that arises will be: how is the case of multiple columns and multiple constraints handled. The answer is straightforward: multiple columns simply mean that there’s more than one polynomial to work with, and multiple composition polynomials — resulting from the multiple constraints — are combined into a single polynomial, a random linear combination of all of them, for the sake of the last phase in STARK, which is a low degree test. With high probability, the linear combination is of low degree if and only if so are all of its components.
+
+We have shown how, given an execution trace and constraint polynomials, the prover can construct a polynomial which is of low degree if and only if the original CI statement holds. Furthermore, we have shown how the verifier can query the values of this polynomial efficiently, making sure that the prover did not replace the true polynomial with some false low-degree one.
+
+Next we will go into the details of low-degree testing, showing how this magic, of querying a small number of values and determining whether some polynomial is of low degree, is done.
+
+
+<h2 align="center" id="finite_fields">Low Degree Testing: The Secret Sauce of Succinctness</h2>
+
+The process of Arithmetization enabled us to reduce the CI problem to a low degree testing problem. Low degree testing refers to the problem of deciding whether a given function is a polynomial of some bounded degree, by making only a small number of queries to the function. Low degree testing has been studied for more than two decades, and is a central tool in the theory of probabilistic proofs. The goal of this blog post is to explain low degree testing in more detail, and to describe FRI, the protocol that we use for low degree testing in STARK. This post assumes familiarity with polynomials over finite fields.
+
+Before we discuss low-degree testing, we first present a slightly simpler problem as a warm-up: We are given a function and are asked to decide whether this function is equal to some polynomial of degree less than some constant d, by querying the function at a “small” number of locations. Formally, given a subset L of a field F and a degree bound d, we wish to determine if $f:L➝F$ is equal to a polynomial of degree less than $d$, namely, if there exists a polynomial
+
+<div align="center">
+    <img src="../misc/low1.png">
+</div>
+
+over $F$ for which $p(a) = f(a)$ for every $a$ in $L$. For concrete values, you may think of a field of size which is very large, say $2¹²⁸$, and $L$ which is of size approximately 10,000,000.
+
+Solving this problem requires querying $f$ at the entire domain $L$, as f might agree with a polynomial everywhere in $L$ except for a single location. Even if we allow a constant probability of error, the number of queries will still be linear in the size of $L$.
+
+For this reason, the problem of low degree testing actually refers to an approximate relaxation of the above problem, which suffices for constructing probabilistic proofs and also can be solved with a number of queries which is logarithmic in $|L|$ (note that if $L≈10,000,000$, then $log₂(L)≈23)$. In more detail, we wish to distinguish between the following two cases.
+
+* **The function $f$ is equal to a low degree polynomial**. Namely, there exists a polynomial $p(x)$ over $F$, of degree less than $d$, that agrees with $f$ everywhere on $L$.
+* **The function $f$ is far from ALL low degree polynomials**. For example, we need to modify at least 10% of the values of $f$ before we obtain a function that agrees with a polynomial of degree less than $d$.
+
+Note that there is another possibility — the function $f$ may be mildly close to a low degree polynomial, yet not equal to one. For example, a function in which $5%$ of the values differ from a low-degree polynomial does not fall in either of the two cases described above. However, the prior arithmetization step (discussed in our previous posts) ensures the third case never arises. In more detail, arithmetization shows that an honest prover dealing with a true statement will land in the first case, whereas a (possibly malicious) prover attempting to “prove” a false claim will land, with high probability, in the second case.
+
+In order to distinguish the two cases, we will use a probabilistic polynomial-time test that queries f at a small number of locations (we discuss what “small” means later).
+
+This paragraph is optional for understanding the big picture. If $f$ is indeed low degree, then the test should accept with probability 1. If instead f is far from low degree, then the test should reject with high probability. More generally, we seek the guarantee that if f is $δ-far$ from any function of degree less than d (i.e., one must modify at least $δ|L|$ locations to obtain a polynomial of degree less than d), then the test rejects with probability at least $Ω(δ)$ (or some other “nice” function of $δ$). Intuitively, the closer $δ$ is to zero, the more difficult it is to distinguish between the two cases.
+
+In the next few sections we describe a simple test, then explain why it does not suffice in our setting, and finally we describe a more complex test that is exponentially more efficient. This latter test is the one that we use in STARK.
+
+### The Direct Test
+
+The first test we consider is a simple one: it tests whether a function is (close to) a polynomial of degree less than $d$, using $d+1$ queries. The test relies on a basic fact about polynomials: any polynomial of degree less than d is fully determined by its values at any d distinct locations of $F$. This fact is a direct consequence of the fact that a polynomial of degree $k$ can have at most $k$ roots in $F$. Importantly, the number of queries, which is $d+1$, can be significantly less than the size of the domain of $f$, which is $|L|$.
+
+We first discuss two simple special cases, to build intuition for how the test will work in the general case.
+
+* **The case of a constant function $(d=1)$.** This corresponds to the problem of distinguishing between the case where $f$ is a constant function ($f(x)=c$ for some $c$ in $F$), and the case where $f$ is far from any constant function. In this special case there is a natural 2-query test that might work: query $f$ at a fixed location $z1$ and also at a random location $w$, and then check that $f(z1)=f(w)$. Intuitively, $f(z1)$ determines the (alleged) constant value of $f$, and $f(w)$ tests whether all of $f$ is close to this constant value or not.
+* **The case of a linear function $(d=2)$.** This corresponds to the problem of distinguishing between the case where $f$ is a linear function ($f(x)=ax+b$ for some $a$,$b$ in $F$), and the case where $f$ is far from any linear function. In this special case there is a natural 3-query test that might work: query f at two fixed locations z1,z2 and also at a random location $w$, and then check that ($z1$,$f(z1)$), ($z2$,$f(z2)$), ($w$,$f(w)$) are collinear, namely, we can draw a line through these points. Intuitively, the values of $f(z1)$ and $f(z2)$ determine the (alleged) line, and $f(w)$ tests whether all of $f$ is close to this line or not.
+
+The above special cases suggest a test for the general case of a degree bound $d$. Query $f$ at $d$ fixed locations $z1$,$z2$,$…$,$zd$ and also at a random location $w$. The values of $f$ at $z0$,$z1$,$…$,$zd$ define a unique polynomial $h(x)$ of degree less than $d$ over $F$ that agrees with $f$ at these points. The test then checks that $h(w)=f(w)$. We call this the direct test.
+
+By definition, if $f(x)$ is equal to a polynomial $p(x)$ of degree less than $d$, then $h(x)$ will be identical to $p(x)$ and thus the direct test passes with probability 1. This property is called “perfect completeness”, and it means that this test has only 1-sided error.
+
+We are left to argue what happens if $f$ is $δ$-far from any function of degree less than $d$. (For example, think of $δ=10%$.) We now argue that, in this case, the direct test rejects with probability at least δ. Indeed, let 𝞵 be the probability, over a random choice of w, that $h(w)≠f(w)$. Observe that $𝞵$ must be at least δ. Optional: This is because if we assume towards contradiction that 𝞵 is smaller than δ, then we deduce that f is δ-close to h, which contradicts our assumption that f is δ-far from any function of degree less than d.
+
+### The Direct Test Does Not Suffice For Us
+
+In our setting we are interested in testing functions f:L➝F that encode computation traces, and hence whose degree d (and domain L) are quite large. Merely running the direct test, which makes d+1 queries, would be too expensive. In order to gain the exponential savings of STARK (in verification time compared to the size of the computation trace), we need to solve this problem with only O(log d) queries, which is exponentially less than the degree bound d.
+
+This, unfortunately, is impossible because if we query f at less than d+1 locations then we cannot conclude anything.
+
+Optional: One way to see this is to consider two different distributions of functions f:L➝F. In one distribution we uniformly pick a polynomial of degree exactly d and evaluate it on L. In the other distribution we uniformly pick a polynomial of degree less than d and evaluate it on L. In both cases, for any d locations z1,z2,…,zd, the values f(z1),f(z2),…,f(zd) are uniformly and independently distributed. (We leave this fact as an exercise for the reader.) This implies that information-theoretically we cannot tell these two cases apart, even though a test would be required to (since polynomials from the first distribution should be accepted by the test while those of degree exactly d are very far from all polynomials of degree less than d, and thus should be rejected).
+
+We seem to have a difficult challenge to overcome.
+
+### A Prover Comes to the Rescue
+
+We have seen that we need d+1 queries to test that a function f:L➝F is close to a polynomial of degree less than d, but we cannot afford this many queries. We avoid this limitation by considering a slightly different setting, which suffices for us. Namely, we consider the problem of low degree testing when a prover is available to supply useful auxiliary information about the function f. We will see that in this “prover-aided” setting of low-degree testing we can achieve an exponential improvement in the number of queries, to O(log d).
+
+In more detail, we consider a protocol conducted between a prover and a verifier, wherein the (untrusted) prover tries to convince the verifier that the function is of low degree. On the one hand, the prover knows the entire function f being tested. On the other hand, the verifier can query the function f at a small number of locations, and is willing to receive help from the prover, but does NOT trust the prover to be honest. This means that the prover may cheat and not follow the protocol. However, if the prover does cheat, the verifier has the liberty to “reject”, regardless of whether the function f is of low degree or not. The important point here is that the verifier will not be convinced that f is of low degree unless this is true.
+
+Note that the direct test described above is simply the special case of a protocol in which the prover does nothing, and the verifier tests the function unassisted. To do better than the direct test we will need to leverage the help of the prover in some meaningful way.
+
+Throughout the protocol the prover will want to enable the verifier to query auxiliary functions on locations of the verifier’s choice. This can be achieved via commitments, a mechanism that we will discuss in a future blog post. For now it suffices to say that the prover can commit to a function of its choice via a Merkle tree, and subsequently the verifier can request the prover to reveal any set of locations of the committed function. The main property of this commitment mechanism is that once the prover commits to a function, it must reveal the correct values and cannot cheat (for example, it cannot decide what the values of the function are after seeing the requests from the verifier).
+
+### Halving the number of queries for the case of two polynomials
+
+Let’s start with a simple example that illustrates how a prover can help to reduce the number of queries by a factor of 2. We will later build on this example. Suppose that we have two polynomials f and g and we want to test that they are both of degree less than d. If we simply run the direct test individually on f and g then we would need to make 2 * (d + 1) queries. Below we describe how with the help of a prover we can reduce the number of queries to (d + 1) plus a smaller-order term.
+
+First, the verifier samples a random value 𝛼 from the field and sends it to the prover. Next, the prover replies by committing to the evaluation on the domain L (recall that L is the domain of the function f) of the polynomial h(x) = f(x) + 𝛼 g(x) (in other words, the prover will compute and send the root of a Merkle tree whose leaves are the values of h on L). The verifier now tests that h has degree less than d, via the direct test, which requires d+1 queries.
+
+Intuitively, if f or g has degree at least d, then with high probability so does h. For example, consider the case where the coefficient of xⁿ in f is not zero for some n≥d. Then, there is at most one choice of 𝛼 (sent by the verifier) for which the coefficient of xⁿ in h is zero, which means that the probability that h has degree less than d is roughly 1/|F|. If the field is large enough (say, |F|>2¹²⁸), the probability of error is negligible.
+
+The situation, however, is not this simple. The reason is that, as we explained, we cannot literally check that h is a polynomial of degree less than d. Instead we only can check that h is close to such a polynomial. This means that the analysis above is not accurate. Is it possible that f will be far from a low degree polynomial and the linear combination h will be close to one with a non-negligible probability over 𝛼? Under mild conditions the answer is no (which is what we want), but it is outside the scope for this post; we refer the interested reader to [this paper](https://acmccs.github.io/papers/p2087-amesA.pdf) and [this paper](https://eccc.weizmann.ac.il/report/2017/134/).
+
+Moreover, how does the verifier know that the polynomial h sent by the prover has the form f(x)+𝛼 g(x)? A malicious prover may cheat by sending a polynomial which is indeed of low degree, but is different from the linear combination that the verifier asked for. If we already know that h is close to a low degree polynomial, then testing that this low degree polynomial has the correct form is straightforward: the verifier samples a location z in L at random, queries f, g, h at z, and checks that the equation h(z)=f(z)+𝛼 g(z) holds. This test should be repeated multiple times to increase accuracy of the test, but the error shrinks exponentially with the number of samples we make. Hence this step increases the number of queries (which so far was d+1) only by a smaller-order term.
+
+### Splitting a polynomial into two smaller-degree polynomials
+
+We saw that, with the prover’s help, we can test that two polynomials are of degree less than d with less than 2*(d+1) queries. We now describe how we can turn one polynomial of degree less than d into two polynomials of degree less than d/2.
+
+Let f(x) be a polynomial of degree less than d and assume that d is even (in our setting this comes without loss of generality). We can write f(x)=g(x²)+xh(x²) for two polynomials g(x) and h(x) of degree less than d/2. Indeed, we can let g(x) be the polynomial obtained from the even coefficients of f(x), and h(x) be the polynomial obtained from the odd coefficients of f(x). For example, if d=6 we can write
+
+<div align="center">
+    <img src="../misc/smallerPol1.png">
+</div>
+
+which means that
+
+<div align="center">
+    <img src="../misc/smallerPol2.png">
+</div>
+
+and
+
+<div align="center">
+    <img src="../misc/smallerPol3.png">
+</div>
+
+
+which is an n*log(n) algorithm for polynomial evaluation (improving over the naive n2 algorithm).
+
+
+<h2 align="center" id="finite_fields">The FRI Protocol</h2>
+
+We now combine the two above ideas (testing two polynomials with half the queries, and splitting a polynomial into two smaller ones) into a protocol that only uses O(log d) queries to test that a function f has (more precisely, is close to a function of) degree less than d. This protocol is known as FRI (which stands for Fast Reed — Solomon Interactive Oracle Proof of Proximity), and the interested reader can read more about it [here](https://eccc.weizmann.ac.il/report/2017/134/). For simplicity, below we assume that d is a power of 2. The protocol consists of two phases: a commit phase and a query phase.
+
+### Commit phase
+The prover splits the original polynomial f₀(x)=f(x) into two polynomials of degree less than d/2, g₀(x) and h₀(x), satisfying f₀(x)=g₀(x²)+xh₀(x²). The verifier samples a random value 𝛼₀, sends it to the prover, and asks the prover to commit to the polynomial f₁(x)=g₀(x) + 𝛼₀h₀(x). Note that f₁(x) is of degree less than d/2.
+
+We can continue recursively by splitting f₁(x) into g₁(x) and h₁(x), then choosing a value 𝛼₁, constructing f₂(x) and so on. Each time, the degree of the polynomial is halved. Hence, after log(d) steps we are left with a constant polynomial, and the prover can simply send the constant value to the verifier.
+
+A note about the domains: for the above protocol to work, we need the property that for every z in the domain L, it holds that -z is also in L. Moreover, the commitment on f₁(x) will not be over L but over L²={x²: x ∊ L}. Since we iteratively apply the FRI step, L² will also have to satisfy the {z, -z} property, and so on. These natural algebraic requirements are easily satisfied via natural choices of domains L (say, a multiplicative subgroup whose size is a power of 2), and in fact coincide with those that we anyways need in order to benefit from efficient FFT algorithms (which are used elsewhere in STARK, e.g., to encode execution traces).
+
+### Query phase
+We now have to check that the prover did not cheat. The verifier samples a random z in L and queries f₀(z) and f₀(-z). These two values suffice to determine the values of g₀(z²) and h₀(z²), as can be seen by the following two linear equations in the two “variables” g₀(z²) and h₀(z²):
+
+<div align="center">
+    <img src="../misc/query1.png">
+</div>
+
+The verifier can solve this system of equations and deduce the values of g₀(z²) and h₀(z²). It follows that it can compute the value of f₁(z²) which is a linear combination of the two. Now the verifier queries f₁(z²) and makes sure that it is equal to the value computed above. This serves as an indication that the commitment to f₁(x), which was sent by the prover in the commit phase, is indeed the correct one. The verifier may continue, by querying f₁(-z²) (recall that (-z²)∊ L² and that the commitment on f₁(x) was given on L²) and deduce from it f₂(z⁴).
+
+The verifier continues in this way until it uses all these queries to finally deduce the value of f_{log d}(z) (denoting f with a subscript log d, that we can’t write due to Medium’s lack of support for fully fledged mathematical notation). But, recall that f_{log d}(z) is a constant polynomial whose constant value was sent by the prover in the commit phase, prior to choosing z. The verifier should check that the value sent by the prover is indeed equal to the value that the verifier computed from the queries to the previous functions.
+
+Overall, the number of queries is only logarithmic in the degree bound d.
+
+Optional: To get a feeling why the prover cannot cheat, consider the toy problem where f₀ is zero on 90% of the pairs of the form {z,-z}, i.e., f₀(z) = f₀(-z) = 0 (call these the “good” pairs), and non-zero on the remaining 10% (the “bad” pairs). With probability 10% the randomly selected z falls in a bad pair. Note that only one 𝛼 will lead to f₁(z²)=0, and the rest will lead to f₁(z²)≠0. If the prover cheats on the value of f₁(z²), it will be caught, so we assume otherwise. Thus, with a high probability (f₁(z²), f₁(-z²)) will also be a bad pair in the next layer (the value of f₁(-z²) is not important as f₁(z²)≠0). This continues until the last layer where the value will be non-zero with high probability.
+
+On the other hand, since we started with a function with 90% zeros, it is unlikely that the prover will be able to get close to a low degree polynomial other than the zero polynomial (we will not prove this fact here). In particular, this implies that the prover must send 0 as the value of the last layer. But then, the verifier has a probability of roughly 10% to catch the prover. This was only an informal argument, the interested reader may find a rigorous proof [here](https://eccc.weizmann.ac.il/report/2017/134/).
+
+In the test described so far (and the above analysis) the probability that the verifier catches a malicious prover is only 10%. In other words the error probability is 90%. This can be exponentially improved by repeating the above query phase for a few independently sampled z’s. For example, by choosing 850 z’s, we get an error probability of 2^{-128} which is practically zero.
+
+In summary, the direct solution (test) requires too many queries to achieve the succinctness required by STARK. To attain logarithmic query complexity, we use an interactive protocol called FRI, in which the prover adds more information in order to convince the verifier that the function is indeed of low degree. Crucially, FRI enables the verifier to solve the low-degree testing problem with a number of queries (and rounds of interaction) that is logarithmic in the prescribed degree.
 
 
 
@@ -318,74 +751,8 @@ This was already discovered since the 1990s, however, it was not implemented bec
 
 
 
-<div align="center">
-    <h2 id="modular_arithmetic">Modular Arithmetic</h2>
-    <p>A system of arithmetic for integers where numbers "wrap around" when reaching a certain value (aka 'modulus')</p>
-    <img src="../misc/modular.png">
-</div>
-
-A real-world example of modular arithmetic is time-keeping via a clock. When the hour of the day exceed the modulus(12) we "wrap" around and begin at zero.
-
-Example:
-
-```bash
-python3 finite_fields/python/modular_arithmetic.py
-```
-
-In other words, of an division we sometimes are more interested in the **remainder**. Here is where we use the operator named as **modulo operator** or simply **mod**. For example,  $13\bmod5 = 3$ because $\frac{13}{5}=2$ remainder $3$.
-
-Let's go trough a couple examples:
-
-- $-29\bmod3 = 1$
-
-If we divide $-29$ by $3$ we get a quotient of $9$ with a remainder of $-2$; we substract $-2$ from $3$ (our modulus) to get $1$.
-
-- $-9\bmod6 = 3$
-
-Divide $-9$ by $6$ to get $-1$ as quotient with a remainder of $-3$. We then substract $-3$ from $6$ to get $3$ as our result.
-
-- $7\bmod6 = 1$
-
-Divide $7$ by $6$ to get a quotient of $1$ with a remainder of $1$, our result.
-
-Note that the mod operator only gives positive numbers.
-
-Modular arithmetic is the stepping stone for Fine Field Arithmetic which will take us to understand elliptic curve cryptography, which in turn, gives us the signing and verification algorithms in Ethereum. Signing and verification are key for transactions in a blockchain.
 
 
-<h2 align="center" id="finite_fields">Finite Fields</h2>
-
-Much of today's practical cryptography is based on finite fields: a finite set of numbers with two operations (addition and multiplication from which we can define subtraction and division too). 
-
-The order or size of the field is usually called $p$ and is a prime number. We will later review why this is important. This is a finite field of order $p$: $F_p =  \{0, 1, 2, ..., p–1 \}$. A finite field of order 3 would be: $F_3 =  \{0, 1, 2\}$.
-
-A key property of the finite field is that if `a` and `b` are in the set, `a + b` and `a ⋅ b` should be in the set too. This is the **closed** property. Thus, if we have $F_3$ then the sum $1 + 2 = 3$ violates the closed property because $3$ is not in the set $F_3$. Something similar happens with the multiplication. 
-
-We need to make our finite field closed under arithmetic operations as addition, substraction, multiplication and division. Here is where modular arithmetic comes in handy. Most operations with finite fields will be using modular arithmetic. We represent a finite field addition as $+_f$ to distinguish it from a simple addition. We will do the same for the symbols of other arithmetic operators.
-
-Now, for our finite field $F_3$, $1$ $+_f$ $2$ $=$ $(1+2) \bmod 3$ $=$ $0$. Also $2$ $⋅_f$ $2$ $=$ $(2⋅2) \bmod 3$ $=$ $1$. Now we have close operations for our finite field.
-
-What about substraction? It is the same. For a finite field $F_3$, $1$ $-_f$ $2$ $=$ $(1-2) \bmod 3$ $=$ $2$. We are basically performing modular arithmetic where the the modulo is the finite field's order. For multiplication the case is similar.
-
-Addition, Multiplication, Exponentiation, and Substraction of fields are intuitive. However, Division of fields can be a bit challenging at the beginning. Let's begin with easy operations:
-* For the finite field $F_3$, $2$ $/_f$ $2$ $=$ $(2/2) \bmod 3$ $=$ $1$. It makes sense since $2/2=1$.
-* For the finite field $F_3$, $6$ $/_f$ $2$ $=$ $(0/2) \bmod 3$ $=$ $0$. It makes sense since $0/2=0$.
-* For the finite field $F_3$, the operation $1$ $/_f$ $0$ $=$ $(1/0) \bmod 3$ can not be performed since we can not divide by 0.
-* For the finite field $F_3$, $8$ $/_f$ $5$ $=$ $(2/2) \bmod 3$ $=$ $1$. It makes sense since $2/2=1$.
-
-Until now eveything seems ok. However, what happens when, for the finite field $F_5$, we divide $8$ $/_f$ $4$ $=$ $(3/4) \bmod 5$? The result is not trivial.
-
-
-
-
-
-A finite field cannot contain sub-fields and therefore typically implements the principles of modular arithmetic over a large, irreducible prime number. The number of elements in the field is also known as its `order`.
-
-Example:
-
-```bash
-python3 finite_fields/python/finite_field_arithmetic.py
-```
 
 <h2 align="center" id="curves">Low degree extension</h2>
 

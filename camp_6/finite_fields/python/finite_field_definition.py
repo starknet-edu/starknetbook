@@ -78,16 +78,19 @@ class FieldElement:
             value=(self.value * other.value) % self.order, order=self.order
         )
 
-    def __pow__(self, n):
-        assert n >= 0
-        cur_pow = self
-        res = self.__class__(value=1, order=self.order)
-        while n > 0:
-            if n % 2 != 0:
-                res *= cur_pow
-            n = n // 2
-            cur_pow *= cur_pow
-        return res   
+    def __pow__(self, exponent):
+        # assert n >= 0
+        # cur_pow = self
+        # res = self.__class__(value=1, order=self.order)
+        # while n > 0:
+        #     if n % 2 != 0:
+        #         res *= cur_pow
+        #     n = n // 2
+        #     cur_pow *= cur_pow
+        # return res
+        n = exponent % (self.order - 1)  # <1>
+        num = pow(self.value, n, self.order)
+        return self.__class__(num, self.order)
 
     def __truediv__(self, other):
         if isinstance(other, int):
@@ -182,21 +185,22 @@ class FieldElementTest(unittest.TestCase):
 
         a = FieldElement(8, 5)
         res = a / 4
-        print(res)
-        # self.assertEqual(res, FieldElement(2, 10))
+        self.assertEqual(res, FieldElement(2, 5))
 
-        # a = FieldElement(8, 5) # FieldElement_5(3)
-        # res = a / 4
-        # print(res)
-        # self.assertEqual(res, FieldElement(1, 3))
+        a = FieldElement(3, 31)
+        b = FieldElement(24, 31)
+        self.assertEqual(a / b, FieldElement(4, 31))
+        
+        a = FieldElement(17, 31)
+        self.assertEqual(a**-3, FieldElement(29, 31))
+        
+        a = FieldElement(4, 31)
+        b = FieldElement(11, 31)
+        self.assertEqual(a**-4 * b, FieldElement(13, 31))
 
-        # b = FieldElement(-5, 3)
-        # res = a * b
-        # self.assertEqual(res, FieldElement(6, 3))
-
-        # with self.assertRaises(ValueError):
-        #     c = FieldElement(-2, 10)
-        #     a * c
+        with self.assertRaises(ValueError):
+            c = FieldElement(-2, 10)
+            a * c
 
 if __name__ == "__main__":
     unittest.main()
