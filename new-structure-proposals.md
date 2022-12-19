@@ -114,7 +114,8 @@ Observations:
   * The structure of this content is mainly based in the 5-part [STARK Math series](https://medium.com/starkware/a-framework-for-efficient-starks-19608ba06fbe) by Starkware (2019). Some topics and format were moved for didactic purposes. 
   * Additional content was added on Modular, Finite Field and Polynomial arithmetic. Also, on the differences with SNARKs.
 
-1. Lost & found
+
+7. Lost & found
    Add items that were in your category, but you don't want in.
    1. "Customizing an account contract" could go in Camp 3.
    2. "Writing a dapp", "Building a front end" and "Libraries" parts could go in Camp 2 where we teach tooling.
