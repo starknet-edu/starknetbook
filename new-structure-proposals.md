@@ -15,17 +15,37 @@
 Camp's goal: the student will be able to code, deploy and interact with **quality** smart contracts that leverage the low-fees provided by StarkNet. They will get a proficient level in Cairo.
    1. Setting up your environment
    2. Cairo: Basics
+      1. Types
+      2. Pointers
+      3. Struct
    3. StarkNet contracts basics
+      1. Storage vars
+      2. Functions
    4. Basics of the starknet CLI
-      1. Deploying a smart contract
-   5. Calling other contracts
-   6. L1/L2 interactions
-   7. Deploying an ERC20
-   8. Deploying an ERC721
-   9.  Cairo: Intermediate
+      1. Create an account contract
+      2. Declare a class hash
+      3. Deploying a smart contract
+      4. Invoke a deployed smart contract
+   5. StarkNet contracts intermediate
+      1. Calling other contracts
+      2. L1/L2 interactions
+      3. StarkNet's UDC
+   6. Industry standards
+      1. Open Zeppelin
+      2. Deploying an ERC20
+      3. Deploying an ERC721
+      4. Deploying an ERC1155
+      5. Deploying a proxy
+   7.  Cairo: Best practices
       1. SOLID Cairo: OOP-like programming, and iterator pattern
       2. Recursion
-
+      3. Importing libraries
+   7.  Cairo on StarkNet: Interactive tutorials
+      1. Cairo 101
+      2. starknet-erc20 
+      3. starknet-erc721
+      4. starknet-messaging-bridge
+      5. starknet-debug
 Observations:
 * Omar: 
   * The "Customizing an account contract" could be a bit too advanced for the Getting Started camp. I think it  could better go in Camp 3.
@@ -33,7 +53,7 @@ Observations:
   * The "What is an ERC20? (starknet-erc20)" and "What is an ERC721? (starknet-erc721)" could already go inside the "Deploying an ERC20" and "Deploying an ERC721" sections.
 
 
-2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook
+2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook & Henri
    1. Tools:
    2. Devnet
    3. Protostar
@@ -92,9 +112,31 @@ Observations:
       1. Scalability: Exponential Speedup of Verification
       2. Transparency: With Trust Toward None, with Integrity for All
       3. Lean Cryptography: Secure & Fast
-   3. Modular Arithmetic
-   4. Finite Field Arithmetic
-   5. Polynomial Arithmetic
+   3. Mathematic primer
+      1. Algebraic Number Theory:
+         1. Prime numbers 
+         2. Quadratic residues 
+         3. Euler's theorem 
+         4. Finite fields 
+         5. Modular arithmetic 
+         6. Congruences
+      2. Algebraic Geometry: 
+         1. Polynomials 
+         2. Points, lines, and curves
+         3. Algebraic varieties 
+         4. Divisors 
+         5. Algebraic morphisms 
+         6. Sheaves 
+      3. Cryptography: 
+         1. Cryptographic hash functions 
+         2. Asymmetric encryption 
+         3. Digital signatures 
+         4. Zero-knowledge proofs 
+         5. Commitment schemes 
+         6. Secure Multi-Party Computation (MPC)
+      4. Modular Arithmetic
+      5. Finite Field Arithmetic
+      6. Polynomial Arithmetic
    6. Arithmetization
       1. Step 1: Generating an execution trace and a set of polynomial constraints
       2. Step 2: Transform the execution trace and the set of polynomial constraints into a single low-degree polynomial
