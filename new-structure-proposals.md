@@ -84,14 +84,37 @@ Observations:
 
 6. [Camp 6: STARKs](./camp_6/) - Omar & Henri
    Camp's goal: the student will be able to understand the foundamental underpinnings of what is an STARKs and how it works. It is **not the goal** to make the student proficient in cryptography but to allow they to understand technical texts on ZK cryptography. 
-   1. Modular Arithmetic
-   2. Finite Field Arithmetic
-   3. Polynomials
-   4. Computational Integrity
-   5. Zero Knowledge Proofs Basics
-   6. STARKs
+   1. Trust vs. Verification (introduction to the problem STARKs aim to solve)
+      1. The Computational Integrity (CI) problem
+      2. “Old World”: Trust, or Delegated Accountability
+      3. Proof systems
+   2. First Look at the STARKs (non mathematical introduction to what a STARK is)
+      1. Scalability: Exponential Speedup of Verification
+      2. Transparency: With Trust Toward None, with Integrity for All
+      3. Lean Cryptography: Secure & Fast
+   3. Modular Arithmetic
+   4. Finite Field Arithmetic
+   5. Polynomial Arithmetic
+   6. Arithmetization
+      1. Step 1: Generating an execution trace and a set of polynomial constraints
+      2. Step 2: Transform the execution trace and the set of polynomial constraints into a single low-degree polynomial
+      3. Succinctness
+   7. Low Degree Testing: The Secret Sauce of Succinctness
+      1. The Direct Test
+      2. Direct Test does not suffice: Prover to the rescue
+   8. The FRI Protocol
+   9. Efficient STARKs
+       1.  Micali construction
+       2.  Interactive Oracle Proofs (IOPs)
+       3.  BCS construction
+   10. STARKs and SNARKs: differences
 
-7. Lost & found
+Observations:
+* Omar: 
+  * The structure of this content is mainly based in the 5-part [STARK Math series](https://medium.com/starkware/a-framework-for-efficient-starks-19608ba06fbe) by Starkware (2019). Some topics and format were moved for didactic purposes. 
+  * Additional content was added on Modular, Finite Field and Polynomial arithmetic. Also, on the differences with SNARKs.
+
+1. Lost & found
    Add items that were in your category, but you don't want in.
    1. "Customizing an account contract" could go in Camp 3.
    2. "Writing a dapp", "Building a front end" and "Libraries" parts could go in Camp 2 where we teach tooling.
