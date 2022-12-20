@@ -54,21 +54,27 @@ Observations:
 
 
 2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook & Henri
-   1. Tools:
-   2. Devnet
-   3. Protostar
-   4. Nile
-   5. Hardhat
-   6. Third party libraries
-   7. `starknet_py` 
-   8. `starknet.js`
-   9. Caigo
-   10. Open Zeppelin
-   11. Running a node
-   12. Indexing starknet
-   13. Best practices
-   14. Testing
-   15. Libraries
+   1.Wallets
+      - ArgentX
+         - Basic setups
+         - Advanced Setups (Custom Networks, Smart Contract Development)
+      - Bravvos
+         - Basic setups
+         - Advanced Setups (Custom Networks, Smart Contract Development)
+   3. Devnet
+   4. Protostar
+   5. Nile
+   6. Hardhat
+   7. Third party libraries
+   8. `starknet_py` 
+   9. `starknet.js`
+   10. Caigo
+   11. Open Zeppelin
+   12. Running a node
+   13. Indexing starknet
+   14. Best practices
+   15. Testing
+   16. Libraries
 
 3. [Camp 3: StarkNet](./camp_3/) - David
    1. Blocks
