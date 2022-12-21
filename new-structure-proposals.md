@@ -55,7 +55,7 @@ Observations:
 
 2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook & Henri
 
-   1.Wallets
+   1. Wallets
       - ArgentX
          - Basic setups
          - Advanced Setups (Custom Networks, Smart Contract Development)
