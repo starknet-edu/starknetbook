@@ -54,6 +54,7 @@ Observations:
 
 
 2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook & Henri
+   2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook & Henri
    1.Wallets
       - ArgentX
          - Basic setups
@@ -61,20 +62,98 @@ Observations:
       - Bravvos
          - Basic setups
          - Advanced Setups (Custom Networks, Smart Contract Development)
-   3. Devnet
-   4. Protostar
-   5. Nile
-   6. Hardhat
-   7. Third party libraries
-   8. `starknet_py` 
-   9. `starknet.js`
-   10. Caigo
-   11. Open Zeppelin
-   12. Running a node
-   13. Indexing starknet
-   14. Best practices
-   15. Testing
-   16. Libraries
+   2. Bridge
+      - StarkNet Goerli ETH Faucet (https://faucet.goerli.starknet.io/)
+      - Manually send eth from L1 to L2 from etherscan.
+   3. Block Explorers
+      - StarkScan
+         - Basic Usage (Read, Write)
+         - Advanced Usage: How to verify a smartcontract
+         - How to understand L1 <-> L2 message 
+         - Local Devnet StarkScan (https://devnet.starkscan.co/)
+      - Voyager
+         - Basic Usage (Read, Write)
+         - Advanced Usage: How to verify a smartcontract
+   4. StarkNet Devnet
+      - Setup Starknet Devnet Docker Way
+      - JSON-RPC API
+        - Postman Collection Setup
+        - Common endpoints (is_alive, mint, account_balance)
+        - L1-L2 Postman integration
+        - Contract debugging
+        - Preserve your Devnet instance for future use
+   5. Development Framework
+      1. Protostar
+         - Install and setup protostar
+         - Protostar configuration protostar.toml explained.
+         - Install, update and remove dependencies
+         - Compile, build and Deploy
+         - Interacting with StarkNet (calling, invoking, deploying contracts)
+         - Quirks and tips of protostar
+      2. Nile
+         - Install and setup Nile
+         - Nile local testnet
+         - Compile, build and Deploy
+         - Interacting with StarkNet (calling, invoking, deploying contracts)
+         - Quirks and tips of Nile
+      3. Hardhat
+         - Install and setup         
+         - Compile, build and Deploy
+         - Interacting with StarkNet (calling, invoking, deploying contracts)
+         - Quirks and tips of Hardhat         
+
+   6. Third party libraries
+      1. [starknet_py](https://github.com/software-mansion/starknet.py) – A Python SDK for StarkNet 
+         - Installation
+         - Using GatewayClient
+         - Using FullNodeClient
+         - Creating AccountClient
+         - Using AccountClient
+         - Using Contract
+      2. [starknet.js](https://github.com/seanjameshan/starknet.js) – A Javascript SDK for StarkNet
+         - Installation
+         - Ethers.js Design Structure
+         - Simple Guides
+           - How to transfer ETH using starknetJs
+           - How to interact with contracts
+           - How to create an Account
+           - ERC20 Demo
+           - ERC721 Demo
+      3. [Caigo](https://github.com/dontpanicdao/caigo)  – A Golang SDK for StarkNet
+         - Installation
+         - curve example initializing the StarkCurve for signing and verification
+         - contract example for smart contract deployment and function call
+         - account example for Account initialization and invocation call
+
+      4. [starknet-rs](https://github.com/xJonathanLEI/starknet-rs) – A Rust SDK for StarkNet
+         - Installation
+         - Demo Examples
+            - Get the latest block from alpha-goerli testnet
+            - Deploy contract to alpha-goerli testnet
+            - Mint yourself 1,000 TST tokens on alpha-goerli
+            - Declare contract on alpha-goerli testnet
+            - Query the latest block number with JSON-RPC
+            - Call a contract view function via sequencer gateway
+      5. OpenZeppelin
+         - Installation and setup
+         - Using OZ to deploy a Account
+         - Using OZ to deploy a ERC20
+         - Using OZ to deploy a ERC721
+         - Using OZ to deploy a ERC1155
+         - Using OZ to deploy a proxy
+      6. Running a node
+         -  
+      7. Indexing starknet
+      8. Best practices
+      9. Testing
+         - How to use protostar to write cairo testcases using cairo
+         - Using python to write testcases
+      10. Libraries
+      11. Learn by Example. Buy me a coffee
+          1.  Protostar Project setup
+          2.  Write cairo contracts
+          3.  Build frontend using starknet-react
+          4.  The user who can buy starknet-edu team a coffee
 
 3. [Camp 3: StarkNet](./camp_3/) - David
    1. Blocks
