@@ -54,6 +54,7 @@ Observations:
 
 
 2. [Camp 2: BUIDL and Tooling](./camp_2/) - Seabook & Henri
+
    1.Wallets
       - ArgentX
          - Basic setups
@@ -133,26 +134,25 @@ Observations:
             - Declare contract on alpha-goerli testnet
             - Query the latest block number with JSON-RPC
             - Call a contract view function via sequencer gateway
-      5. OpenZeppelin
-         - Installation and setup
-         - Using OZ to deploy a Account
-         - Using OZ to deploy a ERC20
-         - Using OZ to deploy a ERC721
-         - Using OZ to deploy a ERC1155
-         - Using OZ to deploy a proxy
-      6. Running a node
-         -  
-      7. Indexing starknet
-      8. Best practices
-      9. Testing
-         - How to use protostar to write cairo testcases using cairo
-         - Using python to write testcases
-      10. Libraries
-      11. Learn by Example. Buy me a coffee
-          1.  Protostar Project setup
-          2.  Write cairo contracts
-          3.  Build frontend using starknet-react
-          4.  The user who can buy starknet-edu team a coffee
+   7. OpenZeppelin
+     - Installation and setup
+     - Using OZ to deploy a Account
+     - Using OZ to deploy a ERC20
+     - Using OZ to deploy a ERC721
+     - Using OZ to deploy a ERC1155
+     - Using OZ to deploy a proxy
+   8. Running a node
+   9. Indexing starknet
+   10. Best practices
+   11. Testing
+      - How to use protostar to write cairo testcases using cairo
+      - Using python to write testcases
+   12. Libraries
+   13. Learn by Example. Buy me a coffee
+      - Protostar Project setup
+      - Write cairo contracts
+      - Build frontend using starknet-react
+      - The user who can buy starknet-edu team a coffee
 
 3. [Camp 3: StarkNet](./camp_3/) - David
    1. Blocks
