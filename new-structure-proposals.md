@@ -135,20 +135,28 @@ Observations:
             - Query the latest block number with JSON-RPC
             - Call a contract view function via sequencer gateway
    7. OpenZeppelin
-     - Installation and setup
-     - Using OZ to deploy a Account
-     - Using OZ to deploy a ERC20
-     - Using OZ to deploy a ERC721
-     - Using OZ to deploy a ERC1155
-     - Using OZ to deploy a proxy
+      - Installation and setup
+      - Using OZ to deploy a Account
+      - Using OZ to deploy a ERC20
+      - Using OZ to deploy a ERC721
+      - Using OZ to deploy a ERC1155
+      - Using OZ to deploy a proxy
    8. Running a node
-   9. Indexing starknet
-   10. Best practices
-   11. Testing
+      - PathFinder
+         - Why run a pathfinder node?
+         - Running with docker
+         - Interact with Pathfinder Node 
+   10. Indexing starknet
+      - What's Indexing on Starknet?
+      - Why Index? and What is an Indexer?
+      - Indexing Starknet using events
+      - Apibara 
+   12. Best practices
+   13. Testing
       - How to use protostar to write cairo testcases using cairo
       - Using python to write testcases
-   12. Libraries
-   13. Learn by Example. Buy me a coffee
+   14. Libraries
+   15. Learn by Example. Buy me a coffee
       - Protostar Project setup
       - Write cairo contracts
       - Build frontend using starknet-react
