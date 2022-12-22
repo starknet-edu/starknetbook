@@ -1,0 +1,21 @@
+{
+  "name": "basecamp",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Starkware.cairo",
+        "ericglau.cairo-ls",
+        "ms-python.python",
+        "esbenp.prettier-vscode"
+        
+     ]
+    }
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "zsh"
+  }
+}
