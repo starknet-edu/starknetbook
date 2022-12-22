@@ -40,7 +40,7 @@ Don't worry if you don't understand everything that's going on at this point. Ca
 
 The entire program to add the two numbers is available in [src/sum.cairo](./contracts/cairo/sum.cairo). There you will find the code correctly commented.
 
-```python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
@@ -98,7 +98,7 @@ In addition to `felt`, we have other structures at our disposal (more details in
 
 We can create our own structure, Python dictionary style:
 
-```python
+```cairo
 struct MyStruct{
     first_member : felt,
     second_member : felt,
@@ -119,29 +119,28 @@ Tuples in Cairo are pretty much the same as tuples in Python:
 
 The Cairo documentation is very clear in its definition of tuples. Here is an example:
 
-```python
-# A tuple with three elements
+```cairo
+// A tuple with three elements
 local tuple0 : (felt, felt, felt) = (7, 9, 13)
-local tuple1 : (felt) = (5,)  # (5) is not a valid tuple.
+local tuple1 : (felt) = (5,)  // (5) is not a valid tuple.
 
-# A named tuple does not require a trailing comma
+// A named tuple does not require a trailing comma
 local tuple2 : (a : felt) = (a=5)
 
-# Tuple that contains another tuple.
+// Tuple that contains another tuple.
 local tuple3 : (felt, (felt, felt, felt), felt) = (1, tuple0, 5)
-local tuple4 : ((felt, (felt, felt, felt), felt), felt, felt) = (
-    tuple3, 2, 11)
-let a = tuple0[2]  # let a = 13.
-let b = tuple4[0][1][2]  # let b = 13.
+local tuple4 : ((felt, (felt, felt, felt), felt), felt, felt) = (tuple3, 2, 11)
 
+let a = tuple0[2]  // let a = 13.
+let b = tuple4[0][1][2]  // let b = 13.
 ```
 
 ### The structure of functions and comments
 
 The definition of a function in Cairo has the following format:
 
-```python
-func function(arg1: felt, arg2) -> (retornado: felt){
+```cairo
+func function(arg1: felt, arg2) -> (returned: felt){
   // Function body
   let (sum) = sum_two_nums(num1 = NUM1, num2 = NUM2);
   return(returned=sum);
@@ -173,7 +172,7 @@ Before explaining how implicit arguments work, a rule: If a `foo()` function cal
 
 Let's see what a function with an implicit argument looks like. The function is `serialize_word` which is available in the `starkware.cairo.common.serialize` library and we use it in our initial function to add two numbers.
 
-```python
+```cairo
 %builtins output
 
 // Appends a single word to the output pointer, and returns the pointer to the next output cell.
@@ -190,8 +189,8 @@ In the example with the `serialize_word` function we define that we are going to
 
 Following the rule defined at the beginning, any function that calls `serialize_word` will also have to receive the implicit `output_ptr`. For example, part of our function to add two numbers goes like this:
 
-```python
-func main{output_ptr: felt*}():
+```cairo
+func main{output_ptr: felt*}() {
     alloc_locals
 
     const NUM1 = 1
@@ -200,7 +199,7 @@ func main{output_ptr: felt*}():
     let (sum) = sum_two_nums(num1 = NUM1, num2 = NUM2)
     serialize_word(word=sum)
     return ()
-end
+}
 ```
 
 We see that we call `serialize_word` so we necessarily have to also ask for the implicit argument `output_ptr` in our `main` function. This is where another property of implicit arguments comes into play, and perhaps why they are called that. We see that when calling `serialize_word` we only pass the explicit `word` argument. The implicit argument `output_ptr` is automatically passed! Be careful, we could also have made the implicit argument explicit like this: `serialize_word{output_ptr=output_ptr}(word=a)`. Do we already know how to program in Cairo?
@@ -221,13 +220,12 @@ Thus we define a local variable: `local a = 3`.
 
 As an example, look at this part of our function that adds two numbers:
 
-```python
-func sum_two_nums(num1: felt, num2: felt) -> (sum):
+```cairo
+func sum_two_nums(num1: felt, num2: felt) -> (sum) {
     alloc_locals
     local sum = num1+num2
     return(sum)
-end
-
+}
 ```
 
 It's very simple.
@@ -238,34 +236,31 @@ Since we don't want it to be so easy, let's talk from memory. Cairo stores the l
 
 Very simple. Just remember that they must give an integer (a field) when we compile our code. Create a constant:
 
-```python
+```cairo
 const NUM1 = 1
-
 ```
 
 ### References
 
 This is the format to define one:
 
-```python
+```cairo
 let ref_name : ref_type = ref_expr
-
 ```
 
 Where `ref_type` is a type and `ref_expr` is a Cairo expression. Placing the `ref_type` is optional but it is recommended to do so.
 
 A reference can be reassigned (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#references)):
 
-```python
+```cairo
 let a = 7  // a is initially bound to expression 7.
 let a = 8  // a is now bound to expression 8.
-
 ```
+
 In our addition of two numbers we create a reference called `sum`. We see that we assign to `sum` the `felt` that the function `sum_two_nums` returns.
 
-```python
+```cairo
 let (sum) = sum_two_nums(num1 = NUM1, num2 = NUM2)
-
 ```
 
 ## Compile and run
@@ -302,16 +297,16 @@ With `--print_output` we indicate that we want to print something from our progr
 
 In the following program we are multiplying two numbers. The entire code is available at [src/multiplication.cairo](./contracts/cairo/multiplication.cairo). There you will find the code correctly commented.
 
-```rust
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
 
-func mult_two_nums(num1, num2) -> (prod : felt){
+func mult_two_nums(num1, num2) -> (prod : felt) {
     return(prod = num1 * num2);
 }
 
-func main{output_ptr: felt*}(){
+func main{output_ptr: felt*}() {
     let (prod) = mult_two_nums(2,2);
     serialize_word(prod);
     return ();
@@ -334,48 +329,46 @@ Any value that is not within this range will cause an “overflow”: an error t
 
 Now we understand the limits of the felt. If the value is 0.5, for example, we have an overflow. Where will we experience overflows frequently? In the divisions. The following contract (full code is in [src/division1.cairo](./contracts/cairo/division1.cairo)) divides 9/3, check with `assert` that the result is 3, and print the result.
 
-```python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
 
-func main{output_ptr: felt*}(){
+func main{output_ptr: felt*}() {
     tempvar x = 9/3;
     assert x = 3;
     serialize_word(x);
 
     return();
 }
-
 ```
 
 So far everything makes sense. But what if the result of the division is not an integer like in the following contract (the code is in [src/division2.cairo](./contracts/cairo/division2.cairo))?
 
-```python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
 
-func main{output_ptr: felt*}(){
+func main{output_ptr: felt*}() {
     tempvar x = 10/3;
     assert x = 10/3;
     serialize_word(x);
 
     return();
 }
-
 ```
 
 To begin with, it prints the beautiful number on the console: `1206167596222043737899107594365023368541035738443865566657697352045290673497`. What is this and why does it return it to us instead of a sizable decimal point?
 
 In the function above `x` **not** is a `floating point`, 3.33, **ni** is an integer rounded to the result, 3. It is an integer that multiplied by 3 will give us 10 back (it looks like this function `3 * x = 10`) or `x` can also be a denominator that returns 3 (`10 / x = 3`). Let's see this with the following contract:
 
-```python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
 
-func main{output_ptr: felt*}(){
+func main{output_ptr: felt*}() {
     tempvar x = 10/3;
 
     tempvar y = 3 * x;
@@ -392,7 +385,7 @@ func main{output_ptr: felt*}(){
 
 By compiling and running this contract we get exactly what we were looking for:
 
-```python
+```
 Program output:
   10
   3
@@ -409,12 +402,12 @@ Due to the particularities of felts, comparing between felts is not like in othe
 
 In the `starkware.cairo.common.math` library we find functions that will help us compare felts ([link to GitHub repository](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/math.cairo)). For now we will use `assert_not_zero`, `assert_not_equal`, `assert_nn` and `assert_le`. There are more features to compare felts in this library, feel free to explore them. The complete code is in [src/asserts.cairo](./contracts/cairo/asserts.cairo).
 
-```python
+```cairo
 %builtins range_check
 
 from starkware.cairo.common.math import assert_not_zero, assert_not_equal, assert_nn, assert_le
 
-func main{range_check_ptr : felt}(){
+func main{range_check_ptr : felt}() {
     assert_not_zero(1);  // not zero
     assert_not_equal(1, 2);  // not equal
     assert_nn(1); // non-negative
@@ -430,12 +423,12 @@ But what if we want to compare `10/3 < 10`? We know this to be true, but we also
 
 In effect, the following function that compares `10/3 < 10` will return an error: `AssertionError: a = 2412335192444087475798215188730046737082071476887731133315394704090581346994 is out of range.`
 
-```python
+```cairo
 %builtins range_check
 
 from starkware.cairo.common.math import assert_lt
 
-func main{range_check_ptr : felt}(){
+func main{range_check_ptr : felt}() {
     assert_lt(10/3, 10); // less than
 
     return ();
@@ -444,12 +437,12 @@ func main{range_check_ptr : felt}(){
 
 How then do we compare `10/3 < 10`? We have to go back to our high school/college classes. Let's just remove the 3 from the denominator by multiplying everything by 3; we would compare `3*10/3 < 3*10` which is the same as `10 < 30`. This way we are only comparing integers and forget about how eccentric the felt is. The following function runs without a problem.
 
-```python
+```cairo
 %builtins range_check
 
 from starkware.cairo.common.math import assert_lt
 
-func main{range_check_ptr : felt}(){
+func main{range_check_ptr : felt}() {
     assert_lt(3*10/3, 3*10);
 
     return ();
@@ -460,17 +453,17 @@ func main{range_check_ptr : felt}(){
 
 As we have seen, `assert` is key to programming in Cairo. In the examples above we use it to confirm a statement, `assert y = 10`. This is a common usage in other programming languages like Python. But in Cairo when you try to `assert` something that isn't assigned yet, `assert` works to assign. Check out this example adapted from the [StarkNet Bootcamp Amsterdam](https://github.com/lightshiftdev/starknet-bootcamp/blob/main/packages/contracts/samples/04-cairo-math.cairo) which also helps us to consolidate what we learned about structs. The complete code is in [src/vector.cairo](./contracts/cairo/vector.cairo).
 
-```python
+```cairo
  %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
 
-struct Vector2d{
+struct Vector2d {
     x : felt,
     y : felt,
 }
 
-func add_2d(v1 : Vector2d, v2 : Vector2d) -> (r : Vector2d){
+func add_2d(v1 : Vector2d, v2 : Vector2d) -> (r : Vector2d) {
     alloc_locals;
 
     local res : Vector2d;
@@ -480,7 +473,7 @@ func add_2d(v1 : Vector2d, v2 : Vector2d) -> (r : Vector2d){
     return (r=res);
 }
 
-func main{output_ptr: felt*}(){
+func main{output_ptr: felt*}() {
     
     let v1 = Vector2d(x = 1, y = 2);
     let v2 = Vector2d(x = 3, y = 4);
@@ -500,13 +493,13 @@ Running `assert res.x = v1.x + v2.x`, Cairo's prover detects that `res.x` does n
 
 Arrays contain ordered elements. They are very common in programming. How do they work in Cairo? Let's learn by creating an array of matrices. The contract below can be found in [src/matrix.cairo](./contracts/cairo/matrix.cairo).
 
-```python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
 from starkware.cairo.common.alloc import alloc
 
-struct Vector{
+struct Vector {
     elements : felt*,
 }
 
@@ -515,7 +508,7 @@ struct Matrix{
     y : Vector,
 }
 
-func main{output_ptr: felt*}(){
+func main{output_ptr: felt*}() {
 
     // Defining an array, my_array, of felts.
     let (my_array : felt*) = alloc();
@@ -553,7 +546,7 @@ func main{output_ptr: felt*}(){
 
 We create an array of felts called `my_array`. This is how it is defined:
 
-```
+```cairo
 let (my_array : felt*) = alloc();
 ```
 
@@ -568,13 +561,13 @@ In fact, if we go [to the repo](https://github.com/starkware-libs/cairo-lang/blo
 
 We see that the definition of our array of matrices is exactly the same except that instead of wanting an array of `felt` we want one of `Matrix`:
 
-```Rust
+```cairo
 let (matrix_array : Matrix*) = alloc();
 ```
 
 We already passed the complicated 😴. Now let's see how to fill our array with `Matrix` structures. We use `assert` and we can index with `[]` the position of the array that we want to alter or revise:
 
-```
+```cairo
 assert matrix_array[0] = Matrix(x = v1, y = v2);
 ```
 
@@ -626,7 +619,7 @@ Let's start with the following code (remember that the full contract is in [this
 - `voter_info`, indicates and updates the information of a voter (may or may not vote).
 - `registered_voter`, indicates if an address is allowed to vote.
 
-```
+```cairo
 %lang starknet
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
@@ -641,13 +634,13 @@ from openzeppelin.security.pausable.library import Pausable
 // ------
 
 // struct that carries the status of the vote
-struct VoteCounting{
+struct VoteCounting {
     votes_yes : felt,
     votes_no : felt,
 }
 
 // struct indicating whether a voter is allowed to vote
-struct VoterInfo{
+struct VoterInfo {
     allowed : felt,
 }
 
@@ -657,12 +650,12 @@ struct VoterInfo{
 
 // storage variable that takes no arguments and returns the current status of the vote
 @storage_var
-func voting_status() -> (res : VoteCounting){
+func voting_status() -> (res : VoteCounting) {
 }
  
 // storage variable that receives an address and returns the information of that voter
 @storage_var
-func voter_info(user_address: felt) -> (res : VoterInfo){
+func voter_info(user_address: felt) -> (res : VoterInfo) {
 }
 
 // storage variable that receives an address and returns if an address is registered as a voter
@@ -687,9 +680,9 @@ To interact with the contract's storage we create storage variables. We can thin
 
 The most common way to interact with the contract's storage and to create storage variables is with the decorator (yes, just like in Python) `@storage_var`. The methods (functions), `.read(key)`, `.write(key, value)` and `.addr(key)` are automatically created for the storage variable. Let's do an example where we don't have a key but we do have a value (`res`), above we create the storage variable `voting_status`:
 
-```
+```cairo
 @storage_var
-func voting_status() -> (res : VoteCounting){
+func voting_status() -> (res : VoteCounting) {
 }
 ```
 
@@ -699,9 +692,9 @@ To write a new status to our storage variable we use `voting_status.write(new_vo
 
 Let's look at a storage variable that has a key (`user_address`) and a value (`res`).
 
-```
+```cairo
 @storage_var
-func voter_info(user_address: felt) -> (res : VoterInfo){
+func voter_info(user_address: felt) -> (res : VoterInfo) {
 }
 ```
 
@@ -717,8 +710,8 @@ Let's move on to the next code snippet of our voting contract (you can find the 
 
 We create the inner function `_register_voters` (by default all functions in StarkNet are private, unlike Solidity). With it we will prepare our list of voters. We assume that we have a list of addresses that are allowed to vote. `_register_voters` uses the storage variable `voter_info` to assign each address its voting status: whether it is allowed to vote.
 
-```
-func _register_voters{
+```cairo
+func _register_voters {
     syscall_ptr : felt*,
     pedersen_ptr : HashBuiltin*,
     range_check_ptr,
@@ -757,7 +750,7 @@ Along with StarkNet Keccak (the first 250 bits of the Keccak256 hash), the Peder
 
 The implicit argument `pedersen_ptr` is a pointer to a HashBuiltin struct defined in the [Cairo common library](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/cairo_builtins.cairo):
 
-```
+```cairo
 struct HashBuiltin {
     x: felt,
     y: felt,
@@ -769,27 +762,26 @@ struct HashBuiltin {
 
 Inside a function we can mark an error in the contract if a condition is false. For example, in the following code the error would be raised because `assert_nn(amount)` is false (`assert_nn` checks if a value is non-negative). If `amount` were 10 then `assert_nn(amount)` would be true and the error would not be raised.
 
-```
+```cairo
 let amount = -10
 
-with_attr error_message(
-            "Quantity should be positive. You have: {amount}."):
-        assert_nn(amount)
-    end
+with_attr error_message("Quantity should be positive. You have: {amount}.") {
+  assert_nn(amount)
+}
 ```
 
 We will create a function, `_assert_allowed`, which will check if a certain voter is allowed to vote and if not, it will return an error.
 
-```
+```cairo
 from starkware.cairo.common.math import assert_not_zero
 
 ...
 
-func _assert_allowed{
+func _assert_allowed {
     syscall_ptr : felt*,
     //pedersen_ptr : HashBuiltin*,
     range_check_ptr
-}(info : VoterInfo){
+}(info : VoterInfo) {
 
     with_attr error_message("VoterInfo: Your address is not allowed to vote."){
         assert_not_zero(info.allowed);
@@ -805,7 +797,7 @@ We import `assert_not_zero`. The error will return a message if `assert_not_zero
 
 Let's move on to the main function of our application. We write a function that takes as an explicit argument a vote (1 or 0) and then updates the total vote count and the state of the voter so that they cannot vote again.
 
-```
+```cairo
 %lang starknet
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.starknet.common.syscalls import get_caller_address
@@ -813,11 +805,11 @@ from starkware.starknet.common.syscalls import get_caller_address
 ...
 
 @external
-func vote{
+func vote {
     syscall_ptr : felt*,
     pedersen_ptr : HashBuiltin*,
     range_check_ptr
-}(vote : felt) -> (){
+}(vote : felt) -> () {
     alloc_locals;
     Pausable.assert_not_paused();
 
@@ -858,29 +850,29 @@ The next new thing is the `@external` decorator used on the `vote` function. Not
 
 Let's write functions that allow other contracts (including accounts) to check the status of the current vote. These functions that allow you to check the state are called `getters`. First, we create a getter, `get_voting_status`, which returns the current status of the vote, that is, it returns a struct `VoteCounting` with the total vote count. Next, we create the getter `get_voter_status` which returns the status of a particular address (voter) (whether they have already voted or not). Review the [final contract](./contracts/cairo/voting.cairo) to see other added getter functions.
 
-```
+```cairo
 %lang starknet
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 
 ...
  
 @view
-func get_voting_status{
+func get_voting_status {
     syscall_ptr : felt*,
     pedersen_ptr : HashBuiltin*,
     range_check_ptr
-}() -> (status: VoteCounting){
+}() -> (status: VoteCounting) {
     let (status) = voting_status.read();
     return (status = status);
 }
 
 
 @view
-func get_voter_status{
+func get_voter_status {
     syscall_ptr : felt*,
     pedersen_ptr : HashBuiltin*,
     range_check_ptr
-}(user_address: felt) -> (status: VoterInfo){
+}(user_address: felt) -> (status: VoterInfo) {
     let (status) = voter_info.read(user_address);
     return(status = status);
 }
@@ -896,7 +888,7 @@ Constructor functions are used to initialize a StarkNet application. We define t
 
 Beware, Cairo only supports **1 constructor per contract**.
 
-```
+```cairo
 from openzeppelin.access.ownable.library import Ownable
 
 ...
