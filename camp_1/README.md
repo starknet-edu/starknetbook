@@ -950,8 +950,7 @@ To understand the deployment procedure in StarkNet, we need first to understand 
 
 StarkWare made the conscious decision to subsidize the usage of StarkNet while the network was being developed. After battle testing the technology stack, the focus is on decentralizing the network. Decentralization means that the subsidy to deploy contracts must stop because who would want to run a Sequencer if they won’t get paid for deploying smart contracts? Sequencers are StarkNet nodes that execute the Cairo OS program, prove the results, and update the StarkNet state. They’re vital for StarkNet’s security. Notice that if there were no fees, it would mean either one of two things: (1) the network is centralized or (2) the Sequencers run like a loss-making charity ([Darlington, 2022](https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/)). 
 
-Before deploying our contract, we need to `declare` it: (XXXX what is declared?)
-
+Before deploying our contract, we need to `declare` it: calculate the class hash. Unlike Ethereum, StarkNet distinguishes between a contract class and a contract instance. A contract class represents the code of a contract (but with no state), while a contract instance represents a specific instance of the class, with its own state. In other words, two exactly equal contracts will have the same contract class hash but, once deployed, they will be different contract instances.
 
 Argent's User Interface (UI) lets us declare and deploy our contract quickly. What comes next is entirely inspired by [Darlington's post in Argent's blog](https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/) and will quote it heavily. These are the steps:
 
