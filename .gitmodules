@@ -1,3 +1,6 @@
 [submodule "cairo_contracts"]
 	path = camp_2/buidl/protostar-buidl/lib/cairo_contracts
 	url = https://github.com/OpenZeppelin/cairo-contracts
+[submodule "cairopen_contracts"]
+	path = camp_2/buidl/protostar-buidl/lib/cairopen_contracts
+	url = https://github.com/CairOpen/cairopen-contracts
