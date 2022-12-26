@@ -40,7 +40,7 @@ Don't worry if you don't understand everything that's going on at this point. Ca
 
 The program to add the two numbers is available in [src/sum.cairo](./contracts/cairo/sum.cairo). There you will find the code correctly commented.
 
-```Python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
@@ -98,7 +98,7 @@ In addition to `felt`, we have other structures at our disposal (more details in
 
 We can create our own structure, Python dictionary style:
 
-```Python
+```cairo
 struct MyStruct{
     first_member : felt,
     second_member : felt,
@@ -119,7 +119,7 @@ Tuples in Cairo are pretty much the same as tuples in Python:
 
 The Cairo documentation is very clear in its definition of tuples. Here is an example:
 
-```Python
+```cairo
 # A tuple with three elements
 local tuple0 : (felt, felt, felt) = (7, 9, 13)
 local tuple1 : (felt) = (5,)  # (5) is not a valid tuple.
@@ -140,7 +140,7 @@ let b = tuple4[0][1][2]  # let b = 13.
 
 The definition of a function in Cairo has the following format:
 
-```Python
+```cairo
 func function(arg1: felt, arg2) -> (returned: felt){
   // Function body
   let (sum) = sum_two_nums(num1 = NUM1, num2 = NUM2);
@@ -173,7 +173,7 @@ Before explaining how implicit arguments work, a rule: If a `foo()` function cal
 
 Let's see what a function with an implicit argument looks like. The function is `serialize_word` which is available in the `starkware.cairo.common.serialize` library, and we use it in our initial function to add two numbers.
 
-```Python
+```cairo
 %builtins output
 
 // Appends a single word to the output pointer and returns the pointer to the next output cell.
@@ -190,7 +190,7 @@ In the example with the `serialize_word` function, we define that we are going t
 
 Following the rule defined at the beginning, any function that calls `serialize_word` will also have to receive the implicit `output_ptr`. For example, part of our function to add two numbers goes like this:
 
-```Python
+```cairo
 func main{output_ptr: felt*}():
     alloc_locals
 
@@ -221,7 +221,7 @@ Thus we define a local variable: `local a = 3`.
 
 As an example, look at this part of our function that adds two numbers:
 
-```Python
+```cairo
 func sum_two_nums(num1: felt, num2: felt) -> (sum):
     alloc_locals
     local sum = num1+num2
@@ -238,7 +238,7 @@ Since we don't want it to be so easy, let's talk from memory. Cairo stores the l
 
 Very simple. Just remember that they must give an integer (a field) when we compile our code. Create a constant:
 
-```Python
+```cairo
 const NUM1 = 1
 
 ```
@@ -247,7 +247,7 @@ const NUM1 = 1
 
 This is the format to define one:
 
-```Python
+```cairo
 let ref_name : ref_type = ref_expr
 
 ```
@@ -256,14 +256,14 @@ Where `ref_type` is a type, and `ref_expr` is a Cairo expression. Placing the `r
 
 A reference can be reassigned (Cairo [documentation](https://www.cairo-lang.org/docs/reference/syntax.html#references)):
 
-```Python
+```cairo
 let a = 7  // a is initially bound to expression 7.
 let a = 8  // a is now bound to expression 8.
 
 ```
 In our addition of two numbers, we create a reference called `sum`. We see that we assign to `sum` the `felt` that the function `sum_two_nums` returns.
 
-```Python
+```cairo
 let (sum) = sum_two_nums(num1 = NUM1, num2 = NUM2)
 
 ```
@@ -334,7 +334,7 @@ Any value that is not within this range will cause an “overflow”: an error t
 
 Now we understand the limits of the felt. If the value is 0.5, for example, we have an overflow. Where will we experience overflows frequently? In the divisions. The following contract (full code is in [src/division1.cairo](./contracts/cairo/division1.cairo)) divides 9/3, check with `assert` that the result is 3, and print the result.
 
-```Python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
@@ -351,7 +351,7 @@ func main{output_ptr: felt*}(){
 
 So far, everything makes sense. But what if the result of the division is not an integer like in the following contract (the code is in [src/division2.cairo](./contracts/cairo/division2.cairo))?
 
-```Python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
@@ -370,7 +370,7 @@ To begin with, it prints the beautiful number on the console: `12061675962220437
 
 In the function above, `x` **not** is a `floating point`, 3.33, **ni** is an integer rounded to the result, 3. It is an integer that, multiplied by 3, will give us 10 back (it looks like this function `3 * x = 10`) or `x` can also be a denominator that returns 3 (`10 / x = 3`). Let's see this with the following contract:
 
-```Python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
@@ -392,7 +392,7 @@ func main{output_ptr: felt*}(){
 
 By compiling and running this contract we get exactly what we were looking for:
 
-```Python
+```cairo
 Program output:
   10
   3
@@ -409,7 +409,7 @@ Due to the particularities of felts, comparing between felts is not like in othe
 
 In the `starkware.cairo.common.math` library we find functions that will help us compare felts ([link to GitHub repository](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/cairo/common/math.cairo)). For now we will use `assert_not_zero`, `assert_not_equal`, `assert_nn` and `assert_le`. There are more features to compare felts in this library, feel free to explore them. The complete code is in [src/asserts.cairo](./contracts/cairo/asserts.cairo).
 
-```Python
+```cairo
 %builtins range_check
 
 from starkware.cairo.common.math import assert_not_zero, assert_not_equal, assert_nn, assert_le
@@ -430,7 +430,7 @@ But what if we want to compare `10/3 < 10`? We know this to be true, but we also
 
 In effect, the following function that compares `10/3 < 10` will return an error: `AssertionError: a = 2412335192444087475798215188730046737082071476887731133315394704090581346994 is out of range.`
 
-```Python
+```cairo
 %builtins range_check
 
 from starkware.cairo.common.math import assert_lt
@@ -444,7 +444,7 @@ func main{range_check_ptr : felt}(){
 
 How then do we compare `10/3 < 10`? We have to go back to our high school/college classes. Let's just remove the 3 from the denominator by multiplying everything by 3; we would compare `3*10/3 < 3*10` which is the same as `10 < 30`. This way we are only comparing integers and forget about how eccentric the felt is. The following function runs without a problem.
 
-```Python
+```cairo
 %builtins range_check
 
 from starkware.cairo.common.math import assert_lt
@@ -460,7 +460,7 @@ func main{range_check_ptr : felt}(){
 
 As we have seen, `assert` is key to programming in Cairo. In the examples above we use it to confirm a statement, `assert y = 10`. This is a common usage in other programming languages like Python. But in Cairo when you try to `assert` something that isn't assigned yet, `assert` works to assign. Check out this example adapted from the [StarkNet Bootcamp Amsterdam](https://github.com/lightshiftdev/starknet-bootcamp/blob/main/packages/contracts/samples/04-cairo-math.cairo) which also helps us to consolidate what we learned about structs. The complete code is in [src/vector.cairo](./contracts/cairo/vector.cairo).
 
-```Python
+```cairo
  %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
@@ -500,7 +500,7 @@ Running `assert res.x = v1.x + v2.x`, Cairo's prover detects that `res.x` does n
 
 Arrays contain ordered elements. They are very common in programming. How do they work in Cairo? Let's learn by creating an array of matrices. The contract below can be found in [src/matrix.cairo](./contracts/cairo/matrix.cairo).
 
-```Python
+```cairo
 %builtins output
 
 from starkware.cairo.common.serialize import serialize_word
