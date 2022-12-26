@@ -1123,14 +1123,14 @@ Before sending another transaction to the network, ensure the previous transacti
 Here we are using dummy values. However, you can nicely add your address as the admin of the contract and invite your DAO to vote on-chain with low costs.
 
 ```Bash
-    starknet invoke \
-        --address 0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf \
-        --abi contracts/cairo/UDC_abi.json \
-        --function deployContract \
-        --inputs 0x679eec449818394722a31ecb38594343b2c687efab5404a3f75fd45d4c1fa0c 0 0 4 111 2 222 333 \
-        --network alpha-goerli \
-        --account voting-contract \
-        --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+starknet invoke \
+    --address 0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf \
+    --abi contracts/cairo/UDC_abi.json \
+    --function deployContract \
+    --inputs 0x679eec449818394722a31ecb38594343b2c687efab5404a3f75fd45d4c1fa0c 0 0 4 111 2 222 333 \
+    --network alpha-goerli \
+    --account voting-contract \
+    --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 ```    
 
 We get:
