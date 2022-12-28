@@ -16,10 +16,14 @@ from starkware.starknet.core.os.transaction_hash.transaction_hash import (
 from starkware.starknet.public.abi import get_selector_from_name
 from starkware.starknet.services.api.contract_class import ContractClass
 from starkware.starknet.services.api.gateway.transaction import InvokeFunction
+from enum import Enum
 
 CONTRACT_ADDRESS_PREFIX = from_bytes(b"STARKNET_CONTRACT_ADDRESS")
 MAX_FEE = 3000000000000000
 TESTNET_ID = from_bytes(b"SN_GOERLI")
+MAINNET = from_bytes(b"SN_MAIN")
+TESTNET = from_bytes(b"SN_GOERLI")
+TESTNET2 = from_bytes(b"SN_GOERLI2")
 
 # Calculates the pedersen hash of a contract
 def calculate_contract_hash(
