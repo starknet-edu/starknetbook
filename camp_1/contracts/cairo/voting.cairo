@@ -187,8 +187,8 @@ func vote{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(vote:
     _assert_allowed(info);
 
     // Mark that the voter has already voted and update in the storage
-    let info_actualizada = VoterInfo(allowed=0);
-    voter_info.write(caller, info_actualizada);
+    let updated_info = VoterInfo(allowed=0);
+    voter_info.write(caller, updated_info);
 
     // Update the vote count with the new vote
     let (status) = voting_status.read();
