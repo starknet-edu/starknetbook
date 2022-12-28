@@ -69,7 +69,7 @@ func main{output_ptr: felt*}(){
 
 ### The builtins
 
-At the beginning of our program in Cairo, we write `%builtins output`. Here we are telling the Cairo compiler that we will use the `builtin` called `output`. You can learn more about builtins in [camp 5](../camp_5/README.md); however, you can continue writing Cairo without going deep into `builtins. We can summon Cairo's special abilities through the builtins.
+At the beginning of our program in Cairo, we write `%builtins output`. Here we are telling the Cairo compiler that we will use the `builtin` called `output`. You can learn more about builtins in [camp 5](../camp_5/README.md); however, you can continue writing Cairo without going deep into `builtin`s. We can summon Cairo's special abilities through the builtins.
 
 Let's explore one of the most common builtins.
 
@@ -88,7 +88,7 @@ This is how several functions are imported from the same library: `from starkwar
 
 ### The field elements (felts) (part 1)
 
-In Cairo, when the type of a variable or argument is not specified, it is automatically assigned the type `felt`. The [camp 2](../camp_2/README.md) goes into technical detail about what is a `felt`. For the purposes of this section, suffice it to say that a `felt` works as an integer. In the divisions, we can notice the difference between the `felt` and the integers. However, quoting the documentation:
+In Cairo, when the type of a variable or argument is not specified, it is automatically assigned the type `felt`. The [Camp 6](../camp_6/README.md) goes into technical detail about what a `felt` is. For the purposes of this section, suffice it to say that a `felt` works as an integer. In the divisions, we can notice the difference between the `felt` and the integers. However, quoting the documentation:
 
 > In most of your code (unless you intend to write very algebraic code), you won't have to deal with the fact that the values in Cairo are felts, and you can treat them as if they were normal integers.
 
@@ -838,10 +838,10 @@ func vote {
     _assert_allowed(info);
 
     // Mark that the voter has already voted and update the storage
-    let info_actualizada = VoterInfo(
+    let updated_info = VoterInfo(
         allowed=0,
     );
-    voter_info.write(caller, info_actualizada);
+    voter_info.write(caller, updated_info);
 
     // Update the vote count with the new vote
     let (status) = voting_status.read();
@@ -899,7 +899,7 @@ func get_voter_status {
 
 **View functions.** Using the `@view` decorator, we define a function as view. Other contracts (including accounts) can read from the contract status; they cannot modify it (note that externals can modify it). Reading from storage does not cost gas!
 
-Note that in Solidity, the compiler creates getters for all state variables declared as public; in Cairo, all storage variables are private. Therefore, if we want to publicize the storage variables, we must make a getter function ourselves.
+Note that in Solidity, the compiler creates getters for all state variables declared as public; in Cairo, all storage variables are private. Therefore, if we want to make the storage variables public, we must make a getter function ourselves.
 
 ### Constructors
 
@@ -932,7 +932,8 @@ In the constructor, we are indicating that we require three inputs to initialize
 In your terminal, compile with:
 
 ```
-cairo-compile contracts/cairo/voting.cairo --output contracts/cairo/voting_compiled.json
+cairo-compile contracts/cairo/voting.cairo \
+    --output contracts/cairo/voting_compiled.json
 ```
 
 This command will create the `voting_compiled.json` file, which contains the contract's bytecode. We will use it to declare our contract and then deploy it.
@@ -941,7 +942,7 @@ To understand the deployment procedure in StarkNet, we need first to understand 
 
 ### Deploying the Easiest Way: Argent's User Interface
 
-StarkWare made the conscious decision to subsidize the usage of StarkNet while the network was being developed. After battle testing the technology stack, the focus is on decentralizing the network. Decentralization means that the subsidy to deploy contracts must stop because who would want to run a Sequencer if they won’t get paid for deploying smart contracts? Sequencers are StarkNet nodes that execute the Cairo OS program, prove the results, and update the StarkNet state. They’re vital for StarkNet’s security. Notice that if there were no fees, it would mean either one of two things: (1) the network is centralized or (2) the Sequencers run like a loss-making charity ([Darlington, 2022](https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/)). 
+StarkWare made the conscious decision to subsidize the usage of StarkNet while the network was being developed. After battle testing the technology stack, the focus is on decentralizing the network. Decentralization means that the subsidy to deploy contracts must stop because who would want to run a Sequencer if they won’t get paid for deploying smart contracts? Sequencers are StarkNet nodes that execute the StarkNet OS program, prove the results, and update the StarkNet state. They’re vital for StarkNet’s security. Notice that if there were no fees, it would mean either one of two things: (1) the network is centralized or (2) the Sequencers run like a loss-making charity ([Darlington, 2022](https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/)). 
 
 Before deploying our contract, we need to `declare` it: calculate the class hash. Unlike Ethereum, StarkNet distinguishes between a contract class and a contract instance. A contract class represents the code of a contract (but with no state), while a contract instance represents a specific instance of the class, with its own state. In other words, two exactly equal contracts will have the same contract class hash but, once deployed, they will be different contract instances.
 
@@ -967,7 +968,7 @@ Argent's User Interface (UI) lets us declare and deploy our contract quickly. Wh
 
 The value for salt can be any number you want; it’s there only to introduce randomness into the generated address for your soon-to-be-deployed smart contract.
 
-The unique field, combined with salt, can get the same address on different networks. For example, if we deploy to Goerli, passing the value 5 for salt, and do not check the unique address field, the smart contract will be deployed to a specific address; let’s say it’s 0xabc… We can now repeat the deployment process, but this time on Mainnet, and if we pass the same values for salt and the unique field, the smart contract will be deployed to the same address 0xabc… but this time on Mainnet. In this example, we will uncheck the unique field and write 0 in salt for simplicity, not because we want to preserve the address.|
+The unique field, combined with salt, can get the same address on different networks. For example, if we deploy to Goerli, passing the value 5 for salt, and do not check the unique address field, the smart contract will be deployed to a specific address; let’s say it’s 0xabc… We can now repeat the deployment process, but this time on Mainnet, and if we pass the same values for salt and the unique field, the smart contract will be deployed to the same address 0xabc… but this time on Mainnet. In this example, we will uncheck the unique field and write 0 in salt for simplicity, not because we want to preserve the address.
 
 Unfortunately, until December 2022, Argent still needs to add the feature to deal with arrays in their UI deployer. This will change soon, but we can not deploy our voting contract using Argent's UI yet. We will deploy it using the `starknet cli` in the section. 
 
@@ -978,7 +979,7 @@ Our contract is now on-chain. We can interact with it using block explorers such
 
 ### Deploying II: Open Zeppelin's Universal Deployer Contract (optional)
 
-This section will explain what is beneath the Argent's UI. Do this section if you want to get deeper into what deploying a contract in StarkNet means. This will help you later work with more complex contracts, e.g. deploying your customize account contracts. However, for most contracts, using Argent's UI will be enough.
+This section will explain what is underneath the Argent's UI. Do this section if you want to get deeper into what deploying a contract in StarkNet means. This will help you later work with more complex contracts, e.g. deploying your customize account contracts. However, for most contracts, using Argent's UI will be enough.
 
 For deploying our contracts, we need the `deploy syscall`. The [deploy syscall is a function](https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/common/syscalls.cairo#L157) available to any Cairo smart contract that allows the Sequencer to get paid proportionally to the complexity of the deployment.
 
@@ -992,7 +993,7 @@ This new way of deploying a smart contract means we need a “deployer” contra
 
 The folks at Open Zeppelin have been aware of the need to have a deployer smart contract that is generic enough that can be used by anyone wanting to deploy their smart contracts. They’ve called it the [Universal Deployer Contract (UDC)](https://github.com/OpenZeppelin/cairo-contracts/blob/main/src/openzeppelin/utils/presets/UniversalDeployer.cairo), which has a single function, `deployContract`.
 
-```Rust
+```cairo
 from starkware.starknet.common.syscalls import deploy
 ...
 
@@ -1035,10 +1036,19 @@ To deploy your contract using the UDC, you should now perform these steps:
    
 Notice that a "deploy" transaction is never used; instead, the invoke transaction is used. The invoke transaction requires a user account (wallet) with enough wrapped Ether to charge the user for the deployment.
 
+The process looks like this:
+
+<div align="center">
+    <img src="../misc/udc.jpeg">
+</div>
+
 Before deploying our contract, we need to define the account contract that will pay for the deployment. Using the `starknet` CLI, we can define a new wallet with `new_account`. Using the '--account' flag, we can name the wallet with an alias. We can use the alias to refer to the account in later commands; in the example below, we call it `voting-contract`. With the `--wallet` flag, we can indicate the wallet format we will use for our account contract. Since we are using Account Abstraction, account contracts are programable (not just a fixed EOA as with the L1). That is, we can give customized functionality to our account contract. In this case, we are using the standard Open Zeppelin (modified by Starkware) account contract: `starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount`. Before, when we were using the Argent UI, we implicitly decided that we would use the Argent's account contract with its functionality and features, which differs from Open Zeppelin's. We will learn more about account contracts and how to customize them in Camp 3. This is one of the most powerful features in StarkNet and is the catalyst to get a Web2-level User Experience (UX).
 
 ```Bash
-starknet new_account --network alpha-goerli --account voting-contract --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+starknet new_account \
+    --network alpha-goerli \
+    --account voting-contract \
+    --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 ```
 
 The `new_account` command did not deploy the account contract; it simply calculated its address and public key:
@@ -1056,7 +1066,10 @@ differently.
 Before deploying this account contract, we need to fund it so it can pay for its deployment (this process is called counterfactual deployment and will be studied in Camp 3). We can go back to the [StarkNet Goerli Faucet](https://faucet.goerli.starknet.io/) and feed it with the address we got from `new_account`: `0x00f20c6664cc47e569abe53c7ba19f04685158a1b2f01c9a923cd3849354a928`. We wait a couple of minutes, and then we can deploy our account contract:
 
 ```Bash
-starknet deploy_account --network alpha-goerli --account voting-contract --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+starknet deploy_account \
+    --network alpha-goerli \
+    --account voting-contract \
+    --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 ```
 
 We get:
@@ -1075,7 +1088,11 @@ Let's deploy our voting contract. The following steps will be similar to what we
 
 
 ```Bash
-starknet declare --contract contracts/cairo/voting_compiled.json --network alpha-goerli --account voting-contract --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+starknet declare \
+    --contract contracts/cairo/voting_compiled.json \
+    --network alpha-goerli \
+    --account voting-contract \
+    --wallet starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 ```
 
 We get:
@@ -1093,7 +1110,7 @@ Let's deploy our contract by invoking the `deployContract` in the UDC. The `invo
 
 Since the UDC is nothing more than a deployed contract, we can see and interact with in any [block explorer](https://testnet.starkscan.co/contract/0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf); from there we can download its ABI in JSON format. Its address is `0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf`. The function we will call is `deployContract` which asks for the following call data:
 
-```Rust
+```cairo
 @external
 func deployContract{...}(
     classHash: felt,
@@ -1147,7 +1164,7 @@ Click on the `details` button:
     <img src="../misc/starkscan2.png">
 </div>
 
-According to the event, the address of our smart contract is [0x0032121d8ae3928188be63faf494b8be3a5d065c5f28c9e75996eac8d3e698c1](https://testnet.starkscan.co/contract/0x0032121d8ae3928188be63faf494b8be3a5d065c5f28c9e75996eac8d3e698c1#overview). We can already play with our contract's `view` and `external` functions by inspecting the “Read Contract” and Write Contract tabs, respectively.
+According to the event, the address of our smart contract is [0x0032121d8ae3928188be63faf494b8be3a5d065c5f28c9e75996eac8d3e698c1](https://testnet.starkscan.co/contract/0x0032121d8ae3928188be63faf494b8be3a5d065c5f28c9e75996eac8d3e698c1#overview). We can already play with our contract's `view` and `external` functions by inspecting the “Read Contract” and ”Write Contract” tabs, respectively.
 
 <div align="center">
     <img src="../misc/starkscan3.png">

@@ -45,7 +45,17 @@ pip install starknet-devnet`
 
 Restart your terminal and run `starknet-devnet --version` to check that the installation was successful. Check that you have [the most up-to-date version](https://github.com/Shard-Labs/starknet-devnet/releases). If you don't have it, run `pip install --upgrade starknet-devnet`. [Here is the documentation](https://shard-labs.github.io/starknet-devnet/docs/intro).
 
-Initialize the devnet in a separate shell (or tab) with `starknet-devnet --accounts 3 --gas-price 250 --seed 0 --port 5000`. You will get the following:
+Initialize the devnet in a separate shell (or tab) with 
+
+```Bash
+starknet-devnet \
+    --accounts 3 \
+    --gas-price 250 \
+    --seed 0 \
+    --port 5000
+```
+    
+We get:
 
 ```Bash
 Account #0
