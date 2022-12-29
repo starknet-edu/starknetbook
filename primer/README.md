@@ -14,25 +14,25 @@
 4. [Rollups](./rollups/README.md)
 
 <h2 align="center">Overview</h2>
-This primer is inteded to cover introductory concepts upon which Cairo and StarkNet are built, and also to get you acquainted with the format of this course. Each section will involve drilling down on a high-level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example:
+This primer is intended to cover introductory concepts upon which Cairo and StarkNet are built, and also to get you acquainted with the format of this course. Each section will involve drilling down on a high-level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example:
 
 <div align="center">
     <img src="../misc/plat.png">
 </div>
 
-Code examples will be named by the programming language in which they are implemented, for example Bitcoin block verification in [Golang](https://go.dev/doc/install) (if you can implement these example in other languages we would love a PR):
+Code examples will be named by the programming language in which they are implemented, for example, Bitcoin block verification in [Golang](https://go.dev/doc/install) (if you can implement this example in other languages we would love a PR):
 <div align="center">
     <a href="./bitcoin/block_verification/go">bitcoin/block_verification/go</a>
 </div>
 
-The topics covered in this primer have been disected in hundreds of ways by thousands of people, so wherever possible I will be linking to those resources.
+The topics covered in this primer have been dissected in hundreds of ways by thousands of people, so wherever possible I will be linking to those resources.
 
 <div align="center">
     <em>Standing on the shoulders of giants blah blah blah lets get to the good stuff</em>
 </div>
 
 <h3 align="center"> What are we solving for?</h3>
-The advent of blockchain technology has given the world computational systems with absolute transparency and inclusive accountabiliy. In order to obtain these characteristics, blockchain systems have been forced to make large trade offs which impact usability. Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
+The advent of blockchain technology has given the world computational systems absolute transparency and inclusive accountability. In order to obtain these characteristics, blockchain systems have been forced to make large trade-offs which impact usability. Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
 
 <br>
 <br>
@@ -41,7 +41,7 @@ The advent of blockchain technology has given the world computational systems wi
 </div>
 <br>
 
-In this course you will learn how StarkWare attempts to tackle the Blockchain Trillemma and provide a system that is
+In this course, you will learn how StarkWare attempts to tackle the Blockchain Trilemma and provide a system that is
 inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
 
 <p align="center">
@@ -56,7 +56,7 @@ inclusively accountable, decentralized, scalable, and secure through the use of 
     <img src="../misc/evolution.png">
 </div>
 
-For a more concrete example of the trillemna we can move outside of the blockchain context entirely. Say Alice has an important piece of data she needs access to. To start we will represent this data as ascii characters in YAML format:
+For a more concrete example of the trilemma we can move outside of the blockchain context entirely. Say Alice has an important piece of data she needs access to. To start we will represent this data as ASCII characters in YAML format:
 
 ```yaml
 alice_account: 5.00
@@ -74,7 +74,7 @@ Let's read that information:
 time cat bank.yaml
 ```
 
-It's obviously very fast to read and write this data from our local disk, and powerful [database mechanisms](https://www.postgresql.org) can be applied to optimize accesss to the data. BUT if you drop your computer or get too close to a large ACME magnet Alice loses her valuable bank account information.
+It's obviously very fast to read and write this data from our local disk, and powerful [database mechanisms](https://www.postgresql.org) can be applied to optimize access to the data. BUT if you drop your computer or get too close to a large ACME magnet Alice loses her valuable bank account information.
 <p align="center">
     🎯
     <strong>Goals: </strong>
@@ -94,13 +94,13 @@ If we replicate Alice's bank account YAML file on multiple computers, when one f
 
 Sender Questions:
 
-- How do I locate a recieving host to send to?
-- How do I know recieving host successfully wrote Alice's account data?
-- If I change Alice's account value how will the recieving host know to update the same value?
+- How do I locate a receiving host to send to?
+- How do I know the receiving host successfully wrote Alice's account data?
+- If I change Alice's account value how will the receiving host know to update the same value?
 
-Reciever Questions:
+Receiver Questions:
 
-- Who will I recieve data from?
+- Who will I receive data from?
 - If I change Alice's account value how will the sending host know to update the same value?
 
 ### Distributed Systems
@@ -109,9 +109,9 @@ These questions form the basis of distributed systems and distributed computing 
 
 Let's look briefly at how one of the more popular distributed databases [CassandraDB](https://cassandra.apache.org/doc/latest/cassandra/getting_started/configuring.html) handles these issues.
 
-You can see when configuring the system you are required to whitelist the `seed node` IP Addresses that will form our trusted cluster that partake in a limited peer-to-peer [gossip](https://www.linkedin.com/pulse/gossip-protocol-inside-apache-cassandra-soham-saha). Although this is suitable for many traditional systems we are strive to build inclusive and permissionless systems.
+You can see when configuring the system you are required to whitelist the `seed node` IP Addresses that will form our trusted cluster that partakes in a limited peer-to-peer [gossip](https://www.linkedin.com/pulse/gossip-protocol-inside-apache-cassandra-soham-saha). Although this is suitable for many traditional systems we strive to build inclusive and permissionless systems.
 
-Once the distributed database is setup we gain "Fault Tolerance" for Alice's valuable bank data. If someone accidently brings their large ACME magnet into one datacenter, the data is easily accesible on redundant hosts. Similar to blockchains these distributed systems made tradeoffs to the simple I/O example above. So what did we give up for this fault tolerance?
+Once the distributed database is set up we gain "Fault Tolerance" for Alice's valuable bank data. If someone accidentally brings their large ACME magnet into one data centre, the data is easily accessible on redundant hosts. Similar to blockchains these distributed systems made tradeoffs to the simple I/O example above. So what did we give up for this fault tolerance?
 
 Banks Perspective:
 
@@ -174,13 +174,13 @@ cd bitcoin/block_verification/go && go mod tidy
 go run main.go utils.go
 ```
 
-Alice's information gets formatted as a [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output) and is replicated on all of the [nodes](https://bitnodes.io) on the Bitcoin network. She can even validate that everything is acurate herself by rehashing the merkle tree of every block of transactions from genesis to now.
+Alice's information gets formatted as a [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output) and is replicated on all of the [nodes](https://bitnodes.io) on the Bitcoin network. She can even validate that everything is accurate herself by rehashing the merkle tree of every block of transactions from genesis to now.
 <p align="center">
     🎉
     <strong>NO DELEGATION OF TRUST</strong>
     🎉
 </p>
-Let's revisit the trillemma. What did we giveup to get this trustless data security?
+Let's revisit the trilemma. What did we give up to get this trustless data security?
 
 - Miners expend energy as they attempt to get the nonce
 - Full trustless verification requires EACH node to replicate the canonical state:
@@ -218,7 +218,7 @@ Smart contracts were first proposed by [Nick Szabo](https://www.fon.hum.uva.nl/r
 
 <h2 align="center">Ethereum</h2>
 
-Ethereum provides a platform to implement these smart contracts with the use of the [Ethereum Virtual Machine](./ethereum/ethereum_virtual_machine). In the Ethereum paradigm Alice's bank account information is stored in a 20-byte address called an [account](https://ethereum.org/en/whitepaper/#ethereum-accounts). Her account balance along with a few more fields (nonce, storageRoot, codeHash) become a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric".
+Ethereum provides a platform to implement these smart contracts with the use of the [Ethereum Virtual Machine](./ethereum/ethereum_virtual_machine). In the Ethereum paradigm, Alice's bank account information is stored in a 20-byte address called an [account](https://ethereum.org/en/whitepaper/#ethereum-accounts). Her account balance along with a few more fields (nonce, storageRoot, codeHash) becomes a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric".
 
 This `Trie` is a specific type of tree that encodes a `key` as a path of common prefixes to its corresponding `value`. So Alice's Bank Account can be found at an address("key") that points to an account ("value") in Ethereum's World State (trie). The tree structure of the trie allows us to obtain a cryptographic hash of each node all the way up to a single hash corresponding to the `root` similar to the Merkle tree we saw in the Bitcoin block verification.
 
@@ -235,11 +235,11 @@ cd ethereum/block_verification/go && go mod tidy
 go run *.go
 ```
 
-Ethereum then propogates its state by verifying transactions are well-formed and applying then to accounts. Alice has a public/private key pair to manager her "externally owned account" and can sign transactions that involve her balance or involve interacting with other contracts in the state.
+Ethereum then propagates its state by verifying transactions are well-formed and applying then to accounts. Alice has a public/private key pair to manage her "externally owned account" and can sign transactions that involve her balance or involve interacting with other contracts in the state.
 
-In addition to EOAs Ethereum has "contract accounts" which are controlled by the contract code associated with them. Everytime the contract account receives a message the bytecode that is stored as an [RLP encoded](https://eth.wiki/fundamentals/rlp) value in the account storage trie begins to execute according to the rules of the EVM.
+In addition to EOAs Ethereum has "contract accounts" which are controlled by the contract code associated with them. Every time the contract account receives a message the bytecode that is stored as an [RLP encoded](https://eth.wiki/fundamentals/rlp) value in the account storage trie begins to execute according to the rules of the EVM.
 
-Trillemma visit: what did we give up to add expressivity?
+Trilemma visit: what did we give up to add expressivity?
 
 - Every transaction still needs to be processed by every node in the network.
 - With the addition of world state storage the blockchain can "bloat" leading to centralization risk
@@ -268,14 +268,14 @@ Archive Node Size: ~10 TB
 <h2 align="center"> Rollups</h2>
 
 As demand for block space increases the cost to execute on `Layer 1` (full consensus protocols e.g. Bitcoin, Ethereum) will become increasingly expensive, and until certain [state expiry mechanisms](https://notes.ethereum.org/@vbuterin/verkle_and_state_expiry_proposal) are implemented
-we can expect the state of the L1 to continue to bloat over time. This will require increasingly robust machine to maintain the state
+we can expect the state of the L1 to continue to bloat over time. This will require an increasingly robust machine to maintain the state
 and subsequently verify the blocks.
 
 Rollups are one solution in which business logic is executed and stored in a protocol outside the Ethereum context and then
-proves its succesful execution in the Ethereum context.
+proves its successful execution in the Ethereum context.
 
-Typically this involves compressing a larger number of transactions at this `Layer 2` and commiting the state diffs to a smart contract deployed on L1.
-For full interoperability with the L1 rollups also typically implement a messaging component for deposits and withdrawls.
+Typically this involves compressing a larger number of transactions at this `Layer 2` and committing the state diffs to a smart contract deployed on L1.
+For full interoperability with the L1 rollups also typically implement a messaging component for deposits and withdrawals.
 
 There are currently two types of rollups that are being widely adopted:
 
@@ -287,8 +287,8 @@ trilemma journey:
 
 ***No matter how large the computation, the proof can be very quickly verified on-chain.***
 
-This allows Alice to move her money freely between L1 and L2 (...soon to be L3) and operate on an low-cost, expressive blockchain layer.
-All while inheritting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
+This allows Alice to move her money freely between L1 and L2 (...soon to be L3) and operate on a low-cost, expressive blockchain layer.
+All while inheriting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
 
 <p align="center">
     🎯
