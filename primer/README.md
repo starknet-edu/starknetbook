@@ -56,7 +56,7 @@ inclusively accountable, decentralized, scalable, and secure through the use of 
     <img src="../misc/evolution.png">
 </div>
 
-For a more concrete example of the trilemma we can move outside of the blockchain context entirely. Say Alice has an important piece of data she needs access to. To start we will represent this data as ASCII characters in YAML format:
+For a more concrete example of the trilemma, we can move outside of the blockchain context entirely. Say Alice has an important piece of data she needs access to. To start we will represent this data as ASCII characters in YAML format:
 
 ```yaml
 alice_account: 5.00
@@ -105,7 +105,7 @@ Receiver Questions:
 
 ### Distributed Systems
 
-These questions form the basis of distributed systems and distributed computing across a network, and have been studied since the inception of the internet.
+These questions form the basis of distributed systems and distributed computing across a network and have been studied since the inception of the internet.
 
 Let's look briefly at how one of the more popular distributed databases [CassandraDB](https://cassandra.apache.org/doc/latest/cassandra/getting_started/configuring.html) handles these issues.
 
@@ -166,7 +166,7 @@ cd bitcoin/proof_of_work/python
 python main.py
 ```
 
-The Bitcoin nodes themselves listen for and [validate](./bitcoin/block_verifcation) blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the merkle root will be completely different.
+The Bitcoin nodes themselves listen for and [validate](./bitcoin/block_verifcation) blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the Merkle root will be completely different.
 
 ```bash
 # block verification example
@@ -174,7 +174,7 @@ cd bitcoin/block_verification/go && go mod tidy
 go run main.go utils.go
 ```
 
-Alice's information gets formatted as a [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output) and is replicated on all of the [nodes](https://bitnodes.io) on the Bitcoin network. She can even validate that everything is accurate herself by rehashing the merkle tree of every block of transactions from genesis to now.
+Alice's information gets formatted as a [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output) and is replicated on all of the [nodes](https://bitnodes.io) on the Bitcoin network. She can even validate that everything is accurate herself by rehashing the Merkle tree of every block of transactions from genesis to now.
 <p align="center">
     🎉
     <strong>NO DELEGATION OF TRUST</strong>
@@ -184,7 +184,7 @@ Let's revisit the trilemma. What did we give up to get this trustless data secur
 
 - Miners expend energy as they attempt to get the nonce
 - Full trustless verification requires EACH node to replicate the canonical state:
-  - hash the merkle tree of transactions
+  - hash the Merkle tree of transactions
   - hash the block header
 
 Full Node Size: ~405GB
