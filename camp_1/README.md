@@ -3,7 +3,7 @@
 
 |Presentation|Video|Try what you learned
 |:----:|:----:|:----:|
-|[September 2022](https://drive.google.com/file/d/1_AQq4ulTmB0VAszmauvYUHEVjwdAgMim/view?usp=sharing)|StarkNet Basecamp [p1 (September 2022)](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2 (September 2022)](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|Finish the gamified [StarkNet-Cairo 101](https://github.com/starknet-edu/starknet-cairo-101) tutorial. Code your own [ERC721 (NFT)](https://github.com/starknet-edu/starknet-erc721), or [ERC20](https://github.com/starknet-edu/starknet-erc20)|
+|[January 2023](https://docs.google.com/presentation/d/1rjV7nFGuXyIWghbKpIJmOVox8EVbEX974xCHzL4XU5o/edit?usp=sharing)|StarkNet Basecamp [p1 (September 2022)](https://drive.google.com/file/d/1w9ysR38Dz4Z9gvHC46xSHbr06B36nUWp/view?usp=sharing), [p2 (September 2022)](https://drive.google.com/file/d/185MMFmItlOE5qER8P2vhtVjKiH6Glj1G/view?usp=sharing)|Finish the gamified [StarkNet-Cairo 101](https://github.com/starknet-edu/starknet-cairo-101) tutorial. Code your own [ERC721 (NFT)](https://github.com/starknet-edu/starknet-erc721), or [ERC20](https://github.com/starknet-edu/starknet-erc20)|
 
 </div>
 
