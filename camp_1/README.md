@@ -758,7 +758,7 @@ We notice the use of three implicit arguments we had not seen before: `syscall_p
 
 `syscall_ptr` is used when we make system calls. We include it in `_register_voters` because `write` and `read` need this implicit argument. When reading and writing, we are directly consulting the contract's storage, and in StarkNet, this is achieved by making system calls. It is a pointer to a felt value, `felt*`.
 
-`range_check_ptr` permite que se comparen números enteros. In a subsequent Camp, we will take a closer look at pointers and essential builtin functions in StarkNet development. For now, it is enough for us to know that the `write` and `read` arguments of the storage variables need to compare numbers; therefore, we need to indicate the implicit `range_check_ptr` argument in any function that reads and writes to the contract's storage using storage variables.
+`range_check_ptr` it allows comparing integer numbers. In a subsequent Camp, we will take a closer look at pointers and essential builtin functions in StarkNet development. For now, it is enough for us to know that the `write` and `read` arguments of the storage variables need to compare numbers; therefore, we need to indicate the implicit `range_check_ptr` argument in any function that reads and writes to the contract's storage using storage variables.
 
 This is an excellent time to introduce hashes:
 
