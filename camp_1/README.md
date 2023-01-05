@@ -185,7 +185,7 @@ func serialize_word{output_ptr: felt*}(word) {
 
 This will be a bit confusing, be prepared. In this and many other cases, it receives `output_ptr`, which is a pointer to a felt type. When we declare that a function receives an implicit argument, the function will automatically return the value of the implicit argument on termination of the function. If we didn't move the value of the implicit argument, then it would automatically return the same value it started with. However, if, during the function, the value of the implicit argument is altered, then the new value will be automatically returned. 
 
-In the example with the `serialize_word` function, we define that we are going to receive an implicit argument called `output_ptr`. In addition, we also receive an explicit argument called `value`. At the end of the function, we will return the value that `output_ptr` has at that moment. During the function, we see that `output_ptr`increases by 1: `let output_ptr = output_ptr + 1`. Then the function will implicitly return the new value of `output_ptr`.
+In the example with the `serialize_word` function, we define that we are going to receive an implicit argument called `output_ptr`. In addition, we also receive an explicit argument called `word`. At the end of the function, we will return the value that `output_ptr` has at that moment. During the function, we see that `output_ptr`increases by 1: `let output_ptr = output_ptr + 1`. Then the function will implicitly return the new value of `output_ptr`.
 
 Following the rule defined at the beginning, any function that calls `serialize_word` will also have to receive the implicit `output_ptr`. For example, part of our function to add two numbers goes like this:
 
