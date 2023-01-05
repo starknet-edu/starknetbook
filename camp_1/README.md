@@ -142,7 +142,7 @@ The definition of a function in Cairo has the following format:
 ```cairo
 func function(arg1: felt, arg2) -> (returned: felt){
   // Function body
-  let (sum) = sum_two_nums(num1 = NUM1, num2 = NUM2);
+  let (sum) = sum_two_nums(num1 = arg1, num2 = arg2);
   return(returned=sum);
 }
 
