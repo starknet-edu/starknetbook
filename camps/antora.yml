@@ -1,0 +1,19 @@
+name: camps
+version: ~
+title: Basecamp
+nav:
+  - camps/ROOT/nav.adoc # What is StarkNet (temporary landing page)
+  # - camps/primer/nav.adoc # eol
+  - modules/primer/nav.adoc
+  - modules/camp_1/nav.adoc # What is StarkNet (temporary landing page)
+  - modules/camp_2/nav.adoc # What is StarkNet (temporary landing page)
+  - modules/camp_3/nav.adoc
+  - modules/camp_4/nav.adoc
+  - modules/camp_5/nav.adoc
+  - modules/camp_6/nav.adoc
+  # - camps/camp_2/nav.adoc # Developing on StarkNet
+  # - camps/camp_3/nav.adoc # Hello StarkNet tutorial
+  # - camps/camp_4/nav.adoc # Network tools
+  # - camps/camp_5/nav.adoc # Useful Info
+  # - camps/camp_6/nav.adoc # eol
+  

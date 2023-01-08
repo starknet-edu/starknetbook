@@ -1,0 +1,53 @@
+site:
+  title: The Basecamp (StarkNet Book)
+  # start_page: component-b::index.adoc
+  # documentation::index.adoc
+  start_page: camps::index.adoc
+
+# content:
+#   sources:
+#   - url: https://gitlab.com/antora/demo/demo-component-b.git
+#     branches: HEAD
+#     start_path: docs
+
+content:
+  sources:
+  - url: .
+    branches: HEAD
+    start_path: camps
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./ui/supplemental_ui
+    - path: ui.yml
+      contents: |
+        static_files:
+        - .nojekyll
+    - path: .nojekyll
+
+asciidoc:
+  attributes:
+    idprefix: ''
+    #stem: '@'
+    stem: 'latexmath'
+    #sourcehighlighter: pygments
+    page-pagination: ''
+    experimental: ''
+
+# antora:
+#   extensions:
+#     # Installing the lunr-extension requires installing it, and including the following line in your playbook.yml file.
+#     # For info on installing the lunr-extension, see https://gitlab.com/antora/antora-lunr-extension#user-content-ui-assumptions.
+#     # The lunr-tokenizer enables search results that include strings within code samples.
+#     # For example, without the lunr-tokenizer, searching for `foo` will find `The foo function`, but it won't find `foo(arg1)`.
+#   - require: './lunr-tokenizer'
+#   - require: '@antora/lunr-extension'
+#     index_latest_only: true
+
+output:
+  destinations:
+  - provider: fs
+    path: ./public_html/
+    clean: true
