@@ -205,7 +205,7 @@ If the compilation succeeds, we get the following:
 
 ```Bash
 Building projects contracts                                                                                                                                                
-Class hash for contract "vote": 0x67b2b9d2a45c662edad93edf0c10bc3715f315cfa3a6e530f1cf1c5377989ed
+Class hash for contract "vote": 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf
 ```
 
 Moral: if your contract is not in the `[“protostar.contracts“]` section of `protostar.toml`, it will not be compiled.
@@ -222,7 +222,7 @@ For deploying a contract using Protostar, we will follow the steps we learned in
 1. Deploy an account. Notice the devnet already deployed accounts for us.
 2. Compile the contract.
 3. Declare the contract.
-4. Invoke the function `deployContract` of the UDC. However, at the end of this section you will learn how not to invoke the UDC and simply use Protostar's `deploy`.
+4. Invoke the function `deployContract` of the UDC. However, at the end of this section you will learn how not to invoke the UDC directly and simply use Protostar's `deploy`.
 
 Let's use a real example. When we initialize a Protostar project, a `main.cairo` contract is automatically created in the `src` directory. You can use it as an example of a contract to deploy to the devnet and then to the testnet. You must ensure that you define what will be compiled in `protostar.toml`. This tutorial will deploy the voting contract we wrote in Camp 1. We initialize a new Protostar repo called [buidl/protostar-buidl](basecamp/camp_2/buidl/protostar-buidl). Our [voting contract is in the `src` directory](basecamp/camp_2/buidl/protostar-buidl/src/voting.cairo). The `protostar.toml` looks:
 
@@ -259,11 +259,11 @@ We get:
 
 ```Bash
 Declare transaction was sent.                                                                                                             
-Class hash: 0x067b2b9d2a45c662edad93edf0c10bc3715f315cfa3a6e530f1cf1c5377989ed
+Class hash: 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf
 Transaction hash: 0x0750ee15d7bf16252d94c08d61bf2c1bac3d15029c06e62314849e39fe1aec76
 ```
 
-We invoke the `deployContract` of the UDC. Luckily, the devnet comes with a UDC deployed at the same address as the testnet and mainnet. We use the same account address as with the `declare` command. The `inputs` are the same as we sent in Camp 1; revisit it for more details on how to interact with the UDC. We will use dummy values for the voting contract's constructor.
+We invoke the `deployContract` of the UDC. In a following section we will get deeper into what `invoke` does. Luckily, the devnet comes with a UDC deployed at the same address as the testnet and mainnet. We use the same account address as with the `declare` command. The `inputs` are the same as we sent in Camp 1; revisit it for more details on how to interact with the UDC. We will use dummy values for the voting contract's constructor.
 
 ```Bash
 protostar -p devnet invoke \
@@ -271,7 +271,7 @@ protostar -p devnet invoke \
     --function deployContract \
     --account-address 0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
     --max-fee auto \
-    --inputs 0x067b2b9d2a45c662edad93edf0c10bc3715f315cfa3a6e530f1cf1c5377989ed 0 0 4 111 2 222 333
+    --inputs 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf 0 0 4 111 2 222 333
 ``` 
 
 We get:
@@ -304,16 +304,28 @@ protostar -p devnet invoke \
     --max-fee auto
 ``` 
 
-This was the long way to deploy the voting contract, similar to what we did with Argent's UI and the `starknet` CLI. However, Protostar is a fantastic tool; we can use the `deploy` command to deploy our contract without invoking the UDC; Protostar does it in the background.
+This was the long way to deploy the voting contract, similar to what we did with Argent's UI and the `starknet` CLI. However, Protostar is a fantastic tool; we can use the `deploy` command to deploy our contract without invoking the UDC; Protostar does it in the background. This time let's use the accounts that the devnet previously created for us.
 
 ```Bash
-protostar -p devnet deploy 0x067b2b9d2a45c662edad93edf0c10bc3715f315cfa3a6e530f1cf1c5377989ed \
+protostar -p devnet deploy 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf \
     --account-address 0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
     --max-fee auto \
-    --inputs 111 2 222 333
+    --inputs \
+        0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+        2 \
+        0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+        0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79
 ```
 
-We simply needed the class hash obtained after declaring our contract. Notice that the inputs do not include some of the inputs to the `deployContract` of the UDC; including the class hash, salt, and unique address. Now we only provide the inputs of the voting contract's constructor (our dummy values: `111 2 222 333`), which is much simpler and cleaner.
+We get:
+
+```Bash
+Invoke transaction was sent to the Universal Deployer Contract.                                                                           
+Contract address: 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864
+Transaction hash: 157069287311788325670531840403210154180024581021364400153925384422983716375
+```
+
+We simply needed the class hash obtained after declaring our contract. Note that the inputs do not include some of the UDC's `deployContract` inputs; including the class hash, salt, and unique address. We now only provide the voting contract constructor inputs (our admin, `0x7e0...`, the number of accounts allowed to vote, `2`, and the accounts allowed, `0x7e0...` and `0x69b.. .`), which is much simpler and cleaner.
 
 We have successfully deployed a contract to the devnet. The advantage of deploying to the devnet first is that we can interact more quickly with our contracts. For the testnet, we will have to wait about a few minutes.
 
@@ -332,7 +344,7 @@ Let us use here option 1. We can use the UI of either our Argent or Braavos wall
     <img src="../misc/devnet2.png">
 </div>
 
-We export the private key and add it to the environmental variables with `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[THE EXPORTED PRIVATE KEY]`. 
+We export the private key and add add it to the environmental variables with `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[THE EXPORTED PRIVATE KEY]`. 
 
 Then we `declare` our contract adding to the `--account-address` flag the address of our wallet.
 
@@ -348,8 +360,8 @@ We get:
 
 ```Bash
 Declare transaction was sent.
-Class hash: 0x067b2b9d2a45c662edad93edf0c10bc3715f315cfa3a6e530f1cf1c5377989ed
-StarkScan https://testnet.starkscan.co/class/0x067b2b9d2a45c662edad93edf0c10bc3715f315cfa3a6e530f1cf1c5377989ed
+Class hash: 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf
+StarkScan https://testnet.starkscan.co/class/0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf
 
 Transaction hash: 0x05b6fa2f6019ee0f2053091b3d1965fb7de6422e85ca9db33b317caf5d7f626e
 StarkScan https://testnet.starkscan.co/tx/0x05b6fa2f6019ee0f2053091b3d1965fb7de6422e85ca9db33b317caf5d7f626e
@@ -357,30 +369,147 @@ StarkScan https://testnet.starkscan.co/tx/0x05b6fa2f6019ee0f2053091b3d1965fb7de6
 
 Before sending another transaction to the network, ensure the previous transaction (declare) is at least in the “Pending” state; otherwise, the second transaction will fail due to an incorrect nonce value. This happens because the network tracks the current nonce value of each user account, and this value is updated only after a transaction has entered the Pending state. 
 
-Now that we have the class hash, we can deploy:
+Now that we have the class hash, we can deploy. Similar to the devnet, let us use real values. As account addresses we could use (1) accounts generated by the Argent or Braavos wallets, or (2) addresses we create using the starknet CLI or Protostar. We will use both options. 
+
+In Camp 1 we deployed an account with the Alias `voting-contract`. It has the address `0x00f20c6664cc47e569abe53c7ba19f04685158a1b2f01c9a923cd3849354a928`; the private key is automatically stored in `~/.starknet_accounts/starknet_open_zeppelin_accounts.json`. We will add this account as one of the contracts allowed to vote and deploy from a Braavos account (however, feel free to use any account you want). Remember to export the private keys of the account to your environmental variables, e.g., `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0x03a...`.
+
 
 ```Bash
-protostar deploy 0x067b2b9d2a45c662edad93edf0c10bc3715f315cfa3a6e530f1cf1c5377989ed \
+protostar deploy 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf \
     --account-address 0x06dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821 \
     --max-fee auto \
     --network testnet \
-    --inputs 111 2 222 333
+    --inputs \
+        0x06dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821 \
+        2 \
+        0x00f20c6664cc47e569abe53c7ba19f04685158a1b2f01c9a923cd3849354a928 \
+        0x02cdAb749380950e7a7c0deFf5ea8eDD716fEb3a2952aDd4E5659655077B8510
 ```
 
 We get:
 
 ```Bash
 Invoke transaction was sent to the Universal Deployer Contract.                                                                           
-Contract address: 0x001c714a76bf7ff10abd26ee252651a2d408cbaaa33a6724be8309e1864fec34
-StarkScan https://testnet.starkscan.co/contract/0x001c714a76bf7ff10abd26ee252651a2d408cbaaa33a6724be8309e1864fec34
+Contract address: 0x03f1d3126c08ca82021abf265205c4c00ea80cde386781c1df8e190990962ebc
+StarkScan https://testnet.starkscan.co/contract/0x03f1d3126c08ca82021abf265205c4c00ea80cde386781c1df8e190990962ebc
 
-Transaction hash: 905592899049432893918738658596217861692024670484195387505600892075940507664
-StarkScan https://testnet.starkscan.co/tx/0x02008c238300be5965e05a5f69bb1034bd0ee3b0771d6a3b654f4e9951ebf010
+Transaction hash: 3486627275562620503680140120664986229453108046815711293106888485118594079697
+StarkScan https://testnet.starkscan.co/tx/0x07b55c715b519ba20479e1bb94d48d00cd6d402f474b7cc3ccc2a45d658d5bd1
 ```
 
-Again, Protostar deployed using the UDC in the background. Remember, since we are deploying to the testnet, it might take some minutes for the transaction to pass. 
+Again, Protostar deployed using the UDC in the background. Remember, since we are deploying to the testnet, it might take some minutes for the transaction to pass.
 
 Great. We deployed our voting contract to both the devnet and the tesnet. This allows us to interact with our contract in a block explorer, with the CLI, or other tools.
+
+### Calling and Invoking contracts
+
+Let's interact with our deployed voting contract. 
+
+* Calling contracts refer to interacting with contract functions with the `@view` entrypoint (decorator). Since we are not altering the state of the network, and hence we do not need to pay fees, we do not need to sign the operation.
+* Invoking contracts is interacting with contract functions with the `@external` entrypoint. We need to sign the transaction and pay the operation fee.
+
+Let's call our deployed voting contract in the devnet to check if the address `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` has voting permissions. For that we need to inform the network of the address of the contract we are calling, the specific function to call, and the inputs (if any).
+
+```Bash
+protostar -p devnet call \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864 \
+    --function "is_voter_registered" \
+    --inputs 0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79
+```
+
+We get:
+
+```Bash
+[RAW RESULT]                                                                                                                              
+[1]
+
+[TRANSFORMED RESULT]
+{
+    "is_voter_registered": 1
+}
+```
+
+When we deployed our voting contract to the devnet we indicated we wanted the `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` address to be allowed to vote, and that is precisely what we received as output of our `call`.
+
+Now we will alter the state of our contract by voting with the address `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79`. Since we need to sign the transaction, as we did when we deployed the contract, we need to provide the private key of the account contract invoking the voting contract: in this case, we can use `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0xf728b4fa42485e3a0a5d2f346baa9455`.
+
+```Bash
+protostar -p devnet invoke \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864    \
+    --function "vote" \
+    --inputs 1 \
+    --account-address 0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79 \
+    --max-fee auto
+```
+
+We get:
+
+```Bash
+Sending invoke transaction...                                                                                                             
+Invoke transaction was sent.
+Transaction hash: 0x023f884091e877cc4c72ccdb31f6a2b31ddfda647629af5834899d8176e1ad1b
+```
+
+Remember, the option to interact with the contract trough the [StarkScan block explorer](https://devnet.starkscan.co/) is always available, even with a local network such as the devnet; just remember this feature only works with the Chrome browser. Now lets call the `get_voting_status` function from the voting contract to see if our vote was indeed applied.
+
+```Bash
+protostar -p devnet call \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864 \
+    --function "get_voting_status"
+```
+
+We get:
+
+```Bash
+[RAW RESULT]                                                                                                                              
+[1, 0]
+
+[TRANSFORMED RESULT]
+{
+    "status": {
+        "votes_yes": 1,
+        "votes_no": 0
+    }
+}
+```
+Our vote was successful! If we try to vote with an incorrect private key for a certain account (this is an error you might encounter frequently when developing) we would get an error 500: `"StarknetErrorCode.TRANSACTION_FAILED"` with a message: `Signature []...] is invalid, with respect to the public key`. We need to carefully keep track of our accounts' private keys .
+
+Now let's see what happens when we vote with an account without voting permissions. We will vote with the third account the devnet created for us. We set up the private key: `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0xeb1167b367a9c3787c65c1e582e2e662`
+
+```Bash
+protostar -p devnet invoke \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864    \
+    --function "vote" \
+    --inputs 0 \
+    --account-address 0x7447084f620ba316a42c72ca5b8eefb3fe9a05ca5fe6430c65a69ecc4349b3b \
+    --max-fee auto
+```
+
+Protostar will return us a long message. Among the feedback we get: `Error message: VoterInfo: Your address is not allowed to vote.`, which is precisely the message we set in our contract whenever we faced an error of this type.
+
+These same process could be followed with contracts deployed in the testnet. Try it!
+
+### Testing contracts
+
+We left testing our contract for the end, however, remember that testing is the first step in our sanity process for building smart contracts:
+1. Unit tests;
+2. Devnet;
+3. Testnet:
+4. Mainnet.
+
+Testing ensures your code remains reliable even as you change it ([Twilio](https://www.twilio.com/blog/unit-integration-end-to-end-testing-difference)). There are at least three different types of software tests: unit tests, integration tests and end-to-end tests. 
+
+> Protostar provides an environment to write unit tests for StarkNet smart contracts in Cairo language itself. With the help of cheatcodes like `deploy_contract` it is also easy to write integration tests, deploying single or multiple contracts and examining internal behaviour of such small systems ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e)).
+
+In other words, thanks to Protostar's cheatcodes (a term adopted from Foundry) we can practically test end-to-end our voting contract. In addition, following our sanity flow, we would next test our contract in the devnet which would likely lead to quite secure contract.
+
+Ideally, we would want to unit test every possible flow in our smart contract. Thus, our contract would have *100% code coverage*. However, realistically, we might fall behind this number; 80% code coverage is considered a good number.
+
+
+
+
+
+
 
 <h2 align="center" id="nile"><a href="https://github.com/OpenZeppelin/nile">Nile</a></h2>
 
