@@ -191,9 +191,59 @@ Observations:
 
 5. [Camp 5: Cairo](./camp_5/) - Ben
    1. C(pu)AIR(o)
-   2. Computational Integrity
-   3. Syntax
-   4. Cairo VM
+      - Polynomial Equations
+      - Turing Completeness
+      - Statement of Computational Integrity
+      - Cairo vs Silicon CPU
+      - Builtins
+        -  output
+        -  pedersen
+        -  range_check
+        -  ecdsa
+        -  bitwise
+      - Hints
+        - Non Deterministic Programing
+        - jmp
+   2. Felts
+      - Prime
+      - Overflow
+   3. Registers
+      - Memory Model
+      - Program Counter
+      - Allocation Pointer
+      - Frame Pointer
+      - Segments
+      - Allocation
+   4. Syntax
+      - Custom Types
+      - References
+      - Variables
+        - let
+        - local
+        - tempvar
+        - consts
+      - Functions/Scope
+      - Casting
+      - Assert
+      - Tail Recursion
+      - Imports
+   5. Cairo VM
+      - CASM
+      - Algebraic RISC
+   6. Cairo 1.0
+      - 0.x vs 1.0
+      - Rust-like
+        - Traits
+        - Enum
+        - Struct
+        - Borrow Checking
+        - Shadowing
+        - Variable Declaration
+        - Return Values
+      - Type System
+      - Std Library
+      - Assert/Tests
+      - Sierra
 
 6. [Camp 6: STARKs](./camp_6/) - Omar & Henri
    Camp's goal: the student will be able to understand the foundamental underpinnings of what is an STARKs and how it works. It is **not the goal** to make the student proficient in cryptography but to allow they to understand technical texts on ZK cryptography. 
@@ -230,19 +280,19 @@ Observations:
       4. Modular Arithmetic
       5. Finite Field Arithmetic
       6. Polynomial Arithmetic
-   6. Arithmetization
+   4. Arithmetization
       1. Step 1: Generating an execution trace and a set of polynomial constraints
       2. Step 2: Transform the execution trace and the set of polynomial constraints into a single low-degree polynomial
       3. Succinctness
-   7. Low Degree Testing: The Secret Sauce of Succinctness
+   5. Low Degree Testing: The Secret Sauce of Succinctness
       1. The Direct Test
       2. Direct Test does not suffice: Prover to the rescue
-   8. The FRI Protocol
-   9. Efficient STARKs
+   6. The FRI Protocol
+   7. Efficient STARKs
        1.  Micali construction
        2.  Interactive Oracle Proofs (IOPs)
        3.  BCS construction
-   10. STARKs and SNARKs: differences
+   8.  STARKs and SNARKs: differences
 
 Observations:
 * Omar: 
