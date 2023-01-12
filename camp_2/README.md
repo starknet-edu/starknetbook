@@ -329,7 +329,7 @@ In order to sign our transactions (remember we need an account contract) on the 
 Let us use here option 1. We can use the UI of either our Argent or Braavos wallet; I will show how to do it with Braavos here. Go the "Privacy & Security" option.
 
 <div align="center">
-    <img src="../misc/devnet2.png">
+    <img src="../misc/braavos2.png">
 </div>
 
 We export the private key and add it to the environmental variables with `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[THE EXPORTED PRIVATE KEY]`. 
