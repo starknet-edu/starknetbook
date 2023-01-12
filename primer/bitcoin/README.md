@@ -19,11 +19,20 @@ python main.py
 
 ### [Block Verification](./block_verification)
 
+In `GO`:
+
 Run verify benchmark
 
 ```bash
 cd block_verification/go/
 GO111MODULE=off go test ./... -bench=. -count 5
+```
+
+In `Elixir`:
+
+```bash
+cd block_verification/elixir/
+elixir bitcoin_validator.exs
 ```
 
 #### Sources
