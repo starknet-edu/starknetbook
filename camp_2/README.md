@@ -170,7 +170,7 @@ Finally, we update our `protostar.toml` with the new paths and the installed lib
 [project]
 protostar-version = "0.9.1"
 lib-path = "lib"
-cairo-path = ["lib/cairo-contracts/src", "lib/cairopen_contracts/src"]
+cairo-path = ["lib/cairo_contracts/src", "lib/cairopen_contracts/src"]
 
 [contracts]
 vote = ["src/voting.cairo"]
