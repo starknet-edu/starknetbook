@@ -166,12 +166,23 @@ cd bitcoin/proof_of_work/python
 python main.py
 ```
 
-The Bitcoin nodes themselves listen for and [validate](./bitcoin/block_verifcation) blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the Merkle root will be completely different.
+The Bitcoin nodes themselves listen for and [validate](./bitcoin/block_verification) blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the Merkle root will be completely different.
+
+In `GO`:
 
 ```bash
 # block verification example
 cd bitcoin/block_verification/go && go mod tidy
 go run main.go utils.go
+```
+
+In `Rust`:
+
+```bash
+cd block_verification/rust/
+cargo run
+# or run the tests with
+cargo test
 ```
 
 Alice's information gets formatted as a [UTXO](https://en.wikipedia.org/wiki/Unspent_transaction_output) and is replicated on all of the [nodes](https://bitnodes.io) on the Bitcoin network. She can even validate that everything is accurate herself by rehashing the Merkle tree of every block of transactions from genesis to now.
