@@ -405,10 +405,13 @@ Great. We deployed our voting contract to both the devnet and the tesnet. This a
 
 Let's interact with our deployed voting contract. 
 
-* Calling contracts refer to interacting with contract functions with the `@view` entrypoint (decorator). Since we are not altering the state of the network, and hence we do not need to pay fees, we do not need to sign the operation.
-* Invoking contracts is interacting with contract functions with the `@external` entrypoint. We need to sign the transaction and pay the operation fee.
+* Calling contracts refer to interacting with contract functions with the `@view` entry point (decorator). Since we are not altering the state of the network, and hence we do not need to pay fees, we do not need to sign the operation.
+* Invoking contracts is interacting with contract functions with the `@external` entry point. We need to sign the transaction and pay the operation fee.
 
-Let's call our deployed voting contract in the devnet to check if the address `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` has voting permissions. For that we need to inform the network of the address of the contract we are calling, the specific function to call, and the inputs (if any).
+Let's call our deployed voting contract in the devnet to check if the address `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` has voting permissions. We need to inform the network of:
+1. The address of the contract we call; 
+2. The specific function to call; and
+3. The inputs (if any).
 
 ```Bash
 protostar -p devnet call \
@@ -429,7 +432,7 @@ We get:
 }
 ```
 
-When we deployed our voting contract to the devnet we indicated we wanted the `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` address to be allowed to vote, and that is precisely what we received as output of our `call`.
+When we deployed our voting contract to the devnet, we indicated we wanted the `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` address to be allowed to vote, and that is precisely what we received as the output of our `call`.
 
 Now we will alter the state of our contract by voting with the address `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79`. Since we need to sign the transaction, as we did when we deployed the contract, we need to provide the private key of the account contract invoking the voting contract: in this case, we can use `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0xf728b4fa42485e3a0a5d2f346baa9455`.
 
@@ -450,7 +453,7 @@ Invoke transaction was sent.
 Transaction hash: 0x023f884091e877cc4c72ccdb31f6a2b31ddfda647629af5834899d8176e1ad1b
 ```
 
-Remember, the option to interact with the contract trough the [StarkScan block explorer](https://devnet.starkscan.co/) is always available, even with a local network such as the devnet; just remember this feature only works with the Chrome browser. Now lets call the `get_voting_status` function from the voting contract to see if our vote was indeed applied.
+Remember, the option to interact with the contract through the [StarkScan block explorer](https://devnet.starkscan.co/) is always available, even with a local network such as the devnet; remember, this feature only works with the Chrome browser. Now, let's call the `get_voting_status` function from the voting contract to see if the vote was indeed applied.
 
 ```Bash
 protostar -p devnet call \
@@ -472,7 +475,7 @@ We get:
     }
 }
 ```
-Our vote was successful! If we try to vote with an incorrect private key for a certain account (this is an error you might encounter frequently when developing) we would get an error 500: `"StarknetErrorCode.TRANSACTION_FAILED"` with a message: `Signature []...] is invalid, with respect to the public key`. We need to carefully keep track of our accounts' private keys .
+Our vote was successful! If we try to vote with an incorrect private key for a specific account (this is an error you might frequently encounter when developing), we would get an error 500: `"StarknetErrorCode.TRANSACTION_FAILED"` with a message: `Signature []...] is invalid, with respect to the public key`. We need to keep track of our accounts' private keys carefully.
 
 Now let's see what happens when we vote with an account without voting permissions. We will vote with the third account the devnet created for us. We set up the private key: `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0xeb1167b367a9c3787c65c1e582e2e662`
 
@@ -485,33 +488,188 @@ protostar -p devnet invoke \
     --max-fee auto
 ```
 
-Protostar will return us a long message. Among the feedback we get: `Error message: VoterInfo: Your address is not allowed to vote.`, which is precisely the message we set in our contract whenever we faced an error of this type.
+Protostar will return us a long message. Among the feedback, we get: `Error message: VoterInfo: Your address is not allowed to vote.`, precisely the message we set in our contract whenever we face an error of this type.
 
-These same process could be followed with contracts deployed in the testnet. Try it!
+The same process could be followed with contracts deployed in the testnet. Try it!
 
 ### Testing contracts
 
-We left testing our contract for the end, however, remember that testing is the first step in our sanity process for building smart contracts:
+We left testing our contract for last; however, remember that testing is the first step in our sanity process for building smart contracts:
 1. Unit tests;
-2. Devnet;
-3. Testnet:
-4. Mainnet.
+2. Dev/local network;
+3. Test network:
+4. Main network.
 
-Testing ensures your code remains reliable even as you change it ([Twilio](https://www.twilio.com/blog/unit-integration-end-to-end-testing-difference)). There are at least three different types of software tests: unit tests, integration tests and end-to-end tests. 
+Testing ensures that your code remains reliable even when we change it ([Twilio](https://www.twilio.com/blog/unit-integration-end-to-end-testing-difference)). There are at least three types of software testing: unit tests, integration tests, and end-to-end tests.
 
-> Protostar provides an environment to write unit tests for StarkNet smart contracts in Cairo language itself. With the help of cheatcodes like `deploy_contract` it is also easy to write integration tests, deploying single or multiple contracts and examining internal behaviour of such small systems ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e)).
+> Protostar provides an environment to write unit tests for StarkNet smart contracts in **Cairo language itself**. With the help of cheat codes like `deploy_contract`, it is also easy to write integration tests, deploy single or multiple contracts and examine the internal behavior of such small systems ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e)).
 
-In other words, thanks to Protostar's cheatcodes (a term adopted from Foundry) we can practically test end-to-end our voting contract. In addition, following our sanity flow, we would next test our contract in the devnet which would likely lead to quite secure contract.
+In other words, thanks to Protostar cheat codes (a term adopted from Foundry), we can create unit and integration tests. To create end-to-end and integration tests, we would need more than assertions; we would need to manipulate the state of the blockchain, check for reversals and events, change our identity, and more. For this reason, Protostar provides cheat codes ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes), [Foundry documentation](https://book.getfoundry.sh/forge/cheatcodes)). The cheat codes are implemented using python hints within our tests.
 
-Ideally, we would want to unit test every possible flow in our smart contract. Thus, our contract would have *100% code coverage*. However, realistically, we might fall behind this number; 80% code coverage is considered a good number.
+Ideally, we would like to test all possible flows in our smart contract. Thus, our contract would have *100% code coverage*. However, we could lag behind this number; Code coverage of 80% is considered a good number.
+
+Protostar divides our tests into test suites, each with test cases. A suite is a Cairo file (remember, Protostar allows you to code tests using Cairo) with external functions (the test cases) that use assertions and cheat codes to test our contract. If we are testing two different contracts, we can create two separate test suites. If we are trying two different flows in our contract, we can create two test cases for each flow.
+
+To run all the test suites in the `tests` directory of a project, with the Open Zeppelin cairo-contracts dependency installed, we can run the following:
+
+```Bash
+protostar test ./tests \
+    --cairo-path lib/cairo_contracts/src/
+```
+
+### Testing the voting contract
+
+This section will code the unit and integration tests for the voting contract. The goal is to introduce some of the most critical testing tools that Protostar provides. The [Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing) contains additional tools for testing.
+
+We will learn the following:
+1. How to deploy a contract inside our test.
+2. How to interact with the deployed contracts.
+3. How to use cheat codes to simulate behaviors.
+
+We can find the complete set of tests for our voting contract at [tests/test_vote.cairo](./tests/test_vote.cairo). Here we will dissect the most important parts of it.
+
+Due to the large number of `view` and `external` functions, our voting contract depends on interaction with the state of the blockchain; Therefore, we need to interact with the deployed contract and rely on integration tests. 
+
+The first thing we need to do for our integration tests is deploy the contract. We want to do this at the beginning of our test suite, so we don't have to deploy it in every test case. Protostar allows us to do this with configuration hooks. Setting up our configuration hooks is the first thing we do in our [test suite](./tests/test_vote.cairo). We deploy our contract by:
+* declaring what contract we want to deploy;
+* preparing it by defining the call data for the constructor; and
+* deploying it.
+
+Additionally, we want to store the address of our deployed contract in a variable that we can call through the test suite. We can use the context variable to pass data from the config hook to the test cases (functions); in this case, we are transmitting the address or the deployed contract.
+
+```Cairo
+@external
+func __setup__() {
+    %{ 
+        declared = declare("src/voting.cairo")
+        prepared = prepare(declared, [ids.ADMIN, ids.NUMBER_VOTERS, ids.VOTER_1, ids.VOTER_2, ids.VOTER_3])
+        context.context_vote_address = deploy(prepared).contract_address
+    %}
+    return ();
+}
+```
+
+To interact with our contract, it is helpful to represent its functionality through an Interface. Interfaces on StarkNet are `namespaces` preceded by the `@contract_interface` entry point (decorator) that can:
+* ... not have any function with implementation.
+* ... not have a constructor.
+* ... not have state variables.
+* ... can have `struct`s
+
+We add all the `view` and `external` functions from our contract to the Interface at [IVote.cairo](/src/interfaces/IVote.cairo). We can call our entire contract functionality through the Interface. For example, here we call the function `is_voter_registered`:
+
+```Cairo
+IVote.is_voter_registered(contract_address=vote_address, address=VOTER_1)
+```
+
+Note that an Interface automatically adds a new parameter, `contract_address`, where we need to add the address of the deployed contract that contains the actual functionality we want to emulate. Then we write the other required argument of the function we call, in this case, `address`. We will use the `IVote` Interface when testing our contract.
+
+Once the contract is deployed, testing the initial state of view functions is easy and requires no cheat codes. In the following snippet, we test that our contract deployment was correct, i.e., that the call data added to the constructor is reflected via the `view` functions.
+
+```Cairo
+@external
+func test_vote_contract_deploy{syscall_ptr: felt*, range_check_ptr}() {
+
+    tempvar vote_address: felt;
+
+    %{  
+        ids.vote_address = context.context_vote_address
+    %}
+
+    //test the admin view function
+    let (admin) = IVote.admin(contract_address=vote_address);
+    assert ADMIN = admin;
+    
+    // Test the is_voter_registered view function; where the voters registered?
+    let (voter_1) = IVote.is_voter_registered(contract_address=vote_address, address=VOTER_1);
+    assert 1 = voter_1;
+    let (voter_2) = IVote.is_voter_registered(contract_address=vote_address, address=VOTER_2);
+    assert 1 = voter_2;
+    let (voter_3) = IVote.is_voter_registered(contract_address=vote_address, address=VOTER_3);
+    assert 1 = voter_2;
+
+    %{  
+        print("🐺 Successful deployment of the contract; constructor successfully implemented")
+    %}
+
+    return ();
+}
+```
+
+When we deployed our contract, we stored the contract's address in the `context.context_vote_address` variable. We retrieve the address and store it in the Cairo `tempvar` `vote_address`.
+
+```Cairo
+tempvar vote_address: felt;
+
+    %{  
+        ids.vote_address = context.context_vote_address
+    %}
+```
+
+With the address, we can call the Interface `IVote` to test the contract's functions.
+
+We make much use of `assert` to review that the values are correct.
+
+> (As we reviewed in Camp 1) The `assert` statement in Cairo can assert that the value at a given memory location equals something. However, it can also set the value if the given memory location is still unset. When you’re writing tests, you want the test to fail in the second case. To do so, a simple tip is to write Yoda-style assertions ([Only Dust](https://mirror.xyz/onlydust.eth/uhKk_3p34mE0oFUxkIYlCsjkE7ZvUfSFWU83UM9_w-w)).
+
+That is why we write:
+```Cairo
+assert 1 = voter_1;
+```
+We did not write it: 
+
+```Cairo
+assert voter_1 = 1;
+```
+
+If we would like to execute our tests frequently, we want to make them fast. The most efficient way to do so is to execute only the test we are interested in ([Only Dust](https://mirror.xyz/onlydust.eth/uhKk_3p34mE0oFUxkIYlCsjkE7ZvUfSFWU83UM9_w-w)). To run this specific test case, we can call in the terminal:
+
+```Bash
+protostar test tests/test_vote.cairo::test_vote_contract_deploy --cairo-path lib/cairo_contracts/src
+```
 
 
+### Pranking and testing errors
 
+So far, we only manipulated the state of the blockchain when we deployed the contract. We must trick the blockchain by interacting with it from different accounts (identities) and altering the state.
 
+The `start_prank` cheat code allows us to "prank" the blockchain with our identity. We can trick it into thinking that we are calling it from one or another account. In the `test_vote_contract_vote` test case, we simulate votes from the registered addresses. `start_prank` takes two arguments (review the [Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes/start-prank)): the address of the account that would be making the call/invocation, and the address of the contract we are calling.
 
+For example, here we are invoking the `vote` function of the `IVote` Interface from the `VOTER_1` account. In other words, we are simulating a vote, 0 (no), from `VOTER_1`.  
 
+```Cairo
+%{ stop_prank_voter = start_prank(ids.VOTER_1, ids.vote_address) %}
+IVote.vote(contract_address=vote_address, vote=0);
+%{ stop_prank_voter() %}
+```
 
-<h2 align="center" id="nile"><a href="https://github.com/OpenZeppelin/nile">Nile</a></h2>
+We can then test if our vote indeed altered the blockchain state (review the full [test suite](/src/interfaces/IVote.cairo)).
+
+In the `test_vote_contract_pause_vote` test case, we use `start_prank` to pause voting; we pretended that our identity was that of the voting administrator:
+
+```Cairo
+%{ stop_prank_admin = start_prank(ids.ADMIN, ids.vote_address) %}
+IVote.pause(contract_address=vote_address);
+%{ stop_prank_admin() %}
+```
+
+We also want to test that our error messages and exceptions are triggered at the right time. When we built our voting smart contract in Camp 1, we defined that an error, `"VoterInfo: Your address does not have permission to vote"`, would appear when an address does not have permission to vote. In the `test_vote_contract_vote` case, we simulate a vote by VOTER_1, so they are no longer allowed to vote. We want to test if this error appears at the right time; for this, we use the `expect_revert` cheat code. A test will pass if a code below `expect_revert` raises a specific exception. Otherwise, the test will fail ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes/expect-revert)). 
+
+```Cairo
+%{ expect_revert(error_message="not allowed to vote") %}
+%{ stop_prank_voter = start_prank(ids.VOTER_1, ids.vote_address) %}
+IVote.vote(contract_address=vote_address, vote=0);
+%{ stop_prank_voter() %}
+```
+
+There are many [other cheat codes in Protostar](https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes), and some of them may be useful for your particular case; don stop exploring
+
+The testing process allowed us to move more confidently to the development network or test network for end-to-end testing. End-to-end testing should focus on the big picture of the entire system, not just smart contracts ([Protostar docs](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e)); we would like to make sure that the interactions with the network are correct, for example, we would like to use private keys for our accounts, make sure that the nonces are correct, that the front-end can connect correctly with the contract, etc.
+
+We would need additional tools to set up an end-to-end test environment. [These tools](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e) are recommended by the Protostar documentation:
+
+1. The Devnet for running a local StarkNet network,
+2. StarkNet SDKs like [starknet.js](https://www.starknetjs.com/) or [starknet.py](https://starknetpy.rtfd.io/) for interacting with StarkNet from tests' code,
+3. Protostar CLI for building contracts and deploying in tests' setup phases and CI.
 
 <h2 align="center" id="hardhat"><a href="https://github.com/Shard-Labs/starknet-hardhat-plugin">Hardhat</a></h2>
 
@@ -521,9 +679,6 @@ Ideally, we would want to unit test every possible flow in our smart contract. T
 
 ### [Juno](https://github.com/NethermindEth/juno)
 
-<h2 align="center" id="testing">Testing</h2>
-
-<h2 align="center" id="libraries">Libraries</h2>
 
 #### Sources
 
