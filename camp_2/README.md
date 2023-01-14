@@ -492,7 +492,7 @@ Protostar will return us a long message. Among the feedback, we get: `Error mess
 
 The same process could be followed with contracts deployed in the testnet. Try it!
 
-### Testing contracts
+### Testing contracts with Protostar
 
 We left testing our contract for last; however, remember that testing is the first step in our sanity process for building smart contracts:
 1. Unit tests;
@@ -500,11 +500,13 @@ We left testing our contract for last; however, remember that testing is the fir
 3. Test network:
 4. Main network.
 
-Testing ensures that your code remains reliable even when we change it ([Twilio](https://www.twilio.com/blog/unit-integration-end-to-end-testing-difference)). There are at least three types of software testing: unit tests, integration tests, and end-to-end tests.
+Testing ensures that your code remains reliable even when we change it. The Rust community thinks about tests in terms of two main categories: **unit tests** and **integration tests**. 
+* **Unit tests** are small and more focused, testing one module in isolation at a time, and can test private interfaces.
+* **Integration tests** are entirely external to the library and use its code in the same way any other external code would. ([The Rust Programming Language](https://doc.rust-lang.org/book/ch11-03-test-organization.html)).
 
 > Protostar provides an environment to write unit tests for StarkNet smart contracts in **Cairo language itself**. With the help of cheat codes like `deploy_contract`, it is also easy to write integration tests, deploy single or multiple contracts and examine the internal behavior of such small systems ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e)).
 
-In other words, thanks to Protostar cheat codes (a term adopted from Foundry), we can create unit and integration tests. To create end-to-end and integration tests, we would need more than assertions; we would need to manipulate the state of the blockchain, check for reversals and events, change our identity, and more. For this reason, Protostar provides cheat codes ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes), [Foundry documentation](https://book.getfoundry.sh/forge/cheatcodes)). The cheat codes are implemented using python hints within our tests.
+In other words, thanks to Protostar cheat codes (a term adopted from Foundry), we can create both unit and integration tests. For integration tests, we would need more than assertions; we would need to manipulate the state of the blockchain, check for reversals and events, change our identity, and more. For this reason, Protostar provides cheat codes ([Protostar documentation](https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes), [Foundry documentation](https://book.getfoundry.sh/forge/cheatcodes)). The cheat codes are implemented using python hints within our tests.
 
 Ideally, we would like to test all possible flows in our smart contract. Thus, our contract would have *100% code coverage*. However, we could lag behind this number; Code coverage of 80% is considered a good number.
 
@@ -663,12 +665,12 @@ IVote.vote(contract_address=vote_address, vote=0);
 
 There are many [other cheat codes in Protostar](https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes), and some of them may be useful for your particular case; don stop exploring
 
-The testing process allowed us to move more confidently to the development network or test network for end-to-end testing. End-to-end testing should focus on the big picture of the entire system, not just smart contracts ([Protostar docs](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e)); we would like to make sure that the interactions with the network are correct, for example, we would like to use private keys for our accounts, make sure that the nonces are correct, that the front-end can connect correctly with the contract, etc.
+The testing process allowed us to move more confidently to the development network or test network for further testing or interacting with the first users; we would like to make sure that the interactions with the network are correct, for example, we would like to use private keys for our accounts, make sure that the nonces are correct, that the front-end can connect correctly with the contract, etc.
 
-We would need additional tools to set up an end-to-end test environment. [These tools](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e) are recommended by the Protostar documentation:
+We would need additional tools to continue testing the integration of our contracts with the ourside world. [These tools](https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e) are recommended by the Protostar documentation:
 
 1. The Devnet for running a local StarkNet network,
-2. StarkNet SDKs like [starknet.js](https://www.starknetjs.com/) or [starknet.py](https://starknetpy.rtfd.io/) for interacting with StarkNet from tests' code,
+2. StarkNet SDKs like [starknet.js](https://www.starknetjs.com/), [starknet.py](https://starknetpy.rtfd.io/), or [starknet-rs](https://github.com/xJonathanLEI/starknet-rs) for interacting with StarkNet from tests' code,
 3. Protostar CLI for building contracts and deploying in tests' setup phases and CI.
 
 <h2 align="center" id="hardhat"><a href="https://github.com/Shard-Labs/starknet-hardhat-plugin">Hardhat</a></h2>
