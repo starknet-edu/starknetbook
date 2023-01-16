@@ -170,7 +170,7 @@ Finally, we update our `protostar.toml` with the new paths and the installed lib
 [project]
 protostar-version = "0.9.1"
 lib-path = "lib"
-cairo-path = ["lib/cairo-contracts/src", "lib/cairopen_contracts/src"]
+cairo-path = ["lib/cairo_contracts/src", "lib/cairopen_contracts/src"]
 
 [contracts]
 vote = ["src/voting.cairo"]
@@ -224,7 +224,7 @@ For deploying a contract using Protostar, we will follow the steps we learned in
 3. Declare the contract.
 4. Invoke the function `deployContract` of the UDC. However, at the end of this section you will learn how not to invoke the UDC and simply use Protostar's `deploy`.
 
-Let's use a real example. When we initialize a Protostar project, a `main.cairo` contract is automatically created in the `src` directory. You can use it as an example of a contract to deploy to the devnet and then to the testnet. You must ensure that you define what will be compiled in `protostar.toml`. This tutorial will deploy the voting contract we wrote in Camp 1. We initialize a new Protostar repo called [buidl/protostar-buidl](basecamp/camp_2/buidl/protostar-buidl). Our [voting contract is in the `src` directory](basecamp/camp_2/buidl/protostar-buidl/src/voting.cairo). The `protostar.toml` looks:
+Let's use a real example. When we initialize a Protostar project, a `main.cairo` contract is automatically created in the `src` directory. You can use it as an example of a contract to deploy to the devnet and then to the testnet. You must ensure that you define what will be compiled in `protostar.toml`. This tutorial will deploy the voting contract we wrote in Camp 1. We initialize a new Protostar repo called [buidl/protostar-buidl](buidl/protostar-buidl). Our [voting contract is in the `src` directory](buidl/protostar-buidl/src/voting.cairo). The `protostar.toml` looks:
 
 ```
 [project]
@@ -329,7 +329,7 @@ In order to sign our transactions (remember we need an account contract) on the 
 Let us use here option 1. We can use the UI of either our Argent or Braavos wallet; I will show how to do it with Braavos here. Go the "Privacy & Security" option.
 
 <div align="center">
-    <img src="../misc/devnet2.png">
+    <img src="../misc/braavos2.png">
 </div>
 
 We export the private key and add it to the environmental variables with `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[THE EXPORTED PRIVATE KEY]`. 

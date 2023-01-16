@@ -28,6 +28,15 @@ cd block_verification/go/
 GO111MODULE=off go test ./... -bench=. -count 5
 ```
 
+In `Rust`:
+
+```bash
+cd block_verification/rust/
+cargo run
+# or run the tests with
+cargo test
+```
+
 In `Elixir`:
 
 ```bash
