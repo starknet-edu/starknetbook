@@ -40,7 +40,7 @@ Transactions on the testnet take time to complete, so it's best to start develop
 Install using:
 
 ```Bash
-pip install starknet-devnet`
+pip install starknet-devnet
 ```
 
 Restart your terminal and run `starknet-devnet --version` to check that the installation was successful. Check that you have [the most up-to-date version](https://github.com/Shard-Labs/starknet-devnet/releases). If you don't have it, run `pip install --upgrade starknet-devnet`. [Here is the documentation](https://shard-labs.github.io/starknet-devnet/docs/intro).
@@ -100,7 +100,7 @@ At this point, we already have `cairo-lang` installed.
 On Ubuntu or macOS (not available for Windows), run the following command:
 
 ```Bash
-curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash`
+curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
 ```
 
 Restart your terminal and run `protostar -v` to see the version of your `protostar` and `cairo-lang`.
@@ -118,7 +118,7 @@ We can initialize our project with the `protostar init` command, or you can indi
 
 Let's run `protostar init` to initialize a Protostar project. It asks us to indicate the following:
 
-- `project directory name`: What is the directory's name where your project is located?
+- `project directory name`: What is the directory name where your project is located?
 
 This is what the structure of our project looks like:
 
@@ -237,7 +237,7 @@ vote = ["src/voting.cairo"]
 
 Run `protostar build` to compile and create the `build/vote_abi.json` we will use for deployment.
 
-Following the recommended order for deploying a smart contract, we will first deploy to the devnet and then to the testnet. In a following tutorial, we will learn how to use Protostar to first code unit tests; that is the actual first step. 
+Following the recommended order for deploying a smart contract, we will first deploy to the devnet and then to the testnet. In the following tutorial, we will learn how to use Protostar to first code unit tests; that is the actual first step. 
 
 To make deployment to the devnet simpler, we create a section `[profile.devnet.protostar.deploy]` in the `protostar.toml` where we add the url where we deploy our devnet locally: `gateway-url = "http://127.0.0.1:5000/"` and the `chain-id = 1536727068981429685321`. `chain-id` is a number that represents the different networks where we can deploy our contracts. The testnet and devnet id is `1536727068981429685321`.
 
@@ -321,12 +321,12 @@ We have successfully deployed a contract to the devnet. The advantage of deployi
 
 For the devnet, we used the help of Protostar's profiles, so we do not have to write the whole chain Id and gateway URL; at the beginning of each command, we added `-p devnet`, e.g. `protostar -p devnet deploy`. We could write a profile in our Protostar configuration for the testnet too. However, for didactic purposes and because it is more straightforward, we will not create a profile for the testnet.
 
-In order to sign our transactions (remember we need an account contract) on the testnet we can proceed on different ways:
+In order to sign our transactions (remember we need an account contract) on the testnet we can proceed in different ways:
 1. Use an account linked to a Braavos or Argent wallet.
 2. Deploy and use an account contract using starknet's CLI. It will be really similar to Open Zeppelin's standard. We would need to employ counterfactul deployment as we saw in Camp 1.
 3. Deploy and use a customized account contract. We will review this in Camp 3.
 
-Let us use here option 1. We can use the UI of either our Argent or Braavos wallet; I will show how to do it with Braavos here. Go the "Privacy & Security" option.
+Let us use here option 1. We can use the UI of either our Argent or Braavos wallet; I will show how to do it with Braavos here. Go to the "Privacy & Security" option.
 
 <div align="center">
     <img src="../misc/braavos2.png">
