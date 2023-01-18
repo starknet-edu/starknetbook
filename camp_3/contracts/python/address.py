@@ -33,11 +33,11 @@ def calculate_contract_address(
 
 
 # must be in cairo environment
-os.system(
-    "starknet-compile {}.cairo --output {}_compiled.json".format(
-        "../cairo/" + CONTRACT_NAME, CONTRACT_NAME
-    )
-)
+# os.system(
+#     "starknet-compile {}.cairo --output {}_compiled.json".format(
+#         "../cairo/" + CONTRACT_NAME, CONTRACT_NAME
+#     )
+# )
 
 # -------------------------------------------------------------------------------------------------------
 # Contract Classes - StarkNet seperates contracts into classes(definition) and instances(implementation)
@@ -48,12 +48,12 @@ os.system(
 # - library_call: to use the functionality of a declared class w/o deploying
 # -------------------------------------------------------------------------------------------------------
 contract_class = ContractClass.loads(
-    data=open("{}_compiled.json".format(CONTRACT_NAME), "r").read()
+    data=open("../cairo/storage_compiled.json".format(CONTRACT_NAME), "r").read()
 )
 class_hash = compute_class_hash(contract_class=contract_class, hash_func=pedersen_hash)
 
 # calculate contract address
 address = calculate_contract_address(0, class_hash, [], 0)
 
-print("\n\tClass Hash: 0x{:x}\n".format(address))
+print("\n\tClass Hash: 0x{:x}\n".format(class_hash))
 print("\tContract Address: 0x{:x}\n".format(address))
