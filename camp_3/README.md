@@ -77,6 +77,7 @@ In Ethereum, and other L1s, users lose their keys and recovery phrases; and that
 AA promises to put programmability into every Ethereum wallet, and unlock new frontiers for both developers and users ([AA Panel, Devcon 6](https://app.devcon.org/schedule/9mvqce)). 
 
 Among other things, AA allows:
+* [Hardware Signer](https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79): Sign transactions and messages on Braavos wallet using your biometric identity, with a key that is generated and protected by your iPhone/Android secure enclave.
 * Social recovery: In case a user's private key is lost or compromised, AA allows wallets to add mechanisms to securely replace the key controlling the account. Never worry about seed phrases again ([Julien Niset, 2022](https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/))!
 * Key rotation: If your keys are compromised, instead of moving all the assets, you can rotate the keys and that is it. (XXX look more about this)
 * Session keys: Signing with your face or finger to your cellphone or your favorite apps is possible with AA. Session keys are a set of permissions given to a website so, for example, you can sign in once and then the website can act on our behalf without you having to sign each time each transactions. This is Web2 experience.
