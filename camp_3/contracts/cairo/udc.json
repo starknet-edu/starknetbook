@@ -1,0 +1,69 @@
+[
+    {
+      "data": [
+        {
+          "name": "address",
+          "type": "felt"
+        },
+        {
+          "name": "deployer",
+          "type": "felt"
+        },
+        {
+          "name": "unique",
+          "type": "felt"
+        },
+        {
+          "name": "classHash",
+          "type": "felt"
+        },
+        {
+          "name": "calldata_len",
+          "type": "felt"
+        },
+        {
+          "name": "calldata",
+          "type": "felt*"
+        },
+        {
+          "name": "salt",
+          "type": "felt"
+        }
+      ],
+      "keys": [],
+      "name": "ContractDeployed",
+      "type": "event"
+    },
+    {
+      "name": "deployContract",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "classHash",
+          "type": "felt"
+        },
+        {
+          "name": "salt",
+          "type": "felt"
+        },
+        {
+          "name": "unique",
+          "type": "felt"
+        },
+        {
+          "name": "calldata_len",
+          "type": "felt"
+        },
+        {
+          "name": "calldata",
+          "type": "felt*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "address",
+          "type": "felt"
+        }
+      ]
+    }
+  ]
