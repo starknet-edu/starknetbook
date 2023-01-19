@@ -222,7 +222,7 @@ For deploying a contract using Protostar, we will follow the steps we learned in
 1. Deploy an account. Notice the devnet already deployed accounts for us.
 2. Compile the contract.
 3. Declare the contract.
-4. Invoke the function `deployContract` of the UDC. However, at the end of this section you will learn how not to invoke the UDC directly and simply use Protostar's `deploy`.
+4. Invoke the function `deployContract` of the UDC to deploy. Also, at the end of this section we will learn how to simply use Protostar's `deploy`.
 
 Let's use a real example. When we initialize a Protostar project, a `main.cairo` contract is automatically created in the `src` directory. You can use it as an example of a contract to deploy to the devnet and then to the testnet. You must ensure that you define what will be compiled in `protostar.toml`. This tutorial will deploy the voting contract we wrote in Camp 1. We initialize a new Protostar repo called [buidl/protostar-buidl](basecamp/camp_2/buidl/protostar-buidl). Our [voting contract is in the `src` directory](basecamp/camp_2/buidl/protostar-buidl/src/voting.cairo). The `protostar.toml` looks:
 
@@ -344,7 +344,7 @@ Let us use here option 1. We can use the UI of either our Argent or Braavos wall
     <img src="../misc/devnet2.png">
 </div>
 
-We export the private key and add add it to the environmental variables with `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[THE EXPORTED PRIVATE KEY]`. 
+We export the private key and add it to the environmental variables with `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[THE EXPORTED PRIVATE KEY]`. 
 
 Then we `declare` our contract adding to the `--account-address` flag the address of our wallet.
 
@@ -453,7 +453,7 @@ Invoke transaction was sent.
 Transaction hash: 0x023f884091e877cc4c72ccdb31f6a2b31ddfda647629af5834899d8176e1ad1b
 ```
 
-Remember, the option to interact with the contract through the [StarkScan block explorer](https://devnet.starkscan.co/) is always available, even with a local network such as the devnet; remember, this feature only works with the Chrome browser. Now, let's call the `get_voting_status` function from the voting contract to see if the vote was indeed applied.
+Remember, the option to interact with the contract through the [StarkScan block explorer](https://devnet.starkscan.co/) is always available, even with a local network such as the devnet; this feature only works with the Chrome browser. Now, let's call the `get_voting_status` function from the voting contract to see if the vote was indeed applied.
 
 ```Bash
 protostar -p devnet call \
