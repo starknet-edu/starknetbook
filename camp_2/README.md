@@ -528,11 +528,11 @@ We will learn the following:
 2. How to interact with the deployed contracts.
 3. How to use cheat codes to simulate behaviors.
 
-We can find the complete set of tests for our voting contract at [tests/test_vote.cairo](./tests/test_vote.cairo). Here we will dissect the most important parts of it.
+We can find the complete set of tests for our voting contract at [tests/test_vote.cairo](./buidl/protostar-buidl/tests/test_vote.cairo). Here we will dissect the most important parts of it.
 
 Due to the large number of `view` and `external` functions, our voting contract depends on interaction with the state of the blockchain; Therefore, we need to interact with the deployed contract and rely on integration tests. 
 
-The first thing we need to do for our integration tests is deploy the contract. We want to do this at the beginning of our test suite, so we don't have to deploy it in every test case. Protostar allows us to do this with configuration hooks. Setting up our configuration hooks is the first thing we do in our [test suite](./tests/test_vote.cairo). We deploy our contract by:
+The first thing we need to do for our integration tests is deploy the contract. We want to do this at the beginning of our test suite, so we don't have to deploy it in every test case. Protostar allows us to do this with configuration hooks. Setting up our configuration hooks is the first thing we do in our [test suite](./buidl/protostar-buidl/tests/test_vote.cairo). We deploy our contract by:
 * declaring what contract we want to deploy;
 * preparing it by defining the call data for the constructor; and
 * deploying it.
@@ -557,7 +557,7 @@ To interact with our contract, it is helpful to represent its functionality thro
 * ... not have state variables.
 * ... can have `struct`s
 
-We add all the `view` and `external` functions from our contract to the Interface at [IVote.cairo](/src/interfaces/IVote.cairo). We can call our entire contract functionality through the Interface. For example, here we call the function `is_voter_registered`:
+We add all the `view` and `external` functions from our contract to the Interface at [IVote.cairo](/camp_2/buidl/protostar-buidl/src/interfaces/IVote.cairo). We can call our entire contract functionality through the Interface. For example, here we call the function `is_voter_registered`:
 
 ```Cairo
 IVote.is_voter_registered(contract_address=vote_address, address=VOTER_1)
@@ -644,7 +644,7 @@ IVote.vote(contract_address=vote_address, vote=0);
 %{ stop_prank_voter() %}
 ```
 
-We can then test if our vote indeed altered the blockchain state (review the full [test suite](/src/interfaces/IVote.cairo)).
+We can then test if our vote indeed altered the blockchain state (review the full [test suite](./buidl/protostar-buidl/tests/test_vote.cairo)).
 
 In the `test_vote_contract_pause_vote` test case, we use `start_prank` to pause voting; we pretended that our identity was that of the voting administrator:
 
