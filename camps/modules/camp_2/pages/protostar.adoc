@@ -1,0 +1,21 @@
+[id="protostar"]
+
+= Protostar
+
+https://github.com/software-mansion/protostar[Protostar] is a tool inspired by https://github.com/foundry-rs/foundry[Foundry] and key to compile, test and deploy. Its use is recommended by most of the StarkNet community.
+
+== Installing Protostar
+
+At this point, we already have `cairo-lang` installed.
+
+On Ubuntu or macOS (not available for Windows), run the following command:
+
+[,Bash]
+----
+curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
+----
+
+Restart your terminal and run `protostar -v` to see the version of your `protostar` and `cairo-lang`.
+
+If you later want to upgrade your protostar, use `protostar upgrade`. If you run into installation problems, I recommend reviewing the https://docs.swmansion.com/protostar/docs/tutorials/installation[Protostar documentation].
+

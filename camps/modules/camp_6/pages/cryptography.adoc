@@ -1,0 +1,28 @@
+[id="cryptography"]
+
+= Cryptography
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+
+== Cryptographic Hash Functions
+== Asymmetric Encryption
+== Digital Signatures
+== Zero-Knowledge Proofs
+
+=== ZK Terminology
+
+Zero Knowledge Proof Systems are proof systems in which there is secret information known to the `prover` that is not known to the `verifier`, and the verifier is still convinced of the computational claim.
+
+A `non-interactive` proof system is an abstract machine that models computation between the two parties(prover and verifier).
+Messages are sent in https://www.youtube.com/watch?v=QJO3ROT-A4E[one direction] until the verifier is convinced of the computational claim.
+
+A `succinct` proof system is one in which the verifier can run an order of magnitute faster than a naive re-execution of the program
+
+`SNARKS`: Succint Non-Interactive Arguments of Knowledge
+
+`STARKs`: Scalable Transparent Arguments of Knowledge
+
+
+== Commitment Schemes
+== Secure Multi-Party Computation (MPC)

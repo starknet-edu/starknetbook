@@ -1,1 +1,1 @@
-* xref:README.adoc[]
+* xref:index.adoc[Camp 0: Primer]

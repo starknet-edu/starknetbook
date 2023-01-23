@@ -3,9 +3,16 @@
 // Transaction hash: 0x4c5358076492f735956a02dd7d917972d28e2b33db98829f0b1a4928d0ceb20
 %lang starknet
 
+// Testnet Demo Contract:
+// starknet-devnet --seed 0
+
+// ** If you don't have an accounts file **
+// mkdir -p ~/.starknet_accounts
+// cp starknet_open_zeppelin_accounts.json ~/.starknet_accounts
+
 // starknet-compile storage.cairo --output storage_compiled.json
-// starknet declare --gateway_url http://localhost:5050 --contract storage_compiled.json
-// starknet deploy --gateway_url http://localhost:5050 --contract storage_compiled.json
+// starknet declare --account devnet --gateway_url http://localhost:5050 --feeder_gateway_url http://localhost:5050 --contract storage_compiled.json
+// starknet invoke --address 0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf --account devnet --gateway_url http://localhost:5050 --feeder_gateway_url http://localhost:5050  --abi udc.json  --function deployContract  --inputs 0x3cbb006ebfac465fc64939c2ba2ddfb1db0aa2a8324a29206e3ad72ee6e8e6a 0 0 0
 from starkware.cairo.common.cairo_builtins import HashBuiltin, SignatureBuiltin
 from starkware.starknet.common.syscalls import storage_read
 from starkware.cairo.common.hash import hash2

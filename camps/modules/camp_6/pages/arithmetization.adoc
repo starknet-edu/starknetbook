@@ -1,0 +1,13 @@
+[id="arithmetization"]
+
+= Arithmetization
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+
+== Step 1: Generating an Execution Trace and a Set of Polynomial Constraints
+
+== Step 2: Transform the Execution Trace and the Set of Polynomial Constraints Into a Single Low-Degree Polynomial
+
+== Succinctness
+

@@ -1,5 +1,5 @@
 site:
-  title: The Basecamp (StarkNet Book)
+  title: The Basecamp
   # start_page: component-b::index.adoc
   # documentation::index.adoc
   start_page: camps::index.adoc
@@ -21,11 +21,11 @@ ui:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./ui/supplemental_ui
-    - path: ui.yml
-      contents: |
-        static_files:
-        - .nojekyll
-    - path: .nojekyll
+  # - path: ui.yml
+  #   contents: |
+  #     static_files:
+  #     - .nojekyll
+  # - path: .nojekyll
 
 asciidoc:
   attributes:
@@ -43,8 +43,12 @@ asciidoc:
 #     # The lunr-tokenizer enables search results that include strings within code samples.
 #     # For example, without the lunr-tokenizer, searching for `foo` will find `The foo function`, but it won't find `foo(arg1)`.
 #   - require: './lunr-tokenizer'
-#   - require: '@antora/lunr-extension'
-#     index_latest_only: true
+#   # - require: '@antora/lunr-extension'
+#   #   index_latest_only: true
+
+antora:
+  extensions:
+  - '@antora/lunr-extension'
 
 output:
   destinations:

@@ -1,0 +1,38 @@
+[id="number_theory"]
+
+= Algebraic Number Theory
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+== Euler's Theorem
+
+== Modular Arithmetic
+
+A system of arithmetic for integers where numbers "wrap around" when reaching a certain value (aka 'modulus')
+
+image:modular.png[modular]
+
+A real-world example of modular arithmetic is time-keeping via a clock.
+When the hour of the day exceed the modulus(12) we "wrap" around and begin at zero.
+
+Example:
+
+[,bash]
+----
+python3 finite_fields/python/modular_arithmetic.py
+----
+
+== Finite Fields
+
+Much of today's practical cryptography is based on `finite fields`. A finite field is a field that contains a finite number of elements and defines arithmetic operations for multiplication, addition, subtraction, and divsion. These arithmetic operations are.
+
+A finite field cannot contain sub-fields and therefore typically implements the principles of modular arithmetic over a large, irreducible prime number. The number of elements in the field is also known as its `order`.
+
+Example:
+
+[,bash]
+----
+python3 finite_fields/python/finite_field_arithmetic.py
+----
+
+== Congruences

@@ -1,1 +1,13 @@
-* xref:README.adoc[]
+* xref:index.adoc[Camp 6: STARKs]
+    ** xref:trust_verification.adoc[Trust vs. Verification]
+    ** xref:first_look.adoc[First Look at the STARKs]
+    ** Mathematical Primer
+        *** xref:number_theory.adoc[Algebraic Number Theory]
+        *** xref:geometry.adoc[Algebraic Geometry]
+        *** xref:cryptography.adoc[Cryptography]
+    ** xref:arithmetization.adoc[Arithmetization]
+    ** xref:low_testing.adoc[Low Degree Testing: The Secret Sauce of Succinctness]
+    ** xref:fri.adoc[The FRI Protocol]
+    ** xref:efficient_starks.adoc[Efficient STARKs]
+    ** xref:starks_snarks.adoc[STARKs and SNARKs: Differences]
+    

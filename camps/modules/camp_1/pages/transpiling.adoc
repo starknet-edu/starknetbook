@@ -1,0 +1,19 @@
+[id="transpiling"]
+
+= Transpiling Solitidy code into Cairo
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+
+Try transpiling your Solidity code into Cairo!
+Run the following code snippet in your terminal to link:basecamp/camp_3/contracts/solidity/ERC20.sol[Warp an ERC20].
+
+[,bash]
+----
+cd contracts/solidity
+warp transpile ERC20.sol WARP
+warp deploy ERC20.json
+----
+
+Congratulations on finishing Camp 1!
+You are closer to the moon.

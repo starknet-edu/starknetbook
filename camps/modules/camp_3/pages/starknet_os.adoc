@@ -1,0 +1,8 @@
+[id="starknet_os"]
+
+= StarkNet OS
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+The StarkNet OS is the Cairo program that runs StarkNet.
+The OS handles everything which is done on the network -- contract deployment, transaction execution, L1<>L2 messages and more.

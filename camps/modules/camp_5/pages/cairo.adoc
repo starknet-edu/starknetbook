@@ -1,0 +1,10 @@
+[id="cairo"]
+
+= C(pu)AIR(o)
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+The STARK Proof system is based on `AIR` or Algebraic Intermediate Representation of computation. The AIR is a list of polynomial constraints operating on a trace of finite field elements and the STARK Proof verifies there exists a trace that satisfies those constraints.
+
+Cairo stands for CPU AIR and consists of a single set of polynomial constraints such that the execution of a program on this architecture is valid. Cairo is a programming language for writing provable programs.
+

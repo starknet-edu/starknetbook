@@ -1,7 +1,7 @@
 [project]
 protostar-version = "0.9.1"
 lib-path = "lib"
-cairo-path = ["lib/cairo-contracts/src"] 
+cairo-path = ["lib/cairo_contracts/src"] 
 
 [contracts]
 vote = ["src/voting.cairo"]

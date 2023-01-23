@@ -1,0 +1,12 @@
+[id="trust_verification"]
+
+= Trust vs. Verification
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+The goal of these proof systems is to prove `computational integrity` to a verifier.
+Computational Integrity can be formalized as follow:
+
+*_Statement of Computational Integrity = (S0, P, T, S1)_*
+
+`S0`: Initial State `P`: Program that changes state `T`: Number of steps `S1`: Final State

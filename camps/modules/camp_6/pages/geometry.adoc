@@ -1,0 +1,24 @@
+[id="geometry"]
+
+= Algebraic Geometry
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+== Polynomials
+
+`Polynomials` have properties that are very useful in https://www.youtube.com/watch?v=iAaSQfZ-2AM[ZK proofs].
+A polynomial is an expression of more than two algebraic terms.
+The degree of a polynomial is the highest degree of any specific term.
+
+For an example of how Polynomials can be built and expressed in code run:
+
+[,bash]
+----
+python3 finite_fields/python/polynomial.py
+----
+
+== Points, Lines, and Curves
+== Algebraic Varieties
+== Divisors
+== Algebraic Morphisms
+== Sheaves

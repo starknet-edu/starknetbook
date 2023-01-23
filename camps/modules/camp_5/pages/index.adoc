@@ -1,0 +1,30 @@
+[id="index"]
+
+= Deep into Cairo
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+== CLI Cheatsheet+++</div>+++
+
+[,bash]
+----
+# compile cairo program
+cairo-compile example.cairo --output example_compiled.json
+
+# run cairo program and output results
+cairo-run --program=example_compiled.json --print_output --layout=small
+
+# output the KECCAK Fact of the cairo program
+cairo-hash-program --program=example_compiled.json
+
+# format/lint your cairo program
+cairo-format -i example.cairo
+
+# compile cairo program and submit the fact to the SHARP
+cairo-sharp submit --source example.cairo --program_input input.json
+----
+
+
+== Sources
+
+[https://eprint.iacr.org/2021/1063.pdf , https://arxiv.org/pdf/2109.14534.pdf , https://www.cairo-lang.org/cairo-for-blockchain-developers , https://www.cairo-lang.org/docs/how_cairo_works/index.html , https://github.com/FuzzingLabs/thoth , https://github.com/crytic/amarna]

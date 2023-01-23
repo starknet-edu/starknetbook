@@ -1,0 +1,33 @@
+[id="data"]
+
+= Data Availability
+
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+
+The data availability problem:
+
+* STARK proofs generate a proof of computation.
+ ** ex: valid execution from genesis to block 100
+* you don't need the output of the program to validate the program ran correctly
+ ** ex: state of block 100
+* my contract logic requires the state of block 100
+ ** ex: if we don't have the state of block 100 "stored" somewhere our contract is essentially stuck
+
+*Solution: Validity Rollup - store the state on secure L1*
+
+* current state of StarkNet
+* periodically store the rollup state to Ethereum
+* inherit the security of the base chain
+
+*Solution: Validium - store data "off chain"*
+
+* IPFS, Celestia, cloud providers
+* can secure with a Data Availablility Committee(DAC)
+* data can be private
+* less expensive
+
+*Solution: Volition - hybrid*
+
+* single chain can dynamically chose where data is stored
+* application flexibility
+* composability implications

@@ -1,8 +1,7 @@
 = Keep StarkNet Strange
 :navtitle: Welcome to Basecamp
 
-image: basecamp.png[]
-
+image::basecamp.png[basecamp]
 
 https://starkware.co/[image:https://img.shields.io/badge/powered_by-StarkWare-navy[\]]
 
@@ -10,19 +9,9 @@ So you've landed in a strange finite field. Only thing to do now is setup baseca
 
 == Overview
 
-Basecamp is a curriculum built to teach the fundamental building blocks of the Cairo programming language and StarkNet development.
-It is divided by Camps.
-Finish the curriculum and you will be conquer the Ethereum world.
-
-== Route
-
-. link:./primer/[Primer]
-. link:./camp_1/[Camp 1: Getting Started]
-. link:./camp_2/[Camp 2: BUIDL and Tooling]
-. link:./camp_3/[Camp 3: StarkNet]
-. link:./camp_4/[Camp 4: Peering into the future]
-. link:./camp_5/[Camp 5: Cairo]
-. link:./camp_6/[Camp 6: STARKs]
+Basecamp is a curriculum created to teach the Cairo programming language and StarkNet development.
+It is divided by camps and built by the StarkNet community (you!).
+Finish the resume and you will conquer the Ethereum world.
 
 == Where to start?
 
@@ -56,13 +45,16 @@ Join our https://starknet.io/discord[Discord server], register, and join channel
 
 == Contributing
 
-Basecamp can be made better and will evolve as StarkNet matures.
-Please head to the https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md[Contributing] section.
-Your contributions are welcome!
-Here are things that you can do to help:
+Basecamp can be improved and will evolve as StarkNet matures.
+Together we are setting up The Basecamp, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
+Go to the section https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md[Contributing].
+Here are things you can do to help:
 
-* We would especially love PRs including alternate programming language for the examples included in this repository.
-* Create a branch with a translation to your language
-* Correct bugs if you find some
-* Add an explanation in the comments of the exercise if you feel it needs more explanation
-* Add exercises showcasing your favorite Cairo feature
+* At the beginning of some sections there is a message for Campers who want to collaborate with content.
+* Empty section in a camp? Go for it!
+* Do you think Baecamp needs an additional section? Propose it.
+* Can a section be improved? Feel free to modify it.
+* Do you want to add an alternative programming language for the examples? Yes please.
+* Correct the bugs if you find any.
+* Please add an explanation in the exercise comments if you feel they need them.
+* Add exercises that show your favorite feature of Cairo.

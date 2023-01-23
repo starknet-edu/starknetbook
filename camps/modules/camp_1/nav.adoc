@@ -1,1 +1,15 @@
-* xref:README.adoc[]
+* xref:index.adoc[Camp 1: Getting Started]
+
+** xref:environment_setup.adoc[Setting up Your Environment]
+** xref:cairo_basics_1.adoc[Cairo Basics I]
+** xref:cairo_basics_2.adoc[Cairo Basics II]
+** xref:starknet_contracts.adoc[StarkNet Smart Contracts]
+** xref:deploying_contracts.adoc[Deploying Smart Contracts]
+** xref:recursion.adoc[Recursion]
+** Industry Standards
+    *** xref:openzeppelin.adoc[Open Zeppelin]
+    *** xref:erc20.adoc[Deploying an ERC20]
+    *** xref:erc721.adoc[Deploying an ERC721]
+    *** xref:erc1155.adoc[Deploying an ERC1155]
+    *** xref:proxy.adoc[Deploying a Proxy]
+** xref:transpiling.adoc[Transpiling Solitidy Code into Cairo]
