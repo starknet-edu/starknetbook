@@ -2,7 +2,6 @@
 # alias cairodev="python3.9 -m venv ~/cairo_venv; source ~/cairo_venv/bin/activate; export STARKNET_NETWORK=alpha-goerli; export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount"
 # alias cairoprod="python3.9 -m venv ~/cairo_venv; source ~/cairo_venv/bin/activate; export STARKNET_NETWORK=alpha-mainnet; export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount"
 # alias starktx="starknet get_transaction --hash "
-
 import os
 
 CAIRO_PATH = os.getenv("CAIRO_PATH")

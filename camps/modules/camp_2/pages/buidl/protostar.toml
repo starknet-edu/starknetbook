@@ -1,7 +1,0 @@
-[project]
-protostar-version = "0.9.1"
-lib-path = "lib"
-
-[contracts]
-main = ["contracts/contract_final.cairo"]
-

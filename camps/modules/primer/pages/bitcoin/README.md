@@ -44,7 +44,6 @@ cd block_verification/elixir/
 elixir bitcoin_validator.exs
 ```
 
-
 #### Sources
 
 - <https://github.com/bitcoin/bitcoin>
