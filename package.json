@@ -1,7 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "@antora/lunr-extension": "^1.0.0-alpha.8",
     "@tsconfig/node16": "^1.0.3",
     "prettier": "^2.8.1",
     "starknet": "^4.17.1",
@@ -17,6 +16,7 @@
   },
   "devDependencies": {
     "@antora/cli": "3.1.2",
+    "@antora/lunr-extension": "^1.0.0-alpha.8",
     "@antora/site-generator": "3.1.2"
   }
 }
