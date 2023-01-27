@@ -17,7 +17,7 @@ Requests] for review by the maintainers.
 
 We recommend the following work-flow for contributors:
 
-. *Find an issue* to work on and use comments to communciate your intentions and ask questions.
+. *Find an issue* to work on and use comments to communicate your intentions and ask questions.
 . *Work in a feature branch* of your personal fork (github.com/YOUR_NAME/basecamp) of the main repository (github.com/starknet-edu/basecamp).
 . After you have implemented or resolved the issue, *create a pull-request* to merge your changes in the main repository
 . Wait for the repository maintainers to *review your changes* to ensure the issue is addressed.

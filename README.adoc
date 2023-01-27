@@ -19,7 +19,7 @@ Everybody has different goals in their Cairo and StarkNet journey.
 Follow this guide to continue trough the Basecamp;
 do you...
 
-* ...want to set up your environement?
+* ...want to set up your environment?
 link:./camp_1/README.md#setup[Go here]
 * ...want to start coding scalable and descentralized smart contracts right away?
 *Camps 1 and 2*.
@@ -51,7 +51,7 @@ Go to the section https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTIN
 Here are things you can do to help:
 
 * Empty section in a camp? Go for it!
-* Do you think Baecamp needs an additional section? Propose it.
+* Do you think Basecamp needs an additional section? Propose it.
 * Can a section be improved? Feel free to modify it.
 * Do you want to add an alternative programming language for the examples? Yes please.
 * Correct the bugs if you find any.
