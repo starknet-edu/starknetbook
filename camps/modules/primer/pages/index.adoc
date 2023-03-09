@@ -2,14 +2,14 @@
 
 = Primer
 
-This primer is intended to cover introductory concepts upon which Cairo and StarkNet are built, and also to get you acquainted with the format of this course.
-Each section will involve drilling down on a high-level concept as it pertains to StarkNet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example:
+This primer is intended to cover introductory concepts upon which Cairo and Starknet are built, and also to get you acquainted with the format of this course.
+Each section will involve drilling down on a high-level concept as it pertains to Starknet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example:
 
 image::plat.png[plat]
 
 Code examples will be named by the programming language in which they are implemented, for example, Bitcoin block verification in https://go.dev/doc/install[Golang] (if you can implement this example in other languages we would love a PR):
 
-link:./bitcoin/block_verification/go/main.go[bitcoin/block_verification/go]
+link:./index.html#bitcoin[index.html#bitcoin]
 
 The topics covered in this primer have been dissected in hundreds of ways by thousands of people, so wherever possible I will be linking to those resources.
 

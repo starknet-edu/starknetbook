@@ -2,7 +2,7 @@
 
 = Protostar
 
-https://github.com/software-mansion/protostar[Protostar] is a tool inspired by https://github.com/foundry-rs/foundry[Foundry] and key to compile, test and deploy. Its use is recommended by most of the StarkNet community.
+https://github.com/software-mansion/protostar[Protostar] is a tool inspired by https://github.com/foundry-rs/foundry[Foundry] and key to compile, test and deploy. Its use is recommended by most of the Starknet community.
 
 == Installing Protostar
 

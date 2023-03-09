@@ -2,10 +2,13 @@
 
 = Recursion
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
-
-[video](https://www.youtube.com/watch?v=hjTCIT9BGkA), [slides](https://docs.google.com/presentation/d/e/2PACX-1vRbnDDuGdjcMaUAg1rRztGsLpGhtPsMX1vCKk-sX4v0cHMZdOMWZh177qXYM8lacqGoSJ4X8NvEg8RX/pub?slide=id.g12fb33eb0c0_0_386)+++</div>+++
++++<div>+++
+https://www.youtube.com/watch?v=ZQ3o6QZ0Xc4[video], https://docs.google.com/presentation/d/e/2PACX-1vRbnDDuGdjcMaUAg1rRztGsLpGhtPsMX1vCKk-sX4v0cHMZdOMWZh177qXYM8lacqGoSJ4X8NvEg8RX/pub?slide=id.g12fb33eb0c0_0_386[slides]
++++</div>+++
 
 Ability to verify a proof within a cairo program: - Prover generates a proof of computation in `time T` - Verifier uses proof to check the correctness of the compuation in `log(T)` Enables the parallelization of proofs.
 
+== Contributing
+
+🎯+++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here]. 🎯 🎯
 

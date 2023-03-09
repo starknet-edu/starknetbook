@@ -2,9 +2,6 @@
 
 = Cryptography
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
-
-
 == Cryptographic Hash Functions
 == Asymmetric Encryption
 == Digital Signatures
@@ -26,3 +23,8 @@ A `succinct` proof system is one in which the verifier can run an order of magni
 
 == Commitment Schemes
 == Secure Multi-Party Computation (MPC)
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here]. 🎯 🎯
+

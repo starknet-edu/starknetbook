@@ -2,8 +2,6 @@
 
 = Account Abstraction
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
-
 _*Disclaimers: This tutorial cites various stakeholders, any errors or misunderstandings in this tutorial are the fault of interpretation._
 
 * Most Ethereum users use centralized exchanges because managing a self-custody wallet is difficult;
@@ -130,7 +128,7 @@ There were at least 6 talks, workshops and panels (one of them with Vitalik) on 
 
 Now that we know better the concept of AA, let's actually code it in StarkNet.
 
-As it was mentioned before, StarkNet possesses AA natively.
+As it was mentioned before, Starknet possesses AA natively.
 The design has been notably led by Starkware, Open Zeppellin, and Argent.
 
 == The process
@@ -140,7 +138,7 @@ That is:
 
 . Calculate the account contract's address before deployment.
 
-A contract address in the StarkNet network is a unique identifier of the contract and is a hash of (more details in link:mentation/develop/Contracts/contract-address/[the documentation] and https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/starknet/core/os/contract_address/contract_address.py#L40[actual implementation in Python]):
+A contract address in the Starknet network is a unique identifier of the contract and is a hash of (more details in link:mentation/develop/Contracts/contract-address/[the documentation] and https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/starknet/core/os/contract_address/contract_address.py#L40[actual implementation in Python]):
 
 * Prefix - the ASCII encoding of the string "`STARKNET_CONTRACT_ADDRESS`".
 * Deployer address - currently always zero.
@@ -216,7 +214,7 @@ Contract address: 0x006b27f2455d175f1c9b39568838ee0c1dfba34ca29f489690e40ee69220
 Transaction hash: 0x3dc6e579d7b4204907de859d1a12e42132853b9827e7203487740d51e957eed
 ----
 
-Please note currently the StarkNet CLI only works with the https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo[OpenZeppelin account contract].
+Please note currently the Starknet CLI only works with the https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo[OpenZeppelin account contract].
 If we want to deploy our own account contracts we need to deploy them using a different method.
 More on the next sections.
 
@@ -304,7 +302,7 @@ namespace Account {
 }
 ----
 
-Note that the https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo[default account contract] used by StarkNet and mainly developed by Open Zeppelin has this same structure.
+Note that the https://github.com/starkware-libs/cairo-lang/blob/master/src/starkware/starknet/third_party/open_zeppelin/Account.cairo[default account contract] used by Starknet and mainly developed by Open Zeppelin has this same structure.
 
 Let's examine the entry points (functions):
 
@@ -549,7 +547,7 @@ sign_invoke_transaction(
 )
 ----
 
-Unlike Ethereum https://ethereum.org/en/developers/docs/accounts/#externally-owned-accounts-and-key-pairs[EOAs], StarkNet accounts don't have a hard requirement on being managed by a public/private key pair.
+Unlike Ethereum https://ethereum.org/en/developers/docs/accounts/#externally-owned-accounts-and-key-pairs[EOAs], Starknet accounts don't have a hard requirement on being managed by a public/private key pair.
 
 AA cares more about `who`(i.e.
 the contract address) rather than `how`(i.e.
@@ -562,8 +560,12 @@ All the signing was done "off-chain" and yet with AA we're still able to operate
 
 . . . . .
 
-Unlike Ethereum where accounts are directly derived from a private key, there's no native account concept on StarkNet.
+Unlike Ethereum where accounts are directly derived from a private key, there's no native account concept on Starknet.
 
 Instead, signature validation has to be done at the contract level.
 To relieve smart contract applications such as ERC20 tokens or exchanges from this responsibility, we make use of Account contracts to deal with transaction authentication.
+
+== Contributing 
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here].s
 

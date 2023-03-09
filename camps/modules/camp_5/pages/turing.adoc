@@ -2,8 +2,6 @@
 
 = A practically-efficient Turing-complete STARK-Friendly CPU Architecture
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
-
 While this section is being built we recommend reading the video session for this camp and the https://www.cairo-lang.org/docs/how_cairo_works/index.html[cairo-lang docs].
 
 `Practical`: Cairo supports conditional branches, memory, function calls, and recursion
@@ -11,3 +9,8 @@ While this section is being built we recommend reading the video session for thi
 `Efficient`: Instruction Set chosen so the corresponding AIR is efficient and optimized with `builtins`
 
 `Turing Complete`: Can simulate any Turing machine, as such supports any feasible computation
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here]. 🎯 🎯
+

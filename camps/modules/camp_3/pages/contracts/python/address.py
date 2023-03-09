@@ -40,7 +40,7 @@ def calculate_contract_address(
 # )
 
 # -------------------------------------------------------------------------------------------------------
-# Contract Classes - StarkNet seperates contracts into classes(definition) and instances(implementation)
+# Contract Classes - Starknet seperates contracts into classes(definition) and instances(implementation)
 # - Class: cairo byte code, hint information, entry point names(all semantics)
 # - Class Hash: similar to a 'class name' in OOP
 # - Instance: deployed contract corresponding to a class

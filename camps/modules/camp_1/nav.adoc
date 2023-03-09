@@ -3,7 +3,7 @@
 ** xref:environment_setup.adoc[Setting up Your Environment]
 ** xref:cairo_basics_1.adoc[Cairo Basics I]
 ** xref:cairo_basics_2.adoc[Cairo Basics II]
-** xref:starknet_contracts.adoc[StarkNet Smart Contracts]
+** xref:starknet_contracts.adoc[Starknet Smart Contracts]
 ** xref:deploying_contracts.adoc[Deploying Smart Contracts]
 ** xref:recursion.adoc[Recursion]
 ** Industry Standards

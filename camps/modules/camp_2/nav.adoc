@@ -2,7 +2,7 @@
     ** xref:wallets.adoc[Wallets]
     ** xref:bridge.adoc[Bridge]
     ** xref:explorers.adoc[Block Explorers]
-    ** xref:devnet.adoc[StarkNet Devnet]
+    ** xref:devnet.adoc[Starknet Devnet]
     ** Development Frameworks
         *** xref:protostar.adoc[Protostar]
             **** xref:initializing.adoc[Initializing a Project]
@@ -14,17 +14,17 @@
         *** xref:nile.adoc[Nile]
         *** xref:hardhat.adoc[Hardhat]
     ** Software Development Kits (SDKs)
-        *** xref:starknetpy.adoc[starknet_py: A Python SDK for StarkNet]
-        *** xref:starknetjs.adoc[starknet.js: A Javascript SDK for StarkNet]
-        *** xref:caigo.adoc[Caigo: A Golang SDK for StarkNet]
-        *** xref:starknetrs.adoc[starknet-rs: A Rust SDK for StarkNet]
-    ** xref:testing.adoc[Testing StarkNet Contracts]
+        *** xref:starknetpy.adoc[starknet_py: A Python SDK for Starknet]
+        *** xref:starknetjs.adoc[starknet.js: A Javascript SDK for Starknet]
+        *** xref:caigo.adoc[Caigo: A Golang SDK for Starknet]
+        *** xref:starknetrs.adoc[starknet-rs: A Rust SDK for Starknet]
+    ** xref:testing.adoc[Testing Starknet Contracts]
         *** xref:testing_protostar.adoc[Testing with Protostar]
         *** xref:testing_python.adoc[Testing with Python]
     ** Nodes
         *** xref:pathfinder.adoc[Pathfinder]
         *** xref:juno.adoc[Juno]
-    ** xref:indexing.adoc[Indexing StarkNet]
+    ** xref:indexing.adoc[Indexing Starknet]
     ** Learn by Examples
         *** xref:coffee.adoc[Buy Me a Coffee]
     

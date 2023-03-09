@@ -1,7 +1,7 @@
 [id="upcoming_versions"]
-# StarkNet Alpha v0.11.0
+# Starknet Alpha v0.11.0
 
-StarkNet Alpha 0.11.0 introduces Cairo 1.0 smart contracts.
+Starknet Alpha 0.11.0 introduces Cairo 1.0 smart contracts.
 
 Until regenesis, old and new contracts will co-exist and will be able to interact with each other. On the regenesis, classes (and contracts that are instances of those classes) written in older Cairo versions will no longer be supported.
 
@@ -11,17 +11,18 @@ image::https://docs.starknet.io/_/img/regenesis.png[]
 
 
 ## What to expect
-In StarkNet v0.11.0, you can declare, deploy and run Cairo 1.0 smart contracts. We also introduce a new system call that allows a smooth transitioning of existing contracts to a Cairo 1.0 implementation.
+In Starknet v0.11.0, you can declare, deploy and run Cairo 1.0 smart contracts. We also introduce a new system call that allows a smooth transitioning of existing contracts to a Cairo 1.0 implementation.
 
 Historically, contract classes have been defined in terms of Cairo assembly, or Casm for short (the class definition also included more information needed for execution, e.g., hint data). The novelty of Cairo 1.0 is the introduction of Sierra (Safe Intermediate Representation), an intermediate layer between Cairo 1.0 and Casm.
 
 The role of Sierra is to guarantee that every contract execution can be proven. With Cairo 0, you may write contracts that fail ungracefully, e.g., via an `assert` instruction, which will result in unprovable transactions.
 
-In such cases, it is impossible to trustlessly charge a fee for the failed transaction, which creates a potential DOS vector on StarkNet sequencers. Conversely, Sierra is guaranteed to compile to “safe Casm,” i.e., a subset of Casm that cannot fail (the simplest example that illustrates the restrictions of safe Casm is the usage of if/else instructions rather than asserts).
+In such cases, it is impossible to trustlessly charge a fee for the failed transaction, which creates a potential DOS vector on Starknet sequencers. Conversely, Sierra is guaranteed to compile to “safe Casm,” i.e., a subset of Casm that cannot fail (the simplest example that illustrates the restrictions of safe Casm is the usage of if/else instructions rather than asserts).
 
-To guarantee that all classes in the system originated from Sierra, users will send a new contract class structure (one that corresponds to Sierra), and the StarkNet sequencer will compile it to Casm.
+To guarantee that all classes in the system originated from Sierra, users will send a new contract class structure (one that corresponds to Sierra), and the Starknet sequencer will compile it to Casm.
 
-In the future, this compilation step will be proven inside the StarkNet OS. In the meantime, users have to perform this compilation and produce the Casm hash locally in order to sign it in the `DECLARE` transaction. Note that the user’s approval here is vital; if the compilation to Casm is not verified, nothing enforces the generated Casm to correspond to the (Sierra) contract class.
+In the future, this compilation step will be proven inside the Starknet OS. In the meantime, users have to perform this compilation and produce the Casm hash locally in order to sign it in the `DECLARE` transaction. Note that the user’s approval here is vital; if the compilation to Casm is not verified, nothing enforces the generated Casm to correspond to the (Sierra) contract class.
+
 
 [NOTE]
 ====
@@ -40,7 +41,7 @@ The introduction of Cairo 1.0 and Sierra has several effects on the system. Belo
 - The state commitment will now include contract classes
 - Changes to the on-chain data format
 - New system call - `replace_class`
-- StarkNet API (feeder gateway/gateway) and JSON-RPC updates
+- Starknet API (feeder gateway/gateway) and JSON-RPC updates
 
 [#declare_v2]
 ## Declare v2
@@ -153,13 +154,13 @@ To migrate it to Cairo 1.0 and keep the same address and state, you can do the f
 * How much will replacing the class cost?
     ** The dominant cost of this system call is sending two words as calldata, which is ~1.2k gas
 * How do I declare Cairo 1.0 classes?
-    ** In StarkNet v0.11.0 we will introduce declare v2 transactions, that are used for this purpose. For more details, see xref:#declare_v2[here].
+    ** In Starknet v0.11.0 we will introduce declare v2 transactions, that are used for this purpose. For more details, see xref:#declare_v2[here].
 * What happens if I use call_contract (on the feeder gateway / Json RPC) and `replace_class` is called?
-    ** The effect of the replacement will only last throughout the call (the StarkNet state remains untouched, like in any other call)
+    ** The effect of the replacement will only last throughout the call (the Starknet state remains untouched, like in any other call)
 
 ## On-Chain data
 
-The data published on L1 should allow everyone to construct the StarkNet state locally. The introduction of the `replace_class` system call and the separation between classes (Sierra) and compiled classes (Casm) induces some changes to our on chain data format:
+The data published on L1 should allow everyone to construct the Starknet state locally. The introduction of the `replace_class` system call and the separation between classes (Sierra) and compiled classes (Casm) induces some changes to our on chain data format:
 
 - The deployment info section is removed
 - The first word will be the number of contracts affected by the block (this includes storage updates, nonce updates, class updates, or deployments).
@@ -210,7 +211,7 @@ The new class structure and Declare V2 are added to the JSON-RPC. You can track 
 
 ## Version 0 Removal
 
-`INVOKE` and `DECLARE` transactions of version 0 will no longer be supported in StarkNet Alpha v0.11.0
+`INVOKE` and `DECLARE` transactions of version 0 will no longer be supported in StarknNet Alpha v0.11.0
 
 ## Mandatory message fees
 

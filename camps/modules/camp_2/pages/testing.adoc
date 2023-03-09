@@ -1,8 +1,6 @@
 [id="testing"]
 
-= Testing StarkNet Contracts
-
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+= Testing Starknet Contracts
 
 We left testing our contract for last; however, remember that testing is the first step in our sanity process for building smart contracts:
 
@@ -17,3 +15,7 @@ Testing ensures that your code remains reliable even when we change it. The Rust
 * *Integration tests* are entirely external to the library and use its code in the same way any other external code would. (https://doc.rust-lang.org/book/ch11-03-test-organization.html[The Rust Programming Language]).
 
 Ideally, we would like to test all possible flows in our smart contract. Thus, our contract would have _100% code coverage_. However, we could lag behind this number; Code coverage of 80% is considered a good number.
+
+== Contributing 
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here].s

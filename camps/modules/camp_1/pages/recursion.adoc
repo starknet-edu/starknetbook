@@ -2,8 +2,6 @@
 
 = Recursion instead of loops and an example of implications
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
-
 As stated in the Cairo documentation https://www.cairo-lang.org/docs/hello_cairo/intro.html?highlight=loops#recursion-instead-of-loops[here], we should avoid loops when using Cairo.
 The main underlying reason is:
 
@@ -19,3 +17,7 @@ In order to do so, you will have to have a deep understanding of the type of rec
 Please, nagivate to link:./recursion/cairo/recursion.cairo[recursion/cairo/recursion.cairo] and read the code as well with comments to have two examples of recursions.
 One of which is applicable to how storage mappings deal with it.
 Instructions on how to compile and run the program are embedded in link:./recursion/cairo/recursion.cairo[recursion/cairo/recursion.cairo].
+
+== Contributing 
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here].s

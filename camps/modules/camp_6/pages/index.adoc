@@ -2,9 +2,11 @@
 
 = STARKs
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
-
 While this section is being built we recommend reading this blog post series(https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71[1], https://medium.com/starkware/arithmetization-i-15c046390862[2], https://medium.com/starkware/arithmetization-ii-403c3b3f4355[3]) on the math behind STARKs.
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here]. 🎯 🎯
 
 
 == Relevant sources

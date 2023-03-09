@@ -3,8 +3,8 @@
 [#setup]
 = Setting up your environment
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is a community effort. We invite all readers to suggest improvements on our github page. To do so, please refer to our
 
 * Basic cairo-lang https://www.cairo-lang.org/docs/quickstart.html[setup].
 * Ultimate development environment https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7[setup].
-* Setting up a StarkNet dev environment with https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-python-e4c61c1e8da6?source=collection_home---5------1-----------------------[Python] or https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-docker-19955188bb20?source=collection_home---5------0-----------------------[Docker]
+* Setting up a Starknet dev environment with https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-python-e4c61c1e8da6?source=collection_home---5------1-----------------------[Python] or https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-docker-19955188bb20?source=collection_home---5------0-----------------------[Docker]

@@ -9,13 +9,13 @@ So you've landed in a strange finite field. Only thing to do now is setup baseca
 
 == Overview
 
-Basecamp is a curriculum created to teach the Cairo programming language and StarkNet development.
-It is divided by camps and built by the StarkNet community (you!).
+Basecamp is a curriculum created to teach the Cairo programming language and Starknet development.
+It is divided by camps and built by the Starknet community (you!).
 Finish the resume and you will conquer the Ethereum world.
 
 == Where to start?
 
-Everybody has different goals in their Cairo and StarkNet journey.
+Everybody has different goals in their Cairo and Starknet journey.
 Follow this guide to continue trough the Basecamp;
 do you...
 
@@ -33,7 +33,7 @@ link:./camp_1/README.md#setup[Go here]
 == Links
 
 * Community: https://community.starknet.io
-* StarkNet Docs: https://docs.starknet.io
+* Starknet Docs: https://docs.starknet.io
 * Cairo Docs: https://www.cairo-lang.org/docs
 
 == Issues
@@ -45,7 +45,7 @@ Join our https://starknet.io/discord[Discord server], register, and join channel
 
 == Contributing
 
-Basecamp can be improved and will evolve as StarkNet matures.
+Basecamp can be improved and will evolve as Starknet matures.
 Together we are setting up The Basecamp, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
 Go to the section https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md[Contributing].
 Here are things you can do to help:

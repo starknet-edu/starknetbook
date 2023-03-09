@@ -13,7 +13,7 @@ Join our https://starknet.io/discord[Discord server], register, and join channel
 
 == Contributing
 
-Basecamp can be improved and will evolve as StarkNet matures.
+Basecamp can be improved and will evolve as Starknet matures.
 Together we are setting up The Basecamp, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
 Go to the section https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md[Contributing].
 Here are things you can do to help:

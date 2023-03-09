@@ -2,8 +2,6 @@
 
 = Testing contracts with Protostar
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
-
 "Protostar provides an environment to write unit tests for StarkNet smart contracts in *Cairo language itself*. With the help of cheat codes like `deploy_contract`, it is also easy to write integration tests, deploy single or multiple contracts and examine the internal behavior of such small systems" 
 -- (https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e[Protostar documentation])
 
@@ -54,7 +52,7 @@ func __setup__() {
 }
 ----
 
-To interact with our contract, it is helpful to represent its functionality through an Interface. Interfaces on StarkNet are `namespaces` preceded by the `@contract_interface` entry point (decorator) that can:
+To interact with our contract, it is helpful to represent its functionality through an Interface. Interfaces on Starknet are `namespaces` preceded by the `@contract_interface` entry point (decorator) that can:
 
 * ... not have any function with implementation.
 * ... not have a constructor.
@@ -184,6 +182,10 @@ The testing process allowed us to move more confidently to the development netwo
 
 We would need additional tools to continue testing the integration of our contracts with the ourside world. https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e[These tools] are recommended by the Protostar documentation:
 
-. The Devnet for running a local StarkNet network,
-. StarkNet SDKs like https://www.starknetjs.com/[starknet.js], https://starknetpy.rtfd.io/[starknet.py], or https://github.com/xJonathanLEI/starknet-rs[starknet-rs] for interacting with StarkNet from tests' code,
+. The Devnet for running a local Starknet network,
+. Starknet SDKs like https://www.starknetjs.com/[starknet.js], https://starknetpy.rtfd.io/[starknet.py], or https://github.com/xJonathanLEI/starknet-rs[starknet-rs] for interacting with Starknet from tests' code,
 . Protostar CLI for building contracts and deploying in tests' setup phases and CI.
+
+== Contributing 
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions link:../../../CONTRIBUTING.adoc[here].s
