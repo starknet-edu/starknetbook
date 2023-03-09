@@ -1,4 +1,4 @@
-= Keep StarkNet Strange
+= The Starknet Book
 :navtitle: Welcome to Basecamp
 
 image::basecamp.png[basecamp]
