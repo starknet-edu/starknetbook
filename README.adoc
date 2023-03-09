@@ -4,20 +4,24 @@ The Starknet book has moved from Github to its own front end! Read it at https:/
 
 The content is still maintained here; if you want to contribute to the book, this is the right place.
 
-== Issues
 
-If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/basecamp/issues[Issues]
+== Important
 
-Do you have a question?
-Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.
+This repo redirects to the Starknet Book front-end (built with Antora) at https://book.starknet.io[book.starknet.io]. This repo is only for the Starknet Book's source code (text or actual code).
+
+Do you want to...
+* read or study the Starknet Book? Please go to *book.starknet.io*; it is more readable. 
+* contribute to the Starknet Book (yes please!)? Go the contributing section in this README.
+
 
 == Contributing
 
-Basecamp can be improved and will evolve as StarkNet matures.
+The Starknet Book can be improved and will evolve as StarkNet matures.
 Together we are setting up The Basecamp, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
 Go to the section https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md[Contributing].
 Here are things you can do to help:
 
+* At the beginning of some sections there is a message for Campers who want to collaborate with content.
 * Empty section in a camp? Go for it!
 * Do you think Basecamp needs an additional section? Propose it.
 * Can a section be improved? Feel free to modify it.
@@ -25,3 +29,10 @@ Here are things you can do to help:
 * Correct the bugs if you find any.
 * Please add an explanation in the exercise comments if you feel they need them.
 * Add exercises that show your favorite feature of Cairo.
+
+== Issues
+
+If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/basecamp/issues[Issues]
+
+Do you have a question?
+Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.
