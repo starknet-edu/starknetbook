@@ -1,11 +1,6 @@
 = Starknet Book
-:navtitle: Welcome to the Starknet Book
 
-image::basecamp.png[basecamp]
-
-https://starkware.co/[image:https://img.shields.io/badge/powered_by-StarkWare-navy[\]]
-
-The Starknet book has moved from Github to its own front end! Read it at [https://book.starknet.io/](https://book.starknet.io/)
+The Starknet book has moved from Github to its own front end! Read it at https://book.starknet.io/[https://book.starknet.io/]
 
 The content is still maintained here; if you want to contribute to the book, this is the right place.
 
