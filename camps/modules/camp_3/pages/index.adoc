@@ -1,6 +1,6 @@
 [id="camp_3"]
 
-= Deep into StarkNet
+= Deep into Starknet
 
 == Contributing
 

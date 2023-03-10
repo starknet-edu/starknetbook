@@ -1,4 +1,4 @@
-* Camp 3: Deep into StarkNet
+* Camp 3: Deep into Starknet
 
 ** xref:blocks.adoc[Blocks]
 ** xref:transactions.adoc[The Lifecycle of Transactions]

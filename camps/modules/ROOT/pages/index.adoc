@@ -1,9 +1,9 @@
-= Keep StarkNet Strange
-:navtitle: Welcome to Basecamp
+= Hello, Starknet!
+:navtitle: Welcome
 
 image::basecamp.png[basecamp]
 
-https://starkware.co/[image:https://img.shields.io/badge/powered_by-StarkWare-navy[\]]
+// https://starkware.co/[image:https://img.shields.io/badge/powered_by-StarkWare-navy[\]]
 
 So you've landed in a strange finite field. Only thing to do now is setup basecamp.
 
