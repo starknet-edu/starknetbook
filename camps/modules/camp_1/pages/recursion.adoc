@@ -2,7 +2,7 @@
 
 = Recursion instead of loops and an example of implications
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
 
 As stated in the Cairo documentation https://www.cairo-lang.org/docs/hello_cairo/intro.html?highlight=loops#recursion-instead-of-loops[here], we should avoid loops when using Cairo.
 The main underlying reason is:

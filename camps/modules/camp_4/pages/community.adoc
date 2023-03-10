@@ -2,7 +2,7 @@
 
 = Building Community
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
 
 It's all about relationships and the goal is to focus on the builders, not what is being built.
 Your objective is to plant the seed and let it grow: - Involve community members early - Lets them take the lead, even if they do things differently - Focus on builders and not investors - Make concrete call to actions

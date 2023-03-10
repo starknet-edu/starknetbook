@@ -1,6 +1,6 @@
 name: camps
 version: ~
-title: Basecamp
+title: Starknet Book
 nav:
   - camps/ROOT/nav.adoc 
   - modules/primer/nav.adoc

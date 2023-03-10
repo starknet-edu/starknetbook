@@ -2,7 +2,7 @@
 
 = Deep into Felts
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
 
 In most of your code (unless you intend to write very algebraic code), you won't have to deal with the fact that the values in Cairo are felts and you can treat them as if they were normal integers (https://www.cairo-lang.org/docs/hello_cairo/intro.html#the-primitive-type-field-element-felt[Cairo documentation]).
 The field element (felt) is the only data type that exists in Cairo, you can even omit its explicit declaration;

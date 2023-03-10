@@ -2,7 +2,7 @@
 
 = Testing StarkNet Contracts
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
 
 We left testing our contract for last; however, remember that testing is the first step in our sanity process for building smart contracts:
 

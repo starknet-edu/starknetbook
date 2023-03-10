@@ -229,7 +229,7 @@ In Camp 3, we will get deeper into what defines a class hash.
 
 Let's deploy our contract by invoking the `deployContract` in the UDC.
 The `invoke` command calls a function from a deployed contract.
-We need to feed it the address of the contract we will call, its abi in JSON format (you can find it in the block explorers, in the Basecamp you can find it in link:basecamp/camp_1/contracts/cairo/UDC_abi.json[basecamp/camp_1/contracts/cairo/UDC_abi.json]), the name of the function we are calling, and any input (calldata) the function needs.
+We need to feed it the address of the contract we will call, its abi in JSON format (you can find it in the block explorers, in the Starknet Book you can find it in link:starknetbook/camp_1/contracts/cairo/UDC_abi.json[starknetbook/camp_1/contracts/cairo/UDC_abi.json]), the name of the function we are calling, and any input (calldata) the function needs.
 
 Since the UDC is nothing more than a deployed contract, we can see and interact with in any https://testnet.starkscan.co/contract/0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf[block explorer];
 from there we can download its ABI in JSON format.

@@ -1,22 +1,20 @@
 = The Starknet Book
-:navtitle: Welcome to Basecamp
+:navtitle: Welcome to the Starknet Book
 
-image::basecamp.png[basecamp]
+image::starknetbook.png[starknetbook]
 
-https://starkware.co/[image:https://img.shields.io/badge/powered_by-StarkWare-navy[\]]
-
-So you've landed in a strange finite field. Only thing to do now is setup basecamp.
+So you've landed in a strange finite field. Only thing to do now is setup the Starknet Book.
 
 == Overview
 
-Basecamp is a curriculum created to teach the Cairo programming language and StarkNet development.
+The Starknet Book is a curriculum created to teach the Cairo programming language and StarkNet development.
 It is divided by camps and built by the StarkNet community (you!).
 Finish the resume and you will conquer the Ethereum world.
 
 == Where to start?
 
 Everybody has different goals in their Cairo and StarkNet journey.
-Follow this guide to continue trough the Basecamp;
+Follow this guide to continue trough the Starknet Book;
 do you...
 
 * ...want to set up your environment?
@@ -38,21 +36,21 @@ link:./camp_1/README.md#setup[Go here]
 
 == Issues
 
-If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/basecamp/issues[Issues]
+If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues]
 
 Do you have a question?
 Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.
 
 == Contributing
 
-Basecamp can be improved and will evolve as StarkNet matures.
-Together we are setting up The Basecamp, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
-Go to the section https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md[Contributing].
+The Starknet Book can be improved and will evolve as StarkNet matures.
+Together we are setting up the Starknet Book, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
 Here are things you can do to help:
 
 * At the beginning of some sections there is a message for Campers who want to collaborate with content.
 * Empty section in a camp? Go for it!
-* Do you think Basecamp needs an additional section? Propose it.
+* Do you think the Starknet Book needs an additional section? Propose it.
 * Can a section be improved? Feel free to modify it.
 * Do you want to add an alternative programming language for the examples? Yes please.
 * Correct the bugs if you find any.

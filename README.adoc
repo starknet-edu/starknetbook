@@ -17,13 +17,13 @@ Do you want to...
 == Contributing
 
 The Starknet Book can be improved and will evolve as StarkNet matures.
-Together we are setting up The Basecamp, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
-Go to the section https://github.com/starknet-edu/basecamp/blob/main/CONTRIBUTING.md[Contributing].
+Together we are setting up The Starknet Book, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
 Here are things you can do to help:
 
 * At the beginning of some sections there is a message for Campers who want to collaborate with content.
 * Empty section in a camp? Go for it!
-* Do you think Basecamp needs an additional section? Propose it.
+* Do you think the Starknet Book needs an additional section? Propose it.
 * Can a section be improved? Feel free to modify it.
 * Do you want to add an alternative programming language for the examples? Yes please.
 * Correct the bugs if you find any.
@@ -32,7 +32,7 @@ Here are things you can do to help:
 
 == Issues
 
-If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/basecamp/issues[Issues]
+If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues]
 
 Do you have a question?
 Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.

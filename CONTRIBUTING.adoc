@@ -1,12 +1,12 @@
 = Contributors Guide
 
-The Basecamp is an open-source Cairo/StarkNet teaching curriculum written by `starknet-edu` and the StarkNet community (a.k.a., the Campers). We welcome all contributions to this repository to help enrich the StarkNet community.
+The Starknet Book is an open-source Cairo/StarkNet teaching curriculum written by `starknet-edu` and the StarkNet community (a.k.a., the Campers). We welcome all contributions to this repository to help enrich the StarkNet community.
 
 == How to Contribute
 
 We operate and maintain this project with an issue and pull request model. We will track
-the GitHub issues section https://github.com/starknet-edu/basecamp/issues[Issues] of this repository
-and contributors can submit https://github.com/starknet-edu/basecamp/pulls[Pull
+the GitHub issues section https://github.com/starknet-edu/starknetbook/issues[Issues] of this repository
+and contributors can submit https://github.com/starknet-edu/starknetbook/pulls[Pull
 Requests] for review by the maintainers.
 
 === Style Guide
@@ -18,7 +18,7 @@ Requests] for review by the maintainers.
 We recommend the following work-flow for contributors:
 
 . *Find an issue* to work on and use comments to communicate your intentions and ask questions.
-. *Work in a feature branch* of your personal fork (github.com/YOUR_NAME/basecamp) of the main repository (github.com/starknet-edu/basecamp).
+. *Work in a feature branch* of your personal fork (github.com/YOUR_NAME/starknetbook) of the main repository (github.com/starknet-edu/starknetbook).
 . After you have implemented or resolved the issue, *create a pull-request* to merge your changes in the main repository
 . Wait for the repository maintainers to *review your changes* to ensure the issue is addressed.
 . If the issue is addressed the repository maintainers will *merge your pull-request*

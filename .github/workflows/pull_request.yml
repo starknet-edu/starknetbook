@@ -58,12 +58,12 @@ jobs:
       - name: "Download generated content"
         uses: actions/download-artifact@v2
         with:
-          name: starknet-book
+          name: starknetbook
           path: ${{ steps.pr.outputs.PR_ID }}
 
       - name: PR preview details
         run:
-          echo "you can preview the PR at https://starknet-io.github.io/starknet-book/${{ steps.pr.outputs.PR_ID }}"
+          echo "you can preview the PR at https://starknet-io.github.io/starknetbook/${{ steps.pr.outputs.PR_ID }}"
 
       - name: "Commit changes"
         run: |
@@ -84,7 +84,7 @@ jobs:
         continue-on-error: true
         run: |
           set -euo pipefail
-          echo "Your preview build is ready! ✨ Check the following link in 1-2 minutes: https://starknet-io.github.io/starknet-book/${{ steps.pr.outputs.PR_ID }} ." >/tmp/comment
+          echo "Your preview build is ready! ✨ Check the following link in 1-2 minutes: https://starknet-io.github.io/starknetbook/${{ steps.pr.outputs.PR_ID }} ." >/tmp/comment
           gh pr comment ${{ github.event.pull_request.number }} -F /tmp/comment
         env:
           USER_TOKEN: "${{ secrets.USER_TOKEN }}"

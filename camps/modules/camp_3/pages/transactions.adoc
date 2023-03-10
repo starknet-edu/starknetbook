@@ -2,7 +2,7 @@
 
 = The Lifecycle of Transactions
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
 
 On StarkNet Alpha the two types of transactions are `DEPLOY` or `INVOKE`.
 They go through the following lifecycle as they are submitted from the clients to the sequencer:

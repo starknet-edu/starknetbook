@@ -2,7 +2,7 @@
 
 = Deep into Hints
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up Basecamp together. 🎯
+🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
 
 Python code can be invoked with the %{ %} block called a hint, which is executed right before the next Cairo instruction.
 The hint can interact with the program's variables/memory as shown in the following code sample.
