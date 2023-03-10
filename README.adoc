@@ -1,26 +1,18 @@
 = Starknet Book
 
-The Starknet book has moved from Github to its own front end! Read it at https://book.starknet.io/[https://book.starknet.io/]
-
-The content is still maintained here; if you want to contribute to the book, this is the right place.
-
-
-== Important
-
 This repo redirects to the Starknet Book front-end (built with Antora) at https://book.starknet.io[book.starknet.io]. This repo is only for the Starknet Book's source code (text or actual code).
 
 Do you want to...
-* read or study the Starknet Book? Please go to *book.starknet.io*; it is more readable. 
-* contribute to the Starknet Book (yes please!)? Go the contributing section in this README.
-
+* *read or study* the Starknet Book? Please go to *book.starknet.io*; it is more readable. 
+* *contribute* to the Starknet Book (yes, please!)? This is the right place. Go the contributing section in this README.
 
 == Contributing
 
-The Starknet Book can be improved and will evolve as StarkNet matures.
-Together we are setting up The Starknet Book, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
-Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
-Here are things you can do to help:
+There are several sections within the Camps that require input. Camper (the Book is divided by Camps), your contributions are welcome, needed, and required! 🫡
 
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
+
+Here are things you can do to help:
 * At the beginning of some sections there is a message for Campers who want to collaborate with content.
 * Empty section in a camp? Go for it!
 * Do you think the Starknet Book needs an additional section? Propose it.
@@ -32,7 +24,7 @@ Here are things you can do to help:
 
 == Issues
 
-If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues]
+If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues].
 
 Do you have a question?
 Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.
