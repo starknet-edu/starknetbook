@@ -3,7 +3,7 @@
 
 |Presentation|Video|Try what you learned
 |:----:|:----:|:----:|
-|[September 2022](https://drive.google.com/file/d/1asONnOcSnRJwMXF-Zx1uJBdpbMrLYnmE/view?usp=sharing)|[Camp 1 (September 2022)](https://www.youtube.com/watch?v=7p60e7RzuMs)|Go hardcore with StarkWare's [STARK 101](https://starkware.co/stark-101)|
+|[September 2022](https://drive.google.com/file/d/1asONnOcSnRJwMXF-Zx1uJBdpbMrLYnmE/view?usp=sharing), [February 2023](https://drive.google.com/file/d/1AWeCNRLgoiXVvLS31HxqslxUGIFMnwRf/view)|[Camp 1 (September 2022)](https://www.youtube.com/watch?v=7p60e7RzuMs), [Camp 2 (February 2023)](https://m.youtube.com/live/n9vG4G_JqLE) |Go hardcore with StarkWare's [STARK 101](https://starkware.co/stark-101)|
 
 </div>
 
