@@ -1,6 +1,6 @@
 * xref:index.adoc[Camp 6: STARKs]
     ** xref:trust_verification.adoc[Trust vs. Verification]
-    ** xref:first_look.adoc[First Look at the STARKs]
+    ** xref:introduction_starks.adoc[Introduction to the STARKs]
     ** Mathematical Primer
         *** xref:number_theory.adoc[Algebraic Number Theory]
         *** xref:geometry.adoc[Algebraic Geometry]
