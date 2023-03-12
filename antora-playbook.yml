@@ -1,5 +1,5 @@
 site:
-  title: The Basecamp
+  title: The Starknet Book
   start_page: camps::index.adoc
 
 content:

@@ -1,12 +1,13 @@
 = Contributors Guide
 
-Starknet book is an open source project and we welcome contributions from the community. This guide will help you get started.
+The Starknet Book is an open-source Cairo/StarkNet teaching curriculum written by `starknet-edu` and the StarkNet community (a.k.a., the Campers). We welcome all contributions to this repository to help enrich the StarkNet community.
 
 == Our Methodology
 
 We operate and maintain this project with an issue and pull request model. We will track
-the GitHub issues section https://github.com/starknet-edu/basecamp/issues[Issues] of this repository
-and contributors can submit https://github.com/starknet-edu/basecamp/pulls[PullRequests] for review by the maintainers.
+the GitHub issues section https://github.com/starknet-edu/starknetbook/issues[Issues] of this repository
+and contributors can submit https://github.com/starknet-edu/starknetbook/pulls[Pull
+Requests] for review by the maintainers.
 
 Your pull request will be review by the maintainers at their earliest convenience. If you have any questions, please feel free to ask in the issues section.
 
@@ -19,7 +20,7 @@ Your pull request will be review by the maintainers at their earliest convenienc
 We recommend the following work-flow for contributors:
 
 . *Find an issue* to work on and use comments to communicate your intentions and ask questions.
-. *Work in a feature branch* of your personal fork (github.com/YOUR_NAME/basecamp) of the main repository (github.com/starknet-edu/basecamp).
+. *Work in a feature branch* of your personal fork (github.com/YOUR_NAME/starknetbook) of the main repository (github.com/starknet-edu/starknetbook).
 . After you have implemented or resolved the issue, *create a pull-request* to merge your changes in the main repository
 . Wait for the repository maintainers to *review your changes* to ensure the issue is addressed.
 . If the issue is addressed the repository maintainers will *merge your pull-request*

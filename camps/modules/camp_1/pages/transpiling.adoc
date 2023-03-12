@@ -3,7 +3,7 @@
 = Transpiling Solitidy code into Cairo
 
 Try transpiling your Solidity code into Cairo!
-Run the following code snippet in your terminal to link:basecamp/camp_3/contracts/solidity/ERC20.sol[Warp an ERC20].
+Run the following code snippet in your terminal to link:starknetbook/camp_3/contracts/solidity/ERC20.sol[Warp an ERC20].
 
 [,bash]
 ----
