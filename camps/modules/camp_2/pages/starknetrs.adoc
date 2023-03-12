@@ -1,6 +1,6 @@
 [id="starknetrs"]
 
-= starknet-rs: A Rust SDK for StarkNet
+= starknet-rs: A Rust SDK for Starknet
 
 == Contributing
 

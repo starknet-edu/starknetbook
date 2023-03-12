@@ -1,6 +1,6 @@
 [id="index"]
 
-= Peering into the future of StarkNet
+= Peering into the future of Starknet
 
 == Contributing
 

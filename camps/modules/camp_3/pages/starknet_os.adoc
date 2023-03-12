@@ -1,8 +1,8 @@
 [id="starknet_os"]
 
-= StarkNet OS
+= Starknet OS
 
-The Starknet OS is the Cairo program that runs StarkNet.
+The Starknet OS is the Cairo program that runs Starknet.
 The OS handles everything which is done on the network -- contract deployment, transaction execution, L1<>L2 messages and more.
 
 == Contributing

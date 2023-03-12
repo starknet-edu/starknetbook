@@ -2,7 +2,7 @@
 
 = Devnet
 
-Transactions on the testnet take time to complete, so it's best to start developing and testing locally. We will use the https://github.com/Shard-Labs/starknet-devnet[devnet developed by Shard Labs]. We can think of this step as an equivalent of Ganache. That is, it emulates the testnet (alpha goerli) of StarkNet.
+Transactions on the testnet take time to complete, so it's best to start developing and testing locally. We will use the https://github.com/Shard-Labs/starknet-devnet[devnet developed by Shard Labs]. We can think of this step as an equivalent of Ganache. That is, it emulates the testnet (alpha goerli) of Starknet.
 
 Install using:
 

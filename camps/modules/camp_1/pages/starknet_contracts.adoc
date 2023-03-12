@@ -1,12 +1,12 @@
 [id="starknet_contracts"]
 
-= StarkNet Contracts
+= Starknet Contracts
 
 
-"StarkNet is a permissionless decentralized ZK-Rollup operating as an L2 network over Ethereum, where any dApp can achieve unlimited scale for its computation without compromising Ethereum's composability and security."
--- https://starknet.io/docs/hello_starknet/index.html#hello-starknet[StarkNet Documentation].
+"Starknet is a permissionless decentralized ZK-Rollup operating as an L2 network over Ethereum, where any dApp can achieve unlimited scale for its computation without compromising Ethereum's composability and security."
+-- https://starknet.io/docs/hello_starknet/index.html#hello-starknet[Starknet Documentation].
 
-Contracts on Starknet are written in Cairo. You can transpile a Solidity contract to Cairo via https://github.com/NethermindEth/warp[Warp] or use EVM bytecode using the Kakarot ZKEVM. However, the real power of StarkNet will be harnessed by contracts written in Cairo itself.
+Contracts on Starknet are written in Cairo. You can transpile a Solidity contract to Cairo via https://github.com/NethermindEth/warp[Warp] or use EVM bytecode using the Kakarot ZKEVM. However, the real power of Starknet will be harnessed by contracts written in Cairo itself.
 
 We will create an application that allows users to vote with a yes (1) or no (0). The original concept was proposed by https://github.com/software-mansion-labs/protostar-tutorial[SWMansion] and was extensively modified for this tutorial.
 For didactic purposes, we are going to show the contract code in parts;
@@ -29,27 +29,27 @@ the screenshot below shows how it looks for Braavos.
 image::braavos1.png[braavos1]
 
 You will need to fund your account with Goerli ETH.
-You can get ETH using the https://faucet.goerli.starknet.io/[StarkNet Goerli Faucet].
+You can get ETH using the https://faucet.goerli.starknet.io/[Starknet Goerli Faucet].
 Just indicate the address of your account to get your funds.
 You will likely need to wait about 5 minutes to notice the change in your wallet.
 
 You will notice that these two wallets mention setting up your account and deploying your account, either to the testnet or the Mainnet.
-StarkNet leverages the Cairo Virtual Machine (CairoVM), which is not limited by the Ethereum Virtual Machine (in a later Camp, we will explore it deeper).
+Starknet leverages the Cairo Virtual Machine (CairoVM), which is not limited by the Ethereum Virtual Machine (in a later Camp, we will explore it deeper).
 This means:
 
 * Lessons learned from the development of the EVM can be applied, e.g., transaction parallelization.
-* Key innovations, like Account Abstraction (Camp 3), that still need to be applied to the Layer 1 can be set up in StarkNet.
+* Key innovations, like Account Abstraction (Camp 3), that still need to be applied to the Layer 1 can be set up in Starknet.
 * A different smart contract language can be leveraged to operate with the CairoVM.
-This does not mean that EVM bytecode can not be read by Starknet (see the community-driven https://twitter.com/KakarotZkEvm[ZKEVM Kakarot] on top of StarkNet).
+This does not mean that EVM bytecode can not be read by Starknet (see the community-driven https://twitter.com/KakarotZkEvm[ZKEVM Kakarot] on top of Starknet).
 
-In particular, due to Account Abstraction, Externally Owned Accounts (EOAs) in Ethereum L1 do not exist in StarkNet.
+In particular, due to Account Abstraction, Externally Owned Accounts (EOAs) in Ethereum L1 do not exist in Starknet.
 EOAs have long been a discussion topic due to their limiting properties (see https://www.argent.xyz/blog/wtf-is-account-abstraction/[Argent's Account Abstraction] series).
 The Starknet community has decided to move forward with Account Abstraction at a protocol level;
 there is no differentiation between smart contracts, and even accounts are smart contracts that should be deployed.
 This is why Argent and Braavos ask you to wait while they deploy your account contract.
 We will get deeper into everything this allows us in Camp 3.
 
-== Structure of a project on StarkNet
+== Structure of a project on Starknet
 
 We will create a "standard" Cairo code.
 That is, following the smart contract programming conventions in Cairo.
@@ -131,9 +131,9 @@ func registered_voter(address: felt) -> (is_registered: felt) {
 
 We go step by step noting the differences with the programs in Cairo that we have created before.
 
-We have to declare that we want to deploy our contract on StarkNet.
+We have to declare that we want to deploy our contract on Starknet.
 At the beginning of the contract, write `%lang starknet`.
-Unlike the Cairo contracts, which are not deployed on StarkNet, we don't have to mention the `builtins` at the beginning of the contract.
+Unlike the Cairo contracts, which are not deployed on Starknet, we don't have to mention the `builtins` at the beginning of the contract.
 
 We will learn about various Starknet primitives (marked with an `@`, like Python decorators) that don't exist in pure Cairo.
 The first is `@storage_var`.
@@ -236,7 +236,7 @@ note that they end their name with a `_ptr`.
 
 `syscall_ptr` is used when we make system calls.
 We include it in `_register_voters` because `write` and `read` need this implicit argument.
-When reading and writing, we are directly consulting the contract's storage, and in StarkNet, this is achieved by making system calls.
+When reading and writing, we are directly consulting the contract's storage, and in Starknet, this is achieved by making system calls.
 It is a pointer to a felt value, `felt*`.
 
 `range_check_ptr` allows comparing integer numbers. In a subsequent Camp, we will take a closer look at pointers and essential builtin functions in Starknet development. For now, it is enough for us to know that the `write` and `read` arguments of the storage variables need to compare numbers; therefore, we need to indicate the implicit `range_check_ptr` argument in any function that reads and writes to the contract's storage using storage variables.
@@ -247,7 +247,7 @@ This is an excellent time to introduce hashes:
 "A hash is a mathematical function that converts an arbitrary length input into an encrypted output of fixed length. So regardless of the original amount of data or the file size involved, your unique hash will always be the same size. Also, hashes cannot be used to "reverse engineer" the input from the hash output since hash functions are "unidirectionals" (like a meat grinder; you can't put ground beef back into a steak)." 
 -- Investopedia.
 
-Along with Starknet Keccak (the first 250 bits of the Keccak256 hash), the Pedersen hash function is one of two hash functions used on StarkNet.
+Along with Starknet Keccak (the first 250 bits of the Keccak256 hash), the Pedersen hash function is one of two hash functions used on Starknet.
 `pedersen_ptr` is used when running a Pedersen hash function.
 We put this pointer in `_register_voters` because storage variables perform a Pedersen hash to calculate their memory address.
 
@@ -420,7 +420,7 @@ Therefore, if we want to make the storage variables public, we must make a gette
 
 == Constructors
 
-Constructor functions are used to initialize a StarkNet Application.
+Constructor functions are used to initialize a Starknet Application.
 We define them with the `@constructor` decorator.
 It receives the inputs our contract needs to be deployed and performs the necessary operations to start operating with the contract.
 For example, our contract needs a voting administrator and a list of addresses that can vote (not everyone can vote for a president).

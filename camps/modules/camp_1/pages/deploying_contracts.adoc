@@ -1,8 +1,8 @@
 [id="deploying_contracts"]
 
-= Deploying StarkNet contracts
+= Deploying Starknet contracts
 
-In this section we will we deploy our voting smart contract. However, to understand the deployment procedure in StarkNet, we need first to understand the relevance of Sequencers for decentralization and the part the Universal Deployer Contract plays in maintaining StarkNet security.
+In this section we will we deploy our voting smart contract. However, to understand the deployment procedure in Starknet, we need first to understand the relevance of Sequencers for decentralization and the part the Universal Deployer Contract plays in maintaining Starknet security.
 
 == Deploying I: Argent's User Interface
 
@@ -10,7 +10,7 @@ StarkWare made the conscious decision to subsidize the usage of Starknet while t
 After battle testing the technology stack, the focus is on decentralizing the network.
 Decentralization means that the subsidy to deploy contracts must stop because who would want to run a Sequencer if they won't get paid for deploying smart contracts?
 Sequencers are Starknet nodes that execute the Starknet OS program, prove the results, and update the Starknet state.
-They're vital for StarkNet's security. Notice that if there were no fees, it would mean either one of two things: (1) the network is centralized or (2) the Sequencers run like a loss-making charity (https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/[Darlington, 2022]).
+They're vital for Starknet's security. Notice that if there were no fees, it would mean either one of two things: (1) the network is centralized or (2) the Sequencers run like a loss-making charity (https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/[Darlington, 2022]).
 
 Before deploying our contract, we need to `declare` it: calculate the class hash.
 Unlike Ethereum, Starknet distinguishes between a contract class and a contract instance.
@@ -146,7 +146,7 @@ That is, we can give customized functionality to our account contract.
 In this case, we are using the standard Open Zeppelin (modified by Starkware) account contract: `starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount`.
 Before, when we were using the Argent UI, we implicitly decided that we would use the Argent's account contract with its functionality and features, which differs from Open Zeppelin's.
 We will learn more about account contracts and how to customize them in Camp 3.
-This is one of the most powerful features in StarkNet and is the catalyst to get a Web2-level User Experience (UX).
+This is one of the most powerful features in Starknet and is the catalyst to get a Web2-level User Experience (UX).
 
 [,Bash]
 ----
@@ -171,7 +171,7 @@ differently.
 ----
 
 Before deploying this account contract, we need to fund it so it can pay for its deployment (this process is called counterfactual deployment and will be studied in Camp 3).
-We can go back to the https://faucet.goerli.starknet.io/[StarkNet Goerli Faucet] and feed it with the address we got from `new_account`: `0x00f20c6664cc47e569abe53c7ba19f04685158a1b2f01c9a923cd3849354a928`.
+We can go back to the https://faucet.goerli.starknet.io/[Starknet Goerli Faucet] and feed it with the address we got from `new_account`: `0x00f20c6664cc47e569abe53c7ba19f04685158a1b2f01c9a923cd3849354a928`.
 We wait a couple of minutes, and then we can deploy our account contract:
 
 [,Bash]

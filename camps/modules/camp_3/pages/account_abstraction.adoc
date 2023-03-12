@@ -11,7 +11,7 @@ The current status quo risks making the next wave of users dependent on centrali
 The stark curve is one way it can be done.
 
 In 5 years it would be bizarre that we used to secure our assets by writing 12 words on paper.
-StarkNet is leading the way in implementing AA at the protocol level (not at the application level as with current EIPs on L1): it is the "proving ground" for what AA will look like in the future (https://app.devcon.org/schedule/9mvqce[AA Panel, Devcon 6]).
+Starknet is leading the way in implementing AA at the protocol level (not at the application level as with current EIPs on L1): it is the "proving ground" for what AA will look like in the future (https://app.devcon.org/schedule/9mvqce[AA Panel, Devcon 6]).
 
 == What is Account Abstraction?
 
@@ -107,16 +107,16 @@ Proposals to implement AA have been made since the early days of Ethereum and th
 It is uncertain whether it will be implemented in next Ethereum versions even after the Merge.
 
 The creation of new L2 VMs focused on scalability allowed for advances in its implementation;
-StarkNet and ZKSync have native AA inspired by EIP4337, considered the best proposal by experts such as Argent's Julien Niset (https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/[2022]).
+Starknet and ZKSync have native AA inspired by EIP4337, considered the best proposal by experts such as Argent's Julien Niset (https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/[2022]).
 It seems as if key proponents of AA, like Julien, have lost hope that EOAs are eliminated and AA is implemented at the core of Ethereum;
-Argent is now pushing for the widespread adoption of AA through L2s like StarkNet.
+Argent is now pushing for the widespread adoption of AA through L2s like Starknet.
 
 == Devcon 6
 
 AA was one of the hottest topics at Devcon 6 (2022).
 There were at least 6 talks, workshops and panels (one of them with Vitalik) on the subject.
 
-* https://www.youtube.com/watch?v=Osc_gwNW3Fw[Martin Triay, Open Zeppelin: Account Abstraction in StarkNet] (StarkNet oriented).
+* https://www.youtube.com/watch?v=Osc_gwNW3Fw[Martin Triay, Open Zeppelin: Account Abstraction in Starknet] (Starknet oriented).
 * https://www.youtube.com/watch?v=WsZBymiyT-8&feature=emb_imp_woyt[Vitalik Buterin, David Hoffman (Bankless), Julien Niset (Argent), Yoav Weiss (Ethereum Foundation), lightclient (Geth): Account Abstraction Panel].
 * https://www.youtube.com/watch?v=QuYZWJj65AY[Liraz, Yoav Weiss (Ethereum Foundation): ELI5: Account Abstraction].
 * https://www.youtube.com/watch?v=xHWlJiL_iZA[(ETH Global) Yoav Weiss (Ethereum Foundation), Dror Tirosh: Ethereum Foundation 🛠 Account abstraction: building an ERC-4337 wallet].
@@ -126,7 +126,7 @@ There were at least 6 talks, workshops and panels (one of them with Vitalik) on 
 
 == AA is already here, enjoy!
 
-Now that we know better the concept of AA, let's actually code it in StarkNet.
+Now that we know better the concept of AA, let's actually code it in Starknet.
 
 As it was mentioned before, Starknet possesses AA natively.
 The design has been notably led by Starkware, Open Zeppellin, and Argent.

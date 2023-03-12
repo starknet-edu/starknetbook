@@ -2,7 +2,7 @@
 
 = Testing contracts with Protostar
 
-"Protostar provides an environment to write unit tests for StarkNet smart contracts in *Cairo language itself*. With the help of cheat codes like `deploy_contract`, it is also easy to write integration tests, deploy single or multiple contracts and examine the internal behavior of such small systems" 
+"Protostar provides an environment to write unit tests for Starknet smart contracts in *Cairo language itself*. With the help of cheat codes like `deploy_contract`, it is also easy to write integration tests, deploy single or multiple contracts and examine the internal behavior of such small systems" 
 -- (https://docs.swmansion.com/protostar/docs/tutorials/testing/e2e[Protostar documentation])
 
 In other words, thanks to Protostar cheat codes (a term adopted from Foundry), we can create both unit and integration tests. For integration tests, we would need more than assertions; we would need to manipulate the state of the blockchain, check for reversals and events, change our identity, and more. For this reason, Protostar provides cheat codes (https://docs.swmansion.com/protostar/docs/tutorials/testing/cheatcodes[Protostar documentation], https://book.getfoundry.sh/forge/cheatcodes[Foundry documentation]). The cheat codes are implemented using python hints within our tests.

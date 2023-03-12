@@ -1,6 +1,6 @@
 [id="indexing"]
 
-= Indexing StarkNet
+= Indexing Starknet
 
 == Contributing
 

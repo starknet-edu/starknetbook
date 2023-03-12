@@ -1,6 +1,6 @@
 [id="starknetpy"]
 
-= starknet_py: A Python SDK for StarkNet
+= starknet_py: A Python SDK for Starknet
 
 == Contributing
 

@@ -206,7 +206,7 @@ As we have seen, `assert` is key to programming in Cairo.
 In the examples above we use it to confirm a statement, `assert y = 10`.
 This is a common usage in other programming languages like Python.
 But in Cairo when you try to `assert` something that isn't assigned yet, `assert` works to assign.
-Check out this example adapted from the https://github.com/lightshiftdev/starknet-bootcamp/blob/main/packages/contracts/samples/04-cairo-math.cairo[StarkNet Bootcamp Amsterdam] which also helps us to consolidate what we learned about structs.
+Check out this example adapted from the https://github.com/lightshiftdev/starknet-bootcamp/blob/main/packages/contracts/samples/04-cairo-math.cairo[Starknet Bootcamp Amsterdam] which also helps us to consolidate what we learned about structs.
 The complete code is in link:./contracts/cairo/vector.cairo[src/vector.cairo].
 
 [,cairo]

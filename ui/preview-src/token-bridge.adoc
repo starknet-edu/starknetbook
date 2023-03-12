@@ -18,7 +18,7 @@ The bridges facilitate a user's ability to conduct their transactions with their
 The user calls the function `deposit` (see https://github.com/starkware-libs/starkgate-contracts/blob/28f4032b101003b2c6682d753ea61c86b732012c/src/starkware/starknet/apps/starkgate/solidity/StarknetERC20Bridge.sol#L10[ERC-20 deposit] and https://github.com/starkware-libs/starkgate-contracts/blob/28f4032b101003b2c6682d753ea61c86b732012c/src/starkware/starknet/apps/starkgate/solidity/StarknetEthBridge.sol#L10[ETH deposit]), supplying as parameters the recipient address on Starknet and the amount to transfer in the case of ERC-20 token. The deposit function then:
 
 * Checks that the funds transferred are within the Alpha xref:./token-bridge.adoc#starkgate-alpha-limitations[limitations]
-* Transfers the funds from the user account to the StarkNet bridge
+* Transfers the funds from the user account to the Starknet bridge
 * Emits a deposit https://github.com/starkware-libs/starkgate-contracts/blob/28f4032b101003b2c6682d753ea61c86b732012c/src/starkware/starknet/apps/starkgate/solidity/StarknetTokenBridge.sol#L101[event] with the sender address on L1, the recipient address on L2, and the amount
 * Sends a message to the relevant L2 bridge with the amount to be transferred, and the recipient address as parameters. Note that, since every single bridge is dedicated to one token type, the token type doesn't have to be explicit here.
 

@@ -13,7 +13,7 @@ The data availability problem:
 
 *Solution: Validity Rollup - store the state on secure L1*
 
-* current state of StarkNet
+* current state of Starknet
 * periodically store the rollup state to Ethereum
 * inherit the security of the base chain
 

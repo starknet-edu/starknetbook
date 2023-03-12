@@ -1,6 +1,6 @@
 [id="starknetjs"]
 
-= starknet.js: A Javascript SDK for StarkNet
+= starknet.js: A Javascript SDK for Starknet
 
 == Contributing
 
