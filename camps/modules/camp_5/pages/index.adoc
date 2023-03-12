@@ -2,8 +2,6 @@
 
 = Deep into Cairo
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
-
 == CLI Cheatsheet+++</div>+++
 
 [,bash]
@@ -24,7 +22,12 @@ cairo-format -i example.cairo
 cairo-sharp submit --source example.cairo --program_input input.json
 ----
 
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/basecamp/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
+
 
 == Sources
 
 [https://eprint.iacr.org/2021/1063.pdf , https://arxiv.org/pdf/2109.14534.pdf , https://www.cairo-lang.org/cairo-for-blockchain-developers , https://www.cairo-lang.org/docs/how_cairo_works/index.html , https://github.com/FuzzingLabs/thoth , https://github.com/crytic/amarna]
+

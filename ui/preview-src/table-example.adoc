@@ -3,7 +3,7 @@
 [id="block_structure"]
 = Block structure
 
-In StarkNet, the block is defined as a list of transactions and a block header.
+In Starknet, the block is defined as a list of transactions and a block header.
 
 [id="block_header"]
 == Block header
@@ -17,13 +17,13 @@ The following fields define the block header:
 | `parent_block_hash` | `FieldElement` | The hash of this block's parent | &#10003;
 |`block_number` | `Integer` | The number (height) of this block | &#10003;
 | `global_state_root` | `FieldElement` | The state xref:../State/starknet-state.adoc#state-commitment[commitment] after this block | &#10003;
-|`sequencer_address` | `FieldElement` | The StarkNet address of the sequencer who created this block | &#10003;
+|`sequencer_address` | `FieldElement` | The Starknet address of the sequencer who created this block | &#10003;
 | `block_timestamp` | `Timestamp` | The time the sequencer created this block before executing transactions | &#10003;
 |`transaction_count` | `Integer` | The number of transactions in a block | &#10003;
 | `transaction_commitment` | `FieldElement` | A commitment to the transactions included in the block | &#10003;
 |`event_count` | `Integer` | The number of events | &#10003;
 | `event_commitment` | `FieldElement` | A commitment to the events produced in this block | &#10003;
-| `protocol_version` | `Integer` | The version of the StarkNet protocol used when creating this block |
+| `protocol_version` | `Integer` | The version of the Starknet protocol used when creating this block |
 | `extra data` | `FieldElement` | Extraneous data that might be useful for running transactions |
 |===
 

@@ -30,6 +30,6 @@ Class hash for contract "vote": 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058
 
 Moral: if your contract is not in the `[“protostar.contracts“]` section of `protostar.toml`, it will not be compiled.
 
-NOTE: You will not be able to compile pure Cairo code using `protostar build`. It is only for StarkNet contracts (they have the `%lang starknet` signal at the beginning). To compile and run pure Cairo applications, you need to use `cairo-compile` and `cairo-run` (refer to Camp 1). In the following tutorials, we will learn how to create StarkNet contracts.
+NOTE: You will not be able to compile pure Cairo code using `protostar build`. It is only for Starknet contracts (they have the `%lang starknet` signal at the beginning). To compile and run pure Cairo applications, you need to use `cairo-compile` and `cairo-run` (refer to Camp 1). In the following tutorials, we will learn how to create Starknet contracts.
 
-At this point, we can deploy StarkNet contracts with Protostar. But first, let us introduce the `devnet`.
+At this point, we can deploy Starknet contracts with Protostar. But first, let us introduce the `devnet`.

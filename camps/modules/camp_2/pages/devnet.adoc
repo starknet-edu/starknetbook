@@ -2,8 +2,6 @@
 
 = Devnet
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
-
 Transactions on the testnet take time to complete, so it's best to start developing and testing locally. We will use the https://github.com/Shard-Labs/starknet-devnet[devnet developed by Shard Labs]. We can think of this step as an equivalent of Ganache. That is, it emulates the testnet (alpha goerli) of StarkNet.
 
 Install using:
@@ -59,3 +57,7 @@ We created three accounts, with transaction costs of 250 wei per gas. The seed n
 Please keep track of the address where our devnet is running. The example above is: `+http://127.0.0.1:5000+`. We will use it later.
 
 The interaction with the devnet and the testnet is very similar. If you want to see all the arguments available in the `starknet-devnet` call, you can call `starknet-devnet --help` or go to the https://shard-labs.github.io/starknet-devnet/docs/intro[documentation].
+
+== Contributing 
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/basecamp/blob/antora-front/CONTRIBUTING.adoc[here].

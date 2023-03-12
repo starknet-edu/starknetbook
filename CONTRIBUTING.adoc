@@ -2,16 +2,18 @@
 
 The Starknet Book is an open-source Cairo/StarkNet teaching curriculum written by `starknet-edu` and the StarkNet community (a.k.a., the Campers). We welcome all contributions to this repository to help enrich the StarkNet community.
 
-== How to Contribute
+== Our Methodology
 
 We operate and maintain this project with an issue and pull request model. We will track
 the GitHub issues section https://github.com/starknet-edu/starknetbook/issues[Issues] of this repository
 and contributors can submit https://github.com/starknet-edu/starknetbook/pulls[Pull
 Requests] for review by the maintainers.
 
+Your pull request will be review by the maintainers at their earliest convenience. If you have any questions, please feel free to ask in the issues section.
+
 === Style Guide
 
-* when naming a subdirectory use "snake_case" and do not use acronyms
+* when naming a subdirectory, please use "snake_case" and not use acronyms
 
 === General Work-Flow
 
@@ -22,6 +24,7 @@ We recommend the following work-flow for contributors:
 . After you have implemented or resolved the issue, *create a pull-request* to merge your changes in the main repository
 . Wait for the repository maintainers to *review your changes* to ensure the issue is addressed.
 . If the issue is addressed the repository maintainers will *merge your pull-request*
+. If you feel like your pull-request is not addressed, please feel free to *ask for clarification* in the comments section of the pull-request.
 
 === Helpful Article on contribution
 

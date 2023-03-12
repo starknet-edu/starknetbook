@@ -2,4 +2,6 @@
 
 = Statement of Computational Integrity
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/basecamp/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯

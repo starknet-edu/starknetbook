@@ -6,14 +6,14 @@ In this section we will we deploy our voting smart contract. However, to underst
 
 == Deploying I: Argent's User Interface
 
-StarkWare made the conscious decision to subsidize the usage of StarkNet while the network was being developed.
+StarkWare made the conscious decision to subsidize the usage of Starknet while the network was being developed.
 After battle testing the technology stack, the focus is on decentralizing the network.
 Decentralization means that the subsidy to deploy contracts must stop because who would want to run a Sequencer if they won't get paid for deploying smart contracts?
-Sequencers are StarkNet nodes that execute the StarkNet OS program, prove the results, and update the StarkNet state.
+Sequencers are Starknet nodes that execute the Starknet OS program, prove the results, and update the Starknet state.
 They're vital for StarkNet's security. Notice that if there were no fees, it would mean either one of two things: (1) the network is centralized or (2) the Sequencers run like a loss-making charity (https://www.argent.xyz/blog/understanding-the-universal-deployer-contract/[Darlington, 2022]).
 
 Before deploying our contract, we need to `declare` it: calculate the class hash.
-Unlike Ethereum, StarkNet distinguishes between a contract class and a contract instance.
+Unlike Ethereum, Starknet distinguishes between a contract class and a contract instance.
 A contract class represents the code of a contract (but with no state), while a contract instance represents a specific instance of the class, with its own state.
 In other words, two exactly equal contracts will have the same contract class hash but, once deployed, they will be different contract instances.
 
@@ -64,7 +64,7 @@ here, you can interact with the `view` and `external` functions in your contract
 == Deploying II: Open Zeppelin's Universal Deployer Contract
 
 This section will explain what is underneath the Argent's UI.
-Do this section if you want to get deeper into what deploying a contract in StarkNet means.
+Do this section if you want to get deeper into what deploying a contract in Starknet means.
 This will help you later work with more complex contracts, e.g.
 deploying your customize account contracts.
 However, for most contracts, using Argent's UI will be enough.
@@ -117,7 +117,7 @@ func deployContract{...}(
 
 The public function is a wrapper around the deploy syscall that also emits an event when it has finished deploying a contract.
 
-The UDC is already available on Goerli and Mainnet using the https://testnet.starkscan.co/contract/0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf#class[same address], so it's available as a public good for the StarkNet ecosystem.
+The UDC is already available on Goerli and Mainnet using the https://testnet.starkscan.co/contract/0x041a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf#class[same address], so it's available as a public good for the Starknet ecosystem.
 
 To deploy your contract using the UDC, you should now perform these steps:
 

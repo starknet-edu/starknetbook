@@ -309,7 +309,7 @@ let (sum) = sum_two_nums(num1 = NUM1, num2 = NUM2)
 You already know how to do functions in Cairo!
 Now let's run our first program.
 
-The tools that StarkNet offers to interact with the command line are many.
+The tools that Starknet offers to interact with the command line are many.
 We won't go into detail until later.
 For now, we will only show the commands with which we can run the application that we created in this tutorial.
 But don't worry;

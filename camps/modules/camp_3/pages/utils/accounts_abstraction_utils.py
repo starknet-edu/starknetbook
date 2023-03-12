@@ -159,7 +159,7 @@ def sign_invoke_transaction(
 
     print(f"Execute calldata: {execute_calldata}\n\n")
 
-    # Calculates the transaction hash in the StarkNet network - a unique identifier of the transaction
+    # Calculates the transaction hash in the Starknet network - a unique identifier of the transaction
     # This is valuable only if we need to sign the transaction
     hash_value = calculate_transaction_hash_common(
         tx_hash_prefix=TransactionHashPrefix.INVOKE,

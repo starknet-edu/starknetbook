@@ -26,7 +26,7 @@ In the Cairo case, the builtin directive adds the builtin pointers as parameters
 Builtin declarations appear at the top of the Cairo code file.
 They are declared with the `%builtins` directive, followed by the name of the builtins;
 e.g., `%builtin range_check`.
-In StarkNet contracts, it is not necessary to add them.
+In Starknet contracts, it is not necessary to add them.
 
 Builtin pointers can be of different types.
 The following table summarizes the available builtins, what they are for, their pointer names, and their pointer types.

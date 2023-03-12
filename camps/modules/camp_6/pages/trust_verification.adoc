@@ -2,11 +2,13 @@
 
 = Trust vs. Verification
 
-🎯 +++<strong>+++Camper: +++</strong>+++ feel free to add a PR to add content to this or other sections. Let's set up the Starknet Book together. 🎯
-
 The goal of these proof systems is to prove `computational integrity` to a verifier.
 Computational Integrity can be formalized as follow:
 
 *_Statement of Computational Integrity = (S0, P, T, S1)_*
 
 `S0`: Initial State `P`: Program that changes state `T`: Number of steps `S1`: Final State
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/basecamp/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯

@@ -1,8 +1,8 @@
-* Camp 3: Deep into StarkNet
+* Camp 3: Deep into Starknet
 
 ** xref:blocks.adoc[Blocks]
 ** xref:transactions.adoc[The Lifecycle of Transactions]
-** xref:starknet_os.adoc[StarkNet OS]
+** xref:starknet_os.adoc[Starknet OS]
 ** xref:state.adoc[State Transition/Fees]
 ** xref:accounts.adoc[Accounts]
 ** xref:account_abstraction.adoc[Account Abstraction]

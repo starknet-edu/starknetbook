@@ -363,4 +363,4 @@ That is, to `3`.
 
 It's not that complicated but it's satisfying enough.
 
-Congratulations! We already have an intermediate level from Cairo. Cairo is to StarkNet what Solidity is to Ethereum. In the next tutorial we will apply our Cairo knowledge by writing StarkNet contracts
+Congratulations! We already have an intermediate level from Cairo. Cairo is to Starknet what Solidity is to Ethereum. In the next tutorial we will apply our Cairo knowledge by writing Starknet contracts

@@ -2,13 +2,13 @@
 :--auto-ids:
 :stem: latexmath
 
-In this section, we will review StarkNet Alpha fee mechanism. If you want to skip the motivation and deep dive into the mechanism, you can skip directly to the final xref:overall-fee[formula]. This section focuses on fees paid by an account on L2. For information about messaging fees that are paid on L1, see xref:../L1-L2_Communication/messaging-mechanism.adoc#l1--l2-message-fees[L1 → L2 message fees].
+In this section, we will review Starknet Alpha fee mechanism. If you want to skip the motivation and deep dive into the mechanism, you can skip directly to the final xref:overall-fee[formula]. This section focuses on fees paid by an account on L2. For information about messaging fees that are paid on L1, see xref:../L1-L2_Communication/messaging-mechanism.adoc#l1--l2-message-fees[L1 → L2 message fees].
 
 == Introduction
 
 Users can specify the maximum fee that they are willing to pay for a transaction via the `max_fee` xref:../Blocks/transactions.adoc#max_fee[field].
 
-The only limitation on the sequencer (enforced by the StarkNet OS) is that the actual fee charged is bounded by `max_fee`, but for now, StarkWare's sequencer will only charge the fee required to cover the proof cost (potentially less than the max fee).
+The only limitation on the sequencer (enforced by the Starknet OS) is that the actual fee charged is bounded by `max_fee`, but for now, StarkWare's sequencer will only charge the fee required to cover the proof cost (potentially less than the max fee).
 
 Presently, the sequencer only takes into account L1 costs involving proof submission. There are two components affecting the L1 footprint of a transaction:
 
@@ -27,7 +27,7 @@ Let's analyze the correct metric for measuring transaction complexity. For simpl
 
 ==== Without builtins
 
-Recall that a Cairo program execution yields an execution trace. When proving a StarkNet block, we aggregate all the transactions appearing in that block to the execution trace.
+Recall that a Cairo program execution yields an execution trace. When proving a Starknet block, we aggregate all the transactions appearing in that block to the execution trace.
 
 StarkNet's prover generates proofs for execution traces, up to some maximal length stem:[$L$] (Derived from the specs of the proving machine and the desired proof latency). Tracking the execution trace length associated with each transaction is simple.
 Each assertion over field elements (such as verifying addition/multiplication over the field) requires the same, constant number of trace cells (this is where our "`no-builtins`" assumption kicks in! Obviously Pedersen occupies more trace cells than addition). Therefore, in a world without builtins, the fee of the transaction is correlated with stem:[$\text{TraceCells}[tx\]/L$].
@@ -116,7 +116,7 @@ Consequently, the associated storage update fee for a transaction updating stem:
 
 [TIP]
 ====
-Note that there are many possible improvements to the above pessimistic estimation that will be gradually presented in future versions of StarkNet. For example, if different transactions within the same block update the same storage cell, there is no need to charge both of them (only the latest value reaches L1). In the future, StarkNet may include a refund mechanism for such cases.
+Note that there are many possible improvements to the above pessimistic estimation that will be gradually presented in future versions of Starknet. For example, if different transactions within the same block update the same storage cell, there is no need to charge both of them (only the latest value reaches L1). In the future, Starknet may include a refund mechanism for such cases.
 ====
 
 
@@ -171,4 +171,4 @@ where stem:[$w$] is the weights vector discussed above and stem:[$c_w$] is the c
 
 == When is the fee charged?
 
-The fee is charged atomically with the transaction execution on L2. The StarkNet OS injects a transfer of the fee-related ERC-20, with an amount equal to the fee paid, sender equals to the transaction submitter, and the sequencer as a receiver.
+The fee is charged atomically with the transaction execution on L2. The Starknet OS injects a transfer of the fee-related ERC-20, with an amount equal to the fee paid, sender equals to the transaction submitter, and the sequencer as a receiver.
