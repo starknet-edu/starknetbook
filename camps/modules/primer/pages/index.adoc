@@ -107,8 +107,6 @@ Alice's Perspective:
 
 💡 *Let's replicate Alice's account on ANY computer* 💡
 
-== xref:./bitcoin/README.md[Bitcoin]
-
 Bitcoin brings various computer science concepts together with https://en.wikipedia.org/wiki/Game_theory[game theory] to create a truly peer-to-peer network and negates the need to delegate our trust to a central part.
 
 The nodes trust the block producer based on its valid link:./bitcoin/proof_of_work[proof of work] and the network collectively agrees on a set of canonical updates to the state of the Bitcoin ledger and the state of Alice's account.
