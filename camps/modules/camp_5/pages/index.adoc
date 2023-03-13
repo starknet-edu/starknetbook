@@ -1,0 +1,33 @@
+[id="index"]
+
+= Deep into Cairo
+
+== CLI Cheatsheet+++</div>+++
+
+[,bash]
+----
+# compile cairo program
+cairo-compile example.cairo --output example_compiled.json
+
+# run cairo program and output results
+cairo-run --program=example_compiled.json --print_output --layout=small
+
+# output the KECCAK Fact of the cairo program
+cairo-hash-program --program=example_compiled.json
+
+# format/lint your cairo program
+cairo-format -i example.cairo
+
+# compile cairo program and submit the fact to the SHARP
+cairo-sharp submit --source example.cairo --program_input input.json
+----
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
+
+
+== Sources
+
+[https://eprint.iacr.org/2021/1063.pdf , https://arxiv.org/pdf/2109.14534.pdf , https://www.cairo-lang.org/cairo-for-blockchain-developers , https://www.cairo-lang.org/docs/how_cairo_works/index.html , https://github.com/FuzzingLabs/thoth , https://github.com/crytic/amarna]
+

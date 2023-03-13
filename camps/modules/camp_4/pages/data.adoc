@@ -1,0 +1,37 @@
+[id="data"]
+
+= Data Availability
+
+The data availability problem:
+
+* STARK proofs generate a proof of computation.
+ ** ex: valid execution from genesis to block 100
+* you don't need the output of the program to validate the program ran correctly
+ ** ex: state of block 100
+* my contract logic requires the state of block 100
+ ** ex: if we don't have the state of block 100 "stored" somewhere our contract is essentially stuck
+
+*Solution: Validity Rollup - store the state on secure L1*
+
+* current state of Starknet
+* periodically store the rollup state to Ethereum
+* inherit the security of the base chain
+
+*Solution: Validium - store data "off chain"*
+
+* IPFS, Celestia, cloud providers
+* can secure with a Data Availablility Committee(DAC)
+* data can be private
+* less expensive
+
+*Solution: Volition - hybrid*
+
+* single chain can dynamically chose where data is stored
+* application flexibility
+* composability implications
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
+
+

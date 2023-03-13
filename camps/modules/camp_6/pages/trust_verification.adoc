@@ -1,0 +1,60 @@
+[id="trust_verification"]
+
+= Trust vs. Verification
+
+Computational Integrity (CI) is a fundamental property that underlies commerce. In simple terms, it means that the output of a certain computation is correct. CI is what allows us to trust an account balance presented to us, or the bill at a store. This Camp delves into how permissionless blockchains achieve CI without requiring trust, the dramatic price they pay for this in terms of scalability and privacy, and how STARKs can save the day.
+
+== "`Old World`": Trust, or Delegated Accountability
+
+Financial systems (banks, brokers, exchanges, etc.) need to operate with integrity to serve their societal functions. What mechanisms incentivize them to operate with integrity? The "`old world`" assumes trust as a proxy for integrity. We trust banks, pension funds, etc., to operate honestly. Let's go down the rabbit hole and examine the basis for this trust, ignoring the "`integrity theater`" -- the tall buildings and fancy suits -- set to impress us. From a purely rational and utilitarian perspective, the thing that prevents the financial system from seizing all our funds is the threat of social disgrace, jail, and fines. There's also a carrot -- reputation, which attracts future customers and generates future profits. By signing on financial statements with their names, people in the "`old world`" stake their personal freedom, existing and future finances as a collateral for integrity, and we, the public, base our trust on this arrangement. The verification of this integrity is delegated to experts like accountants, auditors, and regulators. We will call this Delegated Accountability. It's not a bad system: it's been serving modern economies faithfully for quite some time.
+
+A new variant of the "`old world`" approach is the Trusted Execution Environment (TEE). A trusted hardware manufacturer (like Intel) produces a physical machine (like the SGX chip) that cannot deviate from the specified computation and signs correct states using a secret key known only to that physical machine. Integrity is now based on trust in the hardware and its manufacturer and on the assumption that it is impossible to extract secret keys from such physical devices.
+
+"`New World`": Verify, or Inclusive Accountability
+Blockchains offer a more direct way to reach integrity, captured by the motto "`Don't Trust, Verify`". This "`new world`" does not require an integrity theater, it doesn't rely on accountants, nor do its developers and network maintainers stake their personal freedom to gain public trust. Integrity is guaranteed by Inclusive Accountability: a node with a standard computational setup (a web-connected laptop) should be able to verify the integrity of all transactions in the system.
+
+The prevalent method to verify CI in permissionless blockchains is via naive replay: all nodes are asked to re-execute (replay) the computations that verify each and every transaction. Inclusive Accountability, in this naive form, leads to two immediate challenges:
+
+* *Privacy*: If everyone gets to inspect all transactions then privacy might be compromised. The absence of privacy deters businesses, as it means sensitive information may not remain proprietary. It also deters individuals, as it erodes https://en.wikipedia.org/wiki/The_Right_to_Privacy_(article)[human dignity].
+* *Scalability*: Demanding that the system be accountable to a standard laptop means it cannot scale up by simply moving to bigger computers and larger bandwidth. This leads to a severe bound on the throughput of the system.
+
+Proofs systems (discussed next) are an excellent solution to both challenges. Zero Knowledge (ZK) proof systems are by now an established tool to address privacy in blockchains and explained excellently in several posts of Zcash (see https://z.cash/blog/shielded-ecosystem/[this], https://z.cash/technology/[this] and https://z.cash/technology/zksnarks/[this]).
+
+Let's review an example for a CI statement (the claim that the output of a certain computation is correct): the total sum we should pay at the supermarket was computed correctly. The conventional proof for this particular statement is the receipt. Typically, the items in the receipt are listed with their prices, and the total sum is indicated at the bottom, like so:
+
+image::receipt.png[receipt]
+
+For simplicity -- we only consider this to be a statement that the summation is correct. To see whether this CI statement holds, one can go over the list -- not skipping any item -- to compute the total sum, and check it against the number at the bottom of the receipt. This is a very naive example, but we'll use it further down this article to demonstrate the idea of _succinct testability_.
+
+=== Proof Systems
+
+Proof Systems started with the introduction of the https://en.wikipedia.org/wiki/Interactive_proof_system[Interactive Proof] (IP) model by Goldwasser, Micali, and Rackoff in 1985. Interactive proofs are protocols that involve two kinds of entities: a prover and a verifier, who interact over a number of rounds by sending messages. The prover and verifier have conflicting objectives: the prover wants to convince the verifier of the integrity of a certain computation, and the verifier is a suspicious gatekeeper entrusted by the public with the task of distinguishing between truisms and falsities. The prover and verifier communicate interactively, taking turns in sending messages to one another. These messages depend on the statement being proved, on prior messages, and may also use some randomness. On the prover side, randomness is used to achieve zero knowledge and on the verifier side randomness is needed to generate queries to the prover. At the end of the interactive process the verifier outputs a decision, to either accept the new state or reject it.
+
+A good analogy is the examination process practiced in a court of law when one party submits a claim and its counterparty questions its validity. For the claim to be accepted as true, the answers provided by the claimant (prover) to the examiner's (verifier's) queries must be consistent and valid. The examination process is expected to expose any mismatch between a statement and reality, and thus expose it as false.
+
+We say that a proof system _solves_ CI if when updating the system from state A to state B, the following properties hold:
+
+* *Completeness*: If the prover indeed knows how to change the state from A to B in a valid way then the prover will manage to convince the verifier to accept the change.
+* {blank}
+ ** *Soundness*: If the prover doesn't know how to change the state from A to B, then the verifier will notice an inconsistency in the interaction and reject the suggested state transition. There remains a tiny false-positive probability, i.e., a probability of the verifier accepting an invalid proof. This probability is a system security parameter which can be set to an acceptable level like 1/(2¹²⁸), similar odds to winning the powerball five times in a row.
+
+This pair of properties has a crucial implication to the principle of Inclusive Accountability discussed earlier. The verifier can accept the state transition suggested by the prover without making any assumptions about the integrity of the prover. In fact, the prover can run on faulty hardware, it can be closed source and it can be executed on a computer controlled by a malicious entity. The only thing that matters¹ is that the messages sent by the prover lead the verifier to accept the statement. If that is the case, we know that computational integrity holds.
+
+== (extra) Probabistically Checkable Proofs.
+
+When polling an election, the margin of error is independent from the sample size. That is, the sample size is what determines the margin of error and not the population size. The image below exemplifies this fact.+++<div align="center">+++[#modular_arithmetic]
+== Margin of error
+
+The margin of error does not depend on the size of the population.
+
+image:marginError.png[marginError]
+
+The same principle holds for mathematical proofs and for validating the integrity of a computation. If you want to sample a computation of a proof and know to a high degree of certainty (and a small margin of error) whether this computation was done with integrity (i.e. the proof is correct), the margin of error only depends on the sample size and not on how long or complicated the computation of proof is. This is huge: you can cjheck the validity of any proof (the integrity of any computation) by reading only a small number of bits of it. In other words, the computation size does not matter, what matter is the number of bits you sample.
+
+This has implications for scalability. A single reliable smart contract in Ethereum monitors the operation of a very large computer, the prover, the processor of StarkNet transactions. We do not care at all if that super computer is on top of unreliable sofware or untested hardware. All we have to do is trust the smart contract!
+
+This was already discovered since the 1990s, however, it was not implemented because the computation to create a proof that could be verified efficiently was too hard. However, Eli Ben-Sasson and other scientists worked on the problem to create smaller and smaller proofs.
+
+== Contributing
+
+🎯 \{pp}+_\{pp}+Camper: \{pp}+_\{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯

@@ -1,0 +1,119 @@
+[id="deploying_devnet"]
+
+= Deploying to the Devnet
+
+For deploying a contract using Protostar, we will follow the steps we learned in Camp 1, where we used Argent's UI and the `starknet CLI`. However, Protostar and the devnet will make it simpler.
+
+. Deploy an account. Notice the devnet already deployed accounts for us.
+. Compile the contract.
+. Declare the contract.
+. Invoke the function `deployContract` of the UDC to deploy. Also, at the end of this section we will learn how to simply use Protostar's `deploy`.
+
+Let's use a real example. When we initialize a Protostar project, a `main.cairo` contract is automatically created in the `src` directory. You can use it as an example of a contract to deploy to the devnet and then to the testnet. You must ensure that you define what will be compiled in `protostar.toml`. This tutorial will deploy the voting contract we wrote in Camp 1. We initialize a new Protostar repo called link:buidl/protostar-buidl[buidl/protostar-buidl]. Our link:buidl/protostar-buidl/src/voting.cairo[voting contract is in the `src` directory]. The `protostar.toml` looks:
+
+----
+[project]
+protostar-version = "0.9.1"
+lib-path = "lib"
+
+[contracts]
+vote = ["src/voting.cairo"]
+----
+
+Run `protostar build` to compile and create the `build/vote_abi.json` we will use for deployment.
+
+Following the recommended order for deploying a smart contract, we will first deploy to the devnet and then to the testnet. In the following tutorial, we will learn how to use Protostar to first code unit tests; that is the actual first step.
+
+To make deployment to the devnet simpler, we create a section `[profile.devnet.protostar.deploy]` in the `protostar.toml` where we add the url where we deploy our devnet locally: `+gateway-url = "http://127.0.0.1:5000/"+` and the `chain-id = 1536727068981429685321`. `chain-id` is a number that represents the different networks where we can deploy our contracts. The testnet and devnet id is `1536727068981429685321`.
+
+[,Bash]
+----
+[profile.devnet.project]
+gateway-url = "http://127.0.0.1:5000/"
+chain-id = 1536727068981429685321
+----
+
+We declare our voting contract in the devnet. We need to sign our transactions, so we need to provide the account address and the private key of the account paying for the transactions. This information was already provided when we started the devnet. For the `--account-address` flag, we add one of the addresses created by the devnet. We can create a local environmental variable for the private key: `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=[THE PRIVATE KEY CREATED BY THE DEVNET]`. We set it up for this case with: `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0xe3e70682c2094cac629f6fbed82c07cd`. Now let's declare:
+
+[,Bash]
+----
+protostar -p devnet declare build/vote.json \
+    --account-address 0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+    --max-fee auto
+----
+
+We get:
+
+[,Bash]
+----
+Declare transaction was sent.
+Class hash: 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf
+Transaction hash: 0x0750ee15d7bf16252d94c08d61bf2c1bac3d15029c06e62314849e39fe1aec76
+----
+
+We invoke the `deployContract` of the UDC. In a following section we will get deeper into what `invoke` does. Luckily, the devnet comes with a UDC deployed at the same address as the testnet and mainnet. We use the same account address as with the `declare` command. The `inputs` are the same as we sent in Camp 1; revisit it for more details on how to interact with the UDC. We will use dummy values for the voting contract's constructor.
+
+[,Bash]
+----
+protostar -p devnet invoke \
+    --contract-address 0x41a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf \
+    --function deployContract \
+    --account-address 0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+    --max-fee auto \
+    --inputs 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf 0 0 4 111 2 222 333
+----
+
+We get:
+
+[,Bash]
+----
+Sending invoke transaction...
+Invoke transaction was sent.
+Transaction hash: 0x036b82edb246b65e657ec7119ba32711cea86ff17abce961ac52faa7a294c350
+----
+
+Our voting contract is now live on the devnet. Let's get its address. The https://devnet.starkscan.co/[StarkScan block explorer] allows us to interact with our local devnet (only using Chrome). In the field `localhost`, add the port where the devnet is running; in our case, it is `5000`.
+
+image::devnet1.png[devnet1]
+
+We can search for our transaction hash (0x036b...). Then go to the `Events` tab, go to the `OwnershipTransferred` transaction, and expand its details. The contract address that appears will be the address of our deployed voting contract; in this case, 0x00a9b...
+
+image::devnet2.png[devnet2]
+
+Now we can play with our voting contract directly in StarkScan or using Protostar. For example, we can invoke the admin `view` function:
+
+[,Bash]
+----
+protostar -p devnet invoke \
+    --contract-address 0x00a9b7d97058158b90aa835e5651948467f27ae48047ec9ae5646c6d6adb6926 \
+    --function admin \
+    --account-address 0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+    --max-fee auto
+----
+
+This was the long way to deploy the voting contract, similar to what we did with Argent's UI and the `starknet` CLI. However, Protostar is a fantastic tool; we can use the `deploy` command to deploy our contract without invoking the UDC; Protostar does it in the background. This time let's use the accounts that the devnet previously created for us.
+
+[,Bash]
+----
+protostar -p devnet deploy 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf \
+    --account-address 0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+    --max-fee auto \
+    --inputs \
+        0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+        2 \
+        0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a \
+        0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79
+----
+
+We get:
+
+[,Bash]
+----
+Invoke transaction was sent to the Universal Deployer Contract.
+Contract address: 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864
+Transaction hash: 157069287311788325670531840403210154180024581021364400153925384422983716375
+----
+
+We simply needed the class hash obtained after declaring our contract. Note that the inputs do not include some of the UDC's `deployContract` inputs; including the class hash, salt, and unique address. We now only provide the voting contract constructor inputs (our admin, `+0x7e0...+`, the number of accounts allowed to vote, `2`, and the accounts allowed, `+0x7e0...+` and `0x69b.. .`), which is much simpler and cleaner.
+
+We have successfully deployed a contract to the devnet. The advantage of deploying to the devnet first is that we can interact more quickly with our contracts. For the testnet, we will have to wait about a few minutes.

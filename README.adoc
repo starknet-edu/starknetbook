@@ -1,0 +1,30 @@
+= Starknet Book
+
+This repo redirects to the Starknet Book front-end (built with Antora) at https://book.starknet.io[book.starknet.io]. This repo is only for the Starknet Book's source code (text or actual code).
+
+Do you want to...
+* *read or study* the Starknet Book? Please go to *book.starknet.io*; it is more readable. 
+* *contribute* to the Starknet Book (yes, please!)? This is the right place. Go the contributing section in this README.
+
+== Contributing
+
+There are several sections within the Camps that require input. Camper (the Book is divided by Camps), your contributions are welcome, needed, and required! 🫡
+
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
+
+Here are things you can do to help:
+* At the beginning of some sections there is a message for Campers who want to collaborate with content.
+* Empty section in a camp? Go for it!
+* Do you think the Starknet Book needs an additional section? Propose it.
+* Can a section be improved? Feel free to modify it.
+* Do you want to add an alternative programming language for the examples? Yes please.
+* Correct the bugs if you find any.
+* Please add an explanation in the exercise comments if you feel they need them.
+* Add exercises that show your favorite feature of Cairo.
+
+== Issues
+
+If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues].
+
+Do you have a question?
+Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.

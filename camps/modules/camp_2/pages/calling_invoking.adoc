@@ -1,0 +1,101 @@
+[id="calling_invoking"]
+
+= Calling and Invoking Contracts
+
+Let's interact with our deployed voting contract.
+
+* Calling contracts refer to interacting with contract functions with the `@view` entry point (decorator). Since we are not altering the state of the network, and hence we do not need to pay fees, we do not need to sign the operation.
+* Invoking contracts is interacting with contract functions with the `@external` entry point. We need to sign the transaction and pay the operation fee.
+
+Let's call our deployed voting contract in the devnet to check if the address `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` has voting permissions. We need to inform the network of:
+
+. The address of the contract we call;
+. The specific function to call; and
+. The inputs (if any).
+
+[,Bash]
+----
+protostar -p devnet call \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864 \
+    --function "is_voter_registered" \
+    --inputs 0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79
+----
+
+We get:
+
+[,Bash]
+----
+[RAW RESULT]
+[1]
+
+[TRANSFORMED RESULT]
+{
+    "is_voter_registered": 1
+}
+----
+
+When we deployed our voting contract to the devnet, we indicated we wanted the `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79` address to be allowed to vote, and that is precisely what we received as the output of our `call`.
+
+Now we will alter the state of our contract by voting with the address `0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79`. Since we need to sign the transaction, as we did when we deployed the contract, we need to provide the private key of the account contract invoking the voting contract: in this case, we can use `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0xf728b4fa42485e3a0a5d2f346baa9455`.
+
+[,Bash]
+----
+protostar -p devnet invoke \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864    \
+    --function "vote" \
+    --inputs 1 \
+    --account-address 0x69b49c2cc8b16e80e86bfc5b0614a59aa8c9b601569c7b80dde04d3f3151b79 \
+    --max-fee auto
+----
+
+We get:
+
+[,Bash]
+----
+Sending invoke transaction...
+Invoke transaction was sent.
+Transaction hash: 0x023f884091e877cc4c72ccdb31f6a2b31ddfda647629af5834899d8176e1ad1b
+----
+
+Remember, the option to interact with the contract through the https://devnet.starkscan.co/[StarkScan block explorer] is always available, even with a local network such as the devnet; this feature only works with the Chrome browser. Now, let's call the `get_voting_status` function from the voting contract to see if the vote was indeed applied.
+
+[,Bash]
+----
+protostar -p devnet call \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864 \
+    --function "get_voting_status"
+----
+
+We get:
+
+[,Bash]
+----
+[RAW RESULT]
+[1, 0]
+
+[TRANSFORMED RESULT]
+{
+    "status": {
+        "votes_yes": 1,
+        "votes_no": 0
+    }
+}
+----
+
+Our vote was successful! If we try to vote with an incorrect private key for a specific account (this is an error you might frequently encounter when developing), we would get an error 500: `"StarknetErrorCode.TRANSACTION_FAILED"` with a message: `+Signature []...] is invalid, with respect to the public key+`. We need to keep track of our accounts' private keys carefully.
+
+Now let's see what happens when we vote with an account without voting permissions. We will vote with the third account the devnet created for us. We set up the private key: `export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0xeb1167b367a9c3787c65c1e582e2e662`
+
+[,Bash]
+----
+protostar -p devnet invoke \
+    --contract-address 0x059d4835be27f1f273cce189234dc5dfe5a41252bf56110404720492c161e864    \
+    --function "vote" \
+    --inputs 0 \
+    --account-address 0x7447084f620ba316a42c72ca5b8eefb3fe9a05ca5fe6430c65a69ecc4349b3b \
+    --max-fee auto
+----
+
+Protostar will return us a long message. Among the feedback, we get: `Error message: VoterInfo: Your address is not allowed to vote.`, precisely the message we set in our contract whenever we face an error of this type.
+
+The same process could be followed with contracts deployed in the testnet. Try it!

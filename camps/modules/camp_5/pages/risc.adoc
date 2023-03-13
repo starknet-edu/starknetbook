@@ -1,0 +1,36 @@
+[id="risc"]
+
+= The Cairo Intruction Set (Algebraic RISC)
+
+Here is a nice mental model by https://twitter.com/liamzebedee/status/1516298353080152064[@liamzebedee] to think about Cairo:
+
+* AIR = Assembly for STARK's
+* Cairo Language = Java for STARK's
+
+Java code turns into JVM bytecode which is interpreted into assembly;
+similarly, Cairo (the language) code is interpreted into CairoVM bytecode which is interpreted into AIR.
+The JVM executes on an x86 processor (e.g.
+java.exe), and the CairoVM executes on a STARK prover.
+STARK provers will eventually be embedded in hardware, just like other cryptographic coprocessors (TPM's, enclaves).
+
+Unlike ordinary Instruction Sets, which are executed on a physical chip built of transistors, Cairo is executed in an AIR (the execution trace is verified using an AIR).
+Roughly speaking, the most important constraint when designing an AIR (and, therefore, when designing an Instruction Set that will be executed by an AIR) is to minimize the number of trace cells used.
+
+The Instruction Set is the set of operations the Cairo CPU can perform in a single step.
+Cairo uses a small and simple, yet relatively expressive, Instruction Set;
+it was chosen so that the corresponding AIR will be as efficient as possible.
+It is a balance between:
+
+. A minimal set of simple instructions that require a very small number of trace cells;
+and
+. Powerful enough instructions that will reduce the number of required steps.
+
+Particularly:
+
+. Addition and multiplication are supported.
+. Checking whether two values are equal is supported, but there is no instruction for checking whether a certain value is less than another value (such an instruction would have required many more trace cells since a finite field does not support an algebraic-friendly linear ordering of its elements).
+
+This minimalistic set of instructions is called an Algebraic RISC (Reduced Instruction Set Computer);
+"`Algebraic`" refers to the fact that the supported operations are field operations.
+Using an Algebraic RISC allows us to construct an AIR for Cairo with only 51 trace cells per step.
+

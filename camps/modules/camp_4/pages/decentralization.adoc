@@ -1,0 +1,20 @@
+[id="decentralization"]
+
+= Decentralization
+
+Starknet continues to evolve, and we gradually shift our gaze towards decentralization. While we expect Starknet to be decentralized only at the end of the year, it's not too early to decide on the decentralization scheme.
+
+While every other decentralized network has only Sequencers, Starknet has two components: Sequencers (that determine which transactions to execute) and Provers (that prove the correctness of the chosen transactions). A good decentralization approach is required to decentralize the Provers and answer questions like "`who can publish proofs`" or even "`when do we publish proofs`"? However, an approach that says: "`let's take some consensus algorithm for sequencing, and demand each sequencer to prove what he sequenced`" is too naive and creates what we refer to as the "handoff problem.`"
+
+== Design Goals
+
+* `Permissionlessness` - anyone can be a Sequencer or a Prover (given they invest enough resources to it).
+* `Assuming rationality, not honesty` - Since anyone can participate, the protocol can't assume parties blindly follow the protocol and enforce correct behavior by explicit checks and economic incentivization.
+* `Sufficiently Scalable` - the protocol should scale reasonably well, up until a point where we have a reasonably large number of participants. It's hard to determine what number is "`reasonably large.`"
+* `Strong and Fast L2 Finality` - Starknet state becomes final only after a batch is proven to L1 (which might take as long as several hours today). Therefore, the L2 decentralization protocol should make meaningful commitments regarding the planned execution order well before the next batch is proved.
+* `Inexpensive` - the users shouldn't pay excessively high transaction fees to sponsor the work done by the entities (Sequencers and Provers) that run the Starknet consensus protocol.
+* `Lightweight` - We want to leave most of Starknet computational "`real estate`" for the applicative layer of Starknet. As an extreme counterexample, a situation where 50% of the Cairo steps proven in each block are dedicated to verifying the consensus protocol itself is wasteful and does not make sense.
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯

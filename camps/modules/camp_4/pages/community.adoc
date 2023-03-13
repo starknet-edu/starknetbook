@@ -1,0 +1,24 @@
+[id="community"]
+
+= Building Community
+
+It's all about relationships and the goal is to focus on the builders, not what is being built.
+Your objective is to plant the seed and let it grow: - Involve community members early - Lets them take the lead, even if they do things differently - Focus on builders and not investors - Make concrete call to actions
+
+== Organizing Meetups
+
+Organizing a meetup is surprisingly time consuming you'll probably have to do the first one on your own.
+Call for volunteers at the beginning at the end.
+When growing this group, ask for suggestions and ideas openly.
+When decisions drag on, step in to move the ball forward.
+Steps: - Register on meetup.com: ask us to create a group so you don't have to pay - Pick a date(2-3 weeks in advance) - Tweet about it, and we'll relay - Find a venue, check equipment, plan for food and drinks - Define Program - 3 talks, 15-20min each - We can present remotely if you want - We can connect you to local builders, or fly some to present!
+- We'll send you swag - We sponsor meetups with 1k USD to cover costs, ask for it
+
+== Running Workshop
+
+Send a survey after your first meetup, with a form asking if people are interested in technical workshops.
+Types of workshops - 0 to 1 - Thematic (ERC20, ERC721) Define Program (2-3h): - Introduction 20-30mn - Then people work - Co education is a great tool - Have people work in pair, 2 behind a single screen - If a question is recurrent, say "`ask these girls they solved it`" - Follow our repo to check new workshops - Try to do them once before - If you are looking for a specific theme, ask us - Better yet, write your own #### Sources [<https://community.starknet.io/t/starknet-decentralization-kicking-off-the-discussion/711>]
+
+== Contributing
+
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯

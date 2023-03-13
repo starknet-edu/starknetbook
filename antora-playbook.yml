@@ -1,0 +1,33 @@
+site:
+  title: The Starknet Book
+  start_page: camps::index.adoc
+
+content:
+  sources:
+  - url: .
+    branches: HEAD
+    start_path: camps
+
+ui:
+  bundle:
+    #    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    url: ./ui/ui-bundle.zip
+    snapshot: true
+    # supplemental_files: ./ui/supplemental_ui
+
+asciidoc:
+  attributes:
+    idprefix: ''
+    stem: 'latexmath'
+    page-pagination: ''
+    experimental: ''
+
+antora:
+  extensions:
+  - '@antora/lunr-extension'
+
+output:
+  destinations:
+  - provider: fs
+    path: ./public_html/
+    clean: true
