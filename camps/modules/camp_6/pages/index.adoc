@@ -1,14 +1,7 @@
 [id="index"]
 
-= STARKs
-
-While this section is being built we recommend reading this blog post series(https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71[1], https://medium.com/starkware/arithmetization-i-15c046390862[2], https://medium.com/starkware/arithmetization-ii-403c3b3f4355[3]) on the math behind STARKs.
+= STARKs Math
 
 == Contributing
 
-🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/basecamp/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
-
-
-== Relevant sources
-
-[https://eprint.iacr.org/2018/046.pdf , https://vitalik.ca/general/2017/11/09/starks_part_1.html , https://github.com/starkware-libs/ethSTARK , https://consensys.net/blog/blockchain-explained/zero-knowledge-proofs-starks-vs-snarks/ , https://aszepieniec.github.io/stark-anatomy/ , https://github.com/elibensasson/libSTARK , https://eprint.iacr.org/2021/582.pdf]
+🎯 {pp}+*{pp}+Camper: {pp}+*{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/basecamp/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
