@@ -1,15 +1,11 @@
 = The Starknet Book
 :navtitle: Welcome to the Starknet Book
 
-image::starknetbook.png[starknetbook]
+== Welcome
 
-So you've landed in a strange finite field. Only thing to do now is setup the Starknet Book.
+Welcome to the Starknet Book!
 
-== Overview
-
-The Starknet Book is a curriculum created to teach the Cairo programming language and Starknet development.
-It is divided by camps and built by the Starknet community (you!).
-Finish the resume and you will conquer the Ethereum world.
+The Starknet Book is a curriculum created to teach the Cairo programming language and Starknet development. It is divided by camps and built by the Starknet community (you!). Finish the resume and you will conquer the Ethereum world.
 
 == Where to start?
 
