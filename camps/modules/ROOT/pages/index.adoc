@@ -1,5 +1,5 @@
 = The Starknet Book
-:navtitle: Welcome to the Starknet Book
+:navtitle: Introduction
 
 == Welcome
 

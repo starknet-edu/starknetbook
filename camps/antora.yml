@@ -2,7 +2,7 @@ name: camps
 version: ~
 title: Starknet Book
 nav:
-  - camps/ROOT/nav.adoc 
+  - modules/ROOT/nav.adoc 
   - modules/primer/nav.adoc
   - modules/camp_1/nav.adoc 
   - modules/camp_2/nav.adoc 
