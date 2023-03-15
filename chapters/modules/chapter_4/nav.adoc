@@ -1,4 +1,4 @@
-* xref:index.adoc[Camp 4: Peering into the Future]
+* xref:index.adoc[Chapter 4: Peering into the Future]
     ** xref:data.adoc[4.1 Data Availability]
     ** xref:recursion.adoc[4.2 Recursion]
     ** xref:throughput.adoc[4.3 Throughput]

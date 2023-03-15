@@ -1,4 +1,4 @@
-* xref:index.adoc[Camp 6: STARKs]
+* xref:index.adoc[Chapter 6: STARKs]
     ** xref:trust_verification.adoc[6.1 Trust vs. Verification]
     ** xref:introduction_starks.adoc[6.2 Introduction to the STARKs]
     ** 6.3 Mathematical Primer

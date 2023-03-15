@@ -1,4 +1,4 @@
-* Camp 3: Deep into Starknet
+* Chapter 3: Deep into Starknet
     ** xref:blocks.adoc[3.1 Blocks]
     ** xref:transactions.adoc[3.2 The Lifecycle of Transactions]
     ** xref:starknet_os.adoc[3.3 Starknet OS]

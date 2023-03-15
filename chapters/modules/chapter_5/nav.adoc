@@ -1,4 +1,4 @@
-* xref:index.adoc[Camp 5: Deep into Cairo]
+* xref:index.adoc[Chapter 5: Deep into Cairo]
     ** xref:cairo.adoc[5.1 C(pu)AIR(o)]
         *** xref:polynomial.adoc[5.1.1 Polynomial Equations]
         *** xref:turing.adoc[5.1.2 Turing Completeness]

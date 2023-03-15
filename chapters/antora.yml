@@ -1,0 +1,13 @@
+name: chapters
+version: ~
+title: Starknet Book
+nav:
+  - modules/ROOT/nav.adoc 
+  - modules/primer/nav.adoc
+  - modules/chapter_1/nav.adoc 
+  - modules/chapter_2/nav.adoc 
+  - modules/chapter_3/nav.adoc
+  - modules/chapter_4/nav.adoc
+  - modules/chapter_5/nav.adoc
+  - modules/chapter_6/nav.adoc
+  

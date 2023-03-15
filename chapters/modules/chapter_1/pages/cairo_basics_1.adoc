@@ -38,7 +38,7 @@ func main{output_ptr: felt*}(){
 
 == The builtins
 
-At the beginning of our program in Cairo, we write `%builtins output`. Here we are telling the Cairo compiler that we will use the `builtin` called `output`. You can learn more about builtins in Camp 5; however, you can continue writing Cairo without going deep into ``builtin``s. We can summon Cairo's special abilities through the builtins.
+At the beginning of our program in Cairo, we write `%builtins output`. Here we are telling the Cairo compiler that we will use the `builtin` called `output`. You can learn more about builtins in Chapters 5; however, you can continue writing Cairo without going deep into ``builtin``s. We can summon Cairo's special abilities through the builtins.
 
 Let's explore one of the most common builtins.
 
@@ -63,7 +63,7 @@ This is how several functions are imported from the same library: `from starkwar
 == The field elements (felts) (part 1)
 
 In Cairo, when the type of a variable or argument is not specified, it is automatically assigned the type `felt`.
-The Camp 6 goes into technical detail about what a `felt` is.
+The Chapter 6 goes into technical detail about what a `felt` is.
 For the purposes of this section, suffice it to say that a `felt` works as an integer.
 In the divisions, we can notice the difference between the `felt` and the integers.
 However, quoting the documentation:
@@ -173,7 +173,7 @@ Can you see that `x` is an address?
 
 == Implicit arguments
 
-Before explaining how implicit arguments work, a rule: If a `foo()` function calls a function with an implicit argument, `foo()` must also get and return the same implicit argument (refer to Camp 5 for more details in implicit arguments).
+Before explaining how implicit arguments work, a rule: If a `foo()` function calls a function with an implicit argument, `foo()` must also get and return the same implicit argument (refer to Chapter 5 for more details in implicit arguments).
 
 Let's see what a function with an implicit argument looks like.
 The function is `serialize_word` which is available in the `starkware.cairo.common.serialize` library, and we use it in our initial function to add two numbers.

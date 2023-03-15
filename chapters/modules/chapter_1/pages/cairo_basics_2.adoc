@@ -43,7 +43,7 @@ you can even omit its explicit declaration.
 Although it is not necessary to be an expert in the mathematical qualities of felts, it is valuable to know how they work.
 We have already introduced them;
 now we will know how they are affected when we compare values.
-Refer to Camp 2 for more details on its definition.
+Refer to Chapter 2 for more details on its definition.
 
 For the moment, the definition of a felt, in terrestrial terms: is an integer that can become huge (but has limits).
 For example: {...,-4,-3,-2,-1,0,+1,+2,+3,...}.

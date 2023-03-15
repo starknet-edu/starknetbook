@@ -1,12 +1,12 @@
 site:
   title: The Starknet Book
-  start_page: camps::index.adoc
+  start_page: chapters::index.adoc
 
 content:
   sources:
   - url: .
     branches: HEAD
-    start_path: camps
+    start_path: chapters
 
 ui:
   bundle:

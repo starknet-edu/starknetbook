@@ -145,7 +145,7 @@ Since we are using Account Abstraction, account contracts are programable (not j
 That is, we can give customized functionality to our account contract.
 In this case, we are using the standard Open Zeppelin (modified by Starkware) account contract: `starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount`.
 Before, when we were using the Argent UI, we implicitly decided that we would use the Argent's account contract with its functionality and features, which differs from Open Zeppelin's.
-We will learn more about account contracts and how to customize them in Camp 3.
+We will learn more about account contracts and how to customize them in Chapter 3.
 This is one of the most powerful features in Starknet and is the catalyst to get a Web2-level User Experience (UX).
 
 [,Bash]
@@ -170,7 +170,7 @@ Note: This is a modified version of the OpenZeppelin account contract. The signa
 differently.
 ----
 
-Before deploying this account contract, we need to fund it so it can pay for its deployment (this process is called counterfactual deployment and will be studied in Camp 3).
+Before deploying this account contract, we need to fund it so it can pay for its deployment (this process is called counterfactual deployment and will be studied in Chapter 3).
 We can go back to the https://faucet.goerli.starknet.io/[Starknet Goerli Faucet] and feed it with the address we got from `new_account`: `0x00f20c6664cc47e569abe53c7ba19f04685158a1b2f01c9a923cd3849354a928`.
 We wait a couple of minutes, and then we can deploy our account contract:
 
@@ -196,7 +196,7 @@ Transaction hash: 0x60bfafca95e0bb37cfd1b310bdaa4c35790c32ba1e429a30c40fea270ddc
 Great, we now have deployed an account contract.
 When we create an account using Argent or Braavos, this is what is happening beneath;
 however, they deploy their customized account contracts.
-In Camp 3, we will learn how to create customized account contracts.
+In Chapter 3, we will learn how to create customized account contracts.
 
 Let's deploy our voting contract.
 The following steps will be similar to what we saw in Argent's UI.
@@ -225,7 +225,7 @@ Transaction hash: 0x393640424903875ff11875e1cd19b0c06bac63be4823c3ad00edd7a79d7e
 
 Want to see something fun?
 Compare this contract class hash with the one we got using Argent's UI, and you will see it is the same.
-In Camp 3, we will get deeper into what defines a class hash.
+In Chapter 3, we will get deeper into what defines a class hash.
 
 Let's deploy our contract by invoking the `deployContract` in the UDC.
 The `invoke` command calls a function from a deployed contract.

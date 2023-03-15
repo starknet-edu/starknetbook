@@ -1,6 +1,6 @@
 = Contributors Guide
 
-The Starknet Book is an open-source Cairo/Starknet teaching curriculum written by `starknet-edu` and the Starknet community (a.k.a., the Campers). We welcome all contributions to this repository to help enrich the Starknet community.
+The Starknet Book is an open-source Cairo/Starknet teaching curriculum written by `starknet-edu` and the Starknet community. We welcome all contributions to this repository to help enrich the Starknet community.
 
 == Our Methodology
 
