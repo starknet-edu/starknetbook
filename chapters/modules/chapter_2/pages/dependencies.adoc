@@ -2,54 +2,7 @@
 
 = External Dependencies
 
-Protostar uses git submodules to install external dependencies (similar to Foundry). Let's install a couple of dependencies.
+== Contributing
 
-First, let us install `OpenZeppelin/cairo-contracts`, Open Zeppelin's library for Cairo. We indicate where the repository is, that is, http://github.com/OpenZeppelin/cairo-contracts[github.com/OpenZeppelin/cairo-contracts], and the version we want to install in this format:
-
-[,Bash]
-----
-protostar install OpenZeppelin/cairo-contracts@v0.5.1
-----
-
-Let's install one more dependency, this time using the whole GitHub link and without the version:
-
-[,Bash]
-----
-protostar install https://github.com/CairOpen/cairopen-contracts
-----
-
-Our new dependencies are stored in the newly created `lib` directory:
-
-----
-❯ tree -L 2
-.
-├── lib
-│   ├── cairo_contracts
-│   └── cairopen_contracts
-├── protostar.toml
-├── src
-│   └── voting.cairo
-└── tests
-    └── test_main.cairo
-----
-
-Finally, we update our `protostar.toml` with the new paths and the installed libraries.
-
-----
-[project]
-protostar-version = "0.9.1"
-lib-path = "lib"
-cairo-path = ["lib/cairo_contracts/src", "lib/cairopen_contracts/src"]
-
-[contracts]
-vote = ["src/voting.cairo"]
-----
-
-This allows Protostar to use those paths to find the libraries of interest. When you import, for example, `from openzeppelin.access.ownable.library import Ownable`, Protostar will look for `Ownable` in the path `lib/cairo_contracts/src/openzeppelin/access/ownable/library`. If you change the name of the directory where you store your external dependencies, then you will not use `lib` but the name of that directory.
-
-We can update the libraries you imported with `protostar update cairo_contracts`. Also, we can remove a library. We will remove the cairopen library since we won't use it here.
-
-[,Bash]
-----
-protostar remove cairopen_contracts
-----
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
+🎯

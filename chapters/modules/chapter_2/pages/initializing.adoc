@@ -1,26 +1,3 @@
 [id="initializing"]
 
 = Initializing a Project
-
-What does it mean to initialize a project with Protostar?
-
-* *`protostar.toml`*. Here we will have the information necessary to configure our project.
-* *Three directories will be created*. `src` (where the contracts will be), `lib` (for external dependencies), and `tests` (where we will store the tests).
-
-We can initialize our project with the `protostar init` command, or you can indicate that an existing project will use Protostar with `protostar init --existing`. You must have a `protostar.toml` file with the project settings. We could even create the `protostar.toml` file ourselves; in the next section, we will understand better what this file contains.
-
-Let's run `protostar init` to initialize a Protostar project. It asks us to indicate the following:
-
-* `project directory name`: What is the directory name where your project is located?
-
-This is what the structure of our project looks like:
-
-----
-❯ tree -L 2
-.
-├── protostar.toml
-├── src
-│   └── voting.cairo
-└── tests
-    └── test_main.cairo
-----

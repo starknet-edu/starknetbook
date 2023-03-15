@@ -2,8 +2,6 @@
 
 = Getting Started with Cairo programming and Starknet contracts
 
-[discrete]
-
 Developers who finish this Camp can build their own Cairo smart contracts and deploy them on the Starknet network.
 We will learn everything required to code in Cairo, the language to operate on the Cairo OS (more on this at a later Camp).
 Then we will create and deploy a not-that-simple contract to allow DAO members to vote entirely on-chain.

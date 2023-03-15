@@ -2,34 +2,8 @@
 
 = Compiling
 
-We have been compiling our contracts with `cairo-compile`. When we run `cairo-compile sum2Numbers.cairo --output x.json` to compile a Cairo `sum2Numbers.cairo` contract, the result is a new file in our working directory called `x.json`. The JSON file is used by `cairo-run` when we run our program.
 
-We can simultaneously compile all our Starknet contracts with `protostar build`. But first, we must indicate in the `[contracts]` section of `protostar.toml` the contracts we want to compile (or build). As we saw before, Protostar automatically creates a folder `src` where we can store our contracts. However, we can rename this folder or create our own. We write in `protostar.toml` that we want to compile the contract in `src/voting.cairo` and that we want to call it `vote` once it is compiled:
+== Contributing
 
-[,Bash]
-----
-[contracts]
-vote = ["src/voting.cairo"]
-----
-
-We run `protostar build`. We will see a new `build` directory with a `vote.json` file. If you receive an error, e.g., "[.code]``Could not find module 'openzeppelin.access.ownable.library'.``", you can also indicate the path of the `build` call:
-
-[,Bash]
-----
-protostar build \
-    --cairo-path ./lib/cairo_contracts/src
-----
-
-If the compilation succeeds, we get the following:
-
-[,Bash]
-----
-Building projects contracts
-Class hash for contract "vote": 0x02bebbf6d9e8cf11a1d0e04226e68f8d73ddfb025fb058c769fc6b48b27e57cf
-----
-
-Moral: if your contract is not in the `[“protostar.contracts“]` section of `protostar.toml`, it will not be compiled.
-
-NOTE: You will not be able to compile pure Cairo code using `protostar build`. It is only for Starknet contracts (they have the `%lang starknet` signal at the beginning). To compile and run pure Cairo applications, you need to use `cairo-compile` and `cairo-run` (refer to Camp 1). In the following tutorials, we will learn how to create Starknet contracts.
-
-At this point, we can deploy Starknet contracts with Protostar. But first, let us introduce the `devnet`.
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
+🎯

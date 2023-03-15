@@ -6,6 +6,8 @@ Do you want to...
 * *read or study* the Starknet Book? Please go to *book.starknet.io*; it is more readable. 
 * *contribute* to the Starknet Book (yes, please!)? This is the right place. Go the contributing section in this README.
 
+This Book contains material for Cairo 1.x versions. If you are looking for content related to the Cairo 0.x versions, please refer to the [cairo-0 branch](https://github.com/starknet-edu/starknetbook/tree/cairo-0).
+
 == Contributing
 
 There are several sections within the Chapters that require input. Your contributions are welcome, needed, and required! 🫡

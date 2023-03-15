@@ -3,8 +3,7 @@
 [#setup]
 = Setting up your environment
 
-🎯 +++<strong>+++Camper: +++</strong>+++ This book is a community effort. We invite all readers to suggest improvements on our github page. To do so, please refer to our
+== Contributing
 
-* Basic cairo-lang https://www.cairo-lang.org/docs/quickstart.html[setup].
-* Ultimate development environment https://medium.com/starknet-edu/the-ultimate-starknet-dev-environment-716724aef4a7[setup].
-* Setting up a Starknet dev environment with https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-python-e4c61c1e8da6?source=collection_home---5------1-----------------------[Python] or https://medium.com/starknet-edu/setting-up-a-starknet-dev-environment-with-docker-19955188bb20?source=collection_home---5------0-----------------------[Docker]
+🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
+🎯
