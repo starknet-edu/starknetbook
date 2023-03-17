@@ -78,7 +78,7 @@ jobs:
             echo -e "No changes found."
           fi
         env:
-          USER_TOKEN: "${{ secrets.USER_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: "Send comment to PR"
         continue-on-error: true
@@ -87,4 +87,4 @@ jobs:
           echo "Your preview build is ready! ✨ Check the following link in 1-2 minutes: https://starknet-io.github.io/starknetbook/${{ steps.pr.outputs.PR_ID }} ." >/tmp/comment
           gh pr comment ${{ github.event.pull_request.number }} -F /tmp/comment
         env:
-          USER_TOKEN: "${{ secrets.USER_TOKEN }}"
+          GH_TOKEN: "${{ github.token }}"

@@ -3,13 +3,14 @@ name: Push workflow
 on:
   push:
     branches:
-      - antora-front
+      - dev
+      - main
 
 jobs:
   release-version:
     name: Releasing a version
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, 'chore') || (github.ref_name == 'antora-front' && !contains(github.event.head_commit.message, 'chore(release)')) }}
+    if: ${{ !contains(github.event.head_commit.message, 'chore') || (github.ref_name == 'main' && !contains(github.event.head_commit.message, 'chore(release)')) }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,11 +30,11 @@ jobs:
           git config --global user.email "${{ secrets.USER_EMAIL }}"
 
       - name: Run release script
-        if: ${{ github.ref_name == 'antora-front' }}
+        if: ${{ github.ref_name == 'main' }}
         run: yarn run release
 
       - name: Push to remote branch
-        uses: ad-m/github-push-action@antora-front
+        uses: ad-m/github-push-action@main
         with:
           USER_TOKEN: ${{ secrets.USER_TOKEN }}
           branch: ${{ github.ref }}
