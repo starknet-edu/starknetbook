@@ -4,7 +4,7 @@
     "pre-release": "standard-version --prerelease --skip.changelog --releaseCommitMessageFormat 'chore(prerelease): {{currentTag}}'",
     "release": "standard-version",
     "release:dry": "standard-version --dry-run",
-    "generate": "antora playbook.yml"
+    "generate": "antora antora-playbook.yml"
   },
   "dependencies": {
     "@tsconfig/node16": "^1.0.3",
