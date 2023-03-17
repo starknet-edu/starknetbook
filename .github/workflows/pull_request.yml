@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: 16
           ref: gh-pages
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Extract PR details
         id: pr
