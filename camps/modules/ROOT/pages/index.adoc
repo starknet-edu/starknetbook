@@ -14,8 +14,8 @@ Follow this guide to continue trough the Starknet Book;
 do you...
 
 * ...want to set up your environment?
-link:./camp_1/README.md#setup[Go here]
-* ...want to start coding scalable and descentralized smart contracts right away?
+link:./camp_1/environment_setup.html[Go here]
+* ...want to start coding scalable and decentralized smart contracts right away?
 *Camps 1 and 2*.
 * ...have a hackathon next week?
 *Camps 1 and 2*.
@@ -41,7 +41,7 @@ Join our https://starknet.io/discord[Discord server], register, and join channel
 
 The Starknet Book can be improved and will evolve as Starknet matures.
 Together we are setting up the Starknet Book, so there are several sections within the Camps that require Camper input. Camper, your contributions are welcome and needed!
-Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[Contributing].
 Here are things you can do to help:
 
 * At the beginning of some sections there is a message for Campers who want to collaborate with content.
