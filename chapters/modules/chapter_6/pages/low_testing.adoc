@@ -114,4 +114,4 @@ which is an n*log(n) algorithm for polynomial evaluation (improving over the nai
 
 == Contributing
 
-🎯 \{pp}+_\{pp}+Camper: \{pp}+_\{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
+🎯 \{pp}+_\{pp}+STARKer: \{pp}+_\{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯

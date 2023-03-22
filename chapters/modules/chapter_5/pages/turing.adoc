@@ -2,7 +2,7 @@
 
 = A practically-efficient Turing-complete STARK-Friendly CPU Architecture
 
-While this section is being built we recommend reading the video session for this camp and the https://www.cairo-lang.org/docs/how_cairo_works/index.html[cairo-lang docs].
+While this section is being built we recommend reading the video session for this chapter and the https://www.cairo-lang.org/docs/how_cairo_works/index.html[cairo-lang docs].
 
 `Practical`: Cairo supports conditional branches, memory, function calls, and recursion
 
@@ -12,5 +12,5 @@ While this section is being built we recommend reading the video session for thi
 
 == Contributing
 
-🎯 +++<strong>+++Camper: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
+🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
 

@@ -2,7 +2,7 @@
 
 = Trust vs. Verification
 
-Computational Integrity (CI) is a fundamental property that underlies commerce. In simple terms, it means that the output of a certain computation is correct. CI is what allows us to trust an account balance presented to us, or the bill at a store. This Camp delves into how permissionless blockchains achieve CI without requiring trust, the dramatic price they pay for this in terms of scalability and privacy, and how STARKs can save the day.
+Computational Integrity (CI) is a fundamental property that underlies commerce. In simple terms, it means that the output of a certain computation is correct. CI is what allows us to trust an account balance presented to us, or the bill at a store. This Chapter delves into how permissionless blockchains achieve CI without requiring trust, the dramatic price they pay for this in terms of scalability and privacy, and how STARKs can save the day.
 
 == "`Old World`": Trust, or Delegated Accountability
 
@@ -42,7 +42,7 @@ This pair of properties has a crucial implication to the principle of Inclusive 
 
 == (extra) Probabistically Checkable Proofs.
 
-When polling an election, the margin of error is independent from the sample size. That is, the sample size is what determines the margin of error and not the population size. The image below exemplifies this fact.+++<div align="center">+++[#modular_arithmetic]
+When polling an election, the margin of error is independent from the sample size. That is, the sample size is what determines the margin of error and not the population size. The image below exemplifies this fact.+++<div align="center">+++stem:[#modular_arithmetic]
 == Margin of error
 
 The margin of error does not depend on the size of the population.
@@ -57,4 +57,4 @@ This was already discovered since the 1990s, however, it was not implemented bec
 
 == Contributing
 
-🎯 \{pp}+_\{pp}+Camper: \{pp}+_\{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
+🎯 \{pp}+_\{pp}+STARKer: \{pp}+_\{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯

@@ -62,4 +62,4 @@ What is the downside? Mainly that proof sizes go uo from 288 bytes, in SNARKs ca
 
 == Contributing
 
-🎯 \{pp}+_\{pp}+Camper: \{pp}+_\{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
+🎯 \{pp}+_\{pp}+STARKer: \{pp}+_\{pp}+ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here]. 🎯 🎯
