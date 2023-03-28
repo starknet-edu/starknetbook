@@ -1,0 +1,5 @@
+[package]
+name = "starknetbook_chapter_2"
+version = "0.1.0"
+
+[[target.starknet-contract]]
