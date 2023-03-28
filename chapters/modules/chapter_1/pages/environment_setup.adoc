@@ -1,9 +1,136 @@
 [id="environment"]
 
 [#setup]
-= Setting up your environment
+= Setting up your local development environment
 
 == Contributing
 
 🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
 🎯
+
+_*Disclaimers: At the time of writing this tutorial, Cairo 1.0  is at a very early stage and is prone to errors and bugs. Any suggestions/fixes from the community are most welcome._
+
+To write and deploy Cairo contracts on StarkNet, as of today, you will need to install 2 types of repositories:
+* CLI to deploy the contract on StarkNet and interact with it (cairo-lang repo)
+* Cairo repository: To compile your Cairo 1 smart contract to sierra
+
+The above repositories require you to have the following minimum prerequisites:
+* Python 3.9 (You can download from https://www.python.org/downloads/release/python-390/[here]).
+* Rust (You can install Rust from https://www.rust-lang.org/tools/install[here]).
+
+If you already have Python and Rust installed, make sure to double check your Python version and update Rust to the latest version.
+
+Let’s start with installing the CLI on your system.
+
+
+== CLI Installation
+
++++<strong>+++Step 1: Set up your virtual environment +++</strong>+++
+
+We recommend working inside a Python virtual environment, but you can also install the Cairo package directly. To create and enter the virtual environment, type:
+
+[,Bash]
+----
+#Activate your cairo virtual environment
+python3.9 -m venv ~/cairo_venv
+source ~/cairo_venv/bin/activate
+----
+
+Make sure the venv is activated – you should see (cairo_venv) in the command line prompt. 
+Your terminal should look like this:
+TBD - Picture
+
+
++++<strong>+++Step 2: Install the necessary dependencies +++</strong>+++
+
+Make sure you can install the following pip packages
+
+ecdsa, fastecdsa, sympy (using pip3 install ecdsa fastecdsa sympy). 
+On Ubuntu, for example, you will have to first run:
+
+[,Bash]
+----
+sudo apt install -y libgmp3-dev
+----
+
+On Mac, you can use brew:
+
+[,Bash]
+----
+brew install gmp
+----
+
+There might be some other libraries which are not direct dependencies but they might be indirect dependencies that you would need to install based on your operating system.
+
+
++++<strong>+++Step 3: Install cairo-lang CLI +++</strong>+++
+
+If you had cairo-lang installed previously, uninstall it and install the latest downloaded version.
+
+[,Bash]
+----
+pip3 uninstall cairo-lang
+----
+
+[,Bash]
+----
+pip3 install cairo-lang-0.11.0.1.zip
+----
+
+Once you have installed the cairo lang package and installed it, make sure to test your installation by running the following command:
+
+[,Bash]
+----
+starknet --version
+----
+
+Your final output should look something like this:
+TBD - Picture
+
+If your output is as per the above screenshot, then you are all set to get to the next steps! Let’s go!
+
+____
+NOTE: For M1 and M2 users, if you face any issues while running starknet - -version command, 
+then you may refer to https://github.com/OpenZeppelin/nile/issues/22[this] article to follow alternate steps to install the dependencies in Step 2.
+____
+
+== Cairo 1 Installation
+
++++<strong>+++Step1: Clone the cairo repository and set it up using the following instructions:+++</strong>+++
+
+[,Bash]
+----
+# Clone the Cairo compiler to the $HOME directory
+git clone https://github.com/starkware-libs/cairo/
+
+#Rename the cairo folder to .cairo in order to keep it hidden
+mv cairo .cairo
+
+#Checkout into the working branch and generate the release binaries
+cd .cairo/
+git checkout 9c190561ce1e8323665857f1a77082925c817b4c
+cargo build --all --release
+
+----
+
++++<strong>+++Step 2: Add Cairo 1.0 executables to your path:+++</strong>+++
+
+Now that we have built the Cairo 1.0 binaries, we need to add them to the PATH environment variable. Add the following in your .bashrc or .zshrc:
+
+[,Bash]
+----
+#Add the below command to your .bashrc or .zshrc
+export PATH="$HOME/.cairo/target/release:$PATH"
+----
+
+After that, open a new shell and check that the following command returns a version number:
+
+[,Bash]
+----
+cairo-compile --version
+----
+
+Your output should look something like this(not necessarily inside the cairo_venv):
+TBD - Picture
+
+Woohoo! Now we have everything we need to compile, deploy and interact with our first Cairo contract!
