@@ -90,7 +90,7 @@ TBD - Picture
 If your output is as per the above screenshot, then you are all set to get to the next steps! Let’s go!
 
 ____
-NOTE: For M1 and M2 users, if you face any issues while running starknet - -version command, 
+NOTE: For M1 and M2 users, if you face any issues while running starknet --version command, 
 then you may refer to https://github.com/OpenZeppelin/nile/issues/22[this] article to follow alternate steps to install the dependencies in Step 2.
 ____
 
