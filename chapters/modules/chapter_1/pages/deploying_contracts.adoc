@@ -13,6 +13,7 @@ In this chapter, you will learn to compile, deploy and interact with a StarkNet 
 Follow the below steps in order to accomplish your goal!
 
 +++<strong>+++Step 1: Setting up account related environment variables +++</strong>+++
+
 Type the following commands on your terminal in order to set the account related environment variables. You can use the default wallet provided by OpenZeppelin for ease of use.
 
 [,Bash]
