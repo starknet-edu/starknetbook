@@ -141,9 +141,9 @@ starknet declare --contract hello_starknet.json --account test_v11
 
 ____
 NOTE: If the declare command throws the following error: Error: OSError: [Errno 8] Exec format error: '/Users/gyan/cairo_venv/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile' - then, you need to copy the starknet-sierra-compile from the .cairo folder to add it to the Python Libs using the following command:
-(Assuming that you are within the .cairo/ folder)
 [,Bash]
 ----
+#Assuming that you are within the .cairo/ folder
 cp target/release/starknet-sierra-compile ~/cairo_venv/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile
 ----
 ____
