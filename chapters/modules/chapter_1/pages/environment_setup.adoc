@@ -10,7 +10,7 @@
 
 _*Disclaimers: At the time of writing this tutorial, Cairo 1.0  is at a very early stage and is prone to errors and bugs. Any suggestions/fixes from the community are most welcome._
 
-To write and deploy Cairo contracts on StarkNet, as of today, you will need to install 2 types of repositories:
+To write and deploy Cairo contracts on StarkNet, as of today, you will need to install 2 types of repositories: +
 * CLI to deploy the contract on StarkNet and interact with it (cairo-lang repo)
 * Cairo repository: To compile your Cairo 1 smart contract to sierra
 
