@@ -1,0 +1,30 @@
+= Starknet's Architecture
+
+Below is a list of potential topics to cover in this section.
+
+== L2 Nodes
+
+High level overview of all the Starknet nodes (Sequencer, Prover, Full Nodes & Indexer) and their role on the network.
+
+== Tx Lifecycle
+
+Description of the different states an L2 transaction goes through. We should also discuss the benefits and risks of considering a particular state as "finality".
+
+== Starknet OS
+
+Description of how the Sequencer validates and executes transactions and its connection with Account Abstraction (AA).
+SHARP
+
+Prover's workflow to generate proofs for Starknet and Starkex using recursion. We don't need to explain the math behind STARKs here, just the workflow.
+
+== Data Availability
+
+Starknet's Data Availability in Rollup mode (not Volition for now)
+
+== L1 Components
+
+The on-chain Verifier and the Fact Registry. Discussion about how an L1 escape hatch would work.
+
+== Bridges
+
+Explanation of how L1-L2 communication works and how it can be used to create bridges.
