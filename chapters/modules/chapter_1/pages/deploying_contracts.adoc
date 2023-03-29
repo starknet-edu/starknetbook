@@ -10,7 +10,7 @@
 _*Disclaimers: At the time of writing this tutorial, Cairo 1.0  is at a very early stage and is prone to errors and bugs. Any suggestions/fixes from the community are most welcome._
 
 In this chapter, you will learn to compile, deploy and interact with a StarkNet contract written in Cairo.
-Follow the below steps in order to accomplish the above goal!
+Follow the below steps in order to accomplish your goal!
 
 +++<strong>+++Step 1: Setting up account related environment variables +++</strong>+++
 Type the following commands on your terminal in order to set the account related environment variables. You can use the default wallet provided by OpenZeppelin for ease of use.
@@ -36,11 +36,11 @@ starknet new_account --account test_v11
 ----
 
 Once you have run the above command, monitor the transaction and wait until it has crossed the "Pending" state.
-Then proceed with the below instructions.
+Then proceed with the below instructions. +
 
-* You should get your expected contract address
-* Send 0.1 ETH to it
-* Monitor the transfer transaction. Once it has passed "pending", proceed
+* You should get your expected contract address +
+* Send 0.1 ETH to it +
+* Monitor the transfer transaction. Once it has passed "pending", proceed +
 
 Deploy your account once you have funded it with 0.1 ETH. You can either use the 
 https://faucet.goerli.starknet.io[faucet] or bridge Goerli ETH from Ethereum to Starknet.
@@ -53,6 +53,7 @@ starknet deploy_account --account test_v11
 ----
 
 Your sample output should look something like this:
+
 [,Bash]
 ----
 (cairo_venv) gyan@Gnanas-MacBook-Pro .cairo % starknet deploy_account --account test_v11
@@ -64,7 +65,7 @@ Transaction hash: 0x3d15e05389ecd1ff65555220be57f0ab43729877b20ca086048276917ed2
 
 Monitor the transaction until it passes the "pending" state.
 
-++<strong>+++Step 3: Create, compile and deploy your contract+++</strong>+++
++++<strong>+++Step 3: Create, compile and deploy your contract+++</strong>+++
 
 Before we get started, make sure that the below commands are working properly on your system:
 
@@ -116,7 +117,7 @@ starknet-compile --hello_starknet.cairo hello_starknet.json --replace-ids
 
 The above command should compile to produce a hello_starknet.json in the same folder, however if the above command doesn't work, then here is an alternate approach to creating & compiling your cairo contracts.
 
-++<strong>+++Alternate Option+++</strong>+++
++++<strong>+++Alternate Option+++</strong>+++
 
 Instead of creating a new folder, work within the same .cairo/ folder that you had created while installing the cairo lang package. We will use cargo run to run the starknet-compile if it doesn't work out of the box on some systems.
 
@@ -167,7 +168,7 @@ Monitor the deploy transaction. Once it has passed "pending", proceed.
 
 Wohooo! If all goes well, you have just deployed your first ever Cairo 1.0 contract on the StarkNet testnet! Congratulations.
 
-++<strong>+++Step 4: Interact with your contract+++</strong>+++
++++<strong>+++Step 4: Interact with your contract+++</strong>+++
 
 If you quickly browse through the above contract(hello_starknet.cairo), you can see, the contract has a simple function: Say_Hello which we are going to learn to invoke in this step.
 
@@ -195,7 +196,7 @@ starknet invoke --function Say_Hello --address 0x00e0309ca73c5097533ba200e08426b
 Monitor the transaction. Once it has been accepted on L2, the first acceptance is indicated and once it has been accepted on L1, the tx has been added to Ethereum.
 
 
-++<strong>+++Step 5: Explore your transaction on StarkScan+++</strong>+++
++++<strong>+++Step 5: Explore your transaction on StarkScan+++</strong>+++
 
 Once your tx has been accepted on L2, you will be able to explore the events emitted and other details of your transaction on StarkNet block explorers like StarkScan.
 
