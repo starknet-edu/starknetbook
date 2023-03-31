@@ -14,7 +14,7 @@ Follow this guide to continue trough the Starknet Book;
 do you...
 
 * ...want to set up your environment?
-link:./camp_1/README.md#setup[Go here]
+(TODO)
 * ...want to start coding scalable and descentralized smart contracts right away?
 *Chapters 1 and 2*.
 * ...have a hackathon next week?

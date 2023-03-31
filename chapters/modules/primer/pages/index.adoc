@@ -7,9 +7,7 @@ Each section will involve drilling down on a high-level concept as it pertains t
 
 image::plat.png[plat]
 
-Code examples will be named by the programming language in which they are implemented, for example, Bitcoin block verification in https://go.dev/doc/install[Golang] (if you can implement this example in other languages we would love a PR):
-
-link:./index.html#bitcoin[index.html#bitcoin]
+https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages/bitcoin[Code examples] will be named by the programming language in which they are implemented, for example, Bitcoin block verification in https://go.dev/doc/install[Golang] (if you can implement this example in other languages we would love a PR):
 
 The topics covered in this primer have been dissected in hundreds of ways by thousands of people, so wherever possible I will be linking to those resources.
 
