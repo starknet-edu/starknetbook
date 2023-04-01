@@ -16,7 +16,7 @@ In order to do so, you will have to have a deep understanding of the type of rec
 
 Please, nagivate to link:./recursion/cairo/recursion.cairo[recursion/cairo/recursion.cairo] and read the code as well with comments to have two examples of recursions.
 One of which is applicable to how storage mappings deal with it.
-Instructions on how to compile and run the program are embedded in link:./recursion/cairo/recursion.cairo[recursion/cairo/recursion.cairo].
+Instructions on how to compile and run the program are embedded in https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_1/pages/contracts/cairo/recursion.cairo[recursion/cairo/recursion.cairo].
 
 == Contributing 
 

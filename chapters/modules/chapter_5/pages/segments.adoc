@@ -21,5 +21,5 @@ This is where the registers `ap` and `fp` start, and where data generated during
 The length of the execution segment is variable, as it depends, for example, on the program input.
 
 As we saw before, we can use builtins which would have their own memory segment.
-Compile link:./builtins/cairo/hash.cairo[builtins/cairo/hash.cairo] (`cairo-compile builtins/cairo/hash.cairo --output hash_compiled.json`) and run it with the `--print-memory` flag (`cairo-run --program hash_compiled.json --print_output --layout=small --print_memory`).
+Compile https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_5/pages/builtins/cairo/hash.cairo[builtins/cairo/hash.cairo] (`cairo-compile builtins/cairo/hash.cairo --output hash_compiled.json`) and run it with the `--print-memory` flag (`cairo-run --program hash_compiled.json --print_output --layout=small --print_memory`).
 Notice we have values in the Program (0), Execution (1), Output (2), Pedersen (3), and Range Check (4) segments.

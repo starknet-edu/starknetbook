@@ -10,7 +10,7 @@
 Python code can be invoked with the %{ %} block called a hint, which is executed right before the next Cairo instruction.
 The hint can interact with the program's variables/memory as shown in the following code sample.
 Note that the hint is not actually part of the Cairo program, and can thus be replaced by a malicious prover.
-We can run a Cairo program with the --program_input flag, which allows providing a json input file that can be referenced inside a hint (https://starknet.io/docs/reference/syntax.html#hints[Cairo documentation]).
+We can run a Cairo program with the --program_input flag, which allows providing a json input file that can be referenced inside a hint.
 
 [,Rust]
 ----

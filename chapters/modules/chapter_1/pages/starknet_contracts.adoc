@@ -3,7 +3,7 @@
 = Starknet Contracts
 
 "Starknet is a permissionless decentralized ZK-Rollup operating as an L2 network over Ethereum, where any dApp can achieve unlimited scale for its computation without compromising Ethereum's composability and security."
--- https://starknet.io/docs/hello_starknet/index.html#hello-starknet[Starknet Documentation].
+-- https://docs.starknet.io/documentation/[Starknet Documentation].
 
 Contracts on Starknet are written in Cairo. You can transpile a Solidity contract to Cairo via https://github.com/NethermindEth/warp[Warp] or use EVM bytecode using the Kakarot ZKEVM. However, the real power of Starknet will be harnessed by contracts written in Cairo itself.
 
