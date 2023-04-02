@@ -3,25 +3,13 @@
 [#setup]
 = Setting up your local development environment
 
-== Contributing
+== Pre-Requisites
 
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
-🎯
-
-_*Disclaimers: At the time of writing this tutorial, Cairo 1.0  is at a very early stage and is prone to errors and bugs. Any suggestions/fixes from the community are most welcome._
-
-To write and deploy Cairo contracts on StarkNet, as of today, you will need to install 2 types of repositories: +
-* CLI to deploy the contract on StarkNet and interact with it (cairo-lang repo) +
-* Cairo repository: To compile your Cairo 1 smart contract to sierra +
+At the time of writing this tutorial, Cairo 1.0  is at a very early stage and is prone to errors and bugs. Please be sure to fetch and update the repositories we mention below, regularly. 
 
 The above repositories require you to have the following minimum prerequisites: +
-* Python 3.9 (You can download from https://www.python.org/downloads/release/python-390/[here]). +
-* Rust (You can install Rust from https://www.rust-lang.org/tools/install[here]). +
-
-If you already have Python and Rust installed, make sure to double check your Python version and update Rust to the latest version.
-
-Let’s start with installing the CLI on your system.
-
+- https://www.python.org/downloads/release/python-390/[Python 3.9] +
+- https://www.rust-lang.org/tools/install[Rust] +
 
 == CLI Installation
 
@@ -36,16 +24,32 @@ python3.9 -m venv ~/cairo_venv
 source ~/cairo_venv/bin/activate
 ----
 
-Make sure the venv is activated – you should see (cairo_venv) in the command line prompt. 
+Alternatively, you can also use the pyenv environment manager to create a virtual environment. To do so, run the following commands:
+
+[,Bash]
+----
+#Install pyenv
+curl https://pyenv.run | bash
+
+#Add the following to your .bashrc or .zshrc
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+#Restart your terminal and run the following commands
+pyenv install 3.9.0
+pyenv virtualenv 3.9.0 cairo_venv
+pyenv activate cairo_venv
+----
+
+Either way, make sure the venv is activated – you should see (cairo_venv) in the command line prompt. 
 Your terminal should look like this:
+
 TBD - Picture
 
 
 +++<strong>+++Step 2: Install the necessary dependencies +++</strong>+++
 
-Make sure you can install the following pip packages
-
-ecdsa, fastecdsa, sympy (using pip3 install ecdsa fastecdsa sympy). 
 On Ubuntu, for example, you will have to first run:
 
 [,Bash]
@@ -60,20 +64,25 @@ On Mac, you can use brew:
 brew install gmp
 ----
 
+Finally, install the following dependencies:
+
+[,Bash]
+----
+pip3 install ecdsa fastecdsa sympy
+----
+
 There might be some other libraries which are not direct dependencies but they might be indirect dependencies that you would need to install based on your operating system.
 
 
 +++<strong>+++Step 3: Install cairo-lang CLI +++</strong>+++
 
-If you had cairo-lang installed previously, uninstall it and install the latest downloaded version.
+If you had cairo-lang installed previously, uninstall it and install the latest downloaded version. To do so, you will have to download the file over https://github.com/starkware-libs/cairo-lang/archive/refs/tags/v0.11.0.1.zip[here] and place it in your path so you can build locally. 
 
 [,Bash]
 ----
+#Uninstall the previous version
 pip3 uninstall cairo-lang
-----
-
-[,Bash]
-----
+#Build locally
 pip3 install cairo-lang-0.11.0.1.zip
 ----
 
@@ -84,11 +93,7 @@ Once you have installed the cairo lang package and installed it, make sure to te
 starknet --version
 ----
 
-Your final output should look something like this:
-TBD - Picture
-
-If your output is as per the above screenshot, then you are all set to get to the next steps! Let’s go!
-
+If you see a version starting with 0.11.0, then you have successfully installed the CLI.
 ____
 NOTE: For M1 and M2 users, if you face any issues while running starknet --version command, 
 then you may refer to https://github.com/OpenZeppelin/nile/issues/22[this] article to follow alternate steps to install the dependencies in Step 2.
@@ -134,3 +139,8 @@ Your output should look something like this(not necessarily inside the cairo_ven
 TBD - Picture
 
 Woohoo! Now we have everything we need to compile, deploy and interact with our first Cairo contract!
+
+== Contributing
+
+🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
+🎯
