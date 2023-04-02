@@ -5,6 +5,7 @@ The Starknet Book is an open-source Cairo/Starknet teaching curriculum written b
 == Running the Book locally
 
 Steps:
+
 1. Clone the repository locally using `git clone https://github.com/starknet-edu/starknetbook.git`.
 2. Change directory to the repository using `cd starknetbook`.
 3. Install the lunr extension using `npm i @antora/lunr-extension`.
