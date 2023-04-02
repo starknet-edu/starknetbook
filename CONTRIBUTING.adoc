@@ -1,8 +1,22 @@
-= Contributors Guide
+= Contributors Guide (or, do not be afraid to break things)
 
 The Starknet Book is an open-source Cairo/Starknet teaching curriculum written by `starknet-edu` and the Starknet community. We welcome all contributions to this repository to help enrich the Starknet community.
 
+Steps to contribute:
+
+1. Run the book locally (see below).
+2. Understand the structure of the book (see below); it is really simple.
+3. Find an issue to work on or *propose* one. This is key, please, do not wait for someone to assign you an issue. If you want to work on an issue, comment on it and ask if it is available. If you want to propose an issue, please, create a new issue and tag a maintainer in the issue (by default, tag `l-henri` or `@omarespejel`). We need fast innovation!
+4. Work on the issue in a branch of your personal fork of the main repository (here is a https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/[guide] on how to do it).
+5. Create a pull request to merge your changes in the main repository. Tag a maintainer in the PR to review it; by default, tag `l-henri` or `@omarespejel`. Please, allow the maintainers to make commits to your branch if they need to.
+6. Wait for the repository maintainers to review your changes.
+7. If the issue is addressed the repository maintainers will merge your pull request.
+
+Now we will explain the steps in more detail.
+
 == Running the Book locally
+
+Before you make a PR please make sure that you can run the book locally. To do so, follow the steps below:
 
 Steps:
 
@@ -10,6 +24,18 @@ Steps:
 2. Change directory to the repository using `cd starknetbook`.
 3. Install the lunr extension using `npm i @antora/lunr-extension`.
 4. Run the book locally using `npx antora --fetch antora-playbook.yml`. If an error regarding a missing extension appears then install the extension using `npm i @antora/EXTENSRION` as we did with the lunr extension in step 3.
+
+== The Book Structure in Antora
+
+The Book is structured in a way that is compatible with Antora. Antora is a static site generator. The book is structured in the following way:
+
+* `antora-playbook.yml` - This file contains the configuration for the Antora site generator. As a contributor you will not need to edit this file.
+* `chapters/antora.yml` - Contains the main outline of the book. This is where you will add new chapters to the book. For example, if you want to add a new chapter, `Chapter 35: Cairo for newborns`, you will add it here with the following syntax: `modules/chapter_35/nav.adoc`.
+* `chapters/modules/` - This folder contains the actual content of the book. Each chapter is a separate folder. For example, `Chapter 35: Cairo for newborns` is in the folder `chapters/modules/chapter_35/`. Each chapter folder contains the following files and directories:
+    ** `pages/`: This directory contains the actual content of the chapter. It is divided in asciidoc files that are rendered in the website. For example, if you want to add a new section to `Chapter 1: Getting started`, you will create here a `adoc` file following syntax: `cairo_underwater.adoc`. Follow the syntax of the other files in the directory to see how to write the content of the file.
+        *** Other directories (e.g., `contracts/`): Inside the chapter folder you can add other directories with code. For example, if you want to add a new directory `contracts/` to `Chapter 1: Getting started`, you will add it here. This directory could contains the contracts of the chapter.
+    ** `nav.adoc`: This file contains the outline of the chapter. For example, if you want to add a new section to `Chapter 1: Getting started`, you will add it here with the following syntax: `** xref:cairo_underwater.adoc[1.98 Cairo underwater]`. The `xref` is the name of the file you created in the `pages/` directory. This way the section will appear in the outline of the chapter in the website. You can also add subsections to the section with the following syntax: `*** xref:priorities.adoc[1.98.1 Cairo first, floating second]`.
+    ** `images/`: This directory contains the images of the chapter. For example, if you want to add a new image to `Chapter 1: Getting started`, you will add it here. The image will be rendered in the website. To add the image to the content of the chapter, you will use the following syntax: `image::cairo_underwater.png[cairo_underwater]`.
 
 == Our Methodology
 
@@ -19,18 +45,3 @@ and contributors can submit https://github.com/starknet-edu/starknetbook/pulls[P
 Requests] for review by the maintainers.
 
 Your pull request will be review by the maintainers at their earliest convenience. If you have any questions, please feel free to ask in the issues section.
-
-=== General Work-Flow
-
-We recommend the following work-flow for contributors:
-
-. *Find an issue* to work on and use comments to communicate your intentions and ask questions.
-. *Work in a feature branch* of your personal fork (github.com/YOUR_NAME/starknetbook) of the main repository (github.com/starknet-edu/starknetbook).
-. After you have implemented or resolved the issue, *create a pull-request* to merge your changes in the main repository
-. Wait for the repository maintainers to *review your changes* to ensure the issue is addressed.
-. If the issue is addressed the repository maintainers will *merge your pull-request*
-. If you feel like your pull-request is not addressed, please feel free to *ask for clarification* in the comments section of the pull-request.
-
-=== Helpful Article on contribution
-
-https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/[guide]
