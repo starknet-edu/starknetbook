@@ -15,6 +15,7 @@ There are several sections within the Chapters that require input. Your contribu
 Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing]. There you will find instructions on how to contribute and how to run the Book locally.
 
 Here are things you can do to help:
+
 * At the beginning of some sections there is a message for STARKers who want to collaborate with content.
 * Empty section in a Chapter? Go for it!
 * Do you think the Starknet Book needs an additional section? Propose it.
