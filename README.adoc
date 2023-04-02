@@ -12,7 +12,7 @@ This Book contains material for Cairo 1.x versions. If you are looking for conte
 
 There are several sections within the Chapters that require input. Your contributions are welcome, needed, and required! 🫡
 
-Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing]. There you will find instructions on how to contribute and how to run the Book locally.
 
 Here are things you can do to help:
 * At the beginning of some sections there is a message for STARKers who want to collaborate with content.

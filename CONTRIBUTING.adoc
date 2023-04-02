@@ -2,6 +2,14 @@
 
 The Starknet Book is an open-source Cairo/Starknet teaching curriculum written by `starknet-edu` and the Starknet community. We welcome all contributions to this repository to help enrich the Starknet community.
 
+== Running the Book locally
+
+Steps:
+1. Clone the repository locally using `git clone https://github.com/starknet-edu/starknetbook.git`.
+2. Change directory to the repository using `cd starknetbook`.
+3. Install the lunr extension using `npm i @antora/lunr-extension`.
+4. Run the book locally using `npx antora --fetch antora-playbook.yml`. If an error regarding a missing extension appears then install the extension using `npm i @antora/EXTENSRION` as we did with the lunr extension in step 3.
+
 == Our Methodology
 
 We operate and maintain this project with an issue and pull request model. We will track
@@ -10,10 +18,6 @@ and contributors can submit https://github.com/starknet-edu/starknetbook/pulls[P
 Requests] for review by the maintainers.
 
 Your pull request will be review by the maintainers at their earliest convenience. If you have any questions, please feel free to ask in the issues section.
-
-=== Style Guide
-
-* when naming a subdirectory, please use "snake_case" and not use acronyms
 
 === General Work-Flow
 
