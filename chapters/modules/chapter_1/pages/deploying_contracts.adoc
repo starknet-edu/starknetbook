@@ -2,13 +2,6 @@
 
 = Deploying Starknet contracts
 
-== Contributing
-
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
-🎯
-
-_*Disclaimers: At the time of writing this tutorial, Cairo 1.0  is at a very early stage and is prone to errors and bugs. Any suggestions/fixes from the community are most welcome._
-
 In this chapter, you will learn to compile, deploy and interact with a StarkNet contract written in Cairo.
 Follow the below steps in order to accomplish your goal!
 
@@ -152,7 +145,7 @@ ____
 NOTE: Once you have replaced the library, you can run the starknet declare command again and you should get a class hash as the output.
 ____
 
-For example, a class hash that was deployed a while ago can be found on StarkScan https://testnet.starkscan.co/class/0x03ae6bb224f12a8818c3ad59cc248968e8ee3a3081ff805610141695381a28f7 [here].
+For example, a class hash that was deployed a while ago can be found on StarkScan https://testnet.starkscan.co/class/0x03ae6bb224f12a8818c3ad59cc248968e8ee3a3081ff805610141695381a28f7[here].
 
 Using the above generated class hash, deploy the contract:
 
@@ -201,9 +194,13 @@ Monitor the transaction. Once it has been accepted on L2, the first acceptance i
 
 Once your tx has been accepted on L2, you will be able to explore the events emitted and other details of your transaction on StarkNet block explorers like StarkScan.
 
-Here is an example of the tx that I just invoked using the above command:
-https://testnet.starkscan.co/event/0x01093a8f548de7e7353f7b74ee85d9724a8c2874548dd57d89acc56dd750c8be_0
+https://testnet.starkscan.co/event/0x01093a8f548de7e7353f7b74ee85d9724a8c2874548dd57d89acc56dd750c8be_0[Here] is an example of the tx that I just invoked using the above command:
 
 TBD - Insert Image
 
 If you switch to the events tab(example data in the image above), you should be able to see that the Event Data emitted is the caller and message(Index 0 and 1 respectively) as per the contract code. The caller is the address of the account that you created to deploy the contract and the message is the input that you have sent while invoking the Say_Hello function.
+
+== Contributing
+
+🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
+🎯
