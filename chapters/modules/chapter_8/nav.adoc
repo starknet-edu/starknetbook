@@ -1,1 +1,0 @@
-* xref:index.adoc[Chapter 8: Starknet's Architecture]
