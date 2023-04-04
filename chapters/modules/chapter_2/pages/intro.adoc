@@ -1,0 +1,194 @@
+[id="smart_contracts_chapter"]
+
+= Smart Contracts and Cairo
+
+As we delve into the world of StarkNet, we find that the platform relies on a powerful and expressive programming language called Cairo. Designed specifically for scaling decentralized applications (dApps) using STARKs, Cairo is a Turing-complete language that enables developers to harness the power of highly efficient and scalable zero-knowledge proofs. In this chapter, we will explore Cairo in the context of StarkNet. We will learn about the core concepts of Cairo, its differences from Solidity, the structure and components of Cairo smart contracts, and the unique features of the StarkNet network. By the end of the chapter, you'll have a solid understanding of how to create smart contracts with Cairo and deploy them on StarkNet.
+
+== WIP Contents
+
+* Basics of Cairo Programming:
+
+Cairo language syntax and constructs
+Basic data types, variables, and functions in Cairo
+Control structures and loops in Cairo
+
+* StarkNet Network and Its Architecture:
+
+An overview of the StarkNet network
+How StarkNet differs from Ethereum
+The role of the StarkNet Virtual Machine (SVM)
+
+* Deploying Cairo Smart Contracts on StarkNet:
+
+The process of deploying a smart contract on StarkNet
+Tools and frameworks for working with Cairo and StarkNet
+Examples of deploying a simple Cairo smart contract
+
+* Interacting with Cairo Smart Contracts:
+
+How to call functions in Cairo smart contracts
+Reading data from a smart contract
+Sending transactions to interact with smart contracts
+
+* Testing and Debugging Cairo Smart Contracts:
+
+Testing tools and frameworks for Cairo
+
+== What Is a Cairo Smart Contract?
+
+In the StarkNet ecosystem, the term _smart contract_ refers to immutable computer programs that run deterministically within the context of a StarkNet Virtual Machine. These programs are written in the Cairo language and are deployed on the StarkNet network, a permissionless decentralized Validity-Rollup (or ZK-Rollup) built on top of Ethereum.
+
+Let’s break down the key aspects of Cairo smart contracts:
+
+Computer programs::
+Cairo smart contracts are simply computer programs, designed to execute within the context of StarkNet.
+
+Immutable::
+Once deployed, the code of a Cairo smart contract cannot change. Just as with Ethereum smart contracts, the only way to modify a Cairo smart contract is to deploy a new instance.
+
+Deterministic::
+The outcome of the execution of a Cairo smart contract is the same for everyone who runs it, given the context of the transaction that initiated its execution and the state of the StarkNet network at the moment of execution.
+
+StarkNet Virtual Machine context::
+Cairo smart contracts operate within the context of a StarkNet Virtual Machine (SVM). They can access their own state, the context of the transaction that called them, and some information about the most recent blocks.
+
+Decentralized StarkNet network::
+The StarkNet network is a permissionless decentralized platform that relies on STARK proofs for security and scalability. It operates as an L2 network over Ethereum, allowing dApps to achieve unlimited scale for their computation without compromising Ethereum's composability and security.
+
+In this chapter, we will explore the core concepts of Cairo, its differences from Solidity, the structure and components of Cairo smart contracts, and the unique features of the StarkNet network. By the end of the chapter, you'll have a solid understanding of how to create smart contracts with Cairo and deploy them on StarkNet.
+
+== Solidity vs. Cairo: Overcoming Limitations and Embracing Scalability
+
+While Solidity is a widely adopted language for smart contract development and supports a range of applications, it is not native to provable computation. As a result, compilers that translate idiomatic Solidity code into proofs encounter several challenges:
+
+1. Reliance on inefficient data structures, such as uint256, and operations on them
+2. Mutability at the language level
+3. Lack of efficient built-ins
+4. No low-level access
+
+In practice, there are two different technologies for proving general programs: SNARKs and STARKs. Instruction sets favored by SNARKs are better suited as a compilation target for languages like Solidity. However, STARKs offer more scalability while having a less natural instruction set. This means that Solidity can be efficiently encoded to SNARKs but not as optimally to STARKs, as constructs common in Solidity are "costly" for STARKs.
+
+Cairo addresses these limitations and offers more efficient solutions:
+
+1. A low-level field data type called "felt252" is available, alongside a several types of uints
+2. Cairo is idiomatically write-once, resembling a functional programming language
+3. Cairo provides full low-level access to underlying primitives
+
+Although the ecosystem tools are still maturing, it is essential to transcend existing limitations and build better composable applications. Cairo's focus on overcoming Solidity's limitations in provable computation and embracing the scalability of STARKs makes it a more suitable choice for developers looking to create the next generation of decentralized applications.
+
+== Basics of Cairo Programming:
+
+=== Functions
+
+In Cairo, functions are defined using the func keyword, followed by the function name, and then a list of input arguments and output values. Functions can have local variables, perform calculations, and call other functions. Here's a general structure for defining a function in Cairo:
+
+[source,cairo]
+----
+func function_name(arg1: Type1, arg2: Type2, ...) -> (output1: Type3, output2: Type4, ...):
+    # Declare local variables if needed
+    local local_var1: Type5 = some_value
+    local local_var2: Type6 = another_value
+
+    # Perform calculations and call other functions
+
+    # Return output values
+    return (output1, output2, ...)
+----
+
+As an example, let's create a simple Cairo function that adds two numbers and returns their sum:
+
+[source,cairo]
+----
+func add(a: felt, b: felt) -> (sum: felt):
+    let sum = a + b
+    return (sum,)
+----
+
+In this example, the add function takes two arguments a and b of type felt (field element), calculates their sum, and returns the result as a single output value sum, also of type felt. To call the add function, you can simply use its name followed by the input values:
+
+[source,cairo]
+----
+python
+Copy code
+func main():
+    let x = 5
+    let y = 3
+    let (result,) = add(x, y)
+    # The 'result' variable now holds the value 8 (5 + 3)
+    ...
+----
+
+=== Contract Definition
+In Cairo, the principal organizational unit is the module (`mod`). Cairo modules are similar to Solidity's contract data type, as they serve as containers that encapsulate functions and data structures. Modules are defined using the `mod` keyword, followed by the module name, and then a list of functions and data structures. Here's a general structure for defining a module in Cairo:
+
+cairo
+[source,cairo]
+----
+mod MyModule {
+    ...
+}
+----
+
+=== Storage
+Cairo introduces storage structs, which are used to define contract storage. Storage structs are not visible by default through the ABI. In our example, the Storage` struct` is defined as follows:
+
+[source,cairo]
+----
+struct Storage {
+    user_slots: LegacyMap::<ContractAddress, u128>,
+    values_mapped: LegacyMap::<u128, u128>,
+    was_initialized: bool,
+    next_slot: u128,
+}
+----
+
+=== Constructor
+A Cairo constructor is a function that initializes the contract's state when it is deployed. In our example, the constructor is defined with the `#[constructor]` attribute:
+
+[source,cairo]
+----
+#[constructor]
+fn constructor(
+    _tderc20_address: ContractAddress, _players_registry: ContractAddress, _workshop_id: u128, _exercise_id: u128
+) {
+    ex_initializer(_tderc20_address, _players_registry, _workshop_id, _exercise_id);
+}
+----
+
+=== View Functions
+View functions are used to read contract storage and are defined with the `#[view]` attribute. In our example, there are two view functions:
+
+[source,cairo]
+----
+#[view]
+fn get_user_slots(account: ContractAddress) -> u128 {
+    return user_slots::read(account);
+}
+
+#[view]
+fn get_values_mapped(slot: u128) -> u128 {
+    return values_mapped::read(slot);
+}
+----
+
+=== External Functions
+External functions in Cairo can be called by other contracts or external callers, such as DApps. They are defined with the `#[external]` attribute. In our example, there are two external functions:
+
+[source,cairo]
+----
+#[external]
+fn claim_points(expected_value: u128) {
+    ...
+}
+
+#[external]
+fn assign_user_slot() {
+    ...
+}
+----
+
+In summary, Cairo modules serve as organizational units that encapsulate functions and data structures. Storage structs are used to define contract storage, while constructor functions initialize the contract's state. View functions provide read access to contract storage, and external functions allow interaction with other contracts or external callers.
+
+
+
+
