@@ -1,6 +1,5 @@
 *.txt
 node_modules/
-.build/
 cache/
 .idea/
 artifacts/
