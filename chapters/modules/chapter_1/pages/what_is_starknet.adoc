@@ -1,0 +1,14 @@
+[id="whatIsStarknet"]
+
+= What is StarkNet?
+
+== Introduction
+
+Starknet is a permissionless decentralized Validity-Rollup (also known as a “ZK-Rollup”). It operates as an L2 network over Ethereum, enabling any dApp to achieve unlimited scale for its computation – without compromising Ethereum’s composability and security, thanks to Starknet’s reliance on the safest and most scalable cryptographic proof system – STARK.
+
+
+== Contributing
+
+🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
+🎯
+

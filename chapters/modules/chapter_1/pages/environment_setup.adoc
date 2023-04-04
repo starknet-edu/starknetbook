@@ -53,6 +53,7 @@ Your terminal should look like this:
 [,Bash]
 ----
 (cairo_venv) satoshi@nakamoto-notebook % 
+image::cairo_venv.png[cairo venv]
 
 ----
 
@@ -152,6 +153,9 @@ Your output should look something like this(not necessarily inside the cairo_ven
 ----
 (cairo_venv) satoshi@nakamoto-notebook % cairo-compile 0.11.0.2
 ----
+
+image::cairo-compile.png[cairo-compile version]
+
 Woohoo! Now we have everything we need to compile, deploy and interact with our first Cairo contract!
 
 == Contributing

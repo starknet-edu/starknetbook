@@ -1,0 +1,148 @@
+[id="writing_contracts"]
+
+= Writing your first StarkNet contract
+
+In this chapter, you will learn to write your first StarkNet contract. We know you are super excited and so are we! This contract is a simple read/write contract where you will learn to read and write from storage using cairo. Our contract will be called _SimpleStorage_.
+
+Follow the below steps to learn to write your first StarkNet contract.
+
++++<strong>+++Step 1: Contract [#macro] and modules +++</strong>+++
+
+You can create a new folder to write this new contract or create it inside your .cairo/ folder. Let us create a new file called simple_storage.cairo
+
+[,Bash]
+----
+touch simple_storage.cairo
+----
+
+You can open this empty file in your editor of choice(ex: VS Code) and start writing the below lines of code - your first cairo contract.
+
+A StarkNet contract will always start with the [#contract] macro to indicate that this is a StarkNet contract. Remember that you can also create other Cairo files that are *NOT* contracts because Cairo is a programming language by itself.
+
+All the Cairo contracts are defined by the keyword _mod_ which implies that it's a module containing some logical piece of code.
+You can write first below lines of contract in the _simple_storage.cairo_ file.
+
+
+[,Bash]
+----
+#[contract]
+mod SimpleStorage {}
+----
+
++++<strong>+++Step 2: Creating the Storage +++</strong>+++
+
+In order to store variables on-chain, we need to create a Storage structure called _Storage_. This struct will have all the variables that you would like to have in contract/permanent storage. 
+Create a Storage struct within your SimpleStorage contract as shown below.
+
+
+[,Bash]
+----
+struct Storage {
+       balance: felt252
+}
+----
+
+____
+
+NOTE: The storage struct will always be named _Storage_.
+____
+
++++<strong>+++Step 3: Defining events  +++</strong>+++
+
+Yes! You read it right. Events are now supported in Cairo. You can define an event just like a function with the name of the event, in this case it is _BalanceIncreased_ and the values you would like to emit within the bracket as arguments. 
+
+[,Bash]
+----
+//The keyword to define a function is "fn"
+ #[event]
+   fn BalanceIncreased(balance: felt252) {}
+----
+
++++<strong>+++Step 4: Writing your first function +++</strong>+++
+
+Below is a simple function called _increase_balance_ which takes in the amount as the argument of type _felt252_.
+The function is fairly simple. We read the balance variable(defined earlier in the storage struct) using "::read()" function and simple increase the balance by adding the amount to it.
+We then write the new balance to the existing storage variable and update the value.
+
+Last but not the least, we log/emit the event with the updated balance using the name of the event function.
+
+[,Bash]
+----
+  #[external]
+   fn increase_balance(amount: felt252) {
+      let new_balance = balance::read() + amount;
+      balance::write(new_balance);
+      BalanceIncreased(new_balance);
+   }
+----
+
+You might have noticed a macro called _external_ that is added to this function. This means that the function called be called externally or outside of the contract. 
+For functions that are modifying a storage variable, you would need to add the external macro.
+
+There are other types of macros as well that you can add to a function: +
+* event +
+* external +
+* view +
+* constructor +
+
+Let us see another function in the next step and the macro used.
+
++++<strong>+++Step 5: Writing your view function +++</strong>+++
+
+As you saw in Step 4, we are able to write to our storage using balance::write(), but how do we read from the storage? (Hint: That's also being done in the above function).
+
+In the below function, we are reading the current balance of the storage variable _balance_ and returning it. You can observe that we use a "->" symbol to return the variable, similar to Rust.
+
+This function can be a _view_ function because it does not modify any variables.
+
+[,Bash]
+----
+  #[view]
+   fn get_balance() -> felt252 {
+       balance::read()
+   }
+----
+
++++<strong>+++Step 6: Putting it all together +++</strong>+++
+
+Your final contract should look something like this.
+
+[,Bash]
+----
+#[contract]
+mod SimpleStorage {
+   struct Storage {
+       balance: felt252
+   }
+
+   #[event]
+   fn BalanceIncreased(balance: felt252) {}
+
+   #[external]
+   fn increase_balance(amount: felt252) {
+      let new_balance = balance::read() + amount;
+      balance::write(new_balance);
+      BalanceIncreased(new_balance);
+   }
+
+   #[view]
+   fn get_balance() -> felt252 {
+       balance::read()
+   }
+}
+----
+
+You can now follow the steps given in exercise (How to refer an internal doc here?)[1.5] and [1.6] to compile and deploy the above contract.
+
+Congratulations on successfully writing and deploying your first Cairo contract!
+
+== Quick Challenge
+
+Once you have deployed the above contract, you would need to invoke the contract and also "call" the _get_balance_ function. The _call_ syntax has not been mentioned in the previous chapter but it's fairly easy to use and that's your +++<strong>+++challenge+++<strong>+++!
+
+If you have successfully been able to call the function and display the balance, take a screenshot and post it on Twitter, tagging us at @StarkNet.
+
+== Contributing
+
+🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
+🎯

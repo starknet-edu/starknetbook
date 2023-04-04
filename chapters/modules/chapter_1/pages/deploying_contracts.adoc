@@ -69,7 +69,7 @@ starknet --version
 starknet-compile  --version
 ----
 
-You can now create a folder of your choice where you would like to practice your cairo skills (TBD: Insert a smiley). Inside the new folder, create a file name TBD-Italics(hello_starknet.cairo).
+You can now create a folder of your choice where you would like to practice your cairo skills 🎯. Inside the new folder, create a file name _hello_starknet.cairo_.
 
 [,Bash]
 ----
@@ -87,14 +87,14 @@ Copy paste the following piece of code into your hello_starknet.cairo file:
 ----
 #[contract]
     mod HelloStarknet {
-        usestarknet::get_caller_address;
-        usestarknet::ContractAddress;
+        use starknet::get_caller_address;
+        use starknet::ContractAddress;
 
         #[event]
-        fnHello(from:ContractAddress, value:felt252) {}
+        fn Hello(from:ContractAddress, value:felt252) {}
 
         #[external]
-        fnSay_Hello(message:felt252) {
+        fn Say_Hello(message:felt252) {
             letcaller=get_caller_address();
             Hello(caller, message);
         }
@@ -171,7 +171,7 @@ If you quickly browse through the above contract(hello_starknet.cairo), you can 
 
 #Function that we will be invoking
 #[external]
-        fnSay_Hello(message:felt252) {
+        fn Say_Hello(message:felt252) {
             letcaller=get_caller_address();
             Hello(caller, message);
         }
@@ -196,9 +196,9 @@ Once your tx has been accepted on L2, you will be able to explore the events emi
 
 https://testnet.starkscan.co/event/0x01093a8f548de7e7353f7b74ee85d9724a8c2874548dd57d89acc56dd750c8be_0[Here] is an example of the tx that I just invoked using the above command:
 
-TBD - Insert Image
+image::tx_invoke.png[Invoking a transaction]
 
-If you switch to the events tab(example data in the image above), you should be able to see that the Event Data emitted is the caller and message(Index 0 and 1 respectively) as per the contract code. The caller is the address of the account that you created to deploy the contract and the message is the input that you have sent while invoking the Say_Hello function.
+If you switch to the events tab(example data in the image above), you should be able to see that the Event Data emitted is the caller and message(Index 0 and 1 respectively) as per the contract code. The caller is the address of the account that you created to deploy the contract and the message is the input that you have sent while invoking the _Say_Hello_ function.
 
 == Contributing
 
