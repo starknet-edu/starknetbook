@@ -138,7 +138,7 @@ That is:
 
 . Calculate the account contract's address before deployment.
 
-A contract address in the Starknet network is a unique identifier of the contract and is a hash of (more details in link:mentation/develop/Contracts/contract-address/[the documentation] and https://github.com/starkware-libs/cairo-lang/blob/13cef109cd811474de114925ee61fd5ac84a25eb/src/starkware/starknet/core/os/contract_address/contract_address.py#L40[actual implementation in Python]):
+A contract address in the Starknet network is a unique identifier of the contract and is a hash of:
 
 * Prefix - the ASCII encoding of the string "`STARKNET_CONTRACT_ADDRESS`".
 * Deployer address - currently always zero.

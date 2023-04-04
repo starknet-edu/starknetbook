@@ -1,6 +1,8 @@
 = Starknet Book
 
-This repo redirects to the Starknet Book front-end (built with Antora) at https://book.starknet.io[book.starknet.io]. This repo is only for the Starknet Book's source code (text or actual code).
+Welcome to the StarkNet and Cairo Developer's Guide! This book is designed to provide a comprehensive guide for students learning about Cairo and StarkNet. It covers various aspects of development, from getting started with pre-created smart contracts to understanding the architecture of Cairo and StarkNet.
+
+This repo redirects to the Starknet Book front-end (built with Antora) at https://book.starknet.io[book.starknet.io]. *This repo is only for the Starknet Book's source code (text or actual code)*.
 
 Do you want to...
 * *read or study* the Starknet Book? Please go to *book.starknet.io*; it is more readable. 
@@ -8,13 +10,31 @@ Do you want to...
 
 This Book contains material for Cairo 1.x versions. If you are looking for content related to the Cairo 0.x versions, please refer to the link:https://github.com/starknet-edu/starknetbook/tree/cairo-0[cairo-0 branch].
 
+== Contents
+
+[.chapter-titles]
+|===
+|Chapter | Goal
+|1: Getting Started | At the end of the chapter, a reader should be able to deploy and interact with a pre-created smart contract using the CLI.
+|2: Cairo 1.0 | At the end of the chapter, a reader should be able to write a Cairo 1.0 smart contract.
+|3: Tooling | At the end of the chapter, a reader should be able to set up a proper development environment (Scarb, Protostar, etc.) and do complex deployments to StarkNet with starknet.js SDK.
+|4: Testing | At the end of the chapter, a reader should be able to manually test in a local environment (Devnet), write unit tests, and integration tests.
+|5: Frontend | At the end of the chapter, a reader should be able to read data from StarkNet, retrieve events, craft transactions, and send them to the network using React and starknet.js.
+|6: Running a Node | At the end of the chapter, a reader should be able to run a StarkNet node and an indexer.
+|7: Account Abstraction | At the end of the chapter, a reader should be able to understand the interface of a user account, how to create their own user account, and plug it into a browser extension.
+|8: StarkNet's Architecture | At the end of the chapter, a reader should be able to understand Startknet's architecture, the transaction lifecycle, fees calculation, Prover and verifier interaction, recursion.
+|9: Cairo's Architecture | At the end of the chapter, a reader should be able to understand how the Cairo virtual machine works, non-deterministic memory model, Sierra's opcode, and the compiler.
+|10: STARKs | This should provide the student a conceptual primer so they are able to tie the conceptual and practical aspects of the book together.
+|===
+
 == Contributing
 
 There are several sections within the Chapters that require input. Your contributions are welcome, needed, and required! 🫡
 
-Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[Contributing]. There you will find instructions on how to contribute and how to run the Book locally.
 
 Here are things you can do to help:
+
 * At the beginning of some sections there is a message for STARKers who want to collaborate with content.
 * Empty section in a Chapter? Go for it!
 * Do you think the Starknet Book needs an additional section? Propose it.

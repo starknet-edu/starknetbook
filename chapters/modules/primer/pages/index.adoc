@@ -7,9 +7,7 @@ Each section will involve drilling down on a high-level concept as it pertains t
 
 image::plat.png[plat]
 
-Code examples will be named by the programming language in which they are implemented, for example, Bitcoin block verification in https://go.dev/doc/install[Golang] (if you can implement this example in other languages we would love a PR):
-
-link:./index.html#bitcoin[index.html#bitcoin]
+https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages/bitcoin[Code examples] will be named by the programming language in which they are implemented, for example, Bitcoin block verification in https://go.dev/doc/install[Golang] (if you can implement this example in other languages we would love a PR):
 
 The topics covered in this primer have been dissected in hundreds of ways by thousands of people, so wherever possible I will be linking to those resources.
 
@@ -109,7 +107,7 @@ Alice's Perspective:
 
 Bitcoin brings various computer science concepts together with https://en.wikipedia.org/wiki/Game_theory[game theory] to create a truly peer-to-peer network and negates the need to delegate our trust to a central part.
 
-The nodes trust the block producer based on its valid link:./bitcoin/proof_of_work[proof of work] and the network collectively agrees on a set of canonical updates to the state of the Bitcoin ledger and the state of Alice's account.
+The nodes trust the block producer based on its valid https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages/bitcoin/proof_of_work[proof of work] and the network collectively agrees on a set of canonical updates to the state of the Bitcoin ledger and the state of Alice's account.
 
 In `GO`:
 
@@ -129,7 +127,7 @@ cd bitcoin/proof_of_work/python
 python main.py
 ----
 
-The Bitcoin nodes themselves listen for and link:./bitcoin/block_verifcation[validate] blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the Merkle root will be completely different.
+The Bitcoin nodes themselves listen for and https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages/bitcoin/block_verification[validate] blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the Merkle root will be completely different.
 
 In `GO`:
 
@@ -183,7 +181,7 @@ Bitcoin facilitates a limited version of https://ethereum.org/en/whitepaper/#scr
 
 == Ethereum
 
-Ethereum provides a platform to implement these smart contracts with the use of the link:./ethereum/ethereum_virtual_machine[Ethereum Virtual Machine].
+Ethereum provides a platform to implement these smart contracts with the use of the https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages/bitcoin/block_verification[Ethereum Virtual Machine].
 In the Ethereum paradigm, Alice's bank account information is stored in a 20-byte address called an https://ethereum.org/en/whitepaper/#ethereum-accounts[account].
 Her account balance along with a few more fields (nonce, storageRoot, codeHash) becomes a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric".
 

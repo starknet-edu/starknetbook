@@ -30,5 +30,6 @@
     "@antora/cli": "3.1.2",
     "@antora/lunr-extension": "^1.0.0-alpha.8",
     "@antora/site-generator": "3.1.2"
-  }
+  },
+  "version": null
 }

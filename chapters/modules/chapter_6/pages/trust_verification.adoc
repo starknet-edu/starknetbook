@@ -42,7 +42,7 @@ This pair of properties has a crucial implication to the principle of Inclusive 
 
 == (extra) Probabistically Checkable Proofs.
 
-When polling an election, the margin of error is independent from the sample size. That is, the sample size is what determines the margin of error and not the population size. The image below exemplifies this fact.+++<div align="center">+++stem:[#modular_arithmetic]
+When polling an election, the margin of error is independent from the sample size. That is, the sample size is what determines the margin of error and not the population size. The image below exemplifies this fact.+++<div align="center">+++[#modular_arithmetic]
 == Margin of error
 
 The margin of error does not depend on the size of the population.

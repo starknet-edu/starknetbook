@@ -9,7 +9,7 @@ The prover will automatically fill the empty memory cells with arbitrary values.
 Having such gaps is inefficient, as it means memory is being consumed without being used.
 Introducing too many holes could make the generation of a proof too expensive.
 However, this still does not violate the soundness guarantee -- a false proof cannot be generated regardless.
-In practice we can store values in memory cells while skipping memory cells (see link:registers/cairo/ap_fp_example.cairo[registers/cairo/ap_fp_example.cairo]), the prover will fill the empty cells to keep the memory continous.
+In practice we can store values in memory cells while skipping memory cells (see https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_5/pages/registers/cairo/ap_fp_example.cairo[registers/cairo/ap_fp_example.cairo]), the prover will fill the empty cells to keep the memory continous.
 
 == Write-once, read-only
 We can think of the memory of Cairo as a write-once memory (it can only be written once).
