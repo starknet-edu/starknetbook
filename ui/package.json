@@ -54,5 +54,6 @@
     "vinyl-buffer": "~1.0",
     "vinyl-fs": "~3.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "version": null
 }
