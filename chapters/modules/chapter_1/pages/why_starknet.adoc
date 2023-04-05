@@ -1,6 +1,6 @@
 [id="whyStarknet"]
 
-= Why StarkNet?
+= Why Starknet?
 
 == The Problem
 Ethereum scaling has been a major discussion topic since the network was launched. Commonly known as the blockchain trilemma, most applications have to choose 2/3 features between scalability, security and decentralization and compromise on any one of them.
@@ -13,7 +13,7 @@ Layer 2 solutions can offer scalability to Ethereum by helping off-load a lot of
 
 Amongst the existing rollup solutions, it is well known that zk-Rollups are going to be the future roadmap of Ethereum. Ethereum is the only truly decentralised blockchain, and with that comes the sort of open source innovation and soul that is so unique to the Ethereum community. We bet on decentralisation, innovation, and general purpose logic and composability.
 
-StarkNet, built on the concept of Validity Proofs(ZK Proofs under the hood) attempts to tackle the Blockchain Trilemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
+Starknet, built on the concept of Validity Proofs(ZK Proofs under the hood) attempts to tackle the Blockchain Trilemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
 
 == Contributing
 

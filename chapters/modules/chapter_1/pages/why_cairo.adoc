@@ -8,9 +8,7 @@ If you are looking for a cost-effective provable computation programming languag
 
 * It is a specially designed, provable language for smart contracts +
 * It is not bounded by the EVM +
-* Its functions are imported rather than inherited +
-* It supports Solidity to Cairo transpiler +
-* It includes full low-level access to underlying primitives +
+* Cairo uses traits which are a much more loosely-coupled relationship as compared to inheritance +
 
 The upgraded version of Cairo offers Rust like syntax, which is easier to understand for developers.
 

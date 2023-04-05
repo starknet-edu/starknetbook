@@ -53,7 +53,6 @@ Your terminal should look like this:
 [,Bash]
 ----
 (cairo_venv) satoshi@nakamoto-notebook % 
-image::cairo_venv.png[cairo venv]
 
 ----
 
@@ -91,11 +90,14 @@ If you had cairo-lang installed previously, uninstall it and install the latest 
 ----
 #Uninstall the previous version
 pip uninstall cairo-lang
-#Build locally
+#Install locally
 pip install cairo-lang
+
+#Alternatively, you can download the latest zip of cairo-lang and install it
+pip install $HOME/Downloads/cairo-lang-0.11.0.2.zip
 ----
 
-Once you have installed the cairo lang package and installed it, make sure to test your installation by running the following command:
+Once you have installed the cairo lang package, make sure to test your installation by running the following command:
 
 [,Bash]
 ----
@@ -118,11 +120,8 @@ ____
 ----
 # Go to your $HOME directory
 cd ~/
-# Clone the `cairo` Cairo 1 compiler
-git clone https://github.com/starkware-libs/cairo/
-
-#Rename the cairo folder to .cairo in order to keep it hidden
-mv cairo .cairo
+# Clone the `cairo` Cairo 1 compiler to a folder called .cairo in your home directory
+git clone https://github.com/starkware-libs/cairo/ .cairo
 
 #Checkout into the working branch and generate the release binaries
 cd .cairo/
@@ -149,12 +148,11 @@ cairo-compile --version
 ----
 
 Your output should look something like this(not necessarily inside the cairo_venv):
+
 [,Bash]
 ----
-(cairo_venv) satoshi@nakamoto-notebook % cairo-compile 0.11.0.2
+(cairo_venv) satoshi@nakamoto-notebook % cairo-lang-compiler 1.0.0-alpha.6
 ----
-
-image::cairo-compile.png[cairo-compile version]
 
 Woohoo! Now we have everything we need to compile, deploy and interact with our first Cairo contract!
 
