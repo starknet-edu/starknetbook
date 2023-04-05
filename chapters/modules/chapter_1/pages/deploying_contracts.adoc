@@ -2,7 +2,229 @@
 
 = Deploying Starknet contracts
 
-== Contributing
+In this chapter, you will learn to compile, deploy and interact with a StarkNet contract written in Cairo.
+Follow the below steps in order to accomplish your goal!
 
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
-🎯
+== Setting up environment variables 
+
+The following commands must run every time you open a new terminal to interact with Starknet. Setting them saves you time when using the CLI within the same terminal session.
+
+[,Bash]
+----
+# Use Starknet testnet
+export STARKNET_NETWORK=alpha-goerli
+# Set the default wallet implementation to be used by the CLI
+export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+# Set the path to the cairo 1 compiler binary. Adapt this path to fit your installation if needed
+export CAIRO_COMPILER_DIR=~/.cairo/target/release/
+# Compiler arguments
+export CAIRO_COMPILER_ARGS=--add-pythonic-hints
+----
+
+== Setting up an account 
+
+You need to set up your CLI with an account contract and fund it. 
+____
+Starknet accounts are smart contracts. As such, creating one involves sending a transaction, and takes a bit longer than creating an EOA on other networks.
+You can learn more in the https://docs.starknet.io/documentation/architecture_and_concepts/Account_Abstraction/introduction/[accounts] section of the documentation.
+____
+
+This process will involve three steps:
+
+* Generating your account address locally
+* Funding it
+* Deploying it
+
+The Starknet account declared through the CLI are stored on your machine in folder `~/.starknet_accounts/`.
+
+[,Bash]
+----
+# Creating a new account.
+starknet new_account --account account_name
+----
+
+Your terminal will return your account's address. 
+[,Bash]
+----
+Account address: 0x00d9d851f600d539a9f7811de4d9613a6b3c2634f8c0386a305c03216bd67559
+Public key: 0x0293d6625d860b9a37a0319d1e3c1eecc27685075cbeaae4ef29ed717d93c58b
+Move the appropriate amount of funds to the account, and then deploy the account
+by invoking the 'starknet deploy_account' command.
+
+NOTE: This is a modified version of the OpenZeppelin account contract. The signature is computed
+differently.
+----
+
+Next step is to fund it.
+
+* Use the https://faucet.goerli.starknet.io[faucet] to get some funds and send them to the account
+* Bridge funds using https://goerli.starkgate.starknet.io/[Starkgate]
+
+However you chose to do it, please make sure that the funding transaction reaches the "PENDING" status before moving on. You can look for it on https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]
+
+[,Bash]
+----
+# Deploying your account
+starknet deploy_account --account account_name
+----
+
+Your sample output should look something like this:
+
+[,Bash]
+----
+Sending the transaction with max_fee: 0.000568 ETH (568383605914463 WEI).
+Sent deploy account contract transaction.
+Contract address: 0x03f42fc2355be54197a8b270ff2cb8e2eb7902e777b3498f8ad58c6c147cce60
+Transaction hash: 0x3d15e05389ecd1ff65555220be57f0ab43729877b20ca086048276917ed2838
+----
+
+Monitor the transaction until it passes the "pending" state.
+
+== Create and compile a contract
+
+Before we get started, make sure that the below commands are working properly on your system. If they don't, please check the "Setting up your environment" section.
+
+[,Bash]
+----
+starknet --version
+starknet-compile  --version
+----
+
+You can now create a folder of your choice(in any location) where you would like to practice your cairo skills . Inside the new folder, create a file name `hello_starknet.cairo`.
+
+[,Bash]
+----
+#Create a new folder for practicing your cairo skills
+cd ~/
+mkdir cairo_practice && cd cairo_practice
+
+#Create a new file called hello_starknet.cairo
+touch hello_starknet.cairo
+----
+
+Copy paste the following piece of code into your hello_starknet.cairo file:
+
+[,Rust]
+----
+#[contract]
+mod HelloStarknet {
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
+
+    #[event]
+    fn Hello(from:ContractAddress, value:felt252) {}
+
+    #[external]
+    fn say_hello(message:felt252) {
+        let caller=get_caller_address();
+        Hello(caller, message);
+    }
+
+}
+----
+
+Customize the above code by adding a new type of event. Find a name that is unique (this is important).
+Add the following code:
+
+----
+    #[event]
+    fn My_Unique_Event_Name(from:ContractAddress, value:felt252) {}
+----
+
+Compile the above starknet contract using the following command:
+
+[,Bash]
+----
+starknet-compile hello_starknet.cairo hello_starknet.json 
+----
+
+The above command should compile to produce a `hello_starknet.json` file  in the same folder.
+
+== Declare a contract class 
+
+On Starknet, the deployment process is in two steps:
+
+* Declaring the class of your contract, or sending your contract's code to the network
+* Deploying a contract, or creating an instance of the code you previously declared
+
+Let's start with declaring the above code.
+[,Bash]
+----
+starknet declare --contract hello_starknet.json --account account_name
+----
+____
+The above command may fail if you are using code that has already been declared by someone else! Please make sure to add custom code to your contract to create a new contract class.
+____
+
+You will see something like:
+
+[,Bash]
+----
+Sending the transaction with max_fee: 0.000132 ETH (131904173791637 WEI).
+Declare transaction was sent.
+Contract class hash: 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d5924f
+Transaction hash: 0x334f16d9da30913c4a30194057793379079f35efa6bf5753bc6e724a591e9f0
+----
+The transaction hash allows you to track when the network will have received your contract's code. Once this transaction has moved to "PENDING", you can deploy an instance of your contract.
+
+== Deploy a contract
+
+Using the above generated class hash, deploy the contract:
+
+[,Bash]
+----
+starknet deploy --class_hash 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d5924f --account account_name
+----
+
+____
+If you run into any fee related issues, please add the flag  `--max_fee 100000000000000000` to your CLI commands to set an arbitrary high gas limit for your deploy transaction.
+____
+
+You will see something like:
+
+[,Bash]
+----
+Sending the transaction with max_fee: 0.000197 ETH (197273405375932 WEI).
+Invoke transaction for contract deployment was sent.
+Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d
+Transaction hash: 0x7895267b3e967e1c9c2f7da145e323bed60dfdd1b8ecc8efd243c9d587d579a
+----
+
+Monitor the deploy transaction. Once it has passed "pending", your contract has been succesfully deployed! 
+
+Wohooo! You have just deployed your first Cairo 1.0 contract on StarkNet! Congratulations.
+
+== Interact with your contract
+
+If you quickly browse through the above contract(hello_starknet.cairo), you can see the contract has a simple function: say_hello which we are going to learn to trigger.
+
+[,Bash]
+----
+
+#Function that we will be invoking
+#[external]
+fn say_hello(message:felt252) {
+    let caller=get_caller_address();
+    Hello(caller, message);
+}
+----
+
+The syntax to invoke a function in your contract is:
+
+[,Bash]
+----
+starknet invoke --function <name of the function> --address <address of the deployed contract> --account <account_name>
+
+# Invoking our say_hello function
+starknet invoke --function say_hello --address 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d --input 152  --account account_name
+----
+
+You will see something like:
+
+[,Bash]
+----
+Sending the transaction with max_fee: 0.000080 ETH (79590795788372 WEI).
+Invoke transaction was sent.
+Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d
+Transaction hash: 0xbfb3ec183b4ee58db67113cf8832c31e78fe8000f091cc598d5aa9ca6a62af
+----
