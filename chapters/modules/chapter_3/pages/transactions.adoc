@@ -5,8 +5,77 @@
 On Starknet Alpha the two types of transactions are `DEPLOY` or `INVOKE`.
 They go through the following lifecycle as they are submitted from the clients to the sequencer:
 
-NOT_RECEIVED \-> RECEIVED \-> PENDING \-> REJECTED || ACCEPTED_ON_L2 \-> ACCEPTED_ON_L1
+[.highlight, frame="single", options="header", background_color="#f5f5f5"]
+|===
+| NOT_RECEIVED \-> RECEIVED \-> PENDING \-> REJECTED || ACCEPTED_ON_L2 \-> ACCEPTED_ON_L1
+|===
 
-== Contributing
 
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here]. 🎯 🎯
+== Transaction status
+
+=== NOT_RECEIVED
+
+Transaction is not yet known to the sequencer.
+
+=== RECEIVED
+
+Transaction was received by the sequencer. Transaction will now either execute successfully or be rejected.
+
+=== PENDING
+
+Transaction executed successfully and entered the pending block.
+
+=== REJECTED
+
+Transaction executed unsuccessfully and thus was skipped. Or the block may be rejected on L1, thus resulting a status of *REJECTED*.
+
+=== ACCEPTED_ON_L2
+
+Transaction passed validation and entered an actual created block on Starknet.
+
+=== ACCEPTED_ON_L1
+
+Transaction was accepted on-chain.
+
+== The pending block
+
+During the construction of the block, as it is accumulating new transactions, the block’s status is *PENDING*. While status is *PENDING*, new transactions are dynamically added to the block. Once the sequencer decides to *close* the block, it becomes *ACCEPTED_ON_L2* and its hash is computed.
+
+== Transaction receipt
+
+The transaction receipt contains basic transaction details (block identifiers and the index within the block), a summary of the execution resources used by the transaction, the events emitted, a list of messages sent to L1, and a consumed L1 message (in case the transaction invokes an L1 handler). The following is an example of a receipt:
+
+[source,python]
+----
+{
+  "execution_resources": {
+    "builtin_instance_counter": {
+      "pedersen_builtin": 0,
+      "range_check_builtin": 0,
+      "bitwise_builtin": 0,
+      "output_builtin": 0,
+      "ecdsa_builtin": 0,
+      "ec_op_builtin": 0
+    },
+    "n_steps": 178,
+    "n_memory_holes": 0
+  },
+  "block_number": 6807,
+  "transaction_index": 0,
+  "transaction_hash": "0x3f187b7522320f1c87271772fedd6ad119f62595e2d9208824367463df94a5d",
+  "status": "PENDING",
+  "block_hash": "0x23173d4e2d5c0ecc1376b8dbe345c028aa424048c67f68812a9a83873a2d87f",
+  "l2_to_l1_messages": [],
+  "events": [
+    {
+      "data": ["0", "4321"],
+      "from_address": "0x14acf3b7e92f97adee4d5359a7de3d673582f0ce03d33879cdbdbf03ec7fa5d",
+      "keys": [
+        "1744303484486821561902174603220722448499782664094942993128426674277214273437"
+      ]
+    }
+  ]
+}
+----
+
+
