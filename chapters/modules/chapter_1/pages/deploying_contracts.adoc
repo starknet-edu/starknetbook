@@ -5,51 +5,73 @@
 In this chapter, you will learn to compile, deploy and interact with a StarkNet contract written in Cairo.
 Follow the below steps in order to accomplish your goal!
 
-+++<strong>+++Step 1: Setting up account related environment variables +++</strong>+++
+== Setting up environment variables 
 
-Type the following commands on your terminal in order to set the account related environment variables. You can use the default wallet provided by OpenZeppelin for ease of use.
+The following commands must run every time you open a new terminal to interact with Starknet. Setting them saves you time when using the CLI within the same terminal session.
 
 [,Bash]
 ----
+# Use Starknet testnet
 export STARKNET_NETWORK=alpha-goerli
+# Set the default wallet implementation to be used by the CLI
 export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+# Set the path to the cairo 1 compiler binary. Adapt this path to fit your installation if needed
+export CAIRO_COMPILER_DIR=~/.cairo/target/release/
+# Compiler arguments
+export CAIRO_COMPILER_ARGS=--add-pythonic-hints
 ----
 
-+++<strong>+++Step 2:  Setting a new account for the tutorial +++</strong>+++
+== Setting up an account 
 
-You need to make sure your starknet CLI is set up with a proper account contract, and funds. For safety, let us create a new one just for this chapter.
+You need to set up your CLI with an account contract and fund it. 
+____
+Starknet accounts are smart contracts. As such, creating one involves sending a transaction, and takes a bit longer than creating an EOA on other networks.
+You can learn more in the https://docs.starknet.io/documentation/architecture_and_concepts/Account_Abstraction/introduction/[accounts] section of the documentation.
+____
 
+This process will involve three steps:
+
+* Generating your account address locally
+* Funding it
+* Deploying it
+
+The Starknet account declared through the CLI are stored on your machine in folder `~/.starknet_accounts/`.
 
 [,Bash]
 ----
-#Generic Syntax
-starknet new_account --account <name of the account>
-
-#Create your new account named "test_v11"
-starknet new_account --account test_v11
+# Creating a new account.
+starknet new_account --account account_name
 ----
 
-Once you have the account address, proceed with the below instructions. +
+Your terminal will return your account's address. 
+[,Bash]
+----
+Account address: 0x00d9d851f600d539a9f7811de4d9613a6b3c2634f8c0386a305c03216bd67559
+Public key: 0x0293d6625d860b9a37a0319d1e3c1eecc27685075cbeaae4ef29ed717d93c58b
+Move the appropriate amount of funds to the account, and then deploy the account
+by invoking the 'starknet deploy_account' command.
 
-* You should get your expected contract address +
-* Send 0.1 ETH to it +
-* Monitor the transfer transaction. Once it has passed "pending", proceed +
+NOTE: This is a modified version of the OpenZeppelin account contract. The signature is computed
+differently.
+----
 
-Deploy your account once you have funded it with 0.1 ETH. You can either use the 
-https://faucet.goerli.starknet.io[faucet] or bridge Goerli ETH from Ethereum to Starknet.
+Next step is to fund it.
 
-Account deployment command:
+* Use the https://faucet.goerli.starknet.io[faucet] to get some funds and send them to the account
+* Bridge funds using https://goerli.starkgate.starknet.io/[Starkgate]
+
+However you chose to do it, please make sure that the funding transaction reaches the "PENDING" status before moving on. You can look for it on https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]
 
 [,Bash]
 ----
-starknet deploy_account --account test_v11
+# Deploying your account
+starknet deploy_account --account account_name
 ----
 
 Your sample output should look something like this:
 
 [,Bash]
 ----
-(cairo_venv) satoshi@nakamoto-notebook .cairo % starknet deploy_account --account test_v11
 Sending the transaction with max_fee: 0.000568 ETH (568383605914463 WEI).
 Sent deploy account contract transaction.
 Contract address: 0x03f42fc2355be54197a8b270ff2cb8e2eb7902e777b3498f8ad58c6c147cce60
@@ -58,9 +80,9 @@ Transaction hash: 0x3d15e05389ecd1ff65555220be57f0ab43729877b20ca086048276917ed2
 
 Monitor the transaction until it passes the "pending" state.
 
-+++<strong>+++Step 3: Create, compile and deploy your contract+++</strong>+++
+== Create and compile a contract
 
-Before we get started, make sure that the below commands are working properly on your system:
+Before we get started, make sure that the below commands are working properly on your system. If they don't, please check the "Setting up your environment" section.
 
 [,Bash]
 ----
@@ -68,7 +90,7 @@ starknet --version
 starknet-compile  --version
 ----
 
-You can now create a folder of your choice(in any location) where you would like to practice your cairo skills 🎯. Inside the new folder, create a file name _hello_starknet.cairo_.
+You can now create a folder of your choice(in any location) where you would like to practice your cairo skills . Inside the new folder, create a file name `hello_starknet.cairo`.
 
 [,Bash]
 ----
@@ -101,70 +123,80 @@ mod HelloStarknet {
 }
 ----
 
+Customize the above code by adding a new type of event. Find a name that is unique (this is important).
+Add the following code:
+
+----
+    #[event]
+    fn My_Unique_Event_Name(from:ContractAddress, value:felt252) {}
+----
+
 Compile the above starknet contract using the following command:
 
 [,Bash]
 ----
-starknet-compile -- hello_starknet.cairo hello_starknet.json 
+starknet-compile hello_starknet.cairo hello_starknet.json 
 ----
 
-The above command should compile to produce a hello_starknet.json in the same folder, however if the above command doesn't work, then here is an alternate approach to creating & compiling your cairo contracts.
+The above command should compile to produce a `hello_starknet.json` file  in the same folder.
 
-+++<strong>+++Alternate Option+++</strong>+++
+== Declare a contract class 
 
-Instead of creating a new folder, work within the same .cairo/ folder that you had created while installing the cairo lang package. We will use cargo run to run the starknet-compile if it doesn't work out of the box on some systems.
+On Starknet, the deployment process is in two steps:
+
+* Declaring the class of your contract, or sending your contract's code to the network
+* Deploying a contract, or creating an instance of the code you previously declared
+
+Let's start with declaring the above code.
+[,Bash]
+----
+starknet declare --contract hello_starknet.json --account account_name
+----
+____
+The above command may fail if you are using code that has already been declared by someone else! Please make sure to add custom code to your contract to create a new contract class.
+____
+
+You will see something like:
 
 [,Bash]
 ----
-#cd into your .cairo folder
-cd ~/.cairo
-
-#Create the hello_starknet.cairo file in your .cairo folder and compile it
-cargo run --bin starknet-compile -- hello_starknet.cairo hello_starknet.json
-
+Sending the transaction with max_fee: 0.000132 ETH (131904173791637 WEI).
+Declare transaction was sent.
+Contract class hash: 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d5924f
+Transaction hash: 0x334f16d9da30913c4a30194057793379079f35efa6bf5753bc6e724a591e9f0
 ----
+The transaction hash allows you to track when the network will have received your contract's code. Once this transaction has moved to "PENDING", you can deploy an instance of your contract.
 
-Now that you have your account ready from Step 3, let’s declare your compiled contract and deploy it using the new account.
-
-Before declaring our contract, we need to set 2 environment variables related to the compiler, in order to avoid errors.
-
-[,Bash]
-----
-export CAIRO_COMPILER_DIR=<directory where your starknet-sierra-compile is present>
-
-#If you are working inside the .cairo folder, you canset the cairo_compiler_dir as follows:
-export CAIRO_COMPILER_DIR=target/release
-
-export CAIRO_COMPILER_ARGS=--add-pythonic-hints
-----
-
-Once both the above environment variables are set, you can declare the contract as follows:
-
-[,Bash]
-----
-starknet declare --contract hello_starknet.json --account test_v11
-----
-
-For example, a class hash that was deployed a while ago can be found on StarkScan https://testnet.starkscan.co/class/0x03ae6bb224f12a8818c3ad59cc248968e8ee3a3081ff805610141695381a28f7[here].
+== Deploy a contract
 
 Using the above generated class hash, deploy the contract:
 
 [,Bash]
 ----
-starknet deploy --class_hash 0x03ae6bb224f12a8818c3ad59cc248968e8ee3a3081ff805610141695381a28f7 --account test_v11
+starknet deploy --class_hash 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d5924f --account account_name
 ----
 
 ____
-NOTE: P.S: If you run into any fee related issues, please add the flag  --max_fee 100000000000000000 to your CLI commands.
+If you run into any fee related issues, please add the flag  `--max_fee 100000000000000000` to your CLI commands to set an arbitrary high gas limit for your deploy transaction.
 ____
 
-Monitor the deploy transaction. Once it has passed "pending", proceed.
+You will see something like:
 
-Wohooo! If all goes well, you have just deployed your first ever Cairo 1.0 contract on the StarkNet testnet! Congratulations.
+[,Bash]
+----
+Sending the transaction with max_fee: 0.000197 ETH (197273405375932 WEI).
+Invoke transaction for contract deployment was sent.
+Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d
+Transaction hash: 0x7895267b3e967e1c9c2f7da145e323bed60dfdd1b8ecc8efd243c9d587d579a
+----
 
-+++<strong>+++Step 4: Interact with your contract+++</strong>+++
+Monitor the deploy transaction. Once it has passed "pending", your contract has been succesfully deployed! 
 
-If you quickly browse through the above contract(hello_starknet.cairo), you can see, the contract has a simple function: say_hello which we are going to learn to invoke in this step.
+Wohooo! You have just deployed your first Cairo 1.0 contract on StarkNet! Congratulations.
+
+== Interact with your contract
+
+If you quickly browse through the above contract(hello_starknet.cairo), you can see the contract has a simple function: say_hello which we are going to learn to trigger.
 
 [,Bash]
 ----
@@ -181,26 +213,18 @@ The syntax to invoke a function in your contract is:
 
 [,Bash]
 ----
-starknet invoke --function <name of the function> --address <address of the deployed contract> --max_fee 100000000000000000 --account <account_name>
+starknet invoke --function <name of the function> --address <address of the deployed contract> --account <account_name>
 
-#Invoking our say_hello function
-starknet invoke --function say_hello --address 0x00e0309ca73c5097533ba200e08426b7efb3ee6b79ab6956bd4bb684d3385556 --input 152 --max_fee 100000000000000000  --account test_v11
+# Invoking our say_hello function
+starknet invoke --function say_hello --address 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d --input 152  --account account_name
 ----
 
-Monitor the transaction. Once it has been accepted on L2, the first acceptance is indicated and once it has been accepted on L1, the tx has been added to Ethereum.
+You will see something like:
 
-
-+++<strong>+++Step 5: Explore your transaction on StarkScan+++</strong>+++
-
-Once your tx has been accepted on L2, you will be able to explore the events emitted and other details of your transaction on StarkNet block explorers like StarkScan.
-
-https://testnet.starkscan.co/event/0x01093a8f548de7e7353f7b74ee85d9724a8c2874548dd57d89acc56dd750c8be_0[Here] is an example of the tx that I just invoked using the above command:
-
-image::tx_invoke.png[Invoking a transaction]
-
-If you switch to the events tab(example data in the image above), you should be able to see that the Event Data emitted is the caller and message(Index 0 and 1 respectively) as per the contract code. The caller is the address of the account that you created to deploy the contract and the message is the input that you have sent while invoking the _say_hello_ function.
-
-== Contributing
-
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
-🎯
+[,Bash]
+----
+Sending the transaction with max_fee: 0.000080 ETH (79590795788372 WEI).
+Invoke transaction was sent.
+Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d
+Transaction hash: 0xbfb3ec183b4ee58db67113cf8832c31e78fe8000f091cc598d5aa9ca6a62af
+----

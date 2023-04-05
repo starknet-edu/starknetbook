@@ -156,7 +156,3 @@ Your output should look something like this(not necessarily inside the cairo_ven
 
 Woohoo! Now we have everything we need to compile, deploy and interact with our first Cairo contract!
 
-== Contributing
-
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
-🎯
