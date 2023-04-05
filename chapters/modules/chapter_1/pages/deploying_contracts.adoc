@@ -29,8 +29,7 @@ starknet new_account --account <name of the account>
 starknet new_account --account test_v11
 ----
 
-Once you have run the above command, monitor the transaction and wait until it has crossed the "Pending" state.
-Then proceed with the below instructions. +
+Once you have the account address, proceed with the below instructions. +
 
 * You should get your expected contract address +
 * Send 0.1 ETH to it +
@@ -50,7 +49,7 @@ Your sample output should look something like this:
 
 [,Bash]
 ----
-(cairo_venv) gyan@Gnanas-MacBook-Pro .cairo % starknet deploy_account --account test_v11
+(cairo_venv) satoshi@nakamoto-notebook .cairo % starknet deploy_account --account test_v11
 Sending the transaction with max_fee: 0.000568 ETH (568383605914463 WEI).
 Sent deploy account contract transaction.
 Contract address: 0x03f42fc2355be54197a8b270ff2cb8e2eb7902e777b3498f8ad58c6c147cce60
@@ -69,7 +68,7 @@ starknet --version
 starknet-compile  --version
 ----
 
-You can now create a folder of your choice where you would like to practice your cairo skills 🎯. Inside the new folder, create a file name _hello_starknet.cairo_.
+You can now create a folder of your choice(in any location) where you would like to practice your cairo skills 🎯. Inside the new folder, create a file name _hello_starknet.cairo_.
 
 [,Bash]
 ----
@@ -83,30 +82,30 @@ touch hello_starknet.cairo
 
 Copy paste the following piece of code into your hello_starknet.cairo file:
 
-[,Bash]
+[,Rust]
 ----
 #[contract]
-    mod HelloStarknet {
-        use starknet::get_caller_address;
-        use starknet::ContractAddress;
+mod HelloStarknet {
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
 
-        #[event]
-        fn Hello(from:ContractAddress, value:felt252) {}
+    #[event]
+    fn Hello(from:ContractAddress, value:felt252) {}
 
-        #[external]
-        fn Say_Hello(message:felt252) {
-            letcaller=get_caller_address();
-            Hello(caller, message);
-        }
-
+    #[external]
+    fn say_hello(message:felt252) {
+        let caller=get_caller_address();
+        Hello(caller, message);
     }
+
+}
 ----
 
 Compile the above starknet contract using the following command:
 
 [,Bash]
 ----
-starknet-compile --hello_starknet.cairo hello_starknet.json --replace-ids 
+starknet-compile -- hello_starknet.cairo hello_starknet.json 
 ----
 
 The above command should compile to produce a hello_starknet.json in the same folder, however if the above command doesn't work, then here is an alternate approach to creating & compiling your cairo contracts.
@@ -121,29 +120,30 @@ Instead of creating a new folder, work within the same .cairo/ folder that you h
 cd ~/.cairo
 
 #Create the hello_starknet.cairo file in your .cairo folder and compile it
-cargo run --bin starknet-compile -- hello_starknet.cairo hello_starknet.json --replace-ids
+cargo run --bin starknet-compile -- hello_starknet.cairo hello_starknet.json
 
 ----
 
 Now that you have your account ready from Step 3, let’s declare your compiled contract and deploy it using the new account.
 
+Before declaring our contract, we need to set 2 environment variables related to the compiler, in order to avoid errors.
+
+[,Bash]
+----
+export CAIRO_COMPILER_DIR=<directory where your starknet-sierra-compile is present>
+
+#If you are working inside the .cairo folder, you canset the cairo_compiler_dir as follows:
+export CAIRO_COMPILER_DIR=target/release
+
+export CAIRO_COMPILER_ARGS=--add-pythonic-hints
+----
+
+Once both the above environment variables are set, you can declare the contract as follows:
+
 [,Bash]
 ----
 starknet declare --contract hello_starknet.json --account test_v11
 ----
-
-____
-NOTE: If the declare command throws the following error: Error: OSError: [Errno 8] Exec format error: '/Users/gyan/cairo_venv/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile' - then, you need to copy the starknet-sierra-compile from the .cairo folder to add it to the Python Libs using the following command:
-[,Bash]
-----
-#Assuming that you are within the .cairo/ folder
-cp target/release/starknet-sierra-compile ~/cairo_venv/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile
-----
-____
-
-____
-NOTE: Once you have replaced the library, you can run the starknet declare command again and you should get a class hash as the output.
-____
 
 For example, a class hash that was deployed a while ago can be found on StarkScan https://testnet.starkscan.co/class/0x03ae6bb224f12a8818c3ad59cc248968e8ee3a3081ff805610141695381a28f7[here].
 
@@ -164,17 +164,17 @@ Wohooo! If all goes well, you have just deployed your first ever Cairo 1.0 contr
 
 +++<strong>+++Step 4: Interact with your contract+++</strong>+++
 
-If you quickly browse through the above contract(hello_starknet.cairo), you can see, the contract has a simple function: Say_Hello which we are going to learn to invoke in this step.
+If you quickly browse through the above contract(hello_starknet.cairo), you can see, the contract has a simple function: say_hello which we are going to learn to invoke in this step.
 
 [,Bash]
 ----
 
 #Function that we will be invoking
 #[external]
-        fn Say_Hello(message:felt252) {
-            letcaller=get_caller_address();
-            Hello(caller, message);
-        }
+fn say_hello(message:felt252) {
+    let caller=get_caller_address();
+    Hello(caller, message);
+}
 ----
 
 The syntax to invoke a function in your contract is:
@@ -183,8 +183,8 @@ The syntax to invoke a function in your contract is:
 ----
 starknet invoke --function <name of the function> --address <address of the deployed contract> --max_fee 100000000000000000 --account <account_name>
 
-#Invoking our Say_Hello function
-starknet invoke --function Say_Hello --address 0x00e0309ca73c5097533ba200e08426b7efb3ee6b79ab6956bd4bb684d3385556 --input 152 --max_fee 100000000000000000  --account test_v11
+#Invoking our say_hello function
+starknet invoke --function say_hello --address 0x00e0309ca73c5097533ba200e08426b7efb3ee6b79ab6956bd4bb684d3385556 --input 152 --max_fee 100000000000000000  --account test_v11
 ----
 
 Monitor the transaction. Once it has been accepted on L2, the first acceptance is indicated and once it has been accepted on L1, the tx has been added to Ethereum.
@@ -198,7 +198,7 @@ https://testnet.starkscan.co/event/0x01093a8f548de7e7353f7b74ee85d9724a8c2874548
 
 image::tx_invoke.png[Invoking a transaction]
 
-If you switch to the events tab(example data in the image above), you should be able to see that the Event Data emitted is the caller and message(Index 0 and 1 respectively) as per the contract code. The caller is the address of the account that you created to deploy the contract and the message is the input that you have sent while invoking the _Say_Hello_ function.
+If you switch to the events tab(example data in the image above), you should be able to see that the Event Data emitted is the caller and message(Index 0 and 1 respectively) as per the contract code. The caller is the address of the account that you created to deploy the contract and the message is the input that you have sent while invoking the _say_hello_ function.
 
 == Contributing
 

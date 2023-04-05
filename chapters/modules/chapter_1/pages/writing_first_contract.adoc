@@ -1,10 +1,10 @@
 [id="writing_contracts"]
 
-= Writing your first StarkNet contract
+= Writing your first Starknet contract
 
-In this chapter, you will learn to write your first StarkNet contract. We know you are super excited and so are we! This contract is a simple read/write contract where you will learn to read and write from storage using cairo. Our contract will be called _SimpleStorage_.
+In this chapter, you will learn to write your first Starknet contract. We know you are super excited and so are we! This contract is a simple read/write contract where you will learn to read and write from storage using cairo. Our contract will be called _SimpleStorage_.
 
-Follow the below steps to learn to write your first StarkNet contract.
+Follow the below steps to learn to write your first Starknet contract.
 
 +++<strong>+++Step 1: Contract [#macro] and modules +++</strong>+++
 
@@ -17,7 +17,7 @@ touch simple_storage.cairo
 
 You can open this empty file in your editor of choice(ex: VS Code) and start writing the below lines of code - your first cairo contract.
 
-A StarkNet contract will always start with the [#contract] macro to indicate that this is a StarkNet contract. Remember that you can also create other Cairo files that are *NOT* contracts because Cairo is a programming language by itself.
+A Starknet contract will always start with the [#contract] macro to indicate that this is a Starknet contract. Remember that you can also create other Cairo files that are *NOT* contracts because Cairo is a programming language by itself.
 
 All the Cairo contracts are defined by the keyword _mod_ which implies that it's a module containing some logical piece of code.
 You can write first below lines of contract in the _simple_storage.cairo_ file.
@@ -55,7 +55,7 @@ Yes! You read it right. Events are now supported in Cairo. You can define an eve
 ----
 //The keyword to define a function is "fn"
  #[event]
-   fn BalanceIncreased(balance: felt252) {}
+ fn BalanceIncreased(balance: felt252) {}
 ----
 
 +++<strong>+++Step 4: Writing your first function +++</strong>+++
@@ -69,11 +69,11 @@ Last but not the least, we log/emit the event with the updated balance using the
 [,Bash]
 ----
   #[external]
-   fn increase_balance(amount: felt252) {
+  fn increase_balance(amount: felt252) {
       let new_balance = balance::read() + amount;
       balance::write(new_balance);
       BalanceIncreased(new_balance);
-   }
+  }
 ----
 
 You might have noticed a macro called _external_ that is added to this function. This means that the function called be called externally or outside of the contract. 
@@ -98,9 +98,9 @@ This function can be a _view_ function because it does not modify any variables.
 [,Bash]
 ----
   #[view]
-   fn get_balance() -> felt252 {
+  fn get_balance() -> felt252 {
        balance::read()
-   }
+  }
 ----
 
 +++<strong>+++Step 6: Putting it all together +++</strong>+++

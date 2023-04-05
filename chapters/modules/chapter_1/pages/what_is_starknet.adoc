@@ -1,6 +1,6 @@
 [id="whatIsStarknet"]
 
-= What is StarkNet?
+= What is Starknet?
 
 == Introduction
 
