@@ -140,7 +140,7 @@ Congratulations on successfully writing and deploying your first Cairo contract!
 
 Once you have deployed the above contract, you would need to invoke the contract and also "call" the _get_balance_ function. The _call_ syntax has not been mentioned in the previous chapter but it's fairly easy to use and that's your +++<strong>+++challenge+++<strong>+++!
 
-If you have successfully been able to call the function and display the balance, take a screenshot and post it on Twitter, tagging us at @StarkNet.
+If you have successfully been able to call the function and display the balance, take a screenshot and post it on Twitter, tagging us at @Starknet.
 
 == Contributing
 
