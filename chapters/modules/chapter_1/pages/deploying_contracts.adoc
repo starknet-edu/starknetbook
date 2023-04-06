@@ -2,10 +2,15 @@
 
 = Deploying Starknet contracts
 
+<<<<<<< HEAD
 In this chapter, you will learn to compile, deploy and interact with a Starknet contract written in Cairo.
+=======
+In this chapter, you will learn to compile, deploy and interact with a Starknet contract written in
+Cairo.
+>>>>>>> 80d6192 (Caps and syntax highlighting consistency)
 Follow the below steps in order to accomplish your goal!
 
-== Setting up environment variables 
+== Setting up environment variables
 
 The following commands must run every time you open a new terminal to interact with Starknet. Setting them saves you time when using the CLI within the same terminal session.
 
@@ -21,9 +26,9 @@ export CAIRO_COMPILER_DIR=~/.cairo/target/release/
 export CAIRO_COMPILER_ARGS=--add-pythonic-hints
 ----
 
-== Setting up an account 
+== Setting up an account
 
-You need to set up your CLI with an account contract and fund it. 
+You need to set up your CLI with an account contract and fund it.
 ____
 Starknet accounts are smart contracts. As such, creating one involves sending a transaction, and takes a bit longer than creating an EOA on other networks.
 You can learn more in the https://docs.starknet.io/documentation/architecture_and_concepts/Account_Abstraction/introduction/[accounts] section of the documentation.
@@ -43,7 +48,7 @@ The Starknet account declared through the CLI are stored on your machine in fold
 starknet new_account --account account_name
 ----
 
-Your terminal will return your account's address. 
+Your terminal will return your account's address.
 [,Bash]
 ----
 Account address: 0x00d9d851f600d539a9f7811de4d9613a6b3c2634f8c0386a305c03216bd67559
@@ -78,11 +83,13 @@ Contract address: 0x03f42fc2355be54197a8b270ff2cb8e2eb7902e777b3498f8ad58c6c147c
 Transaction hash: 0x3d15e05389ecd1ff65555220be57f0ab43729877b20ca086048276917ed2838
 ----
 
-Monitor the transaction until it passes the "pending" state.
+Monitor the transaction until it passes the "PENDING" state.
 
 == Create and compile a contract
 
-Before we get started, make sure that the below commands are working properly on your system. If they don't, please check the "Setting up your environment" section.
+Before we get started, make sure that the below commands are working properly on your system. If
+they don't, please check the xref:chapter_1:environment_setup.adoc[Setting up your environment]
+section.
 
 [,Bash]
 ----
@@ -90,7 +97,8 @@ starknet --version
 starknet-compile  --version
 ----
 
-You can now create a folder of your choice(in any location) where you would like to practice your cairo skills . Inside the new folder, create a file name `hello_starknet.cairo`.
+You can now create a folder of your choice (in any location) where you would like to practice
+your Cairo skills . Inside the new folder, create a file name `hello_starknet.cairo`.
 
 [,Bash]
 ----
@@ -102,7 +110,7 @@ mkdir cairo_practice && cd cairo_practice
 touch hello_starknet.cairo
 ----
 
-Copy paste the following piece of code into your hello_starknet.cairo file:
+Copy and paste the following piece of code into your `hello_starknet.cairo` file:
 
 [,Rust]
 ----
@@ -131,16 +139,16 @@ Add the following code:
     fn My_Unique_Event_Name(from:ContractAddress, value:felt252) {}
 ----
 
-Compile the above starknet contract using the following command:
+Compile the above Starknet contract using the following command:
 
 [,Bash]
 ----
-starknet-compile hello_starknet.cairo hello_starknet.json 
+starknet-compile hello_starknet.cairo hello_starknet.json
 ----
 
 The above command should compile to produce a `hello_starknet.json` file  in the same folder.
 
-== Declare a contract class 
+== Declare a contract class
 
 On Starknet, the deployment process is in two steps:
 
@@ -190,13 +198,19 @@ Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574
 Transaction hash: 0x7895267b3e967e1c9c2f7da145e323bed60dfdd1b8ecc8efd243c9d587d579a
 ----
 
-Monitor the deploy transaction. Once it has passed "pending", your contract has been succesfully deployed! 
+Monitor the deploy transaction. Once it has passed "PENDING", your contract has been successfully
+deployed!
 
+<<<<<<< HEAD
 Wohooo! You have just deployed your first Cairo 1.0 contract on Starknet! Congratulations.
+=======
+Woohoo! You have just deployed your first Cairo 1.0 contract on StarkNet! Congratulations.
+>>>>>>> 80d6192 (Caps and syntax highlighting consistency)
 
 == Interact with your contract
 
-If you quickly browse through the above contract(hello_starknet.cairo), you can see the contract has a simple function: say_hello which we are going to learn to trigger.
+If you quickly browse through the above contract (`hello_starknet.cairo`), you can see the
+contract has a simple function: `say_hello` which we are going to learn to trigger.
 
 [,Bash]
 ----
