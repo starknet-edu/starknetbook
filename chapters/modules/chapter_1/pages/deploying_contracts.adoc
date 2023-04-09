@@ -1,5 +1,3 @@
-[id="deploying_contracts"]
-
 = Deploying Starknet contracts
 
 <<<<<<< HEAD
@@ -14,7 +12,7 @@ Follow the below steps in order to accomplish your goal!
 
 The following commands must run every time you open a new terminal to interact with Starknet. Setting them saves you time when using the CLI within the same terminal session.
 
-[,Bash]
+[source, bash]
 ----
 # Use Starknet testnet
 export STARKNET_NETWORK=alpha-goerli
@@ -29,10 +27,12 @@ export CAIRO_COMPILER_ARGS=--add-pythonic-hints
 == Setting up an account
 
 You need to set up your CLI with an account contract and fund it.
-____
+
+[NOTE]
+====
 Starknet accounts are smart contracts. As such, creating one involves sending a transaction, and takes a bit longer than creating an EOA on other networks.
 You can learn more in the https://docs.starknet.io/documentation/architecture_and_concepts/Account_Abstraction/introduction/[accounts] section of the documentation.
-____
+====
 
 This process will involve three steps:
 
@@ -42,14 +42,15 @@ This process will involve three steps:
 
 The Starknet account declared through the CLI are stored on your machine in folder `~/.starknet_accounts/`.
 
-[,Bash]
+[source, bash]
 ----
 # Creating a new account.
 starknet new_account --account account_name
 ----
 
 Your terminal will return your account's address.
-[,Bash]
+
+[source, bash]
 ----
 Account address: 0x00d9d851f600d539a9f7811de4d9613a6b3c2634f8c0386a305c03216bd67559
 Public key: 0x0293d6625d860b9a37a0319d1e3c1eecc27685075cbeaae4ef29ed717d93c58b
@@ -67,7 +68,7 @@ Next step is to fund it.
 
 However you chose to do it, please make sure that the funding transaction reaches the "PENDING" status before moving on. You can look for it on https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]
 
-[,Bash]
+[source, bash]
 ----
 # Deploying your account
 starknet deploy_account --account account_name
@@ -75,7 +76,7 @@ starknet deploy_account --account account_name
 
 Your sample output should look something like this:
 
-[,Bash]
+[source, bash]
 ----
 Sending the transaction with max_fee: 0.000568 ETH (568383605914463 WEI).
 Sent deploy account contract transaction.
@@ -91,7 +92,7 @@ Before we get started, make sure that the below commands are working properly on
 they don't, please check the xref:chapter_1:environment_setup.adoc[Setting up your environment]
 section.
 
-[,Bash]
+[source, bash]
 ----
 starknet --version
 starknet-compile  --version
@@ -100,7 +101,7 @@ starknet-compile  --version
 You can now create a folder of your choice (in any location) where you would like to practice
 your Cairo skills . Inside the new folder, create a file name `hello_starknet.cairo`.
 
-[,Bash]
+[source, bash]
 ----
 #Create a new folder for practicing your cairo skills
 cd ~/
@@ -112,7 +113,7 @@ touch hello_starknet.cairo
 
 Copy and paste the following piece of code into your `hello_starknet.cairo` file:
 
-[,Rust]
+[source, rust]
 ----
 #[contract]
 mod HelloStarknet {
@@ -127,13 +128,13 @@ mod HelloStarknet {
         let caller=get_caller_address();
         Hello(caller, message);
     }
-
 }
 ----
 
 Customize the above code by adding a new type of event. Find a name that is unique (this is important).
 Add the following code:
 
+[source, rust]
 ----
     #[event]
     fn My_Unique_Event_Name(from:ContractAddress, value:felt252) {}
@@ -141,7 +142,7 @@ Add the following code:
 
 Compile the above Starknet contract using the following command:
 
-[,Bash]
+[source, bash]
 ----
 starknet-compile hello_starknet.cairo hello_starknet.json
 ----
@@ -156,17 +157,20 @@ On Starknet, the deployment process is in two steps:
 * Deploying a contract, or creating an instance of the code you previously declared
 
 Let's start with declaring the above code.
-[,Bash]
+
+[source, bash]
 ----
 starknet declare --contract hello_starknet.json --account account_name
 ----
-____
+
+[NOTE]
+====
 The above command may fail if you are using code that has already been declared by someone else! Please make sure to add custom code to your contract to create a new contract class.
-____
+====
 
 You will see something like:
 
-[,Bash]
+[source, bash]
 ----
 Sending the transaction with max_fee: 0.000132 ETH (131904173791637 WEI).
 Declare transaction was sent.
@@ -179,18 +183,19 @@ The transaction hash allows you to track when the network will have received you
 
 Using the above generated class hash, deploy the contract:
 
-[,Bash]
+[source, bash]
 ----
 starknet deploy --class_hash 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d5924f --account account_name
 ----
 
-____
+[NOTE]
+====
 If you run into any fee related issues, please add the flag  `--max_fee 100000000000000000` to your CLI commands to set an arbitrary high gas limit for your deploy transaction.
-____
+====
 
 You will see something like:
 
-[,Bash]
+[source, bash]
 ----
 Sending the transaction with max_fee: 0.000197 ETH (197273405375932 WEI).
 Invoke transaction for contract deployment was sent.
@@ -212,9 +217,8 @@ Woohoo! You have just deployed your first Cairo 1.0 contract on StarkNet! Congra
 If you quickly browse through the above contract (`hello_starknet.cairo`), you can see the
 contract has a simple function: `say_hello` which we are going to learn to trigger.
 
-[,Bash]
+[source, rust]
 ----
-
 #Function that we will be invoking
 #[external]
 fn say_hello(message:felt252) {
@@ -225,7 +229,7 @@ fn say_hello(message:felt252) {
 
 The syntax to invoke a function in your contract is:
 
-[,Bash]
+[source, bash]
 ----
 starknet invoke --function <name of the function> --address <address of the deployed contract> --account <account_name>
 
@@ -235,7 +239,7 @@ starknet invoke --function say_hello --address 0x03a5cac216edec20350e1fd8369536f
 
 You will see something like:
 
-[,Bash]
+[source, bash]
 ----
 Sending the transaction with max_fee: 0.000080 ETH (79590795788372 WEI).
 Invoke transaction was sent.

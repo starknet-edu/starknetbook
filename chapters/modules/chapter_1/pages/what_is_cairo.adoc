@@ -1,12 +1,10 @@
-[id="whatIsCairo"]
-
 = What is Cairo?
 
-Cairo is a Turing complete programming language for creating STARK-provable programs for general computation. Cairo is the native smart contract language for Starknet, a permissionless decentralized Validity-Rollup.
+Cairo is a Turing complete programming language for creating STARK-provable programs for general computation. Cairo is the native smart contract language for Starknet, a permissionless Validity-Rollup.
 
 Cairo 1.0 is the upgraded Rust-inspired version of Cairo, allowing developers to write Starknet smart contracts in a safe and convenient manner.
 
 == Contributing
 
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
+🎯 **STARKer:** This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
 🎯
