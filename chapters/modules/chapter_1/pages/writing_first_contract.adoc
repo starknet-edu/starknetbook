@@ -1,5 +1,3 @@
-[id="writing_contracts"]
-
 = Writing your first Starknet contract
 
 In this chapter, you will learn to write your first Starknet contract. We know you are super
@@ -15,7 +13,7 @@ Follow the below steps to learn to write your first Starknet contract.
 You can create a new folder to write this new contract or create it inside your `.cairo/` folder.
 Let us create a new file called `simple_storage.cairo`.
 
-[,Bash]
+[source, bash]
 ----
 touch simple_storage.cairo
 ----
@@ -29,7 +27,7 @@ All the Cairo contracts are defined by the keyword `mod` which implies that it's
 You can write first below lines of contract in the `simple_storage.cairo` file.
 
 
-[,Bash]
+[source, rust]
 ----
 #[contract]
 mod SimpleStorage {}
@@ -43,27 +41,27 @@ This struct will have all the variables that you would like to have in contract/
 Create a Storage struct within your `SimpleStorage` contract as shown below.
 
 
-[,Bash]
+[source, rust]
 ----
 struct Storage {
-       balance: felt252
+  balance: felt252
 }
 ----
 
-____
-
-NOTE: The storage struct will always be named `Storage`.
-____
+[NOTE]
+====
+The storage struct will always be named `Storage`.
+====
 
 == Step 3: Defining events
 
 Yes! You read it right. Events are now supported in Cairo. You can define an event just like a function with the name of the event, in this case it is `BalanceIncreased` and the values you would like to emit within the bracket as arguments.
 
-[,Bash]
+[source, rust]
 ----
-//The keyword to define a function is "fn"
- #[event]
- fn BalanceIncreased(balance: felt252) {}
+  //The keyword to define a function is "fn"
+  #[event]
+  fn BalanceIncreased(balance: felt252) {}
 ----
 
 == Step 4: Writing your first function
@@ -74,7 +72,7 @@ We then write the new balance to the existing storage variable and update the va
 
 Last but not the least, we log/emit the event with the updated balance using the name of the event function.
 
-[,Bash]
+[source, rust]
 ----
   #[external]
   fn increase_balance(amount: felt252) {
@@ -87,11 +85,12 @@ Last but not the least, we log/emit the event with the updated balance using the
 You might have noticed a macro called `external` that is added to this function. This means that the function called be called externally or outside of the contract.
 For functions that are modifying a storage variable, you would need to add the external macro.
 
-There are other types of macros as well that you can add to a function: +
-* event +
-* external +
-* view +
-* constructor +
+There are other types of macros as well that you can add to a function:
+
+* event
+* external
+* view
+* constructor
 
 Let us see another function in the next step and the macro used.
 
@@ -103,7 +102,7 @@ In the below function, we are reading the current balance of the storage variabl
 
 This function can be a `view` function because it does not modify any variables.
 
-[,Bash]
+[source, rust]
 ----
   #[view]
   fn get_balance() -> felt252 {
@@ -115,7 +114,7 @@ This function can be a `view` function because it does not modify any variables.
 
 Your final contract should look something like this.
 
-[,Bash]
+[source, rust]
 ----
 #[contract]
 mod SimpleStorage {
@@ -140,8 +139,7 @@ mod SimpleStorage {
 }
 ----
 
-You can now follow the steps given in the xref:deploying_contracts.adoc[Deploying smart contracts] section to compile and
-deploy the above contract.
+You can now follow the steps given in the xref:deploying_contracts.adoc[Deploying smart contracts] section to compile anddeploy the above contract.
 
 Congratulations on successfully writing and deploying your first Cairo contract!
 
@@ -149,7 +147,7 @@ Congratulations on successfully writing and deploying your first Cairo contract!
 
 Once you have deployed the above contract, you would need to invoke the contract and also `call`
 the `get_balance` function. The _call_ syntax has not been mentioned in the previous section but
-it's fairly easy to use and that's your +++<strong>+++challenge+++<strong>+++!
+it's fairly easy to use and that's your **challenge**!
 
 If you have successfully been able to call the function and display the balance, take a
 screenshot and post it on Twitter, tagging us at link:https://twitter.com/Starknet[@StarkNet].
