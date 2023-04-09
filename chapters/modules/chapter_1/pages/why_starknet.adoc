@@ -1,15 +1,14 @@
-[id="whyStarknet"]
-
 = Why Starknet?
 
 == The Problem
+
 Ethereum scaling has been a major discussion topic since the network was launched. Commonly known as the blockchain trilemma, most applications have to choose 2/3 features between scalability, security and decentralization and compromise on any one of them.
 
-Several NFT launches have seen the gas fee spike up to 1000s of dollars congesting the network, thereby casting doubts on Ethereum's ability to scale.
+Several NFT launches have seen gas fee spike up to 1000s of dollars congesting the network, thereby casting doubts on Ethereum's ability to scale.
 
 == The Solution
 
-Layer 2 solutions can offer scalability to Ethereum by helping off-load a lot of computational work done at the Ethereum layer to another layer. Roll up solutions have the potantial to scale Ethereum in a way that billions of users across the globe can use it seamlessly.
+Layer 2 solutions can offer scalability to Ethereum by helping off-load a lot of computational work done at the Ethereum layer to another layer. Roll up solutions have the potential to scale Ethereum in a way that billions of users across the globe can use it seamlessly.
 
 Amongst the existing rollup solutions, it is well known that zk-Rollups are going to be the future roadmap of Ethereum. Ethereum is the only truly decentralised blockchain, and with that comes the sort of open source innovation and soul that is so unique to the Ethereum community. We bet on decentralisation, innovation, and general purpose logic and composability.
 
@@ -17,5 +16,5 @@ Starknet, built on the concept of Validity Proofs(ZK Proofs under the hood) atte
 
 == Contributing
 
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
+🎯 **STARKer:** This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/antora-front/CONTRIBUTING.adoc[here].
 🎯
