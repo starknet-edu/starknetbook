@@ -139,7 +139,7 @@ mod SimpleStorage {
 }
 ----
 
-You can now follow the steps given in the xref:deploying_contracts.adoc[Deploying smart contracts] section to compile anddeploy the above contract.
+You can now follow the steps given in the xref:deploying_contracts.adoc[Deploying smart contracts] section to compile and deploy the above contract.
 
 Congratulations on successfully writing and deploying your first Cairo contract!
 
