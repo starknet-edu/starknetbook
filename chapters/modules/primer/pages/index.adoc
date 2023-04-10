@@ -11,7 +11,7 @@ https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/p
 
 The topics covered in this primer have been dissected in hundreds of ways by thousands of people, so wherever possible I will be linking to those resources.
 
-_Standing on the shoulders of giants blah blah blah lets get to the good stuff_
+_Standing on the shoulders of giants blah blah blah let's get to the good stuff_
 
 == What are we solving for?
 
@@ -89,7 +89,7 @@ So what did we give up for this fault tolerance?
 Banks Perspective:
 
 * Network overhead impacts performance
-* Redundancy and replication impacts performance
+* Redundancy and replication impact performance
 * Infrastructure maintenance (stem:[])
 
 Alice's Perspective:
@@ -201,7 +201,7 @@ cd ethereum/block_verification/go && go mod tidy
 go run *.go
 ----
 
-Ethereum then propagates its state by verifying transactions are well-formed and applying then to accounts.
+Ethereum then propagates its state by verifying transactions are well-formed and applying them to accounts.
 Alice has a public/private key pair to manage her "externally owned account" and can sign transactions that involve her balance or involve interacting with other contracts in the state.
 
 In addition to EOAs Ethereum has "contract accounts" which are controlled by the contract code associated with them.
