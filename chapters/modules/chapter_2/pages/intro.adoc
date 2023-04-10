@@ -80,11 +80,11 @@ Although the ecosystem tools are still maturing, it is essential to transcend ex
 
 === Functions
 
-In Cairo, functions are defined using the func keyword, followed by the function name, and then a list of input arguments and output values. Functions can have local variables, perform calculations, and call other functions. Here's a general structure for defining a function in Cairo:
+In Cairo, functions are defined using the `fn` keyword, followed by the function name, and then a list of input arguments and output values. Functions can have variables, perform calculations, and call other functions. Here's a general structure for defining a function in Cairo:
 
 [source,cairo]
 ----
-func function_name(arg1: Type1, arg2: Type2, ...) -> (output1: Type3, output2: Type4, ...):
+fn function_name(arg1: type1, arg2: type2, ...) -> (output_type3, output2: type4, ...):
     # Declare local variables if needed
     local local_var1: Type5 = some_value
     local local_var2: Type6 = another_value
