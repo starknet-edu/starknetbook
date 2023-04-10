@@ -1,6 +1,6 @@
 = Why Cairo?
 
-Starknet's scalability tool, ZK Roll-ups, enable a new paradigm called Provable Computation. In this paradigm, we allow programs to prove they have been executed without having to be re-run. In order to write such provable programs, we need a programming language that can be effective and be easily learnt by developers.
+Starknet's scalability tool, ZK Roll-ups, enable a new paradigm called Provable Computation. In this paradigm, we allow programs to prove they have been executed without having to be re-run. In order to write such provable programs, we need a programming language that can be effective and be easily learned by developers.
 
 If you are looking for a cost-effective provable computation programming language, consider Cairo. It is native to Provable Computation and includes low-level access to memory, underlying primitives, and functional-style programming. Listed below, are some of the benefits of Cairo:
 
