@@ -139,7 +139,7 @@ mod SimpleStorage {
 }
 ----
 
-You can now follow the steps given in the xref:deploying_contracts.adoc[Deploying smart contracts] section to compile anddeploy the above contract.
+You can now follow the steps given in the xref:deploying_contracts.adoc[Deploying smart contracts] section to compile and deploy the above contract.
 
 Congratulations on successfully writing and deploying your first Cairo contract!
 
@@ -159,4 +159,3 @@ If you have successfully been able to call the function and display the balance,
 =======
 If you have successfully been able to call the function and display the balance, take a
 screenshot and post it on Twitter, tagging us at link:https://twitter.com/Starknet[@StarkNet].
->>>>>>> 80d6192 (Caps and syntax highlighting consistency)
