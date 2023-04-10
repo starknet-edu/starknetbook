@@ -27,13 +27,13 @@ The Starknet Book is a curriculum created to teach the Cairo programming languag
 == Where to start?
 
 Everybody has different goals in their Cairo and Starknet journey.
-Follow this guide to continue trough the Starknet Book;
+Follow this guide to continue through the Starknet Book;
 do you...
 
 // TODO: Define the chapters here
 * ...want to set up your environment?
 (TODO)
-* ...want to start coding scalable and descentralized smart contracts right away?
+* ...want to start coding scalable and decentralized smart contracts right away?
 *Chapters 1 and 2*.
 * ...have a hackathon next week?
 *Chapters 1 and 2*.
