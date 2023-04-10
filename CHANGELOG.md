@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://github.com/starknet-edu/starknetbook/compare/v1.1.5...v1.1.6) (2023-04-10)
+
+
+### Bug Fixes
+
+* typo ([cb5d950](https://github.com/starknet-edu/starknetbook/commit/cb5d950c7446d52f78179875a2565611f2c7ef94))
+* typo ([c6e07ec](https://github.com/starknet-edu/starknetbook/commit/c6e07ec75dc2d2f056fa7aa3f38525f2cb4d6d83))
+* typo ([f3da9e0](https://github.com/starknet-edu/starknetbook/commit/f3da9e0f0d83ee903c91b1e0af6998876afffbcf))
+* typo ([4a3112e](https://github.com/starknet-edu/starknetbook/commit/4a3112ed93371527b0343243ae88d8cd04f36ecc))
+* typos ([3d52039](https://github.com/starknet-edu/starknetbook/commit/3d52039c665bfbaf540b106ab52c11efe996c262))
+* typos ([0f3c7c7](https://github.com/starknet-edu/starknetbook/commit/0f3c7c7901af43a6c28536a34d00403539bd48ea))
+
 ### [1.1.5](https://github.com/starknet-edu/starknetbook/compare/v1.1.4...v1.1.5) (2023-04-10)
 
 ### [1.1.4](https://github.com/starknet-edu/starknetbook/compare/v1.1.3...v1.1.4) (2023-04-10)
