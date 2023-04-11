@@ -14,6 +14,8 @@ package-lock.json
 *.DS_STORE*
 **/*.txt
 public_html/
+target/
+tmp*
 
 **/*.sum
 
