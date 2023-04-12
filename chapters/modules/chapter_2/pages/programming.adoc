@@ -6,12 +6,12 @@ One of the key inspirations for Cairo's syntax is Rust, a popular systems progra
 
 However, even if you are not familiar with Rust, learning Cairo is still a straightforward process. The language is designed with simplicity and clarity in mind, making it accessible to developers with varying levels of experience. As you delve into Cairo, you'll discover a growing community of passionate developers who are constantly creating new educational materials, tools, and resources to make the learning experience as smooth as possible for newcomers.
 
-This ecosystem continues to grow and thrive. Each week, new materials and tooling are developed to help both experienced programmers and beginners alike to learn, understand, and build with Cairo, enabling the creation of innovative and groundbreaking decentralized applications on the StarkNet blockchain.
+This ecosystem continues to grow and thrive. Each week, new materials and tooling are developed to help both experienced programmers and beginners alike to learn, understand, and build with Cairo.
 
 
 == Types in Cairo and the importance of typing
 
-Cairo is a strongly typed language, similar to Rust, which means that every variable, constant, and function argument must have an explicit type. This enforces strict type checking, providing increased safety and reducing the likelihood of runtime errors. Cairo has a rich type system that includes several types of integers, booleans, arrays, and tuples. Cairo also supports user-defined types, which are useful for modeling complex data structures.
+Cairo is a strongly typed language, similar to Rust, which means that every variable, constant, and function argument must have an explicit type. This enforces strict type checking, providing increased safety and reducing the likelihood of runtime errors. Cairo has a rich type system that includes several types of integers, booleans, arrays, and contract addresses. Cairo also supports user-defined types, which are useful for modeling complex data structures.
 
 A list of primitive types in Cairo (not all), along with a brief description of each type's purpose and functionality:
 
@@ -104,6 +104,11 @@ fn get_vote_status() -> (u8, u8) {
 ----
 
 This function is a view function that returns the current number of yes and no votes.
+
+[NOTE]
+====
+Function visibility (public, external, internal, or private) is not explicitly specified in Cairo. Instead, functions are considered internal by default unless they are marked with the `#[view]` or `#[external]` attributes (we will review them in the next section). In Solidity, you specify the visibility using keywords (public, external, internal, or private).
+====
 
 === Modules in Cairo
 
@@ -297,9 +302,9 @@ We will now go through each section and explain the code.
 
 Imports in Cairo play an essential role in organizing and structuring your code, allowing you to reuse functionality from other modules and libraries. If you are familiar with Rust, you will find Cairo's import system quite similar.
 
-Cairo comes with a core library, known as corelib, which contains essential modules and functionalities like starknet and array. You can refer to the Cairo documentation for more details on corelib. Importing these core libraries does not require any additional installation, as they are built-in.
+Cairo comes with a core library, known as `corelib`, which contains essential modules and functionalities like `starknet` and `array`. You can refer to the Cairo documentation for more details on `corelib`. Importing these core libraries does not require any additional installation, as they are built-in.
 
-To import modules, functions, or types in Cairo, you can use the use keyword, followed by the path to the item you want to import. In the example provided, we have an Ex01 module, and we are importing several items from the corelib and custom modules:
+To import modules, functions, or types in Cairo, you can use the `use` keyword, followed by the path to the item you want to import. In the example provided, we have an `Ex01` module, and we are importing several items from the `corelib` and custom modules:
 
 [source,rust]
 ----
@@ -316,7 +321,7 @@ mod Ex01 {
 }
 ----
 
-In this example, we are importing `get_caller_address` and `ContractAddress` from the starknet core library. Additionally, we are importing custom modules from the `starknet_cairo_101` repository, making them part of the `Ex01` contract's set of functions. It is important to take into account the structure of the repository and the path to the modules you want to import. The file structure of the `starknet_cairo_101` repository is as follows:
+We are importing `get_caller_address` and `ContractAddress` from the starknet core library. Additionally, we are importing custom modules from the `starknet_cairo_101` repository, making them part of the `Ex01` contract's set of functions. It is important to take into account the structure of the repository and the path to the modules you want to import. The file structure of the `starknet_cairo_101` repository is as follows:
 
 [source]
 ----
@@ -330,7 +335,7 @@ In this example, we are importing `get_caller_address` and `ContractAddress` fro
 
 Inside the `utils` folder, we have the `ex00_base.cairo` file, which contains the `Ex00Base` module. This module contains the functions that are used in all the exercises.
 
-To import custom modules or external libraries not included in corelib, you will need to have the necessary files within your project repository or specify the appropriate paths.
+To import custom modules or external libraries not included in `corelib`, you will need to have the necessary files within your project repository or specify the appropriate paths.
 
 
 === Storage
@@ -368,14 +373,12 @@ Some similarities and differences between Cairo and Solidity in the storage impl
 
 3. In Cairo, storage fields are accessed using specific functions such as `read` and `write` (e.g., `yes_votes::write(0_u8)`). In Solidity, storage fields are accessed using assignment and indexing (e.g., `yes_votes = 0`).
 
-4. The data types used in Cairo, such as `u8` and `ContractAddress`, have different names and representations than their Solidity counterparts, such as `uint8` and `address`.
-
 
 === Constructor
 
 A constructor is a special function that initializes a Cairo contract when it is deployed on the blockchain. The constructor is called only once, at the time of deployment, and is responsible for setting up the initial state of the contract.
 
-In the Vote contract, there are two constructors:
+In the `Vote` contract, there are two constructors:
 
 1. A constructor that takes three individual `ContractAddress` parameters representing the addresses of the registered voters.
 2. An alternative constructor that takes an array of `ContractAddress` values, which can be used to initialize the contract with a variable number of registered voters. (This constructor is commented out in the example provided, but it demonstrates how you can implement different constructor variations in a Cairo contract.)
@@ -405,18 +408,18 @@ Now, let's briefly examine the alternative constructor:
 [source,rust]
 ----
 #[constructor]
-// fn constructor(registered_addresses: Array::<ContractAddress>) {
-//     // Get the number of registered voters
-//     let registered_voters_len: usize = registered_addresses.len();
+fn constructor(registered_addresses: Array::<ContractAddress>) {
+    // Get the number of registered voters
+    let registered_voters_len: usize = registered_addresses.len();
 
-//     // Register all voters by calling the _register_voters recursive function
-//     // with the array of addresses and its length as index
-//     _register_voters(ref registered_addresses, registered_voters_len);
+    // Register all voters by calling the _register_voters recursive function
+    // with the array of addresses and its length as index
+    _register_voters(ref registered_addresses, registered_voters_len);
 
-//     // Initialize the vote count to 0
-//     yes_votes::write(0_u8);
-//     no_votes::write(0_u8);
-// }
+    // Initialize the vote count to 0
+    yes_votes::write(0_u8);
+    no_votes::write(0_u8);
+}
 ----
 
 The alternative constructor:
@@ -500,7 +503,7 @@ Some key points about the `assert` statement in Cairo are:
 
 === External Functions
 
-External functions are functions that can be called by other contracts or externally by users through a transaction on the blockchain. They can change the contract's state, and therefore, require gas fees for execution. 
+External functions are functions that can be called by other contracts or externally by users through a transaction on the blockchain. They can change the contract's state, and therefore, require gas fees for execution. This means that we can write to the contract's storage using the `write` function.
 
 In Cairo, external functions are defined using the `#[external]` attribute. In Solidity, you would use the `public` or `external` keyword to define a similar type of function. 
 
@@ -535,15 +538,6 @@ fn vote(vote: u8) {
 
 The `vote` function is an external function that allows users to submit their vote (0 for No and 1 for Yes) to the contract. It takes a `u8` value as input, checks if the value is valid (0 or 1), and updates the storage accordingly.
 
-Some similarities and differences between Cairo and Solidity in this implementation are:
-
-1. The `#[external]` attribute in Cairo is used to define external functions, while Solidity uses the `public` or `external` keyword.
-
-2. The `get_caller_address` function in Cairo is used to get the address of the user calling the function. In Solidity, you would use `msg.sender` for the same purpose.
-
-3. The `if` statement syntax is similar between Cairo and Solidity.
-
-
 === Internal Functions
 
 Internal functions in Cairo are functions that can only be called by other functions within the same contract. They are not callable from outside the contract or by other contracts. In Solidity, you would use private or internal functions for a similar purpose.
@@ -559,10 +553,6 @@ fn _register_voters(
 ) { ... }
 ----
 
-Some similarities and differences between Cairo and Solidity in the internal functions implementation are:
+The `assert_allowed` function is an internal function that checks if a voter has already voted or not. It is called by the `vote` function to ensure that a voter can only vote once.
 
-1. In Cairo, internal functions are defined without any specific keyword, while in Solidity, you use the `private` or `internal` keyword to define such functions.
-
-2. Function visibility (public, external, internal, or private) is not explicitly specified in Cairo. Instead, functions are considered internal by default unless they are marked with the `#[view]` or `#[external]` attributes. In Solidity, you specify the visibility using keywords (public, external, internal, or private).
-
-3. Cairo and Solidity both use the same basic concept of internal functions: functions that are only callable within the same contract.
+The `_register_voters` function is an internal function that registers a list of voters. It is called by the `register_voters` function to register a list of voters.
