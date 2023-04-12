@@ -2,6 +2,21 @@
 
 = Block Explorers
 
+A block explorer, or blockchain explorer, enables you to see transactions, blockchain metrics and other information.
+
+The following block explorers provide information on StarkNet.
+
+.StarkNet block explorers, in alphabetical order
+|===
+|Name|Mainnet|Goerli|Goerli 2
+
+|Starkscan|https://starkscan.co/[Mainnet]|https://testnet.starkscan.co/[Testnet]|https://testnet-2.starkscan.co/[Testnet-2]
+
+|Viewblock|https://viewblock.io/starknet[Mainnet]|https://viewblock.io/starknet?network=goerli[Goerli]|https://viewblock.io/starknet?network=goerli2[Goerli2]
+
+|https://nethermind.io/voyager[Voyager]|https://voyager.online/[Mainnet]|https://goerli.voyager.online/[Goerli]|https://goerli-2.voyager.online/[Goerli2]
+|===
+
 == Contributing
 
 🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here]. 🎯 🎯
