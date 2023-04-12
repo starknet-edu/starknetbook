@@ -1,4 +1,4 @@
-[id="smart_contracts_chapter"]
+[id="index"]
 
 = Smart Contracts in Cairo
 

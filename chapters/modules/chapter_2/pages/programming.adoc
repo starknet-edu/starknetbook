@@ -1,4 +1,6 @@
-== Programming in Cairo
+[id="programming"]
+
+= Programming in Cairo
 
 One of the key inspirations for Cairo's syntax is Rust, a popular systems programming language known for its performance, reliability, and strong focus on safety. Developers familiar with Rust will find it easy to transition to Cairo, as many of the language's features and concepts are similar.
 
@@ -7,7 +9,7 @@ However, even if you are not familiar with Rust, learning Cairo is still a strai
 This ecosystem continues to grow and thrive. Each week, new materials and tooling are developed to help both experienced programmers and beginners alike to learn, understand, and build with Cairo, enabling the creation of innovative and groundbreaking decentralized applications on the StarkNet blockchain.
 
 
-=== Types in Cairo and the importance of typing
+== Types in Cairo and the importance of typing
 
 Cairo is a strongly typed language, similar to Rust, which means that every variable, constant, and function argument must have an explicit type. This enforces strict type checking, providing increased safety and reducing the likelihood of runtime errors. Cairo has a rich type system that includes several types of integers, booleans, arrays, and tuples. Cairo also supports user-defined types, which are useful for modeling complex data structures.
 
@@ -47,7 +49,7 @@ fn example_function(value: u32) -> u32 {
 
 In this example, `value` and `doubled_value` are explicitly typed as `u32`, and the function `example_function` has a return type of `u32`. This ensures that the types are correctly enforced and that the code is easier to read and understand. In the next section we will review what definitions like `2_u32` mean.
 
-==== Typing integer literals in Cairo
+=== Typing integer literals in Cairo
 
 In Cairo, you can specify the type of an integer literal by using an underscore followed by the desired type, similar to Rust.
 
@@ -80,11 +82,11 @@ let value_usize = 1_usize;
 In these examples, the type of the integer literals is specified using the underscore notation, which makes it easier to work with different integer types without the need for explicit type casting.
 
 
-=== Functions and Modules in Cairo
+== Functions and Modules in Cairo
 
 In Cairo, functions and modules are used to structure the code and define reusable pieces of logic. They are similar to Solidity functions and contracts, but there are some differences in their implementation and usage.
 
-==== Functions in Cairo
+=== Functions in Cairo
 
 Cairo functions are defined using the `fn` keyword. Functions can have different attributes depending on their purpose, such as `#[constructor]`, `#[view]`, or `#[external]`. Functions can accept arguments, return values, and interact with the contract's storage.
 
@@ -103,7 +105,7 @@ fn get_vote_status() -> (u8, u8) {
 
 This function is a view function that returns the current number of yes and no votes.
 
-==== Modules in Cairo
+=== Modules in Cairo
 
 Cairo modules are used to group related functionality under a namespace. A module is defined using the `mod` keyword, followed by the module name and a block of code containing functions and other declarations. Modules can import other modules and use their functionality.
 
@@ -124,7 +126,7 @@ mod Vote {
 
 In this example, the `Vote` module imports other modules like `starknet` and `array` and defines a contract with its storage, functions, and other declarations.
 
-==== Comparison with Solidity
+=== Comparison with Solidity
 
 1. *Functions*:
    a. *Declaration*: Cairo functions are declared with the `fn` keyword, while Solidity functions use the `function` keyword.
@@ -137,7 +139,7 @@ In this example, the `Vote` module imports other modules like `starknet` and `ar
    c. *Namespaces*: Cairo modules serve as namespaces for related functionality. In Solidity, contracts themselves act as namespaces for their functions and variables.
 
 
-=== The Structure of a Cairo Smart Contract
+== The Structure of a Cairo Smart Contract
 
 In this section, we will explain the structure and format of several utilities like functions, using the following Vote contract as an example:
 
@@ -291,7 +293,7 @@ In the Vote contract, you will find the following sections:
 
 We will now go through each section and explain the code.
 
-==== Imports
+=== Imports
 
 Imports in Cairo play an essential role in organizing and structuring your code, allowing you to reuse functionality from other modules and libraries. If you are familiar with Rust, you will find Cairo's import system quite similar.
 
@@ -331,7 +333,7 @@ Inside the `utils` folder, we have the `ex00_base.cairo` file, which contains th
 To import custom modules or external libraries not included in corelib, you will need to have the necessary files within your project repository or specify the appropriate paths.
 
 
-==== Storage
+=== Storage
 
 In the Storage section of a Cairo contract, you define the data structures that will be stored on the blockchain and can be accessed by the contract functions. These data structures represent the state of the contract and can be read or modified throughout the contract's lifecycle.
 
@@ -369,7 +371,7 @@ Some similarities and differences between Cairo and Solidity in the storage impl
 4. The data types used in Cairo, such as `u8` and `ContractAddress`, have different names and representations than their Solidity counterparts, such as `uint8` and `address`.
 
 
-==== Constructor
+=== Constructor
 
 A constructor is a special function that initializes a Cairo contract when it is deployed on the blockchain. The constructor is called only once, at the time of deployment, and is responsible for setting up the initial state of the contract.
 
@@ -427,7 +429,7 @@ The alternative constructor:
 The use of two constructors demonstrates how you can provide different ways to initialize the contract based on the input parameters or the desired functionality.
 
 
-==== Getters (View Functions)
+=== Getters (View Functions)
 
 Getter functions, also known as view functions, are read-only functions that allow you to access data from the contract's storage without modifying it. They can be called by other contracts or externally, and they do not require gas fees as they do not alter the contract's state.
 
@@ -473,7 +475,7 @@ fn voter_can_vote(user_address: ContractAddress) -> bool {
 The `voter_can_vote` function takes a `ContractAddress` as input and reads the voting status of the user from the `can_vote` mapping in the storage. It returns a `bool` value indicating whether the voter is allowed to vote or not. In Solidity, you would use a `mapping` with an `address` key type to store a similar data structure. The `is_voter_registered` function is similar to the voter_can_vote function, but it returns a `bool` value indicating whether the address is a registered voter or not.
 
 
-==== Use of `assert` statement for input validation and error handling in Cairo
+=== Use of `assert` statement for input validation and error handling in Cairo
 
 In Cairo, the `assert` statement is used to validate inputs, enforce constraints, and handle errors. This statement checks if a given condition is true and throws an error message if it is not.
 
@@ -496,7 +498,7 @@ Some key points about the `assert` statement in Cairo are:
 3. The `assert` statement is helpful for input validation, ensuring that only valid inputs are processed by the contract.
 
 
-==== External Functions
+=== External Functions
 
 External functions are functions that can be called by other contracts or externally by users through a transaction on the blockchain. They can change the contract's state, and therefore, require gas fees for execution. 
 
@@ -542,7 +544,7 @@ Some similarities and differences between Cairo and Solidity in this implementat
 3. The `if` statement syntax is similar between Cairo and Solidity.
 
 
-==== Internal Functions
+=== Internal Functions
 
 Internal functions in Cairo are functions that can only be called by other functions within the same contract. They are not callable from outside the contract or by other contracts. In Solidity, you would use private or internal functions for a similar purpose.
 
