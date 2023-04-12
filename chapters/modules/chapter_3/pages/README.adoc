@@ -16,7 +16,7 @@ This Book contains material for Cairo 1.x versions. If you are looking for conte
 |===
 |Chapter | Goal
 |1: Getting Started | At the end of the chapter, a reader should be able to deploy and interact with a pre-created smart contract using the CLI.
-|2: Cairo 1.0 | At the end of the chapter, a reader should be able to write a Cairo 1.0 smart contract.
+|2: Smart Contracts in Cairo | At the end of the chapter, a reader should be able to write a Cairo 1.0 smart contract.
 |3: Tooling | At the end of the chapter, a reader should be able to set up a proper development environment (Scarb, Protostar, etc.) and do complex deployments to StarkNet with starknet.js SDK.
 |4: Testing | At the end of the chapter, a reader should be able to manually test in a local environment (Devnet), write unit tests, and integration tests.
 |5: Frontend | At the end of the chapter, a reader should be able to read data from StarkNet, retrieve events, craft transactions, and send them to the network using React and starknet.js.

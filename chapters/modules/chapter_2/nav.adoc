@@ -1,30 +1,4 @@
-* xref:index.adoc[Chapter 2: BUIDL and Tooling]
-    ** xref:wallets.adoc[2.1 Wallets]
-    ** xref:bridge.adoc[2.2 Bridge]
-    ** xref:explorers.adoc[2.3 Block Explorers]
-    ** xref:devnet.adoc[2.4 Starknet Devnet]
-    ** 2.5 Development Frameworks
-        *** xref:protostar.adoc[2.5.1 Protostar]
-            **** xref:initializing.adoc[Initializing a Project]
-            **** xref:dependencies.adoc[External Dependencies]
-            **** xref:compiling.adoc[Compiling]
-            **** xref:deploying_devnet.adoc[Deploying to the Devnet]
-            **** xref:deploying_testnet.adoc[Deploying to the Testnet]
-            **** xref:calling_invoking.adoc[Calling and Invoking Contracts]
-        *** xref:nile.adoc[2.5.2 Nile]
-        *** xref:hardhat.adoc[2.5.3 Hardhat]
-    ** 2.6 Software Development Kits (SDKs)
-        *** xref:starknetpy.adoc[2.6.1 starknet_py: A Python SDK for Starknet]
-        *** xref:starknetjs.adoc[2.6.2 starknet.js: A Javascript SDK for Starknet]
-        *** xref:caigo.adoc[2.6.3 Caigo: A Golang SDK for Starknet]
-        *** xref:starknetrs.adoc[2.6.4 starknet-rs: A Rust SDK for Starknet]
-    ** xref:testing.adoc[2.7 Testing Starknet Contracts]
-        *** xref:testing_protostar.adoc[2.7.1 Testing with Protostar]
-        *** xref:testing_python.adoc[2.7.2 Testing with Python]
-    ** 2.8 Nodes
-        *** xref:pathfinder.adoc[2.8.1 Pathfinder]
-        *** xref:juno.adoc[2.8.2 Juno]
-    ** xref:indexing.adoc[2.9 Indexing Starknet]
-    ** 2.10 Learn by Examples
-        *** xref:coffee.adoc[2.10.1 Buy Me a Coffee]
+* xref:index.adoc[Chapter 2: Smart Contracts in Cairo]
+    ** xref:programming.adoc[2.1 Programming in Cairo]
+
     

@@ -1,53 +1,11 @@
-[id="smart_contracts_chapter"]
+== Programming in Cairo
 
-= Smart Contracts and Cairo
+One of the key inspirations for Cairo's syntax is Rust, a popular systems programming language known for its performance, reliability, and strong focus on safety. Developers familiar with Rust will find it easy to transition to Cairo, as many of the language's features and concepts are similar.
 
-As we delve into the world of StarkNet, we find that the platform relies on a powerful and expressive programming language called Cairo. Designed specifically for scaling decentralized applications (dApps) using STARKs, Cairo is a Turing-complete language that enables developers to harness the power of highly efficient and scalable zero-knowledge proofs. In this chapter, we will explore Cairo in the context of StarkNet. We will learn about the core concepts of Cairo, its differences from Solidity, the structure and components of Cairo smart contracts, and the unique features of the StarkNet network. By the end of the chapter, you'll have a solid understanding of how to create smart contracts with Cairo and deploy them on StarkNet.
+However, even if you are not familiar with Rust, learning Cairo is still a straightforward process. The language is designed with simplicity and clarity in mind, making it accessible to developers with varying levels of experience. As you delve into Cairo, you'll discover a growing community of passionate developers who are constantly creating new educational materials, tools, and resources to make the learning experience as smooth as possible for newcomers.
 
-== What Is a Cairo Smart Contract?
+This ecosystem continues to grow and thrive. Each week, new materials and tooling are developed to help both experienced programmers and beginners alike to learn, understand, and build with Cairo, enabling the creation of innovative and groundbreaking decentralized applications on the StarkNet blockchain.
 
-In the StarkNet ecosystem, the term _smart contract_ refers to immutable computer programs that run deterministically within the context of a StarkNet Virtual Machine. These programs are written in the Cairo language and are deployed on the StarkNet network, a permissionless decentralized Validity-Rollup (or ZK-Rollup) built on top of Ethereum.
-
-Let’s break down the key aspects of Cairo smart contracts:
-
-Computer programs::
-Cairo smart contracts are simply computer programs, designed to execute within the context of StarkNet.
-
-Immutable::
-Once deployed, the code of a Cairo smart contract cannot change. Just as with Ethereum smart contracts, the only way to modify a Cairo smart contract is to deploy a new instance.
-
-Deterministic::
-The outcome of the execution of a Cairo smart contract is the same for everyone who runs it, given the context of the transaction that initiated its execution and the state of the StarkNet network at the moment of execution.
-
-StarkNet Virtual Machine context::
-Cairo smart contracts operate within the context of a StarkNet Virtual Machine (SVM). They can access their own state, the context of the transaction that called them, and some information about the most recent blocks.
-
-Decentralized StarkNet network::
-The StarkNet network is a permissionless decentralized platform that relies on STARK proofs for security and scalability. It operates as an L2 network over Ethereum, allowing dApps to achieve unlimited scale for their computation without compromising Ethereum's composability and security.
-
-In this chapter, we will explore the core concepts of Cairo, its differences from Solidity, the structure and components of Cairo smart contracts, and the unique features of the StarkNet network. By the end of the chapter, you'll have a solid understanding of how to create smart contracts with Cairo and deploy them on StarkNet.
-
-== Solidity vs. Cairo: Overcoming Limitations and Embracing Scalability
-
-While Solidity is a widely adopted language for smart contract development and supports a range of applications, it is not native to provable computation. As a result, compilers that translate idiomatic Solidity code into proofs encounter several challenges:
-
-1. Reliance on inefficient data structures, such as uint256, and operations on them
-2. Mutability at the language level
-3. Lack of efficient built-ins
-4. No low-level access
-
-In practice, there are two different technologies for proving general programs: SNARKs and STARKs. Instruction sets favored by SNARKs are better suited as a compilation target for languages like Solidity. However, STARKs offer more scalability while having a less natural instruction set. This means that Solidity can be efficiently encoded to SNARKs but not as optimally to STARKs, as constructs common in Solidity are "costly" for STARKs.
-
-Cairo addresses these limitations and offers more efficient solutions:
-
-1. A low-level field data type called "felt252" is available, alongside a several types of uints
-2. Cairo is idiomatically write-once, resembling a functional programming language
-3. Cairo provides full low-level access to underlying primitives
-
-Although the ecosystem tools are still maturing, it is essential to transcend existing limitations and build better composable applications. Cairo's focus on overcoming Solidity's limitations in provable computation and embracing the scalability of STARKs makes it a more suitable choice for developers looking to create the next generation of decentralized applications.
-
-
-== Basics of Cairo Programming
 
 === Types in Cairo and the importance of typing
 
@@ -89,7 +47,7 @@ fn example_function(value: u32) -> u32 {
 
 In this example, `value` and `doubled_value` are explicitly typed as `u32`, and the function `example_function` has a return type of `u32`. This ensures that the types are correctly enforced and that the code is easier to read and understand. In the next section we will review what definitions like `2_u32` mean.
 
-=== Typing integer literals in Cairo
+==== Typing integer literals in Cairo
 
 In Cairo, you can specify the type of an integer literal by using an underscore followed by the desired type, similar to Rust.
 
@@ -132,7 +90,7 @@ Cairo functions are defined using the `fn` keyword. Functions can have different
 
 An example of a Cairo function:
 
-[source,python]
+[source,rust]
 ----
 #[view]
 fn get_vote_status() -> (u8, u8) {
@@ -151,7 +109,7 @@ Cairo modules are used to group related functionality under a namespace. A modul
 
 An example of a Cairo module:
 
-[source,python]
+[source,rust]
 ----
 #[contract]
 mod Vote {
@@ -324,6 +282,7 @@ The Vote contract allows three registered voters to submit their votes (1 for Ye
 
 In the Vote contract, you will find the following sections:
 
+* Imports
 * Storage
 * Constructor
 * Getters
@@ -332,7 +291,47 @@ In the Vote contract, you will find the following sections:
 
 We will now go through each section and explain the code.
 
-=== Storage
+==== Imports
+
+Imports in Cairo play an essential role in organizing and structuring your code, allowing you to reuse functionality from other modules and libraries. If you are familiar with Rust, you will find Cairo's import system quite similar.
+
+Cairo comes with a core library, known as corelib, which contains essential modules and functionalities like starknet and array. You can refer to the Cairo documentation for more details on corelib. Importing these core libraries does not require any additional installation, as they are built-in.
+
+To import modules, functions, or types in Cairo, you can use the use keyword, followed by the path to the item you want to import. In the example provided, we have an Ex01 module, and we are importing several items from the corelib and custom modules:
+
+[source,rust]
+----
+mod Ex01 {
+    // Core Library imports
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
+
+    // Internal imports
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::validate_exercise;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::ex_initializer;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::distribute_points;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::update_class_hash_by_admin;
+}
+----
+
+In this example, we are importing `get_caller_address` and `ContractAddress` from the starknet core library. Additionally, we are importing custom modules from the `starknet_cairo_101` repository, making them part of the `Ex01` contract's set of functions. It is important to take into account the structure of the repository and the path to the modules you want to import. The file structure of the `starknet_cairo_101` repository is as follows:
+
+[source]
+----
+.
+├── src
+│   ├── Ex01.cairo
+│   ├── ...
+│   ├── utils
+│   │   ├── ex00_base.cairo
+----
+
+Inside the `utils` folder, we have the `ex00_base.cairo` file, which contains the `Ex00Base` module. This module contains the functions that are used in all the exercises.
+
+To import custom modules or external libraries not included in corelib, you will need to have the necessary files within your project repository or specify the appropriate paths.
+
+
+==== Storage
 
 In the Storage section of a Cairo contract, you define the data structures that will be stored on the blockchain and can be accessed by the contract functions. These data structures represent the state of the contract and can be read or modified throughout the contract's lifecycle.
 
@@ -370,7 +369,7 @@ Some similarities and differences between Cairo and Solidity in the storage impl
 4. The data types used in Cairo, such as `u8` and `ContractAddress`, have different names and representations than their Solidity counterparts, such as `uint8` and `address`.
 
 
-=== Constructor
+==== Constructor
 
 A constructor is a special function that initializes a Cairo contract when it is deployed on the blockchain. The constructor is called only once, at the time of deployment, and is responsible for setting up the initial state of the contract.
 
@@ -381,7 +380,7 @@ In the Vote contract, there are two constructors:
 
 Let's examine the first constructor in more detail:
 
-[source,python]
+[source,rust]
 ----
 #[constructor]
 fn constructor(voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress) {
@@ -401,7 +400,7 @@ This constructor does the following:
 
 Now, let's briefly examine the alternative constructor:
 
-[source,python]
+[source,rust]
 ----
 #[constructor]
 // fn constructor(registered_addresses: Array::<ContractAddress>) {
@@ -428,7 +427,7 @@ The alternative constructor:
 The use of two constructors demonstrates how you can provide different ways to initialize the contract based on the input parameters or the desired functionality.
 
 
-=== Getters (View Functions)
+==== Getters (View Functions)
 
 Getter functions, also known as view functions, are read-only functions that allow you to access data from the contract's storage without modifying it. They can be called by other contracts or externally, and they do not require gas fees as they do not alter the contract's state.
 
@@ -474,13 +473,13 @@ fn voter_can_vote(user_address: ContractAddress) -> bool {
 The `voter_can_vote` function takes a `ContractAddress` as input and reads the voting status of the user from the `can_vote` mapping in the storage. It returns a `bool` value indicating whether the voter is allowed to vote or not. In Solidity, you would use a `mapping` with an `address` key type to store a similar data structure. The `is_voter_registered` function is similar to the voter_can_vote function, but it returns a `bool` value indicating whether the address is a registered voter or not.
 
 
-=== Use of `assert` statement for input validation and error handling in Cairo
+==== Use of `assert` statement for input validation and error handling in Cairo
 
 In Cairo, the `assert` statement is used to validate inputs, enforce constraints, and handle errors. This statement checks if a given condition is true and throws an error message if it is not.
 
 In the Vote contract, the `assert` statement is used in several places to ensure proper input validation and error handling:
 
-[source,python]
+[source,rust]
 ----
 assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
 
@@ -497,7 +496,7 @@ Some key points about the `assert` statement in Cairo are:
 3. The `assert` statement is helpful for input validation, ensuring that only valid inputs are processed by the contract.
 
 
-=== External Functions
+==== External Functions
 
 External functions are functions that can be called by other contracts or externally by users through a transaction on the blockchain. They can change the contract's state, and therefore, require gas fees for execution. 
 
@@ -543,13 +542,13 @@ Some similarities and differences between Cairo and Solidity in this implementat
 3. The `if` statement syntax is similar between Cairo and Solidity.
 
 
-=== Internal Functions
+==== Internal Functions
 
 Internal functions in Cairo are functions that can only be called by other functions within the same contract. They are not callable from outside the contract or by other contracts. In Solidity, you would use private or internal functions for a similar purpose.
 
 In the Vote contract, the internal functions are defined as follows:
 
-[source,python]
+[source,rust]
 ----
 fn assert_allowed(address: ContractAddress) { ... }
 

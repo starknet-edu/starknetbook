@@ -1,0 +1,18 @@
+[id="index"]
+
+= BUIDL and Tooling
+
+While this section is being built, we recommend reading the video session for this chapter and the https://github.com/gakonst/awesome-starknet[community resources page].
+
+In this chapter, we will learn how to use some of the existing toolings for Cairo and Starknet. Please notice there is more tooling being developed each month; here, we will cover just a part.
+
+We are currently able to operate with the Starknet Alpha. The recommended steps for deploying contracts are:
+
+. Unit tests - You can use Protostar, Nile, or starknet.py.
+. Devnet - Deploy in the https://github.com/Shard-Labs/starknet-devnet[Shard Lab's] `starknet-devnet`.
+. Testnet - Deploy to the Goerli, `alpha-goerli`, or Goerli 2. You can use Protostar, Nile, Hardhat, and more.
+. Mainnet - Deploy to Alpha Starknet, `alpha-mainnnet`. Similar to the testnet.
+
+== Contributing 
+
+🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
