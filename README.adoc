@@ -24,9 +24,6 @@ The Starknet Book is a curriculum created to teach the Cairo programming languag
 |10: STARKs | Understanding STARKs and how they connect with other aspects of Starknet.
 |===
 
-
-== Where to start?
-
 == Where to Start?
 
 Depending on your goals and interests, you can choose different paths through the Starknet Book. Here are some recommendations based on various objectives:
@@ -47,18 +44,16 @@ Depending on your goals and interests, you can choose different paths through th
 
 Feel free to mix and match these paths based on your unique interests and requirements.
 
-== Links
-
-* Community: https://community.starknet.io
-* Starknet Docs: https://docs.starknet.io
-* Cairo Docs: TODO
-* Starknet Developer Telegram: https://t.me/starknetna
-
 == Your Contributions Matter
 
-The Starknet Book can be improved and will evolve as Starknet matures.
-Together we are setting up the Starknet Book, so there are several sections within the Chapters that require community input. Your contributions are welcome and needed!
-Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
+We're thrilled to have you join us on this incredible journey to create the ultimate resource for Cairo and Starknet development. By contributing to the Starknet Book, you're not only sharing your knowledge and expertise with the world, but you're also helping shape the future of decentralized technology. Together, we'll build a comprehensive, accessible, and engaging curriculum that will empower developers everywhere to harness the full potential of Starknet.
+
+As a contributor, you'll be part of a vibrant and growing community dedicated to pushing the boundaries of what's possible with decentralized technology. You'll have the opportunity to collaborate with like-minded individuals from around the globe, share your unique insights, and learn from one another. Your contributions will not only enrich the Starknet community but also leave a lasting impact on the broader field of blockchain technology.
+
+So, are you ready to embark on this epic adventure? Let's dive in and explore the vast and exciting world of Starknet together. Here's to the countless discoveries, breakthroughs, and innovations that await us!
+
+Please refer to the existing https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributors Guide] for detailed instructions on how to contribute. Remember, every contribution, no matter how small, makes a difference. Your expertise and passion are invaluable in helping us create a truly exceptional resource for the Starknet community. Let's make history together!
+
 Here are things you can do to help:
 
 * In most sections there is a message for builders who want to collaborate with content.
@@ -70,9 +65,9 @@ Here are things you can do to help:
 * Please add an explanation in the exercise comments if you feel they need them.
 * Add exercises that show your favorite feature of Cairo.
 
-== Issues
+== Links
 
-If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues]
-
-Do you have a question?
-Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.
+* Community: https://community.starknet.io
+* Starknet Docs: https://docs.starknet.io
+* Cairo Docs: TODO
+* Starknet Developer Telegram: https://t.me/starknetna

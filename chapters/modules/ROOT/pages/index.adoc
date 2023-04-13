@@ -24,7 +24,6 @@ The Starknet Book is a curriculum created to teach the Cairo programming languag
 |10: STARKs | Understanding STARKs and how they connect with other aspects of Starknet.
 |===
 
-
 == Where to Start?
 
 Depending on your goals and interests, you can choose different paths through the Starknet Book. Here are some recommendations based on various objectives:
