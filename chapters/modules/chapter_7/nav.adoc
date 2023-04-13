@@ -1,4 +1,4 @@
-* xref:aa_intro.adoc[Chapter 7:Account Abstraction]
+* xref:index.adoc[Chapter 7:Account Abstraction]
 ** xref:why_aa.adoc[7.1: Why Account Abstraction?]
 ** xref:aa_what.adoc[7.2: What is Account Abstraction?]
 ** xref:starknet_aa.adoc[7.3: StarkNet Account Abstraction Model]

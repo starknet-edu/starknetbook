@@ -1,0 +1,46 @@
+[id="IntroToAA"]
+
+= Introduction to Account Abstraction
+
+_*Disclaimers: This tutorial cites various stakeholders, any errors or misunderstandings in this tutorial are the fault of interpretation._
+
+The crypto ecosystem is at a critical crossroads. Ethereum, as one of the leading platforms, faces a monumental challenge: embracing Account Abstraction (AA) or risking the very essence of what crypto stands for - decentralization.
+
+AA is a vital and game-changing innovation for Ethereum. It holds the key to improving onboarding, user experience, and security (Martin Triay, Devcon 6)[1]. More importantly, AA is the cornerstone for scaling self-custody, which is crucial for onboarding the next billion users (Julien Niset)[2]. The future of Ethereum, and by extension the entire crypto landscape, depends on the success of AA.
+
+Additionally, quantum computers pose a serious menace to the cryptographic ecosystem, with the potential to break traditional security measures and signatures. Account Abstraction can help us confront this threat head-on by enabling the use of different signature schemes, including quantum-resistant ones, to secure our assets.
+
+Without AA, Ethereum will struggle to offer users the seamless, secure, and empowering experience they deserve. This could lead to a mass exodus of users flocking to centralized exchanges and wallets, which directly contradicts the ethos of decentralization that underpins the crypto revolution.
+
+The dangers of centralized control are all too familiar: censorship, discrimination, and the potential for abuse of power. By ensuring that AA is a central feature of Ethereum's evolution, we protect the core values that drive the crypto community and strengthen the foundation of the decentralized economy.
+
+StarkNet is currently leading the charge in implementing AA at the protocol level, acting as a "proving ground" for what AA will look like in the future. With many brilliant minds from several different organizations working together, StarkNet aims to revolutionize the way we approach security, user experience, and self-custody in the crypto space.
+
+
+== Why has it not been implemented in Ethereum's L1 yet?
+
+Account Abstraction: A Simple Explanation
+
+So, what's holding it back from being implemented in Ethereum's Layer 1 (L1)?
+
+The main issue lies in the removal of Externally Owned Accounts (EOAs). Implementing AA would require significant changes to Ethereum's core protocol. As the value secured by Ethereum grows, the coordination needed to implement AA becomes increasingly difficult.
+
+Although AA is vital, Ethereum hasn't supported it yet because of the limitations of its Ethereum Virtual Machine (EVM). There have been proposals for AA since the early days of Ethereum, but they have been repeatedly postponed in favor of more urgent changes.
+
+The development of new Layer 2 (L2) Virtual Machines focused on scalability has allowed for progress in implementing AA. Starknet and ZKSync, for example, have native AA inspired by EIP4337 – a proposal considered the best by experts like Argent's Julien Niset.
+
+Many AA proponents, like Niset, seem to have lost hope that EOAs will be eliminated and AA will be implemented at Ethereum's core. Instead, they're now pushing for the widespread adoption of AA through L2 solutions like Starknet.
+
+
+== References:
+
+[1] Martin Triay, Devcon 6: https://www.youtube.com/watch?v=Osc_gwNW3Fw
+[2] Julien Niset: https://www.youtube.com/watch?v=OwppworJGzs
+[3] lightclient, Devcon 6: https://app.devcon.org/schedule/9mvqce
+[4] Starkware: https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79
+[5] Julien Niset, 2022: https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/
+[6] Yoav, Devcon 6: https://app.devcon.org/schedule/9mvqce
+
+Other texts:
+* https://hackernoon.com/what-is-account-abstraction-and-why-is-everyone-talking-about-it
+* https://ethereum.org/en/roadmap/account-abstraction/

@@ -2,6 +2,78 @@
 
 = Account Abstraction model in StarkNet
 
-== Contributing
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
-🎯
+Now that we know better the concept of AA, let's actually code it in Starknet.
+
+== Account Contract Interface
+
+Although account contracts are nothing more than smart contracts, they have methods that set them apart from other smart contracts. The following interface to an account contract implements the AA protocol. It has a public key associated with it and can validate and execute transactions. Here's what it does:
+
+* `constructor`: Sets the account's public key when the account contract is created.
+* `validate_transaction`: Checks if the transaction's signature is valid using the account's public key.
+* `__validate_deploy__`: Validates the deployment of a new contract; called during deployment.
+* `__validate_declare__`: Validates the declaration of a new contract.
+* `__validate__`: Validates transactions before executing them.
+* `__execute__`: Executes a series of contract calls.
+
+The Account contract ensures that only transactions with valid signatures are executed, acting as a simple yet secure user account on the StarkNet network. Let's explore all the functions and entry points deeper.
+
+[,Rust]
+----
+#[account_contract]
+mod Account {
+    use starknet::ContractAddress;
+
+    #[constructor]
+    fn constructor(public_key_: felt252);
+
+    fn isValidSignature() -> felt252;
+
+    #[external]
+    fn __validate_deploy__(
+        class_hash: felt252, contract_address_salt: felt252, public_key_: felt252
+    ) -> felt252;
+
+    #[external]
+    fn __validate_declare__(class_hash: felt252) -> felt252;
+
+    #[external]
+    fn __validate__(
+        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array<felt252>
+    ) -> felt252;
+
+    #[external]
+    #[raw_output]
+    fn __execute__(mut calls: Array<Call>) -> Span<felt252>;
+}
+----
+
+Let's examine the entry points (functions):
+
+* `constructor`: This function is not mandatory, but it's useful for setting up an account contract. It accepts a `public_key` parameter that represents the public key associated with the account. In the future, there may be a `setPublicKey()` method to facilitate account transfers.
+* `isValidSignature`: Inspired by EIP-1271, this function returns true if a given signature is valid; otherwise, it reverts.
+* `__validate__`: Allows you to define an arbitrary logic to determine if a transaction is valid or not.
+They can not read This function allows you to define custom logic for determining the validity of a transaction. It cannot read other contracts' storage, which helps prevent spam. The account contract calls `__validate__` when it receives a transaction. The function takes the following arguments (calldata):
+ ** `contract_address: ContractAddress`: The target contract address.
+ ** `entry_point_selector: felt252`: The function to be called on the target contract.
+ ** `calldata: Array<felt252>`: An array representing the function parameters.. Remember calldata are the parameters used to call a function.
+* `__validate_declare__`: This function validates the signature before declaring a new contract. It takes a single argument, `class_hash`, which represents the class hash of the contract to be declared.
+* `__execute__`: This function serves as the state-changing entry point for all user interactions with any contract, including managing the account contract itself. It is called after successful validation by `__validate__`. The function takes an argument `mut calls`, which is an array of `Call` structs.
+
+== The Call Struct
+
+The `Call` struct represents a single call to a contract:
+
+[,Rust]
+----
+struct Call {
+    to: ContractAddress,
+    selector: felt252,
+    calldata: Array<felt252>
+}
+----
+
+It contains the following fields:
+
+* `to`: The target contract address.
+* `selector`: The selector of the function to be called on the target contract.
+* `calldata`: An array representing the function parameters.
