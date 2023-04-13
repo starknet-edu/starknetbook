@@ -36,7 +36,7 @@ The example will print:
 1. ap address: 1:3; fp address: 1:3
 2. ap address: 1:4; fp address: 1:3; value at address [AP - 1] is 100.
 3. ap address: 1:5; fp address: 1:3; value at address [AP - 1] is 200.
-4. ap address: 1:6; fp address: 1:3; value at address [AP - 1] is 2:0 (WITH OUPUT_PTR).
+4. ap address: 1:6; fp address: 1:3; value at address [AP - 1] is 2:0 (WITH OUTPUT_PTR).
 5. ap address: 1:9; fp address: 1:8; value at address [AP - 1] is 300 (FOO() FUNCTION).
 6. ap address: 1:9; fp address: 1:8; value at address [AP + 2] is 500; we can not get the value at [AP + 1] since it is unknown.
 7. ap address: 1:10; fp address: 1:3; value at address [AP - 1] is 600.

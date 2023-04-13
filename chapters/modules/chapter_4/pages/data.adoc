@@ -20,7 +20,7 @@ The data availability problem:
 *Solution: Validium - store data "off chain"*
 
 * IPFS, Celestia, cloud providers
-* can secure with a Data Availablility Committee(DAC)
+* can secure with a Data Availability Committee(DAC)
 * data can be private
 * less expensive
 

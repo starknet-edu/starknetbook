@@ -53,14 +53,14 @@ To initiate a withdraw, a user calls the https://github.com/starkware-libs/stark
 
 Once the sequencer completes the block construction, Starknet's provers will prove the validity of the block and submit a state update to L1. When this happens, the message from the previous step is stored in the Starknet Core Contract.
 
-[id="step_3_transfering_the_funds_on_l1"]
-==== Step 3: Transfering The Funds On L1
+[id="step_3_transferring_the_funds_on_l1"]
+==== Step 3: transferring The Funds On L1
 
 After the withdraw message has been recorded on the Starknet Core Contract, anyone can finalize the transfer on L1 from the bridge back to the user, by calling the `withdraw` function (see https://github.com/starkware-libs/starkgate-contracts/blob/28f4032b101003b2c6682d753ea61c86b732012c/src/starkware/starknet/apps/starkgate/solidity/StarknetERC20Bridge.sol#L19[ERC-20 withdraw] and https://github.com/starkware-libs/starkgate-contracts/blob/28f4032b101003b2c6682d753ea61c86b732012c/src/starkware/starknet/apps/starkgate/solidity/StarknetEthBridge.sol#L16[ETH withdraw]).
 
 [NOTE]
 ====
-This step is permissionless, and may be performed by anyone. Since the user's address is part of the recorded message on L1, he will be the recepient of the funds, regardless of who called the `withdraw` function on L1.
+This step is permissionless, and may be performed by anyone. Since the user's address is part of the recorded message on L1, he will be the recipient of the funds, regardless of who called the `withdraw` function on L1.
 ====
 
 [id="starkgate_alpha_limitations"]

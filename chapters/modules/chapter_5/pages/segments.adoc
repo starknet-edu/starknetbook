@@ -4,7 +4,7 @@
 
 When accessing memory in Cairo we use segments. The segments are memory areas.
 These segments will then be concatenated to create a list of segments: our memory.
-As we mentioned before, addresses in Cairo are relative: they are not inly reltive to each other but also to the segment to which they belong.
+As we mentioned before, addresses in Cairo are relative: they are not inly relative to each other but also to the segment to which they belong.
 Therefore, an address in Cairo is represented like this: `<segment>:<offset>`.
 Where `<segment>` is the segment number (we don't know it when writing the program, it is assigned when running our program);
 and `<offset>` is the position of the address relative to the segment.
