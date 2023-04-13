@@ -34,12 +34,12 @@ Many AA proponents, like Niset, seem to have lost hope that EOAs will be elimina
 
 == References:
 
-[1] Martin Triay, Devcon 6: https://www.youtube.com/watch?v=Osc_gwNW3Fw
-[2] Julien Niset: https://www.youtube.com/watch?v=OwppworJGzs
-[3] lightclient, Devcon 6: https://app.devcon.org/schedule/9mvqce
-[4] Starkware: https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79
-[5] Julien Niset, 2022: https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/
-[6] Yoav, Devcon 6: https://app.devcon.org/schedule/9mvqce
+* [1] Martin Triay, Devcon 6: https://www.youtube.com/watch?v=Osc_gwNW3Fw
+* [2] Julien Niset: https://www.youtube.com/watch?v=OwppworJGzs
+* [3] lightclient, Devcon 6: https://app.devcon.org/schedule/9mvqce
+* [4] Starkware: https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79
+* [5] Julien Niset, 2022: https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/
+* [6] Yoav, Devcon 6: https://app.devcon.org/schedule/9mvqce
 
 Other texts:
 * https://hackernoon.com/what-is-account-abstraction-and-why-is-everyone-talking-about-it
