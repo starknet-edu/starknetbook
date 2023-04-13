@@ -230,7 +230,7 @@ This will require an increasingly robust machine to maintain the state and subse
 Rollups are one solution in which business logic is executed and stored in a protocol outside the Ethereum context and then proves its successful execution in the Ethereum context.
 
 Typically this involves compressing a larger number of transactions at this `Layer 2` and committing the state diffs to a smart contract deployed on L1.
-For full interoperability with the L1 rollups also typically implement a messaging component for deposits and withdrawals.
+For full interoperability with the L1, rollups also typically implement a messaging component for deposits and withdrawals.
 
 There are currently two types of rollups that are being widely adopted:
 
