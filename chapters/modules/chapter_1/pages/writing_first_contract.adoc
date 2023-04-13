@@ -149,5 +149,10 @@ Once you have deployed the above contract, you would need to invoke the contract
 the `get_balance` function. The _call_ syntax has not been mentioned in the previous section but
 it's fairly easy to use and that's your **challenge**!
 
+== Contributing
+
+🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
+🎯
+
 If you have successfully been able to call the function and display the balance, take a
 screenshot and post it on Twitter, tagging us at link:https://twitter.com/Starknet[@StarkNet].

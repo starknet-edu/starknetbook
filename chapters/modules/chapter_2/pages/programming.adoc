@@ -1,0 +1,558 @@
+[id="programming"]
+
+= Programming in Cairo
+
+One of the key inspirations for Cairo's syntax is Rust, a popular systems programming language known for its performance, reliability, and strong focus on safety. Developers familiar with Rust will find it easy to transition to Cairo, as many of the language's features and concepts are similar.
+
+However, even if you are not familiar with Rust, learning Cairo is still a straightforward process. The language is designed with simplicity and clarity in mind, making it accessible to developers with varying levels of experience. As you delve into Cairo, you'll discover a growing community of passionate developers who are constantly creating new educational materials, tools, and resources to make the learning experience as smooth as possible for newcomers.
+
+This ecosystem continues to grow and thrive. Each week, new materials and tooling are developed to help both experienced programmers and beginners alike to learn, understand, and build with Cairo.
+
+
+== Types in Cairo and the importance of typing
+
+Cairo is a strongly typed language, similar to Rust, which means that every variable, constant, and function argument must have an explicit type. This enforces strict type checking, providing increased safety and reducing the likelihood of runtime errors. Cairo has a rich type system that includes several types of integers, booleans, arrays, and contract addresses. Cairo also supports user-defined types, which are useful for modeling complex data structures.
+
+A list of primitive types in Cairo (not all), along with a brief description of each type's purpose and functionality:
+
+[cols="1,2",options="header"]
+
+|===
+| Primitive Type | Description
+| u8 | Represents an unsigned 8-bit integer.
+| usize | Unsigned size integer (typically used for representing indices and lengths)
+| u16 | Represents an unsigned 16-bit integer.
+| u32 | Represents an unsigned 32-bit integer.
+| u64 | Represents an unsigned 64-bit integer.
+| u128 | Represents an unsigned 128-bit integer.
+| u256 | Represents an unsigned 256-bit integer.
+| bool | Represents a boolean value, which can be either true or false.
+| felt252 | Represents a field element.
+| ContractAddress | A type representing a StarkNet contract address, used for identifying and interacting with smart contracts.
+| T | Represents a generic type placeholder, which can be replaced with any specific type during compilation.
+| Option<T> | Represents a value that may or may not be present, used for optional values and error handling.
+| Result<T, E> | Represents the outcome of a computation that may result in an error, used for error handling and control flow.
+| Array<T> | A dynamic array data structure for elements of type T, used for creating and manipulating arrays.
+|===
+
+In Cairo, every variable or function argument must be explicitly typed. This helps the compiler identify and prevent type-related issues at compile-time, increasing code safety and robustness. Moreover, it also improves code readability by making the types of values and the purpose of the code more apparent.
+
+Here is an example of using types in Cairo:
+
+[source,rust]
+----
+fn example_function(value: u32) -> u32 {
+    let doubled_value: u32 = value * 2_u32;
+    return doubled_value;
+}
+----
+
+In this example, `value` and `doubled_value` are explicitly typed as `u32`, and the function `example_function` has a return type of `u32`. This ensures that the types are correctly enforced and that the code is easier to read and understand. In the next section we will review what definitions like `2_u32` mean.
+
+=== Typing integer literals in Cairo
+
+In Cairo, you can specify the type of an integer literal by using an underscore followed by the desired type, similar to Rust.
+
+Here are some examples:
+
+[source,rust]
+----
+# Unsigned 8-bit integer
+let value_u8 = 1_u8;
+
+# Unsigned 16-bit integer
+let value_u16 = 1_u16;
+
+# Unsigned 32-bit integer
+let value_u32 = 1_u32;
+
+# Unsigned 64-bit integer
+let value_u64 = 1_u64;
+
+# Unsigned 128-bit integer
+let value_u128 = 1_u128;
+
+# Unsigned 256-bit integer
+let value_u256 = 1_u256;
+
+# Unsigned size integer (typically used for representing indices and lengths)
+let value_usize = 1_usize;
+----
+
+In these examples, the type of the integer literals is specified using the underscore notation, which makes it easier to work with different integer types without the need for explicit type casting.
+
+
+== Functions and Modules in Cairo
+
+In Cairo, functions and modules are used to structure the code and define reusable pieces of logic. They are similar to Solidity functions and contracts, but there are some differences in their implementation and usage.
+
+=== Functions in Cairo
+
+Cairo functions are defined using the `fn` keyword. Functions can have different attributes depending on their purpose, such as `#[constructor]`, `#[view]`, or `#[external]`. Functions can accept arguments, return values, and interact with the contract's storage.
+
+An example of a Cairo function:
+
+[source,rust]
+----
+#[view]
+fn get_vote_status() -> (u8, u8) {
+    let n_yes = yes_votes::read();
+    let n_no = no_votes::read();
+
+    return (n_yes, n_no);
+}
+----
+
+This function is a view function that returns the current number of yes and no votes.
+
+[NOTE]
+====
+Function visibility (public, external, internal, or private) is not explicitly specified in Cairo. Instead, functions are considered internal by default unless they are marked with the `#[view]` or `#[external]` attributes (we will review them in the next section). In Solidity, you specify the visibility using keywords (public, external, internal, or private).
+====
+
+=== Modules in Cairo
+
+Cairo modules are used to group related functionality under a namespace. A module is defined using the `mod` keyword, followed by the module name and a block of code containing functions and other declarations. Modules can import other modules and use their functionality.
+
+An example of a Cairo module:
+
+[source,rust]
+----
+#[contract]
+mod Vote {
+    // Core Library Imports
+    use starknet::ContractAddress;
+    use starknet::get_caller_address;
+    use array::ArrayTrait;
+
+    // Other declarations and functions
+}
+----
+
+In this example, the `Vote` module imports other modules like `starknet` and `array` and defines a contract with its storage, functions, and other declarations.
+
+=== Comparison with Solidity
+
+1. *Functions*:
+   a. *Declaration*: Cairo functions are declared with the `fn` keyword, while Solidity functions use the `function` keyword.
+   b. *Attributes*: Cairo functions use attributes like `#[constructor]`, `#[view]`, and `#[external]` to indicate their purpose. In Solidity, keywords like `constructor`, `view`, and `public` are used instead.
+   c. *Return values*: In Cairo, return values are declared using the `->` syntax, while Solidity uses the `returns` keyword.
+
+2. *Modules*:
+   a. *Declaration*: Cairo modules are declared with the `mod` keyword, while Solidity uses the `contract` keyword to define a contract.
+   b. *Imports*: Cairo modules can import other modules using the `use` keyword. In Solidity, the `import` keyword is used to include external contracts or libraries.
+   c. *Namespaces*: Cairo modules serve as namespaces for related functionality. In Solidity, contracts themselves act as namespaces for their functions and variables.
+
+
+== The Structure of a Cairo Smart Contract
+
+In this section, we will explain the structure and format of several utilities like functions, using the following Vote contract as an example:
+
+[source,rust]
+----
+#[contract]
+mod Vote {
+    // Core Library Imports
+    use starknet::ContractAddress;
+    use starknet::get_caller_address;
+    use array::ArrayTrait;
+
+    // ------
+    // Storage
+    // ------
+    struct Storage {
+        yes_votes: u8,
+        no_votes: u8,
+        can_vote: LegacyMap::<ContractAddress, bool>,
+        registered_voter: LegacyMap::<ContractAddress, bool>,
+    }
+
+    // ------
+    // Constructor
+    // ------
+
+    // @dev constructor with a fixed number of registered voters (3)
+    // @param voter_1 (ContractAddress): address of the first registered voter
+    // @param voter_2 (ContractAddress): address of the second registered voter
+    // @param voter_3 (ContractAddress): address of the third registered voter
+    #[constructor]
+    fn constructor(voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress) {
+        // Register all voters by calling the _register_voters function 
+        _register_voters(voter_1, voter_2, voter_3);
+
+        // Initialize the vote count to 0
+        yes_votes::write(0_u8);
+        no_votes::write(0_u8);
+    }
+
+    // ------
+    // Getter functions
+    // ------
+    
+    // @dev Return the number of yes and no votes
+    // @return status (u8, u8): current status of the vote (yes votes, no votes)
+    #[view]
+    fn get_vote_status() -> (u8, u8) {
+        // Read the number of yes votes and no votes from storage
+        let n_yes = yes_votes::read();
+        let n_no = no_votes::read();
+        
+        // Return the current voting status
+        return (n_yes, n_no);
+    }
+
+    // @dev Returns if a voter can vote or not
+    // @param user_address (ContractAddress): address of the voter
+    // @return status (bool): true if the voter can vote, false otherwise
+    #[view]
+    fn voter_can_vote(user_address: ContractAddress) -> bool {
+        // Read the voting status of the user from storage
+        can_vote::read(user_address)
+    }
+
+    // @dev Return if an address is a voter or not (registered or not)
+    // @param address (ContractAddress): address of possible voter
+    // @return is_voter (bool): true if the address is a registered voter, false otherwise
+    #[view]
+    fn is_voter_registered(address: ContractAddress) -> bool {
+        // Read the registration status of the address from storage
+        registered_voter::read(address)
+    }
+
+    // ------
+    // External functions
+    // ------
+    
+    // @dev Submit a vote (0 for No and 1 for Yes)
+    // @param vote (u8): vote value, 0 for No and 1 for Yes
+    // @return () : updates the storage with the vote count and marks the voter as not allowed to vote again
+    #[external]
+    fn vote(vote: u8) {
+        // Check if the vote is valid (0 or 1)
+        assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
+
+        // Know if a voter has already voted and continue if they have not voted
+        let caller : ContractAddress = get_caller_address();
+        assert_allowed(caller);
+
+        // Mark that the voter has already voted and update in the storage
+        can_vote::write(caller, false);
+
+        // Update the vote count in the storage depending on the vote value (0 or 1)
+        if (vote == 0_u8) {
+            no_votes::write(no_votes::read() + 1_u8);
+        }
+        if (vote == 1_u8) {
+            yes_votes::write(yes_votes::read() + 1_u8);
+        }
+    }
+
+    // ------
+    // Internal Functions
+    // ------
+
+    // @dev Assert if an address is allowed to vote or not
+    // @param address (ContractAddress): address of the user
+    // @return () : if the user can vote; otherwise, throw an error message and revert the transaction
+    fn assert_allowed(address: ContractAddress) {
+        // Read the voting status of the user from storage
+        let is_voter: bool = registered_voter::read(address);
+        let can_vote: bool = can_vote::read(address);
+
+        // Check if the user can vote otherwise throw an error message and revert the transaction
+        assert(is_voter == true, 'USER_NOT_REGISTERED');
+        assert(can_vote == true, 'USER_ALREADY_VOTED');
+    }
+
+    // @dev Internal function to prepare the list of voters. Index can be the length of the array.
+    // @param registered_addresses (Array<ContractAddress>): array with the addresses of registered voters
+    // @param index (usize): index of the current voter to be processed
+    fn _register_voters(
+        voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress
+        ) {
+        // Register the first voter
+        registered_voter::write(voter_1, true);
+        can_vote::write(voter_1, true);
+
+        // Register the second voter
+        registered_voter::write(voter_2, true);
+        can_vote::write(voter_2, true);
+
+        // Register the third voter
+        registered_voter::write(voter_3, true);
+        can_vote::write(voter_3, true);
+    }
+}
+----
+
+The Vote contract allows three registered voters to submit their votes (1 for Yes/0 for No) on a proposal. It keeps track of the number of yes votes and no votes and provides view (getter) functions to check the voting status and voter eligibility. The contract is initialized with three registered voters and deployed on the StarkNet testnet.
+
+In the Vote contract, you will find the following sections:
+
+* Imports
+* Storage
+* Constructor
+* Getters
+* External functions
+* Internal functions
+
+We will now go through each section and explain the code.
+
+=== Imports
+
+Imports in Cairo play an essential role in organizing and structuring your code, allowing you to reuse functionality from other modules and libraries. If you are familiar with Rust, you will find Cairo's import system quite similar.
+
+Cairo comes with a core library, known as `corelib`, which contains essential modules and functionalities like `starknet` and `array`. You can refer to the Cairo documentation for more details on `corelib`. Importing these core libraries does not require any additional installation, as they are built-in.
+
+To import modules, functions, or types in Cairo, you can use the `use` keyword, followed by the path to the item you want to import. In the example provided, we have an `Ex01` module, and we are importing several items from the `corelib` and custom modules:
+
+[source,rust]
+----
+mod Ex01 {
+    // Core Library imports
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
+
+    // Internal imports
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::validate_exercise;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::ex_initializer;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::distribute_points;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::update_class_hash_by_admin;
+}
+----
+
+We are importing `get_caller_address` and `ContractAddress` from the starknet core library. Additionally, we are importing custom modules from the `starknet_cairo_101` repository, making them part of the `Ex01` contract's set of functions. It is important to take into account the structure of the repository and the path to the modules you want to import. The file structure of the `starknet_cairo_101` repository is as follows:
+
+[source]
+----
+.
+├── src
+│   ├── Ex01.cairo
+│   ├── ...
+│   ├── utils
+│   │   ├── ex00_base.cairo
+----
+
+Inside the `utils` folder, we have the `ex00_base.cairo` file, which contains the `Ex00Base` module. This module contains the functions that are used in all the exercises.
+
+To import custom modules or external libraries not included in `corelib`, you will need to have the necessary files within your project repository or specify the appropriate paths.
+
+
+=== Storage
+
+In the Storage section of a Cairo contract, you define the data structures that will be stored on the blockchain and can be accessed by the contract functions. These data structures represent the state of the contract and can be read or modified throughout the contract's lifecycle.
+
+In the Vote contract, the Storage section consists of the following variables:
+
+* `yes_votes`: A `u8` (unsigned 8-bit integer) variable to store the number of yes votes.
+* `no_votes`: A `u8` (unsigned 8-bit integer) variable to store the number of no votes.
+* `can_vote`: A `LegacyMap` (a mapping data structure) that associates each registered voter's `ContractAddress` with a `bool` value. This value indicates whether the voter is allowed to vote (true) or not (false).
+* `registered_voter`: Another `LegacyMap` that associates each voter's `ContractAddress` with a `bool` value, representing whether the voter is registered (true) or not (false).
+
+The `LegacyMap` data structure allows you to associate keys (in this case, `ContractAddress`) with values (in this case, `bool`). You can read from and write to `LegacyMap` using the `read` and `write` functions.
+
+For example, to check if a voter is registered, you can use the following code:
+
+[source,rust]
+----
+let is_voter: bool = registered_voter::read(address);
+----
+
+To register a voter, you can use the following code:
+
+[source,rust]
+----
+registered_voter::write(voter_address, true);
+----
+
+Some similarities and differences between Cairo and Solidity in the storage implementation are:
+
+1. Cairo uses a struct to define the storage, while Solidity uses state variables and mappings directly in the contract.
+
+2. In Cairo, you use the `LegacyMap` type to create a mapping, while in Solidity, you use the `mapping` keyword.
+
+3. In Cairo, storage fields are accessed using specific functions such as `read` and `write` (e.g., `yes_votes::write(0_u8)`). In Solidity, storage fields are accessed using assignment and indexing (e.g., `yes_votes = 0`).
+
+
+=== Constructor
+
+A constructor is a special function that initializes a Cairo contract when it is deployed on the blockchain. The constructor is called only once, at the time of deployment, and is responsible for setting up the initial state of the contract.
+
+In the `Vote` contract, there are two constructors:
+
+1. A constructor that takes three individual `ContractAddress` parameters representing the addresses of the registered voters.
+2. An alternative constructor that takes an array of `ContractAddress` values, which can be used to initialize the contract with a variable number of registered voters. (This constructor is commented out in the example provided, but it demonstrates how you can implement different constructor variations in a Cairo contract.)
+
+Let's examine the first constructor in more detail:
+
+[source,rust]
+----
+#[constructor]
+fn constructor(voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress) {
+    // Register all voters by calling the _register_voters function
+    _register_voters(voter_1, voter_2, voter_3);
+
+    // Initialize the vote count to 0
+    yes_votes::write(0_u8);
+    no_votes::write(0_u8);
+}
+----
+
+This constructor does the following:
+
+* Registers the three voters by calling the `_register_voters` function and passing the three `ContractAddress` values. The `_register_voters` function updates the `registered_voter` and `can_vote` mapping structures in the storage.
+* Initializes the `yes_votes` and `no_votes` storage variables to 0 by calling the `write` function with an initial value of `0_u8` (an unsigned 8-bit integer).
+
+Now, let's briefly examine the alternative constructor:
+
+[source,rust]
+----
+#[constructor]
+fn constructor(registered_addresses: Array::<ContractAddress>) {
+    // Get the number of registered voters
+    let registered_voters_len: usize = registered_addresses.len();
+
+    // Register all voters by calling the _register_voters recursive function
+    // with the array of addresses and its length as index
+    _register_voters(ref registered_addresses, registered_voters_len);
+
+    // Initialize the vote count to 0
+    yes_votes::write(0_u8);
+    no_votes::write(0_u8);
+}
+----
+
+The alternative constructor:
+
+* Takes an `Array` of `ContractAddress` values representing the addresses of the registered voters.
+* Calculates the number of registered voters using the `len` function. This will be the index of the last voter in the array and will be used in the recursive function (next point).
+* Registers all voters by calling the `_register_voters` function, which uses a recursive approach in this case.
+* Initializes the `yes_votes` and `no_votes` storage variables to 0, just like the first constructor.
+
+The use of two constructors demonstrates how you can provide different ways to initialize the contract based on the input parameters or the desired functionality.
+
+
+=== Getters (View Functions)
+
+Getter functions, also known as view functions, are read-only functions that allow you to access data from the contract's storage without modifying it. They can be called by other contracts or externally, and they do not require gas fees as they do not alter the contract's state.
+
+In Cairo, getter functions are defined using the `#[view]` attribute. In Solidity, you would use the `view` keyword to define a similar type of function. 
+
+Here's an overview of the getter functions in the Vote contract:
+
+1. `get_vote_status`: Returns the current number of yes and no votes.
+2. `voter_can_vote`: Returns whether a given voter is allowed to vote or not.
+3. `is_voter_registered`: Returns whether a given address is a registered voter or not.
+
+Let's examine each getter function in detail:
+
+[source,rust]
+----
+// @dev Return the number of yes and no votes
+// @return status (u8, u8): current status of the vote (yes votes, no votes)
+#[view]
+fn get_vote_status() -> (u8, u8) {
+    // Read the number of yes votes and no votes from storage
+    let n_yes = yes_votes::read();
+    let n_no = no_votes::read();
+
+    // Return the current voting status
+    return (n_yes, n_no);
+}
+----
+
+The `get_vote_status` function reads the `yes_votes` and `no_votes` values from the storage and returns them as a tuple of two unsigned 8-bit integers. In Solidity, you would return a tuple of `uint8` values.
+
+[source,rust]
+----
+// @dev Returns if a voter can vote or not
+// @param user_address (ContractAddress): address of the voter
+// @return status (bool): true if the voter can vote, false otherwise
+#[view]
+fn voter_can_vote(user_address: ContractAddress) -> bool {
+    // Read the voting status of the user from storage
+    can_vote::read(user_address)
+}
+----
+
+The `voter_can_vote` function takes a `ContractAddress` as input and reads the voting status of the user from the `can_vote` mapping in the storage. It returns a `bool` value indicating whether the voter is allowed to vote or not. In Solidity, you would use a `mapping` with an `address` key type to store a similar data structure. The `is_voter_registered` function is similar to the voter_can_vote function, but it returns a `bool` value indicating whether the address is a registered voter or not.
+
+
+=== Use of `assert` statement for input validation and error handling in Cairo
+
+In Cairo, the `assert` statement is used to validate inputs, enforce constraints, and handle errors. This statement checks if a given condition is true and throws an error message if it is not.
+
+In the Vote contract, the `assert` statement is used in several places to ensure proper input validation and error handling:
+
+[source,rust]
+----
+assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
+
+assert(is_voter == true, 'USER_NOT_REGISTERED');
+assert(can_vote == true, 'USER_ALREADY_VOTED');
+----
+
+Some key points about the `assert` statement in Cairo are:
+
+1. The `assert` statement checks if a condition is true. If the condition is not true, the contract execution is halted, and an error message is thrown.
+
+2. Error messages are specified as strings, following the condition. In the example above, 'VOTE_0_OR_1', 'USER_NOT_REGISTERED', and 'USER_ALREADY_VOTED' are the error messages.
+
+3. The `assert` statement is helpful for input validation, ensuring that only valid inputs are processed by the contract.
+
+
+=== External Functions
+
+External functions are functions that can be called by other contracts or externally by users through a transaction on the blockchain. They can change the contract's state, and therefore, require gas fees for execution. This means that we can write to the contract's storage using the `write` function.
+
+In Cairo, external functions are defined using the `#[external]` attribute. In Solidity, you would use the `public` or `external` keyword to define a similar type of function. 
+
+In the Vote contract, there is only one external function: `vote`. Let's examine it in detail:
+
+[source,rust]
+----
+// @dev Submit a vote (0 for No and 1 for Yes)
+// @param vote (u8): vote value, 0 for No and 1 for Yes
+// @return () : updates the storage with the vote count and marks the voter as not allowed to vote again
+#[external]
+fn vote(vote: u8) {
+    // Check if the vote is valid (0 or 1)
+    assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
+
+    // Know if a voter has already voted and continue if they have not voted
+    let caller : ContractAddress = get_caller_address();
+    assert_allowed(caller);
+
+    // Mark that the voter has already voted and update in the storage
+    can_vote::write(caller, false);
+
+    // Update the vote count in the storage depending on the vote value (0 or 1)
+    if (vote == 0_u8) {
+        no_votes::write(no_votes::read() + 1_u8);
+    }
+    if (vote == 1_u8) {
+        yes_votes::write(yes_votes::read() + 1_u8);
+    }
+}
+----
+
+The `vote` function is an external function that allows users to submit their vote (0 for No and 1 for Yes) to the contract. It takes a `u8` value as input, checks if the value is valid (0 or 1), and updates the storage accordingly.
+
+=== Internal Functions
+
+Internal functions in Cairo are functions that can only be called by other functions within the same contract. They are not callable from outside the contract or by other contracts. In Solidity, you would use private or internal functions for a similar purpose.
+
+In the Vote contract, the internal functions are defined as follows:
+
+[source,rust]
+----
+fn assert_allowed(address: ContractAddress) { ... }
+
+fn _register_voters(
+    voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress
+) { ... }
+----
+
+The `assert_allowed` function is an internal function that checks if a voter has already voted or not. It is called by the `vote` function to ensure that a voter can only vote once.
+
+The `_register_voters` function is an internal function that registers a list of voters. It is called by the `register_voters` function to register a list of voters.

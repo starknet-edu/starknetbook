@@ -1,3 +1,0 @@
-[id="initializing"]
-
-= Initializing a Project

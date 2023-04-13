@@ -1,18 +1,47 @@
 [id="index"]
 
-= BUIDL and Tooling
+= Smart Contracts in Cairo
 
-While this section is being built, we recommend reading the video session for this chapter and the https://github.com/gakonst/awesome-starknet[community resources page].
+As we delve into the world of Starknet, we find that the platform relies on a powerful and expressive programming language called Cairo. Designed specifically for scaling decentralized applications (dApps) using STARKs, Cairo is a Turing-complete language that enables developers to harness the power of highly efficient and scalable zero-knowledge proofs. In this chapter, we will explore Cairo in the context of Starknet. We will learn about the core concepts of Cairo, its differences from Solidity, the structure and components of Cairo smart contracts, and the unique features of the Starknet network.
 
-In this chapter, we will learn how to use some of the existing toolings for Cairo and Starknet. Please notice there is more tooling being developed each month; here, we will cover just a part.
+By the end of this tutorial, you will have a comprehensive understanding of the fundamental concepts and components of Cairo, enabling you to build robust and efficient smart contracts on the Starknet platform.
 
-We are currently able to operate with the Starknet Alpha. The recommended steps for deploying contracts are:
+== What Is a Cairo Smart Contract?
 
-. Unit tests - You can use Protostar, Nile, or starknet.py.
-. Devnet - Deploy in the https://github.com/Shard-Labs/starknet-devnet[Shard Lab's] `starknet-devnet`.
-. Testnet - Deploy to the Goerli, `alpha-goerli`, or Goerli 2. You can use Protostar, Nile, Hardhat, and more.
-. Mainnet - Deploy to Alpha Starknet, `alpha-mainnnet`. Similar to the testnet.
+In the Starknet ecosystem, the term _smart contract_ refers to immutable computer programs that run deterministically within the context of a Starknet Operating System. These programs are written in the Cairo language and are deployed on the Starknet network, a permissionless decentralized Validity-Rollup (or ZK-Rollup) built on top of Ethereum.
 
-== Contributing 
+Let’s break down the key aspects of Cairo smart contracts:
 
-🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here].
+Computer programs::
+Cairo smart contracts are simply computer programs, designed to execute within the context of Starknet.
+
+Immutable::
+Once deployed, the code of a Cairo smart contract cannot change. Just as with Ethereum smart contracts, the only way to modify a Cairo smart contract is to deploy a new instance.
+
+Deterministic::
+The outcome of the execution of a Cairo smart contract is the same for everyone who runs it, given the context of the transaction that initiated its execution and the state of the Starknet network at the moment of execution.
+
+Starknet Operating System context::
+Cairo smart contracts operate within the context of a Starknet Operating System (Starknet OS). They can access their own state, the context of the transaction that called them, and some information about the most recent blocks.
+
+Decentralized Starknet network::
+The Starknet network is a permissionless platform, working towards its decentralization, that relies on STARK proofs for security and scalability. It operates as an L2 network over Ethereum, allowing dApps to achieve unlimited scale for their computation without compromising Ethereum's composability and security.
+
+== Solidity vs. Cairo: Overcoming Limitations and Embracing Scalability
+
+While Solidity is a widely adopted language for smart contract development and supports a range of applications, it is not native to provable computation. As a result, compilers that translate idiomatic Solidity code into proofs encounter several challenges:
+
+1. Reliance on inefficient data structures, such as uint256, and operations on them
+2. Mutability at the language level
+3. Lack of efficient built-ins
+4. No low-level access
+
+In practice, there are two different technologies for proving general programs: SNARKs and STARKs. Instruction sets favored by SNARKs are better suited as a compilation target for languages like Solidity. However, STARKs offer more scalability while having a less natural instruction set. This means that Solidity can be efficiently encoded to SNARKs but not as optimally to STARKs, as constructs common in Solidity are "costly" for STARKs.
+
+Cairo addresses these limitations and offers more efficient solutions:
+
+1. A low-level field data type called "felt252" is available, alongside a several types of uints
+2. Cairo is idiomatically write-once, resembling a functional programming language
+3. Cairo provides full low-level access to underlying primitives
+
+Although the ecosystem tools are still maturing, it is essential to transcend existing limitations and build better composable applications. Cairo's focus on overcoming Solidity's limitations in provable computation and embracing the scalability of STARKs makes it a more suitable choice for developers looking to create the next generation of decentralized applications.

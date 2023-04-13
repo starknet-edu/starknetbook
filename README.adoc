@@ -65,4 +65,3 @@ The static files for the Antora site can be generated using the following comman
 1. `cd` into the UI directory and run `gulp pack` to generate a zip of the theme files for the UI.
 2. Navigate to the root directory and run `antora antora-playbook.yml` to generate the static
 files for the documentation site within the `public_html` directory.
-

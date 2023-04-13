@@ -1,0 +1,2 @@
+// Voting contract
+mod vote;
