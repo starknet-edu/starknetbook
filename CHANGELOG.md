@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.13](https://github.com/starknet-edu/starknetbook/compare/v1.1.12...v1.1.13) (2023-04-13)
+
 ### [1.1.12](https://github.com/starknet-edu/starknetbook/compare/v1.1.11...v1.1.12) (2023-04-13)
 
 ### [1.1.11](https://github.com/starknet-edu/starknetbook/compare/v1.1.10...v1.1.11) (2023-04-13)
