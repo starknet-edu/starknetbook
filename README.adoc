@@ -1,41 +1,67 @@
-= Starknet Book
+= The Starknet Book
+:navtitle: Introduction
 
-Welcome to the StarkNet and Cairo Developer's Guide! This book is designed to provide a comprehensive guide for students learning about Cairo and StarkNet. It covers various aspects of development, from getting started with pre-created smart contracts to understanding the architecture of Cairo and StarkNet.
+== Welcome
 
-This repo redirects to the Starknet Book front-end (built with Antora) at https://book.starknet.io[book.starknet.io]. *This repo is only for the Starknet Book's source code (text or actual code)*.
+Welcome to the Starknet Book!
 
-Do you want to...
-* *read or study* the Starknet Book? Please go to *book.starknet.io*; it is more readable. 
-* *contribute* to the Starknet Book (yes, please!)? This is the right place. Go to the contributing section in this README.
-
-This Book contains material for Cairo 1.x versions. If you are looking for content related to the Cairo 0.x versions, please refer to the link:https://github.com/starknet-edu/starknetbook/tree/cairo-0[cairo-0 branch].
+The Starknet Book is a curriculum created to teach the Cairo programming language and Starknet development. It is divided by Chapters and built by the Starknet community (you!). Finish the resume and you will conquer the Ethereum world.
 
 == Contents
 
 [.chapter-titles]
 |===
 |Chapter | Goal
-|1: Getting Started | At the end of the chapter, a reader should be able to deploy and interact with a pre-created smart contract using the CLI.
-|2: Cairo 1.0 | At the end of the chapter, a reader should be able to write a Cairo 1.0 smart contract.
-|3: Tooling | At the end of the chapter, a reader should be able to set up a proper development environment (Scarb, Protostar, etc.) and do complex deployments to StarkNet with starknet.js SDK.
-|4: Testing | At the end of the chapter, a reader should be able to manually test in a local environment (Devnet), write unit tests, and integration tests.
-|5: Frontend | At the end of the chapter, a reader should be able to read data from StarkNet, retrieve events, craft transactions, and send them to the network using React and starknet.js.
-|6: Running a Node | At the end of the chapter, a reader should be able to run a StarkNet node and an indexer.
-|7: Account Abstraction | At the end of the chapter, a reader should be able to understand the interface of a user account, how to create their own user account, and plug it into a browser extension.
-|8: StarkNet's Architecture | At the end of the chapter, a reader should be able to understand Startknet's architecture, the transaction lifecycle, fees calculation, Prover and verifier interaction, recursion.
-|9: Cairo's Architecture | At the end of the chapter, a reader should be able to understand how the Cairo virtual machine works, non-deterministic memory model, Sierra's opcode, and the compiler.
-|10: STARKs | This should provide the student a conceptual primer so they are able to tie the conceptual and practical aspects of the book together.
+|1: Getting Started | Learn how to deploy and interact with smart contracts using the CLI.
+|2: Smart Contracts in Cairo | Write a Cairo smart contracts.
+|3: Tooling | Set up a development environment and perform complex deployments.
+|4: Testing | Test smart contracts in a local environment, and write unit and integration tests.
+|5: Frontend | Integrate Starknet with a React frontend using starknet.js.
+|6: Running a Node | Set up and run a Starknet node and indexer.
+|7: Account Abstraction | Understand user accounts and create custom accounts.
+|8: Starknet Architecture | Explore transaction lifecycle, fees calculation, Prover and Verifier interaction, and more.
+|9: Cairo Architecture | Dive into the Cairo virtual machine, memory model, opcodes, and compiler.
+|10: STARKs | Understanding STARKs and how they connect with other aspects of Starknet.
 |===
 
-== Contributing
 
-There are several sections within the Chapters that require input. Your contributions are welcome, needed, and required! 🫡
+== Where to start?
 
-Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[Contributing]. There you will find instructions on how to contribute and how to run the Book locally.
+== Where to Start?
 
+Depending on your goals and interests, you can choose different paths through the Starknet Book. Here are some recommendations based on various objectives:
+
+* If you're a *complete beginner* and want to start learning about Cairo and Starknet from scratch, follow the book in its entirety, starting with *Chapter 1: Getting Started*.
+
+* If you're an *experienced developer* looking to quickly dive into writing scalable and decentralized smart contracts, focus on *Chapters 1 and 2*.
+
+* If you're a *frontend developer* wanting to integrate Starknet with a React frontend, prioritize *Chapter 5: Frontend* after covering the basics in *Chapters 1 and 2*.
+
+* If you're a *DevOps engineer* or *node operator* interested in running a Starknet node and indexer, head straight to *Chapter 6: Running a Node*.
+
+* If you're a *security researcher* or *smart contract auditor* wanting to learn about the Account Abstraction feature and its implications, go for *Chapter 7: Account Abstraction*.
+
+* If you're a *blockchain enthusiast* curious about the underlying architecture and mechanics of Starknet and Cairo, explore *Chapters 8 and 9*.
+
+* If you're a *cryptography expert* or *researcher* eager to understand the fundamentals of STARKs and their connection to the Starknet ecosystem, delve into *Chapter 10: STARKs*.
+
+Feel free to mix and match these paths based on your unique interests and requirements.
+
+== Links
+
+* Community: https://community.starknet.io
+* Starknet Docs: https://docs.starknet.io
+* Cairo Docs: TODO
+* Starknet Developer Telegram: https://t.me/starknetna
+
+== Your Contributions Matter
+
+The Starknet Book can be improved and will evolve as Starknet matures.
+Together we are setting up the Starknet Book, so there are several sections within the Chapters that require community input. Your contributions are welcome and needed!
+Go to the section https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributing].
 Here are things you can do to help:
 
-* At the beginning of some sections there is a message for STARKers who want to collaborate with content.
+* In most sections there is a message for builders who want to collaborate with content.
 * Empty section in a Chapter? Go for it!
 * Do you think the Starknet Book needs an additional section? Propose it.
 * Can a section be improved? Feel free to modify it.
@@ -46,22 +72,7 @@ Here are things you can do to help:
 
 == Issues
 
-If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues].
+If you find an issue/bug or have a feature request please submit an issue here https://github.com/starknet-edu/starknetbook/issues[Issues]
 
 Do you have a question?
 Join our https://starknet.io/discord[Discord server], register, and join channel #tutorials-support.
-
-== Project Build Process
-This documentation site is built using Antora. The Antora documentation site is located at https://docs.antora.org/antora/2.3/[Antora].
-
-The Antora playbook is located within the `antora-playbook.yml` file.
-
-In order to build the documentation site, you will need to install Node.js and npm. Once you have Node.js and npm installed, you can install Antora and the Antora command line interface (CLI) using npm:
-
-`npm install`
-
-The static files for the Antora site can be generated using the following commands:
-
-1. `cd` into the UI directory and run `gulp pack` to generate a zip of the theme files for the UI.
-2. Navigate to the root directory and run `antora antora-playbook.yml` to generate the static
-files for the documentation site within the `public_html` directory.
