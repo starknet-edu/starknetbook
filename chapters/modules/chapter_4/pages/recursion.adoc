@@ -6,7 +6,7 @@
 https://docs.google.com/presentation/d/e/2PACX-1vRbnDDuGdjcMaUAg1rRztGsLpGhtPsMX1vCKk-sX4v0cHMZdOMWZh177qXYM8lacqGoSJ4X8NvEg8RX/pub?slide=id.g12fb33eb0c0_0_386[slides]
 +++</div>+++
 
-Ability to verify a proof within a cairo program: - Prover generates a proof of computation in `time T` - Verifier uses proof to check the correctness of the compuation in `log(T)` Enables the parallelization of proofs.
+Ability to verify a proof within a cairo program: - Prover generates a proof of computation in `time T` - Verifier uses proof to check the correctness of the computation in `log(T)` Enables the parallelization of proofs.
 
 == Contributing
 

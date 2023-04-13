@@ -131,7 +131,7 @@ func serialize_word{output_ptr: felt*}(word) {
 }
 ----
 
-Refer to the implemetation in  https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_5/pages/builtins/cairo/hash.cairo[builtins/cairo/hash.cairo] for an example using the `output`, `pedersen`, and `range_check` builtins.
+Refer to the implementation in  https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_5/pages/builtins/cairo/hash.cairo[builtins/cairo/hash.cairo] for an example using the `output`, `pedersen`, and `range_check` builtins.
 
 At what moment did the `hash2` and `serialize_word` functions invoked the properties of their builtins?
 

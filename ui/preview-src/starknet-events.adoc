@@ -45,7 +45,7 @@ assert data[2] = 3
 emit_event(2, keys, 3, data)
 ----
 
-The above code emits an event with two keys, the https://www.cairo-lang.org/docs/how_cairo_works/consts.html#short-string-literals[strings] "status" and "deposit" (think of those as identifiers of the event that can be used for indexing) and three data elments 1, 2, 3.
+The above code emits an event with two keys, the https://www.cairo-lang.org/docs/how_cairo_works/consts.html#short-string-literals[strings] "status" and "deposit" (think of those as identifiers of the event that can be used for indexing) and three data elements 1, 2, 3.
 
 [TIP]
 ====

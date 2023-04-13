@@ -192,7 +192,7 @@ The specific encoding is given by:
 * `**get_block**`
 ** The `transactions` field is subject to the same changes in `get_transaction`
 ** `state_root` is renamed to `state_commitment`
-* `**get_transaciton**`
+* `**get_transaction**`
 ** `contract_address` is changed to `sender_address` in invoke transactions
 ** Declare v2 transaction may be returned
 * `**estimate_fee**`
