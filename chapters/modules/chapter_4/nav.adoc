@@ -1,9 +1,1 @@
-* xref:index.adoc[Chapter 4: Peering into the Future]
-    ** xref:data.adoc[4.1 Data Availability]
-    ** xref:recursion.adoc[4.2 Recursion]
-    ** xref:throughput.adoc[4.3 Throughput]
-    ** xref:parallelization.adoc[4.4 Parallelization - Access Lists]
-    ** xref:fractal.adoc[4.5 Fractal Scaling]
-    ** xref:decentralization.adoc[4.6 Decentralization]
-    ** xref:community.adoc[4.7 Building Community]
-    ** xref:market.adoc[4.8 Fee market]
+* Chapter 4: Testing

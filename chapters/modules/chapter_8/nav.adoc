@@ -1,4 +1,4 @@
-* xref:index.adoc[Chapter 8: Starknet's Architecture]
+* xref:index.adoc[Chapter 8: Starknet Architecture]
     ** xref:blocks.adoc[8.1 Blocks]
     ** xref:transactions.adoc[8.2 The Lifecycle of Transactions]
     ** xref:starknet_os.adoc[8.3 Starknet OS]

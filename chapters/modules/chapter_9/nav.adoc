@@ -1,4 +1,4 @@
-* xref:index.adoc[Chapter 9: Cairo's Architecture]
+* xref:index.adoc[Chapter 9: Cairo Architecture]
     ** xref:cairo.adoc[9.1 C(pu)AIR(o)]
         *** xref:polynomial.adoc[9.1.1 Polynomial Equations]
         *** xref:turing.adoc[9.1.2 Turing Completeness]

@@ -1,4 +1,4 @@
-= Starknet's Architecture
+= Starknet Architecture
 
 Below is a list of potential topics to cover in this section.
 
