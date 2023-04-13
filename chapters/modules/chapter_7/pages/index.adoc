@@ -42,5 +42,6 @@ Many AA proponents, like Niset, seem to have lost hope that EOAs will be elimina
 * [6] Yoav, Devcon 6: https://app.devcon.org/schedule/9mvqce
 
 Other texts:
+
 * https://hackernoon.com/what-is-account-abstraction-and-why-is-everyone-talking-about-it
 * https://ethereum.org/en/roadmap/account-abstraction/
