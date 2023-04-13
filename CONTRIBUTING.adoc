@@ -2,46 +2,52 @@
 
 The Starknet Book is an open-source Cairo/Starknet teaching curriculum written by `starknet-edu` and the Starknet community. We welcome all contributions to this repository to help enrich the Starknet community.
 
-Steps to contribute:
+== How to Contribute
 
-1. Run the book locally (see below).
-2. Understand the structure of the book (see below); it is really simple.
-3. Find an issue to work on or *propose* one. This is key, please, do not wait for someone to assign you an issue. If you want to work on an issue, comment on it and ask if it is available. If you want to propose an issue, please, create a new issue and tag a maintainer in the issue (by default, tag `l-henri` or `@omarespejel`). We need fast innovation!
-4. Work on the issue in a branch of your personal fork of the main repository (here is a https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/[guide] on how to do it).
-5. Create a pull request to merge your changes in the main repository. Tag a maintainer in the PR to review it; by default, tag `l-henri` or `@omarespejel`. Please, allow the maintainers to make commits to your branch if they need to.
+Follow these steps to contribute to the Starknet Book:
+
+1. Run the book locally (see "Running the Book Locally" section below).
+2. Familiarize yourself with the book structure (see "The Book Structure in Antora" section below).
+3. Find or propose an issue to work on (if it is a small change, create a PR directly). Comment on the issue to ask if it's available or create a new issue and tag a maintainer (by default, tag `l-henri` or `@omarespejel`).
+4. Work on the issue in a branch of your personal fork of the main repository (refer to this https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/[guide] for help).
+5. Create a pull request (PR) to merge your changes into the main repository. Tag a maintainer in the PR for review (by default, tag `l-henri` or `@omarespejel`). Allow maintainers to make commits to your branch if needed.
 6. Wait for the repository maintainers to review your changes.
-7. If the issue is addressed the repository maintainers will merge your pull request.
+7. If the issue is addressed, the repository maintainers will merge your PR.
 
-Now we will explain the steps in more detail.
+Now, let's dive into the details.
 
-== Running the Book locally
+== Running the Book Locally
 
-Before you make a PR please make sure that you can run the book locally. To do so, follow the steps below:
+Before submitting a PR, make sure you can run the book locally by following these steps:
 
-Steps:
-
-1. Clone the repository locally using `git clone https://github.com/starknet-edu/starknetbook.git`.
-2. Change directory to the repository using `cd starknetbook`.
-3. Install the lunr extension using `npm i @antora/lunr-extension`.
-4. Run the book locally using `npx antora --fetch antora-playbook.yml`. If an error regarding a missing extension appears then install the extension using `npm i @antora/EXTENSRION` as we did with the lunr extension in step 3.
+1. Clone the repository locally: `git clone https://github.com/starknet-edu/starknetbook.git`.
+2. Change directory to the repository: `cd starknetbook`.
+3. Install the lunr extension: `npm i @antora/lunr-extension`.
+4. Run the book locally: `npx antora --fetch antora-playbook.yml`. If a missing extension error appears, install the extension as shown in step 3.
 
 == The Book Structure in Antora
 
-The Book is structured in a way that is compatible with Antora. Antora is a static site generator. The book is structured in the following way:
+The Starknet Book is structured to be compatible with Antora, a static site generator. Key components include:
 
-* `antora-playbook.yml` - This file contains the configuration for the Antora site generator. As a contributor you will not need to edit this file.
-* `chapters/antora.yml` - Contains the main outline of the book. This is where you will add new chapters to the book. For example, if you want to add a new chapter, `Chapter 35: Cairo for newborns`, you will add it here with the following syntax: `modules/chapter_35/nav.adoc`.
-* `chapters/modules/` - This folder contains the actual content of the book. Each chapter is a separate folder. For example, `Chapter 35: Cairo for newborns` is in the folder `chapters/modules/chapter_35/`. Each chapter folder contains the following files and directories:
-    ** `pages/`: This directory contains the actual content of the chapter. It is divided in asciidoc files that are rendered in the website. For example, if you want to add a new section to `Chapter 1: Getting started`, you will create here a `adoc` file following syntax: `cairo_underwater.adoc`. Follow the syntax of the other files in the directory to see how to write the content of the file.
-        *** Other directories (e.g., `contracts/`): Inside the chapter folder you can add other directories with code. For example, if you want to add a new directory `contracts/` to `Chapter 1: Getting started`, you will add it here. This directory could contains the contracts of the chapter.
-    ** `nav.adoc`: This file contains the outline of the chapter. For example, if you want to add a new section to `Chapter 1: Getting started`, you will add it here with the following syntax: `** xref:cairo_underwater.adoc[1.98 Cairo underwater]`. The `xref` is the name of the file you created in the `pages/` directory. This way the section will appear in the outline of the chapter in the website. You can also add subsections to the section with the following syntax: `*** xref:priorities.adoc[1.98.1 Cairo first, floating second]`.
-    ** `images/`: This directory contains the images of the chapter. For example, if you want to add a new image to `Chapter 1: Getting started`, you will add it here. The image will be rendered in the website. To add the image to the content of the chapter, you will use the following syntax: `image::cairo_underwater.png[cairo_underwater]`.
+* `antora-playbook.yml`: Configuration for the Antora site generator (contributors don't need to edit this).
+* `chapters/antora.yml`: Main outline of the book where new chapters are added (e.g., add `modules/chapter_35/nav.adoc` for Chapter 35).
+* `chapters/modules/`: Contains the content of the book, with each chapter in a separate folder (e.g., `chapters/modules/chapter_35/`). Chapter folders include:
+  ** `pages/`: Contains asciidoc files with the chapter content.
+  ** `nav.adoc`: Contains the chapter outline and references to section files in `pages/`.
+  ** `images/`: Contains images for the chapter.
+  ** Other directories (e.g., `contracts/`): Contain code or other resources for the chapter.
 
-== Our Methodology
+== Content Guidelines
 
-We operate and maintain this project with an issue and pull request model. We will track
-the GitHub issues section https://github.com/starknet-edu/starknetbook/issues[Issues] of this repository
-and contributors can submit https://github.com/starknet-edu/starknetbook/pulls[Pull
-Requests] for review by the maintainers.
+To ensure the Starknet Book is comprehensive, consistent, and easy to understand, please adhere to the following content guidelines when contributing:
 
-Your pull request will be review by the maintainers at their earliest convenience. If you have any questions, please feel free to ask in the issues section.
+* Write in a clear and concise manner. Avoid jargon and overly technical language whenever possible. The primary goal is to make the content accessible to as many readers as possible.
+* Use proper grammar, punctuation, and spelling. This ensures a professional appearance and makes the content easier to understand.
+* Break down complex topics into smaller sections or subsections. This makes the content more digestible and helps readers grasp the concepts more easily.
+* Include relevant code examples and illustrations to clarify concepts. Make sure to test your code examples for accuracy and functionality.
+* Whenever possible, use practical examples that readers can apply in real-world situations.
+* Maintain a consistent tone and style throughout the content. The Starknet Book should have a unified voice that makes it feel like a cohesive work.
+* Keep the content up-to-date. If you come across outdated information, update it or notify the maintainers about the issue.
+* Be respectful and considerate in your interactions with other contributors. Collaboration is key to creating and maintaining a high-quality resource.
+
+By following these guidelines, you can help create a valuable learning resource for the Starknet community. Remember, every contribution, no matter how small, makes a difference. Thank you for your efforts in helping to grow and strengthen the Starknet ecosystem.
