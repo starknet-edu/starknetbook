@@ -1,13 +1,1 @@
-* xref:index.adoc[Chapter 6: STARKs]
-    ** xref:trust_verification.adoc[6.1 Trust vs. Verification]
-    ** xref:introduction_starks.adoc[6.2 Introduction to the STARKs]
-    ** 6.3 Mathematical Primer
-        *** xref:number_theory.adoc[6.3.1 Algebraic Number Theory]
-        *** xref:geometry.adoc[6.3.2 Algebraic Geometry]
-        *** xref:cryptography.adoc[6.3.3 Cryptography]
-    ** xref:arithmetization.adoc[6.4 Arithmetization]
-    ** xref:low_testing.adoc[6.5 Low Degree Testing: The Secret Sauce of Succinctness]
-    ** xref:fri.adoc[6.6 The FRI Protocol]
-    ** xref:efficient_starks.adoc[6.7 Efficient STARKs]
-    ** xref:starks_snarks.adoc[6.8 STARKs and SNARKs: Differences]
-    
+* Chapter 6: Running a Node

@@ -1,14 +1,1 @@
-* Chapter 3: Deep into Starknet
-    ** xref:blocks.adoc[3.1 Blocks]
-    ** xref:transactions.adoc[3.2 The Lifecycle of Transactions]
-    ** xref:starknet_os.adoc[3.3 Starknet OS]
-    ** xref:state.adoc[3.4 State Transition/Fees]
-    ** xref:accounts.adoc[3.5 Accounts]
-    ** xref:account_abstraction.adoc[3.6 Account Abstraction]
-    ** xref:l1l2.adoc[3.7 L1-L2 Messaging]
-    ** xref:sequencers.adoc[3.8 Sequencers]
-    ** xref:provers.adoc[3.9 Provers]
-    ** xref:verifiers_solidity.adoc[3.10 Verifiers in Solidity]
-    ** xref:verifiers_cairo.adoc[3.11 Verifiers in Cairo]
-    ** xref:hints.adoc[3.12 Hints]
-    ** xref:fees.adoc[3.13 Fee calculation and paying for fees]
+* Chapter 3: Tooling
