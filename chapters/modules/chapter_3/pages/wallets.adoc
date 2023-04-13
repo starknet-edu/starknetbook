@@ -2,6 +2,17 @@
 
 = Wallets
 
+Explore the wallets that allow you to interact with and build in the Starknet ecosystem.
+
+.StarkNet wallet, in alphabetical order
+|===
+|Name|Extension
+
+|https://www.argent.xyz/argent-x/[Argent X]|https://chrome.google.com/webstore/detail/argent-x/dlcobpjiigpikoobohmabehhmhfoodbb[Browser Extension]
+
+|https://braavos.app/[Braavos]|https://chrome.google.com/webstore/detail/braavos-smart-wallet/jnlgamecbpmbajjfhmmmlhejkemejdma[Browser Extension]
+|===
+
 == Contributing
 
 🎯 +++<strong>+++STARKer: +++</strong>+++ This book is an open source effort, made possible only by contributions from readers like you. If you are interested in making this resource better for other users - please suggest a change by following the instructions https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[here]. 🎯 🎯

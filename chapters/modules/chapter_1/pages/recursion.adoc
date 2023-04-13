@@ -14,7 +14,7 @@ One good example is https://github.com/starknet-edu/starknet-cairo-101/blob/47c8
 In order to validate ex13 of https://github.com/starknet-edu/starknet-cairo-101[starknet-cairo-101], you will have to find the transaction corresponding to the creation of the contract and reverse-engineer the values in the `values_mapped_secret_storage` storage mapping based on what has been passed to the contract constructor.
 In order to do so, you will have to have a deep understanding of the type of recursion used.
 
-Please, nagivate to link:./recursion/cairo/recursion.cairo[recursion/cairo/recursion.cairo] and read the code as well with comments to have two examples of recursions.
+Please, navigate to link:./recursion/cairo/recursion.cairo[recursion/cairo/recursion.cairo] and read the code as well with comments to have two examples of recursions.
 One of which is applicable to how storage mappings deal with it.
 Instructions on how to compile and run the program are embedded in https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_1/pages/contracts/cairo/recursion.cairo[recursion/cairo/recursion.cairo].
 

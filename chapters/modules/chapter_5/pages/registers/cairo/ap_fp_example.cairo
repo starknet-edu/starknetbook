@@ -42,7 +42,7 @@ func main(output_ptr: felt*) -> (output_ptr: felt*) {
     let update_output_ptr = output_ptr + 1;
     assert [output_ptr] = [ap-1];
     %{
-        print(f"4. ap address: {ap}; fp address: {fp}; value at address [AP - 1] is {memory[ap - 1]} (WITH OUPUT_PTR).")
+        print(f"4. ap address: {ap}; fp address: {fp}; value at address [AP - 1] is {memory[ap - 1]} (WITH OUTPUT_PTR).")
     %}
     // Call function foo() to understand how ap and fp work
     foo();
@@ -52,6 +52,6 @@ func main(output_ptr: felt*) -> (output_ptr: felt*) {
     %{
         print(f"7. ap address: {ap}; fp address: {fp}; value at address [AP - 1] is {memory[ap - 1]}.")
     %}
-    // Since output_ptr was included as an explicit argument then we have to explicitely return it
+    // Since output_ptr was included as an explicit argument then we have to explicitly return it
     return(output_ptr=update_output_ptr);
 }

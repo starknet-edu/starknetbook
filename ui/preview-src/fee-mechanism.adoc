@@ -140,7 +140,7 @@ Consequently, the fee associated with a single l2→l1 message is:
 
 When a transactions which raises the `deploy` syscall is included in a state update, the following xref:../Data_Availability/on-chain-data.adoc#format[data] reaches L1:
 
-* contract addresss
+* contract address
 * class hash
 
 Consequently, the fee associated with a single deployment is:
