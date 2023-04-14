@@ -45,3 +45,25 @@ Cairo addresses these limitations and offers more efficient solutions:
 3. Cairo provides full low-level access to underlying primitives
 
 Although the ecosystem tools are still maturing, it is essential to transcend existing limitations and build better composable applications. Cairo's focus on overcoming Solidity's limitations in provable computation and embracing the scalability of STARKs makes it a more suitable choice for developers looking to create the next generation of decentralized applications.
+
+== Programming in Cairo
+
+One of the key inspirations for Cairo's syntax is Rust, a popular systems programming language known for its performance, reliability, and strong focus on safety. Developers familiar with Rust will find it easy to transition to Cairo, as many of the language's features and concepts are similar.
+
+However, even if you are not familiar with Rust, learning Cairo is still a straightforward process. The language is designed with simplicity and clarity in mind, making it accessible to developers with varying levels of experience. As you delve into Cairo, you'll discover a growing community of passionate developers who are constantly creating new educational materials, tools, and resources to make the learning experience as smooth as possible for newcomers.
+
+This ecosystem continues to grow and thrive. Each week, new materials and tooling are developed to help both experienced programmers and beginners alike to learn, understand, and build with Cairo.
+
+In the following sections, we will explore the core concepts and components of Cairo.
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

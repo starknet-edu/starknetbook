@@ -1,0 +1,34 @@
+[id="asserts"]
+
+=  Asserts and Error Handling in Cairo
+
+In Cairo, the `assert` statement is used to validate inputs, enforce constraints, and handle errors. This statement checks if a given condition is true and throws an error message if it is not.
+
+In the Vote contract, the `assert` statement is used in several places to ensure proper input validation and error handling:
+
+[source,rust]
+----
+assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
+
+assert(is_voter == true, 'USER_NOT_REGISTERED');
+assert(can_vote == true, 'USER_ALREADY_VOTED');
+----
+
+Some key points about the `assert` statement in Cairo are:
+
+1. The `assert` statement checks if a condition is true. If the condition is not true, the contract execution is halted, and an error message is thrown.
+
+2. Error messages are specified as strings, following the condition. In the example above, 'VOTE_0_OR_1', 'USER_NOT_REGISTERED', and 'USER_ALREADY_VOTED' are the error messages.
+
+3. The `assert` statement is helpful for input validation, ensuring that only valid inputs are processed by the contract.
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

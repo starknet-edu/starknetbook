@@ -1,0 +1,74 @@
+[id="functions"]
+
+= Functions and Modules in Cairo
+
+In Cairo, functions and modules are used to structure the code and define reusable pieces of logic. They are similar to Solidity functions and contracts, but there are some differences in their implementation and usage.
+
+== Functions in Cairo
+
+Cairo functions are defined using the `fn` keyword. Functions can have different attributes depending on their purpose, such as `#[constructor]`, `#[view]`, or `#[external]`. Functions can accept arguments, return values, and interact with the contract's storage.
+
+An example of a Cairo function:
+
+[source,rust]
+----
+#[view]
+fn get_vote_status() -> (u8, u8) {
+    let n_yes = yes_votes::read();
+    let n_no = no_votes::read();
+
+    return (n_yes, n_no);
+}
+----
+
+This function is a view function that returns the current number of yes and no votes.
+
+[NOTE]
+====
+Function visibility (public, external, internal, or private) is not explicitly specified in Cairo. Instead, functions are considered internal by default unless they are marked with the `#[view]` or `#[external]` attributes (we will review them in the next section). In Solidity, you specify the visibility using keywords (public, external, internal, or private).
+====
+
+== Modules in Cairo
+
+Cairo modules are used to group related functionality under a namespace. A module is defined using the `mod` keyword, followed by the module name and a block of code containing functions and other declarations. Modules can import other modules and use their functionality.
+
+An example of a Cairo module:
+
+[source,rust]
+----
+#[contract]
+mod Vote {
+    // Core Library Imports
+    use starknet::ContractAddress;
+    use starknet::get_caller_address;
+    use array::ArrayTrait;
+
+    // Other declarations and functions
+}
+----
+
+In this example, the `Vote` module imports other modules like `starknet` and `array` and defines a contract with its storage, functions, and other declarations.
+
+== Comparison with Solidity
+
+1. *Functions*:
+   a. *Declaration*: Cairo functions are declared with the `fn` keyword, while Solidity functions use the `function` keyword.
+   b. *Attributes*: Cairo functions use attributes like `#[constructor]`, `#[view]`, and `#[external]` to indicate their purpose. In Solidity, keywords like `constructor`, `view`, and `public` are used instead.
+   c. *Return values*: In Cairo, return values are declared using the `->` syntax, while Solidity uses the `returns` keyword.
+
+2. *Modules*:
+   a. *Declaration*: Cairo modules are declared with the `mod` keyword, while Solidity uses the `contract` keyword to define a contract.
+   b. *Imports*: Cairo modules can import other modules using the `use` keyword. In Solidity, the `import` keyword is used to include external contracts or libraries.
+   c. *Namespaces*: Cairo modules serve as namespaces for related functionality. In Solidity, contracts themselves act as namespaces for their functions and variables.
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

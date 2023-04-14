@@ -1,0 +1,84 @@
+[id="types"]
+
+= Types in Cairo and The Relevance of Typing
+
+Cairo is a strongly typed language, similar to Rust, which means that every variable, constant, and function argument must have an explicit type. This enforces strict type checking, providing increased safety and reducing the likelihood of runtime errors. Cairo has a rich type system that includes several types of integers, booleans, arrays, and contract addresses. Cairo also supports user-defined types, which are useful for modeling complex data structures.
+
+A list of primitive types in Cairo (not all), along with a brief description of each type's purpose and functionality:
+
+[cols="1,2",options="header"]
+
+|===
+| Primitive Type | Description
+| u8 | Represents an unsigned 8-bit integer.
+| usize | Unsigned size integer (typically used for representing indices and lengths)
+| u16 | Represents an unsigned 16-bit integer.
+| u32 | Represents an unsigned 32-bit integer.
+| u64 | Represents an unsigned 64-bit integer.
+| u128 | Represents an unsigned 128-bit integer.
+| u256 | Represents an unsigned 256-bit integer.
+| bool | Represents a boolean value, which can be either true or false.
+| felt252 | Represents a field element.
+| ContractAddress | A type representing a StarkNet contract address, used for identifying and interacting with smart contracts.
+| T | Represents a generic type placeholder, which can be replaced with any specific type during compilation.
+| Option<T> | Represents a value that may or may not be present, used for optional values and error handling.
+| Result<T, E> | Represents the outcome of a computation that may result in an error, used for error handling and control flow.
+| Array<T> | A dynamic array data structure for elements of type T, used for creating and manipulating arrays.
+|===
+
+In Cairo, every variable or function argument must be explicitly typed. This helps the compiler identify and prevent type-related issues at compile-time, increasing code safety and robustness. Moreover, it also improves code readability by making the types of values and the purpose of the code more apparent.
+
+Here is an example of using types in Cairo:
+
+[source,rust]
+----
+fn example_function(value: u32) -> u32 {
+    let doubled_value: u32 = value * 2_u32;
+    return doubled_value;
+}
+----
+
+In this example, `value` and `doubled_value` are explicitly typed as `u32`, and the function `example_function` has a return type of `u32`. This ensures that the types are correctly enforced and that the code is easier to read and understand. In the next section we will review what definitions like `2_u32` mean.
+
+=== Typing integer literals in Cairo
+
+In Cairo, you can specify the type of an integer literal by using an underscore followed by the desired type, similar to Rust.
+
+Here are some examples:
+
+[source,rust]
+----
+# Unsigned 8-bit integer
+let value_u8 = 1_u8;
+
+# Unsigned 16-bit integer
+let value_u16 = 1_u16;
+
+# Unsigned 32-bit integer
+let value_u32 = 1_u32;
+
+# Unsigned 64-bit integer
+let value_u64 = 1_u64;
+
+# Unsigned 128-bit integer
+let value_u128 = 1_u128;
+
+# Unsigned 256-bit integer
+let value_u256 = 1_u256;
+
+# Unsigned size integer (typically used for representing indices and lengths)
+let value_usize = 1_usize;
+----
+
+In these examples, the type of the integer literals is specified using the underscore notation, which makes it easier to work with different integer types without the need for explicit type casting.
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

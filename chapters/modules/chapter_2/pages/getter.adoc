@@ -1,0 +1,57 @@
+[id="getter"]
+
+= Getters Functions (View Functions) in Cairo
+
+Getter functions, also known as view functions, are read-only functions that allow you to access data from the contract's storage without modifying it. They can be called by other contracts or externally, and they do not require gas fees as they do not alter the contract's state.
+
+In Cairo, getter functions are defined using the `#[view]` attribute. In Solidity, you would use the `view` keyword to define a similar type of function. 
+
+Here's an overview of the getter functions in the Vote contract:
+
+1. `get_vote_status`: Returns the current number of yes and no votes.
+2. `voter_can_vote`: Returns whether a given voter is allowed to vote or not.
+3. `is_voter_registered`: Returns whether a given address is a registered voter or not.
+
+Let's examine each getter function in detail:
+
+[source,rust]
+----
+// @dev Return the number of yes and no votes
+// @return status (u8, u8): current status of the vote (yes votes, no votes)
+#[view]
+fn get_vote_status() -> (u8, u8) {
+    // Read the number of yes votes and no votes from storage
+    let n_yes = yes_votes::read();
+    let n_no = no_votes::read();
+
+    // Return the current voting status
+    return (n_yes, n_no);
+}
+----
+
+The `get_vote_status` function reads the `yes_votes` and `no_votes` values from the storage and returns them as a tuple of two unsigned 8-bit integers. In Solidity, you would return a tuple of `uint8` values.
+
+[source,rust]
+----
+// @dev Returns if a voter can vote or not
+// @param user_address (ContractAddress): address of the voter
+// @return status (bool): true if the voter can vote, false otherwise
+#[view]
+fn voter_can_vote(user_address: ContractAddress) -> bool {
+    // Read the voting status of the user from storage
+    can_vote::read(user_address)
+}
+----
+
+The `voter_can_vote` function takes a `ContractAddress` as input and reads the voting status of the user from the `can_vote` mapping in the storage. It returns a `bool` value indicating whether the voter is allowed to vote or not. In Solidity, you would use a `mapping` with an `address` key type to store a similar data structure. The `is_voter_registered` function is similar to the voter_can_vote function, but it returns a `bool` value indicating whether the address is a registered voter or not.
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

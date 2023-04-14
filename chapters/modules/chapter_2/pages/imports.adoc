@@ -1,0 +1,51 @@
+[id="imports"]
+
+= Imports in Cairo
+
+Imports in Cairo play an essential role in organizing and structuring your code, allowing you to reuse functionality from other modules and libraries. If you are familiar with Rust, you will find Cairo's import system quite similar.
+
+Cairo comes with a core library, known as `corelib`, which contains essential modules and functionalities like `starknet` and `array`. You can refer to the Cairo documentation for more details on `corelib`. Importing these core libraries does not require any additional installation, as they are built-in.
+
+To import modules, functions, or types in Cairo, you can use the `use` keyword, followed by the path to the item you want to import. In the example provided, we have an `Ex01` module, and we are importing several items from the `corelib` and custom modules:
+
+[source,rust]
+----
+mod Ex01 {
+    // Core Library imports
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
+
+    // Internal imports
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::validate_exercise;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::ex_initializer;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::distribute_points;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::update_class_hash_by_admin;
+}
+----
+
+We are importing `get_caller_address` and `ContractAddress` from the starknet core library. Additionally, we are importing custom modules from the `starknet_cairo_101` repository, making them part of the `Ex01` contract's set of functions. It is important to take into account the structure of the repository and the path to the modules you want to import. The file structure of the `starknet_cairo_101` repository is as follows:
+
+[source]
+----
+.
+├── src
+│   ├── Ex01.cairo
+│   ├── ...
+│   ├── utils
+│   │   ├── ex00_base.cairo
+----
+
+Inside the `utils` folder, we have the `ex00_base.cairo` file, which contains the `Ex00Base` module. This module contains the functions that are used in all the exercises.
+
+To import custom modules or external libraries not included in `corelib`, you will need to have the necessary files within your project repository or specify the appropriate paths.
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

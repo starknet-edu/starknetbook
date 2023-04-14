@@ -13,4 +13,5 @@
         *** xref:registers.adoc[9.3.2 Registers]
         *** xref:allocation.adoc[9.3.3 Allocation]
     ** xref:cairovm.adoc[9.4 Cairo VM]
+        *** xref:sierra.adoc[9.4.1 Sierra]
         *** xref:casm.adoc[9.4.1 CASM]

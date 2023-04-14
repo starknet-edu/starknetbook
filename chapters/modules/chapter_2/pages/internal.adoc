@@ -1,0 +1,31 @@
+[id="structure"]
+
+= Internal Functions
+
+Internal functions in Cairo are functions that can only be called by other functions within the same contract. They are not callable from outside the contract or by other contracts. In Solidity, you would use private or internal functions for a similar purpose.
+
+In the Vote contract, the internal functions are defined as follows:
+
+[source,rust]
+----
+fn assert_allowed(address: ContractAddress) { ... }
+
+fn _register_voters(
+    voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress
+) { ... }
+----
+
+The `assert_allowed` function is an internal function that checks if a voter has already voted or not. It is called by the `vote` function to ensure that a voter can only vote once.
+
+The `_register_voters` function is an internal function that registers a list of voters. It is called by the `register_voters` function to register a list of voters.
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

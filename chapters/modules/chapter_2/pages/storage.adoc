@@ -1,0 +1,48 @@
+[id="storage"]
+
+= Storage in Cairo
+
+In the Storage section of a Cairo contract, you define the data structures that will be stored on the blockchain and can be accessed by the contract functions. These data structures represent the state of the contract and can be read or modified throughout the contract's lifecycle.
+
+In the Vote contract, the Storage section consists of the following variables:
+
+* `yes_votes`: A `u8` (unsigned 8-bit integer) variable to store the number of yes votes.
+* `no_votes`: A `u8` (unsigned 8-bit integer) variable to store the number of no votes.
+* `can_vote`: A `LegacyMap` (a mapping data structure) that associates each registered voter's `ContractAddress` with a `bool` value. This value indicates whether the voter is allowed to vote (true) or not (false).
+* `registered_voter`: Another `LegacyMap` that associates each voter's `ContractAddress` with a `bool` value, representing whether the voter is registered (true) or not (false).
+
+The `LegacyMap` data structure allows you to associate keys (in this case, `ContractAddress`) with values (in this case, `bool`). You can read from and write to `LegacyMap` using the `read` and `write` functions.
+
+For example, to check if a voter is registered, you can use the following code:
+
+[source,rust]
+----
+let is_voter: bool = registered_voter::read(address);
+----
+
+To register a voter, you can use the following code:
+
+[source,rust]
+----
+registered_voter::write(voter_address, true);
+----
+
+Some similarities and differences between Cairo and Solidity in the storage implementation are:
+
+1. Cairo uses a struct to define the storage, while Solidity uses state variables and mappings directly in the contract.
+
+2. In Cairo, you use the `LegacyMap` type to create a mapping, while in Solidity, you use the `mapping` keyword.
+
+3. In Cairo, storage fields are accessed using specific functions such as `read` and `write` (e.g., `yes_votes::write(0_u8)`). In Solidity, storage fields are accessed using assignment and indexing (e.g., `yes_votes = 0`).
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

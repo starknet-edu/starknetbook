@@ -1,0 +1,69 @@
+[id="constructor"]
+
+= Constructor function in Cairo
+
+A constructor is a special function that initializes a Cairo contract when it is deployed on the blockchain. The constructor is called only once, at the time of deployment, and is responsible for setting up the initial state of the contract.
+
+In the `Vote` contract, there are two constructors:
+
+1. A constructor that takes three individual `ContractAddress` parameters representing the addresses of the registered voters.
+2. An alternative constructor that takes an array of `ContractAddress` values, which can be used to initialize the contract with a variable number of registered voters. (This constructor is commented out in the example provided, but it demonstrates how you can implement different constructor variations in a Cairo contract.)
+
+Let's examine the first constructor in more detail:
+
+[source,rust]
+----
+#[constructor]
+fn constructor(voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress) {
+    // Register all voters by calling the _register_voters function
+    _register_voters(voter_1, voter_2, voter_3);
+
+    // Initialize the vote count to 0
+    yes_votes::write(0_u8);
+    no_votes::write(0_u8);
+}
+----
+
+This constructor does the following:
+
+* Registers the three voters by calling the `_register_voters` function and passing the three `ContractAddress` values. The `_register_voters` function updates the `registered_voter` and `can_vote` mapping structures in the storage.
+* Initializes the `yes_votes` and `no_votes` storage variables to 0 by calling the `write` function with an initial value of `0_u8` (an unsigned 8-bit integer).
+
+Now, let's briefly examine the alternative constructor. Please note that you can only have one constructor per contract, so you can either use the first constructor or the second one, but not both.
+
+[source,rust]
+----
+#[constructor]
+fn constructor(registered_addresses: Array::<ContractAddress>) {
+    // Get the number of registered voters
+    let registered_voters_len: usize = registered_addresses.len();
+
+    // Register all voters by calling the _register_voters recursive function
+    // with the array of addresses and its length as index
+    _register_voters(ref registered_addresses, registered_voters_len);
+
+    // Initialize the vote count to 0
+    yes_votes::write(0_u8);
+    no_votes::write(0_u8);
+}
+----
+
+The alternative constructor:
+
+* Takes an `Array` of `ContractAddress` values representing the addresses of the registered voters.
+* Calculates the number of registered voters using the `len` function. This will be the index of the last voter in the array and will be used in the recursive function (next point).
+* Registers all voters by calling the `_register_voters` function, which uses a recursive approach in this case.
+* Initializes the `yes_votes` and `no_votes` storage variables to 0, just like the first constructor.
+
+The use of two constructors demonstrates how you can provide different ways to initialize the contract based on the input parameters or the desired functionality.
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

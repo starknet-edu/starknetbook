@@ -1,0 +1,49 @@
+[id="external"]
+
+= External Functions in Cairo
+
+External functions are functions that can be called by other contracts or externally by users through a transaction on the blockchain. They can change the contract's state, and therefore, require gas fees for execution. This means that we can write to the contract's storage using the `write` function.
+
+In Cairo, external functions are defined using the `#[external]` attribute. In Solidity, you would use the `public` or `external` keyword to define a similar type of function. 
+
+In the Vote contract, there is only one external function: `vote`. Let's examine it in detail:
+
+[source,rust]
+----
+// @dev Submit a vote (0 for No and 1 for Yes)
+// @param vote (u8): vote value, 0 for No and 1 for Yes
+// @return () : updates the storage with the vote count and marks the voter as not allowed to vote again
+#[external]
+fn vote(vote: u8) {
+    // Check if the vote is valid (0 or 1)
+    assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
+
+    // Know if a voter has already voted and continue if they have not voted
+    let caller : ContractAddress = get_caller_address();
+    assert_allowed(caller);
+
+    // Mark that the voter has already voted and update in the storage
+    can_vote::write(caller, false);
+
+    // Update the vote count in the storage depending on the vote value (0 or 1)
+    if (vote == 0_u8) {
+        no_votes::write(no_votes::read() + 1_u8);
+    }
+    if (vote == 1_u8) {
+        yes_votes::write(yes_votes::read() + 1_u8);
+    }
+}
+----
+
+The `vote` function is an external function that allows users to submit their vote (0 for No and 1 for Yes) to the contract. It takes a `u8` value as input, checks if the value is valid (0 or 1), and updates the storage accordingly.
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others. :emoji-rocket: :emoji-sparkles:
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
