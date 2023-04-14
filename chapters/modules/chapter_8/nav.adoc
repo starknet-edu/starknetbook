@@ -10,3 +10,4 @@
     ** xref:verifiers_cairo.adoc[8.9 Verifiers in Cairo]
     ** xref:hints.adoc[8.10 Hints]
     ** xref:fees.adoc[8.11 Fee calculation and paying for fees]
+    ** xref:sharp.adoc[8.12 SHARP]

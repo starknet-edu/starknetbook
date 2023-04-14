@@ -1,0 +1,38 @@
+
+
+
+Introduction
+
+Brief overview of the Sharp system
+Importance of Sharp in the context of StarkNet
+
+
+= The Sharp System in StarkNet
+
+== Introduction
+
+The Sharp system is a groundbreaking solution in the world of blockchain scalability and security. In this chapter, we will discuss what the Sharp system is, why it's so innovative, and how users interact with it. We will also address some of the challenges faced by the system and explore its various components and processes.
+
+== Understanding the Sharp System
+
+To grasp the concept of the Sharp system, we must first understand the roles of the Prover, Verifier, and the Cairo program. The Prover claims to have a private input that, when run through the Cairo program, will successfully produce a specific output. This assertion is then proven to the Verifier.
+
+The Cairo program is a versatile tool that can process any Cairo program. By leveraging its computational capabilities, we can create the Sharp system.
+
+== Shared Prover and Aggregating Cairo Jobs
+
+Sharp, which stands for "shared prover," receives multiple Cairo jobs with different logics from various applications. These jobs are aggregated, processed, and a proof is generated, which is then sent to the Solidity Verifier on the Ethereum blockchain.
+
+Before the Sharp system, individual proofs were generated for each job, which was more expensive. By aggregating jobs, the cost per transaction is significantly reduced, benefiting smaller users who have limited computational resources.
+
+== The High-Level Flow
+
+In summary, the high-level flow of the Sharp system involves receiving Cairo jobs, running the Prover, and sending the proof on-chain to the Solidity Verifier. The process is analogous to taking public transportation rather than using a private vehicle, as it is more cost-effective.
+
+== Bootloader and the Prover
+
+The Sharp system uses a Cairo program called the Bootloader, which uploads various programs with their inputs and outputs. The Prover runs on this Bootloader program, which then uploads different Cairo programs and outputs the program hash for each original program and their respective outputs.
+
+== Solidity Verifier and Facts on Chain
+
+The Solidity Verifier is a Stark Verifier that verifies the Cairo program and places a fact on-chain. This fact is a unique ID of the program and its output, and it serves as a way for users to verify if the Verifier approved the proof of their program.
