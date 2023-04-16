@@ -1,11 +1,6 @@
-[id="calling_invoking"]
+[id="structure"]
 
-= Calling and Invoking Contracts
-
-Let's interact with our deployed voting contract.
-
-* Calling contracts refer to interacting with contract functions with the `@view` entry point (decorator). Since we are not altering the state of the network, and hence we do not need to pay fees, we do not need to sign the operation.
-* Invoking contracts is interacting with contract functions with the `@external` entry point. We need to sign the transaction and pay the operation fee.
+= The Structure of a Cairo Smart Contract
 
 == Contributing
 
@@ -17,4 +12,3 @@ StarkNetBook is a work in progress, and your passion, expertise, and unique insi
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
-
