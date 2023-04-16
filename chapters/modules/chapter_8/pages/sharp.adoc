@@ -1,67 +1,78 @@
-
 [id="sharp"]
 
-= The SHARP System in StarkNet
+= The SHARP (Shared Prover) in Starknet
 
-The SHARP system is like a public transport for proofs on StarkNet, aggregating multiple Cairo programs to save costs and boost efficiency. It uses recursive proofs, allowing parallelization and optimization, making it more affordable for all users. Key services like the gateway, validator, and prover work together, with a stateless design for flexibility. SHARP's adoption by StarkEx, StarkNet, and external users highlights its significance and potential for future optimization.
+The SHARP is like public transportation for proofs on Starknet, aggregating multiple Cairo programs to save costs and boost efficiency. It uses recursive proofs, allowing parallelization and optimization, making it more affordable for all users. Critical services like the gateway, validator, and Prover work together with a stateless design for flexibility. SHARP’s adoption by StarkEx, Starknet, and external users highlights its significance and potential for future optimization.
 
-== Introduction
+This chapter will discuss the SHARP, how it has evolved to incorporate recursive proofs, and its role in reducing costs and improving efficiency within the Starknet network.
 
-The SHARP system is a groundbreaking solution in the world of blockchain scalability and security. In this chapter, we will discuss what the SHARP system is, how it has evolved to incorporate recursive proofs, and its role in reducing costs and improving efficiency within the StarkNet network.
+== What is the SHARP?
 
-== What is the SHARP System?
+The SHARP, which stands for "Shared Prover", is a mechanism used in Starknet that aggregates multiple Cairo programs from different users, each containing different logic. These Cairo programs are then executed together, generating a single proof common to all the programs. This proof is then sent to Ethereum, where a Solidity Verifier on-chain verifies it.
 
-The SHARP system, which stands for "Shared Prover," is a mechanism used in StarkNet that aggregates multiple Cairo programs from different users, each containing different logic. These Cairo programs are then executed together, generating a single proof that is common to all the programs. This proof is then sent to Ethereum, where it is verified by a Solidity verifier on-chain.
+The primary benefit of the SHARP system lies in its ability to decrease costs and enhance efficiency within the Starknet network. It achieves this by aggregating multiple Cairo jobs, which are individual sets of computations. This aggregation allows the protocol to leverage the exponential amortization offered by STARK proofs.
 
-The main advantage of the SHARP system is its ability to reduce costs and improve efficiency in the StarkNet network. By aggregating multiple Cairo jobs, the protocol can take advantage of the exponential acceleration provided by the STARK proof system. As a result, each individual transaction costs much less, making the entire process more affordable for users.
+Exponential amortization means that as the computational load of the proofs increases, the cost of verifying those proofs rises at a slower logarithmic rate than the computation increase. In other words, the computation itself grows slower than the verification cost. As a result, the cost of each transaction within the aggregated set is significantly reduced, making the overall process more cost-effective and accessible for users.
 
-Additionally, the SHARP system allows smaller users with limited computation to benefit from joining other jobs and sharing the cost of generating the proofs. This collaborative approach is similar to using public transportation instead of a private car, where the cost is distributed among all participants, making it more affordable for everyone.
+[NOTE]
+====
+In the SHARP and Cairo context, "jobs" refer to the individual Cairo programs or tasks submitted by different users. These jobs contain specific logic or computations that must be executed on the Starknet network.
+====
 
-== Recursive Proofs in the SHARP System
+Additionally, the SHARP allows smaller users with limited computation to benefit from joining other jobs and share the cost of generating the proofs. This collaborative approach is similar to using public transportation instead of a private car, where the cost is distributed among all participants, making it more affordable for everyone.
 
-One of the most interesting aspects of the SHARP system is its use of recursive proofs. Instead of sending the generated proofs directly to the Solidity verifier, the proofs are first sent to a Cairo verifier, which is a STARK verifier written in Cairo. The Cairo verifier then checks the proofs off-chain and generates a new proof, which can be sent back to the SHARP system.
+== Recursive Proofs in the SHARP
 
-This process continues in a recursive manner, with each new proof being sent to the Cairo verifier until a trigger is reached. At this point, the last proof in the series is sent to the Solidity verifier on Ethereum. This approach allows for greater parallelization of the computation and reduces the time and cost associated with generating and verifying proofs.
+One of the most exciting aspects of the SHARP is its use of recursive proofs. Instead of sending the generated proofs directly to the Solidity Verifier, the proofs are first sent to a STARK Verifier program written in Cairo. This STARK Verifier then generates a new proof that the initial proofs were verified. These can be sent back into the SHARP and the STARK Verifier.
+
+This process continues recursively, with each new proof being sent to the Cairo Verifier until a trigger is reached. At this point, the last proof in the series is sent to the Solidity Verifier on Ethereum. This approach allows for greater parallelization of the computation and reduces the time and cost associated with generating and verifying proofs.
 
 At first glance, recursive proofs may seem more complex and time-consuming. However, there are several benefits to this approach:
 
-. *Parallelization*: Recursive proofs allow for parallelization of work, reducing latency for users and improving system efficiency.
+. *Parallelization*: Recursive proofs allow for work parallelization, reducing user latency and improving SHARP efficiency.
 . *Lower cloud costs*: Since each job is shorter, the required memory for processing is reduced, resulting in lower cloud costs.
-. *Optimization*: Recursive proofs enable the system to optimize for various factors, including latency, on-chain costs, and time to proof.
+. *Optimization*: Recursive proofs enable the SHARP to optimize for various factors, including latency, on-chain costs, and time to proof.
+
+[NOTE]
+====
+Latency in Starknet encompasses the time taken for processing, confirming, and including transactions in a block. It is affected by factors like network congestion, transaction fees, and system efficiency. Minimizing latency ensures faster transaction processing and user feedback.
+
+Time to proof, however, specifically pertains to the duration required to generate and verify cryptographic proofs for transactions or operations.
+====
 
 == SHARP Backend Architecture and Data Pipeline
 
-The SHARP backend architecture consists of several services that work together to process Cairo jobs and generate proofs. These services include the gateway, validator, scheduler, Cairo runner, prover, and dispatcher.
+The SHARP back end architecture consists of several services that work together to process Cairo jobs and generate proofs. These services include:
 
-. *Gateway*: Cairo jobs enter the system through the gateway.
-. *Validator*: The validator service runs validation checks on each job, ensuring they meet the necessary requirements and can fit within the prover machines. Invalid jobs are tagged as such and do not proceed to the prover.
-. *Scheduler*: The scheduler service is responsible for creating "trains" that aggregate jobs and send them to the prover. Recursive jobs are paired and sent to the prover together.
-. *Cairo Runner*: This service runs Cairo for the prover's needs.
-. *Prover*: The prover computes the proofs for the jobs.
-. *Dispatcher*: The dispatcher sends the proofs to either the Cairo verifier for further recursion or the Solidity verifier on Ethereum for final verification.
+. *Gateway*: Cairo jobs enter the SHARP through the gateway.
+. *Validator*: This is the first important step. The validator service runs validation checks on each job, ensuring they meet the requirements and can fit within the prover machines. Invalid jobs are tagged as such and do not proceed to the Prover.
+. *Scheduler*: The scheduler service creates "trains" that aggregate jobs and send them to the Prover. Recursive jobs are paired and sent to the Prover together.
+. *Cairo Runner*: This service runs Cairo for the Prover’s needs. The Cairo Runner service runs Cairo programs, executing the necessary computations and generating the execution trace as an intermediate result. The Prover then uses this execution trace.
+. *Prover*: The Prover computes the proofs for the jobs.
+. *Dispatcher*: The dispatcher sends the proofs to either the Cairo Verifier for further recursion or the Solidity Verifier on Ethereum for final verification.
 
-The system is designed to be stateless, allowing for greater flexibility in processing jobs. It also relies on the cryptographic soundness of the verifier, eliminating the need to trust the prover's computations.
+The SHARP is designed to be stateless (each Cairo job is executed in its own context and has no dependency on other jobs), allowing for greater flexibility in processing jobs. This allows greater flexibility when processing jobs. It also relies on the cryptographic soundness of the Verifier, eliminating the need to trust the Prover’s computations.
 
 == Current SHARP Users
 
-Currently, the main users of SHARP include:
+Currently, the primary users of SHARP include:
 
 * StarkEx
-* StarkNet
+* Starknet
 * External users who use the Cairo Playground
 
 == Challenges and Optimization
 
-Optimizing the prover involves numerous challenges and potential projects in which the StarkWare team and the community are currently working:
+Optimizing the Prover involves numerous challenges and potential projects on which the Starkware team and the community are currently working:
 
-* Exploring more efficient hash functions for Cairo, the prover, and Solidity.
-* Investigating smaller fields for recursive proof steps, which could lead to more efficient computations.
-* Adjusting various parameters of the STARK protocol, such as Fry parameters and block factors.
+* Exploring more efficient hash functions for Cairo, the Prover, and Solidity.
+* Investigating smaller fields for recursive proof steps could lead to more efficient computations.
+* Adjusting various parameters of the STARK protocol, such as FRI parameters and block factors.
 * Optimizing the Cairo code to make it faster, resulting in a faster recursive prover.
-* Developing dynamic layouts, which will allow Cairo programs to scale resources depending on their needs.
+* Developing dynamic layouts will allow Cairo programs to scale resources depending on their needs.
 
-In particular, dynamic layouts will allow Cairo programs to scale resources depending on their needs. This can lead to more efficient computation and better utilization of resources. Dynamic layouts allow the system to determine the required resources for a specific job and adjust the layout accordingly, instead of relying on predefined layouts with fixed resources. This approach can provide more tailored solutions for each job, leading to better overall efficiency.
+In particular, dynamic layouts (you can learn more about layouts here (TODO)) will allow Cairo programs to scale resources depending on their needs. This can lead to more efficient computation and better utilization of resources. Dynamic layouts allow the SHARP to determine the required resources for a specific job and adjust the layout accordingly instead of relying on predefined layouts with fixed resources. This approach can provide tailored solutions for each job, improving overall efficiency.
 
 == Conclusion
 
-In conclusion, the SHARP system is a critical component of StarkNet's architecture, providing a more efficient and cost-effective solution for processing Cairo programs and verifying their proofs. By leveraging the power of STARK technology and incorporating recursive proofs, the SHARP system plays a vital role in improving the overall performance and scalability of the StarkNet network. The stateless nature of the SHARP system and the reliance on the cryptographic soundness of the verifier make it an innovative and valuable addition to the blockchain ecosystem.
+In conclusion, the SHARP is a critical component of Starknet’s architecture, providing a more efficient and cost-effective solution for processing Cairo programs and verifying their proofs. By leveraging the power of STARK technology and incorporating recursive proofs, the SHARP plays a vital role in improving the overall performance and scalability of the Starknet network. The stateless nature of the SHARP and the reliance on the cryptographic soundness of the Verifier make it an innovative and valuable addition to the blockchain ecosystem.
