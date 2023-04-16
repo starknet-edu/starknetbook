@@ -35,6 +35,9 @@ Some similarities and differences between Cairo and Solidity in the storage impl
 
 3. In Cairo, storage fields are accessed using specific functions such as `read` and `write` (e.g., `yes_votes::write(0_u8)`). In Solidity, storage fields are accessed using assignment and indexing (e.g., `yes_votes = 0`).
 
+4. In Starknet, variables are stored in memory according to their name rather than according to their type or their order of declaration. Please refer to the https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-storage/[Starknet documentation] for further information.
+
+
 
 == Contributing
 
