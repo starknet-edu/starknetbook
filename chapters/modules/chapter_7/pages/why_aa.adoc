@@ -1,4 +1,4 @@
-[id="WhyAA"]
+[id="why_aa"]
 
 = Why Account Abstraction?
 
