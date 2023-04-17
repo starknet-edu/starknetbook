@@ -4,7 +4,7 @@
 
 In Starknet, a block consists of a list of transactions and a block header. Blocks in Starknet represent batches of transactions linked together by the hash of the preceding block in the chain. This connection of blocks forms a chain, as hashes are cryptographically generated from the block data. This structure prevents fraud, since any alteration in a historical block would invalidate all subsequent blocks, as their hashes would change. Consequently, everyone participating in the blockchain would become aware of the discrepancy.
 
-#image::../images/tx-block.png[tx-block]
+image::../images/tx-block.png[tx-block]
 
 == Block header
 
