@@ -1,6 +1,49 @@
 [id="constants"]
 
-= Constants in Cairo
+= Constants in Cairo Contracts
+
+In this chapter, we will discuss the use of constants in Cairo contracts. Constants are useful for defining values that do not change throughout the execution of a contract. We will continue using the modified Vote contract.
+
+== Defining Constants
+
+To define a constant in a Cairo contract, you use the `const` keyword followed by the name of the constant, its type, and its value. Constants can be of any Cairo supported data type, such as `u8`, `u16`, `u256`, etc.
+
+In the Vote contract, we define two constants to represent the voting options. This helps us improve the readability of the contract code by providing meaningful names for the values 0 and 1:
+
+[source,cairo]
+----
+const YES: u8 = 1_u8;
+const NO: u8 = 0_u8;
+----
+
+Here, we define two constants `YES` and `NO` with values 1 and 0, respectively, both of type `u8`.
+
+== Using Constants
+
+Constants can be used in the same way as any other variables in the contract. The main difference is that their values cannot be changed during the contract's execution.
+
+In our Vote contract, the constants `YES` and `NO` are used in the `vote` function to validate the submitted vote and update the vote count accordingly. The `vote` function is called by the voters to submit their votes. The function checks if the submitted vote is valid (either `YES` or `NO`) and updates the vote count accordingly:
+
+[source,cairo]
+----
+#[external]
+fn vote(vote: u8) {
+    // Check if the vote is valid (0 or 1)
+    assert(vote == NO | vote == YES, 'VOTE_0_OR_1');
+
+    // ... (rest of the function)
+}
+----
+
+By using constants, we improve the readability and maintainability of the contract code. If we need to change the values of the vote options, we only need to modify the constants' definitions.
+
+== Advantages of Using Constants
+
+There are several advantages of using constants in your Cairo contracts:
+
+1. Readability: Constants make the code more readable by providing meaningful names for values.
+2. Maintainability: By defining values in one place, you can easily change them without having to search and replace the values throughout the code.
+3. Performance: Constants can improve performance, as they are known at compile-time and do not consume storage or memory at runtime.
 
 == Contributing
 
