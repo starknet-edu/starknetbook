@@ -1,31 +1,56 @@
-[id="sequencers"]
+= Sequencers in StarkNet
 
-= Sequencers
+== Introduction to Sequencers
 
-== What does the sequencer do?
-On StarkNet, after users send transactions, the first stop in the transaction’s journey to STARK scaling is the sequencers. In the StarkNet protocol, the sequencers are responsible for ordering the transactions and producing blocks. After the block is created by a sequencer, and approved by the consensus protocol, the provers take over and generate a proof for L1.
+A sequencer is a crucial component in blockchain and Layer-2 solutions responsible for managing the ordering and execution of transactions. In StarkNet, sequencers ensure that transactions are executed in a specific order to prevent double-spending and maintain the network's state consistency.
+
+Sequencers receive transactions, process them according to predetermined rules, and produce a series of ordered actions or state changes. These actions are then bundled into blocks and published to the network for inclusion in the blockchain.
+
+image::sequencer.png[sequencer]
+
+== The Role of Sequencers in StarkNet
+
+Sequencers play a vital role in StarkNet's performance and security by executing transactions and applying state changes according to the protocol's rules and requirements.
+
+StarkNet's sequencer is particularly relevant due to the network's use of zero-knowledge proofs (ZKPs). The sequencer's proper functioning ensures that transactions are executed in a manner compatible with the generation of ZKPs, contributing to StarkNet's overall scalability and security. Users interact with sequencers when submitting transactions to StarkNet as the first step towards STARK scaling. Once a sequencer assembles a block, the consensus protocol approves it, and provers generate a proof for Layer 1 (L1).
+
+In Ethereum, miners order and execute transactions, while sequencers serve a similar purpose in StarkNet. Sequencers process transactions, aggregate them, and produce blocks, making them a critical infrastructure piece in the StarkNet ecosystem.
+
+As StarkNet evolves, enhancing the sequencer's performance is crucial. This is where the transition to Rust-based sequencers becomes essential. By rewriting the core sequencer components in Rust, the network can achieve improved performance, throughput, and resilience.
+
+Examples of sequencer implementations include the link:https://github.com/lambdaclass/starknet_tendermint_sequencer[StarkNet Tendermint Sequencer] by LambdaClass and link:https://github.com/keep-starknet-strange/madara[Madara], a Rust-powered StarkNet sequencer using Substrate.
+
+== Evolution of StarkNet and Sequencers
+
+Originally, sequencers were written in Python, which proved inefficient for large-scale operations. As the network reached capacity, developers sought to improve sequencer performance. The first milestone was establishing a fully functioning blockchain, followed by a focus on performance optimization.
+
+The initial performance enhancement involved implementing optimistic concurrency for parallel transaction execution. However, the most significant advancement came from rewriting sequencers in Rust, a more efficient and faster language.
+
+Rewriting sequencers in Rust has shown promising results in performance and scalability. The throughput and latency of the StarkNet network are expected to improve dramatically, benefiting the network and those working with related infrastructure and development tools.
+
+link:https://medium.com/starkware/papyrus-an-open-source-starknet-full-node-396f7cd90202[One of the new sequencers] is based on Papyrus, an open-source StarkNet full node responsible for state management. Early benchmarks for projects like Madara reveal a remarkable 76 TPS (transactions per second) for ERC20 transfers, showcasing the potential improvements Rust-based sequencers bring to the StarkNet ecosystem.
+
+Optimistic concurrency implementation also contributes to sequencer performance improvements by executing transactions in parallel, checking for conflicts in touched storage cells, and invalidating subsequent transactions when necessary.
+
+== Future Developments
+
+As StarkNet evolves, sequencer development will progress, focusing on enhancing capabilities and ensuring seamless integration with the network. Developers will work on new features, such as fee mechanisms, to be implemented in upcoming releases like Memphis.
+
+Continuous improvement and optimization of sequencers are vital for the sustained growth of StarkNet. The transition to Rust-based sequencers and ongoing efforts to enhance their performance will undoubtedly contribute
+
+== Conclusion
+
+Sequencers play a pivotal role in the StarkNet ecosystem by managing transaction ordering and execution. As the network continues to evolve, enhancing sequencer performance through optimizations and transitions to more efficient languages like Rust is essential to ensure scalability, security, and throughput. The ongoing development and improvement of sequencers will support the growth of the StarkNet network and empower developers and users to harness the full potential of this innovative Layer-2 solution.
 
 
-image::../images/sequencer.png[Starknet squencer]
+== Contributing
 
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
 
-== Open-Sourcing
-StarkNet Alpha launched on Mainnet in November 2021. From the outset, it was committed to share the power of STARK scaling with the world.
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
-Today, we are releasing the first in a line of modules of the new open-source sequencer. It will take several months for all modules and sub-modules to be deployed. Open sourcing everything will enable community members to contribute to the development, and to audit the codebase.
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
 
-This will edge StarkNet closer to a point of decentralized permissionless sequencing. We are now designing StarkNet’s decentralized protocol and we are encouraging the community to take part in the 
-link:https://community.starknet.io/t/starknet-decentralized-protocol-iii-consensus/5386[research and the discussion].
-
-== Performance
-
-StarkNet’s original sequencer is largely an adaptation of StarkEx infrastructure. Now, there is a need for infrastructure that is built especially for the requirements of a decentralized highly-performant network.
-
-Built in Rust, the new sequencer is designed and developed with performance in mind. 
-link:https://medium.com/starkware/papyrus-an-open-source-starknet-full-node-396f7cd90202[The new sequencer] also builds on solid foundations: Papyrus, the new StarkNet full node, will handle state management, and cairo-rs, the new Cairo-VM by LambdaClass, will speed up the Cairo execution. We expect the new sequencer to improve upon the existing sequencer in every aspect. The throughput and latency of the network is expected to improve dramatically with the integration of this sequencer in StarkNet.
-
-We also expect other infrastructure and development tools to be able to use the new sequencer to improve the development experience. Full node performance is expected to improve as well as all the testing frameworks.
-
-== Summary
-
-We are excited to announce today the new open-source sequencer. Its first module is already available for the community to review, and will be followed with more modules in the following months to come. We are also happy to take another step in our roadmap for enhancing StarkNet’s performance. We aim to make the network more efficient and accessible, and we appreciate the support of everyone who has joined us on this journey.
