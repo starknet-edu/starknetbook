@@ -4,11 +4,11 @@
 
 As we delve into the world of Starknet, we find that the platform relies on a powerful and expressive programming language called Cairo. Designed specifically for scaling decentralized applications (dApps) using STARKs, Cairo is a Turing-complete language that enables developers to harness the power of highly efficient and scalable zero-knowledge proofs. In this chapter, we will explore Cairo in the context of Starknet. We will learn about the core concepts of Cairo, its differences from Solidity, the structure and components of Cairo smart contracts, and the unique features of the Starknet network.
 
-By the end of this tutorial, you will have a comprehensive understanding of the fundamental concepts and components of Cairo, enabling you to build robust and efficient smart contracts on the Starknet platform.
+By the end of this chapter, you will have a comprehensive understanding of the fundamental concepts and components of Cairo, enabling you to build robust and efficient smart contracts on Starknet.
 
 == What Is a Cairo Smart Contract?
 
-In the Starknet ecosystem, the term _smart contract_ refers to immutable computer programs that run deterministically within the context of a Starknet Operating System. These programs are written in the Cairo language and are deployed on the Starknet network, a permissionless decentralized Validity-Rollup (or ZK-Rollup) built on top of Ethereum.
+In the Starknet ecosystem, the term _smart contract_ refers to immutable computer programs that run deterministically within the context of a Starknet Operating System. These programs are written in the Cairo language and are deployed on Starknet.
 
 Let’s break down the key aspects of Cairo smart contracts:
 
@@ -24,12 +24,9 @@ The outcome of the execution of a Cairo smart contract is the same for everyone 
 Starknet Operating System context::
 Cairo smart contracts operate within the context of a Starknet Operating System (Starknet OS). They can access their own state, the context of the transaction that called them, and some information about the most recent blocks.
 
-Decentralized Starknet network::
-The Starknet network is a permissionless platform, working towards its decentralization, that relies on STARK proofs for security and scalability. It operates as an L2 network over Ethereum, allowing dApps to achieve unlimited scale for their computation without compromising Ethereum's composability and security.
-
 == Solidity vs. Cairo: Overcoming Limitations and Embracing Scalability
 
-While Solidity is a widely adopted language for smart contract development and supports a range of applications, it is not native to provable computation. As a result, compilers that translate idiomatic Solidity code into proofs encounter several challenges:
+While Solidity is a widely adopted language for smart contract development and supports a range of applications, it was not designed for provable computation. As a result, compilers that translate idiomatic Solidity code into proofs encounter several challenges:
 
 1. Reliance on inefficient data structures, such as uint256, and operations on them
 2. Mutability at the language level

@@ -1,6 +1,6 @@
-[id="casm"]
+[id="autopayment"]
 
-= CASM
+= Auto-Payments Accounts
 
 == Contributing
 

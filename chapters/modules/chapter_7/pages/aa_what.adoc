@@ -1,4 +1,4 @@
-[id="WhatIsAA"]
+[id="aa_what"]
 
 = What is Account Abstraction?
 

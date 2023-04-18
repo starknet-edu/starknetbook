@@ -2,4 +2,9 @@
 name = "starknetbook_chapter_2"
 version = "0.1.0"
 
+[scripts]
+setup = "export STARKNET_NETWORK=alpha-goerli && export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount"
+declare = "starknet declare --contract target/release/starknetbook_chapter_2_Vote2.json --account vote_admin"
+deploy = "starknet deploy --class_hash 0x5093a708c6518ef06f7f597e0f2bd77d013f47bd08a66f8560850b8faecbd04 --inputs 0x06dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821 0x4d77bb090f6d4a11662cc007995d9026015b13c0264094aa1f246d9200a604a 0 --account vote_admin --max_fee 100000000000000000"
+
 [[target.starknet-contract]]

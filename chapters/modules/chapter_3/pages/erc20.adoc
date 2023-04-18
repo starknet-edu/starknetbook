@@ -1,6 +1,6 @@
-[id="casm"]
+[id="erc20"]
 
-= CASM
+= Deploying an ERC20
 
 == Contributing
 

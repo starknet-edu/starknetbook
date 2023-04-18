@@ -1,6 +1,6 @@
-[id="casm"]
+[id="signatures"]
 
-= CASM
+= Alternative Signature Schemes
 
 == Contributing
 

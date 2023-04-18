@@ -1,4 +1,4 @@
-[id="StarkNetAA"]
+[id="starknet_aa"]
 
 = Account Abstraction model in StarkNet
 

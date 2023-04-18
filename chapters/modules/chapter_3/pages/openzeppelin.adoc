@@ -1,6 +1,8 @@
-[id="casm"]
+[id="openzeppelin"]
 
-= CASM
+= Open Zeppelin
+
+== Contributing
 
 == Contributing
 

@@ -1,6 +1,6 @@
-[id="casm"]
+[id="multicall"]
 
-= CASM
+= Multicalls
 
 == Contributing
 

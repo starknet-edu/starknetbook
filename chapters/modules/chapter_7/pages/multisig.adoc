@@ -1,6 +1,6 @@
-[id="casm"]
+[id="multisig"]
 
-= CASM
+= Multisig Accounts
 
 == Contributing
 
