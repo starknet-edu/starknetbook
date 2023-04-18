@@ -1,14 +1,10 @@
-/// Vote contract allows users to submit their votes (1 for Yes/0 for No) on a proposal.
-/// It keeps track of the number of yes votes and no votes, and provides view (getter) functions
-/// to check the voting status and voter eligibility.
-/// The contract is initialized with a list of registered voters.
-/// The contract is deployed on the StarkNet testnet. The contract address is XXX
-
-/// Vote contract allows three registered voters to submit their votes (1 for Yes/0 for No) on a proposal.
-/// It keeps track of the number of yes votes and no votes, and provides view (getter) functions 
+/// @title Vote Contract
+/// @author starknet community
+/// @notice This contract allows three registered voters to submit their votes (1 for Yes/0 for No) on a proposal.
+/// @dev It keeps track of the number of yes votes and no votes, and provides view (getter) functions 
 /// to check the voting status and voter eligibility.
 /// The contract is initialized with three registered voters. 
-/// The contract is deployed on the StarkNet testnet. The contract address is XXX
+/// The contract is deployed on the StarkNet testnet. The contract address is 0x0780b126f03c2e28a3ecd27e6c1c367d3df796050f0831e36c899a8c2f1dbdbb
 
 #[contract]
 mod Vote {
@@ -55,7 +51,7 @@ mod Vote {
     // fn constructor(registered_addresses: Array::<ContractAddress>) {
     //     // Get the number of registered voters
     //     let registered_voters_len: usize = registered_addresses.len();
-        
+
     //     // Register all voters by calling the _register_voters recursive function 
     //     // with the array of addresses and its length as index
     //     _register_voters(ref registered_addresses, registered_voters_len);
@@ -68,7 +64,7 @@ mod Vote {
     // ------
     // Getters: view functions that return data from storage without changing it in any way (read-only)
     // ------
-    
+
     // @dev Return the number of yes and no votes
     // @return status (u8, u8): current status of the vote (yes votes, no votes)
     #[view]
@@ -76,7 +72,7 @@ mod Vote {
         // Read the number of yes votes and no votes from storage
         let n_yes = yes_votes::read();
         let n_no = no_votes::read();
-        
+
         // Return the current voting status
         return (n_yes, n_no);
     }
@@ -103,7 +99,7 @@ mod Vote {
     // External functions: functions that can be called by other contracts or externally by users through a transaction
     // on the blockchain. They are allowed to change the state of the contract.
     // ------
-    
+
     // @dev Submit a vote (0 for No and 1 for Yes)
     // @param vote (u8): vote value, 0 for No and 1 for Yes
     // @return () : updates the storage with the vote count and marks the voter as not allowed to vote again
@@ -113,7 +109,7 @@ mod Vote {
         assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
 
         // Know if a voter has already voted and continue if they have not voted
-        let caller : ContractAddress = get_caller_address();
+        let caller: ContractAddress = get_caller_address();
         assert_allowed(caller);
 
         // Mark that the voter has already voted and update in the storage
@@ -150,7 +146,7 @@ mod Vote {
     // @param index (usize): index of the current voter to be processed
     fn _register_voters(
         voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress
-        ) {
+    ) {
         // Register the first voter
         registered_voter::write(voter_1, true);
         can_vote::write(voter_1, true);
@@ -163,29 +159,28 @@ mod Vote {
         registered_voter::write(voter_3, true);
         can_vote::write(voter_3, true);
     }
+// The code below is an alternative implementation of the _register_voters function using recursion
 
-    // The code below is an alternative implementation of the _register_voters function using recursion
+// // @dev Internal function to prepare the list of voters. Index can be the length of the array.
+// // @param registered_addresses (Array<ContractAddress>): array with the addresses of registered voters
+// // @param index (usize): index of the current voter to be processed
+// fn _register_voters(ref registered_addresses: Array::<ContractAddress>, index: usize) {
+//     // No more voters, recursion ends
+//     if index == 0_u32 {
+//         return();
+//     }
 
-    // // @dev Internal function to prepare the list of voters. Index can be the length of the array.
-    // // @param registered_addresses (Array<ContractAddress>): array with the addresses of registered voters
-    // // @param index (usize): index of the current voter to be processed
-    // fn _register_voters(ref registered_addresses: Array::<ContractAddress>, index: usize) {
-    //     // No more voters, recursion ends
-    //     if index == 0_u32 {
-    //         return();
-    //     }
+//     // Get the address of the voter at the current index
+//     let voter_address: ContractAddress = *registered_addresses[index - 1_usize];
 
-    //     // Get the address of the voter at the current index
-    //     let voter_address: ContractAddress = *registered_addresses[index - 1_usize];
+//     // Assign the voter at address 'voter_address' a boolean value of 'true'
+//     // indicating that they are a registered voter
+//     registered_voter::write(voter_address, true);
 
-    //     // Assign the voter at address 'voter_address' a boolean value of 'true'
-    //     // indicating that they are a registered voter
-    //     registered_voter::write(voter_address, true);
+//     // Set the voter's 'can_vote' status to true
+//     can_vote::write(voter_address, true);
 
-    //     // Set the voter's 'can_vote' status to true
-    //     can_vote::write(voter_address, true);
-
-    //     // Go to the next voter using recursion, decrementing the index by 1
-    //     _register_voters(registered_addresses, index - 1_usize);
-    // }
+//     // Go to the next voter using recursion, decrementing the index by 1
+//     _register_voters(registered_addresses, index - 1_usize);
+// }
 }
