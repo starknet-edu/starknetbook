@@ -2,6 +2,11 @@
 
 The Starknet Book is an open-source Cairo/Starknet teaching curriculum written by `starknet-edu` and the Starknet community. We welcome all contributions to this repository to help enrich the Starknet community.
 
+[NOTE]
+====
+Please review this section, however, please reach out to the maintainers if you have any questions, concerns or want to add a new chapter/subchapter (default to @espejelomar on Twitter or Telegram). We are here to help you contribute to the Starknet Book and make it a valuable resource for the Starknet community.
+====
+
 == How to Contribute
 
 Follow these steps to contribute to the Starknet Book:
