@@ -11,3 +11,4 @@
     ** xref:hints.adoc[8.10 Hints]
     ** xref:fees.adoc[8.11 Fee calculation and paying for fees]
     ** xref:bridges.adoc[8.12 Bridges]
+    ** xref:sharp.adoc[8.13 SHARP]
