@@ -1,6 +1,91 @@
-[id="structure"]
+[id="traits"]
 
-= The Structure of a Cairo Smart Contract
+= Traits and Implementations in Cairo Contracts
+
+This chapter introduces the basics of using traits and implementations in Cairo contracts, enough to get you started with writing smart contracts in Starknet. If you want to go deeper consider reading the https://cairo-book.github.io/[Cairo Book] which covers the language in detail.
+
+Cairo, heavily inspired by Rust, employs the concepts of traits and implementations to facilitate code modularity and reusability. Understanding the relationship between traits and implementations is key to writing clean, organized, and efficient Cairo code.
+
+Traits serve as interface definitions, providing a blueprint for a set of methods that a contract should implement. By defining a trait, you specify a group of related methods without providing any actual implementation. Traits establish a consistent structure for your contracts, allowing multiple implementations to conform to the same method signatures.
+
+Implementations provide the actual functionality of traits for specific data structures. By creating an implementation, you define how a given contract or data structure should behave according to the methods outlined in a trait. Multiple implementations can exist for a single trait, catering to different use cases or data structures.
+
+We'll continue using our modified voting contract, which has a trait for getting voting results.
+
+== Defining a Trait
+
+To define a trait, you'll use the `trait` keyword followed by the trait name and a block containing function signatures that the implementing contract should define. Let's take a look at the `VotingResultTrait` from our modified voting contract:
+
+[source, rust]
+----
+/// @title VotingResultTrait
+/// @notice A trait for retrieving the results of the voting
+trait VotingResultTrait {
+    fn get_voting_result() -> (u8, u8);
+    fn get_voting_result_in_percentage() -> (u8, u8);
+}
+----
+
+This trait requires any contract implementing it to provide two functions: `get_voting_result` and `get_voting_result_in_percentage`.
+
+== Implementing a Trait
+
+To implement a trait in a contract, you'll use the `impl` keyword followed by the name of the implementing structure (in our case, `VotingResultImpl`), the `of` keyword, and the trait name. Then, you'll define the required functions in a block.
+
+Here's how the `VotingResultImpl` implements the `VotingResultTrait` in our modified voting contract:
+
+[source, rust]
+----
+/// @title VotingResultImpl
+/// @notice Implement the VotingResultTrait for the Vote contract
+impl VotingResultImpl of VotingResultTrait {
+    #[inline(always)]
+    fn get_voting_result() -> (u8, u8) {
+        // Read the number of yes votes and no votes from storage
+        let n_yes: u8 = yes_votes::read();
+        let n_no: u8 = no_votes::read();
+
+        // Return the current voting status
+        return (n_yes, n_no);
+    }
+    #[inline(always)]
+    fn get_voting_result_in_percentage() -> (u8, u8) {
+        // Read the number of yes votes and no votes from storage
+        let n_yes: u8 = yes_votes::read();
+        let n_no: u8 = no_votes::read();
+
+        // Calculate the total votes
+        let total_votes: u8 = n_yes + n_no;
+
+        // Calculate the percentage of yes and no votes
+        let yes_percentage: u8 = (n_yes / total_votes) * 100_u8;
+        let no_percentage: u8 = (n_no / total_votes) * 100_u8;
+
+        // Return the voting results in percentage
+        return (yes_percentage, no_percentage);
+    }
+}
+----
+
+The `VotingResultImpl` structure implements the `VotingResultTrait` by providing the `get_voting_result` and `get_voting_result_in_percentage` functions as required by the trait.
+
+== Using Trait Functions
+
+To call a trait function, you'll use the trait name followed by the function name. In our modified voting contract, we call the trait functions in the `get_vote_results` view function:
+
+[source, rust]
+----
+#[view]
+fn get_vote_results() -> (u8, u8, u8, u8) {
+    let (n_yes, n_no) = VotingResultTrait::get_voting_result();
+    let (yes_percentage, no_percentage) = VotingResultTrait::get_voting_result_in_percentage();
+    return (n_yes, n_no, yes_percentage, no_percentage);
+}
+----
+
+In the `get_vote_results` function, we call the `get_voting_result` and `get_voting_result_in_percentage` methods using the `VotingResultTrait` name.
+
+That's it! You've now learned the basics of using traits in Cairo contracts. To recap, traits provide a way to define a set of methods that a contract should implement, helping to enforce a consistent structure and modular code. In our modified voting contract, we used a trait to define methods for getting voting results, implemented the trait in a separate structure, and called the trait functions in the main contract.
 
 == Contributing
 

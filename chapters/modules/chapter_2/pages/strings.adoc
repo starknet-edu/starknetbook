@@ -1,8 +1,6 @@
-[id="structure"]
+[id="strings"]
 
-= The Structure of a Cairo Smart Contract
-
-
+= Strings in Cairo
 
 == Contributing
 

@@ -1,6 +1,47 @@
-[id="sequencers"]
+= Sequencers in StarkNet
 
-= Sequencers
+== Introduction to Sequencers
+
+A sequencer is a crucial component in blockchain and Layer-2 solutions responsible for managing the ordering and execution of transactions. In StarkNet, sequencers ensure that transactions are executed in a specific order to prevent double-spending and maintain the network's state consistency.
+
+Sequencers receive transactions, process them according to predetermined rules, and produce a series of ordered actions or state changes. These actions are then bundled into blocks and published to the network for inclusion in the blockchain.
+
+image::sequencer.png[sequencer]
+
+== The Role of Sequencers in StarkNet
+
+Sequencers play a vital role in StarkNet's performance and security by executing transactions and applying state changes according to the protocol's rules and requirements.
+
+StarkNet's sequencer is particularly relevant due to the network's use of zero-knowledge proofs (ZKPs). The sequencer's proper functioning ensures that transactions are executed in a manner compatible with the generation of ZKPs, contributing to StarkNet's overall scalability and security. Users interact with sequencers when submitting transactions to StarkNet as the first step towards STARK scaling. Once a sequencer assembles a block, the consensus protocol approves it, and provers generate a proof for Layer 1 (L1).
+
+In Ethereum, miners order and execute transactions, while sequencers serve a similar purpose in StarkNet. Sequencers process transactions, aggregate them, and produce blocks, making them a critical infrastructure piece in the StarkNet ecosystem.
+
+As StarkNet evolves, enhancing the sequencer's performance is crucial. This is where the transition to Rust-based sequencers becomes essential. By rewriting the core sequencer components in Rust, the network can achieve improved performance, throughput, and resilience.
+
+Examples of sequencer implementations include the link:https://github.com/lambdaclass/starknet_tendermint_sequencer[StarkNet Tendermint Sequencer] by LambdaClass and link:https://github.com/keep-starknet-strange/madara[Madara], a Rust-powered StarkNet sequencer using Substrate.
+
+== Evolution of StarkNet and Sequencers
+
+Originally, sequencers were written in Python, which proved inefficient for large-scale operations. As the network reached capacity, developers sought to improve sequencer performance. The first milestone was establishing a fully functioning blockchain, followed by a focus on performance optimization.
+
+The initial performance enhancement involved implementing optimistic concurrency for parallel transaction execution. However, the most significant advancement came from rewriting sequencers in Rust, a more efficient and faster language.
+
+Rewriting sequencers in Rust has shown promising results in performance and scalability. The throughput and latency of the StarkNet network are expected to improve dramatically, benefiting the network and those working with related infrastructure and development tools.
+
+link:https://medium.com/starkware/papyrus-an-open-source-starknet-full-node-396f7cd90202[One of the new sequencers] is based on Papyrus, an open-source StarkNet full node responsible for state management. Early benchmarks for projects like Madara reveal a remarkable 76 TPS (transactions per second) for ERC20 transfers, showcasing the potential improvements Rust-based sequencers bring to the StarkNet ecosystem.
+
+Optimistic concurrency implementation also contributes to sequencer performance improvements by executing transactions in parallel, checking for conflicts in touched storage cells, and invalidating subsequent transactions when necessary.
+
+== Future Developments
+
+As StarkNet evolves, sequencer development will progress, focusing on enhancing capabilities and ensuring seamless integration with the network. Developers will work on new features, such as fee mechanisms, to be implemented in upcoming releases like Memphis.
+
+Continuous improvement and optimization of sequencers are vital for the sustained growth of StarkNet. The transition to Rust-based sequencers and ongoing efforts to enhance their performance will undoubtedly contribute
+
+== Conclusion
+
+Sequencers play a pivotal role in the StarkNet ecosystem by managing transaction ordering and execution. As the network continues to evolve, enhancing sequencer performance through optimizations and transitions to more efficient languages like Rust is essential to ensure scalability, security, and throughput. The ongoing development and improvement of sequencers will support the growth of the StarkNet network and empower developers and users to harness the full potential of this innovative Layer-2 solution.
+
 
 == Contributing
 
@@ -12,3 +53,4 @@ StarkNetBook is a work in progress, and your passion, expertise, and unique insi
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
+

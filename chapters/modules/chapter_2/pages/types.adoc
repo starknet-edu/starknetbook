@@ -40,7 +40,7 @@ fn example_function(value: u32) -> u32 {
 
 In this example, `value` and `doubled_value` are explicitly typed as `u32`, and the function `example_function` has a return type of `u32`. This ensures that the types are correctly enforced and that the code is easier to read and understand. In the next section we will review what definitions like `2_u32` mean.
 
-=== Typing integer literals in Cairo
+== Typing integer literals in Cairo
 
 In Cairo, you can specify the type of an integer literal by using an underscore followed by the desired type, similar to Rust.
 
