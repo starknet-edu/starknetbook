@@ -1,6 +1,6 @@
-[id="starknetpy"]
+[id="empiric-network"]
 
-= starknet.js: A Javascript SDK for Starknet
+= Empiric Network
 
 == Contributing
 

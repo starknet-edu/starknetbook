@@ -1,8 +1,6 @@
-[id="openzeppelin"]
+[id="nile"]
 
-= Open Zeppelin
-
-== Contributing
+= Nile
 
 == Contributing
 

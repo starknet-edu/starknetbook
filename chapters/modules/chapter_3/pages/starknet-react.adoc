@@ -1,6 +1,6 @@
-[id="starknetpy"]
+[id="starknet-react"]
 
-= starknet.js: A Javascript SDK for Starknet
+= Starknet React
 
 == Contributing
 

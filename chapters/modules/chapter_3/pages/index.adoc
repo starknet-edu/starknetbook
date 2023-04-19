@@ -1,6 +1,23 @@
 [id="chapter_3"]
 
-= Deep into Starknet
+= StarkNet Tooling
+
+The StarkNet ecosystem has grown significantly since its inception, thanks to the continuous efforts of its community and developers. Today, StarkNet developers can find all the necessary tools and resources to build decentralized applications (dApps) from front-end to back-end, with support for various programming languages such as Rust, JavaScript, Python, and Go. In this chapter, we will explore the rich tooling available for StarkNet developers.
+
+Contributors are always welcome to join the StarkNet community and help improve the existing tooling or create new solutions. The combined efforts of developers and contributors have led to a comprehensive and diverse set of tools that cater to different needs and preferences.
+
+In this chapter, you can expect to learn about the following topics:
+
+* Scarb: An interface for organizing and compiling StarkNet contracts
+* Devnet: Setting up and managing your own StarkNet development network
+* Wallet setup: Using a wallet user interface such as Argent or Braavos
+* Contract frameworks: Exploring Starknet-Hardhat, Protostar, and Nile for contract development and deployment
+* Common SDKs: Using Starknet.js, Starknet-rs, Starknet_py, and Caigo for different programming languages
+* Front-end frameworks: Integrating StarkNet with popular front-end frameworks like Vue and React
+* Tools and applications: Discovering various tools and applications such as StarkGate, Turbofish App, Empiric Network, and indexers and explorers
+
+By the end of this chapter, you will have a comprehensive understanding of the tools available in the StarkNet ecosystem and how they can help you build and deploy dApps efficiently.
+
 
 == Contributing
 

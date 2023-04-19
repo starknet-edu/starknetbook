@@ -1,8 +1,6 @@
-[id="erc721"]
+[id="scarb"]
 
-= Deploying an ERC721
-
-== Contributing
+= Scarb
 
 == Contributing
 

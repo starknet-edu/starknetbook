@@ -1,8 +1,6 @@
-[id="erc721"]
+[id="turbofish-app"]
 
-= Deploying an ERC1155
-
-== Contributing
+= Turbofish App
 
 == Contributing
 

@@ -1,6 +1,6 @@
-[id="erc20"]
+[id="indexers-and-explorers"]
 
-= Deploying an ERC20
+= Indexers and Explorers
 
 == Contributing
 

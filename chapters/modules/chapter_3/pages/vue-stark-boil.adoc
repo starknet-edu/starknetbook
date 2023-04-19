@@ -1,6 +1,6 @@
-[id="starknetpy"]
+[id="vue-stark-boil"]
 
-= starknet.js: A Javascript SDK for Starknet
+= Vue Stark Boil
 
 == Contributing
 
