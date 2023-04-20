@@ -4,17 +4,17 @@
 This section will cover three steps:
 
 * Installing prerequisites
-* Installing the `cairo-lang` CLI
-* Installing the `cairo` Cairo 1 compiler
+* Installing the `starknet` CLI
+* Installing the Cairo 1 compiler from the `cairo` repo
 
 == Prerequisites
 
-In order to install and use `cairo` and `cairo-lang`, install the following:
+In order to install and use `cairo` and `cairo-lang(starknet CLI)`, install the following:
 
 * https://www.python.org/downloads/release/python-390/[Python 3.9]
 * https://www.rust-lang.org/tools/install[Rust]
 
-== cairo-lang CLI Installation
+== starknet CLI Installation
 
 === Step 1: Set up your virtual environment
 
@@ -24,8 +24,8 @@ package directly. To create and enter the virtual environment, type:
 [source, bash]
 ----
 #Activate your cairo virtual environment
-python3.9 -m venv ~/cairo_venv
-source ~/cairo_venv/bin/activate
+satoshi@nakamoto-notebook % python3.9 -m venv ~/cairo_venv
+satoshi@nakamoto-notebook % source ~/cairo_venv/bin/activate
 ----
 
 Alternatively, you can also use the `pyenv` environment manager to create a virtual environment. To do so, run the following commands:
@@ -33,17 +33,17 @@ Alternatively, you can also use the `pyenv` environment manager to create a virt
 [source, bash]
 ----
 #Install pyenv
-curl https://pyenv.run | bash
+satoshi@nakamoto-notebook % curl https://pyenv.run | bash
 
 #Add the following to your .bashrc or .zshrc
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+satoshi@nakamoto-notebook % export PATH="$HOME/.pyenv/bin:$PATH"
+satoshi@nakamoto-notebook % eval "$(pyenv init -)"
+satoshi@nakamoto-notebook % eval "$(pyenv virtualenv-init -)"
 
 #Restart your terminal and run the following commands
-pyenv install 3.9.0
-pyenv virtualenv 3.9.0 cairo_venv
-pyenv activate cairo_venv
+satoshi@nakamoto-notebook % pyenv install 3.9.0
+satoshi@nakamoto-notebook % pyenv virtualenv 3.9.0 cairo_venv
+satoshi@nakamoto-notebook % pyenv activate cairo_venv
 ----
 
 Either way, make sure the `venv` is activated – you should see (`cairo_venv`) in the command line prompt.
@@ -60,14 +60,14 @@ On Ubuntu, for example, you will have to first run:
 
 [source, bash]
 ----
-sudo apt install -y libgmp3-dev
+(cairo_venv) satoshi@nakamoto-notebook % sudo apt install -y libgmp3-dev
 ----
 
 On Mac, you can use brew:
 
 [source, bash]
 ----
-brew install gmp
+(cairo_venv) satoshi@nakamoto-notebook % brew install gmp
 ----
 
 Finally, install the following dependencies:
@@ -81,26 +81,26 @@ There might be some other libraries which are not direct dependencies, but they 
 dependencies that you would need to install based on your operating system.
 
 
-=== Step 3: Install cairo-lang CLI
+=== Step 3: Install starknet CLI
 
 If you had `cairo-lang` installed previously, uninstall it and install the latest version.
 
 [source, bash]
 ----
 #Uninstall the previous version
-pip uninstall cairo-lang
+satoshi@nakamoto-notebook % pip uninstall cairo-lang
 #Install locally
-pip install cairo-lang
+satoshi@nakamoto-notebook % pip install cairo-lang
 
 #Alternatively, you can download the latest zip of cairo-lang and install it
-pip install $HOME/Downloads/cairo-lang-0.11.0.2.zip
+satoshi@nakamoto-notebook % pip install $HOME/Downloads/cairo-lang-0.11.0.2.zip
 ----
 
 Once you have installed the cairo lang package, make sure to test your installation by running the following command:
 
 [source, bash]
 ----
-(cairo_venv) satoshi@nakamoto-notebook % starknet --version
+satoshi@nakamoto-notebook % starknet --version
 starknet 0.11.0.2
 ----
 
@@ -112,7 +112,7 @@ For M1 and M2 users, if you face any issues while running starknet `--version` c
 then you may refer to https://github.com/OpenZeppelin/nile/issues/22[this] article to follow alternate steps to install the dependencies in Step 2.
 ====
 
-== `cairo` Cairo 1 compiler Installation
+== Cairo 1 compiler Installation from the `cairo` repo
 
 === Step1: Clone the cairo repository and set it up using the following instructions:
 
@@ -120,13 +120,13 @@ then you may refer to https://github.com/OpenZeppelin/nile/issues/22[this] artic
 ----
 # Go to your $HOME directory
 cd ~/
-# Clone the `cairo` Cairo 1 compiler to a folder called .cairo in your home directory
-git clone https://github.com/starkware-libs/cairo/ .cairo
+# Clone the Cairo 1 compiler from the `cairo` repo to a folder called .cairo in your home directory
+satoshi@nakamoto-notebook % git clone https://github.com/starkware-libs/cairo/ .cairo
 
 #Checkout into the working branch and generate the release binaries
-cd .cairo/
-git checkout tags/v1.0.0-alpha.6
-cargo build --all --release
+satoshi@nakamoto-notebook % cd .cairo/
+satoshi@nakamoto-notebook % git checkout tags/v1.0.0-alpha.6
+satoshi@nakamoto-notebook % cargo build --all --release
 ----
 
 === Step 2: Add Cairo 1.0 executables to your path:
@@ -136,21 +136,21 @@ Now that we have built the Cairo 1.0 binaries, we need to add them to the `PATH`
 [source, bash]
 ----
 #Add the below command to your .bashrc or .zshrc
-export PATH="$HOME/.cairo/target/release:$PATH"
+satoshi@nakamoto-notebook % export PATH="$HOME/.cairo/target/release:$PATH"
 ----
 
 After that, open a new shell and check that the following command returns a version number:
 
 [source, bash]
 ----
-cairo-compile --version
+satoshi@nakamoto-notebook % cairo-compile --version
 ----
 
 Your output should look something like this(not necessarily inside the `cairo_venv`):
 
 [source, bash]
 ----
-(cairo_venv) satoshi@nakamoto-notebook % cairo-lang-compiler 1.0.0-alpha.6
+satoshi@nakamoto-notebook % cairo-lang-compiler 1.0.0-alpha.6
 ----
 
 Woohoo! Now we have everything we need to compile, deploy and interact with our first Cairo contract!

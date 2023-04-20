@@ -46,8 +46,8 @@ mod Vote2 {
             let total_votes: u8 = n_yes + n_no;
 
             // Calculate the percentage of yes and no votes
-            let yes_percentage: u8 = (n_yes / total_votes) * 100_u8;
-            let no_percentage: u8 = (n_no / total_votes) * 100_u8;
+            let yes_percentage: u8 = (n_yes * 100_u8) / (total_votes) ;
+            let no_percentage: u8 = (n_no * 100_u8) / (total_votes) ;
 
             // Return the voting results in percentage
             return (yes_percentage, no_percentage);
