@@ -1,0 +1,41 @@
+[id="environment"]
+
+= Setting up the environment
+
+So far, you will have installed Python, Rust as well as the Cairo and Starknet CLIs on your local device. Practically, this is all you need to develop in the Starknet ecosystem. However, it can't hurt to have a few more tools at your disposal ...
+
+=== Cairo Language Server
+
+If you are a software developer, odds are you use of the common IDEs - VS Code, Emacs etc. for work. These IDEs are great for writing code, but they don't know anything about the Starknet ecosystem. This is where the Cairo Language Server comes in. It is a tool that provides IDEs with the necessary information to provide you with a better development experience. For example, it can provide you with auto-completion, syntax highlighting, and error checking.
+
+To install the Cairo Language Server, follow the instructions https://github.com/starkware-libs/cairo/blob/main/vscode-cairo/README.md[here].
+
+Do remember to disable the previous Cairo 0.x extension in VS Code if you have it installed. Finally, run the command 
+
+[source, bash]
+----
+which cairo-language-server | pbcopy
+----
+
+and then paste this value in the `languageServerPath` field of the Cairo 1.0 extension in your editor settings.
+
+=== Scarb
+
+Scarb is a build toolchain and package manager for Cairo and Starknet ecosystems. It is closely modelled after Cargo - and is meant to be a familiar tool for Rust developers. To install, simply follow the local build instructions here https://docs.swmansion.com/scarb/download[here]. You can then test it by running the command
+
+[source, bash]
+----
+scarb --version
+----
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

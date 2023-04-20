@@ -2,9 +2,9 @@
 
 = Wallets
 
-Explore the wallets that allow you to interact with and build in the Starknet ecosystem.
+Once you have deployed your first account on Starknet - you are going to need a wallet UI to manage it. Here are some common choices which work well across browsers -
 
-.StarkNet wallet, in alphabetical order
+.StarkNet wallets
 |===
 |Name|Extension
 

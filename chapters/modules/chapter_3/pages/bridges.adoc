@@ -1,6 +1,12 @@
-[id="caigo"]
+[id="bridges"]
 
-= Caigo: A Golang SDK for Starknet
+= Bridges
+
+It is easy to bridge tokens between Starknet and other chains or exchanges. This can be particlarly useful for testing pusporses, or for learning how Starknet handles inter blockchain messaging. 
+
+== StarkGate
+
+StarkGate is the official bridge between Starknet and Ethereum. It is a smart contract that allows users to deposit and withdraw ERC20 tokens from Starknet.
 
 == Contributing
 
