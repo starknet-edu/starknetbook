@@ -6,7 +6,7 @@ Imports in Cairo play an essential role in organizing and structuring your code,
 
 Cairo comes with a core library, known as `corelib`, which contains essential modules and functionalities like `starknet` and `array`. You can refer to the Cairo documentation for more details on `corelib`. Importing these core libraries does not require any additional installation, as they are built-in.
 
-To import modules, functions, or types in Cairo, you can use the `use` keyword, followed by the path to the item you want to import. In the example provided, we have an `Ex01` module, and we are importing several items from the `corelib` and custom modules:
+To import modules, functions, or types in Cairo, you can use the `use` keyword, followed by the path to the item you want to import. In the example provided, we have an `Ex01` module, and we are importing several items from the `corelib` and custom modules (as example, we are using the https://github.com/starknet-edu/starknet-cairo-101/tree/main/src[starknet-cairo-101 repository]):
 
 [source,rust]
 ----
@@ -23,21 +23,54 @@ mod Ex01 {
 }
 ----
 
-We are importing `get_caller_address` and `ContractAddress` from the starknet core library. Additionally, we are importing custom modules from the `starknet_cairo_101` repository, making them part of the `Ex01` contract's set of functions. It is important to take into account the structure of the repository and the path to the modules you want to import. The file structure of the `starknet_cairo_101` repository is as follows:
+We are importing `get_caller_address` and `ContractAddress` from the starknet core library. Additionally, we are importing custom modules from the `starknet_cairo_101::utils` repository, making them part of the `Ex01` contract's set of functions. It is important to take into account the structure of the repository and the path to the modules you want to import. The file structure of the `starknet_cairo_101` repository is as follows:
 
 [source]
 ----
 .
 ├── src
 │   ├── Ex01.cairo
+│   ├── utils.cairo
+│   ├── lib.cairo
 │   ├── ...
 │   ├── utils
 │   │   ├── ex00_base.cairo
 ----
 
-Inside the `utils` folder, we have the `ex00_base.cairo` file, which contains the `Ex00Base` module. This module contains the functions that are used in all the exercises.
+Inside the `utils` folder, we have the `ex00_base.cairo` file, which contains the `Ex00Base` module. At the same time, we create a cairo file of the same name as the utils directory, `utils.cairo`, with the following code:
+
+[source,rust]
+----
+mod ex00_base;
+----
+
+Here we are referring to the `ex00_base.cairo` library. Every time we want to import a module (cairo file) from the `utils` folder, we will add the following line to the `utils.cairo` file:
+
+[source,rust]
+----
+mod NAME_OF_MODULE;
+----
+
+Additionally, the file library `lib.cairo` contains the following code:
+
+[source,rust]
+----
+// Utils module
+mod utils;
+
+// Contracts
+mod ex01;
+----
+
+These are the parths we will use to import the `utils` and `ex01` modules. The `lib.cairo` file is the entry point for the Cairo compiler, and it is the file we will use to import all the modules we want to use in our contract. Every time we want to import a module, we will add the following line to the `lib.cairo` file:
+
+[source,rust]
+----
+mod NAME_OF_MODULE;
+----
 
 To import custom modules or external libraries not included in `corelib`, you will need to have the necessary files within your project repository or specify the appropriate paths.
+
 
 == Contributing
 
