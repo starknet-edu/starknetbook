@@ -2,6 +2,8 @@
 
 = Provers
 
+Creates STARK proofs for Starknet and StarkEx (SHARP).
+
 == Contributing
 
 [quote, The Starknet Community]
