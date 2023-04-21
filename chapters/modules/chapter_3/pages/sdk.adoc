@@ -1,18 +1,18 @@
 [id="sdk"]
 
-= Commonly Used SDKs 
+= Software Development Kits (SDKs)
 
-An SDK, or a Software Development Kit, is a set of software-building tools for a specific platform. An SDK provides application developers a comprehensive collection of tools that enable software developers to build software applications faster and in a more standardized way.
+In the blockchain world, a Software Development Kit (SDK) is a collection of software-building tools specifically designed to facilitate the development of applications on a particular blockchain platform. SDKs provide a comprehensive set of tools that enable developers to create software applications more efficiently and in a standardized manner.
 
-The following SDKs are currently available on Starknet - 
+The following SDKs are currently available on Starknet:
 
-.StarkNet SDK
+.Starknet SDKs
 |===
 |Language|Name
 
-|Python|https://github.com/software-mansion/starknet.py[Starknet PY]
-|Rust|https://github.com/xJonathanLEI/starknet-rs[Starknet RS]
-|Javascript|https://www.starknetjs.com/[Starknet JS]
+|Python|https://github.com/software-mansion/starknet.py[starknet_py]
+|Rust|https://github.com/xJonathanLEI/starknet-rs[starknet-rs]
+|Javascript|https://www.starknetjs.com/[starknet.js]
 |Golang|https://github.com/dontpanicdao/caigo[Caigo]
 
 |===

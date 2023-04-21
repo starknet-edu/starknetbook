@@ -72,6 +72,7 @@ Time to proof, however, specifically pertains to the duration required to genera
 SHARP back end architecture consists of several services that work together to process Cairo jobs and generate proofs. These services include:
 
 . *Gateway*: Cairo jobs enter SHARP through the gateway.
+. *Job Creator*: It prevents job duplication and ensures that the system operates consistently, regardless of multiple identical requests.
 . *Validator*: This is the first important step. The validator service runs validation checks on each job, ensuring they meet the requirements and can fit within the prover machines. Invalid jobs are tagged as such and do not proceed to the Prover.
 . *Scheduler*: The scheduler service creates "trains" that aggregate jobs and send them to the Prover. Recursive jobs are paired and sent to the Prover together.
 . *Cairo Runner*: This service runs Cairo for the Prover’s needs. The Cairo Runner service runs Cairo programs, executing the necessary computations and generating the execution trace as an intermediate result. The Prover then uses this execution trace.
@@ -79,8 +80,8 @@ SHARP back end architecture consists of several services that work together to p
 . *Dispatcher*: The Dispatcher serves two functions in the SHARP system. 
     .. In the case of a recursive proof, the Dispatcher runs the Cairo Verifier program on the proof it has received from the Prover, resulting in a new Cairo job that goes back to the Validator.
     .. In the case of a proof that needs to go on chain (e.g., to Ethereum), the Dispatcher creates "packages" from the proof, which can then be sent to the Blockchain Writer. 
-. *Blockchain Writer*: Once the packages have been created by the Dispatcher, they are sent to the Blockchain Writer. The Blockchain Writer is responsible for sending the packages to the appropriate blockchain (e.g., Ethereum) for verification. This is an important step in the SHARP system, as it ensures that the proofs are properly validated and that the transactions are securely recorded on the blockchain.
-. *Catcher*: The Catcher monitors blockchain (e.g., Ethereum) transactions to ensure that they have been accepted. This is another critical component of the SHARP system, as it ensures that the entire transaction process is completed successfully and that the proofs are properly validated.
+. *Blockchain Writer*: Once the packages have been created by the Dispatcher, they are sent to the Blockchain Writer. The Blockchain Writer is responsible for sending the packages to the appropriate blockchain (e.g., Ethereum) for verification. This is an important step in the SHARP system, as it ensures that the proofs are properly verfied and that the transactions are securely recorded on the blockchain.
+. *Catcher*: The Catcher monitors blockchain (e.g., Ethereum) transactions to ensure that they have been accepted. While the Catcher is relevant for internal monitoring purposes, it is important to note that if a transaction fails, the fact won't be registered on-chain in the fact registry. As a result, the soundness of the system is still preserved even without the catcher.
 
 SHARP is designed to be stateless (each Cairo job is executed in its own context and has no dependency on other jobs), allowing for greater flexibility in processing jobs.
 

@@ -5,6 +5,9 @@
 https://nethermind.io/horus/[Horus] is an https://github.com/NethermindEth/horus-checker[open-source] formal verification tool designed to verify StarkNet smart contracts. It offers a user-friendly approach to formally verify StarkNet smart contracts against specifications written in a straightforward assertion language. By utilizing various Satisfiability Modulo Theories (SMT) solvers, Horus ensures your contract's implementation aligns with the provided specifications. The Horus alpha release supports Cairo 0.10.1, with a Cairo 1.0 release anticipated in the near future.
 
 
+== Contributing
+
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
+

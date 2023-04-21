@@ -9,7 +9,7 @@
     ** 3.5 Front End Frameworks
         *** xref:vue-stark-boil.adoc[3.5.1 Vue Stark Boil]
         *** xref:starknet-react.adoc[3.5.2 Starknet React]
-    ** 3.6 Common SDKs
+    ** xref:sdk.adoc[3.6 Software Development Kits (SDKs)]
         *** xref:starknetjs.adoc[3.6.1 Starknet.js]
         *** xref:starknetrs.adoc[3.6.2 Starknet-rs]
         *** xref:starknetpy.adoc[3.6.3 Starknet_py]  

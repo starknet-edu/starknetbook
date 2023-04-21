@@ -2,25 +2,22 @@
 
 = Scarb
 
-
-Scarb is the Cairo package manager, it manages your dependencies, builds your project (either pure Cairo or Starknet contracts), downloads the libraries your code depends on, and builds those libraries.
-
+Scarb is the Cairo package manager designed to manage your dependencies, compile your project (either pure Cairo or Starknet contracts), download libraries your code depends on, and build those libraries.
 
 == Requirements
 
-Scarb requires a Git executable to be available in the `PATH` environment variable.
+Currently, Scarb requires a Git executable to be available in the `PATH` environment.
 
 === Installation
 
-Install Scarb with the following steps:
+To install Scarb, follow these steps:
 
-- Download the release archive matching your operating system and CPU architecture, from https://github.com/software-mansion/scarb/releases/[Scarb Github]
-- Extract it to a location where you would like to have Scarb installed, e.g `~scarb`
-- Add a path to the `scarb/bin` directory to your environment variable, this depends on what shell you are using. Let’s take the example of https://ohmyz.sh/[zsh] and you have extracted Scarb to `~/scarb`:
-    
-    * Open `~/.zshrc` file in your editor
-    * Add the following line to the end of the file: `export PATH="$PATH:~/scarb/bin”`
-- Verify installation by running the following command in the new terminal, it should ouput both Scarb and Cairo language versions, e.g
+- Download the release archive matching your operating system and CPU architecture from https://github.com/software-mansion/scarb/releases/[Scarb Github]; make sure to choose the latest version.
+- The file is a compressed archive. Extract it to a location where you would like to have Scarb installed, e.g. `~/scarb`.
+- Add a path to the `scarb/bin` directory to your environment variable, depending on your shell. For example, with https://ohmyz.sh/[zsh] and Scarb extracted to `~/scarb`:
+    * Open the `~/.zshrc` file in your editor.
+    * Add the following line at the end of the file: `export PATH="$PATH:~/scarb/bin”`.
+- Verify the installation by running the following command in a new terminal. It should output both Scarb and Cairo language versions. If you are using a Mac, it is likely the OS would not allow you to run Scarb since it was installed manually. Just go to the folder where you stored Scarb using the UI (not the terminal), right click on the Scarb executable, and select “Open”. It will ask you if you want to open it, and then Scarb will work as expected.
 
 
 [source, bash]
@@ -67,7 +64,7 @@ version = "0.1.0"
 
 === Understanding Scarb.toml
 
-This file is in the [TOML](https://toml.io/en/) (Tom’s Obvious, Minimal Language) format, which is Scarb’s configuration format.
+This file is in the https://toml.io/en/[TOML] (Tom’s Obvious, Minimal Language) format, which is Scarb’s configuration format.
 
 `[package]`
 

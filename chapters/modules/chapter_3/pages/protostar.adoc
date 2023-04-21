@@ -2,21 +2,22 @@
 
 = Protostar
 
-For many developers - it is imperative that they be able to write and test their contracts all in the same language. To that end, our community is proud to present https://docs.swmansion.com/protostar/[Protostar] - a platform which manages your dependencies, compiles your project, runs tests, and lets you interact with the chain through certain commands.
+For many developers, it is essential to write and test their contracts using the same language. To meet this need, https://docs.swmansion.com/protostar/[Protostar], a platform that manages dependencies, compiles projects, runs tests, and enables interaction with the chain through various commands.
 
-To install Protostar locally, simply open a terminal on Linux or Mac (no Windows yet) and run - 
+To install Protostar locally, open a terminal on Linux or Mac (Windows is not supported yet) and run:
 
 [source,bash]
 ----
 curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
 ----
 
-And then restart the terminal. Do make sure your local version of Protostar is at `0.9.3` for it to be compaible with Cairo 1.0. If it is not, simply run - 
+Then restart the terminal. Ensure your local version of Protostar is at `0.9.3` for compatibility with Cairo 1.0. If it is not, simply run:
 
 [source,bash]
 ----
 protostar upgrade
 ----
+
 
 == Contributing
 

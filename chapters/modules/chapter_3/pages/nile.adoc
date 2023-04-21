@@ -2,7 +2,8 @@
 
 = Nile
 
-Nile by OpenZeppelin has always been a go-to for Starknet / Cairo developers used to writing code in Python. However, given the recent migration from Cairo 0 to Cairo 1.0 - the Nile project is currently undergoing a revamp. You can track the progress of the project https://github.com/OpenZeppelin/nile-rs[here]
+OpenZeppelin's Nile has long been a popular choice for Starknet and Cairo developers who prefer writing code in Python. However, due to the recent transition from Cairo 0 to Cairo 1.0, the Nile project is currently undergoing a significant overhaul. You can follow the project's progress at https://github.com/OpenZeppelin/nile-rs[here].
+
 
 == Contributing
 
