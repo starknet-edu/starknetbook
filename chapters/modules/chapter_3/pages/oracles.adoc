@@ -1,0 +1,28 @@
+[id="oracles"]
+
+= Oracles
+
+Blockchains cannot intrinsically read data from the internet. However, it is not hard to guess why many blockchain applications, like DeFi apps, require access to up to date information from all around the internet all the time. Oracles connect blockchains to external systems, thereby enabling smart contracts to execute based upon inputs and outputs from the real world. 
+
+The 2 largest oracles on Starknet are https://www.empiric.network/[Empiric Network] and the https://www.stork.network/[Stork Oracle Network]. 
+
+== Empiric Network
+
+The Empiric network is a completely open source and audited oracle network. It The provides 20+ price feeds for common crypto assets. The network also has a large and mature community of data providers, giving it more frequent updates. 
+
+== Stork Network
+
+The Stork network is an on-chain price computation oracle. This means token prices are calculated on-chain on StarkNet, based on price quotes provided by individual publishers rather than being aggregated off-chain.
+
+The network has a set of whitelisted publishers who can publish and sign data on-chain. As of now, only 2 publishers are live publishing price updates on the testnet (Dexterity - a financial firm in crypto - and the other is Stork)
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

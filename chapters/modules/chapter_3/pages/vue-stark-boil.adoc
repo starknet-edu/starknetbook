@@ -2,6 +2,17 @@
 
 = Vue Stark Boil
 
+No matter your preference between Vue and React - the Starknet ecosystem has a suitable framework for you. For starters, let's look at vue-stark-boil, written by the good folks at https://github.com/dontpanicdao[Don't Panic DAO]. 
+
+Simply clone the project to your device from https://github.com/dontpanicdao/vue-stark-boil[here]. To learn more about how Vue works in general - feel free to look at their website https://vuejs.org/[here]. You can use this boilerplate to do all kinds of things, like connecting to wallet, listening for account changes, calling a contract and so on.
+
+When you do clone the project - remember to install all dependencies. You can do this by running the following command in your terminal:
+
+[source, bash]
+----
+npm install
+----
+
 == Contributing
 
 [quote, The Starknet Community]

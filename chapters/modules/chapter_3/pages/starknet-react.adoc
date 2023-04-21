@@ -2,6 +2,40 @@
 
 = Starknet React
 
+This is an open source collection of React providers and hooks for StarkNet, developed by the https://github.com/apibara[Apibara] team. 
+
+The first thing you need to do to run Starknet-React is install the appropriate package manager, PNPM - 
+
+[source, bash]
+----
+npm install -g pnpm
+----
+
+Then, you can modify a react boilerplate by simply running - 
+
+[source, bash]
+----
+pnpm add @starknet-react/core
+pnpm add get-starknet starknet
+----
+
+Finally, wrap the `App` object in your `index` file as follows - 
+
+[source, javascript]
+----
+import { StarknetConfig } from '@starknet-react/core'
+
+function App() {
+  return (
+    <StarknetConfig>
+      <YourApp />
+    </StarknetConfig>
+  )
+}
+----
+
+You can take a look at an example project https://github.com/apibara/starknet-react/tree/main/website[here].
+
 == Contributing
 
 [quote, The Starknet Community]
