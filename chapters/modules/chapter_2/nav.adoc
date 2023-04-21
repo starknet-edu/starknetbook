@@ -1,4 +1,5 @@
 * xref:index.adoc[Chapter 2: Smart Contracts in Cairo]
+    ** xref:scarb.adoc[2.0 Introduction to Scarbs]
     ** xref:types.adoc[2.1 Types in Cairo]
     ** xref:functions.adoc[2.2 Functions and Modules in Cairo]
     ** xref:structure.adoc[2.3 The Structure of a Cairo Smart Contract]
