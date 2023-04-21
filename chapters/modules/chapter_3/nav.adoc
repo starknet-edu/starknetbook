@@ -15,3 +15,4 @@
         *** xref:oracles.adoc[3.7.2 Oracles]
         *** xref:interactive-tutorials.adoc[3.7.3 Interactive Tutorials]
         *** xref:indexers-explorers.adoc[3.7.4 Indexers and Explorers]
+        *** xref:horus.adoc[3.7.5 Horus]

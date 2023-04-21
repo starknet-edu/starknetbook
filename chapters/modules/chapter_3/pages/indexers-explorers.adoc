@@ -2,15 +2,24 @@
 
 = Indexers and Explorers
 
-Blockchain indexers store and represent data in a user-friendly format. In this way, they provide an online interface for searching a blockchain, and enable users to retrieve data about transactions, addresses, blocks, fees, and more. The following indexers and explorers are available for StarkNet:
+== Explorers
 
-.Indexers
+A block explorer, or blockchain explorer, enables you to see transactions, blockchain metrics and other information.
+
+The following block explorers provide information on StarkNet.
+
+.StarkNet block explorers, in alphabetical order
 |===
-|Explorer|URL|
-|Starkscan|https://starkscan.co|
-|Viewblock|https://v2.viewblock.io/starknet|
-|Voyager|https://voyager.online|
+|Name|Mainnet|Goerli|Goerli 2
+
+|Starkscan|https://starkscan.co/[Mainnet]|https://testnet.starkscan.co/[Testnet]|https://testnet-2.starkscan.co/[Testnet-2]
+
+|Viewblock|https://viewblock.io/starknet[Mainnet]|https://viewblock.io/starknet?network=goerli[Goerli]|https://viewblock.io/starknet?network=goerli2[Goerli2]
+
+|https://nethermind.io/voyager[Voyager]|https://voyager.online/[Mainnet]|https://goerli.voyager.online/[Goerli]|https://goerli-2.voyager.online/[Goerli2]
 |===
+
+== Indexers
 
 == Contributing
 

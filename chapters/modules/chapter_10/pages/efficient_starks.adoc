@@ -10,8 +10,6 @@
 
 == Contributing
 
-== Contributing
-
 [quote, The Starknet Community]
 ____
 *Unleash Your Passion to Perfect StarkNetBook*

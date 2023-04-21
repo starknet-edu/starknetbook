@@ -2,6 +2,8 @@
 
 = Verifiers in Solidity
 
+L1 smart contract that verifies STARK proofs from SHARP.
+
 == Contributing
 
 [quote, The Starknet Community]
