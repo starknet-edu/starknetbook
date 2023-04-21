@@ -19,3 +19,4 @@
         *** xref:turbofish-app.adoc[3.7.2 Turbofish App]
         *** xref:empiric-network.adoc[3.7.3 Empiric Network]
         *** xref:indexers-explorers.adoc[3.7.4 Indexers and Explorers]
+        *** xref:horus.adoc[3.7.5 Horus]
