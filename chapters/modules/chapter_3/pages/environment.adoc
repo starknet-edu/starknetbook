@@ -1,33 +1,30 @@
 [id="environment"]
 
-= Setting up the environment
+In the previous chapters, you have installed Python, Rust, Cairo and the StarkNet CLI on your local device. These installations provide the foundation for working within the StarkNet ecosystem. To enhance your development experience, we recommend setting up a few additional tools.
 
-So far, you will have installed Python, Rust as well as the Cairo and Starknet CLIs on your local device. Practically, this is all you need to develop in the Starknet ecosystem. However, it can't hurt to have a few more tools at your disposal ...
+== Cairo Language Server
 
-=== Cairo Language Server
+Developers often use popular IDEs such as VS Code or Emacs. Although these IDEs are excellent for writing code, they don't inherently support the StarkNet ecosystem. The Cairo Language Server bridges this gap by providing IDEs with essential information for a better development experience, including auto-completion, syntax highlighting, and error checking.
 
-If you are a software developer, odds are you use of the common IDEs - VS Code, Emacs etc. for work. These IDEs are great for writing code, but they don't know anything about the Starknet ecosystem. This is where the Cairo Language Server comes in. It is a tool that provides IDEs with the necessary information to provide you with a better development experience. For example, it can provide you with auto-completion, syntax highlighting, and error checking.
-
-To install the Cairo Language Server, follow the instructions https://github.com/starkware-libs/cairo/blob/main/vscode-cairo/README.md[here].
-
-Do remember to disable the previous Cairo 0.x extension in VS Code if you have it installed. Finally, run the command 
+To install the Cairo Language Server, follow the instructions https://github.com/starkware-libs/cairo/blob/main/vscode-cairo/README.md[here]. If you have the previous Cairo 0.x extension installed in VS Code, ensure you disable it. Run the following command:
 
 [source, bash]
 ----
 which cairo-language-server | pbcopy
 ----
 
-and then paste this value in the `languageServerPath` field of the Cairo 1.0 extension in your editor settings.
+Then, paste the value into the `languageServerPath` field of the Cairo 1.0 extension in your editor settings.
 
-=== Scarb
+== Scarb
 
-Scarb is a build toolchain and package manager for Cairo and Starknet ecosystems. It is closely modelled after Cargo - and is meant to be a familiar tool for Rust developers. To install, simply follow the local build instructions here https://docs.swmansion.com/scarb/download[here]. You can then test it by running the command
+Scarb is a build toolchain and package manager designed for the Cairo and StarkNet ecosystems. Modeled after Cargo, it aims to provide a familiar experience for Rust developers. To install Scarb, follow the local build instructions here. Test the installation by running the command:
 
 [source, bash]
 ----
 scarb --version
 ----
 
+For more details on using Scarb, refer to Chapter 2 of this book. With these tools in place, you'll be well-equipped to navigate and develop within the StarkNet ecosystem.
 
 == Contributing
 
