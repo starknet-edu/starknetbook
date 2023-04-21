@@ -1,6 +1,8 @@
-[id="explorers"]
+[id="indexers-and-explorers"]
 
-= Block Explorers
+= Indexers and Explorers
+
+== Explorers
 
 A block explorer, or blockchain explorer, enables you to see transactions, blockchain metrics and other information.
 
@@ -16,6 +18,8 @@ The following block explorers provide information on StarkNet.
 
 |https://nethermind.io/voyager[Voyager]|https://voyager.online/[Mainnet]|https://goerli.voyager.online/[Goerli]|https://goerli-2.voyager.online/[Goerli2]
 |===
+
+== Indexers
 
 == Contributing
 
