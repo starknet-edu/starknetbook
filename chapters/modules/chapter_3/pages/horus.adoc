@@ -1,17 +1,9 @@
-[id="wallets"]
+[id="horus"]
 
-= Wallets
+= Horus
 
-Once you have deployed your first account on Starknet - you are going to need a wallet UI to manage it. Here are some common choices which work well across browsers -
+https://nethermind.io/horus/[Horus] is an https://github.com/NethermindEth/horus-checker[open-source] formal verification tool designed to verify StarkNet smart contracts. It offers a user-friendly approach to formally verify StarkNet smart contracts against specifications written in a straightforward assertion language. By utilizing various Satisfiability Modulo Theories (SMT) solvers, Horus ensures your contract's implementation aligns with the provided specifications. The Horus alpha release supports Cairo 0.10.1, with a Cairo 1.0 release anticipated in the near future.
 
-.StarkNet wallets
-|===
-|Name|Extension
-
-|https://www.argent.xyz/argent-x/[Argent X]|https://chrome.google.com/webstore/detail/argent-x/dlcobpjiigpikoobohmabehhmhfoodbb[Browser Extension]
-
-|https://braavos.app/[Braavos]|https://chrome.google.com/webstore/detail/braavos-smart-wallet/jnlgamecbpmbajjfhmmmlhejkemejdma[Browser Extension]
-|===
 
 == Contributing
 
@@ -23,3 +15,4 @@ StarkNetBook is a work in progress, and your passion, expertise, and unique insi
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
+

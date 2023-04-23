@@ -1,0 +1,26 @@
+[id="vue-stark-boil"]
+s
+= Vue Stark Boil
+
+The Starknet ecosystem offers frameworks suitable for both Vue and React. For those who prefer Vue, vue-stark-boil, developed by the team at [Don't Panic DAO](https://github.com/dontpanicdao), is a great option.
+
+To start, clone the project to your device from [here](https://github.com/dontpanicdao/vue-stark-boil). For a deeper understanding of Vue, visit their [website](https://vuejs.org/). The vue-stark-boil boilerplate enables various functionalities, such as connecting to a wallet, listening for account changes, and calling a contract.
+
+After cloning the project, ensure that you install all dependencies by running the following command in your terminal:
+
+[source, bash]
+----
+npm install
+----
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

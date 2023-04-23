@@ -1,6 +1,160 @@
-[id="structure"]
+[id="scarb"]
 
-= The Structure of a Cairo Smart Contract
+= Scarb
+
+Scarb is the Cairo package manager designed to manage your dependencies, compile your project (either pure Cairo or Starknet contracts), download libraries your code depends on, and build those libraries.
+
+== Requirements
+
+Currently, Scarb requires a Git executable to be available in the `PATH` environment.
+
+=== Installation
+
+To install Scarb, follow these steps:
+
+- Download the release archive matching your operating system and CPU architecture from https://github.com/software-mansion/scarb/releases/[Scarb Github]; make sure to choose the latest version.
+- The file is a compressed archive. Extract it to a location where you would like to have Scarb installed, e.g. `~/scarb`.
+- Add a path to the `scarb/bin` directory to your environment variable, depending on your shell. For example, with https://ohmyz.sh/[zsh] and Scarb extracted to `~/scarb`:
+    * Open the `~/.zshrc` file in your editor.
+    * Add the following line at the end of the file: `export PATH="$PATH:~/scarb/bin”`.
+- Verify the installation by running the following command in a new terminal. It should output both Scarb and Cairo language versions. If you are using a Mac, it is likely the OS would not allow you to run Scarb since it was installed manually. Just go to the folder where you stored Scarb using the UI (not the terminal), right click on the Scarb executable, and select “Open”. It will ask you if you want to open it, and then Scarb will work as expected.
+
+
+[source, bash]
+----
+$ scarb --version
+scarb 0.1.0 (289137c24 2023-03-28)
+cairo: 1.0.0-alpha.6
+----
+
+If you have issues with Scarb, let us know by creating an issue on the starknetbook repository.
+
+
+=== Creating a Project with Scarb
+
+To create a new project using Scarb, navigate to your project directory and run the following command:
+
+[source, bash]
+----
+$ scarb new hello_scarb
+----
+
+This command creates a new project directory named `hello_scarb` with generated project files, including a `Scarb.toml` file and an `src` directory with a `lib.cairo` file inside. A new Git repository with a `.gitignore` file is also initialized.
+
+Open `Scarb.toml` in your text editor. It should look similar to the code below:
+
+[source, bash]
+----
+[package]
+name = "hello_scarb"
+version = "0.1.0"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest
+[dependencies]
+# foo = { path = "vendor/foo" }
+----
+
+=== Understanding Scarb.toml
+
+This file uses the [TOML](https://toml.io/en/) (Tom’s Obvious, Minimal Language) format, which is Scarb’s configuration format.
+
+* `[package]`: This section indicates information about the project itself.
+    ** `name`, `version`: These keys set the configuration information Scarb needs to compile your program: the name and the version of Scarb to use.
+* `[dependencies]`: This section is for listing your project’s dependencies.
+
+=== Building a Scarb Project
+
+Delete all content in `src/lib.cairo` and add the code below:
+
+[source, rust]
+----
+// src/lib.cairo
+mod hello_scarb;
+----
+
+Create a new file called `src/hello_scarb.cairo` and add the code below:
+
+[source, rust]
+----
+// src/hello_scarb.cairo
+use debug::PrintTrait;
+fn main() {
+    "Hello, Scarb!".print();
+}
+----
+
+The `lib.cairo` file contains a module declaration referencing `hello_scarb`, which contains the implementation of the `hello_scarb.cairo` file. To learn more about modules, imports and the `lib.cairo` file, check out the subchapter on imports in Chapter 2.
+
+Scarb requires your source files to be located within the `src` directory. The top-level project directory is reserved for README files, license information, configuration files, and any other non-code-related content.
+
+From your `hello_scarb` (the main) directory, build your project with the following command:
+
+[source, bash]
+----
+$ scarb build
+
+Compiling hello_scarb v0.1.0 (file:///projects/Scarb.toml)
+Finished release target(s) in 0 seconds
+----
+
+This command creates a `sierra` file in `target/release`, https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-exploring-sierra-7f32808421f5/[Sierra] is an intermediate layer between the high-level Cairo and compilation targets such as Cairo Assembly (CASM).
+
+To run the Cairo program, use the following command:
+
+[source, bash]
+----
+$ cairo-run src/lib.cairo
+[DEBUG] Hello, Scarb!                   (raw: 5735816763073854913753904210465)
+Run completed successfully, returning []
+----
+
+If you get the error:
+
+[source,bash]
+----
+error: Found argument 'src/lib.cairo' which wasn't expected, or isn't valid in this context
+
+Usage: cairo-run [OPTIONS] --path <PATH>
+----
+
+This means you have to install the Cairo version alpha.7, https://cairo-book.github.io/ch01-01-installation.html/[check out this guide to install it]
+
+An alternative approach is to run:
+
+[source, bash]
+----
+$ cairo-run --path src/lib.cairo
+----
+
+=== Defining Custom Script
+
+We can define Scarb scripts in `Scarb.toml` file, which can be used to execute custom shell scripts. Add the following line to your `Scarb.toml` file:
+
+[source, toml]
+----
+[scripts]
+run-lib = "cairo-run src/lib.cairo"
+----
+
+Now, run the command `scarb run run-lib` which outputs
+
+[source, bash]
+----
+[DEBUG] Hello, Scarb!      (raw: 5735816763073854913753904210465)
+
+Run completed successfully, returning []
+----
+
+Using `scarb run` is a convenient way to run custom shell scripts that can be useful to run files and test your project
+
+=== Recap
+
+Let’s review what we have learned about Scarb:
+
+* We can create a project using `scarb new`.
+* We can build a project using `scarb build` to generate the compiled Sierra code.
+* We can define custom scripts in `Scarb.toml` and call them with the `scarb run` command.
+
 
 == Contributing
 

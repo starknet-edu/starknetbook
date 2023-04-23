@@ -1,0 +1,40 @@
+[id="bridges"]
+
+= Bridges
+
+Bridges play a crucial role in connecting Starknet with other chains or exchanges, enabling seamless token transfers across different platforms. Not only are they valuable for testing purposes, but they also provide a practical learning opportunity for understanding StarkNet's inter-blockchain messaging capabilities.
+
+== StarkGate
+
+StarkGate (https://starkgate.starknet.io/) is a token bridge between Ethereum and StarkNet. It allows users to deposit and withdraw ETH and ERC-20 tokens between both networks using L1 and L2 bridge contracts.
+
+=== L1 → L2 Transfer (Deposit)
+
+Users call the deposit function on L1, providing the recipient address on StarkNet and the amount for ERC-20 tokens.
+The deposit is triggered on StarkNet, with sequencers triggering the handle_deposit function on the L2 bridge.
+The sequencer completes the block construction, and StarkNet's provers submit a state update to L1.
+
+=== L2 → L1 Transfer (Withdraw)
+
+Users call the `initiate_withdraw` function on the L2 bridge contract, providing the recipient address on Ethereum and the transfer amount.
+StarkNet's provers validate the block and submit a state update to L1.
+Anyone can finalize the transfer on L1 by calling the withdraw function.
+StarkGate Alpha on Mainnet has limitations on deposit amounts and total value locked in the L1 bridge contract to minimize risks associated with its alpha version.
+
+== Orbiter
+
+Orbiter Finance (https://www.orbiter.finance/) is a decentralized cross-rollup bridge designed for transferring Ethereum-native assets between various networks, including Ethereum, Layer 2 solutions, and sidechains.
+
+The system consists of two main roles: Sender and Maker. The 'Maker' deposits excess margin into Orbiter's contract to act as a cross-rollup service provider for the 'Sender'. The 'Sender' sends assets to the 'Maker' on the 'Source Network', and the 'Maker' sends them back to the 'Sender' on the 'Destination Network'. Orbiter's security model relies on three types of smart contracts: Maker Deposit Contract (MDC), Event Binding Contract (EBC), and Simple Payment Verification (SPV).
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

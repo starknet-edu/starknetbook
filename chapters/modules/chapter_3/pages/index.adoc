@@ -1,6 +1,22 @@
 [id="chapter_3"]
 
-= Deep into Starknet
+= StarkNet Tooling
+
+If you're ready to start building scalable web3 applications - it's time to choose your stack. StarkNet has grown significantly since its inception as the first ZK-based rollup, thanks to our amazing community. Today, you will find all the necessary tools you need to build decentralized applications (dApps) on StarkNet.
+
+Contributors are always welcome to join the StarkNet community and help improve the existing tooling or create new solutions.
+
+In this chapter, you can expect to learn about the following topics:
+
+* Environment: Useful configurations to speed up your development process
+* Wallets: Using StarkNet wallets interfaces such as Argent and Braavos
+* Interactive game tutorials: Learning smart contracts in a fun way 
+* Frameworks: Providing structure to your developer experience 
+* Common SDKs: Using Starknet.js, Starknet-rs, Starknet_py, and Caigo for different programming languages
+* Tools and applications: Other things that may come in handy when developing  
+
+By the end of this chapter, you will have a comprehensive understanding of the tools available in the StarkNet ecosystem and how they can help you build and deploy dApps efficiently.
+
 
 == Contributing
 

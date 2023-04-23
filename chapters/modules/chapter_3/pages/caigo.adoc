@@ -1,6 +1,6 @@
 [id="caigo"]
 
-= Caigo: A Golang SDK for Starknet
+= Caigo - GO for Starknet
 
 == Contributing
 

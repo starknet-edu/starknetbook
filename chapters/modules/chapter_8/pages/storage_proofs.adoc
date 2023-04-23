@@ -1,0 +1,136 @@
+[id="storage_proofs"]
+
+= Storage Proofs: Trustless Cross-Chain Information Access on Starknet
+
+In the world of decentralized systems and blockchain technology, ensuring the accuracy and authenticity of data is of paramount importance. As the ecosystem evolves, it becomes increasingly necessary to share information across different chains, leading to the development of innovative solutions to verify the integrity of the data without sacrificing security or efficiency. One such solution is the use of storage proofs.
+
+Storage proofs offer a cryptographic method for tracking and sharing blockchain information across chains, similar to oracles. However, the key difference lies in the trust model; storage proofs inherently provide proof of authenticity without relying on third-party trust. In some situations, they can even replace or complement oracles, paving the way for new use cases and applications in the blockchain ecosystem.
+
+In this chapter, we'll explore the world of storage proofs in depth, covering their fundamentals, how they work, their potential use cases, and how they can enhance or even replace traditional oracles in certain scenarios. By the end of this chapter, you'll have a thorough understanding of storage proofs and their significance in the ever-evolving landscape of decentralized systems.
+
+[NOTE]
+====
+This chapter was inspired by and based on the https://medium.com/@starkware/what-are-storage-proofs-and-how-can-they-improve-oracles-e0379108720a[Starkware blog post] on the same topic. Any errors or inaccuracies found in this chapter are the responsibility of the Starknet Book editor and should not be attributed to the authors of the original blog post.
+====
+
+image::storage5.png[storage5]
+
+== What are storage proofs?
+
+Storage proofs are a way to prove that certain information exists on a blockchain and is true, without having to trust a third party. To better understand storage proofs, let's break down the concept using a simple analogy:
+
+Imagine you have a giant book filled with information, and you want to prove that a specific piece of information is in that book. Instead of requiring someone to go through the entire book to find the information, you use a clever system (in our case, cryptography) to create a small "proof" that can easily demonstrate the information's presence in the book. This "proof" is what we call a storage proof.
+
+In the context of blockchains, these giant books are the databases that store all the transactions and data on the network. Storage proofs allow you to create a small and verifiable proof that certain data exists within the blockchain's state at a particular point in time. This is done using cryptographic techniques that are built into the storage itself.
+
+Blockchains use various data structures, like Merkle trees, Merkle Patricia trees, and Verkle trees, to cryptographically commit to their data. Using these data structures, storage proofs can be generated to demonstrate that specific information is part of a given state. However, when used alone, these proofs can become quite large, making them impractical for on-chain verification. To overcome this, storage proofs are often combined with advanced cryptographic techniques, such as STARKs or SNARKs, to create smaller and more efficient proofs that can be verified on any domain without trusting a third party. Instead, the security and trust come from the underlying blockchain itself.
+
+== How do storage proofs work?
+
+Now that we have a basic understanding of what storage proofs are, let's dive into how they work.
+
+=== Cryptographic Commitments and Data Structures
+
+Storage proofs rely on cryptographic commitments and specific data structures to verify the authenticity of data without revealing the entire dataset. These data structures, such as Merkle trees, Merkle Patricia trees, or Verkle trees, enable efficient storage and retrieval of data while maintaining the cryptographic security of the entire dataset.
+
+When a piece of data is added to the blockchain, it's hashed and stored in a specific location within the tree. This data, along with other data in the tree, is combined using a hashing algorithm to create parent nodes. This process continues until a single root hash, known as the Merkle root or Verkle root, is obtained. This root hash represents the entire dataset and serves as a commitment to the data.
+
+=== Generating and Verifying Storage Proofs
+
+To generate a storage proof, one must provide a specific piece of data and its associated Merkle or Verkle path within the tree. The path consists of the sibling hashes required to reconstruct the root hash using the same hashing algorithm. The storage proof is essentially the combination of the data and its Merkle or Verkle path.
+
+When verifying a storage proof, a recipient can use the provided data and Merkle or Verkle path to recompute the root hash. If the recomputed root hash matches the known root hash, the recipient can be confident that the data is authentic and part of the committed dataset.
+
+=== Optimizing Storage Proofs with STARKs or SNARKs
+
+While storage proofs provide a secure and efficient way to prove the existence of data in a blockchain, their size and computational requirements can be further optimized using zero-knowledge proofs, such as STARKs (Scalable Transparent ARguments of Knowledge) or SNARKs (Succinct Non-interactive ARguments of Knowledge).
+
+These advanced cryptographic techniques allow for the creation of smaller, more efficient proofs that can be verified quickly, even on-chain. By combining storage proofs with STARKs or SNARKs, we can achieve trustless and efficient cross-chain data sharing without relying on third parties.
+
+== Storage Proofs Use Cases
+
+Storage proofs offer an efficient means of compressing blockchain data and transmitting it to other chains, opening up a wide array of applications. Their affordable verification costs allow destination chains to validate the proof, reducing the need for complex cross-chain messaging systems.
+
+Some potential use cases for storage proofs include:
+
+* *General information access*: Storage proofs enable one chain to access information about the state and transactions of another chain, facilitating seamless cross-chain communication.
+
+* *Simplified cross-chain voting systems*: Storage proofs can streamline cross-chain voting processes where users hold assets on a secure but slower chain (Chain A) while voting takes place on a faster, more cost-effective chain (Chain B). Instead of incurring high transaction fees to transfer assets between chains, storage proofs allow users to prove their token balance on Chain A and seamlessly cast their vote on Chain B.
+
+* *Trustless cross-chain bridges*: Current cross-chain bridges often involve third-party intermediaries, such as custodians or decentralized autonomous organizations (DAOs), which require a certain level of trust. Storage proofs can facilitate trustless bridges, with smart contracts on the destination chain validating transactions and minting bridged assets based on the proof. In some cases, storage proofs may even eliminate the need for transferring assets between chains by simply proving ownership on the original chain.
+
+image::storage1.png[storage1]
+
+* *Improved user experience for Account Abstraction (AA) use cases*: AA, a key innovation in blockchain technology, has been implemented across various chains to enhance user onboarding. Storage proofs can further augment AA, allowing wallets to restore access based on specific conditions, such as inactivity, or enforce additional checks that require data from other chains.
+
+By harnessing the power of storage proofs, these use cases demonstrate the potential for more efficient, secure, and seamless interactions within the blockchain ecosystem.
+
+== An example of a storage proof
+
+Generating storage proofs on EVM-compatible chains is straightforward. For example, the Web3.js library has the `getProof` function that can generate proof of a contract's state on Ethereum (and other EVM-compatible chains such as Polygon or BSC). A contract address and the storage slot for the contract must be passed to the function.
+
+In Ethereum, smart contracts use a key-value store to store data in their storage. Each piece of data is stored in a specific location known as a "storage slot." Storage slots are memory locations within the contract's storage and are identified by a unique index. Let's look at a sample smart contract with the following code deployed on Ethereum mainnet at `0xcc...da8b`.
+
+image::storage2.png[storage2]
+
+The `owner` variable would be stored at slot 0. Now, to generate the proof that the `owner` of this contract was an address A, we can use the `getProof` function as follows:
+
+image::storage3.png[storage3]
+
+The output of the code above looks something like this:
+
+image::storage1.png[storage4]
+
+The "storageProof" returned contains the storage proof for the "owner" variable. Since Ethereum uses Merkle Patricia Trees to commit to its state, the state of accounts and their storage, the storage generated can be used to prove a storage slot (or account state). However, as previously stated, these proofs are not scalable enough to discuss cross-chain message transfers. Using complex ZK mathematics on top of this can decrease the computation required to verify the proof.
+
+== Comparing and Contrasting Storage Proofs and Oracles
+
+Blockchains are designed to be trustless, which means they cannot inherently access off-chain data. This limitation affects smart contracts' ability to make decisions based on real-world events or historical blockchain information. As a solution, oracles were introduced to provide off-chain data or results from resource-intensive off-chain computations to smart contracts.
+
+Oracles typically require a third party, such as an institution or a decentralized network of node operators, to submit data on-chain. While this introduces a level of trust, various teams, like Pragma, are working to minimize this trust requirement.
+
+Chainlink is a well-known blockchain oracle, providing real-world data, off-chain computation services, and cross-chain services. As smart contracts currently rely on oracles for real-world data, oracles have become a crucial part of the blockchain ecosystem.
+
+== The State of Oracles on StarkNet
+
+On the StarkNet testnet, Chainlink provides price data feeds for seven cryptocurrency pairs and has partnered with Starkware to accelerate app development and growth within the StarkNet ecosystem. Chainlink minimizes trust assumptions through a decentralized network of nodes, but data aggregation occurs off-chain.
+
+Pragma and Stork Network are two significant oracle providers on StarkNet, operating on both mainnet and testnet. They offer price tickers for multiple cryptocurrency pairs, and Pragma is working on implementing a verifiable randomness feed on the mainnet for secure, on-chain randomness. Pragma's price feeds are based on submissions from large institutions and market makers, leveraging efficient ZK technology for on-chain price aggregation.
+
+In summary, both storage proofs and oracles are crucial for facilitating cross-chain communication and access to off-chain data. While oracles are indispensable for real-world data, storage proofs offer a trustless, efficient way to transfer and verify blockchain information across chains. Together, they help create a more robust, interconnected blockchain ecosystem.
+
+== Can Oracles Be Replaced or Improved by Storage Proofs?
+
+In certain cases, storage proofs can replace oracles. Some data provided by oracles is already available on-chain, and a storage proof can eliminate the need for trust in a third party, allowing smart contracts to rely entirely on the security of cryptographic commitments. However, in other cases where storage proofs cannot fully replace oracles, they can still enhance them with additional functionality:
+
+* Storage proofs enable computations on data from different sources and export the results to other chains, making it possible for oracles to transmit information across multiple chains.
+* Storage proofs can facilitate cost-effective validation on destination chains, as the preferred source chain typically has cheap computation.
+* Research leaders, such as Herodotus, enable cross-domain data access across Ethereum chains using storage proofs and ZK mathematics. Pragma plans to partner with Herodotus to support cross-chain oracles in the near future.
+* Storage proofs can unify the state of multiple rollups and even allow synchronous reads between Ethereum layers.
+* Trustless retrieval of historical on-chain data is another enhancement made possible by storage proofs. Stateful blockchains like Ethereum and StarkNet cryptographically preserve their state through specialized data structures, enabling proof of data inclusion. This allows smart contracts to access information dating back to the genesis block.
+
+Pragma is exploring the development of an L3 oracle on StarkNet, which could enable other chains to "pull" and verify data using storage proofs. Benefits of having an L3 oracle on a computationally cheap network like StarkNet include:
+
+* Faster consensus on blocks due to the highly customizable L3 chain, significantly reducing data latency for the oracle.
+* Asynchronous transfer of low-latency data to other chains upon reaching consensus on the source chain, in combination with storage proofs.
+* Enhanced trust in data through an inbuilt system to penalize dishonest data providers. Data providers on the L3 could stake their assets as a guarantee of accurate data. As the entire L3 network must reach consensus before other chains can use the data, the oracle's data can be considered secured by the validators' stake on L3.
+
+== Conclusion
+
+The growing adoption of Ethereum L2 solutions, such as StarkNet, Optimism, and Arbitrum, has offered insights into the future of the industry. However, a key challenge hindering further growth is the implementation of a decentralized cross-chain messaging system. Though still in the early stages, storage proofs hold immense potential to address this issue.
+
+In some instances, storage proofs can replace or enhance oracles, facilitating more efficient cross-chain communication and access to historical data. By reducing the reliance on trust in third parties, storage proofs can significantly bolster the security and efficiency of blockchain applications.
+
+As the blockchain landscape continues to evolve, we can anticipate further developments and innovations in storage proofs, oracles, and cross-chain communication. By leveraging these technologies, the blockchain ecosystem can sustain its growth and deliver increased value to both users and developers.
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

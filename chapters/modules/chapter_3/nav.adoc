@@ -1,1 +1,22 @@
-* Chapter 3: Tooling
+* xref:index.adoc[Chapter 3: Starknet Tooling]
+    ** xref:environment.adoc[3.1 Environment Setup]
+    ** xref:devnet.adoc[3.2 Devnet]
+    ** xref:wallets.adoc[3.3 Wallet UI - Argent / Braavos]
+    ** 3.4 Contract Frameworks
+        *** xref:hardhat.adoc[3.4.1 Starknet-Hardhat]
+        *** xref:protostar.adoc[3.4.2 Protostar]
+        *** xref:nile.adoc[3.4.3 Nile]
+    ** 3.5 Front End Frameworks
+        *** xref:vue-stark-boil.adoc[3.5.1 Vue Stark Boil]
+        *** xref:starknet-react.adoc[3.5.2 Starknet React]
+    ** xref:sdk.adoc[3.6 Software Development Kits (SDKs)]
+        *** xref:starknetjs.adoc[3.6.1 Starknet.js]
+        *** xref:starknetrs.adoc[3.6.2 Starknet-rs]
+        *** xref:starknetpy.adoc[3.6.3 Starknet_py]  
+        *** xref:caigo.adoc[3.6.4 Caigo]  
+    ** 3.7 Tools and Applications
+        *** xref:bridges.adoc[3.7.1 Bridges]
+        *** xref:oracles.adoc[3.7.2 Oracles]
+        *** xref:interactive-tutorials.adoc[3.7.3 Interactive Tutorials]
+        *** xref:indexers-explorers.adoc[3.7.4 Indexers and Explorers]
+        *** xref:horus.adoc[3.7.5 Horus]

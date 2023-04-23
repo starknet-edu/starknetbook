@@ -1,3 +1,31 @@
 [id="protostar"]
 
 = Protostar
+
+For many developers, it is essential to write and test their contracts using the same language. To meet this need, https://docs.swmansion.com/protostar/[Protostar], a platform that manages dependencies, compiles projects, runs tests, and enables interaction with the chain through various commands.
+
+To install Protostar locally, open a terminal on Linux or Mac (Windows is not supported yet) and run:
+
+[source,bash]
+----
+curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
+----
+
+Then restart the terminal. Ensure your local version of Protostar is at `0.9.3` for compatibility with Cairo 1.0. If it is not, simply run:
+
+[source,bash]
+----
+protostar upgrade
+----
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

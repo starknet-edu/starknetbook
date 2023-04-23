@@ -1,6 +1,31 @@
 [id="hardhat"]
-
 = Hardhat
+
+With over 17.4 million software developers worldwide using JavaScript regularly, it is our pleasure to introduce a JS native development framework for Cairo 1.0 contracts: Hardhat. To set up this framework, execute the following commands in your project directory:
+
+[source, bash]
+----
+npm i @shardlabs/starknet-hardhat-plugin --save-dev
+----
+
+Next, add the following line to the top of your hardhat.config.ts (or hardhat.config.js):
+
+[source, bash]
+----
+import "@shardlabs/starknet-hardhat-plugin";
+// OR 
+require("@shardlabs/starknet-hardhat-plugin");
+----
+
+With this setup, you can now run Starknet CLI commands as tasks in Hardhat. For instance, to compile a Cairo 1.0 contract, execute:
+
+[source, bash]
+----
+npx hardhat starknet-compile-cairo1 [PATH...] 
+----
+
+To learn more, visit the [Hardhat Starknet Plugin](https://0xspaceshard.github.io/starknet-hardhat-plugin/) website.
+
 
 == Contributing
 

@@ -1,30 +1,28 @@
-= Starknet Architecture
+= Chapter 8: Starknet Architecture
 
-Below is a list of potential topics to cover in this section.
+As you embark on your journey to build scalable web3 applications, it's essential to understand the architecture of Starknet and its various components. Starknet has experienced significant growth since its inception as the first ZK-based rollup, thanks to the remarkable contributions from its community. This chapter aims to provide an in-depth understanding of the key building blocks of Starknet, which will enable you to develop and deploy decentralized applications (dApps) efficiently.
 
-== L2 Nodes
+In this chapter, we will cover the following topics:
 
-High level overview of all the Starknet nodes (Sequencer, Prover, Full Nodes & Indexer) and their role on the network.
+* L2 Nodes: A high-level overview of the different Starknet nodes (Sequencer, Prover, Full Nodes, and Indexer) and their roles within the network.
+* Tx Lifecycle: A detailed explanation of the various states an L2 transaction goes through, discussing the benefits and risks of considering a particular state as "finality."
+* Starknet OS: An exploration of how the Sequencer validates and executes transactions, and its connection with Account Abstraction (AA).
+* SHARP: An examination of the Prover's workflow for generating proofs for Starknet and Starkex using recursion, focusing on the workflow rather than the math behind STARKs.
+* Data Availability: A discussion of Starknet's Data Availability in Rollup mode (excluding Volition for now).
+* L1 Components: A comprehensive analysis of the on-chain Verifier and Fact Registry, and a discussion on how an L1 escape hatch would work.
+* Bridges: An explanation of how L1-L2 communication works and how it can be used to create bridges between networks.
 
-== Tx Lifecycle
+By the end of this chapter, you will have a deep understanding of the architecture and components of the Starknet ecosystem, empowering you to make informed decisions when building and deploying dApps on the platform.
 
-Description of the different states an L2 transaction goes through. We should also discuss the benefits and risks of considering a particular state as "finality".
 
-== Starknet OS
+== Contributing
 
-Description of how the Sequencer validates and executes transactions and its connection with Account Abstraction (AA).
-SHARP
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
 
-Prover's workflow to generate proofs for Starknet and Starkex using recursion. We don't need to explain the math behind STARKs here, just the workflow.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
-== Data Availability
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
 
-Starknet's Data Availability in Rollup mode (not Volition for now)
-
-== L1 Components
-
-The on-chain Verifier and the Fact Registry. Discussion about how an L1 escape hatch would work.
-
-== Bridges
-
-Explanation of how L1-L2 communication works and how it can be used to create bridges.

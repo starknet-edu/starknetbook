@@ -1,17 +1,9 @@
-[id="wallets"]
+[id="nile"]
 
-= Wallets
+= Nile
 
-Once you have deployed your first account on Starknet - you are going to need a wallet UI to manage it. Here are some common choices which work well across browsers -
+OpenZeppelin's Nile has long been a popular choice for Starknet and Cairo developers who prefer writing code in Python. However, due to the recent transition from Cairo 0 to Cairo 1.0, the Nile project is currently undergoing a significant overhaul. You can follow the project's progress at https://github.com/OpenZeppelin/nile-rs[here].
 
-.StarkNet wallets
-|===
-|Name|Extension
-
-|https://www.argent.xyz/argent-x/[Argent X]|https://chrome.google.com/webstore/detail/argent-x/dlcobpjiigpikoobohmabehhmhfoodbb[Browser Extension]
-
-|https://braavos.app/[Braavos]|https://chrome.google.com/webstore/detail/braavos-smart-wallet/jnlgamecbpmbajjfhmmmlhejkemejdma[Browser Extension]
-|===
 
 == Contributing
 

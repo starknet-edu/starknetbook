@@ -2,6 +2,15 @@
 
 = STARKs and SNARKs: Differences
 
+.STARK vs SNARK
+|======================================
+|                | STARK    | SNARK    
+| Verification   | log^2^(n)| constant 
+| Proof Size     | ~400 KB  | 288 bytes
+| Trusted Setup  | No       | Yes      
+| Quantum Secure | Yes      | No       
+|======================================
+
 == Contributing
 
 [quote, The Starknet Community]

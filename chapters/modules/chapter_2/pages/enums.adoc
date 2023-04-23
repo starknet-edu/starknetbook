@@ -1,7 +1,8 @@
-[id="structure"]
+[id="enums"]
 
-= The Structure of a Cairo Smart Contract
+= Enums in Cairo Contracts
 
+In this chapter, we will discuss the use of enums in Cairo contracts.
 
 == Contributing
 

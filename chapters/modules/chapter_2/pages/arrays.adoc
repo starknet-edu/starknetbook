@@ -2,13 +2,145 @@
 
 = Arrays in Cairo
 
-== Contributing
+An array is another way to have a collection of multiple values just like `tuples`,but every element of an array must have the same types.
 
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarkNetBook*
+An important thing to note is that arrays are `append-only`, meaning that you can only add elements to the end of an array. This has to do with the fact that once a memory slot is written to, it cannot be overwritten, but only read from it.
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+You can create and use array methods by importing the `array::ArrayTrait` trait.
 
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
+Array has the following method:
+
+== Creating an Array
+
+=== append()
+
+[source, bash]
+
+----
+use array::ArrayTrait;
+use option::OptionTrait;
+
+fn create_array() -> Array::<felt> {
+    let mut a = ArrayTrait::new();
+    a.append(0);
+    a.append(1);
+    a.append(2);
+    a
+}
+----
+
+The code above defines a function `create_array` which returns an instance of an array of type `Array<felt>`. The `ArrayTrait` and `OptionTrait` traits are being imported into the module.
+
+The `mut` keyword indicates that the variable `a` is mutable and can be modified. The `append` method is called on a three times to add the values 0, 1, and 2 to the array respectively. This results in the array having a length of 3 with the values [0, 1, 2].
+
+== Removing an element from an array
+
+=== pop_front()
+
+[source, bash]
+----
+use option::OptionTrait;
+use array::ArrayTrait;
+use debug::PrintTrait;
+fn main() {
+    let mut a = ArrayTrait::new();
+    a.append(0);
+    a.append(1);
+    a.append(2);
+
+    let first_value = a.pop_front().unwrap();
+    first_value.print();
+}
+----
+
+The code above imports the traits `OptionTrait`, `ArrayTrait`, and `PrintTrait`. The main function creates a new instance of an array `a` and `appends` the values `0`, `1`, and `2` to it using the append method.
+
+The next line uses the `pop_front` method on the array a to remove and return the first element of the array, which is `0`. The `unwrap` method is then called on the resulting Option value to obtain the actual value of `0`. If the `pop_front` method returns None, the unwrap method would cause a runtime error.
+
+== Reading Element from an array 
+
+== get(), at()
+
+To access an array element, you can use the get() or at() method which has different functionality.
+
+The `get` function of an array returns an `Option<Box<@T>>`. This means that if the specified index corresponds to an existing element in the array, `get` returns a pointer to a box containing a snapshot of that element. On the other hand, if the specified index is out of bounds, `get` returns `None`.
+
+The purpose of the `get` function is to provide a way to access array indices that may not be within the bounds of the array while avoiding panics. By returning an `Option`, `get` allows you to gracefully handle the case where the index is out of bounds, without crashing your program.
+
+[source,bash]
+
+----
+fn main() {
+    let mut a = ArrayTrait::new();
+    a.append(0);
+    a.append(1);
+
+    let first = *a.at(0_usize);
+    let second = *a.at(1_usize);
+}
+----
+In this example, the variable named `first` will get the value `0` because that is the value at index `0` in the array. The variable named `second` will get the value `1` from index `1` in the array.
+``
+
+The `at` function of an array directly returns a snapshot of the element at the specified index by using the `unbox()` operator to extract the value stored in a box. However, if the specified index is out of bounds, `at` causes a panic error.
+
+You should use `at` only when you want your program to panic if the provided index is out of the array's bounds. This behavior can help prevent unexpected behavior by immediately notifying you of a problem in your code.
+
+
+== Access the length of an array
+
+=== len()
+
+[source, bash]
+
+----
+use array::ArrayTrait;
+fn main() -> u128 {
+    let mut arr = ArrayTrait::<u128>::new();
+    arr.append(100_u128);
+    let length = arr.len();
+    length
+//returns 1
+}
+----
+To detrmine teh number of elements in an array, use the len() method. The return is of type `usize`.
+
+To check if an array is empty or not, you can use the `is_empty()` method, which returns true if the array is empty and false if it is not.
+
+=== Storing multiple types with Enums
+
+Remember we mentioned earlier that array must contain elements of same types, if you want to store element of different types in an array, you can use an  `Enum` to define a custom data type that can hold multiple types
+
+[source, bash]
+
+----
+use array::ArrayTrait;
+use traits::Into;
+
+#[derive(Copy, Drop)]
+enum Data {
+    Integer: u128,
+    Felt: felt252,
+    Tuple: (u32, u32),
+}
+
+fn main() {
+    let mut messages: Array<Data> = ArrayTrait::new();
+    messages.append(Data::Integer(100_u128));
+    messages.append(Data::Felt('hello world'));
+    messages.append(Data::Tuple((10_u32, 30_u32)));
+}
+----
+
+=== Span
+
+`Span` is a struct in `Cairo 1.0` that provides a way to create a read-only view of an Array, which is useful for preserving data integrity and avoiding borrowing issues when passing arrays between functions or performing read-only operations. The Span struct allows safe and controlled access to the elements of an array without modifying the original array, providing a snapshot of the array's current state that can be used for reference or analysis.
+
+All methods provided by Array can also be used with Span, with the exception of the `append()` method.
+
+=== Turning an Array into span
+
+To create a Span of an `Array`, call the `span()` method:
+
+
+In summary, we have covered the process of creating an array and performing operations such as `appending` and `removing elements`, `accessing the length of an array`, storing multiple variables with enum. We also learned about the span keyword and how it can be used to obtain a snapshot of an array.

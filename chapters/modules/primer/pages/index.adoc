@@ -2,30 +2,31 @@
 
 = Primer
 
-This primer is intended to cover introductory concepts upon which Cairo and Starknet are built, and also to get you acquainted with the format of this course.
-Each section will involve drilling down on a high-level concept as it pertains to Starknet or Cairo until we hit an "atomic" or irreducible concept we can represent in a simple/runnable code example:
+Welcome to the Primer, designed to introduce you to the foundational concepts behind Cairo and StarkNet. Our goal is to provide you with a solid understanding of the technologies that power these innovative systems.
 
-image::plat.png[plat]
+In the https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages[GitHub repo of the Book], you'll find code examples to enhance your learning experience. We welcome contributions from the community, so if you can provide examples in other languages, please feel free to submit a PR.
 
-https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages/bitcoin[Code examples] will be named by the programming language in which they are implemented, for example, Bitcoin block verification in https://go.dev/doc/install[Golang] (if you can implement this example in other languages we would love a PR):
+The topics covered in this primer have been thoroughly explored and analyzed by countless experts in the field. We will reference their invaluable resources throughout the book to ensure you receive the most comprehensive and accurate information.
 
-The topics covered in this primer have been dissected in hundreds of ways by thousands of people, so wherever possible I will be linking to those resources.
+[quote, The StarkNet Community]
+____
+As we venture into the captivating world of Cairo and StarkNet, let's remember that we stand on the shoulders of giants who have paved the way for our understanding and growth.
+____
 
-_Standing on the shoulders of giants blah blah blah let's get to the good stuff_
 
 == What are we solving for?
 
-The advent of blockchain technology has given the world computational systems absolute transparency and inclusive accountability.
-In order to obtain these characteristics, blockchain systems have been forced to make large trade-offs which impact usability.
-Vitalik Buterin, summed up this issue in "The Blockchain Trilemma" stating:
+Blockchain technology has brought about computational systems characterized by absolute transparency and inclusive accountability. However, to achieve these features, blockchain systems have had to make significant trade-offs that affect usability. Vitalik Buterin encapsulated this issue in "The Blockchain Trilemma":
 
+[quote, Vitalik Buterin]
+____
+Blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.
+____
 
-"Blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure."
--- Vitalik Buterin
+Throughout this course, you will learn how Starknet addresses the Blockchain Trilemma, aiming to deliver a system that is not only secure, inclusively accountable, and decentralized but also scalable and expressive. This is achieved through the use of zero-knowledge STARK proofs.
 
-In this course, you will learn how StarkWare attempts to tackle the Blockchain Trilemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs.
+🎯 <strong>Goals:</strong> Secure, inclusively accountable, decentralized, scalable, expressive 🎯
 
-🎯 +++<strong>+++Goals: +++</strong>+++ secure, inclusively accountable, decentralized, scalable, expressive 🎯
 
 == Evolution of Data Security
 
@@ -72,11 +73,12 @@ Receiver Questions:
 * Who will I receive data from?
 * If I change Alice's account value how will the sending host know to update the same value?
 
+
 == Distributed Systems
 
 These questions form the basis of distributed systems and distributed computing across a network and have been studied since the inception of the internet.
 
-Let's look briefly at how one of the more popular distributed databases https://cassandra.apache.org/doc/latest/cassandra/getting_started/configuring.html[CassandraDB] handles these issues.
+Let's look briefly at how one of the more popular distributed databases, https://cassandra.apache.org/doc/latest/cassandra/getting_started/configuring.html[CassandraDB], handles these issues.
 
 You can see when configuring the system you are required to whitelist the `seed node` IP Addresses that will form our trusted cluster that partakes in a limited peer-to-peer https://www.linkedin.com/pulse/gossip-protocol-inside-apache-cassandra-soham-saha[gossip].
 Although this is suitable for many traditional systems we strive to build inclusive and permissionless systems.
@@ -109,7 +111,7 @@ Bitcoin brings various computer science concepts together with https://en.wikipe
 
 The nodes trust the block producer based on its valid https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages/bitcoin/proof_of_work[proof of work] and the network collectively agrees on a set of canonical updates to the state of the Bitcoin ledger and the state of Alice's account.
 
-In `GO`:
+In `GO` (remember all code examples can be found at the https://github.com/starknet-edu/starknetbook/tree/main[GitHub repo of the Book]. Feel free to add your own examples and submit a PR!):
 
 [,bash]
 ----
@@ -151,7 +153,7 @@ cargo test
 Alice's information gets formatted as a https://en.wikipedia.org/wiki/Unspent_transaction_output[UTXO] and is replicated on all of the https://bitnodes.io[nodes] on the Bitcoin network.
 She can even validate that everything is accurate herself by rehashing the Merkle tree of every block of transactions from genesis to now.
 
-🎉 *NO DELEGATION OF TRUST* 🎉Let's revisit the trilemma.
+🎉 *NO DELEGATION OF TRUST* 🎉 Let's revisit the trilemma.
 What did we give up to get this trustless data security?
 
 * Miners expend energy as they attempt to get the nonce
@@ -173,7 +175,6 @@ go test ./... -bench=. -count 5
 
 💡 *Let's let Alice use her data* 💡
 
-[#smart_contracts]
 == Smart Contracts
 
 Smart contracts were first proposed by https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html[Nick Szabo] as a transaction protocol that executes the terms of a contract, giving all parties transparency into the rule set and execution.
@@ -245,3 +246,32 @@ This allows Alice to move her money freely between L1 and L2 (...soon to be L3) 
 All while inheriting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
 
 🎯 +++<strong>+++Goals: +++</strong>+++ secure, inclusively accountable, decentralized, scalable, expressive 🎯
+
+💡 *Let's explore Starknet* 💡
+
+== Starknet
+
+Starknet is a decentralized, permissionless, and scalable Layer-2 solution built on Ethereum. It utilizes zk-STARKs, a type of zero-knowledge proof, to achieve these goals. By using zk-STARKs, Starknet allows for increased transaction throughput, more expressive smart contracts, and reduced gas fees compared to Layer-1.
+
+With Starknet, Alice can interact with a more efficient and cost-effective blockchain layer that maintains the security and decentralization of Ethereum.
+
+Starknet is composed of various components, including:
+
+* Starknet Contracts: Smart contracts written in Cairo, a Turing-complete language designed specifically for creating zk-STARK proofs.
+* Starknet Nodes: Nodes that process and validate Starknet transactions and proofs, as well as submit them to Ethereum.
+* Starknet Bridge: A bridge that enables communication between Ethereum and Starknet, allowing for deposits, withdrawals, and contract interactions.
+
+Starknet offers a promising solution to the trilemma, achieving the goals of security, inclusively accountable, decentralization, scalability, and expressivity.
+
+🎯 +++<strong>+++Goals: +++</strong>+++ secure, inclusively accountable, decentralized, scalable, expressive 🎯
+
+By following the Starknet Book, you will gain the knowledge required to work with Starknet and its components. 
+
+By diligently following the Starknet book and exploring the available resources, you will become proficient in developing and deploying Starknet contracts. Armed with the power of Starknet, you can create scalable, secure, and expressive applications that take advantage of the benefits provided by Layer-2 technology.
+
+
+== Conclusion
+
+Throughout the history of data security, various solutions have been developed to address the challenges posed by the blockchain trilemma. From the early days of Bitcoin to the more expressive Ethereum, and now to Layer-2 solutions like Starknet, the industry has made significant strides in achieving secure, inclusively accountable, decentralized, scalable, and expressive systems.
+
+With Starknet, developers can harness the power of zk-STARKs to build applications that are both scalable and expressive while maintaining the security and decentralization of the underlying Layer-1 Ethereum network. As the technology continues to evolve and mature, we can expect Starknet to play a significant role in shaping the future of blockchain and decentralized applications.

@@ -1,0 +1,29 @@
+[id="sdk"]
+
+= Software Development Kits (SDKs)
+
+In the blockchain world, a Software Development Kit (SDK) is a collection of software-building tools specifically designed to facilitate the development of applications on a particular blockchain platform. SDKs provide a comprehensive set of tools that enable developers to create software applications more efficiently and in a standardized manner.
+
+The following SDKs are currently available on Starknet:
+
+.Starknet SDKs
+|===
+|Language|Name
+
+|Python|https://github.com/software-mansion/starknet.py[starknet_py]
+|Rust|https://github.com/xJonathanLEI/starknet-rs[starknet-rs]
+|Javascript|https://www.starknetjs.com/[starknet.js]
+|Golang|https://github.com/dontpanicdao/caigo[Caigo]
+
+|===
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
