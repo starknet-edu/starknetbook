@@ -1,19 +1,35 @@
 [id="hardhat"]
-= Hardhat
+= Starknet Hardhat Plugin
 
-With over 17.4 million software developers worldwide using JavaScript regularly, it is our pleasure to introduce a JS native development framework for Cairo 1.0 contracts: Hardhat. To set up this framework, execute the following commands in your project directory:
+With over 17.4 million software developers worldwide using JavaScript regularly, it is our pleasure to introduce a JS native development framework for Cairo 1.0 contracts: Starknet Plugin for Hardhat! 
+
+Hardhat itself is a popular JS development environment for Ethereum, and if you are already familiar with it and want to use it on Starknet, then this plugin will come in hand!
+
+First, you should already have installed Hardhat itself before configuring the Starknet plugin. Check this official https://hardhat.org/tutorial/creating-a-new-hardhat-project[guide] on how to setup Hardhat!
+
+Afterwards, please refer to the project's https://github.com/0xSpaceShard/starknet-hardhat-plugin[repository] and https://0xspaceshard.github.io/starknet-hardhat-plugin[documentation] for detailed up-to-date instructions on how to install and set up your development environment!
+
+High level steps:
+
+- Install Hardhat itself
+- Include Hardhat plugin inside the Hardhat project you created, per instructions in the documentation.
+- Create a new project (in our case, we called it hardhat-tutorial) 
+- Navigate to the newly created project
+- Be sure to run:
 
 [source, bash]
 ----
 npm i @shardlabs/starknet-hardhat-plugin --save-dev
 ----
 
-Next, add the following line to the top of your hardhat.config.ts (or hardhat.config.js):
+After successfully installing everything, make sure you have docker running as well, or if you have `cairo-lang` installed locally, you can set up venv in your hardhat config file - like https://0xspaceshard.github.io/starknet-hardhat-plugin/docs/intro#existing-virtual-environment[so]!
+
+Next, add the following line to the top of your `hardhat.config.ts` (or `hardhat.config.js):
 
 [source, bash]
 ----
 import "@shardlabs/starknet-hardhat-plugin";
-// OR 
+# OR 
 require("@shardlabs/starknet-hardhat-plugin");
 ----
 
@@ -24,8 +40,13 @@ With this setup, you can now run Starknet CLI commands as tasks in Hardhat. For 
 npx hardhat starknet-compile-cairo1 [PATH...] 
 ----
 
-To learn more, visit the [Hardhat Starknet Plugin](https://0xspaceshard.github.io/starknet-hardhat-plugin/) website.
+== Additional info
 
+To learn more, visit the https://0xspaceshard.github.io/starknet-hardhat-plugin/[Hardhat Starknet Plugin] website!
+
+One more useful resource to check all the capabilities of the plugin is the https://github.com/0xSpaceShard/starknet-hardhat-example[example repository]! 
+
+You can check the `/scripts` folder with various scenarios.
 
 == Contributing
 
