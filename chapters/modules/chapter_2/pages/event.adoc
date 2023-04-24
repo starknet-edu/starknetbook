@@ -2,7 +2,7 @@
 
 = Events in Starknet Contracts
 
-In this chapter, we will focus on events in a StarkNet contract, using an extended version of the voting contract as an example. Events are a useful tool for logging and notifying external entities about specific occurrences within a contract. They emit data that can be accessed by clients or other contracts.
+In this chapter, we will focus on events in a StarkNet contract, using an extended version of the voting contract as an example. Events are a useful tool for logging and notifying external entities about specific occurrences within a contract. They emit data that can be accessed by clients.
 
 == Voting Contract with Events
 
