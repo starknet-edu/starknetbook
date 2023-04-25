@@ -2,15 +2,122 @@
 
 = Enums in Cairo Contracts
 
-In this chapter, we will discuss the use of enums in Cairo contracts.
+Enums, short for `enumeration`` are a way to define custom data types that consists of a fixed set of named values, called variants. What are enums useful for? Enums are useful for representing a collection of related values where each value is distinct and has a specific meaning.
 
-== Contributing
+== Defining an Enum
 
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarkNetBook*
+Here’s an example of an enum:
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+[source, bash]
+----
+enum Status{
+Pending:(),
+Processing:(),
+Delivered:(),
+Failed:(),
+}
+----
 
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
+Unlike other languages like rust, every rust has a type. In the example above, we’ve defined an enum called ProductStatus with four variants: `Pending`, `Processing`, `Delivered`, `Failed`. 
+
+The naming convention is to use PascalCase for enum variants. Each variant represents a distinct value of the Status type and is associated with a unit type `()` . One variant can be instantiated using this syntax:
+
+
+[source, bash]
+----
+let status = Status::Pending(());
+----
+
+== Enums Combined with Custom Types
+
+Enums can also be used to store more data associated with each variant. For example:
+
+[source, bash]
+----
+enum Message{
+
+Quit:(),
+Echo:(felt252),
+Move:(u128,u128),
+}
+----
+
+In the example above, the Message enum has three variants: Quit, Echo, and Move, all with different types:
+
+- `Quit` has no data associated with it
+- `Echo` includes a single felt
+- `Move` includes two u128 values
+
+== Traits Implementation for Enums
+
+You can define traits and implement them for your custom enums, this allows you to define methods and behavior associated with the enum. Here’s an example of defining a trait and implementing it.
+
+[source, bash]
+----
+    trait Processing {
+    fn process(self:Message);
+    }
+
+    impl ProcessingImpl of Processing {
+
+    fn process(self:Message){
+     match self{
+    Message::Quit(())=>{
+    'I quit'.print();
+        },
+
+    Message::Echo(value) =>{
+    value.print();
+        },
+
+    Message::Move((x,y)) =>{
+    'moving'.print();
+        }
+        }
+
+    }   
+
+    }
+----
+
+In the example above, we implemented the Processing traits for Message .Hers is ow it could be used to process a Quit message:
+
+[source, bash]
+----
+let msg: Message = Message::Quit(());
+msg.process();
+
+
+//The code will print out: quitting 
+----
+
+== The Option Enum and its Advantages:
+
+The `Option` enum represents the concept of an optional value. it has two variants: `Some: T` and `None: ()`. Some: T indicates that there's a value of type T, while None indicates the absence of a value.
+
+The `Option` enums allow you to explicitly represent the possibility of a value being absent. Using `Option` can also help prevent bugs caused by using uninitialized or unexpected `null` values.
+
+Let’s take a look at the example below:
+
+[source, bash]
+----
+#[contract]
+
+mod Enum{
+use option::OptionTrait;
+
+// This function returns how much icecream there is left in the fridge.
+// If it is  before 10PM, there is 5 pieces left. At 10PM, someone eats them all, so there will be no more left. 
+
+fn maybe_icecream(time_of_day: u32) -> Option<u32> {
+       if time_of_day < 22_u32 {
+        Option::Some(5_u32)
+    } else if time_of_day > 23_u32 {
+        Option::None(())
+    } else{
+        Option::Some(0_u32)
+    }
+}
+}
+
+----
