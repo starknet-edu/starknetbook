@@ -1,0 +1,120 @@
+[id="calling_invoking"]
+
+= Deploying, Calling and Invoking Contracts
+
+
+In this chapter, we'll explore how to interact with deployed Starknet contracts using _calling_ and _invoking_. We'll use the voting contract as an example.
+
+* Calling contracts: Interacting with contract functions marked with the `#[view]` entry point. These functions do not alter the state of the network, so they don't require fees or signing. This is similar to a `call` in the Ethereum API.
+* Invoking contracts: Interacting with contract functions marked with the `#[external]` entry point. These functions do alter the state of the network and require fees and signing. This is similar to a `deploy` in the Ethereum API.
+
+== Deploying Account Contracts for Voters
+
+Before interacting with the voting contract, we need to ensure that voter accounts are deployed as account contracts on Starknet. Each voter account must be registered and funded to participate in the voting process. This process is required since we are using Account Abstraction (more in this later in the book).
+
+To deploy an account contract for a voter, follow these steps:
+
+1) Create a new account with a name, for example, "voter_1":
+[source,bash]
+----
+starknet new_account --account voter_1
+----
+
+2) Fund the newly created account (this can be done using a https://faucet.goerli.starknet.io/[faucet] or transferring funds from another account). Wait for the transaction to be confirmed in L2. You can check the status of the transaction by copying the transaction hash into a block explorer such as https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]; the transaction should be confirmed in a few minutes.
+
+3) Deploy the account contract:
+[source,bash]
+----
+starknet deploy_account --account voter_1
+----
+
+Repeat these steps for each voter account you want to register in the voting contract.
+
+Once we have deployed account contracts for all the voters, we can proceed with deploying and interacting with the voting contract.
+
+
+== Deploying the Voting Contract
+
+Here's the command to deploy the voting contract, which will register voter_1, voter_2, and voter_3 as eligible voters. Note these are arguments that the constructor takes.
+
+[source,bash]
+----
+starknet deploy --class_hash <class-hash-of-voting-contract> --inputs <voter_1> <voter_2> <voter_3> --account <deployer-account> --max_fee 100000000000000000
+----
+
+The contract that we would be interacting has been deployed at address: *0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf*. You can find it https://testnet.starkscan.co/contract/0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf[here] on Starkscan.
+
+
+== Verifying Voter Eligibility
+
+Let's confirm that the registered voters are eligible to vote. We can use the `voter_can_vote` and `is_voter_registered` functions to do this. Since both functions are view functions, we can utilize the `starknet call` syntax to interact with them.
+
+To check if a registered voter can vote, use the following command:
+
+[source,bash]
+----
+starknet call --function voter_can_vote --inputs 0x072c49c0f3a76640855c6d56104b034f2a61b95da5eb1c1a6afb8f7277856220 --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --account vote_admin
+----
+
+Since we provided a registered voter address as an input, the result is 1 (boolean true), indicating the voter is eligible to vote.
+
+Next, let's call the `is_voter_registered` function using an unregistered account address to observe the output:
+
+[source, bash]
+----
+starknet call --function is_voter_registered --inputs 0x0265a5a55cd3b03c2a3519f9b7a796a2c770fc9f85538df1e27f268f2885a616 --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --account vote_admin
+----
+
+With an unregistered account address, the terminal output is 0 (i.e., false), confirming that the account is not eligible to vote.
+
+====
+FUN ASSIGNMENT: Before proceeding to vote, ensure that all three voter accounts are registered and eligible to vote!
+====
+
+== Voting
+
+With voter eligibility confirmed, we can now proceed to cast votes using the `vote` function. This function is marked as external, so we'll use the `starknet invoke` command to interact with it. This process is comparable to using `send` in the Ethereum API when interacting with a contract function that modifies the contract state.
+
+The syntax for `invoke` is similar to `call`, but in this case, we'll provide the input as either 1 (Yes) or 0 (No) to represent our vote.
+
+[source,bash]
+----
+//Voting Yes
+starknet invoke --function vote --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --inputs 1 --account voter_2
+
+//Voting No
+starknet invoke --function vote --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --inputs 0 --account voter_3
+----
+
+Don't forget to cast a vote with the voter_1 account before moving on to the next step.
+
+== Viewing Vote Results
+
+To view the results, we can call the `get_vote_results` function, which is a view function. We'll use the `starknet call` command.
+
+[source,bash]
+----
+starknet call --function get_vote_results --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --account vote_admin
+
+//Example output if one voted Yes
+1 0 100 0
+
+//Example output if 2 votes Yes and 1 voted No
+2 1 66 33
+----
+
+The output will display the number of "Yes" votes, the number of "No" votes, and their respective percentages.
+
+Congratulations! You've successfully deployed and interacted with a voting smart contract on StarkNet!
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarkNetBook*
+
+StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
+
