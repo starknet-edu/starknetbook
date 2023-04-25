@@ -1,5 +1,5 @@
-= Getting started with Cairo programming and Starknet contracts
+= Getting started with Starknet and Cairo
 
-Developers who finish this Chapter can build their own Cairo smart contracts and deploy them on the Starknet network. We will learn everything required to code in Cairo, the language that lets you generate STARK proofs for general purpose computation on the CairoVM (more on this at a later chapter). Then we will create and deploy a contract to allow DAO members to vote entirely on-chain.
+Folks who finish this Chapter will have a basic understanding of Starknet and Cairo. They will learn to setup their own coding environment to start working with Cairo contracts and learn to deploy a simple contract on the Starknet network.
 
-After finishing this tutorial, try to hone your skills by earning all the points in the https://github.com/starknet-edu/starknet-cairo-101[Cairo 101] workshop, code your own https://github.com/starknet-edu/starknet-erc721[ERC721 (NFT)], deploy a customized https://github.com/starknet-edu/starknet-erc20[ERC20] and REV UP YOUR ENGINES with  https://github.com/shramee/starklings-cairo1[Starklinks]
+After finishing this chapter, make sure to check out Chapter 2 for a deep-dive into the basics of Cairo and start building your own smart contracts in no time!
