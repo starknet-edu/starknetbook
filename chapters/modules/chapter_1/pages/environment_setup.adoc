@@ -142,7 +142,7 @@ Update your `.bashrc` or `.zshrc` file to add the Cairo binaries to your `PATH` 
    export PATH="$HOME/.cairo/target/release:$PATH"
    ----
 
-   Open a new shell and check that the following command returns a version number:
+Open a new shell and check that the following command returns a version number:
 
    [source, bash]
    ----
