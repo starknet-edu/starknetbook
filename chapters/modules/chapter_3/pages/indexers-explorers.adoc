@@ -19,7 +19,7 @@ The following block explorers provide information on StarkNet.
 |https://nethermind.io/voyager[Voyager]|https://voyager.online/[Mainnet]|https://goerli.voyager.online/[Goerli]|https://goerli-2.voyager.online/[Goerli2]
 |===
 
-== Indexers
+== Indexers 🚧
 
 == Contributing
 
