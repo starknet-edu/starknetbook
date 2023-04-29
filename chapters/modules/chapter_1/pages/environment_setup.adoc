@@ -151,6 +151,61 @@ Open a new shell and check that the following command returns a version number:
 
 Congratulations! Your local development environment for StarkNet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
 
+=== Docker Cairo Installation
+
+*Prerequisites*:
+
+Before you proceed, ensure that you have the following prerequisites installed on your system:
+
+    * https://www.docker.com/[Docker]
+
+From your terminal execute:
+
+[source, bash]
+  ----
+  docker pull artudev19/cairo-env:1.0.0-alpha.6
+  ----
+
+This command will download the image from Docker
+
+In Docker, we can run a container from an image by executing `docker run`.Sometimes we want to make some information persistent. To do this, we need to use a volume, to mount a volume we need to pass the flag `-v from_host_path:to_container_path`.Thus, all the content in the host_path will be reflected in the container(It is worth mentioning that if you specify a path in the container that does not exist, Docker will create it automatically.)
+
+[source, bash]
+  ----
+  docker run -it --name stark-env -v Desktop/stark-apps/contracts:/contracts artudev19/cairo-env:1.0.0-alpha.6
+  ----
+
+This command will start to run a container with the name `stark-env`(Make sure that you docker daemon is running) and this will open a terminal where we can start to execute the starknet and cairo commands.
+In the example above all the cairo contracts from my local machine will be in the directory `stark-app/contracts` but in the container will be in the `contracts` path.
+
+[source, bash]
+  ----
+  starknet --version
+  ----
+
+The output should show the installed version of StarkNet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
+
+[source, bash]
+   ----
+   cairo-compile --version
+   ----
+
+For the next time that you want to run the container execute:
+
+[source, bash]
+   ----
+   docker start stark-dapp
+   ----
+
+To connect to the running container execute:
+
+[source, bash]
+   ----
+   docker exec -it stark-dapp zsh
+   ----
+
+Congratulations! Your Docker development environment for StarkNet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
+
 == Contributing
 
 [quote, The Starknet Community]
