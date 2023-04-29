@@ -1,5 +1,13 @@
-= Getting started with Starknet and Cairo
+= Getting Started with Starknet
 
-Folks who finish this Chapter will have a basic understanding of Starknet and Cairo. They will learn to setup their own coding environment to start working with Cairo contracts and learn to deploy a simple contract on the Starknet network.
+In this introductory chapter, readers will gain a foundational understanding of Starknet. By the end of the chapter, you will be able to set up your own coding environment to start working with Cairo contracts and learn how to deploy a simple contract on the Starknet network using the Starknet CLI.
 
-After finishing this chapter, make sure to check out Chapter 2 for a deep-dive into the basics of Cairo and start building your own smart contracts in no time!
+Upon completing this chapter, make sure to explore Chapter 2 for an in-depth examination of Cairo's fundamentals. With this knowledge, you will be well-equipped to start building your own smart contracts in no time!
+
+The chapter is structured as follows:
+
+* Setting up your development environment: Learn how to prepare your local development environment, including the installation of necessary tools and dependencies
+* Writing your first Cairo contract: Create a simple smart contract
+* Deploying your first contract on Starknet: Learn how to deploy your Cairo contract on the Starknet network and interact with it
+
+With a strong foundation in StarkNet and Cairo, you'll be ready to dive deeper into the world of scalable and secure decentralized applications powered by StarkNet.
