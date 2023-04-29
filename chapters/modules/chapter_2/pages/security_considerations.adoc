@@ -1,31 +1,38 @@
-[id="functions"]
+[id="security_considerations"]
 
-= Security Considerations in Cairo 1.0
+= Security Considerations in Cairo
 
-As in any blockchain programming language, in Cairo you need to be aware about smart contracts vulnerabilities to protect your developments against
-threats that could damage the trust your users put on your systems. 
+When working with any blockchain programming language, it's crucial to be aware of potential vulnerabilities in smart contracts in order to protect your projects from threats that could compromise the trust users place in your systems. Cairo is no exception.
 
-This guide will try to explain some of them applied to Starknet and Cairo so that you can prevent them from affecting your contracts.
+This chapter will explain some common security issues and vulnerabilities specific to Starknet and Cairo, and provide recommendations on how to prevent them from affecting your contracts. 
 
-== 1. Access Control.
-An inadecuate function access control could lead to unintended smart contract behaviors. 
-In the next example, you have a mint_tokens function without access control which will lead to anyone can mint new tokens.
+Contributions to this chapter are welcome. If you have any suggestions, please submit a pull request to the https://github.com/starknet-edu/starknetbook[Book repo].
+
+[NOTE]
+====
+Please note that some of the code examples provided in this chapter are written in pseudo-code for the sake of simplicity and clarity when explaining the concepts. They are not meant to be used in production.
+====
+
+== 1. Access Control
+
+Access control vulnerabilities arise when a smart contract's functions are inadequately secured, allowing unauthorized users to perform actions that should be restricted. This can lead to unintended smart contract behavior and manipulation of sensitive data.
+
+For example, consider a smart contract that handles token minting without proper access control:
 
 [source,rust]
 ----
 #[external]
-fn mint_tokens(mount: u256) {
+fn mint_tokens(amount: u256) {
     total_supply::write(total_supply::read() + amount);
 }
 ----
 
-**Recommendation.**
+In this example, any user can call the `mint_tokens` function and mint new tokens, potentially leading to an exploit or manipulation of the token supply.
 
-Add an addecuate access control to fit your needs (a custom made or using template as those 
-from https://docs.openzeppelin.com/contracts-cairo/0.6.1/access[OpenZeppelin,window=_blank].
+To mitigate access control vulnerabilities, implement proper authorization mechanisms such as role-based access control (RBAC) or ownership checks. You can create your own custom solution or use existing templates like those provided by https://docs.openzeppelin.com/contracts-cairo/0.6.1/access[OpenZeppelin,window=_blank].
 
-In our example we could add an owner variable, set owner value in contructor and add an assert 
-condition in mint_token to ensure only owner can mint new tokens.
+In the example above, we can add an owner variable, set the owner value in the constructor, and add an assert condition in the `mint_tokens` function to ensure that only the owner can mint new tokens.
+
 [source,rust]
 ----
 struct Storage {
@@ -33,10 +40,11 @@ struct Storage {
 }
 
 #[constructor]
-fn constructor(){
+fn constructor() {
     let sender = get_caller_address();
-    owner::write(sender)
+    owner::write(sender);
 }
+
 #[external]
 fn mint_tokens(amount: u256) {
     let sender = get_caller_address();
@@ -45,42 +53,67 @@ fn mint_tokens(amount: u256) {
 }
 ----
 
-== 2. Reentrancy.
-This is a recursive call between contracts which could happens when a contract A call a contract B and this contract
-callback contract A again before this could update relevant variables (like balances or limits). We may need to implement
-callback functions in many ERC standars with safeTransfer functions (ERC721, ERC777, ERC1155, ERC223, etc) or in flashloans where 
-lender contracts will callback the borrower contract to use and return funds.
+By implementing proper access control, you can ensure that your smart contract functions are only executed by authorized parties, reducing the risk of unauthorized manipulation.
 
-In the next example, in a game all whitelisted addresses can mint one NFT sword and execute an on_receive_sword() function to use it
-before return to the contract. But this NFT contract is vulnerable and you can mint all NFT swords.
+**Recommendation**
+
+To mitigate access control vulnerabilities, implement proper authorization mechanisms such as role-based access control (RBAC) or ownership checks. You can create your own custom solution or use existing templates like those provided by https://docs.openzeppelin.com/contracts-cairo/0.6.1/access[OpenZeppelin,window=_blank].
+
+In the example above, we can add an owner variable, set the owner value in the constructor, and add an assert condition in the `mint_tokens` function to ensure that only the owner can mint new tokens.
+
+[source,rust]
+----
+struct Storage {
+    owner: ContractAddress,
+}
+
+#[constructor]
+fn constructor() {
+    let sender = get_caller_address();
+    owner::write(sender);
+}
+
+#[external]
+fn mint_tokens(amount: u256) {
+    let sender = get_caller_address();
+    assert(sender == owner::read());
+    total_supply::write(total_supply::read() + amount);
+}
+----
+
+By implementing proper access control, you can ensure that your smart contract functions are only executed by authorized parties, reducing the risk of unauthorized manipulation.
+
+== 2. Reentrancy
+
+Reentrancy vulnerabilities occur when a smart contract's function calls an external contract before updating its internal state, allowing the external contract to recursively call the initial function before it has completed execution.
+
+For example, consider a game contract where whitelisted addresses can mint an NFT sword and execute an `on_receive_sword()` function to use it before returning it to the contract. However, the NFT contract is vulnerable to reentrancy attacks, allowing an attacker to mint multiple NFT swords.
 
 [source,rust]
 ----
 #[constructor]
 fn constructor() {
     available_swords::write(100);
-    return();
 }
 
 #[external]
 fn mint_one_sword() {
     let sender = get_caller_address();
-    if whitelisted::read(sender)==true {
+    if whitelisted::read(sender) == true {
         // Update sword count
         let sword_count = available_swords::read();
         available_swords::write(sword_count - 1);
         // Mint one sword to caller
-        sword::write(sender,1)
+        sword::write(sender, 1);
         // Callback to sender
         let callback = ICallerDispatcher { contract_address: sender }.on_receive_sword();
-        // remove sender from whitelist
-        whitelisted::write(sender,false);
+        // Remove sender from whitelist
+        whitelisted::write(sender, false);
     }
-    return();
 }
 ----
 
-And caller contract implements on_receive_sword to abuse vulnerable function and mint 10 swords:
+An attacker's contract can implement the `on_receive_sword` function to exploit the reentrancy vulnerability and mint multiple swords:
 
 [source,rust]
 ----
@@ -88,44 +121,45 @@ And caller contract implements on_receive_sword to abuse vulnerable function and
 fn on_receive_sword() {
     let nft_sword_contract = get_caller_address();
     let call_number: felt252 = total_calls::read();
-    total_calls::write(call_number + 1)
-    if call_number<10 {
+    total_calls::write(call_number + 1);
+    if call_number < 10 {
         let call = ISwordDispatcher { contract_address: nft_sword_contract }.mint_one_sword();
     }
-    return();
 }
 ----
 
-**Recommendation.**
+Reentrancy may need to be implemented in callback functions in many ERC standards with `safeTransfer` functions (ERC721, ERC777, ERC1155, ERC223, etc.) or in flash loans where lender contracts callback the borrower contract to use and return funds.
 
-Always follow check-effect-interact pattern to ensure you update relevant data before to callback the caller contract.
-In our example, set whitelisted before to call external function.
+**Recommendation:**
+
+To mitigate reentrancy vulnerabilities, follow the check-effects-interactions pattern, ensuring that you update the relevant internal state before calling external contracts. In the example above, remove the sender from the whitelist before calling the external function.
+
 [source,rust]
 ----
-if whitelisted::read(sender)==true {
+if whitelisted::read(sender) == true {
     // Update sword count
     let sword_count = available_swords::read();
     available_swords::write(sword_count - 1);
     // Mint one sword to caller
-    sword::write(sender,1)
-    // remove sender from whitelist (before call external function)
-    whitelisted::write(sender,false);
-    // Callback to sender (after set all effects)
+    sword::write(sender, 1);
+    // Remove sender from whitelist (before calling external function)
+    whitelisted::write(sender, false);
+    // Callback to sender (after setting all effects)
     let callback = ICallerDispatcher { contract_address: sender }.on_receive_sword();
 }
 ----
 
-== 3.Tx.Origin Authentication.
-Solidity's __Tx.Origin__ statement is a global variable who stores the address of transaction initiator while __msg.sender__
-is a variable who stores the address of transaction caller. 
+By following the check-effects-interactions pattern, you can reduce the risk of reentrancy attacks, ensuring the integrity of your smart contract's internal state.
 
-In Cairo 1.0, we have __account_contract_address__ and __get_caller_address__ function which implements the same concepts.
+[id="tx_origin_authentication"]
 
-So, if we use account_contract_address to authenticate functions on our smart contracts, we may lead to "phishing attacks" from
-attacker who build custom smart contracts and tricking users put them in the middle of a transaction call.
+== 3. Tx.Origin Authentication
 
-For example, we have a Cairo smart contract which let transfer funds to the owner and use account_contract_address to 
-authenticate permission:
+In Solidity, `tx.origin` is a global variable that stores the address of the transaction initiator, while `msg.sender` stores the address of the transaction caller. In Cairo, we have the `account_contract_address` global variable and `get_caller_address` function, which serve the same purpose.
+
+Using `account_contract_address` (the equivalent of `tx.origin`) for authentication in your smart contract functions can lead to phishing attacks. Attackers can create custom smart contracts and trick users into placing them as intermediaries in a transaction call, effectively impersonating the contract owner.
+
+For example, consider a Cairo smart contract that allows transferring funds to the owner and uses `account_contract_address` for authentication:
 
 [source,rust]
 ----
@@ -151,8 +185,9 @@ fn transferTo(to: ContractAddress, amount: u256) {
     balance::write(to + amount);
 }
 ----
-So, if an attacker tricks the owner to use a malicious contract, attacker could call function impersonating contract owner.
-Example of a custom malicious contract which will transfer funds to an attacker's controled account:
+
+An attacker can trick the owner into using a malicious contract, allowing the attacker to call the `transferTo` function and impersonate the contract owner:
+
 [source,rust]
 ----
 mod malicious_contract {
@@ -164,9 +199,10 @@ mod malicious_contract {
     }
 }
 ----
-**Recommendation.**
 
-In **transferTo** function replace __account_contract_address__ (origin) authentication with __get_caller_address__ (sender):
+**Recommendation:**
+
+Replace `account_contract_address` (origin) authentication with `get_caller_address` (sender) in the `transferTo` function to prevent phishing attacks:
 
 [source,rust]
 ----
@@ -180,7 +216,7 @@ struct Storage {
 fn constructor(){
     // Set contract deployer as the owner
     let contract_deployer = get_caller_address();
-    owner::write(owner_adcontract_deployerdress)
+    owner::write(contract_deployer)
 }
 
 #[external]
@@ -191,14 +227,25 @@ fn transferTo(to: ContractAddress, amount: u256) {
 }
 ----
 
-== To Do:
-=== 4. Overflow/Underflow.
-=== 5. Storage Collition.
-=== 6. Flash Loan Attacks.
-=== 7. Oracle Manipulation.
-=== 8. Bad Randomness
-=== 9. Deny of Services
-=== 10. Untrusted Delegate Calls.
+By using the correct authentication method, you can prevent phishing attacks and ensure that only authorized users can execute specific smart contract functions.
+
+== Call for Contributions: Additional Vulnerabilities
+
+We've covered a few common vulnerabilities in Cairo smart contracts, but there are several more security considerations that developers should be aware of. We are currently seeking contributions from the community to expand this chapter and cover more vulnerabilities, as listed in our To-Do section:
+
+- Overflow/Underflow
+- Storage Collision
+- Flash Loan Attacks
+- Oracle Manipulation
+- Bad Randomness
+- Denial of Service
+- Untrusted Delegate Calls
+- Public Burn
+
+If you have expertise in any of these areas, we encourage you to contribute to this chapter by adding explanations and examples of the respective vulnerabilities. Your contributions will help educate and inform the StarkNet and Cairo developer community, promoting the creation of more secure and robust smart contracts. Please submit your contributions through the https://github.com/starknet-edu/starknetbook/issues[Issues of the Book] on GitHub or reach out to us directly via our communication channels (default espejelomar on Telegram).
+
+Thank you for your support in making the StarkNet ecosystem safer and more secure for all developers and users.
+
 === 11. Public Burn.
 
 == Contributing
