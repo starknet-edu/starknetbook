@@ -1,12 +1,20 @@
 [#setup]
 
-== Setting up your local development environment
+== Setting Up Your Starknet Development Environment
 
-This section will guide you through setting up your local development environment for StarkNet development, covering the following topics:
+This chapter will guide you through the process of setting up your development environment for Cairo and Starknet. By the end of this chapter, you will have a fully functional development environment, allowing you to build, deploy, and interact with Cairo smart contracts.
+
+The setup process can be accomplished through two different methods: setting up a local development environment or using a Docker container. Both options are covered in this chapter, allowing you to choose the one that best suits your needs and preferences.
+
+The topics covered in this chapter include:
 
 * Installing prerequisites
 * Installing the `starknet` CLI
 * Installing the Cairo compiler
+* Setting up a Docker environment for Starknet development (alternative to the local setup)
+
+By following the instructions provided in this chapter, you will be well-prepared to start your journey into Starknet and Cairo smart contract development.
+
 
 === Prerequisites
 
@@ -15,9 +23,9 @@ Before you proceed, ensure that you have the following prerequisites installed o
 * https://www.python.org/downloads/release/python-390/[Python 3.9]
 * https://www.rust-lang.org/tools/install[Rust]
 
-=== StarkNet CLI Installation
+=== Starknet CLI Installation
 
-To install the StarkNet CLI, follow these steps:
+To install the Starknet CLI, follow these steps:
 
 * *Set up your virtual environment*:
 
@@ -60,7 +68,7 @@ After creating and activating the virtual environment, you should see `(cairo_ve
 
 * *Install the necessary dependencies for your operating system*:
 
-Before installing the StarkNet CLI, you need to install some system-specific dependencies. Follow the instructions for your operating system:
+Before installing the Starknet CLI, you need to install some system-specific dependencies. Follow the instructions for your operating system:
 
   a. Ubuntu:
 
@@ -76,18 +84,18 @@ Before installing the StarkNet CLI, you need to install some system-specific dep
   brew install gmp
   ----
 
-Once you have installed the system-specific dependencies, proceed with installing the Python packages required for StarkNet CLI:
+Once you have installed the system-specific dependencies, proceed with installing the Python packages required for Starknet CLI:
 
   [source, bash]
   ----
   pip install ecdsa fastecdsa sympy
   ----
 
-These Python packages provide cryptographic and mathematical functionality needed by the StarkNet CLI.
+These Python packages provide cryptographic and mathematical functionality needed by the Starknet CLI.
 
-* *Install the StarkNet CLI*:
+* *Install the Starknet CLI*:
 
-Now that you have set up the environment and installed the dependencies, you can install the StarkNet CLI. Follow these steps:
+Now that you have set up the environment and installed the dependencies, you can install the Starknet CLI. Follow these steps:
 
   a. Uninstall any previous version of `cairo-lang`:
 
@@ -103,14 +111,14 @@ Now that you have set up the environment and installed the dependencies, you can
   pip install cairo-lang
   ----
 
-After you have installed the StarkNet CLI, verify your installation by checking the version:
+After you have installed the Starknet CLI, verify your installation by checking the version:
 
   [source, bash]
   ----
   starknet --version
   ----
 
-The output should show the installed version of StarkNet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
+The output should show the installed version of Starknet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
 
 
 === Cairo Compiler Installation
@@ -149,70 +157,87 @@ Open a new shell and check that the following command returns a version number:
    cairo-compile --version
    ----
 
-Congratulations! Your local development environment for StarkNet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
+Your local development environment for Starknet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
 
-=== Docker Cairo Installation
+== Docker Setup for Starknet Development
 
-*Prerequisites*:
+Using a Docker environment for Starknet development offers several benefits compared to setting up the development environment locally. These benefits include:
 
-Before you proceed, ensure that you have the following prerequisites installed on your system:
+- *Isolation*: Docker containers provide an isolated environment for your Starknet development, ensuring that dependencies and configurations do not interfere with other projects or your system's global settings.
 
-    * https://www.docker.com/[Docker]
+- *Portability*: A Docker container can run on any system with Docker installed, allowing you to easily share your development environment with others or move it between different machines without reconfiguring the environment from scratch.
 
-From your terminal execute:
+- *Reproducibility*: Docker images ensure that your development environment is consistent across different systems, helping to eliminate issues arising from differences in dependencies or configurations.
 
-[source, bash]
-  ----
-  docker pull artudev19/cairo-env:1.0.0-alpha.6
-  ----
+- *Versioning*: You can use different Docker images or tags for different versions of the Starknet development tools, allowing you to easily switch between versions as needed.
 
-This command will download the image from Docker
+- *Easier management*: Docker simplifies managing development environments, allowing you to start, stop, and restart containers with ease. It also makes it easy to clean up your environment by removing containers and images.
 
-In Docker, we can run a container from an image by executing `docker run`.Sometimes we want to make some information persistent. To do this, we need to use a volume, to mount a volume we need to pass the flag `-v from_host_path:to_container_path`.Thus, all the content in the host_path will be reflected in the container(It is worth mentioning that if you specify a path in the container that does not exist, Docker will create it automatically.)
+With these benefits in mind, the following sections will guide you through setting up a Docker environment for Starknet development. This environment will allow you to easily build, deploy, and interact with Cairo smart contracts using Docker.
 
-[source, bash]
-  ----
-  docker run -it --name stark-env -v Desktop/stark-apps/contracts:/contracts artudev19/cairo-env:1.0.0-alpha.6
-  ----
+*Before you proceed, ensure that you have the following prerequisites installed on your system:*
 
-This command will start to run a container with the name `stark-env`(Make sure that you docker daemon is running) and this will open a terminal where we can start to execute the starknet and cairo commands.
-In the example above all the cairo contracts from my local machine will be in the directory `stark-app/contracts` but in the container will be in the `contracts` path.
+- https://www.docker.com/[Docker]
+
+=== Pulling the Docker Image
+
+The first step is to pull the Docker image containing the necessary tools for Starknet development. Execute the following command in your terminal:
 
 [source, bash]
-  ----
-  starknet --version
-  ----
+----
+docker pull artudev19/cairo-env:1.0.0-alpha.6
+----
 
-The output should show the installed version of StarkNet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
+This command downloads the Starknet Docker image.
 
-[source, bash]
-   ----
-   cairo-compile --version
-   ----
+=== Running the Docker Container
 
-For the next time that you want to run the container execute:
+To run a container from the image, execute the `docker run` command. To make certain information persistent, use a volume by passing the flag `-v from_host_path:to_container_path`. This will reflect the content in the host_path inside the container. If you specify a path in the container that does not exist, Docker will create it automatically.
 
 [source, bash]
-   ----
-   docker start stark-dapp
-   ----
+----
+docker run -it --name stark-env -v Desktop/stark-apps/contracts:/contracts artudev19/cairo-env:1.0.0-alpha.6
+----
 
-To connect to the running container execute:
+This command runs a container named `stark-env` (ensure your Docker daemon is running) and opens a terminal where you can execute Starknet and Cairo commands. In the example above, the Cairo contracts from your local machine will be in the `stark-app/contracts` directory, while in the container, they will be in the `contracts` path.
+
+=== Verifying the Installation
+
+Check the installed versions of Starknet CLI and Cairo compiler:
 
 [source, bash]
-   ----
-   docker exec -it stark-dapp zsh
-   ----
+----
+starknet --version
+cairo-compile --version
+----
 
-Congratulations! Your Docker development environment for StarkNet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
+The output should show the installed version of Starknet CLI and Cairo compiler. Ensure the versions match https://github.com/starkware-libs/cairo-lang/releases[the latest release].
+
+=== Managing the Docker Container
+
+To start the container in the future, execute:
+
+[source, bash]
+----
+docker start stark-env
+----
+
+To connect to the running container, execute:
+
+[source, bash]
+----
+docker exec -it stark-env zsh
+----
+
+Your Docker development environment for Starknet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
 
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
