@@ -2,6 +2,11 @@
 
 == Setting Up Your Starknet Development Environment
 
+[NOTE]
+====
+If you encounter any issues or difficulties while setting up Starknet and Cairo using the Docker method, we encourage you to reach out for assistance. Please report your concerns in the https://github.com/starknet-edu/starknetbook/issues[Issues section of the Book's GitHub repository], or contact espejelomar directly on Telegram. Your feedback is invaluable for improving this critical section, which plays a key role in onboarding developers to the Starknet ecosystem.
+====
+
 This chapter will guide you through the process of setting up your development environment for Cairo and Starknet. By the end of this chapter, you will have a fully functional development environment, allowing you to build, deploy, and interact with Cairo smart contracts.
 
 The setup process can be accomplished through two different methods: setting up a local development environment or using a Docker container. Both options are covered in this chapter, allowing you to choose the one that best suits your needs and preferences.
@@ -160,6 +165,11 @@ Open a new shell and check that the following command returns a version number:
 Your local development environment for Starknet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
 
 == Docker Setup for Starknet Development
+
+[NOTE]
+====
+If you encounter any issues or difficulties while setting up Starknet and Cairo using the Docker method, we encourage you to reach out for assistance. Please report your concerns in the https://github.com/starknet-edu/starknetbook/issues[Issues section of the Book's GitHub repository], or contact espejelomar directly on Telegram. Your feedback is invaluable for improving this critical section, which plays a key role in onboarding developers to the Starknet ecosystem.
+====
 
 Using a Docker environment for Starknet development offers several benefits compared to setting up the development environment locally. These benefits include:
 
