@@ -48,6 +48,8 @@ We recommend working inside a Python virtual environment. This isolates your pro
 
   b. Using `pyenv`:
 
+  If you encounter any issues with missing dependencies or have problems during the installation process, please refer to the https://github.com/pyenv/pyenv/wiki#troubleshooting--faq[FAQ / Troubleshooting section] of the `pyenv` documentation.
+
   [source, bash]
   ----
   # Install pyenv
