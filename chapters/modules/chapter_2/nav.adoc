@@ -25,3 +25,4 @@
         *** xref:erc1155[2.12.3 Cairo ERC1155 🚧]
     ** xref:warp.adoc[2.13 Transpiling Solidity into Cairo using WARP 🚧]
     ** xref:kakarot.adoc[2.14 Cairo and the Ethereum Virtual Machine: The Kakarot ZKEVM 🚧]
+    ** xref:security_considerations.adoc[2.15 Security Considerations 🚧]
