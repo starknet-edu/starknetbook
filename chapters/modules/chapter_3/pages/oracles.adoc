@@ -11,7 +11,7 @@ The https://www.empiric.network/[Empiric Network] is a fully open-source and aud
 
 == Stork Network
 
-The https://www.stork.network/[Stork Network] is an on-chain price computation oracle, calculating token prices on-chain on StarkNet based on price quotes provided by individual publishers rather than aggregating them off-chain.
+The https://www.stork.network/[Stork Network] is an on-chain price computation oracle, calculating token prices on-chain on Starknet based on price quotes provided by individual publishers rather than aggregating them off-chain.
 
 The network maintains a whitelist of publishers authorized to publish and sign data on-chain. Currently, only two publishers are live on the testnet, providing price updates: Dexterity, a financial firm in the crypto space, and Stork itself.
 
@@ -23,9 +23,9 @@ https://docs.chain.link/data-feeds/starknet[Chainlink Price Feeds] are available
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

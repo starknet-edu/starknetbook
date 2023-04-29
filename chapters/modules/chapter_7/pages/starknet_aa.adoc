@@ -1,6 +1,6 @@
 [id="starknet_aa"]
 
-= Account Abstraction model in StarkNet
+= Account Abstraction model in Starknet
 
 Now that we know better the concept of AA, let's actually code it in Starknet.
 
@@ -15,7 +15,7 @@ Although account contracts are nothing more than smart contracts, they have meth
 * `__validate__`: Validates transactions before executing them.
 * `__execute__`: Executes a series of contract calls.
 
-The Account contract ensures that only transactions with valid signatures are executed, acting as a simple yet secure user account on the StarkNet network. Let's explore all the functions and entry points deeper.
+The Account contract ensures that only transactions with valid signatures are executed, acting as a simple yet secure user account on the Starknet network. Let's explore all the functions and entry points deeper.
 
 [,Rust]
 ----

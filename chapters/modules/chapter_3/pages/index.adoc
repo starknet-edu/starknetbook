@@ -1,30 +1,30 @@
 [id="chapter_3"]
 
-= StarkNet Tooling
+= Starknet Tooling
 
-If you're ready to start building scalable web3 applications - it's time to choose your stack. StarkNet has grown significantly since its inception as the first ZK-based rollup, thanks to our amazing community. Today, you will find all the necessary tools you need to build decentralized applications (dApps) on StarkNet.
+If you're ready to start building scalable web3 applications - it's time to choose your stack. Starknet has grown significantly since its inception as the first ZK-based rollup, thanks to our amazing community. Today, you will find all the necessary tools you need to build decentralized applications (dApps) on Starknet.
 
-Contributors are always welcome to join the StarkNet community and help improve the existing tooling or create new solutions.
+Contributors are always welcome to join the Starknet community and help improve the existing tooling or create new solutions.
 
 In this chapter, you can expect to learn about the following topics:
 
 * Environment: Useful configurations to speed up your development process
-* Wallets: Using StarkNet wallets interfaces such as Argent and Braavos
+* Wallets: Using Starknet wallets interfaces such as Argent and Braavos
 * Interactive game tutorials: Learning smart contracts in a fun way 
 * Frameworks: Providing structure to your developer experience 
 * Common SDKs: Using Starknet.js, Starknet-rs, Starknet_py, and Caigo for different programming languages
 * Tools and applications: Other things that may come in handy when developing  
 
-By the end of this chapter, you will have a comprehensive understanding of the tools available in the StarkNet ecosystem and how they can help you build and deploy dApps efficiently.
+By the end of this chapter, you will have a comprehensive understanding of the tools available in the Starknet ecosystem and how they can help you build and deploy dApps efficiently.
 
 
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

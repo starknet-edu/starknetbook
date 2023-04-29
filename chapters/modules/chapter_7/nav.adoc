@@ -1,7 +1,7 @@
 * xref:index.adoc[Chapter 7: Account Abstraction]
     ** xref:why_aa.adoc[7.1 Why Account Abstraction?]
     ** xref:aa_what.adoc[7.2 What is Account Abstraction?]
-    ** xref:starknet_aa.adoc[7.3 StarkNet Account Abstraction Model]
+    ** xref:starknet_aa.adoc[7.3 Starknet Account Abstraction Model]
     ** xref:deploy_aa.adoc[7.4 Deploying and Interacting with Account Contracts 🚧]
     ** xref:aa_coding.adoc[7.5 Coding Custom Account Contracts 🚧]
         *** xref:signatures.adoc[7.5.1 Alternative Signature Schemes 🚧]

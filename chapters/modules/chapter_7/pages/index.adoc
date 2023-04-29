@@ -14,7 +14,7 @@ Without AA, Ethereum will struggle to offer users the seamless, secure, and empo
 
 The dangers of centralized control are all too familiar: censorship, discrimination, and the potential for abuse of power. By ensuring that AA is a central feature of Ethereum's evolution, we protect the core values that drive the crypto community and strengthen the foundation of the decentralized economy.
 
-StarkNet is currently leading the charge in implementing AA at the protocol level, acting as a "proving ground" for what AA will look like in the future. With many brilliant minds from several different organizations working together, StarkNet aims to revolutionize the way we approach security, user experience, and self-custody in the crypto space.
+Starknet is currently leading the charge in implementing AA at the protocol level, acting as a "proving ground" for what AA will look like in the future. With many brilliant minds from several different organizations working together, Starknet aims to revolutionize the way we approach security, user experience, and self-custody in the crypto space.
 
 
 == Why has it not been implemented in Ethereum's L1 yet?
