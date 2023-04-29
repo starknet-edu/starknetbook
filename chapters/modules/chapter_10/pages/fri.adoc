@@ -30,6 +30,14 @@ In the test described so far (and the above analysis) the probability that the v
 
 In summary, the direct solution (test) requires too many queries to achieve the succinctness required by STARK. To attain logarithmic query complexity, we use an interactive protocol called FRI, in which the prover adds more information in order to convince the verifier that the function is indeed of low degree. Crucially, FRI enables the verifier to solve the low-degree testing problem with a number of queries (and rounds of interaction) that is logarithmic in the prescribed degree.
 
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
 == Contributing
 
 [quote, The Starknet Community]

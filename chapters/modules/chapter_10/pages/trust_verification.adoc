@@ -55,6 +55,14 @@ This has implications for scalability. A single reliable smart contract in Ether
 
 This was already discovered since the 1990s, however, it was not implemented because the computation to create a proof that could be verified efficiently was too hard. However, Eli Ben-Sasson and other scientists worked on the problem to create smaller and smaller proofs.
 
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
 == Contributing
 
 [quote, The Starknet Community]

@@ -242,19 +242,25 @@ We've covered a few common vulnerabilities in Cairo smart contracts, but there a
 - Untrusted Delegate Calls
 - Public Burn
 
-If you have expertise in any of these areas, we encourage you to contribute to this chapter by adding explanations and examples of the respective vulnerabilities. Your contributions will help educate and inform the StarkNet and Cairo developer community, promoting the creation of more secure and robust smart contracts. Please submit your contributions through the https://github.com/starknet-edu/starknetbook/issues[Issues of the Book] on GitHub or reach out to us directly via our communication channels (default espejelomar on Telegram).
+If you have expertise in any of these areas, we encourage you to contribute to this chapter by adding explanations and examples of the respective vulnerabilities. Your contributions will help educate and inform the Starknet and Cairo developer community, promoting the creation of more secure and robust smart contracts. Please submit your contributions through the https://github.com/starknet-edu/starknetbook/issues[Issues of the Book] on GitHub or reach out to us directly via our communication channels (default espejelomar on Telegram).
 
-Thank you for your support in making the StarkNet ecosystem safer and more secure for all developers and users.
+Thank you for your support in making the Starknet ecosystem safer and more secure for all developers and users.
 
-=== 11. Public Burn.
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
 
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

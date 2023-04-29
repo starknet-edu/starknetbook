@@ -42,6 +42,13 @@ Continuous improvement and optimization of sequencers are vital for the sustaine
 
 Sequencers play a pivotal role in the Starknet ecosystem by managing transaction ordering and execution. As the network continues to evolve, enhancing sequencer performance through optimizations and transitions to more efficient languages like Rust is essential to ensure scalability, security, and throughput. The ongoing development and improvement of sequencers will support the growth of the Starknet network and empower developers and users to harness the full potential of this innovative Layer-2 solution.
 
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
 
 == Contributing
 
