@@ -4,7 +4,7 @@
 
 A sequencer is a crucial component in blockchain and Layer-2 solutions responsible for managing the ordering and execution of transactions. In Starknet, sequencers ensure that transactions are executed in a specific order to prevent double-spending and maintain the network's state consistency.
 
-Sequencers receive transactions, process them according to predetermined rules, and produce a series of ordered actions or state changes. These actions are then bundled into blocks and published to the network for inclusion in the blockchain.
+Sequencers receive transactions, process them according to predetermined rules, and produce a series of ordered actions or state changes. These actions are then bundled into blocks and are included in the blockchain.
 
 image::sequencer.png[sequencer]
 
