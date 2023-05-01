@@ -8,6 +8,8 @@ Storage proofs offer a cryptographic method for tracking and sharing blockchain 
 
 In this chapter, we'll explore the world of storage proofs in depth, covering their fundamentals, how they work, their potential use cases, and how they can enhance or even replace traditional oracles in certain scenarios. By the end of this chapter, you'll have a thorough understanding of storage proofs and their significance in the ever-evolving landscape of decentralized systems.
 
+Storage proofs have been an essential part of the cryptographic landscape since the invention of Merkle trees in 1979. The innovation lies in combining storage proofs with provable computation to create succinct proofs that can be verified on-chain.
+
 [NOTE]
 ====
 This chapter was inspired by and based on the https://medium.com/@starkware/what-are-storage-proofs-and-how-can-they-improve-oracles-e0379108720a[Starkware blog post] on the same topic. Any errors or inaccuracies found in this chapter are the responsibility of the Starknet Book editor and should not be attributed to the authors of the original blog post.
@@ -62,6 +64,8 @@ Some potential use cases for storage proofs include:
 image::storage1.png[storage1]
 
 * *Improved user experience for Account Abstraction (AA) use cases*: AA, a key innovation in blockchain technology, has been implemented across various chains to enhance user onboarding. Storage proofs can further augment AA, allowing wallets to restore access based on specific conditions, such as inactivity, or enforce additional checks that require data from other chains.
+
+* *Accessing historical data without running an archival node*: Storage proofs are not just used for cross-chain use cases, they can also be used to get data about the past in the same blockchain without the need of running an archival node. This allows users to access historical data more efficiently, reducing storage requirements and lowering the barrier to entry for participating in the network.
 
 By harnessing the power of storage proofs, these use cases demonstrate the potential for more efficient, secure, and seamless interactions within the blockchain ecosystem.
 
