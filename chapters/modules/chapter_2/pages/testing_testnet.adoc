@@ -1,0 +1,91 @@
+[id="testing_testnet"]
+
+= Testing Using a Deployed Contract
+
+Testing is a crucial aspect of smart contract development, as it ensures that your contract operates as intended and helps detect potential bugs or security vulnerabilities. The optimal approach to local testing involves using unit tests within our code and interacting with the contract through a local development network. In the next chapter of the book, we will cover both of these methods. For now, in this subchapter, we will demonstrate how to interact with the Pokemon contract and its assertions on the testnet.
+
+In this subchapter, we will guide you through testing a deployed contract using view functions, either with the StarkNet CLI or a block explorer. The contract we will be examining is the https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_2/pages/contracts/src/pokemon_array.cairo[`PokeArray` contract], which showcases basic operations with Array and Span in Cairo. Ensure that you have completed the https://book.starknet.io/chapter_2/deploy_call_invoke.html[Deploying, Calling, and Invoking Contracts] subchapter before proceeding.
+
+
+== Deploying to Goerli Testnet
+
+As we review in Chapter 1, to deploy a Cairo contract to the Goerli testnet, follow these steps once you have set up an account contract (review the "Deploying, Calling and Invoking Contracts" subchapter in Chapter 2 for more details):
+
+* Set the `STARKNET_NETWORK` environment variable to `alpha-goerli` and the `STARKNET_WALLET` environment variable to `starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount`.
+
+[source, shell]
+----
+export STARKNET_NETWORK=alpha-goerli
+export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+----
+
+* Use the `starknet declare` command to declare your contract. Replace `<path_to_compiled_contract_json>` with the path to your compiled contract JSON file, and `<account>` with the account you want to use for deployment. In order to get the compiled contract JSON file you need to compile the contract, e.g. using `scarb build`. In the particular case of the Pokemon contract you can go to the https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/chapter_2/pages/contracts[Book repo] and run `scarb build` inside the contracts directory of Chapter 2 to obtain the JSON in the path "target/release/starknetbook_chapter_2_PokeArray.json".
+
+Bare in mind that if you declare exactly the same Pokemon contract you will get an error stating that this contract was previously declared. This error will also return the contract class hash, save it for the deployment.
+
+[source, shell]
+----
+starknet declare --contract <path_to_compiled_contract_json> --account <account> --max_fee 100000000000000000
+----
+
+This command returns the contract class hash and the transaction hash.
+
+* Deploy your contract using the `starknet deploy` command. Replace `<class_hash>` with the class hash you received in the previous step, and `<account>` with the account you want to use for deployment.
+
+[source, shell]
+----
+starknet deploy --class_hash <class_hash> --account <account> --max_fee 100000000000000000
+----
+
+This command returns the contract address and the transaction hash.
+
+== Using View Functions for Testing
+
+In the `PokeArray` contract, we have created view functions to test various aspects of our contract, such as `pop_pokemon_array`, `index_pokemon_array`, and `index_pokemon_span`. These view functions can be called using the StarkNet CLI or a block explorer. If the view functions return a value of 1, it indicates that our assertions within the functions have passed. If the assertions fail or an error occurs, the execution will stop, and an error message will be displayed.
+
+== Testing the Deployed Contract
+
+After deploying your contract, you can use a block explorer or the `starknet` CLI to call and invoke functions to test the assertions.
+
+Follow these steps to test your deployed contract:
+
+1. *Using a block explorer*: Interact with your contract by employing a StarkNet block explorer, such as https://goerli.voyager.online/[Voyager] or https://testnet.starkscan.co/[StarkScan]. Input the contract address and call the view functions through the Read tab.
+
+2. *Using StarkNet CLI*: As an alternative, utilize the `starknet call` command to call the view functions. For more information on using the CLI, consult the https://book.starknet.io/chapter_2/deploy_call_invoke.html[Deploying, Calling, and Invoking Contracts] subchapter.
+
+
+== Handling Errors in View Functions
+
+If an error occurs in your code and an assertion fails, you will encounter an error message similar to the one shown below:
+
+image::errorExplorer.png[errorExplorer]
+
+In this situation, the execution is reverted, and an error reason is provided in the felt252 format. To convert the felt252 value into a more readable string, follow these steps:
+
+1. Visit the https://www.stark-utils.xyz/converter[Stark Utils] converter.
+2. Copy the felt252 value into the converter's input field.
+3. The converter will translate the felt252 value into a human-readable string, such as "Wrong pokemon", providing clarity on the error.
+
+image::translateError.png[translateError]
+
+For more information on how Cairo handles text, refer to the https://book.starknet.io/chapter_2/strings.html[Strings] subchapter. Cairo is expected to offer support for strings in the near future, which will streamline this process.
+
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
