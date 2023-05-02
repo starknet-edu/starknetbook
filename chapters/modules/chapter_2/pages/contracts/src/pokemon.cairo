@@ -3,6 +3,8 @@ mod PokemonChoice {
     use starknet::ContractAddress;
     use starknet::get_caller_address;
     use array::ArrayTrait;
+    use traits::Into;
+    use traits::TryInto;
 
     // Storage: data structures that are stored on the blockchain and can be accessed by the contract functions
     struct Storage {
@@ -58,22 +60,50 @@ mod PokemonChoice {
     fn get_pokemon_name(pokemon_id: felt252) -> felt252 {
         pokemon_names::read(pokemon_id)
     }
+// // Recursive helper function to get available Pokemons
+// fn get_available_pokemons_recursive(index: usize, max_index: usize, mut available_pokemons: Span::<felt252>) {        
+//     if index < max_index {
+//         if available_pokemon::read(index.into()) {
+//             available_pokemons.append(index.into());
+//         }
+//         get_available_pokemons_recursive(index + 1_u32, max_index, available_pokemons);
+//     }
+// }
 
-    // Recursive helper function to get available Pokemons
-    fn get_available_pokemons_recursive(index: felt252, max_index: felt252, available_pokemons: &ArrayTrait::<felt252>) {
-        if index <= max_index {
-            if available_pokemon::read(index) {
-                available_pokemons.append(index);
-            }
-            get_available_pokemons_recursive(index + 1, max_index, available_pokemons);
-        }
-    }
+// // View function to get the list of available Pokemons using recursion
+// #[view]
+// fn get_available_pokemons() -> Array::<felt252> {
+//     let mut available_pokemons = ArrayTrait::new();
+//     let mut serialized = available_pokemons.span();
+//     get_available_pokemons_recursive(1_usize, 4_usize, serialized);
+//     available_pokemons
+// }
 
-    // View function to get the list of available Pokemons using recursion
-    #[view]
-    fn get_available_pokemons() -> Array::<felt252> {
-        let mut available_pokemons = ArrayTrait::new();
-        get_available_pokemons_recursive(1, 4, &available_pokemons);
-        available_pokemons
-    }
+// // Recursive helper function to get available Pokemons
+// fn get_available_pokemons_recursive(index: usize, max_index: usize, available_pokemons: Span::<felt252>, count: felt252) -> felt252 {
+//     if index < max_index {
+//         let mut new_count = count;
+//         if available_pokemon::read(index.into()) {
+//             available_pokemons[count] = index.into()
+//             new_count = count + 1
+//         }
+//         get_available_pokemons_recursive(index + 1_u32, max_index, available_pokemons, new_count)
+//     } else {
+//         count
+//     }
+// }
+
+// View function to get the list of available Pokemons using recursion
+// #[view]
+// fn get_available_pokemons() -> Array::<felt252> {
+//     let max_possible_pokemons = 4_usize
+//     let mut available_pokemons = Array::<felt252>::new_size(max_possible_pokemons)
+//     let mut serialized = available_pokemons.span_mut()
+//     let found_count = get_available_pokemons_recursive(1_usize, max_possible_pokemons, serialized, 0)
+
+//     available_pokemons.truncate(found_count)
+//     available_pokemons
+// }
+
 }
+
