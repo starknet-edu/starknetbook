@@ -2,7 +2,7 @@
 
 = Blocks in Starknet
 
-In StarkNet, a block consists of a list of transactions and a block header. Blocks represent batches of transactions linked together by the hash of the preceding block in the chain. This connection of blocks forms a chain, as hashes are cryptographically generated from the block data. This structure ensures security and prevents fraud, as any alteration in a historical block would invalidate all subsequent blocks due to changes in their hashes. Consequently, every participant in the blockchain would quickly detect the discrepancy.
+In Starknet, a block consists of a list of transactions and a block header. Blocks represent batches of transactions linked together by the hash of the preceding block in the chain. This connection of blocks forms a chain, as hashes are cryptographically generated from the block data. This structure ensures security and prevents fraud, as any alteration in a historical block would invalidate all subsequent blocks due to changes in their hashes. Consequently, every participant in the blockchain would quickly detect the discrepancy.
 
 image::tx-block.png[tx-block]
 
@@ -16,13 +16,13 @@ The block header consists of the following fields:
 | parent_block_hash | FieldElement | The hash of this block’s parent | ✓
 | block_number | Integer | The number (height) of this block | ✓
 | global_state_root | FieldElement | The state commitment after this block | ✓
-| sequencer_address | FieldElement | The StarkNet address of the sequencer who created this block | ✓
+| sequencer_address | FieldElement | The Starknet address of the sequencer who created this block | ✓
 | block_timestamp | Timestamp | The time the sequencer created this block before executing transactions | ✓
 | transaction_count | Integer | The number of transactions in a block | ✓
 | transaction_commitment | FieldElement | A commitment to the transactions included in the block | ✓
 | event_count | Integer | The number of events | ✓
 | event_commitment | FieldElement | A commitment to the events produced in this block | ✓
-| protocol_version | Integer | The version of the StarkNet protocol used when creating this block |
+| protocol_version | Integer | The version of the Starknet protocol used when creating this block |
 | extra_data | FieldElement | Extraneous data that might be useful for running transactions |
 |===
 
@@ -53,13 +53,21 @@ Where *_h_* is the Pedersen hash.
 Zeros inside the hash computation of an object are used as placeholders, to be replaced in the future by meaningful fields.
 ====
 
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

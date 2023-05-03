@@ -238,3 +238,11 @@ Invoke transaction was sent.
 Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d
 Transaction hash: 0xbfb3ec183b4ee58db67113cf8832c31e78fe8000f091cc598d5aa9ca6a62af
 ----
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====

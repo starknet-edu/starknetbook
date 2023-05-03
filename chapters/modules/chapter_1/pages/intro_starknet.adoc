@@ -1,0 +1,54 @@
+= What is Starknet?
+
+Starknet is a permissionless Validity-Rollup (also known as a “ZK-Rollup”) that operates as an L2 network over Ethereum. It enables any dApp to achieve scale for its computation without compromising Ethereum's composability and security, thanks to Starknet's reliance on a state-of-the-art cryptographic proof system - STARK.
+
+== Why Starknet?
+
+For more details on the necessecity of a system like Starknet, refer to the "https://book.starknet.io/primer/index.html[Chapter 0: Primer]" of the Starknet Book.
+
+=== The Blockchain Trilemma
+
+Ethereum scaling has been a major discussion topic since the network was launched. Commonly known as the blockchain trilemma, most applications have to choose 2/3 features between scalability, security, and decentralization, and compromise on any one of them. Several NFT launches have seen gas fee spike up to 1000s of dollars, congesting the network and casting doubts on Ethereum's ability to scale.
+
+=== Layer 2 Solutions and Rollups
+
+Layer 2 solutions can offer scalability to Ethereum by helping offload a lot of computational work done at the Ethereum layer to another layer. Rollup solutions have the potential to scale Ethereum in a way that billions of users across the globe can use it seamlessly. Among the existing rollup solutions, zk-Rollups are well known to be the future roadmap of Ethereum.
+
+=== Starknet: A Decentralized, Scalable, and Secure Solution
+
+Starknet, built on the concept of Validity Proofs (ZK Proofs under the hood), attempts to tackle the Blockchain Trilemma and provide a system that is inclusively accountable, decentralized, scalable, and secure through the use of zero-knowledge STARK proofs. It emphasizes decentralization, innovation, and general-purpose logic and composability.
+
+== Cairo: The Programming Language for Starknet
+
+Cairo is a Turing-complete programming language designed for creating STARK-provable programs for general computation. As the native smart contract language for Starknet, a permissionless Validity Roll-up, Cairo plays a crucial role in enabling scalable and secure decentralized applications.
+
+Cairo is inspired by the Rust programming language. It allows developers to write Starknet smart contracts in a safe, convenient, and familiar manner.
+
+=== Why Cairo?
+
+Starknet's scalability solution, Validity rollups, introduces a new paradigm called Provable Computation. This approach allows programs to prove their correct execution without needing to be re-run. To develop such provable programs, a specialized programming language that is both effective and easily learnable by developers is necessary.
+
+Some benefits of Cairo include:
+
+* Specially designed as a provable language for smart contracts
+* Unbounded by the limitations of the Ethereum Virtual Machine (EVM)
+* Utilizes traits for a more loosely-coupled relationship compared to inheritance
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

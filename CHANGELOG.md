@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.68](https://github.com/starknet-edu/starknetbook/compare/v1.1.67...v1.1.68) (2023-05-02)
+
+### [1.1.67](https://github.com/starknet-edu/starknetbook/compare/v1.1.66...v1.1.67) (2023-05-02)
+
+### [1.1.66](https://github.com/starknet-edu/starknetbook/compare/v1.1.65...v1.1.66) (2023-05-01)
+
+### [1.1.65](https://github.com/starknet-edu/starknetbook/compare/v1.1.64...v1.1.65) (2023-05-01)
+
+### [1.1.64](https://github.com/starknet-edu/starknetbook/compare/v1.1.63...v1.1.64) (2023-04-29)
+
+### [1.1.63](https://github.com/starknet-edu/starknetbook/compare/v1.1.62...v1.1.63) (2023-04-29)
+
+### [1.1.62](https://github.com/starknet-edu/starknetbook/compare/v1.1.61...v1.1.62) (2023-04-29)
+
+### [1.1.61](https://github.com/starknet-edu/starknetbook/compare/v1.1.60...v1.1.61) (2023-04-29)
+
+### [1.1.60](https://github.com/starknet-edu/starknetbook/compare/v1.1.59...v1.1.60) (2023-04-29)
+
+### [1.1.59](https://github.com/starknet-edu/starknetbook/compare/v1.1.58...v1.1.59) (2023-04-29)
+
+### [1.1.58](https://github.com/starknet-edu/starknetbook/compare/v1.1.57...v1.1.58) (2023-04-29)
+
+### [1.1.57](https://github.com/starknet-edu/starknetbook/compare/v1.1.56...v1.1.57) (2023-04-29)
+
+### [1.1.56](https://github.com/starknet-edu/starknetbook/compare/v1.1.55...v1.1.56) (2023-04-28)
+
+### [1.1.55](https://github.com/starknet-edu/starknetbook/compare/v1.1.54...v1.1.55) (2023-04-28)
+
+### [1.1.54](https://github.com/starknet-edu/starknetbook/compare/v1.1.53...v1.1.54) (2023-04-28)
+
+### [1.1.53](https://github.com/starknet-edu/starknetbook/compare/v1.1.52...v1.1.53) (2023-04-25)
+
+### [1.1.52](https://github.com/starknet-edu/starknetbook/compare/v1.1.51...v1.1.52) (2023-04-25)
+
+### [1.1.51](https://github.com/starknet-edu/starknetbook/compare/v1.1.50...v1.1.51) (2023-04-25)
+
+### [1.1.50](https://github.com/starknet-edu/starknetbook/compare/v1.1.49...v1.1.50) (2023-04-25)
+
+### [1.1.49](https://github.com/starknet-edu/starknetbook/compare/v1.1.48...v1.1.49) (2023-04-25)
+
+### [1.1.48](https://github.com/starknet-edu/starknetbook/compare/v1.1.47...v1.1.48) (2023-04-25)
+
+### [1.1.47](https://github.com/starknet-edu/starknetbook/compare/v1.1.46...v1.1.47) (2023-04-24)
+
+### [1.1.46](https://github.com/starknet-edu/starknetbook/compare/v1.1.45...v1.1.46) (2023-04-23)
+
 ### [1.1.45](https://github.com/starknet-edu/starknetbook/compare/v1.1.44...v1.1.45) (2023-04-22)
 
 ### [1.1.44](https://github.com/starknet-edu/starknetbook/compare/v1.1.43...v1.1.44) (2023-04-22)

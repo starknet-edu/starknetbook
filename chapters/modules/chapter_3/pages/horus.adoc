@@ -2,16 +2,16 @@
 
 = Horus
 
-https://nethermind.io/horus/[Horus] is an https://github.com/NethermindEth/horus-checker[open-source] formal verification tool designed to verify StarkNet smart contracts. It offers a user-friendly approach to formally verify StarkNet smart contracts against specifications written in a straightforward assertion language. By utilizing various Satisfiability Modulo Theories (SMT) solvers, Horus ensures your contract's implementation aligns with the provided specifications. The Horus alpha release supports Cairo 0.10.1, with a Cairo 1.0 release anticipated in the near future.
+https://nethermind.io/horus/[Horus] is an https://github.com/NethermindEth/horus-checker[open-source] formal verification tool designed to verify Starknet smart contracts. It offers a user-friendly approach to formally verify Starknet smart contracts against specifications written in a straightforward assertion language. By utilizing various Satisfiability Modulo Theories (SMT) solvers, Horus ensures your contract's implementation aligns with the provided specifications. The Horus alpha release supports Cairo 0.10.1, with a Cairo 1.0 release anticipated in the near future.
 
 
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

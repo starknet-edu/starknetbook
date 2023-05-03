@@ -22,13 +22,23 @@ Some key points about the `assert` statement in Cairo are:
 
 3. The `assert` statement is helpful for input validation, ensuring that only valid inputs are processed by the contract.
 
+4. The compiler will not notice if an assertions is not complied with. That is, the compiler will not check if the condition is true or false. The assertion is only checked at runtime: for example, in tests (more on this in a following chapter) or when the contract is deployed.
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

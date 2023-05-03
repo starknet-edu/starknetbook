@@ -8,6 +8,8 @@ Storage proofs offer a cryptographic method for tracking and sharing blockchain 
 
 In this chapter, we'll explore the world of storage proofs in depth, covering their fundamentals, how they work, their potential use cases, and how they can enhance or even replace traditional oracles in certain scenarios. By the end of this chapter, you'll have a thorough understanding of storage proofs and their significance in the ever-evolving landscape of decentralized systems.
 
+Storage proofs have been an essential part of the cryptographic landscape since the invention of Merkle trees in 1979. The innovation lies in combining storage proofs with provable computation to create succinct proofs that can be verified on-chain.
+
 [NOTE]
 ====
 This chapter was inspired by and based on the https://medium.com/@starkware/what-are-storage-proofs-and-how-can-they-improve-oracles-e0379108720a[Starkware blog post] on the same topic. Any errors or inaccuracies found in this chapter are the responsibility of the Starknet Book editor and should not be attributed to the authors of the original blog post.
@@ -63,6 +65,8 @@ image::storage1.png[storage1]
 
 * *Improved user experience for Account Abstraction (AA) use cases*: AA, a key innovation in blockchain technology, has been implemented across various chains to enhance user onboarding. Storage proofs can further augment AA, allowing wallets to restore access based on specific conditions, such as inactivity, or enforce additional checks that require data from other chains.
 
+* *Accessing historical data without running an archival node*: Storage proofs are not just used for cross-chain use cases, they can also be used to get data about the past in the same blockchain without the need of running an archival node. This allows users to access historical data more efficiently, reducing storage requirements and lowering the barrier to entry for participating in the network.
+
 By harnessing the power of storage proofs, these use cases demonstrate the potential for more efficient, secure, and seamless interactions within the blockchain ecosystem.
 
 == An example of a storage proof
@@ -91,11 +95,11 @@ Oracles typically require a third party, such as an institution or a decentraliz
 
 Chainlink is a well-known blockchain oracle, providing real-world data, off-chain computation services, and cross-chain services. As smart contracts currently rely on oracles for real-world data, oracles have become a crucial part of the blockchain ecosystem.
 
-== The State of Oracles on StarkNet
+== The State of Oracles on Starknet
 
-On the StarkNet testnet, Chainlink provides price data feeds for seven cryptocurrency pairs and has partnered with Starkware to accelerate app development and growth within the StarkNet ecosystem. Chainlink minimizes trust assumptions through a decentralized network of nodes, but data aggregation occurs off-chain.
+On the Starknet testnet, Chainlink provides price data feeds for seven cryptocurrency pairs and has partnered with Starkware to accelerate app development and growth within the Starknet ecosystem. Chainlink minimizes trust assumptions through a decentralized network of nodes, but data aggregation occurs off-chain.
 
-Pragma and Stork Network are two significant oracle providers on StarkNet, operating on both mainnet and testnet. They offer price tickers for multiple cryptocurrency pairs, and Pragma is working on implementing a verifiable randomness feed on the mainnet for secure, on-chain randomness. Pragma's price feeds are based on submissions from large institutions and market makers, leveraging efficient ZK technology for on-chain price aggregation.
+Pragma and Stork Network are two significant oracle providers on Starknet, operating on both mainnet and testnet. They offer price tickers for multiple cryptocurrency pairs, and Pragma is working on implementing a verifiable randomness feed on the mainnet for secure, on-chain randomness. Pragma's price feeds are based on submissions from large institutions and market makers, leveraging efficient ZK technology for on-chain price aggregation.
 
 In summary, both storage proofs and oracles are crucial for facilitating cross-chain communication and access to off-chain data. While oracles are indispensable for real-world data, storage proofs offer a trustless, efficient way to transfer and verify blockchain information across chains. Together, they help create a more robust, interconnected blockchain ecosystem.
 
@@ -107,9 +111,9 @@ In certain cases, storage proofs can replace oracles. Some data provided by orac
 * Storage proofs can facilitate cost-effective validation on destination chains, as the preferred source chain typically has cheap computation.
 * Research leaders, such as Herodotus, enable cross-domain data access across Ethereum chains using storage proofs and ZK mathematics. Pragma plans to partner with Herodotus to support cross-chain oracles in the near future.
 * Storage proofs can unify the state of multiple rollups and even allow synchronous reads between Ethereum layers.
-* Trustless retrieval of historical on-chain data is another enhancement made possible by storage proofs. Stateful blockchains like Ethereum and StarkNet cryptographically preserve their state through specialized data structures, enabling proof of data inclusion. This allows smart contracts to access information dating back to the genesis block.
+* Trustless retrieval of historical on-chain data is another enhancement made possible by storage proofs. Stateful blockchains like Ethereum and Starknet cryptographically preserve their state through specialized data structures, enabling proof of data inclusion. This allows smart contracts to access information dating back to the genesis block.
 
-Pragma is exploring the development of an L3 oracle on StarkNet, which could enable other chains to "pull" and verify data using storage proofs. Benefits of having an L3 oracle on a computationally cheap network like StarkNet include:
+Pragma is exploring the development of an L3 oracle on Starknet, which could enable other chains to "pull" and verify data using storage proofs. Benefits of having an L3 oracle on a computationally cheap network like Starknet include:
 
 * Faster consensus on blocks due to the highly customizable L3 chain, significantly reducing data latency for the oracle.
 * Asynchronous transfer of low-latency data to other chains upon reaching consensus on the source chain, in combination with storage proofs.
@@ -117,20 +121,27 @@ Pragma is exploring the development of an L3 oracle on StarkNet, which could ena
 
 == Conclusion
 
-The growing adoption of Ethereum L2 solutions, such as StarkNet, Optimism, and Arbitrum, has offered insights into the future of the industry. However, a key challenge hindering further growth is the implementation of a decentralized cross-chain messaging system. Though still in the early stages, storage proofs hold immense potential to address this issue.
+The growing adoption of Ethereum L2 solutions, such as Starknet, Optimism, and Arbitrum, has offered insights into the future of the industry. However, a key challenge hindering further growth is the implementation of a decentralized cross-chain messaging system. Though still in the early stages, storage proofs hold immense potential to address this issue.
 
 In some instances, storage proofs can replace or enhance oracles, facilitating more efficient cross-chain communication and access to historical data. By reducing the reliance on trust in third parties, storage proofs can significantly bolster the security and efficiency of blockchain applications.
 
 As the blockchain landscape continues to evolve, we can anticipate further developments and innovations in storage proofs, oracles, and cross-chain communication. By leveraging these technologies, the blockchain ecosystem can sustain its growth and deliver increased value to both users and developers.
 
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
 
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

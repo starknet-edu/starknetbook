@@ -4,7 +4,7 @@
 /// @dev It keeps track of the number of yes votes and no votes, and provides view (getter) functions 
 /// to check the voting status and voter eligibility.
 /// The contract is initialized with three registered voters. 
-/// The contract is deployed on the StarkNet testnet. The contract address is 0x0780b126f03c2e28a3ecd27e6c1c367d3df796050f0831e36c899a8c2f1dbdbb
+/// The contract is deployed on the Starknet testnet. The contract address is 0x0780b126f03c2e28a3ecd27e6c1c367d3df796050f0831e36c899a8c2f1dbdbb
 
 #[contract]
 mod Vote {

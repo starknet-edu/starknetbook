@@ -19,7 +19,7 @@ A list of primitive types in Cairo (not all), along with a brief description of 
 | u256 | Represents an unsigned 256-bit integer.
 | bool | Represents a boolean value, which can be either true or false.
 | felt252 | Represents a field element.
-| ContractAddress | A type representing a StarkNet contract address, used for identifying and interacting with smart contracts.
+| ContractAddress | A type representing a Starknet contract address, used for identifying and interacting with smart contracts.
 | T | Represents a generic type placeholder, which can be replaced with any specific type during compilation.
 | Option<T> | Represents a value that may or may not be present, used for optional values and error handling.
 | Result<T, E> | Represents the outcome of a computation that may result in an error, used for error handling and control flow.
@@ -72,13 +72,21 @@ let value_usize = 1_usize;
 
 In these examples, the type of the integer literals is specified using the underscore notation, which makes it easier to work with different integer types without the need for explicit type casting.
 
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
 == Contributing
 
 [quote, The Starknet Community]
 ____
-*Unleash Your Passion to Perfect StarkNetBook*
+*Unleash Your Passion to Perfect StarknetBook*
 
-StarkNetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____

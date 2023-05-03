@@ -1,6 +1,13 @@
 = The Starknet Book
 :navtitle: Introduction
 
+== Work in Progress and Community Contributions
+
+// [NOTE]
+====
+IMPORTANT: The Starknet Book is a work in progress, and its content is rapidly evolving as the community contributes to its development. As a result, some sections may be incomplete or contain information that is still green. We highly encourage readers to contribute by suggesting improvements, providing feedback, or submitting new content to help us expand and refine the book. Your contributions are invaluable in making The Starknet Book a comprehensive and reliable resource for the community.
+====
+
 == Welcome
 
 Welcome to the Starknet Book!

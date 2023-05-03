@@ -2,15 +2,15 @@
 
 = Primer
 
-Welcome to the Primer, designed to introduce you to the foundational concepts behind Cairo and StarkNet. Our goal is to provide you with a solid understanding of the technologies that power these innovative systems.
+Welcome to the Primer, designed to introduce you to the foundational concepts behind Cairo and Starknet. Our goal is to provide you with a solid understanding of the technologies that power these innovative systems.
 
 In the https://github.com/starknet-edu/starknetbook/tree/main/chapters/modules/primer/pages[GitHub repo of the Book], you'll find code examples to enhance your learning experience. We welcome contributions from the community, so if you can provide examples in other languages, please feel free to submit a PR.
 
 The topics covered in this primer have been thoroughly explored and analyzed by countless experts in the field. We will reference their invaluable resources throughout the book to ensure you receive the most comprehensive and accurate information.
 
-[quote, The StarkNet Community]
+[quote, The Starknet Community]
 ____
-As we venture into the captivating world of Cairo and StarkNet, let's remember that we stand on the shoulders of giants who have paved the way for our understanding and growth.
+As we venture into the captivating world of Cairo and Starknet, let's remember that we stand on the shoulders of giants who have paved the way for our understanding and growth.
 ____
 
 
