@@ -20,14 +20,14 @@ The topics covered in this chapter include:
 By following the instructions provided in this chapter, you will be well-prepared to start your journey into Starknet and Cairo smart contract development.
 
 
-=== Prerequisites
+== Prerequisites
 
 Before you proceed, ensure that you have the following prerequisites installed on your system:
 
 * https://www.python.org/downloads/release/python-390/[Python 3.9]
 * https://www.rust-lang.org/tools/install[Rust]
 
-=== Starknet CLI Installation
+== Starknet CLI Installation
 
 To install the Starknet CLI, follow these steps:
 
@@ -127,7 +127,7 @@ starknet --version
 The output should show the installed version of Starknet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
 
 
-=== Cairo Compiler Installation
+== Cairo Compiler Installation
 
 To install the Cairo compiler, follow these steps:
 
