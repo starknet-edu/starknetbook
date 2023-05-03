@@ -5,7 +5,7 @@
     ** xref:structure.adoc[2.3 The Structure of a Cairo Smart Contract]
         *** xref:imports.adoc[2.3.1 Imports]
         *** xref:storage.adoc[2.3.2 Storage]
-        *** xref:constructor.adoc[2.3.3 Contructor Function]
+        *** xref:constructor.adoc[2.3.3 Constructor Function]
         *** xref:getter.adoc[2.3.4 Getter Functions (View Functions)]
         *** xref:asserts.adoc[2.3.5 Asserts and Error Handling]
         *** xref:external.adoc[2.3.6 External Functions]
