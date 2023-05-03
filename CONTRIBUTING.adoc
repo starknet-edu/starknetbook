@@ -25,10 +25,11 @@ Now, let's dive into the details.
 
 Before submitting a PR, make sure you can run the book locally by following these steps:
 
-1. Clone the repository locally: `git clone https://github.com/starknet-edu/starknetbook.git`.
-2. Change directory to the repository: `cd starknetbook`.
-3. Install the lunr extension: `npm i @antora/lunr-extension`.
-4. Run the book locally: `npx antora --fetch antora-playbook.yml`. If a missing extension error appears, install the extension as shown in step 3.
+. Clone the repository locally: `git clone https://github.com/starknet-edu/starknetbook.git`.
+. Change directory to the repository: `cd starknetbook`.
+. Install https://yarnpkg.com/getting-started/install[yarn] package manager.
+. Install the project dependencies with `yarn install`.
+. Run the book locally in watch mode with `yarn start`.
 
 == The Book Structure in Antora
 

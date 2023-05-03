@@ -36,35 +36,35 @@ To install the Starknet CLI, follow these steps:
 
 We recommend working inside a Python virtual environment. This isolates your project's dependencies from your system's global Python installation. To create and activate a virtual environment, you can use either `venv` or `pyenv`.
 
-  a. Using `venv`:
+a. Using `venv`:
 
-  [source, bash]
-  ----
-  # Create a virtual environment named "cairo_venv"
-  python3.9 -m venv ~/cairo_venv
-  # Activate the virtual environment
-  source ~/cairo_venv/bin/activate
-  ----
+[source, bash]
+----
+# Create a virtual environment named "cairo_venv"
+python3.9 -m venv ~/cairo_venv
+# Activate the virtual environment
+source ~/cairo_venv/bin/activate
+----
 
-  b. Using `pyenv`:
+a. Using `pyenv`:
 
-  If you encounter any issues with missing dependencies or have problems during the installation process, please refer to the https://github.com/pyenv/pyenv/wiki#troubleshooting--faq[FAQ / Troubleshooting section] of the `pyenv` documentation.
+If you encounter any issues with missing dependencies or have problems during the installation process, please refer to the https://github.com/pyenv/pyenv/wiki#troubleshooting--faq[FAQ / Troubleshooting section] of the `pyenv` documentation.
 
-  [source, bash]
-  ----
-  # Install pyenv
-  curl https://pyenv.run | bash
+[source, bash]
+----
+# Install pyenv
+curl https://pyenv.run | bash
 
-  # Add the following lines to your .bashrc or .zshrc
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+# Add the following lines to your .bashrc or .zshrc
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-  # Restart your terminal and run the following commands
-  pyenv install 3.9.0
-  pyenv virtualenv 3.9.0 cairo_venv
-  pyenv activate cairo_venv
-  ----
+# Restart your terminal and run the following commands
+pyenv install 3.9.0
+pyenv virtualenv 3.9.0 cairo_venv
+pyenv activate cairo_venv
+----
 
 After creating and activating the virtual environment, you should see `(cairo_venv)` in the command line prompt, indicating that the virtual environment is active, for example:
 
@@ -77,26 +77,26 @@ After creating and activating the virtual environment, you should see `(cairo_ve
 
 Before installing the Starknet CLI, you need to install some system-specific dependencies. Follow the instructions for your operating system:
 
-  a. Ubuntu:
+a. Ubuntu:
 
-  [source, bash]
-  ----
-  sudo apt install -y libgmp3-dev
-  ----
+[source, bash]
+----
+sudo apt install -y libgmp3-dev
+----
 
-  b. Mac:
+a. Mac:
 
-  [source, bash]
-  ----
-  brew install gmp
-  ----
+[source, bash]
+----
+brew install gmp
+----
 
 Once you have installed the system-specific dependencies, proceed with installing the Python packages required for Starknet CLI:
 
-  [source, bash]
-  ----
-  pip install ecdsa fastecdsa sympy
-  ----
+[source, bash]
+----
+pip install ecdsa fastecdsa sympy
+----
 
 These Python packages provide cryptographic and mathematical functionality needed by the Starknet CLI.
 
@@ -104,26 +104,26 @@ These Python packages provide cryptographic and mathematical functionality neede
 
 Now that you have set up the environment and installed the dependencies, you can install the Starknet CLI. Follow these steps:
 
-  a. Uninstall any previous version of `cairo-lang`:
+a. Uninstall any previous version of `cairo-lang`:
 
-  [source, bash]
-  ----
-  pip uninstall cairo-lang
-  ----
+[source, bash]
+----
+pip uninstall cairo-lang
+----
 
-  b. Install the latest version of `cairo-lang`:
+a. Install the latest version of `cairo-lang`:
 
-  [source, bash]
-  ----
-  pip install cairo-lang
-  ----
+[source, bash]
+----
+pip install cairo-lang
+----
 
 After you have installed the Starknet CLI, verify your installation by checking the version:
 
-  [source, bash]
-  ----
-  starknet --version
-  ----
+[source, bash]
+----
+starknet --version
+----
 
 The output should show the installed version of Starknet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
 
@@ -151,18 +151,18 @@ cargo build --all --release
 
 Update your `.bashrc` or `.zshrc` file to add the Cairo binaries to your `PATH` environment variable:
 
-   [source, bash]
-   ----
-   # Add the command below to your .bashrc or .zshrc
-   export PATH="$HOME/.cairo/target/release:$PATH"
-   ----
+[source, bash]
+----
+# Add the command below to your .bashrc or .zshrc
+export PATH="$HOME/.cairo/target/release:$PATH"
+----
 
 Open a new shell and check that the following command returns a version number:
 
-   [source, bash]
-   ----
-   cairo-compile --version
-   ----
+[source, bash]
+----
+cairo-compile --version
+----
 
 Your local development environment for Starknet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
 

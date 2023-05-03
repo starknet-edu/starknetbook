@@ -1,7 +1,0 @@
-{
-  "extends": "@tsconfig/node16/tsconfig.json",
-  "compilerOptions": {
-    "preserveConstEnums": true
-  },
-  "include": ["chapter_?/**/*"]
-}
