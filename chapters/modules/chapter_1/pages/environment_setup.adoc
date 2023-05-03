@@ -1,6 +1,5 @@
 [#setup]
-
-== Setting Up Your Starknet Development Environment
+= Setting Up Your Starknet Development Environment
 
 [NOTE]
 ====
