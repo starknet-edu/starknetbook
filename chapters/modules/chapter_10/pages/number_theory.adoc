@@ -9,7 +9,7 @@ In https://en.wikipedia.org/wiki/Number_theory[number theory], *Euler’s theore
 https://en.wikipedia.org/wiki/Coprime_integers[coprime] positive integers, and _φ(n)_ is
 https://en.wikipedia.org/wiki/Euler%27s_totient_function[Euler’s totient
 function], then _a_ raised to the power _φ(n)_ is congruent to 1
-https://en.wikipedia.org/wiki/Modular_arithmetic[modulo] _n_; that is
+https://en.wikipedia.org/wiki/Modular_arithmetic[modulo] _n_; that is 
 
 latexmath:[a^{φ(n)} ≡ 1 (mod‎ n)]
 
