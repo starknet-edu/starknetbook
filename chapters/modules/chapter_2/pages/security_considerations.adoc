@@ -229,11 +229,99 @@ fn transferTo(to: ContractAddress, amount: u256) {
 
 By using the correct authentication method, you can prevent phishing attacks and ensure that only authorized users can execute specific smart contract functions.
 
+== 4. Overflow/Underflow.
+
+This vulnerability is related to assigning a variable a value that is larger (overflow) or smaller (underflow) than the one supported 
+by the underlying data type. For example, if we use felt252 data type and add or substract a value out of range:
+
+[source,rust]
+----
+    #[view]
+    fn overflow_felt252() -> felt252 {
+        // Assign max felt252 value = 2^251 + 17 * 2^192
+        let max: felt252 = 3618502788666131106986593281521497120414687020801267626233049500247285301248 + 17 * 6277101735386680763835789423207666416102355444464034512896;
+        return (max + 3);
+    }
+
+    #[view]
+    fn underflow_felt252() -> felt252 {
+        let min: felt252 = 0;
+        // Assign max felt252 value = 2^251 + 17 * 2^192
+        let substract = (3618502788666131106986593281521497120414687020801267626233049500247285301248 + 17 * 6277101735386680763835789423207666416102355444464034512896); 
+        return (min - substract);
+    }  
+----
+
+Then we will get wrong values:
+
+image::sec_over_felt.png[felt252]
+
+**Recommendation.**
+
+Use protected data types as u128 or u256:
+
+[source,rust]
+----
+    #[view]
+    fn overflow_u256() -> u256 {
+        let max_u128: u128 = 0xffffffffffffffffffffffffffffffff_u128;
+        let max: u256 = u256 { low: max_u128, high: max_u128 }; // Assign max u256 value
+        let three: u256 = u256 { low: 3_u128, high: 0_u128 }; // Assign 3 value
+        return (max + three);
+    }
+
+    #[view]
+    fn underflow_u256() -> u256 {
+        let min: u256 = u256 { low: 0_u128, high: 0_u128 }; // Assign 0 value
+        let three: u256 = u256 { low: 3_u128, high: 0_u128 }; // Assign 3 value
+        return (min - three);
+    }
+----
+
+If we execute this functions our transaction will be reverted if an overflow is detected:
+
+image::sec_over_u256.png[u256]
+image::sec_over_u256.png[u256]
+
+
+Where failure reason:
+[source,rust]
+----
+0x753235365f616464204f766572666c6f77=u256_add Overflow
+0x753235365f737562204f766572666c6f77=u256_sub Overflow
+----
+Same thing with u128:
+
+[source,rust]
+----
+    #[view]
+    fn overflow_u128() -> u128 {
+        let max: u128 = 0xffffffffffffffffffffffffffffffff_u128; // Assign max u128 value
+        return (max + 3_u128);
+    }
+
+    #[view]
+    fn underflow_u128() -> u128 {
+        let min: u128 = 0_u128;
+        return (min - 3_u128);
+    }
+----
+
+Transaction reverted with failure reason:
+
+image::sec_over_u128.png[u128]
+image::sec_over_u128.png[u128]
+
+Where:
+[source,rust]
+----
+0x753132385f616464204f766572666c6f77=u128_add Overflow
+0x753132385f737562204f766572666c6f77=u128_sub Overflow
+----
 == Call for Contributions: Additional Vulnerabilities
 
 We've covered a few common vulnerabilities in Cairo smart contracts, but there are several more security considerations that developers should be aware of. We are currently seeking contributions from the community to expand this chapter and cover more vulnerabilities, as listed in our To-Do section:
 
-- Overflow/Underflow
 - Storage Collision
 - Flash Loan Attacks
 - Oracle Manipulation
