@@ -4,6 +4,15 @@
 
 == Euler's Theorem
 
+In https://en.wikipedia.org/wiki/Number_theory[number theory], *Euler’s theorem* (also known as the 
+*Fermat–Euler theorem* or *Euler’s totient theorem*) states that, if _n_ and _a_ are
+https://en.wikipedia.org/wiki/Coprime_integers[coprime] positive integers, and _φ(n)_ is
+https://en.wikipedia.org/wiki/Euler%27s_totient_function[Euler’s totient
+function], then _a_ raised to the power _φ(n)_ is congruent to 1
+https://en.wikipedia.org/wiki/Modular_arithmetic[modulo] _n_; that is
+
+latexmath:[a^{φ(n)} ≡ 1 (mod‎ n)]
+
 == Modular Arithmetic
 
 A system of arithmetic for integers where numbers "wrap around" when reaching a certain value (aka 'modulus')
