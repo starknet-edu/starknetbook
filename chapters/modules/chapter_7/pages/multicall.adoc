@@ -2,6 +2,51 @@
 
 = Multicalls
 
+*What is a Multicall?* +
+https://github.com/joshstevens19/ethereum-multicall#readme[Multicall] allows multiple smart contract constant function calls to be grouped into a single call and the results aggregated into a single result. With account abstraction, multicalls can be easily programmed natively into your account contracts.
+
+Why do we need multicalls?
+There are several situations where you may need to use multicalls. For example:
+1. While swapping two ERC20 tokens on a dex(decentralized exchange), you would first need to approve the spending of the tokens followed by the swap. Performing 3 actions can be cumbersome from a UX perspective. In case of a multicall, both of these calls can be clubbed into one call for the user to sign.
+2. The latest block number is also returned along with the aggregated results while performing a multicall. This can be helpful in situations where you want to query the prices of two different tokens from blockchain and would like them both to come from the same block.
+
+There are several other examples where account abstraction can truly reflect the benefits of multicall transactions. Here an example of an ideal DeFi interaction by Hasu:
+
+<INSERT IMAGE HERE>
+
+Let's observe one of the core functions within an account contract that can facilitate multicalls:
+
+[,Rust]
+----
+fn _execute_calls(mut calls: Array<AccountCall>, mut res:Array::<Array::<felt>>) -> Array::<Array::<felt>> {
+    match calls.pop_front() {
+        Option::Some(call) => {
+            let _res = _call_contract(call);
+            res.append(_res);
+            return _execute_calls(calls, res);
+        },
+        Option::None(_) => {
+            return res;
+        },
+    }
+}
+----
+
+[,Rust]
+----
+fn _call_contract(call: AccountCall) -> Array::<felt> {
+    starknet::call_contract_syscall(
+        call.to, call.selector, call.calldata
+    ).unwrap_syscall()
+}
+----
+
+Apart from the traditional *"_ _execute_ _"* function, adding the *"_execute_calls"* function to your account contract can ensure that you can make a multicall using your smart contract account.
+
+The above code is a simple example snippet where the *"return _execute_calls(calls, res);"* statement makes recursive calls to the *"_execute_calls_"* function thereby bundling the calls together. The final result will be aggregated and returned in the *_res_* variable.
+
+One important fact to remember w.r.t multicall is that it may not reduce gas fees significantly as compared to individual calls, however the benefit of using multicall contract is its result is enforced to be in the same block and good UX for the end user using an application.
+
 == Contributing
 
 [quote, The Starknet Community]
