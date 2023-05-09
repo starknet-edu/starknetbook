@@ -25,7 +25,7 @@ ____
 
 Throughout this course, you will learn how Starknet addresses the Blockchain Trilemma, aiming to deliver a system that is not only secure, inclusively accountable, and decentralized but also scalable and expressive. This is achieved through the use of zero-knowledge STARK proofs.
 
-🎯 <strong>Goals:</strong> Secure, inclusively accountable, decentralized, scalable, expressive 🎯
+🎯 +++<strong>+++Goals: +++</strong>+++ Secure, inclusively accountable, decentralized, scalable, expressive 🎯
 
 
 == Evolution of Data Security
