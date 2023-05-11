@@ -4,11 +4,11 @@
 
 L1 smart contract that verifies STARK proofs from SHARP.
 
-As discussed on the SHARP page, SHARP takes the Cairo program’s execution trace, proves that it’s valid, and sends this proof to the Verifier contract on Ethereum. After verifying the proof, the on-chain verifier takes an important extra step: it writes a fact attesting to the validity of the proof in the Fact Registry. This fact is like a trustless stamp of approval, certifying that the Cairo program was computed correctly. Now all that is left for the dApp’s smart contract is to check that this fact exists, in order to rely on the computation that was executed off-chain.
+As discussed on the SHARP page, SHARP takes the Cairo program’s execution trace, proves that it’s valid, and sends this proof to the Verifier contract on Ethereum.
 
 Verifier address on Ethereum mainnet: https://etherscan.io/address/0x47312450B3Ac8b5b8e247a6bB6d523e7605bDb60[0x47312450B3Ac8b5b8e247a6bB6d523e7605bDb60]
 
-== Example of a Verifier transaction
+== Example of a transaction sent to Verifier contract
 Let's take a look at a transaction that was sent to the Verifier contract on Ethereum mainnet. 
 https://etherscan.io/tx/0xde0bcb45698e8ef67fef8bff8615715dac0cf0882a131a21273e58607330d5f9[0xde0bcb45698e8ef67fef8bff8615715dac0cf0882a131a21273e58607330d5f9]
 
