@@ -10,4 +10,10 @@
     ** xref:fri.adoc[10.6 The FRI Protocol]
     ** xref:efficient_starks.adoc[10.7 Efficient STARKs]
     ** xref:starks_snarks.adoc[10.8 STARKs and SNARKs: Differences 🚧]
+    ** 10.9 Implementing the STARKs Protocol
+        *** xref:part1_trace_and_low_degree_extension.adoc[10.9.1 Part 1: Trace and Low-Degree Extension]
+        *** xref:part2_constraints.adoc[10.9.2 Part 2: Constraints]
+        *** xref:part3_fri_commitments.adoc[10.9.3 Part 3: FRI Commitments]
+        *** xref:part4_query_phase.adoc[10.9.4 Part 4: Query Phase]
+        
     

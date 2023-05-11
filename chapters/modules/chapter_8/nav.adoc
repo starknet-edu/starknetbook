@@ -4,11 +4,4 @@
     ** xref:storage_proofs.adoc[8.3 Storage Proofs: Trustless Cross-Chain Information Access on Starknet]
     ** xref:blocks.adoc[8.4 Blocks in Starknet]
     ** xref:transactions.adoc[8.5 The Lifecycle of Transactions]
-    ** xref:starknet_os.adoc[8.6 Starknet OS 🚧]
-    ** xref:state.adoc[8.7 State Transition/Fees 🚧]
-    ** xref:l1l2.adoc[8.8 L1-L2 Messaging 🚧]
-    ** xref:verifiers_solidity.adoc[8.9 Verifiers in Solidity 🚧]
-    ** xref:verifiers_cairo.adoc[8.10 Verifiers in Cairo 🚧]
-    ** xref:hints.adoc[8.11 Hints 🚧]
-    ** xref:fees.adoc[8.12 Fee calculation and paying for fees 🚧]
-    ** xref:bridges.adoc[8.13 Bridges 🚧]
+    
