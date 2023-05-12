@@ -1,6 +1,60 @@
 = Hello World Account Contract
 
-In this chapter, we will explore the fundamentals of account contracts in StarkNet using an example "Hello World" account contract written in Cairo language. You can find it in the contracts directory of this chapter in the Book's repository (TODO: add link). Account contracts are a core component of StarkNet, utilizing account abstraction to manage transactions and interactions between contracts.
+In this chapter, we will explore the fundamentals of account contracts in StarkNet using an example "Hello World" account contract written in Cairo language. You can find it in the contracts directory of this chapter in the Book's repository (TODO: add link).
+
+[,Rust]
+----
+// Import necessary modules
+#[account_contract]
+mod HelloAccount {
+    use starknet::ContractAddress;
+    use core::felt252;
+    use array::ArrayTrait;
+    use array::SpanTrait;
+
+    // Validate deployment of the contract.
+    // Returns starknet::VALIDATED to confirm successful validation.
+    #[external]
+    fn __validate_deploy__(
+        class_hash: felt252, contract_address_salt: felt252, public_key_: felt252
+    ) -> felt252 {
+        starknet::VALIDATED
+    }
+
+    // Validate declaration of transactions using this Account.
+    // This function enforces that transactions now require accounts to pay fees.
+    // Returns starknet::VALIDATED to confirm successful validation.
+    #[external]
+    fn __validate_declare__(class_hash: felt252) -> felt252 {
+        starknet::VALIDATED
+    }
+
+    // Validate transaction before execution.
+    // This function is called by the account contract upon receiving a transaction.
+    // If the validation is successful, it returns starknet::VALIDATED.
+    #[external]
+    fn __validate__(
+        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>
+    ) -> felt252 {
+        starknet::VALIDATED
+    }
+
+    // Execute transaction.
+    // If the '__validate__' function is successful, this '__execute__' function will be called.
+    // It forwards the call to the target contract using starknet::call_contract_syscall.
+    #[external]
+    #[raw_output]
+    fn __execute__(
+        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>
+    ) -> Span::<felt252> {
+        starknet::call_contract_syscall(
+            address: contract_address,
+            entry_point_selector: entry_point_selector,
+            calldata: calldata.span()
+        ).unwrap_syscall()
+    }
+}
+----
 
 == External Functions
 
@@ -101,3 +155,12 @@ starknet deploy --class_hash 0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa
 ----
 
 After completing these steps, you will have successfully declared and deployed the Hello World account contract on StarkNet. https://testnet.starkscan.co/contract/0x01e6d7698ca76788c8f9c1091ec3d6d3f7167a9effe520402d832ca9894eba4a#overview[Here is a deployed version].
+
+== Summary
+
+In this subchapter, we delved into the details of a basic account contract in StarkNet using a "Hello World" example.
+
+We also outlined the steps to declare and deploy the Hello World account contract on the StarkNet network. The deployment process involves exporting the required environment variables, declaring the contract, and deploying it using the class hash.
+
+As we progress in our exploration of StarkNet account contracts, the next subchapter will introduce a standard account contract, drawing parallels with the standard account contract defined by Open Zeppelin and Starkware. This will further strengthen our understanding of how account contracts operate within the StarkNet ecosystem.
+

@@ -1,2 +1,2 @@
 mod hello_account;
-mod multisig_account;
+mod standard_account;
