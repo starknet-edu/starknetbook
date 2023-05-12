@@ -106,20 +106,20 @@ struct Call {
 }
 ----
 
-== Understanding ECDSA Signature
+== Grasping ECDSA Signature
 
-The Elliptic Curve Digital Signature Algorithm (ECDSA) is a cryptographic algorithm used by many blockchains to ensure data integrity and authenticate the sender. ECDSA is a variant of the Digital Signature Algorithm (DSA) but uses elliptic curve cryptography which provides better security with shorter keys compared to DSA.
+Elliptic Curve Digital Signature Algorithm (ECDSA) is a cryptographic protocol extensively utilized across various blockchains to ensure data integrity and verify the sender's authenticity. As a variant of the Digital Signature Algorithm (DSA), ECDSA leverages elliptic curve cryptography, offering superior security with shorter keys than the traditional DSA.
 
-An ECDSA signature consists of two components, often denoted as r and s. Together, they form the signature for a given input. These values are computed using the signer's private key and the hash of the message (in this context, the transaction) being signed.
+An ECDSA signature comprises two components, commonly referred to as 'r' and 's'. These two values, generated using the signer's private key and the hash of the message (or transaction) being signed, collectively form the signature for a given input.
 
-=== signature_r and signature_s
+=== Deciphering signature_r and signature_s
 
-In the context of the Standard Account Contract, signature_r and signature_s are the two components of the ECDSA signature that are used in the check_ecdsa_signature function to verify the validity of the transaction.
+Within the context of the Standard Account Contract, 'signature_r' and 'signature_s' represent the two constituents of the ECDSA signature. These are utilized in the 'check_ecdsa_signature' function to authenticate the transaction's legitimacy.
 
-* signature_r (r): This is a randomly generated number used during the signing process. It should be unique for each signature; reusing 'r' with different messages can expose the private key.
-* signature_s (s): This is calculated from r, the private key, and the hash of the message. The 's' value is unique to each signature as well.
+* `signature_r (r)`: A random number generated during the signing process, unique for each signature. Reusing 'r' across different messages may lead to private key exposure.
+* `signature_s (s)`: This is computed using 'r', the private key, and the hash of the message. Like 'r', 's' is also unique for each signature.
 
-The check_ecdsa_signature function takes these two values, along with the public key of the signer and the hash of the message, to verify the signature. If the signature is valid, it means that the message was indeed signed by the owner of the private key and has not been tampered with.
+The function 'check_ecdsa_signature' takes these two values, the public key of the signer, and the hash of the message to authenticate the signature. A valid signature indicates that the message was indeed signed by the private key owner and remains unaltered.
 
 [source,rust]
 ----
@@ -134,14 +134,13 @@ The check_ecdsa_signature function takes these two values, along with the public
         );
 ----
 
-In the above code snippet, the check_ecdsa_signature function is used to assert that the transaction signature is valid. If the signature is invalid, the assertion will fail, and 'INVALID_SIGNATURE' will be returned.
+The above code snippet employs 'check_ecdsa_signature' function to assert the legitimacy of the transaction signature. If the signature is not valid, the assertion fails, returning 'INVALID_SIGNATURE'.
 
-
-== Contract Structure
+== Contract Anatomy
 
 === Storage
 
-In our standard account contract, we define one storage variable: public_key. This will help us to validate the signature of the transaction. The public key is stored as a felt252, which is a 252-bit unsigned integer. The public key is written to storage in the constructor function. The public key is read from storage in the validate_transaction function.
+In the standard account contract, we declare a single storage variable: 'public_key'. This assists in transaction signature validation. The public key, stored as a 'felt252' (a 252-bit unsigned integer), is written to the storage in the constructor function and is accessed from the storage in the 'validate_transaction' function.
 
 [source,rust]
 ----
@@ -152,7 +151,7 @@ struct Storage {
 
 === Constructor
 
-The constructor function is used to initialize the contract. In this case, it writes the provided public key to the contract's storage.
+The constructor function serves to initialize the contract, storing the supplied public key in the contract's storage.
 
 [source,rust]
 ----
@@ -164,9 +163,9 @@ fn constructor(public_key_: felt252) {
 
 === validate_transaction
 
-This internal function is used to validate the transaction signature. It extracts the signature from the transaction info and checks its length. Then, it verifies the ECDSA signature. If the signature is valid, it returns starknet::VALIDATED. Otherwise, it returns an error. This function is called by the __validate_deploy__, __validate_declare__, and __validate__ functions.
+This internal function validates the transaction signature. It retrieves the signature from the transaction info, checks its length, and verifies the ECDSA signature. If the signature is legitimate, it returns starknet::VALIDATED, otherwise an error. This function is invoked by '__validate_deploy__', '__validate_declare__', and '__validate__' functions.
 
-This function is optional. You can choose to omit it if you do not need to validate the transaction signature. However, it is recommended to include it in your account contract to ensure that the transaction is valid and you can reuse it for all three validation functions.
+The inclusion of this function is optional. If transaction signature validation is not required, it can be omitted. However, its inclusion in your account contract is advised to ensure transaction validity and to facilitate its reuse in all three validation functions.
 
 [source,rust]
 ----
@@ -192,7 +191,7 @@ fn validate_transaction() -> felt252 {
 
 === Call Struct
 
-The Call struct defines the parameters for a contract call. These parameters include the target contract address (to), the function to call (selector), and the function's arguments (calldata). The Call struct is used in the __execute__ function.
+The Call struct outlines the parameters required for a contract call. These parameters comprise the target contract address (to), the function to be called (selector), and the function's arguments (calldata). The Call struct is utilized in the __execute__ function.
 
 [source,rust]
 ----
@@ -206,7 +205,7 @@ struct Call {
 
 === execute
 
-This external function executes a transaction after successful validation. It ensures that the caller is valid, the transaction version is non-zero, and only single calls are supported. Then, it forwards the call to the target contract. In this function the contract creator can add multiple calls to different contracts or to the same contract (multicall). The function returns the output of the target contract.
+This external function triggers a transaction post successful validation. It ensures the caller's validity, checks for a non-zero transaction version, and supports only single calls. Post validation, it forwards the call to the target contract. The contract creator can incorporate multiple calls to different contracts or the same contract (multicall) within this function. The function returns the output from the target contract.
 
 [source,rust]
 ----
@@ -229,11 +228,21 @@ This external function executes a transaction after successful validation. It en
     }
 ----
 
+== Improvements to the Standard Account Contract
+
+The implementation of the Standard Account Contract has a few limitations:
+
+* It currently supports only single calls. We could support multicalls to improve the flexibility and utility of the contract.
+* The ECDSA signature algorithm, while secure, can be computationally intensive. Future versions could explore using more efficient signature algorithms, such as Schnorr or BLS. Or quantum-resistant signature algorithms, such as the STARKs.
+
+Despite these limitations, the Standard Account Contract provides a robust and secure foundation for creating and interacting with smart contracts on StarkNet.
+
+
 == Declaring and Deploying the Hello World Account Contract
 
-The declaring and deploying process is the same as with other contracts. Before declaring and deploying the Hello World account contract, you must first have an account contract set up to manage the deployment process. To learn more about deploying an account contract, refer to the subchapter on deploying in Chapter 2 of the Book.
+This time we have a constructor function that takes the public key as an argument. We need to generate a private key with the corresponding public key. 
 
-Remember to compile using `scarb build` (refer to the Scarb subchapter in Chapter 2 of the Book). Then follow the steps below to declare and deploy the Hello World account contract:
+TODO: add section on how to generate a private key and public key.
 
 * Export the required environment variables:
 
@@ -254,12 +263,8 @@ The class hash is: 0x05501f7806d3d11cab101e19001e409dd4760200c2da2fe03761750f66e
 
 * Deploy the contract:
 
-[source,bash]
-----
-starknet deploy --class_hash 0x05501f7806d3d11cab101e19001e409dd4760200c2da2fe03761750f66e4a5e1 --account vote_admin --max_fee 100000000000000000
-----
+TODO: add section on how to deploy the contract.
 
-After completing these steps, you will have successfully declared and deployed the Hello World account contract on StarkNet. https://testnet.starkscan.co/contract/0x01e6d7698ca76788c8f9c1091ec3d6d3f7167a9effe520402d832ca9894eba4a#overview[Here is a deployed version].
 
 [NOTE]
 ====
@@ -281,3 +286,22 @@ Each of these alternatives has its strengths and weaknesses in terms of security
 == Summary
 
 In this chapter, we expanded on our understanding of account contracts in StarkNet by examining a more complex "Standard Account Contract". We dove into the various components of the contract and learned how they work together to validate and execute transactions.
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

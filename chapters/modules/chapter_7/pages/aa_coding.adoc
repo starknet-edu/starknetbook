@@ -2,6 +2,8 @@
 
 = Coding Custom Account Contracts
 
+
+
 == Contributing
 
 [quote, The Starknet Community]
