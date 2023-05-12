@@ -5,6 +5,33 @@
 = Cryptography
 
 == Cryptographic Hash Functions
+
+_Hashing_ is a process that uses an algorithm to take data and convert
+it to a fixed length known as a hash value, which varies widely even
+with small variations in the input.
+
+Here are two examples using the `SHA-256 hash function` (one of the most
+broadly used hash functions in use today):
+
+* If the input is `"Starknet"`, this would be the output:
+
+`a22979efeb74ca6aa02eaf2be8899e65b43dca9788a45ea687a96d970c32d96b`
+
+* And if the input is `"Starknet."` then the output is:
+
+`78874a2e5dc07ce99d6fb8d71016e7edcb4fda2e64c0642762999baa6b5a0568`
+
+As you can see, the *difference between the two inputs is only one
+point* and the two outputs differ greatly from each other.
+
+Hash functions are designed to protect data integrity and this will be
+very important in the *STARK protocol*.
+
+With several data, in collaboration with hashing, we can build
+https://en.wikipedia.org/wiki/Merkle_tree[Merkle Trees] that will allow
+us to generate commitments and decommitments in the protocol,
+guaranteeing that a determined computation was performed correctly.
+
 == Asymmetric Encryption
 == Digital Signatures
 == Zero-Knowledge Proofs
