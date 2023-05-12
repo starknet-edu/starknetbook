@@ -13,7 +13,7 @@ with small variations in the input.
 Here are two examples using the `SHA-256 hash function` (one of the most
 broadly used hash functions in use today):
 
-* If the input is `"Starknet"`, this would be the output:
+* If the input is `"Starknet"`, this would be the output: 
 
 `a22979efeb74ca6aa02eaf2be8899e65b43dca9788a45ea687a96d970c32d96b`
 
