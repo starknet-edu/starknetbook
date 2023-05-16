@@ -1,0 +1,37 @@
+[id="verifiers_solidity"]
+
+= Verifiers in Solidity
+
+L1 smart contract that verifies STARK proofs from SHARP.
+
+== Example of a Verifier transaction
+Let's take a look at a transaction that was sent to the Verifier contract on Ethereum mainnet. 
+https://etherscan.io/tx/0xde0bcb45698e8ef67fef8bff8615715dac0cf0882a131a21273e58607330d5f9[0xde0bcb45698e8ef67fef8bff8615715dac0cf0882a131a21273e58607330d5f9]
+
+=== Transaction trace
+- Verifier contract is a proxy contract so when it's called, implementation contract is called instead. Implementation contract is GpsStatementVerifier contract https://etherscan.io/address/0x6cb3ee90c50a38a0e4662bb7e7e6e40b91361bf6[0x6cB3EE90C50a38A0e4662bB7e7E6e40B91361BF6]
+- Next the GpsStatementVerifier contract executes opcode `CALL` to CpuFrilessVerifier contract https://etherscan.io/address/0xe9664d230490d5a515ef7ef30033d8075a8d0e24[0xe9664d230490d5a515ef7ef30033d8075a8d0e24]
+- CpuFrilessVerifier contract calls function registerRegularMemoryPage on MemoryPageFactRegistry contract https://etherscan.io/address/0xfd14567eaf9ba941cb8c8a94eec14831ca7fd1b4[0xfd14567eaf9ba941cb8c8a94eec14831ca7fd1b4] and output a tuple that includes factHash = 0x72C8D723081B60693B32D77A369782FF189754A5897002314FB1569B7E2EE1E2
+- CpuFrilessVerifier contract again calls MemoryPageFactRegistry contract, but `isValid` function this time, to check fact, with factHash as input and output true or false.
+You can check by yourself by querying the `isValid` function on MemoryPageFactRegistry contract https://etherscan.io/address/0xfd14567eaf9ba941cb8c8a94eec14831ca7fd1b4[0xfd14567eaf9ba941cb8c8a94eec14831ca7fd1b4] with input `0x72C8D723081B60693B32D77A369782FF189754A5897002314FB1569B7E2EE1E2` to have `true` as output.
+
+== Verifier contract in Starknet architecture
+The example above shows how the Verifier contract is used in the Starknet architecture.
+
+In general, SHARP takes the Cairo program’s execution trace, proves that it’s valid, and sends this proof to the Verifier contract on Ethereum. After verifying the proof, the on-chain verifier takes an important extra step: it writes a fact attesting to the validity of the proof in the Fact Registry. This fact is like a trustless stamp of approval, certifying that the Cairo program was computed correctly. Now all that is left for the dApp’s smart contract is to check that this fact exists, in order to rely on the computation that was executed off-chain.
+
+Here is the overall diagram of the how each component interacts with each other in the Starknet architecture.
+
+image::starknet_architecture.png[starknet architecture]
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
