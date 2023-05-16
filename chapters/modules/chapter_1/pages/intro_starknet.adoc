@@ -4,7 +4,7 @@ Starknet is a permissionless Validity-Rollup (also known as a “ZK-Rollup”) t
 
 == Why Starknet?
 
-For more details on the necessecity of a system like Starknet, refer to the "https://book.starknet.io/primer/index.html[Chapter 0: Primer]" of the Starknet Book.
+For more details on the necessecity of a system like Starknet, refer to the "https://book.starknet.io/chapter_0/index.html[Chapter 0: Primer]" of the Starknet Book.
 
 === The Blockchain Trilemma
 
