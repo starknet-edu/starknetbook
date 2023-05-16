@@ -48,6 +48,7 @@ There are various hardware specifications, including packaged options, that will
 - Connection Speed: 25+ mbps/sec
 
 *You can refer to these links for the hardware:*
+
 - https://a.co/d/iAWpTzQ[CPU] — $193
 - https://a.co/d/cTUk9Kd[Board] (can attempt w/ Raspberry Pi) — $110
 - https://a.co/d/0US61Y5[Disk] — $100
