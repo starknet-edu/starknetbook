@@ -1,26 +1,26 @@
-= Running a StarkNet Node
+= Running a Starknet Node
 
-This chapter will guide you through setting up and running a StarkNet node, illustrating the layered tech stack concept, and explaining how to operate these protocols locally. StarkNet, as a Layer 2 Validity Rollup, operates on top of Ethereum Layer 1, creating a protocol stack that each addresses different functionalities, similar to the OSI model for internet connections. This chapter is an edit of https://medium.com/starknet-edu/the-starknet-stack-7b0d70a7e1d4[drspacemn]'s blog.
+This chapter will guide you through setting up and running a Starknet node, illustrating the layered tech stack concept, and explaining how to operate these protocols locally. Starknet, as a Layer 2 Validity Rollup, operates on top of Ethereum Layer 1, creating a protocol stack that each addresses different functionalities, similar to the OSI model for internet connections. This chapter is an edit of https://medium.com/starknet-edu/the-starknet-stack-7b0d70a7e1d4[drspacemn]'s blog.
 
 ====
-CONTRIBUTE: This guide shows how to run a StarkNet node locally with a particular setup. You can contribute to this guide by adding more options for hardware and software, as well as other ways to run a StarkNet nod (for example using https://github.com/keep-starknet-strange/beerus[Beerus]). You can also contribute by adding more information about the StarkNet stack and the different layers. Feel free to https://github.com/starknet-edu/starknetbook[open a PR].
+CONTRIBUTE: This guide shows how to run a Starknet node locally with a particular setup. You can contribute to this guide by adding more options for hardware and software, as well as other ways to run a Starknet nod (for example using https://github.com/keep-starknet-strange/beerus[Beerus]). You can also contribute by adding more information about the Starknet stack and the different layers. Feel free to https://github.com/starknet-edu/starknetbook[open a PR].
 ====
 
 == What is a Node in the Context of Ethereum and Blockchain?
 
 In the context of Ethereum and blockchain, a node is an integral part of the network that validates and relays transactions. Nodes download a copy of the entire blockchain and are interconnected with other nodes to maintain and update the blockchain state. There are different types of nodes, such as full nodes, light nodes, and mining nodes, each having different roles and responsibilities within the network.
 
-== Overview of StarkNet Technology
+== Overview of Starknet Technology
 
-StarkNet is a permissionless, zk-STARK-based Layer-2 network, aiming for full decentralization. It enables developers to build scalable decentralized applications (dApps) and utilizes Ethereum's Layer 1 for proof verification and data availability. Key aspects of StarkNet include:
+Starknet is a permissionless, zk-STARK-based Layer-2 network, aiming for full decentralization. It enables developers to build scalable decentralized applications (dApps) and utilizes Ethereum's Layer 1 for proof verification and data availability. Key aspects of Starknet include:
 
-* *Cairo execution environment*: Cairo, the execution environment of StarkNet, facilitates writing and execution of complex smart contracts.
-* *Scalability*: StarkNet achieves scalability through zk-STARK proofs, minimizing the data needed to be posted on-chain.
-* *Node network*: The StarkNet network comprises nodes that synchronize and process transactions, contributing to the network's overall security and decentralization.
+* *Cairo execution environment*: Cairo, the execution environment of Starknet, facilitates writing and execution of complex smart contracts.
+* *Scalability*: Starknet achieves scalability through zk-STARK proofs, minimizing the data needed to be posted on-chain.
+* *Node network*: The Starknet network comprises nodes that synchronize and process transactions, contributing to the network's overall security and decentralization.
 
-== StarkNet Stack
+== Starknet Stack
 
-The StarkNet stack can be divided into various layers, similar to OSI or TCP/IP models. The most appropriate model depends on your understanding and requirements. A simplified version of the modular blockchain stack might look like this:
+The Starknet stack can be divided into various layers, similar to OSI or TCP/IP models. The most appropriate model depends on your understanding and requirements. A simplified version of the modular blockchain stack might look like this:
 
 - Layer 1: Data Layer
 - Layer 2: Execution Layer
@@ -31,7 +31,7 @@ image::node1.png[node1]
 
 == Setup
 
-There are various hardware specifications, including packaged options, that will enable you to run an Ethereum node from home. The goal here is to build the most cost-efficient StarkNet stack possible (https://github.com/rocket-pool/docs.rocketpool.net/blob/main/src/guides/node/local/hardware.md[see here more options]).
+There are various hardware specifications, including packaged options, that will enable you to run an Ethereum node from home. The goal here is to build the most cost-efficient Starknet stack possible (https://github.com/rocket-pool/docs.rocketpool.net/blob/main/src/guides/node/local/hardware.md[see here more options]).
 
 *Minimum Requirements:*
 
@@ -66,7 +66,7 @@ sudo apt install -y jq curl net-tools
 
 == Layer 1: Data Layer
 
-The bottom-most layer of the stack is the data layer. Here, StarkNet's L2 leverages Ethereum's L1 for proof verification and data availability. StarkNet utilizes Ethereum as its L1, so the first step is setting up an Ethereum Full Node. As this is the data layer, the hardware bottleneck is usually the disk storage. It's crucial to have a high capacity I/O SSD over an HDD because Ethereum Nodes require both an Execution Client and a Consensus Client for communication.
+The bottom-most layer of the stack is the data layer. Here, Starknet's L2 leverages Ethereum's L1 for proof verification and data availability. Starknet utilizes Ethereum as its L1, so the first step is setting up an Ethereum Full Node. As this is the data layer, the hardware bottleneck is usually the disk storage. It's crucial to have a high capacity I/O SSD over an HDD because Ethereum Nodes require both an Execution Client and a Consensus Client for communication.
 
 Ethereum provides several options for Execution and Consensus clients. Execution clients include Geth, Erigon, Besu (used here), Nethermind, and Akula. Consensus clients include Prysm, Lighthouse (used here), Lodestar, Nimbus, and Teku.
 
@@ -147,9 +147,9 @@ Once this is done, your Ethereum node should be up and running, and it will star
 
 == Layer 2: Execution Layer
 
-The next layer in our StarkNet stack is the Execution Layer. This layer is responsible for running the Cairo VM, which executes StarkNet smart contracts. The Cairo VM is a deterministic virtual machine that allows developers to write complex smart contracts in the Cairo language. StarkNet uses a similar https://github.com/starkware-libs/starknet-specs[JSON-RPC spec] as https://ethereum.org/en/developers/docs/apis/json-rpc[Ethereum] in order to interact with the execution layer. 
+The next layer in our Starknet stack is the Execution Layer. This layer is responsible for running the Cairo VM, which executes Starknet smart contracts. The Cairo VM is a deterministic virtual machine that allows developers to write complex smart contracts in the Cairo language. Starknet uses a similar https://github.com/starkware-libs/starknet-specs[JSON-RPC spec] as https://ethereum.org/en/developers/docs/apis/json-rpc[Ethereum] in order to interact with the execution layer. 
 
-In order to stay current with the propagation of the StarkNet blockchain we need a client similar to Besu that we are using for L1. The efforts to provide full nodes for the StarkNet ecosystem are: https://github.com/eqlabs/pathfinder[Pathfinder] (used here), https://github.com/starkware-libs/papyrus[Papyrus], and https://github.com/NethermindEth/juno[Juno]. However, different implementations are still in development and not yet ready for production.
+In order to stay current with the propagation of the Starknet blockchain we need a client similar to Besu that we are using for L1. The efforts to provide full nodes for the Starknet ecosystem are: https://github.com/eqlabs/pathfinder[Pathfinder] (used here), https://github.com/starkware-libs/papyrus[Papyrus], and https://github.com/NethermindEth/juno[Juno]. However, different implementations are still in development and not yet ready for production.
 
 Check that your L1 has completed its sync:
 
@@ -167,7 +167,7 @@ curl --location --request POST 'http://localhost:8545' \
 }'
 ----
 
-Start your L2 Execution Client and note that we are syncing StarkNet’s state from our LOCAL ETH L1 NODE!
+Start your L2 Execution Client and note that we are syncing Starknet’s state from our LOCAL ETH L1 NODE!
 
 [note]
 ====
@@ -187,7 +187,7 @@ To follow the sync:
 docker container logs -f $(docker ps | grep pathfinder | awk '{print $1}')
 ----
 
-StarkNet Testnet_1 currently comprises ~600,000 blocks so this will take some time to sync fully. To check L2 sync:
+Starknet Testnet_1 currently comprises ~600,000 blocks so this will take some time to sync fully. To check L2 sync:
 
 [source,bash]
 ----
@@ -212,7 +212,7 @@ sudo du -sh ./* | sort -rh
 
 == Layer 3: Application Layer
 
-We see the same need for data refinement as we did in the OSI model. On L1 packets come over the wire in a raw stream of bytes and are then processed and filtered by higher-level protocols. When designing a decentralized application Bob will need to be cognizant of interactions with his contract on chain, but doesn’t need to be aware of all the information occurring on StarkNet.
+We see the same need for data refinement as we did in the OSI model. On L1 packets come over the wire in a raw stream of bytes and are then processed and filtered by higher-level protocols. When designing a decentralized application Bob will need to be cognizant of interactions with his contract on chain, but doesn’t need to be aware of all the information occurring on Starknet.
 
 This is the role of an indexer. To process and filter useful information for an application. Information that an application MUST be opinionated about and the underlying layer MUST NOT be opinionated about.
 
@@ -231,7 +231,7 @@ Again notice that we don’t need to leave our local setup for these interaction
 
 The transport layer comes into play when the application has parsed and indexed critical information, often leading to some state change based on this information. This is where the application communicates the desired state change to the Layer 2 sequencer to get that change into a block. This is achieved using the same full-node/RPC spec implementation, in our case, Pathfinder.
 
-When working with our local StarkNet stack, invoking a transaction locally might look like this:
+When working with our local Starknet stack, invoking a transaction locally might look like this:
 
 [source,bash]
 ----
@@ -320,13 +320,13 @@ Events to Index:
 ]
 ----
 
-Once the transaction is accepted on Layer 1, we can query the StarkNet Core Contracts from our Layer 1 node to see the storage keys that have been updated on our data layer!
+Once the transaction is accepted on Layer 1, we can query the Starknet Core Contracts from our Layer 1 node to see the storage keys that have been updated on our data layer!
 
-You have successfully navigated through the entire StarkNet stack, from setting up your node, through executing and monitoring a transaction, to inspecting its effects on the data layer. This journey has equipped you with the understanding and the skills to interact with StarkNet on a deeper level.
+You have successfully navigated through the entire Starknet stack, from setting up your node, through executing and monitoring a transaction, to inspecting its effects on the data layer. This journey has equipped you with the understanding and the skills to interact with Starknet on a deeper level.
 
-== Conclusion: Understanding the Modular Nature of StarkNet
+== Conclusion: Understanding the Modular Nature of Starknet
 
-Conceptual models, such as the ones used in this guide, are incredibly useful in helping us understand complex systems. They can be refactored, reformed, and nested to provide a clear and comprehensive view of how a platform like StarkNet operates. For instance, the OSI Model, a foundational model for understanding network interactions, underpins our modular stack.
+Conceptual models, such as the ones used in this guide, are incredibly useful in helping us understand complex systems. They can be refactored, reformed, and nested to provide a clear and comprehensive view of how a platform like Starknet operates. For instance, the OSI Model, a foundational model for understanding network interactions, underpins our modular stack.
 
 A key concept to grasp is 'Fractal Scaling.' This concept allows us to extend our model to include additional layers beyond Layer 2, such as Layer 3. In this extended model, the entire stack recurs above our existing stack, as shown in the following diagram:
 
@@ -334,9 +334,9 @@ image::node3.png[node3]
 
 Just as Layer 2 compresses its transaction throughput into a proof and state change that is written to Layer 1, we can apply the same compression principle at Layer 3, proving and writing to Layer 2. This not only gives us more control over the protocol rules but also allows us to achieve higher compression ratios, enhancing the scalability of our applications.
 
-In essence, StarkNet's modular and layered design, combined with the power of Fractal Scaling, offers a robust and scalable framework for building decentralized applications. Understanding this structure is fundamental to effectively leveraging StarkNet's capabilities and contributing to its ecosystem.
+In essence, Starknet's modular and layered design, combined with the power of Fractal Scaling, offers a robust and scalable framework for building decentralized applications. Understanding this structure is fundamental to effectively leveraging Starknet's capabilities and contributing to its ecosystem.
 
-This concludes our journey into running a StarkNet node and traversing its layered architecture. We hope that you now feel equipped to explore, experiment with, and innovate within the StarkNet ecosystem.
+This concludes our journey into running a Starknet node and traversing its layered architecture. We hope that you now feel equipped to explore, experiment with, and innovate within the Starknet ecosystem.
 
 [NOTE]
 ====

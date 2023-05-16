@@ -7,7 +7,7 @@ CONTRIBUTE: Your contributions can greatly enhance the depth and practicality of
 Several tools exist in the starknet ecosystem to build the front-end for your application. The most popular ones are:
 
 * https://github.com/apibara/starknet-react[starknet-react] (https://apibara.github.io/starknet-react[documentation]): Collection of React hooks for Starknet. It is inspired by https://github.com/tmm/wagmi[wagmi], powered by https://github.com/0xs34n/starknet.js[starknet.js].
-* https://github.com/0xs34n/starknet.js[starknet.js]: A JavaScript library for interacting with StarkNet contracts. It would be the equivalent of https://web3js.org/[web3.js] for Ethereum.
+* https://github.com/0xs34n/starknet.js[starknet.js]: A JavaScript library for interacting with Starknet contracts. It would be the equivalent of https://web3js.org/[web3.js] for Ethereum.
 
 [NOTE]
 ====
