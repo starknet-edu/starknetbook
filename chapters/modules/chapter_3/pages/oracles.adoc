@@ -3,17 +3,13 @@
 
 Blockchains inherently lack the ability to read data from the internet. Nevertheless, many blockchain applications, such as DeFi apps, require constant access to up-to-date information from various online sources. Oracles bridge the gap between blockchains and external systems, allowing smart contracts to execute based on real-world inputs and outputs.
 
-The two largest oracles on Starknet are the https://www.empiric.network/[Empiric Network] and the https://www.stork.network/[Stork Oracle Network].
+The largest oracle on Starknet is https://www.pragmaoracle.com/[Pragma].
 
-== Empiric Network
+== Pragma Network
 
-The https://www.empiric.network/[Empiric Network] is a fully open-source and audited oracle network. It provides over 20 price feeds for popular crypto assets and has a well-established community of data providers, ensuring frequent updates.
-
-== Stork Network
-
-The https://www.stork.network/[Stork Network] is an on-chain price computation oracle, calculating token prices on-chain on Starknet based on price quotes provided by individual publishers rather than aggregating them off-chain.
-
-The network maintains a whitelist of publishers authorized to publish and sign data on-chain. Currently, only two publishers are live on the testnet, providing price updates: Dexterity, a financial firm in the crypto space, and Stork itself.
+https://www.pragmaoracle.com/[Pragma] is a fully open-source and audited oracle network. It provides over 20 price feeds for popular crypto assets and has a well-established community of data providers, ensuring frequent updates.
+Pragma is a fully on-chain oracle which leverages Starknet's cheap computation to provide fully transparent and composable data feeds (yield curve, realized volatility, etc.)
+Note that once 0.13.0 is released, Pragma will also leverage Volition mode to increase frequency of updates and reduce costs.
 
 == Chainlink
 
