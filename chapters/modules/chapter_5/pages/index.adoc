@@ -1,0 +1,29 @@
+= Front-End Development
+
+====
+CONTRIBUTE: Your contributions can greatly enhance the depth and practicality of this chapter. We're specifically seeking examples of using starknet-react alongside starknet.js to create straightforward dApps. If you've built something or have insights to share, we encourage you to open a https://github.com/starknet-edu/starknetbook/[PR on our GitHub repository]. Your expertise will help expand our collective knowledge and make blockchain technology more accessible for everyone. Thank you for considering contributing to this open-source project.
+====
+
+Several tools exist in the starknet ecosystem to build the front-end for your application. The most popular ones are:
+
+* https://github.com/apibara/starknet-react[starknet-react] (https://apibara.github.io/starknet-react[documentation]): Collection of React hooks for Starknet. It is inspired by https://github.com/tmm/wagmi[wagmi], powered by https://github.com/0xs34n/starknet.js[starknet.js].
+* https://github.com/0xs34n/starknet.js[starknet.js]: A JavaScript library for interacting with StarkNet contracts. It would be the equivalent of https://web3js.org/[web3.js] for Ethereum.
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
