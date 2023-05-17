@@ -2,6 +2,10 @@
 
 = Starknet React
 
+====
+CONTRIBUTE: We are looking to add a concrete example of how to use Starknet React (likely in interaction with starknet.js). If you have a project that uses Starknet React, please submit a PR.
+====
+
 Developed by the [Apibara](https://github.com/apibara) team, Starknet React is an open-source collection of React providers and hooks for Starknet. 
 
 To begin using Starknet-React, first install the appropriate package manager, PNPM:
