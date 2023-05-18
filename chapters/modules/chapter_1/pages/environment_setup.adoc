@@ -147,6 +147,7 @@ git clone https://github.com/starkware-libs/cairo/ .cairo
 
 # Checkout the working branch and generate the release binaries
 cd .cairo/
+
 git checkout tags/v1.1.0-alpha0
 cargo build --all --release
 ----
@@ -201,7 +202,7 @@ The first step is to pull the Docker image containing the necessary tools for St
 
 [source, bash]
 ----
-docker pull artudev19/cairo-env:1.0.0-alpha.6
+docker pull artudev19/cairo-env:latest
 ----
 
 This command downloads the Starknet Docker image.
@@ -212,7 +213,7 @@ To run a container from the image, execute the `docker run` command. To make cer
 
 [source, bash]
 ----
-docker run -it --name stark-env -v /Desktop/stark-apps/contracts:/contracts artudev19/cairo-env:1.0.0-alpha.6
+docker run -it --name stark-env -v /Desktop/stark-apps/contracts:/contracts artudev19/cairo-env:latest
 ----
 
 This command runs a container named `stark-env` (ensure your Docker daemon is running) and opens a terminal where you can execute Starknet and Cairo commands. In the example above, the Cairo contracts from your local machine will be in the `stark-app/contracts` directory, while in the container, they will be in the `contracts` path.
