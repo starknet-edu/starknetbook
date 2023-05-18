@@ -1,1 +1,0 @@
-# example for logarithm intuition
