@@ -100,7 +100,7 @@ fn index_pokemon_array() {
 
 == Understanding Snapshots and Spans
 
-In this chapter, we will explore the concepts of snapshots and Spans in StarkNet. A `Span` is a lightweight view of an array that allows you to access the underlying data without modifying the original array. You can create a span from an array using the `span()` method. Before diving into `Span`, it's essential to understand snapshots (defined by the operator `@`), as a `Span` struct is built upon them:
+In this chapter, we will explore the concepts of snapshots and Spans in Starknet. A `Span` is a lightweight view of an array that allows you to access the underlying data without modifying the original array. You can create a span from an array using the `span()` method. Before diving into `Span`, it's essential to understand snapshots (defined by the operator `@`), as a `Span` struct is built upon them:
 
 [source, rust]
 ----

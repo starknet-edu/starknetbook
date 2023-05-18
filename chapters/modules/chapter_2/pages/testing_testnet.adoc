@@ -4,7 +4,7 @@
 
 Testing is a crucial aspect of smart contract development, as it ensures that your contract operates as intended and helps detect potential bugs or security vulnerabilities. The optimal approach to local testing involves using unit tests within our code and interacting with the contract through a local development network. In the next chapter of the book, we will cover both of these methods. For now, in this subchapter, we will demonstrate how to interact with the Pokemon contract and its assertions on the testnet.
 
-In this subchapter, we will guide you through testing a deployed contract using view functions, either with the StarkNet CLI or a block explorer. The contract we will be examining is the https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_2/pages/contracts/src/pokemon_array.cairo[`PokeArray` contract], which showcases basic operations with Array and Span in Cairo. Ensure that you have completed the https://book.starknet.io/chapter_2/deploy_call_invoke.html[Deploying, Calling, and Invoking Contracts] subchapter before proceeding.
+In this subchapter, we will guide you through testing a deployed contract using view functions, either with the Starknet CLI or a block explorer. The contract we will be examining is the https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_2/pages/contracts/src/pokemon_array.cairo[`PokeArray` contract], which showcases basic operations with Array and Span in Cairo. Ensure that you have completed the https://book.starknet.io/chapter_2/deploy_call_invoke.html[Deploying, Calling, and Invoking Contracts] subchapter before proceeding.
 
 
 == Deploying to Goerli Testnet
@@ -41,7 +41,7 @@ This command returns the contract address and the transaction hash.
 
 == Using View Functions for Testing
 
-In the `PokeArray` contract, we have created view functions to test various aspects of our contract, such as `pop_pokemon_array`, `index_pokemon_array`, and `index_pokemon_span`. These view functions can be called using the StarkNet CLI or a block explorer. If the view functions return a value of 1, it indicates that our assertions within the functions have passed. If the assertions fail or an error occurs, the execution will stop, and an error message will be displayed.
+In the `PokeArray` contract, we have created view functions to test various aspects of our contract, such as `pop_pokemon_array`, `index_pokemon_array`, and `index_pokemon_span`. These view functions can be called using the Starknet CLI or a block explorer. If the view functions return a value of 1, it indicates that our assertions within the functions have passed. If the assertions fail or an error occurs, the execution will stop, and an error message will be displayed.
 
 == Testing the Deployed Contract
 
@@ -49,9 +49,9 @@ After deploying your contract, you can use a block explorer or the `starknet` CL
 
 Follow these steps to test your deployed contract:
 
-1. *Using a block explorer*: Interact with your contract by employing a StarkNet block explorer, such as https://goerli.voyager.online/[Voyager] or https://testnet.starkscan.co/[StarkScan]. Input the contract address and call the view functions through the Read tab.
+1. *Using a block explorer*: Interact with your contract by employing a Starknet block explorer, such as https://goerli.voyager.online/[Voyager] or https://testnet.starkscan.co/[StarkScan]. Input the contract address and call the view functions through the Read tab.
 
-2. *Using StarkNet CLI*: As an alternative, utilize the `starknet call` command to call the view functions. For more information on using the CLI, consult the https://book.starknet.io/chapter_2/deploy_call_invoke.html[Deploying, Calling, and Invoking Contracts] subchapter.
+2. *Using Starknet CLI*: As an alternative, utilize the `starknet call` command to call the view functions. For more information on using the CLI, consult the https://book.starknet.io/chapter_2/deploy_call_invoke.html[Deploying, Calling, and Invoking Contracts] subchapter.
 
 
 == Handling Errors in View Functions

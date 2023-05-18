@@ -1,0 +1,30 @@
+[id="index"]
+
+= Introduction to Testing on Starknet
+
+====
+CALL FOR CONTRIBUTIONS: Your knowledge and expertise can significantly enrich this chapter. Specifically, we're seeking practical examples illustrating the testing process of contracts at each stage - unit testing, devnet, testnet, and mainnet deployment. If you're interested in contributing, kindly submit a https://github.com/starknet-edu/starknetbook/[Pull Request (PR) on our GitHub repository]. We greatly appreciate your interest in contributing to this open-source project, and we look forward to learning from your experiences.
+====
+
+In this chapter, we will explore various tools available for testing Cairo and Starknet contracts. Please note that this is a rapidly evolving space with new tools and methodologies being introduced regularly. As of the time of writing, the tools we will cover represent a significant portion of those available, but we encourage readers to stay updated with the latest developments.
+
+At present, we have the ability to interact with the Starknet Alpha. The suggested steps for contract deployment are:
+
+. *Unit Testing*: Begin by writing unit tests for your contracts. Tools such as Protostar, Nile, or starknet.py can be employed for this purpose.
+. *Devnet Deployment*: Once your unit tests are passing, the next step is to deploy your contracts on a devnet. Shard Lab's `starknet-devnet`, available on https://github.com/Shard-Labs/starknet-devnet[Github], is a good choice for this.
+. *Testnet Deployment*: Following successful devnet deployment, contracts can be deployed to a testnet such as Goerli, `alpha-goerli`, or Goerli 2. This can be achieved using tools such as Protostar, Nile, Hardhat, and more.
+. *Mainnet Deployment*: Lastly, after rigorous testing on the testnets, contracts can be deployed to the Alpha Starknet (`alpha-mainnet`). The tools used for testnet deployment can also be used for mainnet deployment.
+
+Remember, the purpose of this progression is to thoroughly test and debug contracts in a controlled and cost-effective manner before deploying them in a live environment.
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

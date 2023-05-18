@@ -1,5 +1,5 @@
 /// @title PokeArray
-/// @notice A StarkNet smart contract that demonstrates basic operations with Array and Span in Cairo.
+/// @notice A Starknet smart contract that demonstrates basic operations with Array and Span in Cairo.
 /// @author Your Name
 #[contract]
 mod PokeArray {
