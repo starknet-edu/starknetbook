@@ -7,7 +7,7 @@ use option::OptionTrait;
 
 // Define the Account contract
 #[account_contract]
-mod Account {
+mod StandardAccount {
     use array::ArrayTrait;
     use array::SpanTrait;
     use box::BoxTrait;

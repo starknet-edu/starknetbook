@@ -7,4 +7,8 @@ setup = "export STARKNET_NETWORK=alpha-goerli && export STARKNET_WALLET=starkwar
 declare = "starknet declare --contract target/release/starknetbook_chapter_7_HelloAccount.json --account vote_admin --max_fee 100000000000000000"
 deploy = "starknet deploy --class_hash 0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa6dece7734a2cdfe --account vote_admin --max_fee 100000000000000000"
 
+# [lib]
+# sierra = true  # Enable Sierra codegen.
+# casm = false   # Enable CASM codegen.
+
 [[target.starknet-contract]]

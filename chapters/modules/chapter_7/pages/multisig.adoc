@@ -2,27 +2,37 @@
 
 = Multisig Accounts
 
-== What is a mulstisig account?
+====
+CONTRIBUTE: This subchapter is missing an example of declaration, deployment and interaction with the contract. We would love to see your contribution! Please submit a PR.
+====
 
-A multisig account is an account that may require more than one signature to sign the transactions. This is generally very useful from a security perspective as it requires the consent of multiple parties, in order to deal with funds/critical actions.
+Multisignature (multisig) technology is an integral part of the modern blockchain landscape. It enhances security by requiring multiple signatures to confirm a transaction, hence reducing the risk of fraudulent transactions and increasing control over asset management.
 
-Multisig accounts need the following specifications to begin with: +
-* Public keys that form the account +
+In Starknet, the concept of multisig accounts is abstracted at the protocol level, allowing developers to implement custom account contracts that embody this concept. In this chapter, we'll delve into the workings of a multisig account and see how it's created in Starknet using an account contract.
+
+== What is a Multisig Account?
+
+A multisig account is an account that requires more than one signature to authorize transactions. This significantly enhances security, requiring multiple entities' consent to transact funds or perform critical actions.
+
+Key specifications of a multisig account include:
+
+* Public keys that form the account
 * Threshold number of signatures required
 
-To sign with a multisig account, the transaction must be signed individually by the different keys specified for the account. If fewer than the threshold number of signatures needed are present, the resultant multisignature is considered invalid.
+A transaction signed by a multisig account must be individually signed by the different keys specified for the account. If fewer than the threshold number of signatures needed are present, the resultant multisignature is considered invalid.
 
-Starknet provides account abstraction at protocol level, therefore - if you would want to create a multisig account, the logic should be codified into the account contract thhat you would deploy.
+In Starknet, accounts are abstractions provided at the protocol level. Therefore, to create a multisig account, one needs to code the logic into an account contract and deploy it.
 
-Here is a simple example of a Multisig account contract which when deployed has the ability to create a native multisig account using the concept of account abstraction. Notice that the following contract is just a sample contract and does not have all the right checks in place, but it's a good start to understanding how multisig can be implemented using code. 
+The contract below serves as an example of a multisig account contract. When deployed, it can create a native multisig account using the concept of account abstraction. Please note that this is a simplified example and lacks comprehensive checks and validations found in a production-grade multisig contract.
+
+== Multisig Account Contract
 
 [,Rust]
 ----
 #[account_contract]
-mod Account {
+mod MultisigAccount {
     use ecdsa::check_ecdsa_signature;
     use starknet::ContractAddress;
-    use starknet::ContractAddressZeroable;
     use zeroable::Zeroable;
     use array::ArrayTrait; 
     use starknet::get_caller_address;
@@ -213,16 +223,24 @@ mod Account {
         ).unwrap_syscall()
     }
 }
-
 ----
 
-The multisig transactions follow two steps: +
-1. Submitting a transaction: Any of the owners can submit a transaction from the account. +
-2. Confirming the transaction: The owner who hasn't submitted a transaction can confirm the trannsaction.
+== Multisig Transaction Flow
 
-If the number of confirmations(including the submitter's sgnature) is greater than or equal to the threshold number of signatures, the transaction is executed successfully, else it fails.
+The flow of a multisig transaction includes the following steps:
 
-Let us take a closer look at some of the functions associated with multisig functionality:
+1. Submitting a transaction: Any of the owners can submit a transaction from the account.
+2. Confirming the transaction: The owner who hasn't submitted a transaction can confirm the transaction.
+
+The transaction will be successfully executed if the number of confirmations (including the submitter's signature) is greater than or equal to the threshold number of signatures, else it fails. This mechanism of confirmation ensures that no single party can unilaterally perform critical actions, thereby enhancing the security of the account.
+
+== Exploring Multisig Functions
+
+Let's take a closer look at the various functions associated with multisig functionality in the provided contract.
+
+=== _set_owners Function
+
+This is an internal function designed to add the public keys of the account owners to a permanent storage. Ideally, a multisig account structure should permit adding and deleting owners as per the agreement of the account owners. However, each change should be a transaction requiring the threshold number of signatures.
 
 [,Rust]
 ----
@@ -238,7 +256,9 @@ fn _set_owners(owners_len: usize, public_keys: Array::<felt252>) {
 }
 ----
 
-The *_set_owners_* internal function is used to add the public key of the owners to a permanent storage. In an ideal multisig account structure, you should be able to add and delete owners as per the wish of the account owners, but each of these would be transactions that require the threshold number of signatures.
+=== submit_tx Function
+
+This external function allows the owners of the account to submit transactions. Upon submission, the function checks the validity of the transaction, ensures the caller is one of the account owners, and adds the transaction to the transactions map. It also increments the current transaction index. 
 
 [,Rust]
 ----
@@ -271,12 +291,90 @@ fn submit_tx(public_key: felt252) {
 }
 ----
 
-The submit transaction receives a transaction, checks it's validity and adds it to the *_transactions_* map. This function also updates the current transaction index.
+=== confirm_tx Function
 
-Similarly, the *_confirm_tx_* function is used to record the number of confirmations for a particular transaction.
+Similarly, the *_confirm_tx_* function provides a way to record confirmations for each transaction. An account owner, who did not submit the transaction, can confirm it, increasing its confirmation count.
 
-Finally, the *__execute__* functions checks for the validity of the transaction, if it has been previously executed or not, as well as the threshold number of signatures and executes the transaction based on whether the checks were completed successfully or not.
+[Source, Rust]
+----
+    #[external]
+    fn confirm_tx(tx_index: felt252, public_key: felt252) {
 
+        let transaction_hash = transactions::read(tx_index);
+        //TBD: Assert that tx_hash is not null
+
+        let num_confirmations = tx_confirms::read(tx_index);
+        let executed = tx_is_executed::read(tx_index);
+
+        assert(executed == false, 'TX_ALREADY_EXECUTED');
+
+        let caller = get_caller_address();
+        let tx_info = starknet::get_tx_info().unbox();
+        let signature: Span<felt252> = tx_info.signature;
+
+         assert(
+            check_ecdsa_signature(
+                message_hash: tx_info.transaction_hash,
+                public_key: public_key,
+                signature_r: *signature.at(0_u32),
+                signature_s: *signature.at(1_u32),
+            ),
+            'INVALID_SIGNATURE',
+        );
+
+        let confirmed = has_confirmed::read((caller, tx_index));
+
+        assert (confirmed == false, 'CALLER_ALREADY_CONFIRMED');
+        tx_confirms::write(tx_index, num_confirmations+1_usize);
+        has_confirmed::write((caller, tx_index), true);
+    }
+----
+
+=== __execute__ Function
+
+The __execute__ function serves as the final step in the transaction process. It checks the validity of the transaction, whether it has been previously executed, and if the threshold number of signatures has been reached. The transaction is executed if all the checks pass.
+
+[,Rust]
+----
+#[external]
+    #[raw_output]
+    fn __execute__(
+        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>, 
+        tx_index: felt252
+    ) -> Span::<felt252> {
+        // Validate caller.
+        assert(starknet::get_caller_address().is_zero(), 'INVALID_CALLER');
+
+        // Check the tx version here, since version 0 transaction skip the __validate__ function.
+        let tx_info = starknet::get_tx_info().unbox();
+        assert(tx_info.version != 0, 'INVALID_TX_VERSION');
+
+        //Multisig check here
+        let num_confirmations = tx_confirms::read(tx_index);
+        let owners_len = num_owners::read();
+        //Subtracting one for the submitter
+        let required_confirmations = threshold::read() - 1_usize;
+        assert(num_confirmations >= required_confirmations, 'MINIMUM_50%_CONFIRMATIONS');
+
+        tx_is_executed::write(tx_index, true);
+
+        starknet::call_contract_syscall(
+            contract_address, entry_point_selector, calldata.span()
+        ).unwrap_syscall()
+    }
+----
+
+== Closing Thoughts
+
+This chapter has introduced you to the concept of multisig accounts in Starknet and illustrated how they can be implemented using an account contract. However, it's important to note that this is a simplified example, and a production-grade multisig contract should contain additional checks and validations for robustness and security.
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
 
 == Contributing
 

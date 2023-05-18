@@ -1,9 +1,12 @@
 [id="multicall"]
+
 = Multicalls
 
-== Introduction
+====
+CONTRIBUTE: This subchapter is missing an example of declaration, deployment and interaction with the contract. We would love to see your contribution! Please submit a PR.
+====
 
-https://github.com/joshstevens19/ethereum-multicall#readme[Multicall] is a powerful technique that allows multiple constant smart contract function calls to be aggregated into a single call, resulting in a consolidated output. With StarkNet's account abstraction feature, multicalls can be seamlessly integrated into account contracts.
+https://github.com/joshstevens19/ethereum-multicall#readme[Multicall] is a powerful technique that allows multiple constant smart contract function calls to be aggregated into a single call, resulting in a consolidated output. With Starknet's account abstraction feature, multicalls can be seamlessly integrated into account contracts.
 
 == Why Multicalls?
 
