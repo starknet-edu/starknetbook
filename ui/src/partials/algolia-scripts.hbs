@@ -109,7 +109,7 @@
   function createMostPopularSearchesPlugin(){
     const popularSearchers = createQuerySuggestionsPlugin({
       searchClient,
-      indexName: 'web_query_suggestions_dev',
+      indexName: 'starknet-book-web-main',
       getSearchParams({ state }) {
         return { hitsPerPage: 3 };
       },
@@ -173,8 +173,8 @@
 </script>
 
 <script>
-    const appId = "VHYJO45TI4";
-    const apiKey = "5d71388c42b42ee9d267c6ef996b466c";
+    const appId = "YI8Q8078VN";
+    const apiKey = "7ed7bb42c66fbd54051a8be374c10559";
     const searchClient = algoliasearch(appId, apiKey);
 
     function getSources({ query, state }) {
@@ -190,7 +190,7 @@
                 searchClient,
                 queries: [
                   {
-                    indexName: "starknet-book-web",
+                    indexName: "starknet-book-web-main",
                     query,
                     params: {
                       attributesToSnippet: ["title:8", "content:10"],
