@@ -8,6 +8,11 @@ If you encounter any issues or difficulties while setting up Starknet and Cairo 
 
 This chapter will guide you through the process of setting up your development environment for Cairo and Starknet. By the end of this chapter, you will have a fully functional development environment, allowing you to build, deploy, and interact with Cairo smart contracts.
 
+There are two components in the Starknet development environment: the Starknet CLI and the Cairo compiler. 
+
+. The Starknet CLI is a command-line interface that allows you to interact with Starknet. This is one of the tools that allow us to interact with Starknet, however, it is not the only one. We will cover other tools in later chapters (e.g., the Starknet JavaScript/Python/Rust SDK or Protostar).
+. The Cairo compiler is a tool that compiles Cairo code to Sierra.
+
 The setup process can be accomplished through two different methods: setting up a local development environment or using a Docker container. Both options are covered in this chapter, allowing you to choose the one that best suits your needs and preferences.
 
 The topics covered in this chapter include:
@@ -103,7 +108,7 @@ These Python packages provide cryptographic and mathematical functionality neede
 
 Now that you have set up the environment and installed the dependencies, you can install the Starknet CLI. Follow these steps:
 
-a. Uninstall any previous version of `cairo-lang`:
+a. Uninstall any previous version of `cairo-lang` (`cairo-lang` is the name of the package that contains the Starknet CLI):
 
 [source, bash]
 ----
@@ -142,7 +147,8 @@ git clone https://github.com/starkware-libs/cairo/ .cairo
 
 # Checkout the working branch and generate the release binaries
 cd .cairo/
-git checkout tags/v1.0.0-alpha.6
+
+git checkout tags/v1.1.0-alpha0
 cargo build --all --release
 ----
 
@@ -196,7 +202,7 @@ The first step is to pull the Docker image containing the necessary tools for St
 
 [source, bash]
 ----
-docker pull artudev19/cairo-env:1.0.0-alpha.6
+docker pull artudev19/cairo-env:latest
 ----
 
 This command downloads the Starknet Docker image.
@@ -207,7 +213,7 @@ To run a container from the image, execute the `docker run` command. To make cer
 
 [source, bash]
 ----
-docker run -it --name stark-env -v /Desktop/stark-apps/contracts:/contracts artudev19/cairo-env:1.0.0-alpha.6
+docker run -it --name stark-env -v /Desktop/stark-apps/contracts:/contracts artudev19/cairo-env:latest
 ----
 
 This command runs a container named `stark-env` (ensure your Docker daemon is running) and opens a terminal where you can execute Starknet and Cairo commands. In the example above, the Cairo contracts from your local machine will be in the `stark-app/contracts` directory, while in the container, they will be in the `contracts` path.
