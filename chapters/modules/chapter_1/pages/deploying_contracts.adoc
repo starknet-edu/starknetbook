@@ -164,7 +164,7 @@ starknet declare --contract hello_starknet.json --account account_name
 The above command may fail if you are using code that has already been declared by someone else! Please make sure to add custom code to your contract to create a new contract class.
 ====
 
-You will see something like:
+You will see something like (if you get an error, see the next section on troubleshooting):
 
 [source, bash]
 ----
@@ -174,6 +174,34 @@ Contract class hash: 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d
 Transaction hash: 0x334f16d9da30913c4a30194057793379079f35efa6bf5753bc6e724a591e9f0
 ----
 The transaction hash allows you to track when the network will have received your contract's code. Once this transaction has moved to "PENDING", you can deploy an instance of your contract.
+
+=== Troubleshooting: Contract Declaration Process
+
+In the contract declaration process, you may encounter hiccups due to diverse factors such as software compatibility, architectural discrepancies, and execution errors.
+
+Here is an error that can arise during the contract declaration:
+
+[source,bash]
+----
+Error: OSError: [Errno 8] Exec format error: '/opt/homebrew/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile'
+----
+
+This error is generated when cairo-lang attempts to compile your Sierra code using an imported Rust binary, 'starknet-sierra-compile'. However, in some instances, the imported binary may not be compatible with your system architecture.
+
+The solution is to replace the incompatible Rust binary with a locally built version. The following steps can guide you through this process:
+
+. *Build the 'starknet-sierra-compile' binary locally.* We did this before when we set up our environment by cloning the starknet repository and building the binary. If you have not done this yet, please refer to the Setting Up Your Environment subchapter.
+
+. *Replace the incompatible binary in the Python package.* The locally built 'starknet-sierra-compile' binary can be moved into the Python package directory. Here's an example of how to do this:
+
+[source,bash]
+----
+cp ~/.cairo/target/release/starknet-sierra-compile /opt/homebrew/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile
+----
+
+. *Retry the contract declaration.* After replacing the binary, try declaring your contract again. The process should work without any issues.
+
+This section is by no means exhaustive, and it is possible to encounter a multitude of different issues during the contract declaration process. When facing issues, remember to check for any updates or changes in the documentation and don't hesitate to add an issue on the starknet book repository.
 
 == Deploy a contract
 
