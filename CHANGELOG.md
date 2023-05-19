@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/starknet-edu/starknetbook/compare/v1.2.4...v1.2.5) (2023-05-19)
+
+### [1.2.4](https://github.com/starknet-edu/starknetbook/compare/v1.2.3...v1.2.4) (2023-05-18)
+
+### [1.2.3](https://github.com/starknet-edu/starknetbook/compare/v1.2.2...v1.2.3) (2023-05-18)
+
+### [1.2.2](https://github.com/starknet-edu/starknetbook/compare/v1.2.1...v1.2.2) (2023-05-17)
+
+### [1.2.1](https://github.com/starknet-edu/starknetbook/compare/v1.2.0...v1.2.1) (2023-05-17)
+
+## [1.2.0](https://github.com/starknet-edu/starknetbook/compare/v1.1.81...v1.2.0) (2023-05-16)
+
+
+### Features
+
+* add pragma and eliminate stork ✨ ([#102](https://github.com/starknet-edu/starknetbook/issues/102)) ([9b9c2d1](https://github.com/starknet-edu/starknetbook/commit/9b9c2d1ac3296671c500340e9f4db882f329c242))
+
 ### [1.1.81](https://github.com/starknet-edu/starknetbook/compare/v1.1.80...v1.1.81) (2023-05-16)
 
 ### [1.1.80](https://github.com/starknet-edu/starknetbook/compare/v1.1.79...v1.1.80) (2023-05-16)

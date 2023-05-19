@@ -2,6 +2,10 @@
 s
 = Vue Stark Boil
 
+====
+CONTRIBUTE: We are looking to add a concrete example of how to use Starknet Vue. If you have a project that uses Starknet React, please submit a PR.
+====
+
 The Starknet ecosystem offers frameworks suitable for both Vue and React. For those who prefer Vue, vue-stark-boil, developed by the team at [Don't Panic DAO](https://github.com/dontpanicdao), is a great option.
 
 To start, clone the project to your device from [here](https://github.com/dontpanicdao/vue-stark-boil). For a deeper understanding of Vue, visit their [website](https://vuejs.org/). The vue-stark-boil boilerplate enables various functionalities, such as connecting to a wallet, listening for account changes, and calling a contract.

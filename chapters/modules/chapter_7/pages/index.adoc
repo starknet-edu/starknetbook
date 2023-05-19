@@ -2,7 +2,7 @@
 
 = Introduction to Account Abstraction
 
-_*Disclaimers: This tutorial cites various stakeholders, any errors or misunderstandings in this tutorial are the fault of interpretation._
+_*Disclaimers: This section cites various stakeholders, any errors or misunderstandings in this tutorial are the fault of interpretation._
 
 The crypto ecosystem is at a critical crossroads. Ethereum, as one of the leading platforms, faces a monumental challenge: embracing Account Abstraction (AA) or risking the very essence of what crypto stands for - decentralization.
 

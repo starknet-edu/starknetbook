@@ -8,14 +8,16 @@ Now that we know better the concept of AA, let's actually code it in Starknet.
 
 Although account contracts are nothing more than smart contracts, they have methods that set them apart from other smart contracts. The following interface to an account contract implements the AA protocol. It has a public key associated with it and can validate and execute transactions. Here's what it does:
 
-* `constructor`: Sets the account's public key when the account contract is created.
-* `validate_transaction`: Checks if the transaction's signature is valid using the account's public key.
-* `__validate_deploy__`: Validates the deployment of a new contract; called during deployment.
-* `__validate_declare__`: Validates the declaration of a new contract.
-* `__validate__`: Validates transactions before executing them.
-* `__execute__`: Executes a series of contract calls.
+* `constructor`: This optional method initializes the account contract. While an account contract can exist without a constructor, it is common practice to establish the associated public key within the constructor.
+* `validate_transaction`: An optional helper method, `validate_transaction`, checks the validity of a transaction. This could involve comparing a signature against an associated public key, or any other validation process as defined by the contract creator.
+* `__validate_deploy__`: This method is invoked during the deployment process and serves to validate the deployment of a new contract.
+* `__validate_declare__`: This method validates the declaration of a new contract. It confirms the syntax and semantics of the contract declaration are correct.
+* `__validate__`: This method validates transactions before they are executed. It ensures that the transaction adheres to the rules defined in the contract.
+* `__execute__`: After the transactions have been validated, `__execute__` is the method that executes a series of contract calls.
 
-The Account contract ensures that only transactions with valid signatures are executed, acting as a simple yet secure user account on the Starknet network. Let's explore all the functions and entry points deeper.
+Account contracts play a vital role in ensuring the security of the Starknet network by allowing only transactions with valid signatures to be executed.
+
+Here is a generic implementation of an account contract:
 
 [,Rust]
 ----
@@ -47,7 +49,7 @@ mod Account {
 }
 ----
 
-Let's examine the entry points (functions):
+The entry points of an account contract are its callable functions. Let's explore these in detail:
 
 * `constructor`: This function is not mandatory, but it's useful for setting up an account contract. It accepts a `public_key` parameter that represents the public key associated with the account. In the future, there may be a `setPublicKey()` method to facilitate account transfers.
 * `isValidSignature`: Inspired by EIP-1271, this function returns true if a given signature is valid; otherwise, it reverts.
@@ -77,6 +79,19 @@ It contains the following fields:
 * `to`: The target contract address.
 * `selector`: The selector of the function to be called on the target contract.
 * `calldata`: An array representing the function parameters.
+
+== Summary
+
+In this chapter, we explored the Account Abstraction model in Starknet, focusing on account contracts and their methods.
+
+To summarize:
+
+* Account contracts are smart contracts implementing the Account Abstraction protocol.
+* They provide methods for validating and executing transactions and contract deployments.
+* They offer flexibility to users by allowing them to define custom validation logic.
+
+In the next subchapter, we will implement a simple account contract and learn how to deploy it on Starknet. This will provide a practical understanding of how account contracts work and how to interact with them.
+
 
 [NOTE]
 ====
