@@ -174,7 +174,7 @@
 
 <script>
     const appId = "VHYJO45TI4";
-    const apiKey = "9d5f273e78238a8c505526e481c857f7";
+    const apiKey = "5d71388c42b42ee9d267c6ef996b466c";
     const searchClient = algoliasearch(appId, apiKey);
 
     function getSources({ query, state }) {
@@ -190,7 +190,7 @@
                 searchClient,
                 queries: [
                   {
-                    indexName: "starknet-docs-dev",
+                    indexName: "starknet-book-web",
                     query,
                     params: {
                       attributesToSnippet: ["title:8", "content:10"],
