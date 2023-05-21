@@ -20,16 +20,16 @@ _*Note: In computing, the term abstraction is used to generalize something. In t
 
 AA aims to make self-custody more accessible and more secure by allowing for (among others):
 
-1. Hardware Signer: Sign transactions and messages using your biometric identity, with a key generated and protected by your smartphone's secure enclave (Starkware)[4].
+1. Hardware Signer: Sign transactions and messages using your biometric identity, with a key generated and protected by your smartphone's secure enclave (Starkware)[4], (Braavos)[7].
 2. Social recovery: Securely replace the key controlling an account in case it's lost or compromised, eliminating the need for seed phrases (Julien Niset, 2022)[5].
 3. Key rotation: Change the keys controlling your account if they're compromised, instead of moving all your assets.
 4. Session keys: Sign in once, and allow websites to act on your behalf without requiring constant approval for transactions. This brings a more familiar web2 experience to web3 applications.
-5. Custom transaction validation schemes: Choose from various signature schemes, multisignatures, and other security rules (Martin Triay, Devcon 6)[1], (Julien Niset, 2022)[5].
+5. Custom transaction validation schemes: Choose from various signature schemes, multisignatures, and other security rules (Martin Triay, Devcon 6)[1], (Julien Niset, 2022)[5], (Motty Lavie)[7].
 
 AA also enhances security by offering:
 
-1. Better key management: Add devices to your wallet, allowing for access even if you lose one device. This improvement in key management enhances security (Yoav, Devcon 6)[6].
-2. Different signature and validation schemes: Implement additional security measures, like 2-factor authentication, for large transactions. This enables better security by adapting to each user's specific needs (Yoav, Devcon 6)[6].
+1. Better key management: Add devices to your wallet, allowing for access even if you lose one device. This improvement in key management enhances security (Yoav, Devcon 6)[6], (Motty Lavie)[7].
+2. Different signature and validation schemes: Implement additional security measures, like 2-factor authentication, for large transactions. This enables better security by adapting to each user's specific needs (Yoav, Devcon 6)[6], (Motty Lavie)[8].
 3. Custom security policies: Tailor security schemes to suit different types of users or devices, and adapt good practices from the banking and web2 sectors (Yoav, Devcon 6)[6].
 
 In summary, AA unlocks new possibilities for developers and users in the Ethereum ecosystem, promising a more secure and user-friendly experience. By enabling various validation schemes and improved key management, AA brings the potential for wider adoption and a better user experience.
@@ -41,6 +41,8 @@ In summary, AA unlocks new possibilities for developers and users in the Ethereu
 * [3] lightclient, Devcon 6: https://app.devcon.org/schedule/9mvqce
 * [4] Starkware: https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79
 * [5] Julien Niset, 2022: https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/
+* [7] Motty Lavie, 2022: https://braavos.app/hardware-signer-innovative-security-feature-for-crypto-wallets/
+* [8] Motty Lavie, 2023: https://braavos.app/account-abstraction-security-pyramid/
 
 [NOTE]
 ====
