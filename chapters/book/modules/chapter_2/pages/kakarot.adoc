@@ -39,6 +39,20 @@ image::Kakarot-architecture.png[]
 * Kakarot is not a blockchain.
 * Kakarot is not a compiler: it will not convert your Solidity code into Cairo code (check out https://book.starknet.io/chapter_2/warp.html[Warp] for a Solidity -> Cairo transpiler). 
 
+== Exploring some Use cases of Kakarot
+
+=== Allowing already-existing Ethereum smart-contracts to be ran on Starknet
+
+Despite Starknet running on the CairoVM instead of the EVM, thanks to Kakarot zkRollup-as-a-service tool, any Solidity smart-contract deployed on Ethereum will be able to be ran on Starknet without any change of its code.
+This means that the decentralized applications that are already running on Ethereum will be able to be ran on Starknet very easily, allowing their users to take advantage of both the efficiency of the EVM and the benefits of zero-knowledge cryptography.
+
+Thus, Kakarot will massively reduce the time to migrate any existing Solidity smart-contract to Starknet: instead of re-writing your whole protocol from Solidity to Cairo, you will just have to use Kakarot to run your Solidity contract in the CairoVM. It's that simple! 
+ 
+=== Allowing Solidity blockchain developers to deploy provable contracts on Starknet without learning Cairo
+
+Perhaps one does not necessarily wishes to learn a whole new language just for a tiny side project, for example. In that case, even though Cairo is, for many different reasons, https://cairo-book.github.io/ch00-00-introduction.html[a wonderful language] thanks to Kakarot, developers will not be totally obligated to learn Cairo in order to create and deploy smart-contracts on Starknet:
+they will have the possibility to make their Solidity smart-contracts become provable and will also be able to be ran them on Starknet with no effort!
+
 == Contributing
 
 [quote, The Starknet Community]
