@@ -6,11 +6,11 @@ Once you have deployed your first account on Starknet - you are going to need a 
 
 .Starknet wallets
 |===
-|Name|Extension
+|Name|Extension|Mobile
 
-|https://www.argent.xyz/argent-x/[Argent X]|https://chrome.google.com/webstore/detail/argent-x/dlcobpjiigpikoobohmabehhmhfoodbb[Browser Extension]
+|https://www.argent.xyz/argent-x/[Argent X]|https://chrome.google.com/webstore/detail/argent-x/dlcobpjiigpikoobohmabehhmhfoodbb[Browser Extension]|-
 
-|https://braavos.app/[Braavos]|https://chrome.google.com/webstore/detail/braavos-smart-wallet/jnlgamecbpmbajjfhmmmlhejkemejdma[Browser Extension]
+|https://braavos.app/[Braavos]|https://chrome.google.com/webstore/detail/braavos-smart-wallet/jnlgamecbpmbajjfhmmmlhejkemejdma[Chrome], https://microsoftedge.microsoft.com/addons/detail/braavos-wallet/hkkpjehhcnhgefhbdcgfkeegglpjchdc[Edge], https://addons.mozilla.org/en-US/firefox/addon/braavos-wallet[Firefox]|https://apps.apple.com/us/app/braavos-wallet/id1636013523[iOS], https://play.google.com/store/apps/details?id=app.braavos.wallet[Android]
 |===
 
 == Contributing
