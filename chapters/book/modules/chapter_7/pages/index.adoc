@@ -6,7 +6,7 @@ _*Disclaimers: This section cites various stakeholders, any errors or misunderst
 
 The crypto ecosystem is at a critical crossroads. Ethereum, as one of the leading platforms, faces a monumental challenge: embracing Account Abstraction (AA) or risking the very essence of what crypto stands for - decentralization.
 
-AA is a vital and game-changing innovation for Ethereum. It holds the key to improving onboarding, user experience, and security (Martin Triay, Devcon 6)[1]. More importantly, AA is the cornerstone for scaling self-custody, which is crucial for onboarding the next billion users (Julien Niset)[2]. The future of Ethereum, and by extension the entire crypto landscape, depends on the success of AA.
+AA is a vital and game-changing innovation for Ethereum. It holds the key to improving onboarding, user experience, and security (Martin Triay, Devcon 6)[1]. More importantly, AA is the cornerstone for scaling self-custody, which is crucial for onboarding the next billion users (Julien Niset)[2], (Motty Lavie)[7]. The future of Ethereum, and by extension the entire crypto landscape, depends on the success of AA.
 
 Additionally, quantum computers pose a serious menace to the cryptographic ecosystem, with the potential to break traditional security measures and signatures. Account Abstraction can help us confront this threat head-on by enabling the use of different signature schemes, including quantum-resistant ones, to secure our assets.
 
@@ -40,6 +40,7 @@ Many AA proponents, like Niset, seem to have lost hope that EOAs will be elimina
 * [4] Starkware: https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79
 * [5] Julien Niset, 2022: https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/
 * [6] Yoav, Devcon 6: https://app.devcon.org/schedule/9mvqce
+* [7] Motty Lavie, 2023: https://www.youtube.com/watch?v=FrxAdJYhSY8
 
 Other texts:
 
