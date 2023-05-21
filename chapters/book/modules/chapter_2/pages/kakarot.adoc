@@ -2,6 +2,43 @@
 
 = Cairo and the Ethereum Virtual Machine: The Kakarot ZKEVM
 
+== What is Kakarot?
+
+Kakarot is a groundbreaking zkEVM (Zero-Knowledge Ethereum Virtual Machine) built on the CairoVM. 
+Overall, it aims to present to developers an abstraction layer they're familiar with: the EVM.
+
+=== Introduction
+
+Kakarot is meant for developers to build and deploy as if they were working on Ethereum: its purpose is to allow Solidity contracts to be forward compatible with Starknet and the CairoVM.
+
+The project plans to bring **EVM compatibility** to Starknet and build a *zkRollup-as-a-service tool*. 
+It began in October 2022 and aims to create an open-source, provable zkEVM in Cairo, with a concise codebase. It is designed with the belief that the CairoVM will provide the best zero-knowledge toolbox in the coming years and that the Ethereum network effect will remain dominant in the meantime. 
+
+In a remarkable display of skill and dedication, the Kakarot team achieved an impressive milestone 
+(with the support of the Starknet Foundation and the collaborative efforts of over 40 unique contributors) 
+by implementing 100% of EVM opcodes and 8 out of 9 EVM precompiles in just six months and with less than 5,000 lines of code!
+
+Kakarot is on track to become a type 2.5 zkEVM (as per https://vitalik.ca/general/2022/08/04/zkevm.html[Vitalik Buterin's typology]), offering compatibility with existing EVM code. 
+Its innovative solution combines the benefits of zero-knowledge cryptography and the efficiency of the EVM, paving the way for scalable and secure decentralized applications.
+In simple words, Kakarot allows developers to easily and seamlessly run Ethereum smart-contracts written in Solidity on Starknet, **without requiring any modifications to their code**!
+
+==== Note that Kakarot is currently a work in progress - not yet ready for production.
+
+The testnet version is expected to be released at the end of summer 2023… Stay tuned!
+
+=== Project Architecture
+
+image::Kakarot-architecture.png[]
+
+*  Kakarot is a smart contract, currently deployed on Starknet (goerli testnet). It is written in Cairo.
+* Kakarot is an EVM bytecode interpreter. 
+* Kakarot can: 
+.. execute arbitrary EVM bytecode, 
+.. deploy an EVM smart contract as is, 
+.. call a Kakarot-deployed EVM smart contract's functions (views and write methods).
+* Kakarot is not a blockchain.
+* Kakarot is not a compiler: it will not convert your Solidity code into Cairo code (check out https://book.starknet.io/chapter_2/warp.html[Warp] for a Solidity -> Cairo transpiler). 
+
 == Contributing
 
 [quote, The Starknet Community]
