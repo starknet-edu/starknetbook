@@ -1,6 +1,8 @@
 site:
   title: The Starknet Book
   start_page: ROOT::index.adoc
+  keys:
+    google_analytics: 'G-WY42TERK5P'
 
 content:
   sources:
