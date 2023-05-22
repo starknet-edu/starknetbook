@@ -7,7 +7,7 @@ content:
   - url: .
     branches: HEAD
     start_paths:
-      - chapters
+      - chapters/book
 
 ui:
   bundle:

@@ -1,0 +1,32 @@
+name: Upload Data to Algolia Index
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v1
+      - v2
+jobs:
+  upload_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+      - name: Setup Node.js 16.15.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.x'
+
+      - name: Upload data to Algolia Index
+        shell: bash
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+          ALGOLIA_INDEX_NAME_PREFIX: ${{ secrets.ALGOLIA_INDEX_NAME_PREFIX }}
+        working-directory: ./js # equivalent of 'cd js'
+        run: |
+          yarn install
+          node algolia-index.js "$ALGOLIA_APP_ID" "$ALGOLIA_ADMIN_API_KEY" "$ALGOLIA_INDEX_NAME_PREFIX"
