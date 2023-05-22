@@ -4,4 +4,5 @@
     ** xref:storage_proofs.adoc[8.3 Storage Proofs: Trustless Cross-Chain Information Access on Starknet]
     ** xref:blocks.adoc[8.4 Blocks in Starknet]
     ** xref:transactions.adoc[8.5 The Lifecycle of Transactions]
+    ** xref:solidity_verifier.adoc[8.6 Verifiers in Solidity]
     
