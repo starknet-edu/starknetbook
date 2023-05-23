@@ -17,7 +17,6 @@ Multicalls come handy in several scenarios. Here are some examples:
 
 The benefits of multicall transactions can be realized more in the context of account abstraction. For instance, consider the following DeFi interaction diagram by Hasu:
 
-image::aa_defi_ex.png[defi]
 
 == Multicall Functionality in Account Contracts
 
