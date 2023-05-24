@@ -81,9 +81,16 @@ my_project/
 └── protostar.toml
 ----
 
+The most important thing to notice is how we have structured both these contracts as standalone crates. At least currently, each smart contract in Protostar must be built as its own crate. Further, you may notice how each smart contract is its own module, as decorated by the `[contract]` decorator. 
+
+To learn more about how to structure your Protostar project, do read their docs over at https://docs.swmansion.com/protostar/docs/cairo-1/introduction[Protostar].
+
+
 == Run Tests
 
-Before moving forward, ensure that your code is working correctly by running the tests:
+There are two major ways to test Cairo smart contracts - you can test them in Cairo itself, or in Python. Some developers may prefer the Cairo approach since it means they do not have to deploy contracts everytime they test them OR have to worry about using a new language here.
+
+To execute the tests, run: 
 
 [source,bash]
 ----
@@ -139,7 +146,7 @@ protostar declare hello_starknet \
   --max-fee auto
 ----
 
-Note: Replace YOUR_ACCOUNT_ADDRESS with your actual account address.
+Note: Replace `YOUR_ACCOUNT_ADDRESS` with your actual account address.
 
 Upon successful declaration, you should see an output like:
 
@@ -168,9 +175,9 @@ protostar deploy \
   --max-fee auto
 ----
 
-Note: Replace YOUR_ACCOUNT_ADDRESS with your actual account address.
+Note: Replace `YOUR_ACCOUNT_ADDRESS` with your actual account address.
 
-And Please note, the ‘0x’ address following the deploy command in the `% protostar deploy` command is the Class Hash that was generated in Step 7 when you declared your contract.
+And Please note, the ‘0x’ address following the deploy command in the `protostar deploy` command is the Class Hash that was generated in Step 7 when you declared your contract.
 
 Successful deployment will display output similar to this:
 
@@ -185,6 +192,63 @@ StarkScan https://testnet.starkscan.co/tx/0x03406b79b189d8752cff632ea8e0df332d7b
 Voyager   https://goerli.voyager.online/tx/0x03406b79b189d8752cff632ea8e0df332d7be7e27ffbc453fbf210c7384c0676
 21:25:26 [INFO] Execution time: 3.22 s
 ----
+
+== A Simple Demo 
+
+To learn how you too can get started with Protostar, let's create a simple project. First, go to your terminal and run:
+
+[source,bash]
+----
+git clone https://github.com/SupremeSingh/protostar-cairo1-template.git
+cd protostar-cairo1-template
+----
+
+Now you should be able to look through a simple Protostar project that implements 2 smart contracts and some additional business logic in `Cairo 1.0`. It is suggested the reader familiarize themselves with the code in both `erc20.cairo` and `hello_starknet.cairo` before continuing. 
+
+To learn more about testing, I highly recommend you take a look at the tests in `tests/test_ercs20.cairo` and compare it with the original contract in `contracts/erc20.cairo`.
+
+== Debugging
+
+In order to debug code, it is very useful to be able to print out values or isolate errors in match statements. Both these functionalities are already available in Protostar. 
+
+In order to be able to print out, please use -
+
+[source,bash]
+----
+use array::ArrayTrait;
+use array::ArrayTCloneImpl;
+use array::SpanTrait;
+use debug::PrintTrait;
+use clone::Clone;
+
+array.span().snapshot.clone().print(); // Print an array value
+felt.print() // Print an individual value
+----
+
+You can also use match statements as follows - 
+
+[source,bash]
+----
+match invoke(deployed_contract_address, 'panic_with', @panic_data) {
+    Result::Ok(x) => assert(false, 'Shouldnt have succeeded'),
+    Result::Err(x) => {
+        assert(x.first() == 'error', 'first datum doesnt match');
+        assert(*x.panic_data.at(1_u32) == 'data', 'second datum doesntmatch');
+    }
+}
+----
+
+Finally, to make your code interact with Starknet, you can use the exhautive list of commands made available by Protostar https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet[here]
+
+== Common Gotchas 
+
+- Each test is named with a `test_<further name>.cairo` so the framework can recognize it
+- Test needs to be decorated with `#[test]`, be without parameters and have an assertion
+- `contract_address_const::<0>()` address is the default caller for all invocations
+- A `Prank` needs to be used to change the caller address
+- `u256` values need to be split into two `felt252` values when invoking a call
+- Protostar is not able to handle `#[external]` functions which emit an event for testing. Please wait for the next release.
+
 
 == Contributing
 
