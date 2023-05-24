@@ -129,6 +129,26 @@ After you have installed the Starknet CLI, verify your installation by checking 
 starknet --version
 ----
 
+If you get the following error:
+
+[source, bash]
+----
+ImportError: urllib3 v2.0 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with LibreSSL 2.8.3. See: https://github.com/urllib3/urllib3/issues/2168
+----
+Try downgrading the version of urllib3:
+
+[source, bash]
+---
+pip install urllib3==1.26.6 
+---
+
+Then check the version again:
+
+[source, bash]
+----
+starknet --version
+----
+
 The output should show the installed version of Starknet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
 
 
