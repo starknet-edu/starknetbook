@@ -11,13 +11,180 @@ To install Protostar locally, open a terminal on Linux or Mac (Windows is not su
 curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
 ----
 
-Then restart the terminal. Ensure your local version of Protostar is at `0.9.3` for compatibility with Cairo 1.0. If it is not, simply run:
+Then restart the terminal. Ensure your local version of Protostar is at `0.11.0` for compatibility with Cairo 1.0. If it is not, simply run:
 
 [source,bash]
 ----
 protostar upgrade
 ----
 
+== Supporting Cairo Compiler 1.0.0rc0
+
+The new version of Protostar now supports the Cairo Compiler 1.0.0rc0. This means you can now write your contracts and tests using the latest and greatest features of Cairo1!
+
+Please note:
+
+1. Protostar is not currently supported on Windows.
+2. This guide is based on the following versions of the software:
+
+- Protostar version: 0.11.0
+- Cairo-lang version: 0.11.0.1
+- Cairo 1 compiler version: 1.0.0rc0
+
+== Verify Installation
+
+To confirm if Protostar has been installed correctly, check its version by running:
+
+[source,bash]
+----
+protostar -v
+----
+
+You should see output similar to the following:
+
+[source,bash]
+----
+Protostar version: 0.11.0                                                                                                                                       
+Cairo-lang version: 0.11.0.1
+Cairo 1 compiler version: 1.0.0rc0
+21:03:44 [INFO] Execution time: 1.34 s
+----
+
+== Create a New Cairo1 Project
+
+Next, create a new project that supports Cairo1 with the following command:
+
+[source,bash]
+----
+protostar init my_project
+cd my_project
+----
+
+Your project structure should now look like this:
+
+[source,bash]
+----
+my_project/
+├── hello_starknet/
+│   ├── src/
+│   │   ├── business_logic/
+│   │   │   └── utils.cairo
+│   │   ├── contracts/
+│   │   │   └── hello_starknet.cairo
+│   │   ├── business_logic.cairo
+│   │   ├── contracts.cairo
+│   │   └── lib.cairo
+│   └── cairo_project.toml
+├── tests/
+│   ├── test_hello_starknet.cairo
+│   └── test_utils.cairo
+└── protostar.toml
+----
+
+== Run Tests
+
+Before moving forward, ensure that your code is working correctly by running the tests:
+
+[source,bash]
+----
+protostar test
+----
+
+Successful tests will display output similar to this:
+
+[source,bash]
+----
+Collected 2 suites, and 3 test cases (11.32)                                                                                                                    
+[PASS] tests/test_utils.cairo test_returns_two (time=0.00s)                                                                                                     
+[PASS] tests/test_hello_starknet.cairo test_increase_balance (time=25.81s)                                                                                      
+[PASS] tests/test_hello_starknet.cairo test_cannot_increase_balance_with_zero_value (time=25.19s)                                                               
+Test suites: 2 passed, 2 total                                                                                                                                  
+Tests:       3 passed, 3 total
+Seed:        720541691
+21:17:52 [INFO] Execution time: 66.70 s
+----
+
+== Compile the Project
+
+Compile your Cairo1 project using the build command:
+
+[source,bash]
+----
+protostar build
+----
+
+Successful compilation will display output similar to this:
+
+[source,bash]
+----
+21:00:22 [INFO] Building cairo1 contracts                                                                                                                       
+21:00:27 [INFO] Contracts built successfully
+21:00:27 [INFO] Execution time: 6.22 s
+----
+
+== Declare New Contracts
+
+Declare new contracts in your project by first setting the environment variable for the private key. Then, declare the contracts with Protostar:
+
+[source,bash]
+----
+export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0x...
+----
+
+[source,bash]
+----
+protostar declare hello_starknet \
+  --network testnet \
+  --account-address YOUR_ACCOUNT_ADDRESS \
+  --max-fee auto
+----
+
+Note: Replace YOUR_ACCOUNT_ADDRESS with your actual account address.
+
+Upon successful declaration, you should see an output like:
+
+[source,bash]
+----
+Declare transaction was sent.                                                                                                                                   
+Class hash: 0x04ad47b818e8811a8c1df2a03a26381da0232bb7da3cba274831c2cfc9953acd
+StarkScan https://testnet.starkscan.co/class/0x04ad47b818e8811a8c1df2a03a26381da0232bb7da3cba274831c2cfc9953acd
+Voyager   https://goerli.voyager.online/class/0x04ad47b818e8811a8c1df2a03a26381da0232bb7da3cba274831c2cfc9953acd
+Transaction hash: 0x03d048f8dc599c7d9bad1e5a7a039c35463b9479f0966766bc0df03cd89d6d7d
+StarkScan https://testnet.starkscan.co/tx/0x03d048f8dc599c7d9bad1e5a7a039c35463b9479f0966766bc0df03cd89d6d7d
+Voyager   https://goerli.voyager.online/tx/0x03d048f8dc599c7d9bad1e5a7a039c35463b9479f0966766bc0df03cd89d6d7d
+21:01:23 [INFO] Execution time: 27.95 s
+----
+
+== Deploy Contract
+
+Finally, deploy the contract using the class hash generated in the previous step:
+
+[source,bash]
+----
+protostar deploy \
+  0x04ad47b818e8811a8c1df2a03a26381da0232bb7da3cba274831c2cfc9953acd \
+  --network testnet \
+  --account-address YOUR_ACCOUNT_ADDRESS \
+  --max-fee auto
+----
+
+Note: Replace YOUR_ACCOUNT_ADDRESS with your actual account address.
+
+And Please note, the ‘0x’ address following the deploy command in the `% protostar deploy` command is the Class Hash that was generated in Step 7 when you declared your contract.
+
+Successful deployment will display output similar to this:
+
+[source,bash]
+----
+Invoke transaction was sent to the Universal Deployer Contract.                                                                                                 
+Contract address: 0x02341c459847cf220671ab873e14d853197c74e239c3b5815b0aa2e85bc37ebd
+StarkScan https://testnet.starkscan.co/contract/0x02341c459847cf220671ab873e14d853197c74e239c3b5815b0aa2e85bc37ebd
+Voyager   https://goerli.voyager.online/contract/0x02341c459847cf220671ab873e14d853197c74e239c3b5815b0aa2e85bc37ebd
+Transaction hash: 0x03406b79b189d8752cff632ea8e0df332d7be7e27ffbc453fbf210c7384c0676
+StarkScan https://testnet.starkscan.co/tx/0x03406b79b189d8752cff632ea8e0df332d7be7e27ffbc453fbf210c7384c0676
+Voyager   https://goerli.voyager.online/tx/0x03406b79b189d8752cff632ea8e0df332d7be7e27ffbc453fbf210c7384c0676
+21:25:26 [INFO] Execution time: 3.22 s
+----
 
 == Contributing
 
