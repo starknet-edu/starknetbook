@@ -232,7 +232,7 @@ For example, let’s assume you have added the alexandria_math dependency. You c
 [source, rust]
 ----
 // src/hello_scarb.cairo
-use debug::PrintTrait;
+use alexandria_math::fibonacci;
 
 fn main() -> felt252 {
     fibonacci::fib(0, 1, 10)
