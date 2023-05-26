@@ -2,7 +2,7 @@
 
 = Scarb
 
-Scarb is the Cairo package manager designed to manage your dependencies, compile your project (either pure Cairo or Starknet contracts), download libraries your code depends on, and build those libraries.
+Scarb is the Cairo package manager designed to manage your dependencies, compile your project (either pure Cairo or Starknet contracts), download libraries your code depends on, build those libraries and integrating with other development tools, such as Protostar, making it an essential tool for Cairo developers.
 
 == Requirements
 
@@ -10,21 +10,39 @@ Currently, Scarb requires a Git executable to be available in the `PATH` environ
 
 === Installation
 
-To install Scarb, follow these steps:
+Scarb supports macOS, Linux, and Windows operating systems. 
 
-- Download the release archive matching your operating system and CPU architecture from https://github.com/software-mansion/scarb/releases/[Scarb Github]; make sure to choose the latest version.
-- The file is a compressed archive. Extract it to a location where you would like to have Scarb installed, e.g. `~/scarb`.
-- Add a path to the `scarb/bin` directory to your environment variable, depending on your shell. For example, with https://ohmyz.sh/[zsh] and Scarb extracted to `~/scarb`:
-    * Open the `~/.zshrc` file in your editor.
-    * Add the following line at the end of the file: `export PATH="$PATH:~/scarb/bin"`.
-- Verify the installation by running the following command in a new terminal. It should output both Scarb and Cairo language versions. If you are using a Mac, it is likely the OS would not allow you to run Scarb since it was installed manually. Just go to the folder where you stored Scarb using the UI (not the terminal), right click on the Scarb executable, and select “Open”. It will ask you if you want to open it, and then Scarb will work as expected.
+==== macOS and Linux
+
+To install Scarb on macOS and Linux, open your terminal and run the following command:
+
+[source, bash]
+----
+$ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+----
+
+If you want to install a specific version of Scarb, such as a preview version, you can use the following command:
+
+[source, bash]
+----
+$ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | bash -s -- -v 0.2.0-alpha.2
+----
+
+==== Windows
+
+On Windows, Scarb requires manual installation. Here are the steps to install Scarb on Windows:
+
+- Download the release archive matching your operating system and CPU architecture from https://docs.swmansion.com/scarb/download[official Scarb website] or https://github.com/software-mansion/scarb/releases/[Scarb Github]; make sure to choose the latest version.
+- The file is a compressed archive. Extract it to a location where you would like to have Scarb installed, e.g. `%LOCALAPPDATA%\Programs\scarb`.
+- Add the path to the `scarb/bin` directory to your `PATH` environment variable.
+- Verify the installation by running the following command in a new terminal. It should output both Scarb and Cairo language versions.
 
 
 [source, bash]
 ----
 $ scarb --version
-scarb 0.1.0 (289137c24 2023-03-28)
-cairo: 1.0.0-alpha.6
+scarb 0.2.1 (9e3c8d97d 2023-05-23)
+cairo: 1.0.0 (https://crates.io/crates/cairo-lang-compiler/1.0.0)
 ----
 
 If you have issues with Scarb, let us know by creating an issue on the starknetbook repository.
@@ -40,6 +58,14 @@ $ scarb new hello_scarb
 ----
 
 This command creates a new project directory named `hello_scarb` with generated project files, including a `Scarb.toml` file and an `src` directory with a `lib.cairo` file inside. A new Git repository with a `.gitignore` file is also initialized.
+
+[source, bash]
+----
+hello_scarb/
+├── src/
+│   └── lib.cairo  
+└── Scarb.toml
+----
 
 Open `Scarb.toml` in your text editor. It should look similar to the code below:
 
@@ -97,7 +123,18 @@ Compiling hello_scarb v0.1.0 (file:///projects/Scarb.toml)
 Finished release target(s) in 0 seconds
 ----
 
-This command creates a `sierra` file in `target/release`, https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-exploring-sierra-7f32808421f5/[Sierra] is an intermediate layer between the high-level Cairo and compilation targets such as Cairo Assembly (CASM).
+This command will compile your project and generate the Sierra code in the target/dev/hello_scarb.sierra file, https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-exploring-sierra-7f32808421f5/[Sierra] is an intermediate layer between the high-level Cairo and compilation targets such as Cairo Assembly (CASM).
+
+To clean the build artifacts and remove the target directory, you can use the scarb clean command.
+
+You can also specify a build profile using the --profile or -P flag. For example, to build in the release profile, use the following command:
+
+[source, bash]
+----
+scarb --profile release build
+----
+
+The Sierra code file will be in the target/release/ directory.
 
 To run the Cairo program, use the following command:
 
@@ -147,6 +184,63 @@ Run completed successfully, returning []
 
 Using `scarb run` is a convenient way to run custom shell scripts that can be useful to run files and test your project
 
+=== Adding Dependencies
+
+Scarb allows you to easily manage dependencies for your Cairo packages. Here are two ways to add dependencies to your project.
+
+1. Edit Scarb.toml File
+
+Open the Scarb.toml file in your project directory and locate the [dependencies] section. If the section doesn't exist, add it. To add a dependency hosted on a Git repository, use the following syntax:
+
+[source, toml]
+----
+[dependencies]
+alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git" }
+----
+
+It is recommended to pin Git dependencies to specific commits to ensure consistency. You can achieve this by adding the rev field with the commit hash:
+
+[source, toml]
+----
+[dependencies]
+alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "81bb93c" }
+----
+
+Save the file after adding the dependency.
+
+2. Using the scarb add Command
+
+Alternatively, you can use the scarb add command to add dependencies to your project. Open your terminal and run the following command:
+
+[source, bash]
+----
+$ scarb add alexandria_math --git https://github.com/keep-starknet-strange/alexandria.git
+----
+
+This command adds the alexandria_math dependency from the specified Git repository to your project.
+
+To remove a dependency, you can use the `scarb rm command`.
+
+After adding a dependency, the Scarb.toml file will be updated with the new dependency information.
+
+=== Using Dependencies in Your Code
+
+Once you have added dependencies to your project, you can start using them in your Cairo code.
+
+For example, let’s assume you have added the alexandria_math dependency. You can now import and use functions from the alexandria_math library in your `src/hello_scarb.cairo` file:
+
+[source, rust]
+----
+// src/hello_scarb.cairo
+use alexandria_math::fibonacci;
+
+fn main() -> felt252 {
+    fibonacci::fib(0, 1, 10)
+}
+----
+
+In the above example, we import the fibonacci function from the alexandria_math library and use it in the main function.
+
 === Recap
 
 Let’s review what we have learned about Scarb:
@@ -154,6 +248,7 @@ Let’s review what we have learned about Scarb:
 * We can create a project using `scarb new`.
 * We can build a project using `scarb build` to generate the compiled Sierra code.
 * We can define custom scripts in `Scarb.toml` and call them with the `scarb run` command.
+* We can manage dependencies for our Cairo packages easily.
 
 [NOTE]
 ====
