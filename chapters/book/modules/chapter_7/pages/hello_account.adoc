@@ -1,6 +1,6 @@
 = Hello World Account Contract
 
-In this chapter, we will explore the fundamentals of account contracts in StarkNet using an example "Hello World" account contract written in Cairo language. You can find it in the contracts directory of this chapter in the Book's repository (TODO: add link).
+In this chapter, we will explore the fundamentals of account contracts in Starknet using an example "Hello World" account contract written in Cairo language. You can find it in the contracts directory of this chapter in the Book's repository (TODO: add link).
 
 [,Rust]
 ----
@@ -154,15 +154,15 @@ The class hash is: 0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa6dece7734a
 starknet deploy --class_hash 0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa6dece7734a2cdfe --account my_account --max_fee 100000000000000000
 ----
 
-After completing these steps, you will have successfully declared and deployed the Hello World account contract on StarkNet. https://testnet.starkscan.co/contract/0x01e6d7698ca76788c8f9c1091ec3d6d3f7167a9effe520402d832ca9894eba4a#overview[Here is a deployed version].
+After completing these steps, you will have successfully declared and deployed the Hello World account contract on Starknet. https://testnet.starkscan.co/contract/0x01e6d7698ca76788c8f9c1091ec3d6d3f7167a9effe520402d832ca9894eba4a#overview[Here is a deployed version].
 
 == Summary
 
-In this subchapter, we delved into the details of a basic account contract in StarkNet using a "Hello World" example.
+In this subchapter, we delved into the details of a basic account contract in Starknet using a "Hello World" example.
 
-We also outlined the steps to declare and deploy the Hello World account contract on the StarkNet network. The deployment process involves exporting the required environment variables, declaring the contract, and deploying it using the class hash.
+We also outlined the steps to declare and deploy the Hello World account contract on the Starknet network. The deployment process involves exporting the required environment variables, declaring the contract, and deploying it using the class hash.
 
-As we progress in our exploration of StarkNet account contracts, the next subchapter will introduce a standard account contract, drawing parallels with the standard account contract defined by Open Zeppelin and Starkware. This will further strengthen our understanding of how account contracts operate within the StarkNet ecosystem.
+As we progress in our exploration of Starknet account contracts, the next subchapter will introduce a standard account contract, drawing parallels with the standard account contract defined by Open Zeppelin and Starkware. This will further strengthen our understanding of how account contracts operate within the Starknet ecosystem.
 
 [NOTE]
 ====

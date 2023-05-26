@@ -1,6 +1,6 @@
 = Signing and a Standard Account Contract
 
-In this chapter, we build upon our exploration of account contracts in StarkNet by introducing a more complex account contract. This Standard Account Contract includes additional features such as signature validation, providing a more robust example of an account contract in Cairo language. You can find the full code for this contract in the Book repository (todo: add link). You can interact and compile the contract using Scarb (review the Scarb subchapter in Chapter 2 of the Book for more information).
+In this chapter, we build upon our exploration of account contracts in Starknet by introducing a more complex account contract. This Standard Account Contract includes additional features such as signature validation, providing a more robust example of an account contract in Cairo language. You can find the full code for this contract in the Book repository (todo: add link). You can interact and compile the contract using Scarb (review the Scarb subchapter in Chapter 2 of the Book for more information).
 
 [,Rust]
 ----
@@ -235,7 +235,7 @@ The implementation of the Standard Account Contract has a few limitations:
 * It currently supports only single calls. We could support multicalls to improve the flexibility and utility of the contract.
 * The ECDSA signature algorithm, while secure, can be computationally intensive. Future versions could explore using more efficient signature algorithms, such as Schnorr or BLS. Or quantum-resistant signature algorithms, such as the STARKs.
 
-Despite these limitations, the Standard Account Contract provides a robust and secure foundation for creating and interacting with smart contracts on StarkNet.
+Despite these limitations, the Standard Account Contract provides a robust and secure foundation for creating and interacting with smart contracts on Starknet.
 
 
 == Declaring and Deploying the Hello World Account Contract
@@ -285,7 +285,7 @@ Each of these alternatives has its strengths and weaknesses in terms of security
 
 == Summary
 
-In this chapter, we expanded on our understanding of account contracts in StarkNet by examining a more complex "Standard Account Contract". We dove into the various components of the contract and learned how they work together to validate and execute transactions.
+In this chapter, we expanded on our understanding of account contracts in Starknet by examining a more complex "Standard Account Contract". We dove into the various components of the contract and learned how they work together to validate and execute transactions.
 
 [NOTE]
 ====

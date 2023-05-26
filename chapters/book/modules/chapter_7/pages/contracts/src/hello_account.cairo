@@ -1,5 +1,5 @@
 // This is a Starknet account contract in Cairo language. It serves as an example of
-// how to create and manage an account on StarkNet. The contract contains several
+// how to create and manage an account on Starknet. The contract contains several
 // external functions that handle validation and execution of transactions, as well
 // as the necessary imports and declarations. 
 // The declare contract has class hash: 0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa6dece7734a2cdfe
