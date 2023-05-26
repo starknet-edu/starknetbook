@@ -1,0 +1,2 @@
+[crate_roots]
+hello_starknet = "src"
