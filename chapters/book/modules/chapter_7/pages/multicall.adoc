@@ -15,9 +15,7 @@ Multicalls come handy in several scenarios. Here are some examples:
 1. *Token Swapping on Decentralized Exchanges*: In a typical token swap operation on a decentralized exchange (DEX), you first need to approve the spending of the tokens and then initiate the swap. Executing these operations separately could be cumbersome from a user experience perspective. With multicall, these calls can be combined into a single transaction, simplifying the user's task.
 2. *Fetching Blockchain Data*: When you want to query the prices of two different tokens from the blockchain, it's beneficial to have them both come from the same block for consistency. Multicall returns the latest block number along with the aggregated results, providing this consistency.
 
-The benefits of multicall transactions can be realized more in the context of account abstraction. For instance, consider the following DeFi interaction diagram by Hasu:
-
-image::aa_defi_ex.png[defi]
+The benefits of multicall transactions can be realized more in the context of account abstraction.
 
 == Multicall Functionality in Account Contracts
 
