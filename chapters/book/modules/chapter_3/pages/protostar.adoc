@@ -2,45 +2,46 @@
 
 = Protostar
 
-For many developers, it is essential to write and test their contracts using the same language. To meet this need, https://docs.swmansion.com/protostar/[Protostar], a platform that manages dependencies, compiles projects, runs tests, and enables interaction with the chain through various commands.
+https://docs.swmansion.com/protostar/[Protostar] is a highly practical development platform for the StarkNet universe. This tool eases the process of managing dependencies, compiling projects, running tests, and interacting with the StarkNet chain. Protostar allows developers to write, test and deploy their Cairo contracts in a streamlined manner.
 
-To install Protostar locally, open a terminal on Linux or Mac (Windows is not supported yet) and run:
+== Installation
+
+To begin, you'll need to install Protostar on your local machine. This process currently supports Linux and MacOS systems (Windows support is in progress).
+
+Install Protostar by opening a terminal and running the following command:
 
 [source,bash]
 ----
 curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
 ----
 
-Then restart the terminal. Ensure your local version of Protostar is at `0.11.0` for compatibility with Cairo 1.0. If it is not, simply run:
+After the installation process, restart the terminal. Check that the version of your installed Protostar matches `0.11.0` for compatibility with Cairo 1.0. If it does not, update your Protostar version using the command:
 
 [source,bash]
 ----
 protostar upgrade
 ----
 
-== Supporting Cairo Compiler 1.0.0rc0
+== Supported Software Versions
 
-The new version of Protostar now supports the Cairo Compiler 1.0.0rc0. This means you can now write your contracts and tests using the latest and greatest features of Cairo1!
-
-Please note:
-
-1. Protostar is not currently supported on Windows.
-2. This guide is based on the following versions of the software:
+Ensure you're using the correct software versions as per this guide:
 
 - Protostar version: 0.11.0
 - Cairo-lang version: 0.11.0.1
 - Cairo 1 compiler version: 1.0.0rc0
 
-== Verify Installation
+Protostar doesn't currently support Windows. 
 
-To confirm if Protostar has been installed correctly, check its version by running:
+== Verifying Installation
+
+Once Protostar is installed, verify it by checking the version with the command:
 
 [source,bash]
 ----
 protostar -v
 ----
 
-You should see output similar to the following:
+The output should be as follows:
 
 [source,bash]
 ----
@@ -50,9 +51,9 @@ Cairo 1 compiler version: 1.0.0rc0
 21:03:44 [INFO] Execution time: 1.34 s
 ----
 
-== Create a New Cairo1 Project
+== Initiating a New Cairo Project
 
-Next, create a new project that supports Cairo1 with the following command:
+After successful installation and verification of Protostar, initiate a new project by running:
 
 [source,bash]
 ----
@@ -60,7 +61,7 @@ protostar init my_project
 cd my_project
 ----
 
-Your project structure should now look like this:
+The structure of your project directory should be similar to:
 
 [source,bash]
 ----
@@ -81,23 +82,25 @@ my_project/
 └── protostar.toml
 ----
 
-The most important thing to notice is how we have structured both these contracts as standalone crates. At least currently, each smart contract in Protostar must be built as its own crate. Further, you may notice how each smart contract is its own module, as decorated by the `[contract]` decorator. 
+The most important thing to notice is how we have structured both these contracts as standalone crates. Each smart contract in Protostar must be built as its own crate and each contract is its own module decorated with the `[contract]` decorator.
 
-To learn more about how to structure your Protostar project, do read their docs over at https://docs.swmansion.com/protostar/docs/cairo-1/introduction[Protostar].
+Explore the official Protostar documentation for more details on structuring your project: https://docs.swmansion.com/protostar/docs/cairo-1/introduction
 
 
-== Run Tests
+== Testing Contracts
 
-There are two major ways to test Cairo smart contracts - you can test them in Cairo itself, or in Python. Some developers may prefer the Cairo approach since it means they do not have to deploy contracts everytime they test them OR have to worry about using a new language here.
+In the realm of Cairo smart contracts, there are two predominant ways to test your contracts: within Cairo itself, or with Python, Javascript, or Rust. 
 
-To execute the tests, run: 
+The Cairo approach is often preferred, as it prevents developers from having to deploy contracts each time they need to be tested and eliminates the necessity of learning a new language for testing purposes.
+
+Execute tests using the command:
 
 [source,bash]
 ----
 protostar test
 ----
 
-Successful tests will display output similar to this:
+A successful test execution will provide an output resembling:
 
 [source,bash]
 ----
@@ -113,14 +116,18 @@ Seed:        720541691
 
 == Compile the Project
 
-Compile your Cairo1 project using the build command:
+== Project Compilation
+
+Before a project can be deployed on the network, it must be compiled into a form that the StarkNet network can understand and execute. Protostar makes this process easy with its `build` command. 
+
+To compile your Cairo1 project, use the build command:
 
 [source,bash]
 ----
 protostar build
 ----
 
-Successful compilation will display output similar to this:
+If your compilation was successful, the output will be similar to this:
 
 [source,bash]
 ----
@@ -129,14 +136,18 @@ Successful compilation will display output similar to this:
 21:00:27 [INFO] Execution time: 6.22 s
 ----
 
-== Declare New Contracts
+== Contract Declaration
 
-Declare new contracts in your project by first setting the environment variable for the private key. Then, declare the contracts with Protostar:
+After successfully compiling your project, the next step is to declare your contracts. This process informs the network of your intention to deploy a new contract (review Chapter 2 for more details on the contract declaration process).
+
+Before declaring contracts, it's essential to first set the environment variable for your private key:
 
 [source,bash]
 ----
 export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0x...
 ----
+
+You can then declare your contracts with the following command:
 
 [source,bash]
 ----
@@ -148,7 +159,7 @@ protostar declare hello_starknet \
 
 Note: Replace `YOUR_ACCOUNT_ADDRESS` with your actual account address.
 
-Upon successful declaration, you should see an output like:
+Successful declaration will generate a class hash and output similar to:
 
 [source,bash]
 ----
@@ -162,9 +173,11 @@ Voyager   https://goerli.voyager.online/tx/0x03d048f8dc599c7d9bad1e5a7a039c35463
 21:01:23 [INFO] Execution time: 27.95 s
 ----
 
-== Deploy Contract
+== Contract Deployment
 
-Finally, deploy the contract using the class hash generated in the previous step:
+After declaring your contract, the next step is to deploy it on the network. Deployment makes your contract live and interactable on the StarkNet.
+
+To deploy your contract, use the class hash generated from the declaration step and the `protostar deploy` command:
 
 [source,bash]
 ----
@@ -175,11 +188,11 @@ protostar deploy \
   --max-fee auto
 ----
 
-Note: Replace `YOUR_ACCOUNT_ADDRESS` with your actual account address.
+Note: Replace `YOUR_ACCOUNT_ADDRESS` with your actual account address. 
 
-And Please note, the ‘0x’ address following the deploy command in the `protostar deploy` command is the Class Hash that was generated in Step 7 when you declared your contract.
+The '0x' address following the deploy command is the Class Hash that was generated during contract declaration.
 
-Successful deployment will display output similar to this:
+Successful deployment will provide a contract address and output similar to this:
 
 [source,bash]
 ----
@@ -195,7 +208,7 @@ Voyager   https://goerli.voyager.online/tx/0x03406b79b189d8752cff632ea8e0df332d7
 
 == A Simple Demo 
 
-To learn how you too can get started with Protostar, let's create a simple project. First, go to your terminal and run:
+To learn how you can get started with Protostar, let's create a simple project. First, navigate to your terminal and execute:
 
 [source,bash]
 ----
@@ -203,15 +216,15 @@ git clone https://github.com/SupremeSingh/protostar-cairo1-template.git
 cd protostar-cairo1-template
 ----
 
-Now you should be able to look through a simple Protostar project that implements 2 smart contracts and some additional business logic in `Cairo 1.0`. It is suggested the reader familiarize themselves with the code in both `erc20.cairo` and `hello_starknet.cairo` before continuing. 
+Now, you have access to a basic Protostar project that implements two smart contracts along with additional business logic in `Cairo 1.0`. Before proceeding, it's advisable to familiarize yourself with the code in both `erc20.cairo` and `hello_starknet.cairo`. 
 
-To learn more about testing, I highly recommend you take a look at the tests in `tests/test_ercs20.cairo` and compare it with the original contract in `contracts/erc20.cairo`.
+For a deeper understanding of testing, it is highly recommended to examine the tests in `tests/test_erc20.cairo` and compare them with the original contract in `contracts/erc20.cairo`.
 
 == Debugging
 
-In order to debug code, it is very useful to be able to print out values or isolate errors in match statements. Both these functionalities are already available in Protostar. 
+For code debugging, it's beneficial to be able to print out values or isolate errors in match statements. Protostar already provides these functionalities. 
 
-In order to be able to print out, please use -
+To print out values, use the following:
 
 [source,bash]
 ----
@@ -225,7 +238,7 @@ array.span().snapshot.clone().print(); // Print an array value
 felt.print() // Print an individual value
 ----
 
-You can also use match statements as follows - 
+You can also use match statements like so: 
 
 [source,bash]
 ----
@@ -238,17 +251,29 @@ match invoke(deployed_contract_address, 'panic_with', @panic_data) {
 }
 ----
 
-Finally, to make your code interact with Starknet, you can use the exhautive list of commands made available by Protostar https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet[here]
+Finally, to make your code interact with StarkNet, you can utilize the comprehensive list of commands provided by Protostar. You can find these commands [here](https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet).
 
 == Common Gotchas 
 
-- Each test is named with a `test_<further name>.cairo` so the framework can recognize it
-- Test needs to be decorated with `#[test]`, be without parameters and have an assertion
-- `contract_address_const::<0>()` address is the default caller for all invocations
-- A `Prank` needs to be used to change the caller address
-- `u256` values need to be split into two `felt252` values when invoking a call
-- Protostar is not able to handle `#[external]` functions which emit an event for testing. Please wait for the next release.
+- Each test should be named `test_<further name>.cairo` so that the framework can recognize it.
+- Tests need to be decorated with `#[test]`, be without parameters, and include an assertion.
+- `contract_address_const::<0>()` is the default caller for all invocations.
+- A `Prank` needs to be used to change the caller address.
+- `u256` values need to be split into two `felt252` values when making a call.
+- Protostar currently does not support `#[external]` functions that emit an event for testing. Please wait for the next release.
 
+== Conclusion
+
+Protostar represents a powerful toolset for developing, testing, and deploying smart contracts on the StarkNet network. This guide has introduced you to its main features and demonstrated how to use it in the context of a simple project. Although there are some nuances and "gotchas" to be aware of, the benefits of using Protostar are evident. As the StarkNet ecosystem evolves, tools like Protostar will continue to play a critical role in helping developers build robust, reliable, and secure decentralized applications. Happy coding!
+
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
 
 == Contributing
 
