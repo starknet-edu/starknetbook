@@ -157,7 +157,7 @@ To run your Cairo program, execute the following command:
 
 [source, bash]
 ----
-$ cairo-run src/lib.c.airo
+$ cairo-run src/lib.cairo
 [DEBUG] Hello, Scarb!                   (raw: 5735816763073854913753904210465)
 Run completed successfully, returning []
 ----
