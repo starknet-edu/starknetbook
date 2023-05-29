@@ -209,5 +209,10 @@ a|
 image::https://avatars.githubusercontent.com/u/65915812?v=4&s=100[width=100, link="https://github.com/keivinonline"]
 Keivin
 a|
+image::https://avatars.githubusercontent.com/u/87354252?v=4&s=100[width=100, link="https://github.com/lambda-0x"]
+lambda-0x
+a|
+a|
+a|
 a|
 |===
