@@ -2,7 +2,7 @@
 
 = Types in Cairo and The Relevance of Typing
 
-Cairo is a strongly typed language, similar to Rust, which means that every variable, constant, and function argument must have an explicit type. This enforces strict type checking, providing increased safety and reducing the likelihood of runtime errors. Cairo has a rich type system that includes several types of integers, booleans, arrays, and contract addresses. Cairo also supports user-defined types, which are useful for modeling complex data structures.
+Cairo is a strongly typed language, similar to Rust, which means that every variable, constant, function arguments and funtion return's type be known at compile time. This enforces strict type checking, providing increased safety and reducing the likelihood of runtime errors. Cairo has a rich type system that includes several types of integers, booleans, arrays, and contract addresses. Cairo also supports user-defined types, which are useful for modeling complex data structures.
 
 A list of primitive types in Cairo (not all), along with a brief description of each type's purpose and functionality:
 
@@ -26,7 +26,7 @@ A list of primitive types in Cairo (not all), along with a brief description of 
 | Array<T> | A dynamic array data structure for elements of type T, used for creating and manipulating arrays.
 |===
 
-In Cairo, every variable or function argument must be explicitly typed. This helps the compiler identify and prevent type-related issues at compile-time, increasing code safety and robustness. Moreover, it also improves code readability by making the types of values and the purpose of the code more apparent.
+Similar to Rust, Cairo also supports type inference so the compiler will try to guess the type of a variable based on how the value is used. Incases where its not possible for compiler to guess the type of a variable, explicit annotation must be added.
 
 Here is an example of using types in Cairo:
 
