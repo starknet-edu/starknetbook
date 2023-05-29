@@ -1,0 +1,273 @@
+= The need of Starknet from a data security perspective
+
+This chapter will provide an overview of the evolution of data security and how Starknet addresses the challenges posed by the blockchain trilemma. In the https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_0/pages[GitHub repo of the Book], you'll find code examples to enhance your learning experience. We welcome contributions from the community, so if you can provide examples in other languages, please feel free to submit a PR.
+
+The topics covered in this chapter have been thoroughly explored and analyzed by countless experts in the field. We will reference their invaluable resources throughout the book to ensure you receive the most comprehensive and accurate information.
+
+[quote, The Starknet Community]
+____
+As we venture into the captivating world of Cairo and Starknet, let's remember that we stand on the shoulders of giants who have paved the way for our understanding and growth.
+____
+
+
+== What are we solving for?
+
+Blockchain technology has brought about computational systems characterized by absolute transparency and inclusive accountability. However, to achieve these features, blockchain systems have had to make significant trade-offs that affect usability. Vitalik Buterin encapsulated this issue in "The Blockchain Trilemma":
+
+[quote, Vitalik Buterin]
+____
+Blockchains are forced to make trade-offs that prevent them from being decentralized, scalable, and secure.
+____
+
+Throughout this course, you will learn how Starknet addresses the Blockchain Trilemma, aiming to deliver a system that is not only secure, inclusively accountable, and decentralized but also scalable and expressive. This is achieved through the use of zero-knowledge STARK proofs.
+
+🎯 +++<strong>+++Goals: +++</strong>+++ Secure, inclusively accountable, decentralized, scalable, expressive 🎯
+
+
+== Evolution of Data Security
+
+image::evolution.png[evolution]
+
+For a more concrete example of the trilemma, we can move outside of the blockchain context entirely.
+Say Alice has an important piece of data she needs access to.
+To start we will represent this data as ASCII characters in YAML format:
+
+[,yaml]
+----
+alice_account: 5.00
+----
+
+Let's write it to a file on our computers disk and measure performance:
+
+[,bash]
+----
+time echo "alice_account: 5.00" >> bank.yaml
+----
+
+Let's read that information:
+
+[,bash]
+----
+time cat bank.yaml
+----
+
+It's obviously very fast to read and write this data from our local disk, and powerful https://www.postgresql.org[database mechanisms] can be applied to optimize access to the data.
+BUT if you drop your computer or get too close to a large ACME magnet Alice loses her valuable bank account information.
+
+🎯 +++<strong>+++Goals: +++</strong>+++ +++<s style="color: red">+++secure+++</s>+++, +++<s style="color: red">+++inclusively accountable+++</s>+++, +++<s style="color: red">+++decentralized+++</s>+++, scalable, expressive 🎯
+
+💡*Let's replicate Alice's account on another computer*💡 If we replicate Alice's bank account YAML file on multiple computers, when one fails we haven't lost the data!
+
+Sender Questions:
+
+* How do I locate a receiving host to send to?
+* How do I know the receiving host successfully wrote Alice's account data?
+* If I change Alice's account value how will the receiving host know to update the same value?
+
+Receiver Questions:
+
+* Who will I receive data from?
+* If I change Alice's account value how will the sending host know to update the same value?
+
+
+== Distributed Systems
+
+These questions form the basis of distributed systems and distributed computing across a network and have been studied since the inception of the internet.
+
+Let's look briefly at how one of the more popular distributed databases, https://cassandra.apache.org/doc/latest/cassandra/getting_started/configuring.html[CassandraDB], handles these issues.
+
+You can see when configuring the system you are required to whitelist the `seed node` IP Addresses that will form our trusted cluster that partakes in a limited peer-to-peer https://www.linkedin.com/pulse/gossip-protocol-inside-apache-cassandra-soham-saha[gossip].
+Although this is suitable for many traditional systems we strive to build inclusive and permissionless systems.
+
+Once the distributed database is set up we gain "Fault Tolerance" for Alice's valuable bank data.
+If someone accidentally brings their large ACME magnet into one data centre, the data is easily accessible on redundant hosts.
+Similar to blockchains these distributed systems made tradeoffs to the simple I/O example above.
+So what did we give up for this fault tolerance?
+
+Banks Perspective:
+
+* Network overhead impacts performance
+* Redundancy and replication impact performance
+* Infrastructure maintenance (stem:[])
+
+Alice's Perspective:
+
+* Delegates trust to the bank:
+ ** database is configured correctly
+ ** operational security can handle attackers or intruders
+ ** is not doing anything duplicitous
+ ** etc.
+* Costs typically get passed to Alice
+
+🎯 +++<strong>+++Goals: +++</strong>+++ secure, +++<s style="color: red">+++inclusively accountable+++</s>+++, +++<s style="color: red">+++decentralized+++</s>+++, scalable, expressive 🎯
+
+💡 *Let's replicate Alice's account on ANY computer* 💡
+
+Bitcoin brings various computer science concepts together with https://en.wikipedia.org/wiki/Game_theory[game theory] to create a truly peer-to-peer network and negates the need to delegate our trust to a central part.
+
+The nodes trust the block producer based on its valid https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_0/pages/bitcoin/proof_of_work[proof of work] and the network collectively agrees on a set of canonical updates to the state of the Bitcoin ledger and the state of Alice's account.
+
+In `GO` (remember all code examples can be found at the https://github.com/starknet-edu/starknetbook/tree/main[GitHub repo of the Book]. Feel free to add your own examples and submit a PR!):
+
+[,bash]
+----
+# proof of work example
+cd bitcoin/proof_of_work/go
+go run main.go
+----
+
+In `Python`:
+
+[,bash]
+----
+# proof of work example
+cd bitcoin/proof_of_work/python
+python main.py
+----
+
+The Bitcoin nodes themselves listen for and https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_0/pages/bitcoin/block_verification[validate] blocks of transactions that are broadcast to the network by the miner of that block. They form a data structure called a Merkle Tree to obtain a root hash corresponding to all the transactions (and their order) in that block. If one tx changes by even a single bit the Merkle root will be completely different.
+
+In `GO`:
+
+[,bash]
+----
+# block verification example
+cd bitcoin/block_verification/go && go mod tidy
+go run main.go utils.go
+----
+
+In `Rust`:
+
+[,bash]
+----
+cd block_verification/rust/
+cargo run
+# or run the tests with
+cargo test
+----
+
+Alice's information gets formatted as a https://en.wikipedia.org/wiki/Unspent_transaction_output[UTXO] and is replicated on all of the https://bitnodes.io[nodes] on the Bitcoin network.
+She can even validate that everything is accurate herself by rehashing the Merkle tree of every block of transactions from genesis to now.
+
+🎉 *NO DELEGATION OF TRUST* 🎉 Let's revisit the trilemma.
+What did we give up to get this trustless data security?
+
+* Miners expend energy as they attempt to get the nonce
+* Full trustless verification requires EACH node to replicate the canonical state:
+ ** hash the Merkle tree of transactions
+ ** hash the block header
+
+Full Node Size: ~405GB
+
+For a naive demonstration of "The Evolution of Data Security" run the following:
+
+[,bash]
+----
+cd bitcoin/block_verification/go && go mod tidy
+go test ./... -bench=. -count 5
+----
+
+🎯 +++<strong>+++Goals: +++</strong>+++ secure, inclusively accountable, decentralized, +++<s style="color: red">+++scalable+++</s>+++, +++<s style="color: red">+++expressive+++</s>+++ 🎯
+
+💡 *Let's let Alice use her data* 💡
+
+== Smart Contracts
+
+Smart contracts were first proposed by https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html[Nick Szabo] as a transaction protocol that executes the terms of a contract, giving all parties transparency into the rule set and execution.
+Bitcoin facilitates a limited version of https://ethereum.org/en/whitepaper/#scripting[smart contracts], but the expressive smart contract model of Ethereum has been more widely adopted.
+
+== Ethereum
+
+Ethereum provides a platform to implement these smart contracts with the use of the https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_0/pages/bitcoin/block_verification[Ethereum Virtual Machine].
+In the Ethereum paradigm, Alice's bank account information is stored in a 20-byte address called an https://ethereum.org/en/whitepaper/#ethereum-accounts[account].
+Her account balance along with a few more fields (nonce, storageRoot, codeHash) becomes a "node" in a data structure called a Patricia Trie where PATRICIA stands for "Practical Algorithm to Retrieve Information Coded in Alphanumeric".
+
+This `Trie` is a specific type of tree that encodes a `key` as a path of common prefixes to its corresponding `value`.
+So Alice's Bank Account can be found at an address("key") that points to an account ("value") in Ethereum's World State (trie).
+The tree structure of the trie allows us to obtain a cryptographic hash of each node all the way up to a single hash corresponding to the `root` similar to the Merkle tree we saw in the Bitcoin block verification.
+
+For an example of the MPT data structure you can use this diagram for reference:
+
+image::trie.png[trie]
+
+and run the following:
+
+[,bash]
+----
+cd ethereum/block_verification/go && go mod tidy
+go run *.go
+----
+
+Ethereum then propagates its state by verifying transactions are well-formed and applying them to accounts.
+Alice has a public/private key pair to manage her "externally owned account" and can sign transactions that involve her balance or involve interacting with other contracts in the state.
+
+In addition to EOAs Ethereum has "contract accounts" which are controlled by the contract code associated with them.
+Every time the contract account receives a message the bytecode that is stored as an https://eth.wiki/fundamentals/rlp[RLP encoded] value in the account storage trie begins to execute according to the rules of the EVM.
+
+Trilemma visit: what did we give up to add expressivity?
+
+* Every transaction still needs to be processed by every node in the network.
+* With the addition of world state storage the blockchain can "bloat" leading to centralization risk
+* Alice may pay $100 to use the money in her account
+
+Full Node Size: ~700 GB
+
+Archive Node Size: ~10 TB
+
+🎯 +++<strong>+++Goals: +++</strong>+++ secure, inclusively accountable, decentralized, +++<s style="color: red">+++scalable+++</s>+++, expressive 🎯
+
+💡 *Let's optimize Alice's data utility* 💡
+
+== Rollups
+
+As demand for block space increases the cost to execute on `Layer 1` (full consensus protocols e.g.
+Bitcoin, Ethereum) will become increasingly expensive, and until certain https://notes.ethereum.org/@vbuterin/verkle_and_state_expiry_proposal[state expiry mechanisms] are implemented we can expect the state of the L1 to continue to bloat over time.
+This will require an increasingly robust machine to maintain the state and subsequently verify the blocks.
+
+Rollups are one solution in which business logic is executed and stored in a protocol outside the Ethereum context and then proves its successful execution in the Ethereum context.
+
+Typically this involves compressing a larger number of transactions at this `Layer 2` and committing the state diffs to a smart contract deployed on L1.
+For full interoperability with the L1, rollups also typically implement a messaging component for deposits and withdrawals.
+
+There are currently two types of rollups that are being widely adopted:
+
+* Optimistic Rollups
+* Zero-Knowledge Rollups
+
+Vitalik provides a good comparison of the two https://vitalik.ca/general/2021/01/05/rollup.html#optimistic-rollups-vs-zk-rollups[here], and touches on the final pieces of our long trilemma journey:
+
+*_No matter how large the computation, the proof can be very quickly verified on-chain._*
+
+This allows Alice to move her money freely between L1 and L2 (...soon to be L3) and operate on a low-cost, expressive blockchain layer.
+All while inheriting the highest form of data security evolution from the L1 and not having to delegate trust to any centralized party!
+
+🎯 +++<strong>+++Goals: +++</strong>+++ secure, inclusively accountable, decentralized, scalable, expressive 🎯
+
+💡 *Let's explore Starknet* 💡
+
+== Starknet
+
+Starknet is a decentralized, permissionless, and scalable Layer-2 solution built on Ethereum. It utilizes zk-STARKs, a type of zero-knowledge proof, to achieve these goals. By using zk-STARKs, Starknet allows for increased transaction throughput, more expressive smart contracts, and reduced gas fees compared to Layer-1.
+
+With Starknet, Alice can interact with a more efficient and cost-effective blockchain layer that maintains the security and decentralization of Ethereum.
+
+Starknet is composed of various components, including:
+
+* Starknet Contracts: Smart contracts written in Cairo, a Turing-complete language designed specifically for creating zk-STARK proofs.
+* Starknet Nodes: Nodes that process and validate Starknet transactions and proofs, as well as submit them to Ethereum.
+* Starknet Bridge: A bridge that enables communication between Ethereum and Starknet, allowing for deposits, withdrawals, and contract interactions.
+
+Starknet offers a promising solution to the trilemma, achieving the goals of security, inclusively accountable, decentralization, scalability, and expressivity.
+
+🎯 +++<strong>+++Goals: +++</strong>+++ secure, inclusively accountable, decentralized, scalable, expressive 🎯
+
+By following the Starknet Book, you will gain the knowledge required to work with Starknet and its components. 
+
+By diligently following the Starknet book and exploring the available resources, you will become proficient in developing and deploying Starknet contracts. Armed with the power of Starknet, you can create scalable, secure, and expressive applications that take advantage of the benefits provided by Layer-2 technology.
+
+
+== Conclusion
+
+Throughout the history of data security, various solutions have been developed to address the challenges posed by the blockchain trilemma. From the early days of Bitcoin to the more expressive Ethereum, and now to Layer-2 solutions like Starknet, the industry has made significant strides in achieving secure, inclusively accountable, decentralized, scalable, and expressive systems.
+
+With Starknet, developers can harness the power of zk-STARKs to build applications that are both scalable and expressive while maintaining the security and decentralization of the underlying Layer-1 Ethereum network. As the technology continues to evolve and mature, we can expect Starknet to play a significant role in shaping the future of blockchain and decentralized applications.
