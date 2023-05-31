@@ -207,11 +207,13 @@ image::https://avatars.githubusercontent.com/u/22482966?v=4&s=100[width=100, lin
 Leapalazzolo +
 a|
 image::https://avatars.githubusercontent.com/u/65915812?v=4&s=100[width=100, link="https://github.com/keivinonline"]
-Keivin
+Keivin +
 a|
 image::https://avatars.githubusercontent.com/u/87354252?v=4&s=100[width=100, link="https://github.com/lambda-0x"]
-lambda-0x
+lambda-0x +
 a|
+image::https://avatars.githubusercontent.com/u/22297601?v=4&s=100[width=100, link="https://github.com/davelange"]
+David Lange
 a|
 a|
 a|
