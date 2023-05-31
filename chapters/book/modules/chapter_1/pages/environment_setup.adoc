@@ -135,6 +135,7 @@ If you get the following error:
 ----
 ImportError: urllib3 v2.0 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with LibreSSL 2.8.3. See: https://github.com/urllib3/urllib3/issues/2168
 ----
+
 Try downgrading the version of urllib3:
 
 [source, bash]
@@ -151,12 +152,17 @@ starknet --version
 
 The output should show the installed version of Starknet CLI. Make sure the version matches https://github.com/starkware-libs/cairo-lang/releases[the latest release].
 
+To upgrade to the latest version of the Starknet CLI, run the following command:
+[source, bash]
+----
+pip install cairo-lang --upgrade  
+----
 
 == Cairo Compiler Installation
 
 To install the Cairo compiler, follow these steps:
 
-. Clone the Cairo repository and set it up:
+* Clone the Cairo repository and set it up:
 
 [source, bash]
 ----
@@ -172,7 +178,7 @@ git checkout tags/v1.1.0-alpha0
 cargo build --all --release
 ----
 
-. Add Cairo executables to your PATH:
+* Add Cairo executables to your PATH:
 
 Update your `.bashrc` or `.zshrc` file to add the Cairo binaries to your `PATH` environment variable:
 
@@ -183,6 +189,28 @@ export PATH="$HOME/.cairo/target/release:$PATH"
 ----
 
 Open a new shell and check that the following command returns a version number:
+
+[source, bash]
+----
+cairo-compile --version
+----
+
+* To update the Cairo compiler we just need to checkout the newest tag, run the following commands:
+
+[source, bash]
+----
+# Go to your Cairo cloned repo
+cd ~/.cairo
+
+# Fetch the newest tags
+git fetch
+
+# Checkout the newest tag
+git checkout tags/v1.1.0
+cargo build --all --release
+----
+
+Open a new shell and check that the you have the intended version:
 
 [source, bash]
 ----

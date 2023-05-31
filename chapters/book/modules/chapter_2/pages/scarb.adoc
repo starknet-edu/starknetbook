@@ -58,8 +58,8 @@ Scarb's installation on Windows requires manual setup. Follow the steps below to
 [source, bash]
 ----
 $ scarb --version
-scarb 0.2.1 (9e3c8d97d 2023-05-23)
-cairo: 1.0.0 (https://crates.io/crates/cairo-lang-compiler/1.0.0)
+scarb 0.3.0 (182a9019d 2023-05-29)
+cairo: 1.1.0 (https://crates.io/crates/cairo-lang-compiler/1.1.0)
 ----
 
 If you encounter any issues with Scarb, please open an issue on the starknetbook repository.
