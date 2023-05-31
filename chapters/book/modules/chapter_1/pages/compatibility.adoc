@@ -1,0 +1,85 @@
+= Starknet CLI and Cairo Compiler: Compatibility Across Environments
+
+Starknet Command Line Interface (CLI) and the Cairo compiler form the backbone of the Starknet ecosystem. These tools, being at the heart of Starknet's infrastructure, are under active development with new versions being frequently released.
+
+However, it's noteworthy that the releases of Starknet CLI and the Cairo compiler do not always coincide. As a result, the latest version of Starknet CLI may not be compatible with the latest Cairo compiler, which typically precedes the CLI release by a few days. Consequently, if you install the most recent version of the Starknet CLI, it may not function correctly with the latest Cairo compiler.
+
+This chapter presents a table detailing the compatibility between the versions of Starknet CLI and Cairo compiler across various environments – Mainnet, Goerli Testnet, and Devnet. The table guides you in choosing the compatible versions of Starknet CLI and Cairo compiler for each environment. In addition, it outlines the compatible versions of the Cairo compiler with the Scarb package manager and Protostar toolchain, both of which will be discussed in later chapters.
+
+[cols="3", options="header"]
+|===
+|Environment
+|https://github.com/starkware-libs/cairo-lang/releases[Starknet (cairo-lang) version]
+|https://github.com/starkware-libs/cairo/releases[Cairo version]
+
+|Mainnet
+|0.11.2
+|1.1.0
+
+|Goerli Testnet
+|0.11.2
+|1.1.0
+
+|https://github.com/0xSpaceShard/starknet-devnet/releases[Starknet Devnet]
+|0.11.1.1
+|1.0.0-rc0
+
+|https://github.com/software-mansion/scarb/releases[Scarb: Cairo Package Manager]
+|-
+|1.1.0
+
+|https://github.com/software-mansion/protostar/releases[Protostar: Toolchain for developing and testing StarkNet contracts]
+|0.11.1.1
+|1.0.0-rc0
+|===
+
+== Checking and Updating Starknet CLI and Cairo Compiler Versions
+
+The Starknet Command Line Interface (CLI), known as `cairo-lang` (named after the GitHub repository), and the Cairo compiler are integral tools in the Starknet ecosystem. To ensure they function optimally and take advantage of the latest features, it's essential to periodically check their versions and update them if needed. This section guides you through these tasks.
+
+=== Checking Versions
+
+To check the version of your installed Starknet CLI, execute the following command in your terminal:
+
+[source,bash]
+----
+starknet --version
+----
+
+Similarly, to check the version of the Cairo compiler you're currently using, run:
+
+[source,bash]
+----
+cairo-compile --version
+----
+
+=== Upgrading to the Latest Versions
+
+To upgrade your Starknet CLI to the latest version, use the `pip install` command with the `--upgrade` flag:
+
+[source, bash]
+----
+pip install cairo-lang --upgrade  
+----
+
+For updating the Cairo compiler, first navigate to your Cairo cloned repository (the path was provided in the Environment Setup chapter). Then, fetch the newest tags and checkout the newest tag:
+
+[source, bash]
+----
+cd ~/.cairo
+
+git fetch
+
+git checkout tags/v1.1.0
+cargo build --all --release
+----
+
+Remember, the tag version (`v1.1.0` in the example above) may change as new versions are released, so be sure to replace it with the latest version.
+
+=== Version Features and Changelog
+
+To keep up to date with the newest features and improvements of these tools, you can review the release notes and changelogs on their respective GitHub repositories.
+
+For Starknet CLI (cairo-lang) visit the https://github.com/starkware-libs/cairo-lang/releases[Github Repository].
+
+For the Cairo compiler, visit the https://github.com/starkware-libs/cairo/releases[Github Repository].

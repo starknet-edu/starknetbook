@@ -15,10 +15,14 @@ Install Protostar by opening a terminal and running the following command:
 curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
 ----
 
-After the installation process, restart the terminal. Check that the version of your installed Protostar matches `0.11.0` for compatibility with Cairo 1.0. If it does not, update your Protostar version using the command:
+After the installation process, restart the terminal. Check that the version of your installed Protostar matches the https://github.com/software-mansion/protostar/releases[most recent version]. If it does not, update your Protostar version using the command:
 
 [source,bash]
 ----
+# Check your current version
+protostar -v
+
+# Update to the latest version
 protostar upgrade
 ----
 
@@ -46,6 +50,8 @@ Cairo-lang version: 0.11.1.1
 Cairo 1 compiler version: 1.0.0rc0
 21:03:44 [INFO] Execution time: 1.34 s
 ----
+
+Note that Cairo-lang is the version of the Starknet network and Cairo 1 compiler is the version of the Cairo compiler.
 
 == Initiating a New Cairo Project
 
