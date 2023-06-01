@@ -2,7 +2,7 @@
 
 = Protostar
 
-https://docs.swmansion.com/protostar/[Protostar] is a highly practical development platform for the StarkNet universe. This tool eases the process of managing dependencies, compiling projects, running tests, and interacting with the StarkNet chain. Protostar allows developers to write, test and deploy their Cairo contracts in a streamlined manner.
+https://docs.swmansion.com/protostar/[Protostar] is a highly practical development platform for the Starknet universe. This tool eases the process of managing dependencies, compiling projects, running tests, and interacting with the Starknet chain. Protostar allows developers to write, test and deploy their Cairo contracts in a streamlined manner.
 
 == Installation
 
@@ -120,7 +120,7 @@ Seed:        720541691
 
 == Project Compilation
 
-Before a project can be deployed on the network, it must be compiled into a form that the StarkNet network can understand and execute. Protostar makes this process easy with its `build` command. 
+Before a project can be deployed on the network, it must be compiled into a form that the Starknet network can understand and execute. Protostar makes this process easy with its `build` command. 
 
 To compile your Cairo1 project, use the build command:
 
@@ -177,7 +177,7 @@ Voyager   https://goerli.voyager.online/tx/0x03d048f8dc599c7d9bad1e5a7a039c35463
 
 == Contract Deployment
 
-After declaring your contract, the next step is to deploy it on the network. Deployment makes your contract live and interactable on the StarkNet.
+After declaring your contract, the next step is to deploy it on the network. Deployment makes your contract live and interactable on the Starknet.
 
 To deploy your contract, use the class hash generated from the declaration step and the `protostar deploy` command:
 
@@ -253,7 +253,7 @@ match invoke(deployed_contract_address, 'panic_with', @panic_data) {
 }
 ----
 
-Finally, to make your code interact with StarkNet, you can utilize the comprehensive list of commands provided by Protostar. You can find these commands [here](https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet).
+Finally, to make your code interact with Starknet, you can utilize the comprehensive list of commands provided by Protostar. You can find these commands [here](https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet).
 
 == Common Gotchas 
 
@@ -266,7 +266,7 @@ Finally, to make your code interact with StarkNet, you can utilize the comprehen
 
 == Conclusion
 
-Protostar represents a powerful toolset for developing, testing, and deploying smart contracts on the StarkNet network. This guide has introduced you to its main features and demonstrated how to use it in the context of a simple project. Although there are some nuances and "gotchas" to be aware of, the benefits of using Protostar are evident. As the StarkNet ecosystem evolves, tools like Protostar will continue to play a critical role in helping developers build robust, reliable, and secure decentralized applications. Happy coding!
+Protostar represents a powerful toolset for developing, testing, and deploying smart contracts on the Starknet network. This guide has introduced you to its main features and demonstrated how to use it in the context of a simple project. Although there are some nuances and "gotchas" to be aware of, the benefits of using Protostar are evident. As the Starknet ecosystem evolves, tools like Protostar will continue to play a critical role in helping developers build robust, reliable, and secure decentralized applications. Happy coding!
 
 
 [NOTE]

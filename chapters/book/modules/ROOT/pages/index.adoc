@@ -114,7 +114,7 @@ image::https://avatars.githubusercontent.com/u/73983677?v=4&s=100[width=100, lin
 Omahs +
 a|
 image::https://avatars.githubusercontent.com/u/70894690?v=4&s=100[width=100, link="https://github.com/LucasLvy"]
-Lucas @ StarkWare +
+Lucas @ Starkware +
 a|
 image::https://avatars.githubusercontent.com/u/33158502?v=4&s=100[width=100, link="https://github.com/qd-qd"]
 Qd-Qd +

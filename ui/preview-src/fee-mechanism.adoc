@@ -8,7 +8,7 @@ In this section, we will review Starknet Alpha fee mechanism. If you want to ski
 
 Users can specify the maximum fee that they are willing to pay for a transaction via the `max_fee` xref:../Blocks/transactions.adoc#max_fee[field].
 
-The only limitation on the sequencer (enforced by the Starknet OS) is that the actual fee charged is bounded by `max_fee`, but for now, StarkWare's sequencer will only charge the fee required to cover the proof cost (potentially less than the max fee).
+The only limitation on the sequencer (enforced by the Starknet OS) is that the actual fee charged is bounded by `max_fee`, but for now, Starkware's sequencer will only charge the fee required to cover the proof cost (potentially less than the max fee).
 
 Presently, the sequencer only takes into account L1 costs involving proof submission. There are two components affecting the L1 footprint of a transaction:
 

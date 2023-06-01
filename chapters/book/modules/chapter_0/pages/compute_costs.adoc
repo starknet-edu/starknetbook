@@ -21,7 +21,7 @@ Starknet, as a pioneering Layer 2 solution, addresses these problems head-on. By
 
 The advent of affordable transactions and account abstraction paves the way for more commonplace, day-to-day usage of blockchain technologies. This transformation breaks down into several critical elements:
 
-1. **Microtransactions**: The reduced cost of transactions on StarkNet allows for the feasibility of small transactions, or microtransactions. These are transactions of a very small value, such as buying a cup of coffee, which would have been prohibitively expensive with higher transaction fees. Now, such transactions only cost you a couple of cents or even a fraction of a cent.
+1. **Microtransactions**: The reduced cost of transactions on Starknet allows for the feasibility of small transactions, or microtransactions. These are transactions of a very small value, such as buying a cup of coffee, which would have been prohibitively expensive with higher transaction fees. Now, such transactions only cost you a couple of cents or even a fraction of a cent.
 
 2. **Familiar Wallet Experience**: Account abstraction allows your crypto wallet to function similarly to a traditional wallet, bringing a sense of familiarity to users. Key points include:
    * Users can store the majority of their assets in a highly secure wallet, akin to a savings account in traditional banking.
@@ -87,7 +87,7 @@ The ever-evolving landscape of artificial intelligence (AI) signals that AI inte
 3. **Verifiable Training**: This means that models could potentially be trained on-chain, offering verifiable proof of benign training without introducing external biases. However, this is the most computationally intensive application and the least likely to be implemented soon due to:
    * Current large AI/ML models take days (or even years) to train on GPUs with significant resources.
    * Generating zk-SNARK proofs for the computation done during training would add additional overhead.
-   * Cairo, the language used for StarkNet smart contracts, is designed to run on CPUs, which are considerably slower than GPUs.
+   * Cairo, the language used for Starknet smart contracts, is designed to run on CPUs, which are considerably slower than GPUs.
 
 Research teams such as Giza and Modulus Labs are leading the way in exploring the potential of bringing AI on-chain using zero-knowledge (ZK) proofs.
 

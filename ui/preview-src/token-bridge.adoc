@@ -5,7 +5,7 @@
 [id="starkgate_general_architecture"]
 == StarkGate General Architecture
 
-StarkGate is the Ethereum↔Starknet token bridge developed by StarkWare. Each supported token is associated with an L1 and L2 bridge contracts that are communicating via Starknet's messaging mechanism.
+StarkGate is the Ethereum↔Starknet token bridge developed by Starkware. Each supported token is associated with an L1 and L2 bridge contracts that are communicating via Starknet's messaging mechanism.
 
 The bridges facilitate a user's ability to conduct their transactions with their ETH and ERC-20 tokens that reside on L1, via the StarnNet Alpha network and its STARK-based computational compression capabilities. For simplicity, we use terms such as "`deposit`", "`transact`", and "`transfer`" to refer to various operations involving a bridge, even though ETH and ERC20 tokens never actually leave Ethereum.
 

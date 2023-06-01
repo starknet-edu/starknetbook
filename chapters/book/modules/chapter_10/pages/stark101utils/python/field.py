@@ -1,5 +1,5 @@
 ###############################################################################
-# Copyright 2019 StarkWare Industries Ltd.                                    #
+# Copyright 2019 Starkware Industries Ltd.                                    #
 #                                                                             #
 # Licensed under the Apache License, Version 2.0 (the "License").             #
 # You may not use this file except in compliance with the License.            #
