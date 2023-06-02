@@ -1,0 +1,300 @@
+[id="scarb"]
+
+= Scarb
+
+Scarb 是专为简化你的 Cairo 和 Starknet 开发过程而创建的 Cairo 包管理器。这个功能强大的工具能够管理项目依赖，编译项目（纯 Cairo 和 Starknet 合约），下载所需库，构建这些库，并且可以与其他重要的开发工具（如 Protostar）无缝集成。
+
+== 将 Scarb 集成到你的开发工作流程中
+
+Scarb 为你的 Cairo 开发工作流程提供了灵活性和便利性。以下步骤说明了使用 Scarb 开发 Starknet 合约的典型工作流程：
+
+1. **初始化项目：**通过运行 scarb new 创建一个新项目。该命令将自动生成项目的基本结构，包括 Scarb.toml 配置文件和初始的 src/lib.cairo 文件。
+
+2. **开发合约：**编写 Cairo 代码并将其存储在 src 目录中。
+
+3. **管理依赖关系：**如果你的合约依赖于外部库，请使用 scarb add 轻松将这些依赖项包含到你的项目中。
+
+4. **编译合约：**运行 scarb build 将合约编译为 Sierra 代码。然后可以进一步检查生成的代码，或将其用作其他工具或流程的输入。
+
+5. **使用自定义脚本自动化任务：**利用 `Scarb.toml` 中的 `[scripts]` 功能定义自定义脚本，以自动化常见任务或将多个命令合并为一个命令。
+
+通过将 Scarb 集成到你的工作流程中，你可以利用其功能使你的开发过程更高效可控。
+
+== 开始使用 Scarb
+
+要开始使用 Scarb，首先你需要在 PATH 环境中有一个可用的 Git 可执行程序；它将自动创建。
+
+=== 安装
+
+Scarb 与 macOS、Linux 和 Windows 操作系统兼容。
+
+==== macOS 和 Linux
+
+对于 macOS 和 Linux 用户，请打开终端并执行以下命令：
+
+[source, bash]
+----
+$ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+----
+
+如果你希望安装 Scarb 的特定版本，例如预览版本，请改用此命令：
+
+[source, bash]
+----
+$ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | bash -s -- -v 0.2.0-alpha.2
+----
+
+==== Windows
+
+
+Windows 上的 Scarb 安装需要手动设置。按照以下步骤在 Windows 上安装 Scarb：
+
+- 从官方 Scarb https://docs.swmansion.com/scarb/download[网站]或 https://github.com/software-mansion/scarb/releases/[Scarb Github 存储库]下载与你的操作系统和 CPU 架构匹配的发布档案。确保选择最新版本。
+- 将下载的文件提取到你想要的位置，例如 `%LOCALAPPDATA%\Programs\scarb`。
+- 将 scarb/bin 目录的路径添加到你的 `PATH` 环境变量中。
+- 在新终端中运行 `scarb --version` 确认安装。输出应显示 Scarb 和 Cairo 语言版本。
+
+
+[source, bash]
+----
+$ scarb --version
+scarb 0.3.0 (182a9019d 2023-05-29)
+cairo: 1.1.0 (https://crates.io/crates/cairo-lang-compiler/1.1.0)
+----
+
+如果你在使用 Scarb 时遇到任何问题，请在 starknetbook 存储库上提交一个问题。
+
+=== 使用 Scarb 设置项目
+
+要使用 Scarb 创建一个新项目，请导航到你想要的项目目录并执行以下命令：
+
+[source, bash]
+----
+$ scarb new hello_scarb
+----
+该命令将创建一个名为 `hello_scarb` 的新项目目录，其中包括一个 `Scarb.toml` 文件、一个带有 `lib.cairo` 文件的 `src` 目录，并初始化一个带有 `.gitignore` 文件的新 Git 仓库。
+
+[source, bash]
+----
+hello_scarb/
+├── src/
+│   └── lib.cairo  
+└── Scarb.toml
+----
+在文本编辑器中打开 `Scarb.toml`，你应该看到类似于以下代码片段的内容：
+
+[source, bash]
+----
+[package]
+name = "hello_scarb"
+version = "0.1.0"
+
+# 查看更多键及其定义，请访问  https://docs.swmansion.com/scarb/docs/reference/manifest
+[dependencies]
+# foo = { path = "vendor/foo" }
+----
+
+=== 理解 Scarb.toml
+
+Scarb.toml 文件使用 https://toml.io/en/[TOML]，一种易于阅读的配置格式。
+
+* `[package]`：此部分包含有关你的项目的信息。
+    ** `name`, `version`：这些键设置你的程序名称和用于编译的 Scarb 版本。
+* `[dependencies]`：此部分用于列出项目的依赖关系。
+
+
+=== 构建 Scarb 项目
+
+清除 `src/lib.cairo` 中的所有内容并替换为以下内容：
+
+[source, rust]
+----
+// src/lib.cairo
+mod hello_scarb;
+----
+
+接下来，创建一个名为 src/hello_scarb.cairo 的新文件，并添加以下内容：
+
+[source, rust]
+----
+// src/hello_scarb.cairo
+use debug::PrintTrait;
+fn main() {
+    'Hello, Scarb!'.print();
+}
+----
+在这个例子中，`lib.cairo` 文件包含了一个指向 'hello_scarb' 的模块声明，它包含了 hello_scarb.cairo 文件的实现。关于模块、导入和 `lib.cairo` 文件的更多信息，请参阅第二章中关于导入的子章节。
+
+Scarb 要求将源文件放置在 src 目录中，而顶级项目目录则用于 README 文件、许可信息、配置文件以及其他非代码内容。
+
+要从 `hello_scarb` 目录构建项目，请使用以下命令：
+
+[source, bash]
+----
+$ scarb build
+
+Compiling hello_scarb v0.1.0 (file:///projects/Scarb.toml)
+Finished release target(s) in 0 seconds
+----
+此命令将编译您的项目并在 `target/dev/hello_scarb.sierra` 文件中生成 Sierra 代码。Sierra 作为高级 Cairo 和诸如 Cairo Assembly (CASM) 之类的编译目标之间的中间层。要了解更多关于 Sierra 的信息，请查看 https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-exploring-sierra-7f32808421f5/[这篇文章]。
+
+要删除构建产物并删除 target 目录，请使用 `scarb clean` 命令。
+
+您还可以使用 `--profile` 或 `-P` 标志指定构建配置文件。例如，要在发布配置文件中构建，请使用以下命令：
+
+[source, bash]
+----
+scarb --profile release build
+----
+生成的 Sierra 代码文件将位于 `target/release/` 目录中。
+
+要运行您的 Cairo 程序，请执行以下命令：
+
+[source, bash]
+----
+$ cairo-run src/lib.cairo
+[DEBUG] Hello, Scarb!                   (raw: 5735816763073854913753904210465)
+Run completed successfully, returning []
+----
+
+如果您遇到此错误：
+
+[source,bash]
+----
+error: Found argument 'src/lib.cairo' which wasn't expected, or isn't valid in this context
+
+Usage: cairo-run [OPTIONS] --path <PATH>
+----
+您需要安装 Cairo 版本 alpha.7。请查看 https://cairo-book.github.io/ch01-01-installation.html[这篇指南] 以获取安装说明。
+
+或者，您可以尝试运行：
+
+[source, bash]
+----
+$ cairo-run --path src/lib.cairo
+----
+
+=== 定义自定义脚本
+
+Scarb 脚本可以在 `Scarb.toml` 文件中定义，然后用于执行自定义 shell 脚本。您可以将以下行添加到您的 `Scarb.toml` 文件中：
+
+[source, toml]
+----
+[scripts]
+run-lib = "cairo-run src/lib.cairo"
+----
+
+现在，运行命令 `scarb run run-lib` 将输出
+
+
+[source, bash]
+----
+[DEBUG] Hello, Scarb!      (raw: 5735816763073854913753904210465)
+
+Run completed successfully, returning []
+----
+
+使用 `scarb run` 提供了一种方便的方法来执行自定义 shell 脚本。这对于运行文件和测试项目非常有用。
+
+=== 添加依赖项
+
+Scarb 可以为您的 Cairo 包无缝管理依赖项。以下是向项目添加依赖项的两种方法：
+
+* 编辑 Scarb.toml 文件
+
+在项目目录中打开 Scarb.toml 文件，找到 `[dependencies]` 部分。如果不存在，请添加它。要包含托管在 Git 仓库的依赖项，请使用以下格式：
+
+[source, toml]
+----
+[dependencies]
+alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git" }
+----
+
+为了保持一致性，建议将 Git 依赖项固定到特定的提交。这可以通过添加带有提交哈希的 `rev` 字段来完成：
+
+[source, toml]
+----
+[dependencies]
+alexandria_math = { git = "https://github.com/keep-starknet-strange/alexandria.git", rev = "81bb93c" }
+----
+
+添加依赖项后，请记住保存文件。
+
+* 使用 scarb add 命令
+
+另外，你可以使用 `scarb add` 命令将依赖项添加到你的项目中。打开终端并执行以下命令：
+
+[source, bash]
+----
+$ scarb add alexandria_math --git https://github.com/keep-starknet-strange/alexandria.git
+----
+
+这个命令将从指定的 Git 仓库将 `alexandria_math` 依赖项添加到你的项目中。
+
+要删除依赖项，可以使用 `scarb rm` 命令。
+
+一旦添加了依赖项，Scarb.toml 文件将自动更新新的依赖项信息。
+
+=== 在代码中使用依赖项
+
+在将依赖项添加到项目后，你可以开始在你的 Cairo 代码中使用它们。
+
+例如，假设你已经添加了 alexandria_math 依赖项。现在，你可以在你的 `src/hello_scarb.cairo` 文件中导入并使用 alexandria_math 库中的函数：
+
+[source, rust]
+----
+// src/hello_scarb.cairo
+use alexandria_math::fibonacci;
+
+fn main() -> felt252 {
+    fibonacci::fib(0, 1, 10)
+}
+----
+
+在上面的例子中，我们从 alexandria_math 库中导入 fibonacci 函数，并在 main 函数中使用它。
+
+
+=== 回顾
+
+让我们回顾一下我们学到的关于 Scarb 的知识：
+
+* `scarb new` 命令可用于创建新项目。
+* `scarb build` 命令可用于构建项目并生成编译好的 Sierra 代码。
+* 可以在 `Scarb.toml` 文件中定义自定义脚本，并使用 `scarb run` 命令执行。
+* 我们的 Cairo 包的依赖项可以轻松管理。
+
+我们已经介绍了 Scarb 包管理器的基础知识及其在 Starknet 生态系统中的作用。通过将 Scarb 集成到你的工作流程中，你可以利用其强大的功能简化和优化你的 Cairo 开发过程。
+
+== Scarb 速查表
+
+这里是一个 Scarb 常用命令的速查表：
+
+* `scarb new <project_name>`: 使用给定的项目名称初始化一个新项目。
+* `scarb build`: 将你的 Cairo 代码编译成 Sierra 代码。
+* `scarb add <dependency> --git <repository>`: 从指定的 Git 仓库将依赖项添加到你的项目中。
+* `scarb rm <dependency>`: 从你的项目中删除依赖项。
+* `scarb run <script>`: 运行在你的 Scarb.toml 文件中定义的自定义脚本。
+
+Scarb 是一个多功能工具，这只是你可以用它实现的功能的开始。随着你在 Cairo 语言和 Starknet 平台上的经验越来越丰富，你会发现还有更多你可以用 Scarb 做的事情。
+
+想要了解 Scarb 及其功能的最新信息，请务必定期查看  https://docs.swmansion.com/scarb/docs/[官方 Scarb 文档]。祝编程愉快！
+
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
