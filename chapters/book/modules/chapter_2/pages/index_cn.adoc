@@ -1,0 +1,73 @@
+[id="index_cn"]
+
+= Cairo 智能合约
+
+我们深入了解 Starknet 后，发现 Starknet 依赖于一种强大且富有表现力的编程语言 Cairo。Cairo 专为使用 STARK 扩展去中心化 dApp 而设计，是一种图灵完备语言，使开发人员能够利用高效且可扩展的零知识证明。在这一章中，我们将在 Starknet 的背景下探讨 Cairo。我们将学习 Cairo 的核心概念，它与 Solidity 的区别，Cairo 智能合约的结构和组件，以及 Starknet 网络的独特功能。
+
+在本章结束时，您将对 Cairo 的基本概念和组件有全面的了解，使您能够在 Starknet 上构建稳健且高效的智能合约。
+
+== Cairo 智能合约是什么？
+
+在 Starknet 生态系统中，智能合约这个术语是指在 Starknet 操作系统的上可预先确定运行的不可篡改计算机程序。这些程序用 Cairo 语言编写，并部署在 Starknet 上。
+
+下面来剖析 Cairo 智能合约的关键方面：
+
+计算机程序::
+Cairo 智能合约只是计算机程序，设计用于在 Starknet 执行。
+
+不可篡改::
+一旦部署，Cairo 智能合约的代码无法更改。与以太坊智能合约一样，修改 Cairo 智能合约的唯一方法是部署一个新实例。
+
+确定性::
+在启动其执行的交易的上下文以及执行时刻的 Starknet 网络状态给定的情况下，执行 Cairo 智能合约的结果对于运行它的每个人都是相同的。
+
+Starknet 操作系统::
+Cairo 智能合约在 Starknet 操作系统（Starknet OS）中运行。Cairo 智能合约可以访问自己的状态、调用交易以及有关最近区块的一些信息。
+
+== Solidity 与 Cairo：克服限制，拥抱可扩展性
+
+尽管 Solidity 智能合约开发语言广泛采用，并支持一系列应用程序，但它并非对可证明计算进行设计。因此，将 Solidity 代码翻译成证明的编译器会遇到几个挑战：
+
+1. 依赖于低效的数据结构（如 uint256）及其操作
+2. 语言级的可变性
+3. 缺乏高效的内置程序
+4. 没有低级访问
+
+实际上，有两种不同的技术用于证明通用程序：SNARK 和 STARK。SNARK 支持的指令集更适合作为类似 Solidity 这样的语言的编译目标。然而，STARK 在提供更多可扩展性的同时，指令集不太自然。这意味着 Solidity 可以有效地编码为 SNARK，但不能像 STARK 那样最优地编码，因为 Solidity 中常见的结构对 STARK 来说「代价高昂」。
+
+Cairo 解决了这些限制并提供了更高效的解决方案：
+
+1. 提供名为 felt252 的低级字段数据类型，以及几种类型的 uints
+2. Cairo 从习惯上讲是一次性写入的，类似于函数式编程语言
+3. Cairo 提供对底层原语的完全低级访问
+
+尽管生态系统工具仍在成熟，但突破现有限制并构建更好的可组合应用程序至关重要。Cairo 致力于克服 Solidity 在可证明计算方面的局限性，并拥抱 STARK 的可扩展性，使其成为希望建立下一代去中心化应用程序的开发人员更合适的选择。
+
+== 在 Cairo 中编程
+
+Cairo 语法的主要灵感来源于 Rust，一种以性能、可靠性和对安全性的强烈关注而著称的流行系统编程语言。熟悉 Rust 的开发人员会发现过渡到 Cairo 很容易，因为许多语言特性和概念都相似。
+
+然而，即使您不熟悉 Rust，学习 Cairo 仍然是一个简单的过程。该语言的设计旨在简化和明确，使其对具有不同经验水平的开发人员都易于访问。当您深入了解 Cairo 时，您会发现一个不断壮大的热情开发者社区，他们不断创造新的学习资料、工具和资源，将使您的学习过程尽可能顺畅。
+
+这个生态系统继续增长和繁荣。每周都有新的资料和工具开发出来，帮助经验丰富的程序员和初学者一样学习、理解和使用 Cairo。
+
+在接下来的部分中，我们将探讨 Cairo 的核心概念和组件。
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
