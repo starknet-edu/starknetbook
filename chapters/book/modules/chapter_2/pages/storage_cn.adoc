@@ -1,0 +1,57 @@
+[id="storage_cn"]
+
+= Cairo 中的存储
+
+在 Cairo 合约的存储部分，你需要定义将存储在区块链上并可被合约函数访问的数据结构。这些数据结构表示合约的状态，并可在合约生命周期中进行读取或修改。
+
+在投票合约中，存储部分包括以下变量：
+
+* `yes_votes`: 一个 `u8`（无符号 8 位整数）变量，用于存储赞成票的数量。
+* `no_votes`: 一个 `u8`（无符号 8 位整数）变量，用于存储反对票的数量。
+* `can_vote`: 一个 `LegacyMap`（映射数据结构），将每个注册投票人的 `ContractAddress` 与一个 `bool` 值关联起来。这个值表示投票人是否允许投票（true）或不允许投票（false）。
+* `registered_voter`: 另一个 `LegacyMap` ，将每位投票人的 `ContractAddress` 与一个 `bool` 值关联起来，表示投票人是否注册（true）或未注册（false）。
+
+`LegacyMap` 数据结构允许你将键（在这个例子中，是 `ContractAddress` ）与值（在这个例子中，是 `bool`）关联起来。你可以使用 `read` 和 `write` 函数从 `LegacyMap` 中读取和写入数据。
+
+例如，要检查投票人是否注册，你可以使用以下代码：
+
+[source,rust]
+----
+let is_voter: bool = registered_voter::read(address);
+----
+
+要注册投票人，你可以使用以下代码：
+
+[source,rust]
+----
+registered_voter::write(voter_address, true);
+----
+
+Cairo 和 Solidity 在存储实现方面的一些相似之处和不同之处包括：
+
+1. Cairo 使用结构体来定义存储，而 Solidity 直接在合约中使用状态变量和映射。
+
+2. 在 Cairo 中，你使用 `LegacyMap` 类型创建映射，而在 Solidity 中，你使用 `mapping` 关键字。
+
+3. 在 Cairo 中，存储字段通过特定函数（如 `read` 和 `write`）进行访问（例如，`yes_votes::write(0_u8)`）。在 Solidity 中，存储字段通过赋值和索引进行访问（例如，`yes_votes = 0` ）。
+
+4. 在 Starknet 中，变量按照它们的名称而不是它们的类型或声明顺序存储在内存中。请参阅 https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-storage/[Starknet 文档]以获取更多信息。
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

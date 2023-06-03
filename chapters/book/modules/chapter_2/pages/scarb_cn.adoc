@@ -1,4 +1,4 @@
-[id="scarb"]
+[id="scarb_cn"]
 
 = Scarb
 

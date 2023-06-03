@@ -33,7 +33,7 @@ mod Vote {
     // @param voter_3 (ContractAddress): address of the third registered voter
     #[constructor]
     fn constructor(voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress) {
-        // Register all voters by calling the _register_voters function 
+        // Register all voters by calling the _register_voters function
         _register_voters(voter_1, voter_2, voter_3);
 
         // Initialize the vote count to 0

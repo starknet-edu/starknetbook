@@ -1,0 +1,81 @@
+[id="constructor_cn"]
+
+= Cairo 的构造函数
+
+构造函数是一个特殊的函数，当一个 Cairo 合约部署在区块链上时，构造函数用于对其进行初始化。构造函数只在部署时调用一次，并负责设置合约的初始状态。
+
+在 `Vote` 合约中，有两个构造函数：
+
+
+1. 一个接受三个单独的 `ContractAddress` 参数的构造函数，这些参数表示已注册选民的地址。
+
+2. 另一个接受 `ContractAddress` 数组的替代构造函数，可用于使用可变数量的已注册选民初始化合约。（这个构造函数在提供的示例中被注释掉了，但它演示了如何在 Cairo 合约中实现不同的构造函数变体。）
+
+让我们更详细地研究第一个构造函数：
+
+[source,rust]
+----
+#[constructor]
+fn constructor(voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress) {
+    // Register all voters by calling the _register_voters function
+    _register_voters(voter_1, voter_2, voter_3);
+
+    // Initialize the vote count to 0
+    yes_votes::write(0_u8);
+    no_votes::write(0_u8);
+}
+----
+
+这个构造函数执行以下操作：
+
+
+* 通过调用 `_register_voters` 函数并传递三个 `ContractAddress` 值来注册这三个投票人。 `_register_voters` 函数会更新存储中的 `registered_voter` 和 `can_vote` 映射结构。
+* 通过调用 `write` 函数并使用初始值 `0_u8`（一个无符号 8 位整数）将 `yes_votes` 和 `no_votes` 存储变量初始化为 0。
+
+现在，让我们简要地研究替代构造函数。请注意，每个合约只能有一个构造函数，所以你可以使用第一个构造函数，也可以使用第二个，但不能同时使用两个。
+
+[source,rust]
+----
+#[constructor]
+fn constructor(registered_addresses: Array::<ContractAddress>) {
+    // 获取已注册选民的数量
+    let registered_voters_len: usize = registered_addresses.len();
+
+    // 通过调用 _register_voters 递归函数注册所有选民
+    // 使用地址数组及其长度作为索引
+    _register_voters(ref registered_addresses, registered_voters_len);
+
+    // 将投票数初始化为 0
+    yes_votes::write(0_u8);
+    no_votes::write(0_u8);
+}
+----
+
+替代构造函数：
+
+* 接受表示已注册投票人地址的 `ContractAddress` 值的 `array`。
+* 使用 `len` 函数计算已注册投票人的数量。这将是数组中最后一个投票人的索引，并将在递归函数（下一点）中使用。
+* 通过调用 `_register_voters` 函数注册所有投票人，在这种情况下，该函数采用递归方法。
+* 将 `yes_votes` 和 `no_votes` 存储变量初始化为 0，就像第一个构造函数一样。
+
+两个构造函数的使用演示了如何根据输入参数或所需功能提供不同的初始化合约方式。
+
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet!
+____ß

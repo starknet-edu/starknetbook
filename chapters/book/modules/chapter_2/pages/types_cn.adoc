@@ -1,0 +1,89 @@
+[id="types_cn"]
+
+= 在 Cairo 中的类型以及类型的相关性
+
+Cairo 是一种强类型语言，类似于 Rust，这意味着每个变量、常量、函数参数和函数返回值的类型都必须在编译时确定。这强制进行严格的类型检查，提高了安全性并减少了运行时错误的可能性。Cairo 拥有丰富的类型系统，包括多种整数、布尔值、数组和合约地址类型。Cairo 还支持用户自定义类型，这对于建模复杂的数据结构很有用。
+
+下面是 Cairo 中一些原始类型的列表（并非全部），以及每种类型的用途和功能简介：
+
+[cols="1,2",options="header"]
+
+|===
+| Primitive Type | Description
+| u8 | 表示一个无符号 8 位整数。
+| usize | 无符号大小整数（通常用于表示索引和长度）
+| u16 | 表示一个无符号 16 位整数。
+| u32 | 表示一个无符号 32 位整数。
+| u64 | 表示一个无符号 64 位整数。
+| u128 | 表示一个无符号 128 位整数。
+| u256 | 表示一个无符号 256 位整数。
+| bool | 表示一个布尔值，可以是 true 或 false。
+| felt252 | 表示一个字段元素。
+| ContractAddress | 表示 Starknet 合约地址的类型，用于识别和与智能合约互动。
+| T | 表示 Starknet 合约地址的类型，用于识别和与智能合约互动。
+| Option<T> | 表示一个可能存在或不存在的值，用于可选值和错误处理。
+| Result<T, E> | 表示可能导致错误的计算结果，用于错误处理和控制流。
+| Array<T> | 用于存放类型为 T 的元素的动态数组数据结构，用于创建和操作数组。
+|===
+与 Rust 类似，Cairo 也支持类型推断，因此编译器会根据值的使用方式尝试猜测变量的类型。在编译器无法猜测变量类型的情况下，必须添加显式注解。
+
+以下是在 Cairo 中使用类型的一个示例：
+
+[source,rust]
+----
+fn example_function(value: u32) -> u32 {
+    let doubled_value: u32 = value * 2_u32;
+    return doubled_value;
+}
+----
+在这个示例中，`value` 和 `doubled_value` 显式地定义为 `u32` 类型，函数 `example_function` 有一个 `u32` 的返回类型。这确保了类型被正确执行，代码更易于阅读和理解。在下一节中，我们将回顾像 `2_u32` 这样的定义是什么意思。
+
+== 在 Cairo 中为整数字面量指定类型
+在 Cairo 中，您可以通过在整数字面量后使用下划线加上所需类型来指定整数字面量的类型，类似于 Rust。
+
+以下是一些示例：
+
+
+[source,rust]
+----
+# 无符号 8 位整数
+let value_u8 = 1_u8;
+
+# 无符号 16 位整数
+let value_u16 = 1_u16;
+
+# 无符号 32 位整数
+let value_u32 = 1_u32;
+
+# 无符号 64 位整数
+let value_u64 = 1_u64;
+
+# 无符号 128 位整数
+let value_u128 = 1_u128;
+
+# 无符号 256 位整数
+let value_u256 = 1_u256;
+
+# 无符号大小整数（通常用于表示索引和长度）
+let value_usize = 1_usize;
+----
+在这些示例中，整数字面量的类型是通过下划线表示法指定的，这使得在不需要显式类型转换的情况下更容易处理不同的整数类型。
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

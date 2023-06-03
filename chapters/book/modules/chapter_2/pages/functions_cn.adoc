@@ -1,0 +1,84 @@
+[id="functions_cn"]
+
+= Cairo 中的函数和模块
+
+在 Cairo 中，函数和模块用于构建代码结构和定义可重用的逻辑片段。它们类似于 Solidity 中的函数和合约，但在实现和使用上有一些差异
+
+== Cairo 中的函数
+
+Cairo 函数使用 `fn` 关键字定义。函数可以具有不同的属性，取决于它们的目的，例如 `#[constructor]`、`[view]` 或 `#[external]` 。函数可以接受参数，返回值，并与合约的存储进行交互。
+
+Cairo 函数的示例：
+
+[source,rust]
+----
+#[view]
+fn get_vote_status() -> (u8, u8) {
+    let n_yes = yes_votes::read();
+    let n_no = no_votes::read();
+
+    return (n_yes, n_no);
+}
+----
+
+这个函数是一个 view函数，返回当前赞成和反对票数。
+
+[NOTE]
+====
+
+函数可见性（public、external、internal 或 private）在 Cairo 中没有明确指定。相反，函数默认为内部函数，除非它们用 `#[view]` 或 `#[external]` 属性标记（我们将在下一节回顾它们）。在 Solidity 中，您使用关键字（public、external、internal 或 private）来指定可见性。
+
+====
+
+== Cairo 中的模块
+
+Cairo 模块用于将相关功能组织在一个命名空间下。模块使用 `mod` 关键字定义，后跟模块名和包含函数和其他声明的代码块。模块可以导入其他模块并使用其功能。
+
+Cairo 模块的示例：~
+
+[source,rust]
+----
+#[contract]
+mod Vote {
+    // Core Library Imports
+    use starknet::ContractAddress;
+    use starknet::get_caller_address;
+    use array::ArrayTrait;
+
+    // Other declarations and functions
+}
+----
+
+在此示例中，Vote 模块导入了其他模块，如 starknet 和 array，并定义了具有存储、函数和其他声明的合约。
+
+== 与 Solidity 的比较
+
+1. *函数*:
+
+   a. *声明*: Cairo 函数用 `fn` 关键字声明，而 Solidity 函数使用 `function` 关键字。
+   b. *属性*: Cairo 函数使用诸如 `#[constructor]`、`#[view]` 和 `#[external]` 等属性来表示它们的目的。在 Solidity 中，使用 `constructor`、`view` 和 `public` 等关键字代替。
+   c. *返回值*: 在 Cairo 中，使用 `->` 语法声明返回值，而 Solidity 使用 `returns` 关键字。
+
+2. *模块*:
+   a. *声明*: 在 Cairo 中，使用 `mod` 关键字将合约定义为模块，而 Solidity 使用 `contract` 关键字建立合约。
+   b. *导入*: Cairo 模块可以使用 `use` 关键字导入其他模块，使导入模块内的所有函数都可以在导入模块中访问。另一方面，Solidity 使用 `import` 关键字在编译期间合并外部合约或库，并在合约声明中使用 `is` 关键字表示继承。
+   c. *命名空间*: Cairo 模块为相关功能提供命名空间。在 Solidity 中，合约本身充当其函数和变量的命名空间。
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

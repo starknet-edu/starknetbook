@@ -1,0 +1,66 @@
+[id="getter_cn"]
+
+= 在 Cairo 中的 Getter 函数（ view 函数）
+
+Getter 函数，又称为 view 函数，是只读函数，允许您访问合约存储中的数据而不修改它。它们可以被其他合约或外部调用，并且不需要支付 gas 费用，因为它们不会改变合约的状态。
+
+在 Cairo 中，getter 函数使用 `#[view]` 属性定义。在 Solidity 中，您将使用 `view` 关键字来定义类似类型的函数。
+
+以下是 Vote 合约中 getter 函数的概述：
+
+1. `get_vote_status`: 返回当前赞成和反对票数。
+2. `voter_can_vote`: 返回给定选民是否有权投票。
+3. `is_voter_registered`: 返回给定地址是否为注册选民。
+
+现在，让我们详细研究每个 getter 函数：
+
+[source,rust]
+----
+// @dev 返回赞成和反对票数
+// @return status status (u8, u8)：当前投票状态（赞成票数，反对票数）
+#[view]
+fn get_vote_status() -> (u8, u8) {
+    // 从Storage中读取赞成票数和反对票数
+    let n_yes = yes_votes::read();
+    let n_no = no_votes::read();
+
+    // 返回当前投票状态
+    return (n_yes, n_no);
+}
+----
+
+`get_vote_status` 函数从 Storage 中读取 `yes_votes` 和 `no_votes` 值，并将它们作为两个无符号 8 位整数的元组返回。在 Solidity 中，您将返回一组 `uint8` 值。
+
+[source,rust]
+----
+// @dev 返回选民是否可以投票
+// @param user_address (ContractAddress): 选民的地址
+// @return status (bool): 如果选民可以投票，则为 true，否则为 false
+#[view]
+fn voter_can_vote(user_address: ContractAddress) -> bool {
+    // Read the voting status of the user from storage
+    can_vote::read(user_address)
+}
+----
+
+`voter_can_vote` 函数接受一个 `ContractAddress` 作为输入，并从存储中的 `can_vote` 映射中读取用户的投票状态。它返回一个 `bool` 值，表示选民是否有权投票。在 Solidity 中，你将使用一个以 `address` 为键类型的 mapping 来存储类似的数据结构。`is_voter_registered` 函数与 voter_can_vote 函数类似，但它返回一个 `bool` 值，表示地址是否为注册选民。
+
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

@@ -1,0 +1,44 @@
+[id="asserts_cn"]
+
+=  在 Cairo 中的断言和错误处理
+
+在 Cairo 中，`assert` 语句用于验证输入、执行约束和处理错误。此语句检查给定条件是否为真，如果不是，则抛出错误消息。
+
+在 Vote 合约中，`assert` 语句在若干处用于确保正确的输入验证和错误处理：
+
+[source,rust]
+----
+assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
+
+assert(is_voter == true, 'USER_NOT_REGISTERED');
+assert(can_vote == true, 'USER_ALREADY_VOTED');
+----
+
+关于 Cairo 中的 assert 语句有一些关键点：
+
+1. `assert` 语句检查条件是否为真。如果条件不为真，合约执行将停止，并抛出错误消息。
+
+2. 错误消息作为字符串，紧跟在条件之后。在上面的示例中，'VOTE_0_OR_1'、'USER_NOT_REGISTERED' 和 'USER_ALREADY_VOTED' 是错误消息。
+
+3. `assert` 语句对于输入验证很有帮助，确保合约只处理有效的输入。
+
+4. 编译器不会注意到断言是否被遵守。也就是说，编译器不会检查条件是真还是假。断言仅在运行时检查：例如，在测试中（后面的章节将详细介绍）或在部署合约时。
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

@@ -1,0 +1,176 @@
+[id="structure_cn"]
+
+= Cairo 智能合约的结构
+
+在这个部分，我们将通过以下的 Vote 合约为例，解释几个实用工具（如函数）的结构和格式（暂时不用担心代码，我们会在接下来的部分解释它）
+
+[source,rust]
+----
+#[contract]
+mod Vote {
+    // Core Library Imports
+    use starknet::ContractAddress;
+    use starknet::get_caller_address;
+    use array::ArrayTrait;
+
+    // ------
+    // Storage
+    // ------
+    struct Storage {
+        yes_votes: u8,
+        no_votes: u8,
+        can_vote: LegacyMap::<ContractAddress, bool>,
+        registered_voter: LegacyMap::<ContractAddress, bool>,
+    }
+
+    // ------
+    // Constructor
+    // ------
+
+    // @dev 带有固定数量已注册选民 voters(3) 的构造函数
+    // @param voter_1（ContractAddress）：第一个已注册选民的地址
+    // @param voter_2（ContractAddress）：第二个已注册选民的地址
+    // @param voter_3（ContractAddress）：第三个已注册选民的地址
+    #[constructor]
+    fn constructor(voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress) {
+        // 通过调用 _register_voters 函数注册所有选民
+        _register_voters(voter_1, voter_2, voter_3);
+
+        // 将投票计数初始化为 0
+        yes_votes::write(0_u8);
+        no_votes::write(0_u8);
+    }
+
+    // ------
+    // Getter functions
+    // ------
+
+    // @dev 返回赞成票和反对票的数量
+    // @return status（u8，u8）：当前投票状态（赞成票，反对票）
+    #[view]
+    fn get_vote_status() -> (u8, u8) {
+        // 从存储中读取赞成票和反对票的数量
+        let n_yes = yes_votes::read();
+        let n_no = no_votes::read();
+
+        // 返回当前投票状态
+        return (n_yes, n_no);
+    }
+
+    // @dev 返回选民是否可以投票
+    // @param user_address（ContractAddress）：选民地址
+    // @return status（bool）：如果选民可以投票则为真，否则为假
+    #[view]
+    fn voter_can_vote(user_address: ContractAddress) -> bool {
+        // 从存储中读取用户的投票状态
+        can_vote::read(user_address)
+    }
+
+    // @dev 返回一个地址是否为选民（已注册或未注册）
+    // @param address（ContractAddress）：可能的选民地址
+    // @return is_voter（bool）：如果地址是已注册选民则为真，否则为假
+    #[view]
+    fn is_voter_registered(address: ContractAddress) -> bool {
+        // // 从存储中读取地址的注册状态
+        registered_voter::read(address)
+    }
+
+    // ------
+    // External functions
+    // ------
+
+    // @dev 提交投票（0 表示否，1 表示是）
+    // @param vote（u8）：投票值，0 表示 No，1 表示 Yes
+    // @return ()：更新存储中的投票计数，并将选民标记为不能再次投票
+    #[external]
+    fn vote(vote: u8) {
+        // 检查投票是否有效（0 或 1）
+        assert(vote == 0_u8 | vote == 1_u8, 'VOTE_0_OR_1');
+
+        // 知道选民是否已经投票，如果没有投票则继续
+        let caller : ContractAddress = get_caller_address();
+        assert_allowed(caller);
+
+        // 标记选民已经投票并更新存储
+        can_vote::write(caller, false);
+
+        // 根据投票值（0 或 1）更新存储中的投票计数
+        if (vote == 0_u8) {
+            no_votes::write(no_votes::read() + 1_u8);
+        }
+        if (vote == 1_u8) {
+            yes_votes::write(yes_votes::read() + 1_u8);
+        }
+    }
+
+    // ------
+    // Internal Functions
+    // ------
+
+    // @dev Assert if an address is allowed to vote or not
+    // @param address (ContractAddress): address of the user
+    // @return () : if the user can vote; otherwise, throw an error message and revert the transaction
+    fn assert_allowed(address: ContractAddress) {
+        // 从存储中读取用户的投票情况
+        let is_voter: bool = registered_voter::read(address);
+        let can_vote: bool = can_vote::read(address);
+
+        // 检查用户是否允许投票，如果不允许则报错并且回滚交易。
+        assert(is_voter == true, 'USER_NOT_REGISTERED');
+        assert(can_vote == true, 'USER_ALREADY_VOTED');
+    }
+
+    // @dev 这个内部函数的作用是准备好投票者们的list，序号最大可以到这个数组的长度 Internal function to prepare the list of voters. Index can be the length of the array.
+    // @param registered_addresses (Array<ContractAddress>):已经注册的选民的地址数组
+    // @param index (usize): 当前选民的index
+    fn _register_voters(
+        voter_1: ContractAddress, voter_2: ContractAddress, voter_3: ContractAddress
+        ) {
+        // Register the first voter
+        registered_voter::write(voter_1, true);
+        can_vote::write(voter_1, true);
+
+        // Register the second voter
+        registered_voter::write(voter_2, true);
+        can_vote::write(voter_2, true);
+
+        // Register the third voter
+        registered_voter::write(voter_3, true);
+        can_vote::write(voter_3, true);
+    }
+}
+----
+
+
+投票合约允许三名注册选民就提案提交他们的票（1 表示赞成 / 0 表示反对）。它记录赞成票和反对票的数量，并提供查看（getter）功能来检查投票状态和选民资格。该合约以三名注册选民初始化，并部署在 Starknet 测试网络上。
+
+在 Vote 合约中，你会找到以下部分：
+
+
+* Imports （库引入）
+* Storage （存储）
+* Constructor （构造函数）
+* Getters 函数
+* External functions （外部函数）
+* Internal functions （私有函数）
+
+下面，我们将介绍每一部分。
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet!
+____

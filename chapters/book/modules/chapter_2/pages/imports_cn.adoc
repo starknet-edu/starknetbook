@@ -1,0 +1,95 @@
+[id="imports_cn"]
+
+= Cairo 中的导入
+
+Cairo 中的 Imports （导入）在组织和构建代码方面起着至关重要的作用，允许你从其他模块和库中重用功能。如果你熟悉 Rust，你会发现 Cairo 的导入系统非常相似。
+
+Cairo 自带一个核心库，称为 `corelib`，其中包含了诸如 `starknet` 和 `array` 之类的基本模块和功能。你可以参考 Cairo 文档以了解有关 `corelib` 的更多详细信息。导入这些核心库不需要任何额外的安装，因为它们是内置的。
+
+要在 Cairo 中导入模块、函数或类型，你可以使用 `use` 关键字，后跟你要导入的项目的路径。在提供的示例中，我们有一个 `Ex01` 模块，我们从 `corelib` 和自定义模块导入了几个项目（例如，我们使用 https://github.com/starknet-edu/starknet-cairo-101/tree/main/src[starknet-cairo-101 仓库]）：
+
+To import modules, functions, or types in Cairo, you can use the `use` keyword, followed by the path to the item you want to import. In the example provided, we have an `Ex01` module, and we are importing several items from the `corelib` and custom modules (as example, we are using the https://github.com/starknet-edu/starknet-cairo-101/tree/main/src[starknet-cairo-101 repository]):
+
+[source,rust]
+----
+mod Ex01 {
+    // Core Library imports
+    use starknet::get_caller_address;
+    use starknet::ContractAddress;
+
+    // Internal imports
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::validate_exercise;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::ex_initializer;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::distribute_points;
+    use starknet_cairo_101::utils::ex00_base::Ex00Base::update_class_hash_by_admin;
+}
+----
+
+我们从 starknet 核心库导入了 `get_caller_address` 和 `ContractAddress`。此外，我们还从 `starknet_cairo_101::utils` 仓库中导入了自定义模块，使它们成为 Ex01 合约的一组函数。在导入模块时，要考虑仓库的结构和要导入的模块的路径。`starknet_cairo_101` 仓库的文件结构如下：
+
+
+[source]
+----
+.
+├── src
+│   ├── Ex01.cairo
+│   ├── utils.cairo
+│   ├── lib.cairo
+│   ├── ...
+│   ├── utils
+│   │   ├── ex00_base.cairo
+----
+
+在 utils 文件夹中，我们有 `ex00_base.cairo` 文件，其中包含 `Ex00Base` 模块。同时，我们创建了一个与 `utils` 目录同名的 cairo 文件，即 `utils.cairo`，其中包含以下代码：
+
+[source,rust]
+----
+mod ex00_base;
+----
+
+在这里，我们指的是 `ex00_base.cairo` 库。每当我们想要从 `utils` 文件夹导入一个模块（cairo 文件）时，我们会在 `utils.cairo` 文件中添加以下行：
+
+[source,rust]
+----
+mod NAME_OF_MODULE;
+----
+
+此外，文件库 `lib.cairo` 包含以下代码：
+
+[source,rust]
+----
+// Utils module
+mod utils;
+
+// Contracts
+mod ex01;
+----
+
+这些是我们将用于导入 `utils` 和 `ex01` 模块的路径。`lib.cairo` 文件是 Cairo 编译器的入口点，它是我们将使用的文件，用于导入我们在合约中要使用的所有模块。每次我们想要导入一个模块时，我们将在 `lib.cairo` 文件中添加以下行：
+
+[source,rust]
+----
+mod NAME_OF_MODULE;
+----
+
+要导入不包含在 `corelib` 中的自定义模块或外部库，你需要在项目仓库中具有必要的文件或指定适当的路径。
+
+[NOTE]
+====
+《Starknet 之书》是 Starknet 社区成员合力之作，便于社区成员学习之用。
+
+* 无论你是否有所收获，烦请填写此问卷， https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[简单回答三个问题] ，给予我们反馈。
+* 若发现任何错误，或有其他建议，请在我们的 https://github.com/starknet-edu/starknetbook/issues[Github 仓库]发起问题单 (Issues)。
+====
+
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
