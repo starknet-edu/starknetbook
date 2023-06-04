@@ -1,31 +1,26 @@
 [id="bridges"]
 
-= Bridges
+= 跨链桥
 
-Bridges play a crucial role in connecting Starknet with other chains or exchanges, enabling seamless token transfers across different platforms. Not only are they valuable for testing purposes, but they also provide a practical learning opportunity for understanding Starknet's inter-blockchain messaging capabilities.
+跨链桥在将 Starknet 与其他链或交易所连接起来的方面发挥着至关重要的作用，它能实现不同平台之间代币的无缝传输。 它们不仅对于测试很有帮助，而且还为了解 Starknet 的区块链间消息传递功能提供了一个实用的学习机会。
 
 == StarkGate
 
-StarkGate (https://starkgate.starknet.io/) is a token bridge between Ethereum and Starknet. It allows users to deposit and withdraw ETH and ERC-20 tokens between both networks using L1 and L2 bridge contracts.
+StarkGate (https://starkgate.starknet.io/) 是以太坊和 Starknet 之间的代币桥梁。 它允许用户使用 L1 和 L2 跨链桥合约在两者之间存入和取出 ETH 和 ERC-20 代币。
 
-=== L1 → L2 Transfer (Deposit)
+=== L1 → L2 转账（存款）
 
-Users call the deposit function on L1, providing the recipient address on Starknet and the amount for ERC-20 tokens.
-The deposit is triggered on Starknet, with sequencers triggering the handle_deposit function on the L2 bridge.
-The sequencer completes the block construction, and Starknet's provers submit a state update to L1.
+用户调用 L1 上的存款功能，提供 Starknet 上的收件人地址和 ERC-20 代币的金额。 存款在 Starknet 上触发，排序器在 L2 桥上触发 handle_deposit 函数。 排序器完成区块构建，Starknet 的证明者向 L1 提交状态更新。
 
-=== L2 → L1 Transfer (Withdraw)
+=== L2 → L1 转账（取款）
 
-Users call the `initiate_withdraw` function on the L2 bridge contract, providing the recipient address on Ethereum and the transfer amount.
-Starknet's provers validate the block and submit a state update to L1.
-Anyone can finalize the transfer on L1 by calling the withdraw function.
-StarkGate Alpha on Mainnet has limitations on deposit amounts and total value locked in the L1 bridge contract to minimize risks associated with its alpha version.
+用户调用 L2 桥接合约上的 initiate_withdraw 函数，提供以太坊上的接收地址和转账金额。 Starknet 的证明者验证区块并向 L1 提交状态更新。 任何人都可以通过调用 withdraw 函数来完成 L1 上的转账。 主网上的 StarkGate Alpha 对锁定在 L1 跨链桥合约中的存款金额和总价值有限制，以最大限度地降低与其 alpha 版本相关的风险。
 
 == Orbiter
 
-Orbiter Finance (https://www.orbiter.finance/) is a decentralized cross-rollup bridge designed for transferring Ethereum-native assets between various networks, including Ethereum, Layer 2 solutions, and sidechains.
+Orbiter Finance (https://www.orbiter.finance/) 是一个去中心化的交叉汇总桥，设计用于在各种网络（包括以太坊、第 2 层解决方案和侧链）之间传输以太坊原生资产。
 
-The system consists of two main roles: Sender and Maker. The 'Maker' deposits excess margin into Orbiter's contract to act as a cross-rollup service provider for the 'Sender'. The 'Sender' sends assets to the 'Maker' on the 'Source Network', and the 'Maker' sends them back to the 'Sender' on the 'Destination Network'. Orbiter's security model relies on three types of smart contracts: Maker Deposit Contract (MDC), Event Binding Contract (EBC), and Simple Payment Verification (SPV).
+该系统由两个主要角色组成：Sender 和 Maker。 “Maker”将超额保证金存入 Orbiter 的合约，作为“Sender”的交叉汇总服务提供商。 “发送方”将资产发送给“源网络”上的“制造商”，“制造商”将资产发送回“目标网络”上的“发送方”。 Orbiter 的安全模型依赖于三种类型的智能合约：Maker 存款合约 (MDC)、事件绑定合约 (EBC) 和简单支付验证 (SPV)。
 
 
 == Contributing
