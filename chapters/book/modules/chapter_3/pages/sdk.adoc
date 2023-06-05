@@ -2,13 +2,13 @@
 
 = 软件开发套件 (SDK)
 
-In the blockchain world, a Software Development Kit (SDK) is a collection of software-building tools specifically designed to facilitate the development of applications on a particular blockchain platform. SDKs provide a comprehensive set of tools that enable developers to create software applications more efficiently and in a standardized manner.
+在区块链世界中，软件开发工具包 (SDK) 是一组软件构建工具，专门用于促进特定区块链平台上应用程序的开发。 SDK 提供了一套全面的工具，使开发人员能够以标准化的方式更高效地创建软件应用程序。
 
-The following SDKs are currently available on Starknet:
+Starknet 目前提供以下 SDK：
 
 .Starknet SDKs
 |===
-|Language|Name
+|语言|名称
 
 |Python|https://github.com/software-mansion/starknet.py[starknet_py]
 |Rust|https://github.com/xJonathanLEI/starknet-rs[starknet-rs]
