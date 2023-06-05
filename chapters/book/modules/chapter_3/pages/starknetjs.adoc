@@ -84,7 +84,8 @@ const transfer = await contract.transfer(recipientAddress, amountFormatted);
 console.log(`Tx hash: ${transfer.transaction_hash}`);
 ```
 
-如果您使用提供者创建合同实例，您将仅限于调用合同上的读取函数——只有使用签名者才能更改区块链的状态。 但是，您可以将之前创建的 `Contract` 实例连接到新帐户：
+如果您使用提供者创建合同实例，您将仅限于调用合同上的读取函数——只有使用签名者才能更改区块链的状态。 但是，您可以将之前创建的 Contract 实例连接到新帐户：
+
 const contract = new Contract(
   abi_erc20,
   contractAddress,
