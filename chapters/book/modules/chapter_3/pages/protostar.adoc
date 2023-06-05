@@ -250,7 +250,7 @@ match invoke(deployed_contract_address, 'panic_with', @panic_data) {
 }
 ----
 
-最后，为了让您的代码与 Starknet 交互，您可以使用 Protostar 提供的完整命令列表。您可以在(https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet)找到这些命令。
+最后，为了让您的代码与 Starknet 交互，您可以使用 Protostar 提供的完整命令列表。您可以在(https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet) 找到这些命令。
 
 == 常见的陷阱
 
