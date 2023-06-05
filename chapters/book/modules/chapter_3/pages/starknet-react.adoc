@@ -3,19 +3,19 @@
 = Starknet React
 
 ====
-CONTRIBUTE: We are looking to add a concrete example of how to use Starknet React (likely in interaction with starknet.js). If you have a project that uses Starknet React, please submit a PR.
+贡献：我们希望添加一个具体示例，说明如何使用 Starknet React（可能与 starknet.js 交互）。 如果您有使用 Starknet React 的项目，请提交 PR。
 ====
 
-Developed by the [Apibara](https://github.com/apibara) team, Starknet React is an open-source collection of React providers and hooks for Starknet. 
+Starknet React是由[Apibara](https://github.com/apibara)团队开发的, 为Starknet上的提供商和钩子打造的一个开源的集合。 
 
-To begin using Starknet-React, first install the appropriate package manager, PNPM:
+要开始使用 Starknet-React，首先安装适当的包管理器 PNPM：
 
 [source, bash]
 ----
 npm install -g pnpm
 ----
 
-Next, modify a React boilerplate by running:
+接下来，通过运行修改 React 样板：
 
 [source, bash]
 ----
@@ -23,7 +23,7 @@ pnpm add @starknet-react/core
 pnpm add get-starknet starknet
 ----
 
-Lastly, wrap the `App` object in your `index` file as follows:
+最后，将 `App` 对象包装在 `index` 文件中，如下所示：
 
 [source, javascript]
 ----
@@ -38,7 +38,7 @@ function App() {
 }
 ----
 
-To explore an example project, visit [here](https://github.com/apibara/starknet-react/tree/main/website).
+探索示例项目, 请访问(https://github.com/apibara/starknet-react/tree/main/website).
 
 
 == Contributing
