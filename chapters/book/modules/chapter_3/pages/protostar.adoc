@@ -2,20 +2,20 @@
 
 = Protostar
 
-https://docs.swmansion.com/protostar/[Protostar] is a highly practical development platform for the Starknet universe. This tool eases the process of managing dependencies, compiling projects, running tests, and interacting with the Starknet chain. Protostar allows developers to write, test and deploy their Cairo contracts in a streamlined manner.
+https://docs.swmansion.com/protostar/[Protostar] 是一个非常实用的 Starknet 开发平台。 该工具简化了管理依赖、编译项目、运行测试以及与 Starknet 链交互的过程。 Protostar 允许开发人员以简化的方式编写、测试和部署他们的 Cairo 合约。
 
-== Installation
+== 安装
 
-To begin, you'll need to install Protostar on your local machine. This process currently supports Linux and MacOS systems (Windows support is in progress).
+首先，您需要在本地计算机上安装 Protostar。该进程目前支持 Linux 和 MacOS 系统（Windows 支持正在进行中）。
 
-Install Protostar by opening a terminal and running the following command:
+通过打开终端并运行以下命令来安装：
 
 [source,bash]
 ----
 curl -L https://raw.githubusercontent.com/software-mansion/protostar/master/install.sh | bash
 ----
 
-After the installation process, restart the terminal. Check that the version of your installed Protostar matches the https://github.com/software-mansion/protostar/releases[most recent version]. If it does not, update your Protostar version using the command:
+安装完成后，重新启动终端。 检查您安装的 Protostar 的版本是否为 https://github.com/software-mansion/protostar/releases[most recent version]. 如果不是，请使用以下命令更新您的 Protostar 版本：
 
 [source,bash]
 ----
@@ -26,11 +26,9 @@ protostar -v
 protostar upgrade
 ----
 
-== Supported Software Versions
+== 支持的软件版本
 
-Ensure you're keeping your Protostar upgraded to the latest version.
-
-Protostar doesn't currently support Windows. 
+确保您将 Protostar 升级到最新版本。 Protostar 目前不支持 Windows。
 
 == Verifying Installation
 
@@ -41,7 +39,7 @@ Once Protostar is installed, verify it by checking the version with the command:
 protostar -v
 ----
 
-The output should be as follows:
+输出应如下所示：
 
 [source,bash]
 ----
@@ -51,11 +49,11 @@ Cairo 1 compiler version: 1.0.0rc0
 21:03:44 [INFO] Execution time: 1.34 s
 ----
 
-Note that Cairo-lang is the version of the Starknet network and Cairo 1 compiler is the version of the Cairo compiler.
+注意Cairo-lang是Starknet网络的版本，Cairo 1 compiler是Cairo编译器的版本。
 
-== Initiating a New Cairo Project
+== 启动新Cairo项目
 
-After successful installation and verification of Protostar, initiate a new project by running:
+成功安装和验证 Protostar 后，运行以下命令启动一个新项目：
 
 [source,bash]
 ----
@@ -63,7 +61,7 @@ protostar init my_project
 cd my_project
 ----
 
-The structure of your project directory should be similar to:
+您的项目目录的结构应类似于：
 
 [source,bash]
 ----
@@ -84,25 +82,25 @@ my_project/
 └── protostar.toml
 ----
 
-The most important thing to notice is how we have structured both these contracts as standalone crates. Each smart contract in Protostar must be built as its own crate and each contract is its own module decorated with the `[contract]` decorator.
+需要注意的重点是我们如何将这两个合约构建为独立的库。 Protostar 中的每个智能合约都必须构建为自己的库，每个合约都是用 `[contract]` 装饰器装饰的自己的模块。
 
-Explore the official Protostar documentation for more details on structuring your project: https://docs.swmansion.com/protostar/docs/cairo-1/introduction
+浏览官方 Protostar 文档，了解有关构建项目的更多详细信息： https://docs.swmansion.com/protostar/docs/cairo-1/introduction
 
 
-== Testing Contracts
+== 测试合约
 
-In the realm of Cairo smart contracts, there are two predominant ways to test your contracts: within Cairo itself, or with Python, Javascript, or Rust. 
+在 Cairo 智能合约领域，有两种主要的方法来测试你的合约：在 Cairo 内部，或者使用 Python、Javascript 或 Rust。
 
-The Cairo approach is often preferred, as it prevents developers from having to deploy contracts each time they need to be tested and eliminates the necessity of learning a new language for testing purposes.
+Cairo 内部测试通常是首选，因为它可以避免开发人员每次需要测试时都必须进行合约部署，并且消除了为测试而学习新语言的必要性。
 
-Execute tests using the command:
+使用命令执行测试：
 
 [source,bash]
 ----
 protostar test
 ----
 
-A successful test execution will provide an output resembling:
+成功的测试执行将提供类似于以下内容的输出：
 
 [source,bash]
 ----
@@ -120,16 +118,16 @@ Seed:        720541691
 
 == Project Compilation
 
-Before a project can be deployed on the network, it must be compiled into a form that the Starknet network can understand and execute. Protostar makes this process easy with its `build` command. 
+在网络上部署项目之前，必须将其编译成 Starknet 网络可以理解和执行的形式。 Protostar 的build命令可以使此过程变得简单。
 
-To compile your Cairo1 project, use the build command:
+使用build命令编译您的Cairo1项目：
 
 [source,bash]
 ----
 protostar build
 ----
 
-If your compilation was successful, the output will be similar to this:
+如果编译成功，输出将类似于：
 
 [source,bash]
 ----
@@ -138,18 +136,18 @@ If your compilation was successful, the output will be similar to this:
 21:00:27 [INFO] Execution time: 6.22 s
 ----
 
-== Contract Declaration
+== 合约声明
 
-After successfully compiling your project, the next step is to declare your contracts. This process informs the network of your intention to deploy a new contract (review Chapter 2 for more details on the contract declaration process).
+成功编译您的项目后，下一步就是声明您的合同。 这个过程会通知网络你打算部署一个新合约（查看第 2 章以了解更多关于合约声明过程的细节）。
 
-Before declaring contracts, it's essential to first set the environment variable for your private key:
+在声明合约之前，必须先为您的私钥设置环境变量：
 
 [source,bash]
 ----
 export PROTOSTAR_ACCOUNT_PRIVATE_KEY=0x...
 ----
 
-You can then declare your contracts with the following command:
+然后，您可以使用以下命令声明您的合约：
 
 [source,bash]
 ----
@@ -159,9 +157,9 @@ protostar declare hello_starknet \
   --max-fee auto
 ----
 
-Note: Replace `YOUR_ACCOUNT_ADDRESS` with your actual account address.
+注意：将 `YOUR_ACCOUNT_ADDRESS` 替换为您的实际帐户地址。
 
-Successful declaration will generate a class hash and output similar to:
+成功的声明将生成类哈希和类似于以下内容的输出：
 
 [source,bash]
 ----
@@ -175,11 +173,11 @@ Voyager   https://goerli.voyager.online/tx/0x03d048f8dc599c7d9bad1e5a7a039c35463
 21:01:23 [INFO] Execution time: 27.95 s
 ----
 
-== Contract Deployment
+== 合约部署
 
-After declaring your contract, the next step is to deploy it on the network. Deployment makes your contract live and interactable on the Starknet.
+声明合约后，下一步就是将其部署到网络上。 合约部署可以让您的合同在 Starknet 上生效并可交互。
 
-To deploy your contract, use the class hash generated from the declaration step and the `protostar deploy` command:
+要部署您的合约，请使用从声明步骤生成的类哈希和 `protostar deploy` 命令：
 
 [source,bash]
 ----
@@ -190,11 +188,11 @@ protostar deploy \
   --max-fee auto
 ----
 
-Note: Replace `YOUR_ACCOUNT_ADDRESS` with your actual account address. 
+注意：将 `YOUR_ACCOUNT_ADDRESS` 替换为您的实际帐户地址。
 
-The '0x' address following the deploy command is the Class Hash that was generated during contract declaration.
+deploy 命令后的“0x”地址是合约声明期间生成的类哈希。
 
-Successful deployment will provide a contract address and output similar to this:
+成功部署将提供一个合约地址和类似这样的输出：
 
 [source,bash]
 ----
@@ -208,9 +206,9 @@ Voyager   https://goerli.voyager.online/tx/0x03406b79b189d8752cff632ea8e0df332d7
 21:25:26 [INFO] Execution time: 3.22 s
 ----
 
-== A Simple Demo 
+== 一个简单的演示
 
-To learn how you can get started with Protostar, let's create a simple project. First, navigate to your terminal and execute:
+要了解如何开始使用 Protostar，让我们创建一个简单的项目。首先，导航到您的终端并执行：
 
 [source,bash]
 ----
@@ -218,15 +216,15 @@ git clone https://github.com/SupremeSingh/protostar-cairo1-template.git
 cd protostar-cairo1-template
 ----
 
-Now, you have access to a basic Protostar project that implements two smart contracts along with additional business logic in `Cairo 1.0`. Before proceeding, it's advisable to familiarize yourself with the code in both `erc20.cairo` and `hello_starknet.cairo`. 
+现在，您可以访问一个基本的 Protostar 项目，该项目在 `Cairo 1.0` 中实现了两个智能合约以及其他业务逻辑。 在继续之前，建议您熟悉 `erc20.cairo` 和 `hello_starknet.cairo` 中的代码。
 
-For a deeper understanding of testing, it is highly recommended to examine the tests in `tests/test_erc20.cairo` and compare them with the original contract in `contracts/erc20.cairo`.
+为了更深入地了解测试，强烈建议检查 `tests/test_erc20.cairo` 中的测试，并将它们与 `contracts/erc20.cairo` 中的原始合约进行比较。
 
-== Debugging
+== 调试
 
-For code debugging, it's beneficial to be able to print out values or isolate errors in match statements. Protostar already provides these functionalities. 
+对于代码调试，能够打印出值或隔离匹配语句中的错误是有益的。 Protostar 已经提供了这些功能。
 
-To print out values, use the following:
+要打印出值，请使用以下命令：
 
 [source,bash]
 ----
@@ -240,7 +238,7 @@ array.span().snapshot.clone().print(); // Print an array value
 felt.print() // Print an individual value
 ----
 
-You can also use match statements like so: 
+您还可以像这样使用匹配语句：
 
 [source,bash]
 ----
@@ -253,28 +251,28 @@ match invoke(deployed_contract_address, 'panic_with', @panic_data) {
 }
 ----
 
-Finally, to make your code interact with Starknet, you can utilize the comprehensive list of commands provided by Protostar. You can find these commands [here](https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet).
+最后，为了让您的代码与 Starknet 交互，您可以使用 Protostar 提供的完整命令列表。您可以在 [此处] 找到这些命令 [here](https://docs.swmansion.com/protostar/docs/cairo-1/interacting-with-starknet).
 
-== Common Gotchas 
+== 常见的陷阱
 
-- Each test should be named `test_<further name>.cairo` so that the framework can recognize it.
-- Tests need to be decorated with `#[test]`, be without parameters, and include an assertion.
-- `contract_address_const::<0>()` is the default caller for all invocations.
-- A `Prank` needs to be used to change the caller address.
-- `u256` values need to be split into two `felt252` values when making a call.
-- Protostar currently does not support `#[external]` functions that emit an event for testing. Please wait for the next release.
+- 每个测试都应命名为 `test_<further name>.cairo` 以便框架可以识别它。
+- 测试需要用 `#[test]` 修饰，没有参数，并包含一个断言。
+-  `contract_address_const::<0>()` 是所有调用的默认调用者。
+- 需要使用prank来更改调用者地址。
+- 调用时需要将 `u256` 值拆分为两个 `felt252` 值。
+- Protostar 目前不支持发出测试事件的 `#[external]` 函数。 请等待下一个版本。
 
-== Conclusion
+== 结论
 
-Protostar represents a powerful toolset for developing, testing, and deploying smart contracts on the Starknet network. This guide has introduced you to its main features and demonstrated how to use it in the context of a simple project. Although there are some nuances and "gotchas" to be aware of, the benefits of using Protostar are evident. As the Starknet ecosystem evolves, tools like Protostar will continue to play a critical role in helping developers build robust, reliable, and secure decentralized applications. Happy coding!
+Protostar 代表了一个强大的工具集，用于在 Starknet 网络上开发、测试和部署智能合约。 本指南向您介绍了它的主要功能，并演示了如何在一个简单项目的环境中使用它。 尽管需要注意一些细微差别和“陷阱”，但使用 Protostar 的好处是显而易见的。 随着 Starknet 生态系统的发展，像 Protostar 这样的工具将继续在帮助开发人员构建强壮、可靠和安全的去中心化应用程序方面发挥关键作用。 编码愉快！
 
 
-[NOTE]
+[注]
 ====
-The Book is a community-driven effort created for the community.
+这本书是为社区创建的社区驱动的成果。
 
-* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
-* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+* 无论您是否学到了什么，请花点时间通过这个 https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[包含3个问题的调查]提供反馈。
+* 如果您发现任何错误或有其他建议，请不要犹豫，在我们的 https://github.com/starknet-edu/starknetbook/issues[GitHub存储库]上提出问题。
 ====
 
 == Contributing
