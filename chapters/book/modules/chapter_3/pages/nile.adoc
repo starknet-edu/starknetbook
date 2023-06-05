@@ -2,7 +2,7 @@
 
 = Nile
 
-长期以来，OpenZeppelin 的 Nile 一直是喜欢用 Python 编写代码的 Starknet 和 Cairo 开发人员的热门选择。 然而，由于最近从 Cairo 0 过渡到 Cairo 1.0，Nile项目目前正在进行重大改革。 你可以在https://github.com/OpenZeppelin/nile-rs[这里]。
+长期以来，OpenZeppelin 的 Nile 一直是喜欢用 Python 编写代码的 Starknet 和 Cairo 开发人员的热门选择。 然而，由于最近从 Cairo 0 过渡到 Cairo 1.0，Nile项目目前正在进行重大改革。 你可以在 https://github.com/OpenZeppelin/nile-rs[这里]关注项目的进展。
 
 
 == Contributing
