@@ -8,7 +8,7 @@ s
 
 Starknet生态系统提供了适用于 Vue 和 React 的框架。 对于那些喜欢 Vue 的人来说，由 [Don't Panic DAO](https://github.com/dontpanicdao) 团队开发的 vue-stark-boil 是一个不错的选择。
 
-首先，从(https://github.com/dontpanicdao/vue-stark-boil) 将项目克隆到您的设备。 要更深入地了解 Vue，请访问他们的网站(https://vuejs.org/)。vue-stark-boil 样板文件支持各种功能，例如连接到钱包、监听帐户更改和调用合约。
+首先，从(https://github.com/dontpanicdao/vue-stark-boil) 将项目克隆到您的设备。 要更深入地了解 Vue，请访问他们的网站(https://vuejs.org/)。 vue-stark-boil 样板文件支持各种功能，例如连接到钱包、监听帐户更改和调用合约。
 
 克隆项目后，确保通过在终端中运行以下命令来安装所有依赖项：
 
