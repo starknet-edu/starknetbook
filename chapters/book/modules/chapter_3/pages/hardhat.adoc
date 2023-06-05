@@ -51,7 +51,7 @@ npx hardhat starknet-compile-cairo1 [PATH...]
 TODO: 我们很乐意看到一个如何使用该插件的简单示例。 如果你有，请提交 PR！
 ====
 
-同时，您可以在 https://github.com/0xSpaceShard/starknet-hardhat-example[此处]查看 OxSpaceShard 示例存储库。本存储库包含插件功能的示例。 您可以检查各种场景的 `/scripts`文件夹。
+同时，您可以在 https://github.com/0xSpaceShard/starknet-hardhat-example[此处]查看 OxSpaceShard 示例存储库。本存储库包含插件功能的示例。 您可以检查各种场景的 `/scripts` 文件夹。
 
 == 其他资源
 
