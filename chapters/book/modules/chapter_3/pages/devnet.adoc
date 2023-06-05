@@ -2,7 +2,7 @@
 
 = Devnet
 
-由于测试网上的交易需要时间才能完成，因此最好在本地进行开发和测试。 我们将使用 Shard Labs 开发的 devnet。 我们可以认为这一步骤相当于 Ganache。 也就是说，它模拟了 Starknet 的测试网（alpha goerli）。
+由于测试网上的交易需要时间才能完成，因此最好在本地进行开发和测试。 我们将使用https://github.com/0xSpaceShard/starknet-devnet[hard Labs 开发的 devnet]。 我们可以认为这一步骤相当于 Ganache。 也就是说，它模拟了 Starknet 的测试网（alpha goerli）。
 
 安装使用：
 
