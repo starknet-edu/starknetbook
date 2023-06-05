@@ -8,7 +8,8 @@
 
 以下区块浏览器提供有关 Starknet 的信息。
 
-.Starknet block explorers, in alphabetical order
+.Starknet区块链浏览器,按字母顺序排列
+
 |===
 |Name|Mainnet|Goerli|Goerli 2
 
