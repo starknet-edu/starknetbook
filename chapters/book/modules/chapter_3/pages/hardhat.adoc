@@ -46,7 +46,7 @@ npx hardhat starknet-compile-cairo1 [PATH...]
 
 == 范例
 
-[NOTE]
+[注]
 ====
 TODO: 我们很乐意看到一个如何使用该插件的简单示例。 如果你有，请提交 PR！
 ====
@@ -56,11 +56,11 @@ TODO: 我们很乐意看到一个如何使用该插件的简单示例。 如果�
 == 其他资源
 
 - 官方 Hardhat 设置指南： https://hardhat.org/tutorial/creating-a-new-hardhat-project
-- Starknet Hardhat 插件存储库：//github.com/0xSpaceShard/starknet-hardhat-plugin
+- Starknet Hardhat 插件存储库：https://github.com/0xSpaceShard/starknet-hardhat-plugin
 - Starknet Hardhat 插件文档： https://0xspaceshard.github.io/starknet-hardhat-plugin
--Starknet Hardhat 示例存储库： https://github.com/0xSpaceShard/starknet-hardhat-example
+- Starknet Hardhat 示例存储库： https://github.com/0xSpaceShard/starknet-hardhat-example
 
-[NOTE]
+[注]
 ====
 这本书是为社区创建的社区驱动的成果。
 
