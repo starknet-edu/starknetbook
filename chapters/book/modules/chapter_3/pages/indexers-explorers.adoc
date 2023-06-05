@@ -19,9 +19,9 @@
 |https://nethermind.io/voyager[Voyager]|https://voyager.online/[Mainnet]|https://goerli.voyager.online/[Goerli]|https://goerli-2.voyager.online/[Goerli2]
 |===
 
-== Indexers 🚧
+== 索引器 🚧
 
-[NOTE]
+[注]
 ====
 这本书是为社区创建的社区驱动的成果。
 
