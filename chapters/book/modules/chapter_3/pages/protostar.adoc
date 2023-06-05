@@ -114,9 +114,8 @@ Seed:        720541691
 21:17:52 [INFO] Execution time: 66.70 s
 ----
 
-== Compile the Project
 
-== Project Compilation
+== 项目编译
 
 在网络上部署项目之前，必须将其编译成 Starknet 网络可以理解和执行的形式。 Protostar 的build命令可以使此过程变得简单。
 
