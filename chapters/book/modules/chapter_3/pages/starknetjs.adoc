@@ -67,8 +67,7 @@ const block = await provider.getBlock("latest"); // <- Get latest block
 console.log(block.block_number);
 ```
 
-### 合约
-您的前端可能会与已部署的合约进行交互。 对于每个合约，前端都应该有一个对应的合约。 要创建这些实例，您需要合约的地址和 ABI，以及提供者或签名者。
+Your frontend will likely be interacting with deployed contracts. For each contract, there should be a counterpart on the frontend. To create these instances, you will need the contract's address and ABI, and either a provider or signer. 
 
 ```ts
 const contract = new Contract(
@@ -84,8 +83,9 @@ const transfer = await contract.transfer(recipientAddress, amountFormatted);
 console.log(`Tx hash: ${transfer.transaction_hash}`);
 ```
 
-如果您使用提供者创建合同实例，您将仅限于调用合同上的读取函数——只有使用签名者才能更改区块链的状态。 但是，您可以将之前创建的 Contract 实例连接到新帐户：
+If you create a contract instance with a provider, you'll be limited to calling read functions on the contract - only with a signer can you change the state of the blockchain. However, you are able to connect a previously created `Contract` instance with a new account:
 
+```ts
 const contract = new Contract(
   abi_erc20,
   contractAddress,
@@ -94,7 +94,7 @@ const contract = new Contract(
 
 contract.connect(starknet.account);
 ```
-在上面的代码片段中，在调用 `connect` 方法之后，可以调用合约上的读取函数，但之前不能。
+In the snippet above, after calling the `connect` method, it would be possible to call read functions on the contract, but not before.
 
 ## 单位
 如果你以前有过 web3 的经验，你就会知道处理单元需要小心，Starknet 也不例外。 再申明，文档在这里非常有用，尤其是关于 https://www.starknetjs.com/docs/guides/define_call_message/[数据转换]的这一部分。
