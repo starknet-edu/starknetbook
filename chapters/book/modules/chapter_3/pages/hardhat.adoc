@@ -21,7 +21,7 @@ npm i @shardlabs/starknet-hardhat-plugin --save-dev
 
 * 成功安装所有内容后，确保你也运行了 docker，或者如果你在本地安装了`cairo-lang`， 你可以在你的 hardhat 配置文件中设置 venv - 就像 https://0xspaceshard.github.io/starknet-hardhat-plugin/docs/intro#existing-virtual-environment[这样]!
 
-* 接下来，将以下行添加到 `hardhat.config.ts`（或`hardhat.config.js）的顶部：
+* 接下来，将以下行添加到 `hardhat.config.ts`（或`hardhat.config.js`）的顶部：
 
 [source, bash]
 ----
