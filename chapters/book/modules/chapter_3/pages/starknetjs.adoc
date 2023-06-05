@@ -6,7 +6,7 @@ Starknet.js 是一个 JavaScript/TypeScript 库，旨在将您的网站或去中
 
 image::starknet-js.png[starknet-js]
 
-== Installation
+== 安装
 
 要安装 Starknet.js，请按照下列步骤操作：
 
