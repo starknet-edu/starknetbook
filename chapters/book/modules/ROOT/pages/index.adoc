@@ -59,7 +59,7 @@ As a contributor, you'll be part of a vibrant and growing community dedicated to
 
 So, are you ready to embark on this epic adventure? Let's dive in and explore the vast and exciting world of Starknet together. Here's to the countless discoveries, breakthroughs, and innovations that await us!
 
-Please refer to the existing https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.md[Contributors Guide] for detailed instructions on how to contribute. Remember, every contribution, no matter how small, makes a difference. Your expertise and passion are invaluable in helping us create a truly exceptional resource for the Starknet community. Let's make history together!
+Please refer to the existing https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[Contributors Guide] for detailed instructions on how to contribute. Remember, every contribution, no matter how small, makes a difference. Your expertise and passion are invaluable in helping us create a truly exceptional resource for the Starknet community. Let's make history together!
 
 Here are things you can do to help:
 
@@ -215,6 +215,10 @@ a|
 image::https://avatars.githubusercontent.com/u/22297601?v=4&s=100[width=100, link="https://github.com/davelange"]
 David Lange
 a|
+image::https://avatars.githubusercontent.com/u/46480795?v=4&s=100[width=100, link="https://github.com/0xlny"]
+0xlenny 
 a|
+image::https://avatars.githubusercontent.com/u/125185051?v=4&s=100[width=100, link="https://github.com/LandauRaz"]
+razlandau-starkware
 a|
 |===
