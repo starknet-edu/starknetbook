@@ -53,6 +53,8 @@ async function connectWallet() {
 
 默认情况下，提供者是排序器提供者。
 
+### Contracts
+
 ```ts
 export const provider = new Provider({
   sequencer: {
