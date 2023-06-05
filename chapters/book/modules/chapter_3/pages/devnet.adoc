@@ -50,7 +50,7 @@ WARNING: Use these accounts and their keys ONLY for local testing. DO NOT use th
  * Listening on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ----
 
-我们可以运行curl http://127.0.0.1:5000/is_alive来检查 devnet 是否处于激活状态。 如果它处于激活状态，将会显示 Alive!!!%。
+我们可以运行curl http://127.0.0.1:5000/is_alive 来检查 devnet 是否处于激活状态。 如果它处于激活状态，将会显示 Alive!!!%。
 
 我们创建了三个账户，每笔交易的成本为250wei的Gas。 每次激活我们的开发网络并添加该种子号时，种子号将帮助我们获得相同的帐户。 也就是说，我们可以选择任意一个种子号，但是如果我们要得到相同的账号，就应该选择相同的种子。 我们表示我们想要使用端口5000，但是，请随意添加任何方便的端口。 我们的账户基于 https://github.com/OpenZeppelin/cairo-contracts[Open Zepellin 为Cairo]开发的代码和标准。
 
