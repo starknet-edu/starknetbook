@@ -1,30 +1,30 @@
 [id="environment"]
 
-In the previous chapters, you have installed Python, Rust, Cairo and the Starknet CLI on your local device. These installations provide the foundation for working within the Starknet ecosystem. To enhance your development experience, we recommend setting up a few additional tools.
+在前面的章节中，您已经在本地设备上安装了 Python、Rust、Cairo 和 Starknet CLI。 这些安装为在 Starknet 生态系统中工作提供了基础。 为了增强您的开发体验，我们建议安装一些额外的工具。
 
-== Cairo Language Server
+== Cairo语言服务器
 
-Developers often use popular IDEs such as VS Code or Emacs. Although these IDEs are excellent for writing code, they don't inherently support the Starknet ecosystem. The Cairo Language Server bridges this gap by providing IDEs with essential information for a better development experience, including auto-completion, syntax highlighting, and error checking.
+开发人员经常使用流行的 IDE，例如 VS Code 或 Emacs。 尽管这些 IDE 非常适合编写代码，但它们本身并不支持 Starknet 生态系统。 Cairo Language Server 通过为 IDE 提供必要的信息来弥补这一差距，以获得更好的开发体验，包括自动完成、语法突出显示和错误检查。
 
-To install the Cairo Language Server, follow the instructions https://github.com/starkware-libs/cairo/blob/main/vscode-cairo/README.md[here]. If you have the previous Cairo 0.x extension installed in VS Code, ensure you disable it. Run the following command:
+要安装开罗语言服务器，请按照此处的说明进行操作。 如果您在 VS Code 中安装了以前的 Cairo 0.x 扩展，请确保禁用它。 运行以下命令：
 
 [source, bash]
 ----
 which cairo-language-server | pbcopy
 ----
 
-Then, paste the value into the `languageServerPath` field of the Cairo 1.0 extension in your editor settings.
+然后，将该值粘贴到编辑器设置中 Cairo 1.0 扩展的 `languageServerPath` 字段中。
 
 == Scarb
 
-Scarb is a build toolchain and package manager designed for the Cairo and Starknet ecosystems. Modeled after Cargo, it aims to provide a familiar experience for Rust developers. To install Scarb, follow the local build instructions here. Test the installation by running the command:
+Scarb 是为 Cairo 和 Starknet 生态系统设计的构建工具链和包管理器。 它以 Cargo 为模型，旨在为 Rust 开发人员提供熟悉的体验。 要安装 Scarb，请按照此处的本地构建说明进行操作。 通过运行以下命令测试安装：
 
 [source, bash]
 ----
 scarb --version
 ----
 
-For more details on using Scarb, refer to Chapter 2 of this book. With these tools in place, you'll be well-equipped to navigate and develop within the Starknet ecosystem.
+有关使用 Scarb 的更多详细信息，请参阅本书的第 2 章。有了这些工具，你就可以在 Starknet 生态系统中很好地开发和遨游。
 
 == Contributing
 
