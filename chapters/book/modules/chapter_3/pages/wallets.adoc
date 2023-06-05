@@ -1,12 +1,12 @@
 [id="wallets"]
 
-= Wallets
+= 钱包
 
-Once you have deployed your first account on Starknet - you are going to need a wallet UI to manage it. Here are some common choices which work well across browsers -
+一旦你在 Starknet 上部署了你的第一个账户——你将需要一个钱包 UI 来管理它。 以下是一些适用于各种浏览器的常见选择 -
 
-.Starknet wallets
+.Starknet 钱包
 |===
-|Name|Extension|Mobile
+|名称|扩展程序|移动端
 
 |https://www.argent.xyz/argent-x/[Argent X]|https://chrome.google.com/webstore/detail/argent-x/dlcobpjiigpikoobohmabehhmhfoodbb[Browser Extension]|-
 
