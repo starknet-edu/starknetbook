@@ -1,26 +1,24 @@
 [id="oracles"]
-= Oracles
+= 预言机
 
-Blockchains inherently lack the ability to read data from the internet. Nevertheless, many blockchain applications, such as DeFi apps, require constant access to up-to-date information from various online sources. Oracles bridge the gap between blockchains and external systems, allowing smart contracts to execute based on real-world inputs and outputs.
+区块链本质上缺乏从互联网读取数据的能力。 尽管如此，许多区块链应用程序（例如 DeFi 应用程序）需要不断访问来自各种在线资源的最新信息。 预言机弥合了区块链和外部系统之间的差距，允许智能合约根据现实世界的输入和输出执行。
 
-The largest oracle on Starknet is https://www.pragmaoracle.com/[Pragma].
+Starknet 上最大的预言机是 https://www.pragmaoracle.com/[Pragma].
 
-== Pragma Network
+== Pragma网络
 
-https://www.pragmaoracle.com/[Pragma] is a fully open-source and audited oracle network. It provides over 20 price feeds for popular crypto assets and has a well-established community of data providers, ensuring frequent updates.
-Pragma is a fully on-chain oracle which leverages Starknet's cheap computation to provide fully transparent and composable data feeds (yield curve, realized volatility, etc.)
-Note that once 0.13.0 is released, Pragma will also leverage Volition mode to increase frequency of updates and reduce costs.
+https://www.pragmaoracle.com/[Pragma]是一个完全开源且经过审计的预言机网络。 它为流行的加密资产提供 20 多种价格信息，并拥有完善的数据提供商社区，确保频繁更新。 Pragma 是一个完全链上的预言机，它利用 Starknet 的廉价计算来提供完全透明和可组合的数据馈送（收益率曲线、已实现的波动率等）。请注意，一旦 0.13.0 发布，Pragma 还将利用 Volition 模式来增加频率更新和降低成本。
 
 == Chainlink
 
-https://docs.chain.link/data-feeds/starknet[Chainlink Price Feeds] are available on the Starknet testnet, with plans for availability on the Starknet mainnet in the near future. Chainlink provides decentralized oracle services. 
+Starknet 测试网上提供 https://docs.chain.link/data-feeds/starknet[Chainlink喂价],并计划在不久的将来在 Starknet 主网上提供。 Chainlink 提供去中心化的预言机服务。
 
-[NOTE]
+[注]
 ====
-The Book is a community-driven effort created for the community.
+这本书是为社区创建的社区驱动的成果。
 
-* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
-* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+* 无论您是否学到了什么，请花点时间通过这个 https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[包含3个问题的调查]提供反馈。
+* 如果您发现任何错误或有其他建议，请不要犹豫，在我们的 https://github.com/starknet-edu/starknetbook/issues[GitHub存储库]上提出问题。
 ====
 
 == Contributing
