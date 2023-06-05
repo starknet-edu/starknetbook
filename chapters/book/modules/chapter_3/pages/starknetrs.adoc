@@ -1,6 +1,6 @@
 [id="starknetrs"]
 
-= Starknet-rs - 一个为Starknet准备的Rust的库
+= Starknet-rs - a Rust library for Starknet
 
 == Contributing
 
