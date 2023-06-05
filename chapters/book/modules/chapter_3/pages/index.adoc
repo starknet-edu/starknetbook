@@ -1,22 +1,21 @@
 [id="chapter_3"]
 
-= Starknet Tooling
+= Starknet 工具
 
-If you're ready to start building scalable web3 applications - it's time to choose your stack. Starknet has grown significantly since its inception as the first ZK-based rollup, thanks to our amazing community. Today, you will find all the necessary tools you need to build decentralized applications (dApps) on Starknet.
+如果您准备好开始构建可扩展的 web3 应用程序——是时候选择您的技术栈了。 由于我们出色的社区，Starknet 作为第一个基于 ZK rollup成立以来取得了显着发展。 今天，您将找到在 Starknet 上构建去中心化应用程序 (dApp) 所需的所有必要工具。
 
-Contributors are always welcome to join the Starknet community and help improve the existing tooling or create new solutions.
+始终欢迎贡献者加入 Starknet 社区，帮助改进现有工具或创建新的解决方案。
 
-In this chapter, you can expect to learn about the following topics:
+在本章中，您可以了解以下主题：
 
-* Environment: Useful configurations to speed up your development process
-* Wallets: Using Starknet wallets interfaces such as Argent and Braavos
-* Interactive game tutorials: Learning smart contracts in a fun way 
-* Frameworks: Providing structure to your developer experience 
-* Common SDKs: Using Starknet.js, Starknet-rs, Starknet_py, and Caigo for different programming languages
-* Tools and applications: Other things that may come in handy when developing  
+- 环境：有用的配置可加快您的开发过程
+- 钱包：使用 Argent 和 Braavos 等 Starknet 钱包接口
+- 互动游戏教程：以有趣的方式学习智能合约
+- 架构：为你作为开发者的经验提供结构
+- 通用 SDK：针对不同的编程语言可使用 Starknet.js、Starknet-rs、Starknet_py 和 Caigo
+- 工具和应用：开发时可能会用到的其他东西
 
-By the end of this chapter, you will have a comprehensive understanding of the tools available in the Starknet ecosystem and how they can help you build and deploy dApps efficiently.
-
+到本章结束时，您将全面了解 Starknet 生态系统中可用的工具以及它们能如何帮助您有效地构建和部署 dApp。
 
 == Contributing
 
