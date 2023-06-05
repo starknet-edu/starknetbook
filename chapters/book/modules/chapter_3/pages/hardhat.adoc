@@ -1,71 +1,71 @@
 [id="hardhat"]
 
-= Starknet Hardhat Plugin
+= Starknet Hardhat插件
 
-Hardhat is a popular JS development environment for Ethereum, and if you are already familiar with it and want to use it on Starknet, then this plugin will come in hand!
+Hardhat 是以太坊流行的 JS 开发环境，如果你已经熟悉它并想在 Starknet 上使用它，现在可以实现了！
 
-== Getting Started
+== 开始
 
-Follow these high-level steps to get started with the Starknet Hardhat Plugin:
+按照这些步骤开始使用 Starknet Hardhat 插件：
 
-* Install Hardhat itself (https://hardhat.org/tutorial/creating-a-new-hardhat-project[check this official guide])
-* Include the https://github.com/0xSpaceShard/starknet-hardhat-plugin[Hardhat plugin] inside the Hardhat project you created, per instructions in the https://0xspaceshard.github.io/starknet-hardhat-plugin[documentation].
-* Create a new project (in our case, we called it hardhat-tutorial) 
-* Navigate to the newly created project
-* Be sure to run:
+* 安装 Hardhat 本身 (https://hardhat.org/tutorial/creating-a-new-hardhat-project[查看此官方指南])
+* 按照 https://0xspaceshard.github.io/starknet-hardhat-plugin[文档]中的说明，将 Hardhat 插件包含在您创建的https://github.com/0xSpaceShard/starknet-hardhat-plugin[Hardhat插件]项目中
+* 创建一个新项目（在我们的例子中，我们称之为 hardhat-tutorial）
+* 导航到新创建的项目
+* 一定要运行：
 
 [source, bash]
 ----
 npm i @shardlabs/starknet-hardhat-plugin --save-dev
 ----
 
-* After successfully installing everything, make sure you have docker running as well, or if you have `cairo-lang` installed locally, you can set up venv in your hardhat config file - like https://0xspaceshard.github.io/starknet-hardhat-plugin/docs/intro#existing-virtual-environment[this]!
+* 成功安装所有内容后，确保你也运行了 docker，或者如果你在本地安装了`cairo-lang`， 你可以在你的 hardhat 配置文件中设置 venv - 就像 https://0xspaceshard.github.io/starknet-hardhat-plugin/docs/intro#existing-virtual-environment[这样]!
 
-* Next, add the following line to the top of your `hardhat.config.ts` (or `hardhat.config.js):
+* 接下来，将以下行添加到 `hardhat.config.ts`（或`hardhat.config.js）的顶部：
 
 [source, bash]
 ----
 import "@shardlabs/starknet-hardhat-plugin";
 ----
 
-Or:
+或者：
 
 [source, bash]
 ----
 require("@shardlabs/starknet-hardhat-plugin");
 ----
 
-== Using the Plugin
+== 使用插件
 
-With this setup, you can now run Starknet CLI commands as tasks in Hardhat. For instance, to compile a Cairo contract, execute:
+通过此设置，您现在可以在 Hardhat 中将 Starknet CLI 命令作为任务运行。 例如，要编译Cairo合约，请执行：
 
 [source, bash]
 ----
 npx hardhat starknet-compile-cairo1 [PATH...] 
 ----
 
-== Example
+== 范例
 
 [NOTE]
 ====
-TODO: We would love to see a simple example of how to use the plugin. If you have one, please submit a PR!
+TODO: 我们很乐意看到一个如何使用该插件的简单示例。 如果你有，请提交 PR！
 ====
 
-In the meantime, you can check the the OxSpaceShard example repository https://github.com/0xSpaceShard/starknet-hardhat-example[here]. The repository contains examples of the capacities of the plugin. You can check the `/scripts` folder with various scenarios.
+同时，您可以在 https://github.com/0xSpaceShard/starknet-hardhat-example[此处]查看 OxSpaceShard 示例存储库。本存储库包含插件功能的示例。 您可以检查各种场景的 `/scripts`文件夹。
 
-== Additional Resources
+== 其他资源
 
-- Official Hardhat Setup Guide: https://hardhat.org/tutorial/creating-a-new-hardhat-project
-- Starknet Hardhat Plugin Repository: https://github.com/0xSpaceShard/starknet-hardhat-plugin
-- Starknet Hardhat Plugin Documentation: https://0xspaceshard.github.io/starknet-hardhat-plugin
-- Starknet Hardhat Example Repository: https://github.com/0xSpaceShard/starknet-hardhat-example
+- 官方 Hardhat 设置指南： https://hardhat.org/tutorial/creating-a-new-hardhat-project
+- Starknet Hardhat 插件存储库：//github.com/0xSpaceShard/starknet-hardhat-plugin
+- Starknet Hardhat 插件文档： https://0xspaceshard.github.io/starknet-hardhat-plugin
+-Starknet Hardhat 示例存储库： https://github.com/0xSpaceShard/starknet-hardhat-example
 
 [NOTE]
 ====
-The Book is a community-driven effort created for the community.
+这本书是为社区创建的社区驱动的成果。
 
-* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
-* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+* 无论您是否学到了什么，请花点时间通过这个https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey]提供反馈。
+* 如果您发现任何错误或有其他建议，请不要犹豫，在我们的https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository]上提出问题。
 ====
 
 == Contributing
