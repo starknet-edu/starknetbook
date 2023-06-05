@@ -30,9 +30,9 @@ protostar upgrade
 
 确保您将 Protostar 升级到最新版本。 Protostar 目前不支持 Windows。
 
-== Verifying Installation
+== 验证安装
 
-Once Protostar is installed, verify it by checking the version with the command:
+安装 Protostar 后，通过使用以下命令检查版本来验证它：
 
 [source,bash]
 ----
