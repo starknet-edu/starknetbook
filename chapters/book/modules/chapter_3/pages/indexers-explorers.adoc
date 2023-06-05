@@ -1,12 +1,12 @@
 [id="indexers-and-explorers"]
 
-= Indexers and Explorers
+= 索引器和浏览器
 
-== Explorers
+== 浏览器
 
-A block explorer, or blockchain explorer, enables you to see transactions, blockchain metrics and other information.
+区块浏览器或区块链浏览器使您能够查看交易、区块链指标和其他信息。
 
-The following block explorers provide information on Starknet.
+以下区块浏览器提供有关 Starknet 的信息。
 
 .Starknet block explorers, in alphabetical order
 |===
@@ -23,10 +23,10 @@ The following block explorers provide information on Starknet.
 
 [NOTE]
 ====
-The Book is a community-driven effort created for the community.
+这本书是为社区创建的社区驱动的成果。
 
-* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
-* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+* 无论您是否学到了什么，请花点时间通过这个 https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[包含3个问题的调查]提供反馈。
+* 如果您发现任何错误或有其他建议，请不要犹豫，在我们的 https://github.com/starknet-edu/starknetbook/issues[GitHub存储库]上提出问题。
 ====
 
 == Contributing
