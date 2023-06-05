@@ -11,7 +11,7 @@
 pip install starknet-devnet
 ----
 
-重新启动终端并运行 starknet-devnet --version 以检查安装是否成功。 检查您是否安装最新版本。 如果没有，请运行 pip install --upgrade starknet-devnet。 这是文档。
+重新启动终端并运行 starknet-devnet --version 以检查安装是否成功。 检查您是否安装 https://github.com/0xSpaceShard/starknet-devnet/releases[最新版本]。 如果没有，请运行 pip install --upgrade starknet-devnet。 https://shard-labs.github.io/starknet-devnet/docs/intro[这是文档]。
 
 在单独的 shell（或选项卡）中初始化 devnet
 
