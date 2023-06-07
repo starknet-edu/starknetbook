@@ -1,12 +1,12 @@
 [id="environment"]
 
-在前面的章节中，您已经在本地设备上安装了 Python、Rust、Cairo 和 Starknet CLI。 这些安装为在 Starknet 生态系统中工作提供了基础。 为了增强您的开发体验，我们建议安装一些额外的工具。
+在前面的章节中，您已经在本地设备上安装了 Python、Rust、Cairo 和 Starknet CLI。这些安装为在 Starknet 生态系统中工作提供了基础。为了增强您的开发体验，我们建议安装一些额外的工具。
 
-== Cairo语言服务器
+== Cairo 语言服务器
 
-开发人员经常使用流行的 IDE，例如 VS Code 或 Emacs。 尽管这些 IDE 非常适合编写代码，但它们本身并不支持 Starknet 生态系统。 Cairo Language Server 通过为 IDE 提供必要的信息来弥补这一差距，以获得更好的开发体验，包括自动完成、语法突出显示和错误检查。
+开发人员经常使用流行的 IDE，例如 VS Code 或 Emacs。尽管这些 IDE 非常适合编写代码，但它们本身并不支持 Starknet 生态系统。 Cairo Language Server 通过为 IDE 提供必要的信息来弥补这一差距，以获得更好的开发体验，包括自动完成、语法突出显示和错误检查。
 
-要安装开罗语言服务器，请按照此处的说明进行操作。 如果您在 VS Code 中安装了以前的 Cairo 0.x 扩展，请确保禁用它。 运行以下命令：
+要安装开罗语言服务器，请按照此处的说明进行操作。如果您在 VS Code 中安装了以前的 Cairo 0.x 扩展，请确保禁用它。运行以下命令：
 
 [source, bash]
 ----
@@ -17,7 +17,7 @@ which cairo-language-server | pbcopy
 
 == Scarb
 
-Scarb 是为 Cairo 和 Starknet 生态系统设计的构建工具链和包管理器。 它以 Cargo 为模型，旨在为 Rust 开发人员提供熟悉的体验。 要安装 Scarb，请按照此处的本地构建说明进行操作。 通过运行以下命令测试安装：
+Scarb 是为 Cairo 和 Starknet 生态系统设计的构建工具链和包管理器。它以 Cargo 为模型，旨在为 Rust 开发人员提供熟悉的体验。要安装 Scarb，请按照此处的本地构建说明进行操作。通过运行以下命令测试安装：
 
 [source, bash]
 ----
@@ -36,3 +36,15 @@ StarknetBook is a work in progress, and your passion, expertise, and unique insi
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
+
+== **贡献力量**
+
+> 释放你的热情，让《Starknet 之书》更加完美
+> 
+> 
+> *《Starknet 之书》依然在不断完善中，而你的热情、专业知识和独到见解可以将它塑造成一部真正卓越的作品。不要害怕挑战现状或是颠覆这本书！齐心协力，我们一起创造这份宝贵的资源，造福无数人。*
+> 
+> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc)并加入活力满满的社区。一起无畏共建 Starknet！*
+> 
+
+— Starknet 社区
