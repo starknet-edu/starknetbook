@@ -38,7 +38,7 @@ function App() {
 }
 ----
 
-探索示例项目, 请访问  https://github.com/apibara/starknet-react/tree/main/website。
+探索示例项目, 请访问  https://github.com/apibara/starknet-react/tree/main/website
 
 
 == Contributing
