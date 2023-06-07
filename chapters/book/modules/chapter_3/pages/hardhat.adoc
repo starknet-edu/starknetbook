@@ -9,7 +9,7 @@ Hardhat 是以太坊流行的 JS 开发环境，如果你已经熟悉它并想�
 按照这些步骤开始使用 Starknet Hardhat 插件：
 
 * 安装 Hardhat 本身 (https://hardhat.org/tutorial/creating-a-new-hardhat-project[查看此官方指南])
-* 按照 https://0xspaceshard.github.io/starknet-hardhat-plugin[文档]中的说明，将 Hardhat 插件包含在您创建的 https://github.com/0xSpaceShard/starknet-hardhat-plugin 项目中
+* 按照 https://0xspaceshard.github.io/starknet-hardhat-plugin[文档] 中的说明，将 Hardhat 插件包含在您创建的 https://github.com/0xSpaceShard/starknet-hardhat-plugin 项目中
 * 创建一个新项目（在我们的例子中，我们称之为 hardhat-tutorial）
 * 导航到新创建的项目
 * 一定要运行：
