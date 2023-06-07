@@ -2,7 +2,7 @@
 
 = Horus
 
-https://nethermind.io/horus/[Horus]是一个 https://github.com/NethermindEth/horus-checker[open-source]形式化验证工具，旨在验证 Starknet 智能合约。 它提供了一种用户友好的方法，可以根据以直接断言语言编写的规范来正式验证 Starknet 智能合约。 通过利用各种可满足性模数理论 (SMT) 求解器，Horus 确保您的合约实施符合提供的规范。 Horus alpha 版本支持 Cairo 0.10.1，预计在不久的将来会发布 Cairo 1.0。
+https://nethermind.io/horus/[Horus] 是一个 https://github.com/NethermindEth/horus-checker[open-source] 形式化验证工具，旨在验证 Starknet 智能合约。 它提供了一种用户友好的方法，可以根据以直接断言语言编写的规范来正式验证 Starknet 智能合约。 通过利用各种可满足性模数理论 (SMT) 求解器，Horus 确保您的合约实施符合提供的规范。 Horus alpha 版本支持 Cairo 0.10.1，预计在不久的将来会发布 Cairo 1.0。
 
 
 == Contributing
@@ -16,3 +16,14 @@ StarknetBook is a work in progress, and your passion, expertise, and unique insi
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
 
+== **贡献力量**
+
+> 释放你的热情，让《Starknet 之书》更加完美
+> 
+> 
+> *《Starknet 之书》依然在不断完善中，而你的热情、专业知识和独到见解可以将它塑造成一部真正卓越的作品。不要害怕挑战现状或是颠覆这本书！齐心协力，我们一起创造这份宝贵的资源，造福无数人。*
+> 
+> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc)并加入活力满满的社区。一起无畏共建 Starknet！*
+> 
+
+— Starknet 社区
