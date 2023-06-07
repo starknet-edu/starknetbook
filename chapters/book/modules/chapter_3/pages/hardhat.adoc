@@ -1,6 +1,6 @@
 [id="hardhat"]
 
-= Starknet Hardhat插件
+= Starknet Hardhat 插件
 
 Hardhat 是以太坊流行的 JS 开发环境，如果你已经熟悉它并想在 Starknet 上使用它，现在可以实现了！
 
@@ -19,7 +19,7 @@ Hardhat 是以太坊流行的 JS 开发环境，如果你已经熟悉它并想�
 npm i @shardlabs/starknet-hardhat-plugin --save-dev
 ----
 
-* 成功安装所有内容后，确保你也运行了 docker，或者如果你在本地安装了`cairo-lang`， 你可以在你的 hardhat 配置文件中设置 venv - 就像 https://0xspaceshard.github.io/starknet-hardhat-plugin/docs/intro#existing-virtual-environment[这样]!
+* 成功安装所有内容后，确保你也运行了 docker，或者如果你在本地安装了`cairo-lang`，你可以在你的 hardhat 配置文件中设置 venv - 就像 https://0xspaceshard.github.io/starknet-hardhat-plugin/docs/intro#existing-virtual-environment[这样]!
 
 * 接下来，将以下行添加到 `hardhat.config.ts`（或 `hardhat.config.js` ）的顶部：
 
@@ -37,7 +37,7 @@ require("@shardlabs/starknet-hardhat-plugin");
 
 == 使用插件
 
-通过此设置，您现在可以在 Hardhat 中将 Starknet CLI 命令作为任务运行。 例如，要编译Cairo合约，请执行：
+通过此设置，您现在可以在 Hardhat 中将 Starknet CLI 命令作为任务运行。例如，要编译Cairo合约，请执行：
 
 [source, bash]
 ----
@@ -48,10 +48,10 @@ npx hardhat starknet-compile-cairo1 [PATH...]
 
 [注]
 ====
-TODO: 我们很乐意看到一个如何使用该插件的简单示例。 如果你有，请提交 PR！
+TODO: 我们很乐意看到一个如何使用该插件的简单示例。如果你有，请提交 PR！
 ====
 
-同时，您可以在 https://github.com/0xSpaceShard/starknet-hardhat-example[此处]查看 OxSpaceShard 示例存储库。本存储库包含插件功能的示例。 您可以检查各种场景的 `/scripts` 文件夹。
+同时，您可以在 https://github.com/0xSpaceShard/starknet-hardhat-example[此处]查看 OxSpaceShard 示例存储库。本存储库包含插件功能的示例。您可以检查各种场景的 `/scripts` 文件夹。
 
 == 其他资源
 
@@ -78,3 +78,15 @@ StarknetBook is a work in progress, and your passion, expertise, and unique insi
 
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
+
+== **贡献力量**
+
+> 释放你的热情，让《Starknet 之书》更加完美
+> 
+> 
+> *《Starknet 之书》依然在不断完善中，而你的热情、专业知识和独到见解可以将它塑造成一部真正卓越的作品。不要害怕挑战现状或是颠覆这本书！齐心协力，我们一起创造这份宝贵的资源，造福无数人。*
+> 
+> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc)并加入活力满满的社区。一起无畏共建 Starknet！*
+> 
+
+— Starknet 社区
