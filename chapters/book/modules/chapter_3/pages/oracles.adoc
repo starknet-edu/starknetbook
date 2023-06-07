@@ -11,7 +11,7 @@ https://www.pragmaoracle.com/[Pragma] 是一个完全开源且经过审计的预
 
 == Chainlink
 
-Starknet 测试网上提供 https://docs.chain.link/data-feeds/starknet[Chainlink喂价],并计划在不久的将来在 Starknet 主网上提供。 Chainlink 提供去中心化的预言机服务。
+Starknet 测试网上提供 https://docs.chain.link/data-feeds/starknet[Chainlink喂价]，并计划在不久的将来在 Starknet 主网上提供。 Chainlink 提供去中心化的预言机服务。
 
 💡 附注
 
