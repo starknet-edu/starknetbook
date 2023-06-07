@@ -8,7 +8,7 @@
 
 在本章中，我们将探索可用于测试 Cairo 和 Starknet 合约的各种工具。请注意，这是一个快速发展的领域，我们会定期引入新的工具和方法。截至撰写本文时，我们涵盖的工具占可用工具的很大一部分，但我们鼓励读者随时了解最新进展。
 
-目前，我们能够与 Starknet Alpha 进行交互。 合约部署的建议步骤是：
+目前，我们能够与 Starknet Alpha 进行交互。合约部署的建议步骤是：
 
 1. 单元测试：首先为您的合同编写单元测试。为此，可以使用 Protostar、Nile 或 starknet.py 等工具。
 2. 部署：一旦您的单元测试通过，下一步就是在开发网上部署您的合同。 Shard Lab 的 starknet-devnet，在 [**Github**](https://github.com/0xSpaceShard/starknet-devnet) 上可用，是一个不错的选择。
