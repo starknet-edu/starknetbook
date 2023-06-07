@@ -46,10 +46,10 @@ async function connectWallet() {
     const message = await starknet.account.signMessage(...)
 }
 ```
-上面的代码片段使用了 `get-starknet` 提供的连接功能来建立与用户钱包的连接。 连接后，我们就可以访问帐户方法，例如 `signMessage` 或 `execute` 。
+上面的代码片段使用了 `get-starknet` 提供的连接功能来建立与用户钱包的连接。连接后，我们就可以访问帐户方法，例如 `signMessage` 或 `execute` 。
 
 ### 提供商
-该提供商允许您与 Starknet 网络进行交互。 您可以将其视为与区块链的“读取”连接，因为它不允许签署交易或消息。 就像在以太坊中一样，您可以使用默认提供程序，或使用 Infura 或 Alchemy 等服务（它们都支持 Starknet）来创建 RPC 提供程序。
+该提供商允许您与 Starknet 网络进行交互。您可以将其视为与区块链的“读取”连接，因为它不允许签署交易或消息。就像在以太坊中一样，您可以使用默认提供程序，或使用 Infura 或 Alchemy 等服务（它们都支持 Starknet）来创建 RPC 提供程序。
 
 默认情况下，提供者是排序器提供者。
 
@@ -98,7 +98,7 @@ contract.connect(starknet.account);
 在上面的代码片段中，在调用 `connect` 方法之后，可以调用合约上的读取函数，但调用 connect 之前则不能。
 
 ## 单位
-如果你以前有过 web3 的经验，你就会知道处理单元需要小心，Starknet 也不例外。 再申明，文档在这里非常有用，尤其是关于 https://www.starknetjs.com/docs/guides/define_call_message/[数据转换] 的这一部分。
+如果你以前有过 web3 的经验，你就会知道处理单元需要小心，Starknet 也不例外。再申明，文档在这里非常有用，尤其是关于 https://www.starknetjs.com/docs/guides/define_call_message/[数据转换] 的这一部分。
 
 很多时候，您需要将从合约返回的 Cairo 结构（例如 Uint256）转换为数字：
 
@@ -137,6 +137,7 @@ const amountFormatted = {
 - Starknet.js 官方网站和文档：https://www.starknetjs.com/
 
 请继续关注 Starknet.js 的更多更新，包括详细的指南、示例和全面的文档。
+
 
 
 💡 附注
