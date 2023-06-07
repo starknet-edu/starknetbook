@@ -3,7 +3,7 @@
 = Starknet React
 
 ====
-贡献：我们希望添加一个具体示例，说明如何使用 Starknet React（可能与 starknet.js 交互）。 如果您有使用 Starknet React 的项目，请提交 PR。
+贡献：我们希望添加一个具体示例，说明如何使用 Starknet React（可能与 starknet.js 交互）。如果您有使用 Starknet React 的项目，请提交 PR。
 ====
 
 Starknet React 是由 [Apibara](https://github.com/apibara) 团队开发的, 是 React 提供者的一个开源合集及 Starknet 的钩子。 
@@ -38,7 +38,7 @@ function App() {
 }
 ----
 
-探索示例项目, 请访问 (https://github.com/apibara/starknet-react/tree/main/website)。
+探索示例项目, 请访问  https://github.com/apibara/starknet-react/tree/main/website。
 
 
 == Contributing
