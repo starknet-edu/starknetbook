@@ -34,7 +34,8 @@ StarknetBook is a work in progress, and your passion, expertise, and unique insi
 Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
 
-==**贡献力量**
+
+== **贡献力量**
 
 > 释放你的热情，让《Starknet 之书》更加完美
 > 
