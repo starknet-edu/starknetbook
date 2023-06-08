@@ -8,6 +8,7 @@ Starknet 上最大的预言机是 https://www.pragmaoracle.com/[Pragma]。
 == Pragma 网络
 
 https://www.pragmaoracle.com/[Pragma] 是一个完全开源且经过审计的预言机网络。它为流行的加密资产提供 20 多种价格信息，并拥有完善的数据提供商社区，确保频繁更新。
+
 Pragma 是一个完全链上的预言机，它利用 Starknet 的廉价计算来提供完全透明和可组合的数据馈送（收益率曲线、已实现的波动率等）。请注意，一旦 0.13.0 发布，Pragma 还将利用 Volition 模式来增加频率更新和降低成本。
 
 == Chainlink
