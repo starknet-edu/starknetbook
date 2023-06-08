@@ -169,7 +169,7 @@ git clone https://github.com/starkware-libs/cairo/ .cairo
 # Checkout the working branch and generate the release binaries
 cd .cairo/
 
-git checkout tags/v1.1.0-alpha0
+git checkout tags/v1.1.0
 cargo build --all --release
 ----
 

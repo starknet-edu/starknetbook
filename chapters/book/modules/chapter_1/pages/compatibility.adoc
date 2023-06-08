@@ -22,7 +22,7 @@ This chapter presents a table detailing the compatibility between the versions o
 
 |https://github.com/0xSpaceShard/starknet-devnet/releases[Starknet Devnet]
 |0.11.1.1
-|1.0.0-rc0
+|1.1.0
 
 |https://github.com/software-mansion/scarb/releases[Scarb: Package Manager]
 |-
@@ -30,7 +30,7 @@ This chapter presents a table detailing the compatibility between the versions o
 
 |https://github.com/software-mansion/protostar/releases[Protostar: Toolchain]
 |0.11.1.1
-|1.0.0-rc0
+|1.0.0
 |===
 
 == Checking and Updating Starknet CLI and Cairo Compiler Versions
