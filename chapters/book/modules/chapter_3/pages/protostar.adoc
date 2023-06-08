@@ -45,10 +45,9 @@ The output should be as follows:
 
 [source,bash]
 ----
-Protostar version: 0.12.0                                                                                                       
+Protostar version: 0.13.0                                                                                                       
 Cairo-lang version: 0.11.1.1
-Cairo 1 compiler version: 1.0.0rc0
-21:03:44 [INFO] Execution time: 1.34 s
+Cairo 1 compiler version: 1.1.0
 ----
 
 Note that Cairo-lang is the version of the Starknet network and Cairo 1 compiler is the version of the Cairo compiler.
@@ -68,25 +67,105 @@ The structure of your project directory should be similar to:
 [source,bash]
 ----
 my_project/
-├── hello_starknet/
-│   ├── src/
-│   │   ├── business_logic/
-│   │   │   └── utils.cairo
-│   │   ├── contracts/
-│   │   │   └── hello_starknet.cairo
-│   │   ├── business_logic.cairo
-│   │   ├── contracts.cairo
-│   │   └── lib.cairo
-│   └── cairo_project.toml
-├── tests/
-│   ├── test_hello_starknet.cairo
-│   └── test_utils.cairo
-└── protostar.toml
+.
+├── Scarb.toml
+├── protostar.toml
+├── src
+│   ├── business_logic
+│   │   └── utils.cairo
+│   ├── business_logic.cairo
+│   ├── contract
+│   │   └── hello_starknet.cairo
+│   ├── contract.cairo
+│   └── lib.cairo
+└── tests
+    ├── test_hello_starknet.cairo
+    └── test_utils.cairo
 ----
 
 The most important thing to notice is how we have structured both these contracts as standalone crates. Each smart contract in Protostar must be built as its own crate and each contract is its own module decorated with the `[contract]` decorator.
 
 Explore the official Protostar documentation for more details on structuring your project: https://docs.swmansion.com/protostar/docs/cairo-1/introduction
+
+Protostar uses Scarb and its manifest files to manage dependencies in your project. In order to use Protostar with Cairo 1, you must have Scarb executable added to the PATH environment variable. The PATH variable is a list of directories that your system searches for executables. It is practically the main goal of Scarb within a Protostar project; compiling can be done with Scarb, but Protostar will do it for you.
+
+== Structure of a Cairo Project
+
+A Cairo project includes several crucial components that help create and manage a smart contract. Let's explore each part in detail.
+
+=== Cairo Packages
+
+Cairo packages, also referred to as "crates" in some contexts, are the building blocks of a Cairo project. Each package must follow several rules:
+
+* A package must include a `Scarb.toml` file, which is Scarb's manifest file. It contains the dependencies for your package.
+* A package must include a `src/lib.cairo` file, which is the root of the package tree. It allows you to define functions and declare used modules.
+
+Package structures might look like the following:
+
+[source,bash]
+----
+my_package/
+├── src/
+│   ├── module1.cairo
+│   ├── module2.cairo
+│   └── lib.cairo
+└── Scarb.toml
+----
+
+Within the `Scarb.toml` file, you might have:
+
+[source,toml]
+----
+[package]
+name = "my_package"
+version = "0.1.0"
+
+[dependencies]
+other_package = { path = "../other_package" }
+----
+
+=== Protostar and Scarb: Working Together
+
+Protostar and Scarb are both instrumental in managing a Cairo project. While Scarb primarily handles dependencies, Protostar manages project compilation, testing, and interaction with the Starknet chain. 
+
+Scarb is a tool for managing dependencies in your Cairo packages. When you use Protostar with Cairo 1, you need to have the Scarb executable added to your `PATH` environment variable. `PATH` is a list of directories that your system searches for executables.
+
+Protostar, on the other hand, uses Scarb and its manifest files to compile your project. Even though Scarb could technically handle this process independently, Protostar streamlines it for you, making the entire process more manageable and efficient.
+
+== The protostar.toml File
+
+The `protostar.toml` file is a configuration file located at the root of your project. It defines several key attributes for your project, such as the version of Protostar to be used, contract names, configuration profiles, and command-specific configurations.
+
+Here's an example of what a `protostar.toml` file might look like:
+
+[source,toml]
+----
+[project]
+protostar-version = "PROTOSTAR_VERSION"
+
+[contracts]
+hello_starknet = ["hello_starknet"]
+
+[profile.integration.test]
+target = ["tests/integration"]
+report-slowest-tests = 5
+
+[profile.devnet.project]
+gateway-url = "http://127.0.0.1:5050/"
+chain-id = 1536727068981429685321
+
+[profile.testnet.project]
+network = "testnet"
+----
+
+Each section within the `protostar.toml` file has its specific function:
+
+* `[project]` section: This allows you to specify global options and settings for your project, such as the Protostar version (`protostar-version`).
+* `[contracts]` section: This defines the packages containing contracts to be used by Protostar commands.
+* `Command Arguments Configuration Section`: This section allows you to specify arguments for a specific Protostar command.
+* `Configuration Profiles`: Configuration profiles allow you to easily switch between different Protostar configurations.
+
+Overall, the `protostar.toml` file plays an essential role in managing project settings and configurations, contributing to a smoother development process.
 
 
 == Testing Contracts

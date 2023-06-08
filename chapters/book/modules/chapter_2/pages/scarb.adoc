@@ -1,6 +1,6 @@
 [id="scarb"]
 
-= Scarb
+= Scarb and the Structure of a Cairo Project
 
 Scarb is the Cairo package manager specifically created to streamline your Cairo and Starknet development process. This powerhouse of a tool is capable of managing project dependencies, compiling projects (both pure Cairo and Starknet contracts), downloading the necessary libraries, building these libraries, and even integrating seamlessly with other essential development tools such as Protostar. 
 
@@ -46,8 +46,6 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.
 
 ==== Windows
 
-==== Windows
-
 Scarb's installation on Windows requires manual setup. Follow the steps below to install Scarb on Windows:
 
 - Download the release archive matching your operating system and CPU architecture from the https://docs.swmansion.com/scarb/download[official Scarb website] or the https://github.com/software-mansion/scarb/releases/[Scarb Github repository]. Make sure to select the most recent version.
@@ -63,6 +61,41 @@ cairo: 1.1.0 (https://crates.io/crates/cairo-lang-compiler/1.1.0)
 ----
 
 If you encounter any issues with Scarb, please open an issue on the starknetbook repository.
+
+== Structure of a Cairo Project
+
+A Cairo project includes several crucial components that help create and manage a smart contract. Let's explore each part in detail.
+
+=== Cairo Packages
+
+Cairo packages, also referred to as "crates" in some contexts, are the building blocks of a Cairo project. Each package must follow several rules:
+
+* A package must include a `Scarb.toml` file, which is Scarb's manifest file. It contains the dependencies for your package.
+* A package must include a `src/lib.cairo` file, which is the root of the package tree. It allows you to define functions and declare used modules.
+
+Package structures might look like the following:
+
+[source,bash]
+----
+my_package/
+├── src/
+│   ├── module1.cairo
+│   ├── module2.cairo
+│   └── lib.cairo
+└── Scarb.toml
+----
+
+Within the `Scarb.toml` file, you might have:
+
+[source,toml]
+----
+[package]
+name = "my_package"
+version = "0.1.0"
+
+[dependencies]
+other_package = { path = "../other_package" }
+----
 
 === Setting Up a Project with Scarb
 

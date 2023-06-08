@@ -1,5 +1,6 @@
 * xref:index.adoc[Chapter 2: Smart Contracts in Cairo]
-    ** xref:scarb.adoc[2.1 Introduction to Scarb]
+    ** xref:topology.adoc[2.0 Sequencers, Provers, and Nodes: Key Components and Transaction Flow]
+    ** xref:scarb.adoc[2.1 The Scarb Package Manager and the Structure of a Cairo Project]
     ** xref:types.adoc[2.2 Types]
     ** xref:functions.adoc[2.3 Functions and Modules]
     ** xref:structure.adoc[2.4 The Structure of a Cairo Smart Contract]
