@@ -316,6 +316,58 @@ image::sec_over_u128.png[u128]
   - `0x753132385f616464204f766572666c6f77=u128_add Overflow`
   - `0x753132385f737562204f766572666c6f77=u128_sub Overflow`
 
+== 5. Private Data On-Chain.
+
+In some cases, a smart contracts may needs to store secret values that can't be revelead to users, however this is not possible
+if you store data on chain because all stored data is public and can be retrieved even if you don't publish your code. In the next
+example, our smart contract will use a contructor parameter to set a password (12345678) and store it on chain:
+
+[source,rust]
+----
+#[contract]
+mod StoreSecretPassword {   
+    struct Storage {
+        password: felt252,
+    }
+
+    #[constructor]
+    fn constructor(_password: felt252) {
+        password::write(_password);
+    }
+}
+----
+
+image::sec_priv01.png[deploy]
+
+Then, understanding how https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-storage/[storage layout,window=_blank] works in Cairo, let's build a script to read stored smart contract variables:
+
+[source,javascript]
+----
+import {Provider, hash} from 'starknet';
+
+const provider = new Provider({
+  sequencer: {
+    network: 'goerli-alpha' // or 'goerli-alpha'
+  }
+})
+
+var passHash = hash.starknetKeccak("password");
+console.log("getStor=",await provider.getStorageAt('0x032d0392eae7440063ea0f3f50a75dbe664aaa1df76b4662223430851a113369',passHash,812512))
+----
+
+And we will get the stored value (hex value of 12345678):
+
+image::sec_priv02.png[getStorage]
+
+Also, in a block explorer we can go to the deploy transaction and watch deployed parameters values:
+
+image::sec_priv03.png[block_explorer]
+
+**Recommendation.**
+
+If your smart contract needs to store private data on chain, then you must use off chain encryption before to send data to the blockchain 
+or may explore some alternatives like using hashes, merkle trees or commit-reveal patterns.
+
 == Call for Contributions: Additional Vulnerabilities
 
 We've covered a few common vulnerabilities in Cairo smart contracts, but there are several more security considerations that developers should be aware of. We are currently seeking contributions from the community to expand this chapter and cover more vulnerabilities, as listed in our To-Do section:
