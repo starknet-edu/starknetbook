@@ -1,5 +1,5 @@
-* xref:index.adoc[Chapter 0: Introduction to Starknet]
-    ** xref:roadmap.adoc[0.1: The Starknet Roadmap]
-    ** 0.2: Why Starknet?
-        *** xref:compute_costs.adoc[0.2.1: Lower Computing Costs and Higher Throughput]
-        *** xref:data_security.adoc[0.2.2: Starknet from a Data Security Perspective]
+* xref:index.adoc[Introduction to Starknet]
+    ** xref:roadmap.adoc[The Starknet Roadmap]
+    ** Why Starknet?
+        *** xref:compute_costs.adoc[Lower Computing Costs and Higher Throughput]
+        *** xref:data_security.adoc[Starknet from a Data Security Perspective]

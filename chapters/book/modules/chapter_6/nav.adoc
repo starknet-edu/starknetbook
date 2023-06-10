@@ -1,1 +1,1 @@
-* xref:index.adoc[Chapter 6: Running a Node]
+* xref:index.adoc[Running a Node]

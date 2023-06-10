@@ -1,3 +1,4 @@
-* xref:index.adoc[Chapter 5: Front-End Development]
-    ** xref:vue-stark-boil.adoc[5.1 Vue Stark Boil 🚧]
-    ** xref:starknet-react.adoc[5.2 Starknet React]
+* xref:index.adoc[Front-End Development]
+    ** xref:starknet-react.adoc[Starknet React]
+    ** xref:vue-stark-boil.adoc[Vue Stark Boil 🚧]
+    
