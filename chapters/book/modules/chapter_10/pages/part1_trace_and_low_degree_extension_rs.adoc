@@ -1,0 +1,452 @@
+_Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
+License, Version 2.0 (the "License"). You may not use this file except
+in compliance with the License. You may obtain a copy of the License at
+https://www.starkware.co/open-source-license/ Unless required by
+applicable law or agreed to in writing, software distributed under the
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for
+the specific language governing permissions and limitations under the
+License._
+
+== Part 1: Trace and Low-Degree Extension
+
+* https://www.youtube.com/watch?v=Y0uJz9VL3Fo[Video Lecture (youtube)]
+* https://starkware.co/wp-content/uploads/2021/12/STARK101-Part1.pdf[Slides
+(PDF)]
+
+Today we will develop a STARK prover for the FibonacciSq sequence over a
+finite field. The FibonacciSq sequence is defined by the recurrence
+relation latexmath:[a_{n+2} = a_{n+1} ^2 + a_n ^2]. By the end of the
+day, your code will produce a _STARK_ proof attesting to the following
+statement: *I know a field element latexmath:[X\in \mathbb{F}] such that
+the 1023rd element of the FibonacciSq sequence starting with
+latexmath:[1, X] is latexmath:[2338775057]*.
+
+=== The Basics
+
+==== FieldElement class
+
+We use our `+FieldElement+` struct to represent field elements. You can
+construct values of type `+FieldElement+` from integers, and then add,
+multiply, divide, get inverse, and so on. The underlying field of this
+class is latexmath:[\mathbb{F}_{3221225473}]
+(latexmath:[3221225473 = 3 \cdot 2^{30} + 1]), so all operations are
+done modulo 3221225473. 
+
+Try it by running the following cell (shift + enter):
+
+[source,rust]
+----
+:dep stark101-rs = { path = "stark101" }
+:dep sha256 = "1.1.2"
+----
+
+[source,rust]
+----
+use stark101_rs::field::*;
+println!("The result is: {:?}", FieldElement::new(3221225472) + FieldElement::new(10));
+----
+
+....
+The result is: FieldElement(9)
+....
+
+== FibonacciSq Trace
+
+To start, let's construct a vector `+a+` of length 1023, whose first two
+elements will be FieldElement objects representing 1 and 3141592,
+respectively. The next 1021 elements will be the FibonacciSq sequence
+induced by these two elements. `+a+` is called the trace of FibonacciSq,
+or, when the context is clear, the trace. Correct the code below to fill
+`+a+`:
+
+[source,rust]
+----
+let mut a = vec![FieldElement::new(1), FieldElement::new(3141592)];
+todo!("Put your code here");
+----
+
+....
+thread '<unnamed>' panicked at 'not yet implemented: Put your code here', src/lib.rs:160:1
+stack backtrace:
+   0: _rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: <unknown>
+   3: <unknown>
+   4: evcxr::runtime::Runtime::run_loop
+   5: evcxr::runtime::runtime_hook
+   6: evcxr_jupyter::main
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+....
+
+Solution (click to the ... to unhide):
+
+[source,rust]
+----
+let mut a = vec![FieldElement::new(1), FieldElement::new(3141592)];
+let mut n = 2usize;
+while a.len() < 1023 {
+    a.push(a[n-2] * a[n-2] + a[n-1] * a[n-1]);
+    n += 1;
+}
+----
+
+....
+()
+....
+
+== Test Your Code
+
+Run the next cell to test that you have filled `+a+` correctly. Note
+that this is in fact a *verifier*, albeit very naive and non-succinct
+one, as it goes over the sequence, element by element, making sure it is
+correct.
+
+[source,rust]
+----
+assert_eq!(a.len(), 1023, "The trace must consist of exactly 1023 elements.");
+assert_eq!(a[0], FieldElement::new(1), "The first element in the trace must be the unit element.");
+for i in 2..1023 {
+    assert_eq!(a[i], a[i - 1] * a[i - 1] + a[i - 2] * a[i - 2], "The FibonacciSq recursion rule does not apply for index {i}");
+}
+assert_eq!(a[1022], FieldElement::new(2338775057), "Wrong last element!");
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== Thinking of Polynomials
+
+We now want to think of the sequence as the evaluation of some, yet
+unknown, polynomial latexmath:[f] of degree 1022 (due to the Unisolvence
+Theorem). We will choose the domain to be some subgroup
+latexmath:[G \subseteq \mathbb{F}^\times] of size 1024, for reasons that
+will become clear later.
+
+(Recall that latexmath:[\mathbb{F}^\times] denotes the multiplicative
+group of latexmath:[\mathbb{F}], which we get from
+latexmath:[\mathbb{F}] by omitting the zero element with the induced
+multiplication from the field. A subgroup of size 1024 exists because
+latexmath:[\mathbb{F}^\times] is a cyclic group of size
+latexmath:[3\cdot 2^{30}], so it contains a subgroup of size
+latexmath:[2^i] for any latexmath:[0 \leq i \leq 30]).
+
+=== Find a Group of Size 1024
+
+If we find an element latexmath:[g \in \mathbb{F}] whose
+(multiplicative) order is 1024, then latexmath:[g] will generate such a
+group. The struct `+FieldElement+` provides a method `+generator()+`
+which returns an element that generates latexmath:[\mathbb{F}^\times]
+(whose order is latexmath:[|\mathbb{F}^\times|]).
+
+. Use it to obtain a generator latexmath:[g] for latexmath:[G].
+. Create a vec called `+G+` with all the elements of latexmath:[G], such
+that latexmath:[G[i] := g^i].
+
+_Hint: When latexmath:[k] divides latexmath:[|\mathbb{F}^\times|],
+latexmath:[g^k] generates a group of size
+latexmath:[\frac {|\mathbb{F}^\times|}{k}], and the n-th power of some
+`+FieldElement+` latexmath:[x] can be computed by calling `+x ** n+`._
+
+[source,rust]
+----
+// Change the following line so that g will generate a group of size 1024
+let g = FieldElement::generator();
+// Fill G with the elements of G such that G[i] := g ** i
+let G: Vec<FieldElement> = vec![]; 
+----
+
+Solution:
+
+[source,rust]
+----
+let g = FieldElement::generator().pow(3 * 2usize.pow(20));
+let G: Vec<FieldElement> = (0..1024).into_iter().map(|i| g.pow(i)).collect();
+----
+
+Run the next cell to test your code.
+
+[source,rust]
+----
+// Checks that g and G are correct.
+assert!(g.is_order(1024), "The generator g is of wrong order.");
+let mut b = FieldElement::one();
+for i in 0..1023 {
+    assert_eq!(b, G[i], "The i-th place in G is not equal to the i-th power of g.");
+    b = b * g;
+    let wrong_order = i + 1;
+    assert!(b != FieldElement::one(), "g is of order {wrong_order}");
+}    
+if b * g == FieldElement::one() {
+    println!("Success!");
+} else {
+    println!("g is of order > 1024");
+}
+----
+
+....
+Success!
+....
+
+....
+()
+....
+
+== Polynomial class
+
+We provide you with a struct called `+Polynomial+`. The simplest way to
+construct a `+Polynomial+` is by using the function *x()* which
+represents the formal variable latexmath:[x]:
+
+[source,rust]
+----
+use stark101_rs::polynomial::*;
+// The polynomial 2x^2 + 1.
+let p: Polynomial = 2*x().pow(2) + 1;
+// Evaluate p at 2:
+println!("{:?}", p(2));
+----
+
+....
+FieldElement(9)
+....
+
+== Interpolating a Polynomial
+
+Our `+Polynomial+` datatype provides a Lagrange interpolation method,
+whose arguments are:
+
+* x_values: x-values of G that the polynomial's values for them is
+known. &[FieldElement]
+* y_values: the corresponding y-values. &[FieldElement]
+
+It returns the unique `+Polynomial+` of degree < `+x_values.len()+`
+instance that evaluates to `+y_values[i]+` on `+x_values[i]+` for all i.
+
+Suppose that `+a+` contains the values of some polynomial over `+G+`
+(except for `+G[-1]+`, since `+a+` is one element shorter). Use
+`+Polynomial::interpolate()+` to get `+f+` and get its value at
+`+FieldElement::new(2)+`.
+
+[source,rust]
+----
+// Fix the following so that you create a variable called v that will contain the value of f at FieldElement(2)
+// Note that Polynomial::interpolate may take up to a minute to run.
+todo!("Put your code here.");
+----
+
+....
+thread '<unnamed>' panicked at 'not yet implemented: Put your code here.', src/lib.rs:162:1
+stack backtrace:
+   0: _rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: <unknown>
+   3: <unknown>
+   4: evcxr::runtime::Runtime::run_loop
+   5: evcxr::runtime::runtime_hook
+   6: evcxr_jupyter::main
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+....
+
+Solution:
+
+[source,rust]
+----
+let xs: Vec<FieldElement> = G.into_iter().rev().skip(1).rev().collect();
+let f: Polynomial = Polynomial::interpolate(&xs, &a);
+let v = f(2);
+----
+
+Run test:
+
+[source,rust]
+----
+assert_eq!(v, FieldElement::new(1302089273));
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== Evaluating on a Larger Domain
+
+The trace, viewed as evaluations of a polynomial latexmath:[f] on
+latexmath:[G], can now be extended by evaluating latexmath:[f] over a
+larger domain, thereby creating a *Reed-Solomon error correction code*.
+
+=== Cosets
+
+To that end, we must decide on a larger domain on which latexmath:[f]
+will be evaluated. We will work with a domain that is 8 times larger
+than latexmath:[G]. A natural choice for such a domain is to take some
+group latexmath:[H] of size 8192 (which exists because 8192 divides
+latexmath:[|\mathbb{F}^\times|]), and shift it by the generator of
+latexmath:[\mathbb{F}^\times], thereby obtaining a
+https://en.wikipedia.org/wiki/Coset[coset] of latexmath:[H].
+
+Create a vec called `+H+` of the elements of latexmath:[H], and multiply
+each of them by the generator of latexmath:[\mathbb{F}^\times] to obtain
+a vec called `+eval_domain+`. In other words, eval_domain =
+latexmath:[\{w\cdot h^i | 0 \leq i <8192 \}] for latexmath:[h] the
+generator of latexmath:[H] and latexmath:[w] the generator of
+latexmath:[\mathbb{F}^\times].
+
+Hint: You already know how to obtain latexmath:[H] - similarly to the
+way we got latexmath:[G] a few minutes ago.
+
+[source,rust]
+----
+// Fix the following, make sure that the the element of H are powers of its generator (let's call it h) in 
+// order, that is - H[0] will be the unit (i.e 1), H[1] will be h (H's generator), H[2] will be H's
+// generator squared (h^2), etc.
+let h: FieldElement = todo!();
+let H: Vec<FieldElement> = todo!();
+let eval_domain: Vec<FieldElement> = todo!();
+----
+
+....
+thread '<unnamed>' panicked at 'not yet implemented', src/lib.rs:160:23
+stack backtrace:
+   0: _rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::panic
+   3: <unknown>
+   4: <unknown>
+   5: evcxr::runtime::Runtime::run_loop
+   6: evcxr::runtime::runtime_hook
+   7: evcxr_jupyter::main
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+....
+
+Solution:
+
+[source,rust]
+----
+let w = FieldElement::generator();
+let exp = (2usize.pow(30) * 3) / 8192;
+let h = w.pow(exp);
+let H: Vec<FieldElement> = (0..8192).into_iter().map(|i| h.pow(i)).collect(); 
+let eval_domain: Vec<FieldElement> = H.into_iter().map(|x| w * x).collect();
+----
+
+Run test:
+
+[source,rust]
+----
+let field_generator = FieldElement::generator();
+let w_inverse = w.inverse();
+
+for i in 0..8192 {
+    assert_eq!((w_inverse * eval_domain[1]).pow(i) * field_generator, eval_domain[i]);
+}
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== Evaluate on a Coset
+
+Time to use `+interpolate+` and `+eval+` to evaluate over the coset.
+Note that it is implemented fairely naively in our Rust module, so
+interpolation may take some seconds. Indeed - interpolating and
+evaluating the trace polynomial is one of the most
+computationally-intensive steps in the STARK protocol, even when using
+more efficient methods (e.g. FFT).
+
+[source,rust]
+----
+// Fill f_eval with the evaluations of f on eval_domain.
+let f_eval: FieldElement = todo!();
+----
+
+....
+thread '<unnamed>' panicked at 'not yet implemented', src/lib.rs:162:28
+stack backtrace:
+   0: _rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::panic
+   3: <unknown>
+   4: <unknown>
+   5: evcxr::runtime::Runtime::run_loop
+   6: evcxr::runtime::runtime_hook
+   7: evcxr_jupyter::main
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+....
+
+Solution:
+
+[source,rust]
+----
+let G_values: Vec<FieldElement> = (0..1024).into_iter().map(|i| g.pow(i)).collect();;
+let x_values: Vec<FieldElement> = G_values.into_iter().rev().skip(1).rev().collect();
+let interpolated_f: Polynomial = Polynomial::interpolate(&x_values, &a);
+let interpolated_f_eval: Vec<FieldElement> = eval_domain.into_iter().map(|d| interpolated_f.clone().eval(d)).collect();
+----
+
+Run test:
+
+[source,rust]
+----
+// Test against a precomputed hash.
+use sha256::digest;
+let hashed = digest(format!("{:?}", interpolated_f_eval));
+assert_eq!("d78b6a5f70e91dd8fa448f628528434dbfaf3caefab0a26519e1f2d8ac992f23".to_string(), hashed);
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== Commitments
+
+We will use https://en.wikipedia.org/wiki/SHA-2[Sha256]-based
+https://en.wikipedia.org/wiki/Merkle_tree[Merkle Trees] as our
+commitment scheme. A simple implementation of it is available to you in
+the `+MerkleTree+` class. Run the next cell (for the sake of this
+tutorial, this also serves as a test for correctness of the entire
+computation so far):
+
+[source,rust]
+----
+//from merkle import MerkleTree
+//f_merkle = MerkleTree(f_eval)
+//assert f_merkle.root == '6c266a104eeaceae93c14ad799ce595ec8c2764359d7ad1b4b7c57a4da52be04'
+//print('Success!')
+----
+
+== Channel
+
+Theoretically, a STARK proof system is a protocol for interaction
+between two parties - a prover and a verifier. In practice, we convert
+this interactive protocol into a non-interactive proof using the
+https://en.wikipedia.org/wiki/Fiat%E2%80%93Shamir_heuristic[Fiat-Shamir
+Heuristic]. In this tutorial you will use the `+Channel+` class, which
+implements this transformation. This channel replaces the verifier in
+the sense that the prover (which you are writing) will send data, and
+receive random numbers or random `+FieldElement+` instances.
+
+This simple piece of code instantiates a channel object, sends the root
+of your Merkle Tree to it. Later, the channel object can be called to
+provide random numbers or random field elements.
+
+[source,rust]
+----
+///from channel import Channel
+//channel = Channel()
+//channel.send(f_merkle.root)
+----
+
+Lastly - you can retrieve the proof-so-far (i.e., everything that was
+passed in the channel up until a certain point) by printing the member
+`+Channel.proof+`.
+
+[source,rust]
+----
+//print(channel.proof)
+----

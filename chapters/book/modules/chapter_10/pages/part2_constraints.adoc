@@ -32,11 +32,11 @@ if and only if the original constraints hold.
 For `a` to be a correct trace of a FibonacciSq sequence that proves our
 claim:
 
-. The first element has to be 1, namely latexmath:[$a[0] = 1$].
+. The first element has to be 1, namely latexmath:[a[0] = 1].
 . The last element has to be 2338775057, namely
-latexmath:[$a[1022] = 2338775057$].
+latexmath:[a[1022] = 2338775057].
 . The FibonacciSq rule must apply, that is - for every
-latexmath:[$i<1021$], latexmath:[$a[i+2]=a[i+1]^2+a[i]^2$].
+latexmath:[i<1021], latexmath:[a][i+2]=a[i+1]²+a[i]².
 
 == Step 2 - Polynomial Constraints
 
@@ -310,7 +310,7 @@ short):
 \[CP(x) = \alpha_0 \cdot p_0(x) + \alpha_1 \cdot p_1(x) + \alpha_2 \cdot  p_2(x)\]
 ++++
 
-where $\alpha_0, \alpha_1, \alpha_2 $ are random field elements obtained
+where latexmath:[$\alpha_0, \alpha_1, \alpha_2$] are random field elements obtained
 from the verifier, or in our case - from the channel.
 
 Proving that (the rational function) latexmath:[$CP$] is a polynomial

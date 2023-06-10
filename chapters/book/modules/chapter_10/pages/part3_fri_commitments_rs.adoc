@@ -1,0 +1,481 @@
+_Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
+License, Version 2.0 (the "License"). You may not use this file except
+in compliance with the License. You may obtain a copy of the License at
+https://www.starkware.co/open-source-license/ Unless required by
+applicable law or agreed to in writing, software distributed under the
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for
+the specific language governing permissions and limitations under the
+License._
+
+== Part 3: FRI Commitments
+
+* https://www.youtube.com/watch?v=gd1NbKUOJwA[Video Lecture (youtube)]
+* https://starkware.co/wp-content/uploads/2021/12/STARK101-Part3.pdf[Slides
+(PDF)]
+
+== Load Previous Session
+
+Run the next cell to load the relevant variables. As usual - it will
+take a while to run.
+
+[source,rust]
+----
+:dep stark101-rs = { path = "stark101" }
+:dep sha256 = "1.1.2"
+use stark101_rs::{field::FieldElement, channel::Channel, polynomial::{Polynomial, x}, merkle_tree::MerkleTree};
+use stark101_rs::parts::part2;
+
+let (cp, cp_eval, cp_merkle, channel, eval_domain) = part2();
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== FRI Folding
+
+Our goal in this part is to construct the FRI layers and commit on them.
+To obtain each layer we need:
+
+. To generate a domain for the layer (from the previous layer's domain).
+. To generate a polynomial for the layer (from the previous layer's
+polynomial and domain).
+. To evaluate said polynomial on said domain - *this is the next FRI
+layer*.
+
+== Domain Generation
+
+The first FRI domain is simply the `eval_domain` that you already
+generated in Part 1, namely a coset of a group of order 8192. Each
+subsequent FRI domain is obtained by taking the first half of the
+previous FRI domain (dropping the second half), and squaring each of its
+elements.
+
+Formally - we got `eval_domain` by taking:
+
+[latexmath]
+++++
+\[w, w\cdot h, w\cdot h^2, ..., w\cdot h^{8191}\]
+++++
+
+The next layer will therefore be:
+
+[latexmath]
+++++
+\[w^2, (w\cdot h)^2, (w\cdot h^2)^2, ..., (w\cdot h^{4095})^2\]
+++++
+
+Note that taking the squares of the second half of each elements in
+`eval_domain` yields exactly the same result as taking the squares of
+the first half. This is true for the next layers as well. For example:
+
+[source,rust]
+----
+println!("{:?}", eval_domain[100].pow(2));
+let half_domain_size: usize = eval_domain.len() / 2;
+println!("{:?}", eval_domain[half_domain_size + 100].pow(2));
+----
+
+....
+FieldElement(2848063603)
+FieldElement(2848063603)
+....
+
+Similarly, the domain of the third layer will be:
+
+[latexmath]
+++++
+\[w^4, (w\cdot h)^4, (w\cdot h^2)^4, ..., (w\cdot h^{2047})^4\]
+++++
+
+And so on.
+
+Write a function `next_fri_domain` that takes the previous domain as an
+argument, and outputs the next one.
+
+[source,rust]
+----
+fn next_fri_domain(fri_domain: Vec<FieldElement>) -> Vec<FieldElement> {
+    // Fix this.
+}
+----
+
+Solution:
+
+[source,rust]
+----
+fn next_fri_domain(fri_domain: Vec<FieldElement>) -> Vec<FieldElement> {
+    let fri_domain_len = fri_domain.len();
+    fri_domain.into_iter().take(fri_domain_len / 2).map(|x| x.pow(2)).collect()
+}
+----
+
+Run test:
+
+[source,rust]
+----
+// Test against a precomputed hash.
+let next_domain = next_fri_domain(eval_domain);
+assert_eq!("5446c90d6ed23ea961513d4ae38fc6585f6614a3d392cb087e837754bfd32797", sha256(','.join([str(i) for i in next_domain]).encode()).hexdigest());
+println!("Success!");
+----
+
+....
+Error: expected `;`, found `println`
+   ╭─[command_5:1:1]
+   │
+ 3 │ assert_eq!("5446c90d6ed23ea961513d4ae38fc6585f6614a3d392cb087e837754bfd32797", sha256(','.join([str(i) for i in next_domain]).encode()).hexdigest())
+   ·                                                                                                                                                     │ 
+   ·                                                                                                                                                     ╰─ error: expected `;`, found `println`
+   ·                                                                                                                                                     │ 
+   ·                                                                                                                                                     ╰─ help: add `;` here: `;`
+ 4 │ println!("Success!");
+   · ───┬───  
+   ·    ╰───── unexpected token
+───╯
+....
+
+== FRI Folding Operator
+
+The first FRI polynomial is simply the composition polynomial, i.e.,
+`cp`. Each subsequent FRI polynomial is obtained by:
+
+. Getting a random field element latexmath:[$\beta$] (by calling
+`Channel.receive_random_field_element`).
+. Multiplying the odd coefficients of the previous polynomial by
+latexmath:[$\beta$].
+. Summing together consecutive pairs (even-odd) of coefficients.
+
+Formally, let's say that the k-th polynomial is of degree
+latexmath:[$< m$] (for some latexmath:[$m$] which is a power of 2):
+
+[latexmath]
+++++
+\[p_{k}(x) := \sum _{i=0} ^{m-1} c_i x^i\]
+++++
+
+Then the (k+1)-th polynomial, whose degree is latexmath:[$< \frac m 2 $] will be:
+
+[latexmath]
+++++
+\[p_{k+1}(x) := \sum _{i=0} ^{  m / 2 - 1 } (c_{2i} + \beta \cdot c_{2i + 1}) x^i\]
+++++
+
+Write a function `next_fri_polynomial` that takes as arguments a
+polynomial and a field element (the one we referred to as
+latexmath:[$\beta$]), and returns the "folded" next polynomial.
+
+Note that:
+
+. `Polynomial.poly` contains a list of a polynomial's coefficients, the
+free term first, and the highest degree last, so `p.poly[i] == u` if the
+coefficient of latexmath:[$x^i$] is latexmath:[$u$].*
+. `Polynomial`'s default constructor takes the list of coefficients as
+argument. So a polynomial can be instantiated from a list of
+coefficients `l` by calling `Polynomial(l)`.
+
+[source,rust]
+----
+fn next_fri_polynomial(poly: Polynomial, beta: FieldElement) -> Polynomial {
+    let odd_coefficients = poly.poly[1::2]; // fix this line.
+    let even_coefficients = poly.poly[::2]; // No need to fix this line either.
+    let multiplied_by_beta: Vec<FieldElement> = odd_coefficients.into_iter().map(|c| c * beta).collect();
+    let odd = Polynomial::new(&multiplied_by_beta);
+    let even = Polynomial(even_coefficients);
+    odd + even
+}
+----
+
+....
+Error: expected one of `.`, `?`, `]`, or an operator, found `::`
+   ╭─[command_39:1:1]
+   │
+ 2 │     let odd_coefficients = poly.poly[1::2]; // fix this line.
+   ·                                       ─┬  
+   ·                                        ╰── expected one of `.`, `?`, `]`, or an operator
+───╯
+....
+
+Solution:
+
+[source,rust]
+----
+fn next_fri_polynomial(poly: Polynomial,  beta: FieldElement) -> Polynomial {
+    let odd_coefficients: Vec<FieldElement> = poly.0.clone().into_iter().skip(1).step_by(2).collect();
+    let even_coefficients: Vec<FieldElement> = poly.0.into_iter().step_by(2).collect();
+    let odd = Polynomial::new(&odd_coefficients) * beta;
+    let even = Polynomial::new(&even_coefficients);
+    odd + even
+}
+----
+
+Run test:
+
+[source,rust]
+----
+let next_p = next_fri_polynomial(cp, FieldElement::new(987654321));
+assert_eq!("6bff4c35e1aa9693f9ceb1599b6a484d7636612be65990e726e52a32452c2154", sha256(','.join([str(i) for i in next_p.poly]).encode()).hexdigest());
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== Putting it Together to Get the Next FRI Layer
+
+Write a function `next_fri_layer` that takes a polynomial, a domain, and
+a field element (again - latexmath:[$\beta$]), and returns the next
+polynomial, the next domain, and the evaluation of this next polynomial
+on this next domain.
+
+[source,rust]
+----
+fn next_fri_layer(poly: Polynomial, domain: Vec<FieldElement>, beta: FieldElement) -> (Polynomial, Vec<FieldElement>, Vec<FieldElement>) {
+    todo!()
+}
+----
+
+Solution:
+
+[source,rust]
+----
+fn next_fri_layer(poly: Polynomial, domain: Vec<FieldElement>, beta: FieldElement) -> (Polynomial, Vec<FieldElement>, Vec<FieldElement>) {
+    let next_poly = next_fri_polynomial(poly, beta);
+    let next_domain = next_fri_domain(domain);
+    let next_layer: Vec<FieldElement> = next_domain.clone().into_iter().map(|x| next_poly(x)).collect();
+    (next_poly, next_domain, next_layer)
+}
+----
+
+Run test:
+
+[source,rust]
+----
+let test_poly = Polynomial::new(&[FieldElement::new(2), FieldElement::new(3), FieldElement::new(0), FieldElement::new(1)]);
+let test_domain = vec![FieldElement::new(3), FieldElement::new(5)];
+let beta = FieldElement::new(7);
+let (next_p, next_d, next_l) = next_fri_layer(test_poly, test_domain, beta);
+assert_eq!(next_p, Polynomial::new(&[FieldElement::new(23), FieldElement::new(7)]));
+assert_eq!(next_d, vec![FieldElement::new(9)]);
+assert_eq!(next_l, vec![FieldElement::new(86)]);
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== Generating FRI Commitments
+
+We have now developed the tools to write the `FriCommit` method, that
+contains the main FRI commitment loop.
+
+It takes the following 5 arguments:
+
+. The composition polynomial, that is also the first FRI polynomial,
+that is - `cp`.
+. The coset of order 8192 that is also the first FRI domain, that is -
+`eval_domain`.
+. The evaluation of the former over the latter, which is also the first
+FRI layer , that is - `cp_eval`.
+. The first Merkle tree (we will have one for each FRI layer)
+constructed from these evaluations, that is - `cp_merkle`.
+. A channel object, that is `channel`.
+
+The method accordingly returns 4 lists:
+
+. The FRI polynomials.
+. The FRI domains.
+. The FRI layers.
+. The FRI Merkle trees.
+
+The method contains a loop, in each iteration of which we extend these
+four lists, using the last element in each. The iteration should stop
+once the last FRI polynomial is of degree 0, that is - when the last FRI
+polynomial is just a constant. It should then send over the channel this
+constant (i.e. - the polynomial's free term). The `Channel` class only
+supports sending strings, so make sure you convert anything you wish to
+send over the channel to a string before sending.
+
+[source,rust]
+----
+// Fix this according to the instructions (lines with no specific comments are okay).
+fn fri_commit(cp, domain, cp_eval, cp_merkle, channel) -> (Vec<Polynomial>, Vec<Vec<FieldElement>>, Vec<Vec<FieldElement>>, Vec<MerkleTree>) {
+    let fri_polys: Vec<Polynomial> = vec![cp];
+    let fri_domains: Vec<Vec<FieldElement>> = vec![domain];
+    let fri_layers: Vec<Vec<FieldElement>> = vec![cp_eval];
+    let fri_merkles: Vec<MerkleTree> = vec![cp_merkle];
+    while cp.degree() > 1 { // Replace this with the correct halting condition.
+        let beta = channel.receive_random_field_element(); // Change to obtain a random element from the channel.
+        let (next_poly, next_domain, next_layer) = next_fri_layer(cp, domain, beta); // Fix to obtain the next FRI polynomial, domain, and layer.
+        fri_polys.push(next_poly);
+        fri_domains.push(next_domain);
+        fri_layers.push(next_layer);
+        fri_merkles.push(MerkleTree::new(next_layer)); // Fix to construct the correct Merkle tree.
+        channel.send(fri_merkles.last().unwrap().root()); // Fix to send the correct commitment.
+    }
+    channel.send(fri_polys.last().unwrap()) // Fix to send the last layer's free term.
+    (fri_polys, fri_domains, fri_layers, fri_merkles)
+}
+----
+
+Solution:
+
+[source,rust]
+----
+fn fri_commit(cp: Polynomial, domain: Vec<FieldElement>, cp_eval: Vec<FieldElement>, cp_merkle: MerkleTree, channel: &mut Channel) -> (Vec<Polynomial>, Vec<Vec<FieldElement>>, Vec<Vec<FieldElement>>, Vec<MerkleTree>) {   
+    let mut fri_polys: Vec<Polynomial> = vec![cp];
+    let mut fri_domains: Vec<Vec<FieldElement>> = vec![domain];
+    let mut fri_layers: Vec<Vec<FieldElement>> = vec![cp_eval];
+    let mut fri_merkles: Vec<MerkleTree> = vec![cp_merkle];
+    while fri_polys.last().unwrap().degree() > 0 {
+        let beta = channel.receive_random_field_element();
+        let last_poly = fri_polys.last().unwrap().clone();
+        let last_domain = fri_domains.last().unwrap().clone();
+        let (next_poly, next_domain, next_layer) = next_fri_layer(last_poly, last_domain, beta);
+        fri_polys.push(next_poly.clone());
+        fri_domains.push(next_domain.clone());
+        fri_layers.push(next_layer.clone());
+        fri_merkles.push(MerkleTree::new(next_layer));
+        channel.send(fri_merkles.last().unwrap().root())
+    }
+    channel.send(fri_polys.last().unwrap().0[0].0.to_string());
+
+    (fri_polys, fri_domains, fri_layers, fri_merkles)
+}
+----
+
+Run test:
+
+[source,rust]
+----
+let mut test_channel = Channel::new();
+let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp.clone(), eval_domain.clone(), cp_eval.clone(), cp_merkle.clone(), &mut test_channel);
+let fri_layers_len = fri_layers.len();
+assert_eq!(fri_layers_len, 11, "Expected number of FRI layers is 11, whereas it is actually {fri_layers_len}");
+assert_eq!(fri_layers.last().unwrap().len(), 8, "Expected last layer to contain exactly 8 elements");
+assert_eq!(fri_polys.last().unwrap().degree(), 0, "Expected last polynomial to be constant (degree 0).");
+assert_eq!(fri_merkles.last().unwrap().root(), "6e09c7e19275df2155bd575833aa441f3058446726938420c0acabb1c332c40f", "Last layer Merkle root is wrong.");
+
+println!("Success!");
+----
+
+....
+[E0425] Error: cannot find value `cp` in this scope
+   ╭─[command_60:1:1]
+   │
+ 2 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp.clone(), eval_domain.clone(), cp_eval.clone(), cp_merkle.clone(), &mut test_channel);
+   ·                                                                    ─┬  
+   ·                                                                     ╰── not found in this scope
+───╯
+....
+
+....
+[E0425] Error: cannot find value `eval_domain` in this scope
+   ╭─[command_60:1:1]
+   │
+ 2 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp.clone(), eval_domain.clone(), cp_eval.clone(), cp_merkle.clone(), &mut test_channel);
+   ·                                                                                ─────┬─────  
+   ·                                                                                     ╰─────── not found in this scope
+───╯
+....
+
+....
+[E0425] Error: cannot find value `cp_eval` in this scope
+   ╭─[command_60:1:1]
+   │
+ 2 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp.clone(), eval_domain.clone(), cp_eval.clone(), cp_merkle.clone(), &mut test_channel);
+   ·                                                                                                     ───┬───  
+   ·                                                                                                        ╰───── not found in this scope
+───╯
+....
+
+....
+[E0425] Error: cannot find value `cp_merkle` in this scope
+   ╭─[command_60:1:1]
+   │
+ 2 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp.clone(), eval_domain.clone(), cp_eval.clone(), cp_merkle.clone(), &mut test_channel);
+   ·                                                                                                                      ────┬────  
+   ·                                                                                                                          ╰────── not found in this scope
+───╯
+....
+
+Run the following cell to execute the function with your channel object
+and print the proof so far:
+
+[source,rust]
+----
+let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp, eval_domain, cp_eval, cp_merkle, channel);
+println!("{}", channel.proof);
+----
+
+....
+[E0425] Error: cannot find value `cp` in this scope
+   ╭─[command_59:1:1]
+   │
+ 1 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp, eval_domain, cp_eval, cp_merkle, channel);
+   ·                                                                    ─┬  
+   ·                                                                     ╰── not found in this scope
+───╯
+....
+
+....
+[E0425] Error: cannot find value `eval_domain` in this scope
+   ╭─[command_59:1:1]
+   │
+ 1 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp, eval_domain, cp_eval, cp_merkle, channel);
+   ·                                                                        ─────┬─────  
+   ·                                                                             ╰─────── not found in this scope
+───╯
+....
+
+....
+[E0425] Error: cannot find value `cp_eval` in this scope
+   ╭─[command_59:1:1]
+   │
+ 1 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp, eval_domain, cp_eval, cp_merkle, channel);
+   ·                                                                                     ───┬───  
+   ·                                                                                        ╰───── not found in this scope
+───╯
+....
+
+....
+[E0425] Error: cannot find value `cp_merkle` in this scope
+   ╭─[command_59:1:1]
+   │
+ 1 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp, eval_domain, cp_eval, cp_merkle, channel);
+   ·                                                                                              ────┬────  
+   ·                                                                                                  ╰────── not found in this scope
+───╯
+....
+
+....
+[E0308] Error: mismatched types
+   ╭─[command_59:1:1]
+   │
+ 1 │ let (fri_polys, fri_domains, fri_layers, fri_merkles) = fri_commit(cp, eval_domain, cp_eval, cp_merkle, channel);
+   ·                                                         ─────┬────                                      ───┬───  
+   ·                                                              ╰─────────────────────────────────────────────────── arguments to this function are incorrect
+   ·                                                                                                            │     
+   ·                                                                                                            ╰───── expected `&mut Channel`, found `Channel`
+   ·                                                                                                            │     
+   ·                                                                                                            ╰───── help: consider mutably borrowing here: `&mut channel`
+───╯
+....
+
+....
+[E0277] Error: `Vec<String>` doesn't implement `std::fmt::Display`
+   ╭─[command_59:1:1]
+   │
+ 2 │ println!("{}", channel.proof);
+   ·                ──────┬──────  
+   ·                      ╰──────── `Vec<String>` cannot be formatted with the default formatter
+───╯
+....
+
+[source,rust]
+----
+----

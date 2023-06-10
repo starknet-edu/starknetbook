@@ -1,0 +1,225 @@
+_Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
+License, Version 2.0 (the "License"). You may not use this file except
+in compliance with the License. You may obtain a copy of the License at
+https://www.starkware.co/open-source-license/ Unless required by
+applicable law or agreed to in writing, software distributed under the
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for
+the specific language governing permissions and limitations under the
+License._
+
+== Part 4: Query Phase
+
+* https://www.youtube.com/watch?v=CxP28qM4tAc[Video Lecture (youtube)]
+* https://starkware.co/wp-content/uploads/2021/12/STARK101-Part4.pdf[Slides
+(PDF)]
+
+== Load the Previous Session
+
+Run the next cell to load the variables we'll use in this part. Since it
+repeats everything done in previous parts - it will take a while to run.
+
+[source,rust]
+----
+:dep stark101-rs = { path = "stark101" }
+:dep sha256 = "1.1.2"
+use stark101_rs::{field::FieldElement, channel::Channel, polynomial::{Polynomial, x}, merkle_tree::MerkleTree};
+use stark101_rs::parts::{part1, part3};
+
+let (_, _, _, _, _, _, _, f_eval, f_merkle, _) = part1();
+let (fri_polys, fri_domains, fri_layers, fri_merkles, _ch): (Vec<Polynomial>, Vec<Vec<FieldElement>>, Vec<Vec<FieldElement>>, Vec<MerkleTree>, Channel) = part3();
+
+println!("Success!");
+----
+
+....
+Success!
+....
+
+== Decommit on a Query
+
+Our goal in this part is to generate all the information needed for
+verifying the commitments of the three previous parts. In this part we
+write two functions:
+
+. `decommit_on_fri_layers` - sends over the channel data showing that
+each FRI layer is consistent with the others, when sampled at a
+specified index.
+. `decommit_on_query` - sends data required for decommiting on the trace
+and then calls `decommit_on_fri_layers`.
+
+== Decommit on the FRI Layers
+
+Implement `decommit_on_fri_layers` function. The function gets an index
+and a channel, and sends over the channel the relevant data for
+verifying the correctness of the FRI layers. More specifically, it
+iterates over `fri_layers` and `fri_merkles` and in each iteration it
+sends the following data (in the stated order):
+
+. The element of the FRI layer at the given index (using `fri_layers`).
+. Its authentication path (using the corresponding Merkle tree from
+`fri_merkles`).
+. The element's FRI sibling (i.e., if the element is
+latexmath:[$cp_i(x)$], then its sibling is latexmath:[$cp_i(-x)$], where
+latexmath:[$cp_i$] is the current layer's polynomial, and
+latexmath:[$x$] is an element from the current layer's domain).
+. The authentication path of the element's sibling (using the same
+merkle tree).
+
+To get an authentication path of an element, use
+`get_authentication_path()` of the `MerkleTree` class, with the
+corresponding index each time. Note that the index of the element's
+sibling equals to (idx + latexmath:[$\frac k 2$]) mod latexmath:[$k$],
+where latexmath:[$k$] is the length of the relevant FRI layer. Note that
+we do *not* send the authentication path for the element in the last
+layer. In the last layer, all the elements are equal, regardless of the
+query, as they are evaluations of a constant polynomial.
+
+_(Remember to convert non-string variables into string before sending
+over the channel.)_
+
+[source,rust]
+----
+// Fix this.
+fn decommit_on_fri_layers(idx: usize, channel: &mut Channel, fri_layers: Vec<Vec<FieldElement>>, fri_merkles: Vec<MerkleTree>) {
+    for layer, merkle in zip(fri_layers[:-1], fri_merkles[:-1]) {
+        // Fix this: send elements and authentication pathes of all the FRI layers but the last one.
+        channel.send("The element from the current layer") // TODO
+        channel.send("The authentication path for this element") // TODO
+        channel.send("The element\'s sibling in the current layer") // TODO
+        channel.send("The sibling\'s authentication path") // TODO
+    }
+    // Send the element in the last FRI layer.
+    channel.send("The last element")
+}
+----
+
+Solution:
+
+[source,rust]
+----
+fn decommit_on_fri_layers(idx: usize, channel: &mut Channel, fri_layers: Vec<Vec<FieldElement>>, fri_merkles: Vec<MerkleTree>) {
+    for (layer, merkle) in zip(fri_layers[:-1], fri_merkles[:-1]) {
+        let length = layer.len();
+        let idx = idx % length;
+        let sib_idx = (idx + length / 2) % length        
+        channel.send(layer[idx].to_string());
+        channel.send(merkle.get_authentication_path(idx));
+        channel.send(str(layer[sib_idx]));
+        channel.send(str(merkle.get_authentication_path(sib_idx)));
+    }
+    channel.send(str(fri_layers[-1][0]))
+}            
+----
+
+Test your code:
+
+[source,rust]
+----
+// Test against a precomputed hash.
+let mut test_channel = Channel();
+for query in vec![7527, 8168, 1190, 2668, 1262, 1889, 3828, 5798, 396, 2518] {
+    decommit_on_fri_layers(query, &mut test_channel, fri_layers.clone());
+}
+assert_eq!(test_channel.state, "ad4fe9aaee0fbbad0130ae0fda896393b879c5078bf57d6c705ec41ce240861b", "State of channel is wrong.");
+println!("Success!");
+----
+
+== Decommit on the Trace Polynomial
+
+To prove that indeed the FRI layers we decommit on were generated from
+evaluation of the composition polynomial, we must also send:
+
+. The value latexmath:[$f(x)$] with its authentication path.
+. The value latexmath:[$f(gx)$] with its authentication path.
+. The value latexmath:[$f(g^2x)$] with its authentication path. The
+verifier, knowing the random coefficients of the composition polynomial,
+can compute its evaluation at latexmath:[$x$], and compare it with the
+first element sent from the first FRI layer.
+
+The function `decommit_on_query` should therefore send the above (1, 2,
+and 3) over the channel, and then call `decommit_on_fri_layers`.
+
+Importantly, even though latexmath:[$x, gx, g^2x$] are consecutive
+elements (modulo the group size latexmath:[$|G|$]) in the trace, the
+evaluations of `f_eval` in these points are actually 8 elements apart.
+The reason for this is that we "blew up" the trace to 8 times its size
+in part I, to obtain a Reed Solomon codeword.
+
+_Reminder: `f_eval` is the evaluation of the composition polynomial, and
+`f_merkle` is the corresponding Merkle tree._
+
+[source,rust]
+----
+fn decommit_on_query(idx: usize, channel: &mut Channel, fri_layers: Vec<Vec<FieldElement>>) {
+    // Send elements and authentication pathes for f(x), f(gx) and f(g^2x) over the channel. 
+    channel.send("f(x)"); // TODO
+    channel.send("f(x)\'s authentication path"); // TODO
+    channel.send("f(gx)"); // TODO
+    channel.send("f(gx)\'s authentication path"); // TODO
+    channel.send("f(g^2x)"); // TODO
+    channel.send("f(g^2x)\'s authentication path"); // TODO
+    decommit_on_fri_layers(idx, &mut channel, fri_layers) // No need to fix this line.
+}
+----
+
+Solution:
+
+[source,rust]
+----
+fn decommit_on_query(idx: usize, channel: &mut Channel, fri_layers: Vec<Vec<FieldElement>>) {
+    let f_eval_len = f_eval.len();
+    assert!(idx + 16 < f_eval.len(), "query index: {idx} is out of range. Length of layer: {f_eval_len}.");
+    channel.send(f_eval[idx].to_string()); // f(x).
+    channel.send(f_merkle.get_authentication_path(idx).to_string())); // auth path for f(x).
+    channel.send(f_eval[idx + 8].to_string()); // f(gx).
+    channel.send(f_merkle.get_authentication_path(idx + 8).to_string()); // auth path for f(gx).
+    channel.send(f_eval[idx + 16].to_string()); // f(g^2x).
+    channel.send(f_merkle.get_authentication_path(idx + 16).to_string()); // auth path for f(g^2x).
+    decommit_on_fri_layers(idx, channel, fri_layers);
+}
+----
+
+Test your code:
+
+[source,rust]
+----
+// Test against a precomputed hash.
+let mut test_channel = Channel();
+for query in vec![8134, 1110, 1134, 6106, 7149, 4796, 144, 4738, 957] {
+    decommit_on_query(query, test_channel)
+}
+assert_eq!(test_channel.state, "16a72acce8d10ffb318f8f5cd557930e38cdba236a40439c9cf04aaf650cfb96", "State of channel is wrong.");
+println!("Success!");
+----
+
+== Decommit on a Set of Queries
+
+To finish the proof, the prover gets a set of random queries from the
+channel, i.e., indices between 0 to 8191, and decommits on each query.
+
+Use the function that you just implemented `decommit_on_query()`, and
+`Channel.receive_random_int` to generate 3 random queries and decommit
+on each.
+
+[source,rust]
+----
+// Fix this.
+fn decommit_fri(channel: &mut Channel) {
+    for query in 0..3 {
+        todo!(); // Get a random index from the channel and send the corresponding decommitment.
+    }
+}
+----
+
+Solution:
+
+[source,rust]
+----
+fn decommit_fri(channel: &mut Channel) {
+    for query in 0..3 {
+        // Get a random index from the verifier and send the corresponding decommitment.
+        decommit_on_query(channel.receive_random_int(0, 8191-16), channel);
+    }
+}
+----

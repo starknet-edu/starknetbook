@@ -125,7 +125,7 @@ latexmath:[$< m$] (for some latexmath:[$m$] which is a power of 2):
 \[p_{k}(x) := \sum _{i=0} ^{m-1} c_i x^i\]
 ++++
 
-Then the (k+1)-th polynomial, whose degree is $< \frac m 2 $ will be:
+Then the (k+1)-th polynomial, whose degree is latexmath:[$< \frac m 2 $] will be:
 
 [latexmath]
 ++++
