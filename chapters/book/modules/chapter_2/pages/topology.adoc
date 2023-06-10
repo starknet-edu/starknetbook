@@ -1,0 +1,108 @@
+[id="topology"]
+
+= Unveiling Starknet's Structure: Sequencers, Provers, and Nodes
+
+Starknet, with its innovative architecture, ushers in a new era of Layer 2 solutions, promising higher scalability and security. This chapter provides a high-level overview of the Starknet network structure and its transaction lifecycle, highlighting the pivotal roles of sequencers, provers, and nodes within the network. This simplified explanation is tailored to the needs of developers and users, both experienced and newcomers. For a deep dive into the architecture, please refer to the "Starknet Architecture" chapter.
+
+Starknet's system is like a well-oiled machine where sequencers, provers, and nodes each play distinct but interrelated roles. While Starknet is yet to achieve complete decentralization, it is making strides, particularly in development, towards this overarching goal. Understanding the roles and interactions of these actors will help you comprehend the Starknet ecosystem better.
+
+== Sequencers
+
+Sequencers are a crucial part of the Starknet network and have a central role in its operation, similar to validators in Ethereum. They serve as the point of entry for transactions into the Starknet system.
+
+The greatest asset of ZK rollups is their ability to delegate some of the network's tasks – specifically, the aggregation and processing of transactions – to specialized entities. This process is similar to how Ethereum and Bitcoin outsource their security to miners and then validate their work. Just as mining isn't a small business, sequencing requires significant resources due to its high-capacity and liveness requirements.
+
+For networks like StarkNet and other platforms utilizing ZK rollups, a similar parallel is drawn. These networks outsource transaction processing to specialized entities and then verify their work. These specialized entities in the context of ZK rollups are known as "sequencers."
+
+Instead of providing security, as miners do, sequencers provide transaction capacity. They aggregate multiple transactions into a single batch, process them, and produce a block that will later be proved by the Prover and submited to the Layer 1 network as a single, compact proof, known as a "rollup." In other words, just as validators in Ethereum and miners in Bitcoin are specialized actors securing the network, sequencers in ZK rollup-based networks are specialized actors that provide transaction capacity.
+
+This mechanism allows Validity (or ZK) rollups to handle a higher volume of transactions while maintaining the security of the underlying Ethereum network. It enhances scalability without compromising on security.
+
+Sequencers follow a systematic method for transaction processing:
+
+1. Aggregation: They collect transactions from users.
+2. Processing: Sequencers then process these transactions according to the rules defined by the network.
+3. Batching: Transactions are grouped together in batches or blocks for efficiency.
+4. Block Production: Sequencers produce blocks that contain batches of processed transactions.
+
+Sequencers must be reliable and highly available, as their role is critical to the network's smooth functioning. They need powerful and well-connected machines to perform their role effectively, as they must process transactions rapidly and continuously.
+
+The current roadmap for Starknet includes decentralizing the sequencer role. This shift towards decentralization will allow more participants to become sequencers, contributing to the robustness and security of the network. 
+
+
+== Provers
+
+Provers serve as the second line of verification in the Starknet network. Their main task is to validate the work of the sequencers (when they receive the block produced by the Sequencer) and to generate proofs that these processes were correctly performed.
+
+The duties of a prover include:
+
+1. Receiving Blocks: Provers obtain blocks of processed transactions from sequencers.
+2. Processing: Provers process these blocks a second time, ensuring that all transactions within the block have been correctly handled.
+3. Proof Generation: After processing, provers generate a proof of correct transaction processing.
+4. Sending Proof to Ethereum: Finally, the proof is sent to the Ethereum network for validation. If the proof is correct, the Ethereum network accepts the block of transactions.
+
+Provers need even more computational power than sequencers because they have to calculate and generate proofs, a process that is computationally heavy. However, the work of provers can be split into multiple parts, allowing for parallelism and efficient proof generation. The proof generation process is asynchronous, meaning it doesn't have to occur immediately or in real-time. This flexibility allows for the workload to be distributed among multiple provers. Each prover can work on a different block, allowing for parallelism and efficient proof generation.
+
+The design of Starknet relies on these two types of actors — sequencers and provers — working in tandem to ensure efficient processing and secure verification of transactions.
+
+== Nodes
+
+When it comes to defining what nodes do in Bitcoin or Ethereum, people often misinterpret their role as keeping track of every transaction within the network. This, however, is not entirely accurate. 
+
+Nodes serve as auditors of the network, maintaining the state of the network, such as how much Bitcoin each participant owns or the current state of a specific smart contract. They accomplish this by processing transactions and preserving a record of all transactions, but that's a means to an end, not the end itself.
+
+In ZK rollups and specifically within StarkNet, this concept is somewhat reversed. Nodes don't necessarily have to process transactions to get the state. In contrast to Ethereum or Bitcoin, Starknet nodes aren't required to process all transactions to maintain the state of the network. 
+
+[NOTE]
+====
+There are two main ways to access network state data: via an API gateway or using the RPC protocol to communicate with a node. Operating your own node is typically faster than using a shared architecture, like the gateway. Over time, Starknet plans to deprecate APIs and replace them with a JSON RPC standard, making it even more beneficial to operate your own node.
+
+It's worth noting that encouraging more people to run nodes increases the resilience of the network and prevents server flooding, which has been an issue in networks in other L2s.
+====
+
+Currently, there are primarily three methods for a node to keep track of the network's state:
+
+1. *Replaying Old Transactions*: Like Ethereum or Bitcoin, a node can take all the transactions and re-execute them. Although this approach is accurate, it isn't scalable unless you have a powerful machine that's capable of handling the load. If you can replay all transactions, you can become a Sequencer.
+
+2. *Relying on L2 Consensus*: Nodes can trust the Sequencer(s) to execute the network correctly. When the sequencer updates the state and adds a new block, nodes accept the update as accurate.
+
+3. *Checking Proof Validation on L1*: Nodes can monitor the state of the network by observing L1 and ensuring that every time a proof is sent, they receive the updated state. This way, they don't have to trust anyone and only need to keep track of the latest valid transaction for Starknet.
+
+Each type of node setup comes with its own set of hardware requirements and trust assumptions.
+
+=== Nodes That Replay Transactions
+
+Nodes that replay transactions require powerful machines to track and execute all transactions. These nodes don't have trust assumptions; they rely solely on the transactions they execute, guaranteeing that the state at any given point is valid.
+
+=== Nodes That Rely on L2 Consensus
+
+Nodes relying on L2 consensus require less computational power. They need sufficient storage to keep the state but don't need to process a lot of transactions. The trade-off here is a trust assumption. Currently, Starknet revolves around one sequencer, so these nodes are trusting Starkware not to disrupt the network. However, once a consensus mechanism and leader election amongst sequencers are in place, these nodes will only need to trust that a sequencer who staked their stake to produce a block is not willing to lose it.
+
+=== Nodes That Check Proof Validation on L1
+
+Nodes that only update their state based on proof validation on L1 require the least hardware. They have the same requirements as an Ethereum node, and once Ethereum light nodes become a reality, maintaining such a node could be as simple as using a smartphone. The only trade-off is latency. Proofs are not sent to Ethereum every block but intermittently, resulting in delayed state updates. Plans are in place to produce proofs more frequently, even if they are not sent to Ethereum immediately, allowing these nodes to reduce their latency. However, this development is still a way off in the Starknet roadmap.
+
+== Conclusion
+
+Through this chapter, we delve into Starknet's structure, uncovering the importance of sequencers, provers, and nodes. Each plays a unique role, but together, they create a highly scalable, efficient, and secure network that marks a significant step forward in Layer 2 solutions. As Starknet evolves towards decentralization, understanding these roles will provide valuable insight into the inner workings of this network. 
+
+As we venture further into the Starknet universe, our next stop will be an exploration of the transaction lifecycle before we dive into the heart of coding with Cairo.
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

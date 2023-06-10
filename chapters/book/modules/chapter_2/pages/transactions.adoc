@@ -1,0 +1,133 @@
+= Behind The Scenes: Starknet Transaction Lifecycle
+
+Whether you're a developer wanting to dive deeper into Starknet or a crypto enthusiast eager to understand the intricacies of Layer-2 solutions, this chapter on the transaction lifecycle in Starknet will provide valuable insights. However, if you want to get straight into coding with Cairo, feel free to skip to the next chapter.
+
+A transaction's journey in Starknet, from its inception to finality, comprises a series of carefully orchestrated steps. Each stage plays a crucial role in ensuring data is accurately transmitted, processed, and stored within the network. In this chapter, we explore the lifecycle of a Starknet transaction.
+
+== Preparing the Groundwork: Transaction Creation
+
+Every transaction's journey commences with its preparation. The sender queries the nonce of their account, serving as a unique identifier for each transaction, signs the transaction, and dispatches it to their node. It's critical to understand the sender must be online during this process to access real-time data.
+
+[source]
+----
+Preparing Transactions
+1. Query the nonce of your account
+2. Sign your transaction
+3. Send your transaction to your node
+----
+
+The node, analogous to a post office, receives the transaction and broadcasts it on the Starknet network, primarily to the sequencer. As the network evolves, the transaction will be broadcasted to multiple sequencers.
+
+== Reception and Processing: The Sequencer's Role
+
+On receiving the transaction, the sequencer acknowledges its receipt but hasn't processed it yet—similar to Ethereum's mempool state. 
+
+[source]
+----
+Sequencer's Process
+1. Receive the transaction
+2. Validate the transaction
+3. Execute the transaction
+4. Update the state
+----
+
+It's crucial to remember the sequentiality of transaction processing in Starknet: the nonce won't update until the sequencer processes your transaction. This aspect could become a hurdle when building backend applications, as sending multiple transactions consecutively may result in confusion or errors.
+
+== Acceptance on Layer-2 (L2)
+
+When the sequencer validates and executes a transaction, it immediately updates the state without waiting for the block emission. The transaction status changes from 'received' to 'pending' at this stage.
+
+Following the state update, the transaction is included in a block. However, the block isn't emitted immediately. The sequencer decides the opportune moment to emit the block, either when there are enough transactions to form a block or after a certain time has passed. When the block is emitted, the transaction's status changes to 'accepted on L2', and the block becomes available for other nodes to query.
+
+[source]
+----
+Transaction Status Transition
+1. Received -> Pending
+2. Pending -> Accepted on L2
+----
+
+It's essential to remember that at this stage, no proof has been generated, and the transaction relies on L2 consensus for security. There remains a slim possibility of transaction reversal if all sequencers collude. Therefore, these stages should be seen as different layers of transaction finality.
+
+To improve user experience, the 'pending' status will be removed in future versions, and all transactions waiting to be in a block will be marked as 'accepted on L2'.
+
+== Acceptance on Layer-1 (L1)
+
+The final step in the transaction's lifecycle is its acceptance on Layer-1 (L1). A 'prover' receives the block containing the transaction, re-executes the block, generates a proof, and sends it to Ethereum. Specifically, the proof is sent to a smart contract on Ethereum called the Verifier smart contract, which checks the proof's validity. If valid, the transaction's status changes to 'accepted on L1', signifying the transaction's security by Ethereum consensus.
+
+[source]
+----
+Transaction Status Transition
+1. Accepted on L2 -> Accepted on L1
+----
+
+== [Optional] Transaction Finality in Starknet
+
+Transaction finality refers to the point at which a transaction is considered irreversible and is no longer susceptible to being reversed or undone. It's the assurance that once a transaction is committed, it can't be altered or rolled back, hence securing the integrity of the transaction and the system as a whole.
+
+Let's dive into the transaction finality in both Starknet and Ethereum, and how they compare.
+
+=== Ethereum Transaction Finality
+
+Ethereum operates on a Proof of Work (PoW) consensus mechanism (as of my knowledge cut-off in September 2021). It means that Ethereum doesn't have absolute finality. Instead, it has probabilistic finality. In PoW, the longer the transaction is in the blockchain (i.e., the more blocks that are added on top of the block containing the transaction), the less likely it is that the transaction will be reversed.
+
+In Ethereum, it is often recommended to wait for about six confirmations (i.e., six blocks added after the block containing your transaction) to consider a transaction reasonably final. It's because it becomes computationally impractical for an attacker to change the transaction after so many confirmations.
+
+=== Starknet Transaction Finality
+
+Starknet, a Layer-2 (L2) solution on Ethereum, has a two-step transaction finality process. The first step is when the transaction gets accepted on Layer-2 (Starknet), and the second step is when the transaction gets accepted on Layer-1 (Ethereum).
+
+* Accepted on L2: When a transaction is processed by the sequencer and included in a block on Starknet, it reaches L2 finality. However, this finality relies on the L2 consensus and comes with a slight risk of collusion among sequencers leading to transaction reversal.
+* Accepted on L1: The absolute finality comes when the block containing the transaction gets a proof generated, the proof is validated by the Verifier contract on Ethereum, and the state is updated on Ethereum. At this point, the transaction is as secure as the Ethereum's PoW consensus can provide, meaning it becomes computationally infeasible to alter or reverse.
+
+=== Comparison ==
+
+The main difference between Ethereum and Starknet's transaction finality lies in the stages of finality and their reliance on consensus mechanisms.
+
+* Ethereum's finality is probabilistic, meaning the transaction is never 100% final but becomes increasingly unlikely to be reversed as more blocks are added.
+* Starknet's finality process is two-fold. The initial finality (L2) is quicker but relies on L2 consensus and carries a small risk of collusion. The ultimate finality (L1) is slower, as it involves generation and validation of proofs and updates on Ethereum. However, once reached, it provides the same level of security as an Ethereum transaction.
+
+== Handling of Rejected Transactions ==
+
+A transaction can be rejected at any stage if it's found to be invalid or erroneous.
+
+In the upcoming version 0.12.1, Starknet will start charging for failed transactions, which will mitigate the potential for Denial of Service (DoS) attacks. However, this change adds a trust assumption for the sequencer to be honest and non-censoring. In later versions, there will be an OS change that will enable the sequencer to prove that a transaction failed and charge the correct amount of gas for it, thus making it censorship-resistant with provably failed transactions.
+
+[source]
+----
+Transaction Status Transition
+1. Any Stage -> Rejected (if invalid or erroneous)
+----
+
+== Transaction Lifecycle Summary ==
+
+The following outlines the various steps in a transaction's lifecycle:
+
+image::transactions.png[transactions]
+
+A transaction can be rejected at any stage if it's found to be invalid or erroneous. This comprehensive lifecycle ensures that transactions on Starknet are processed efficiently, securely, and transparently.
+
+== Conclusion
+
+The lifecycle of a Starknet transaction is a carefully curated journey, ensuring efficient, secure, and transparent transaction processing. It incorporates everything from transaction creation, sequencer processing, Layer-2 acceptance, to finality on Layer-1.
+
+With the completion of our exploration of Starknet's transaction lifecycle, it's time to dive into the world of Cairo programming. In the coming chapters, we'll unwrap the complexities and potentials of this language, setting you on course to become a proficient Starknet developer.
+
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____

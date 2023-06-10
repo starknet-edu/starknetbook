@@ -1,5 +1,7 @@
 * xref:index.adoc[Chapter 2: Smart Contracts in Cairo]
-    ** xref:topology.adoc[2.0 Sequencers, Provers, and Nodes: Key Components and Transaction Flow]
+    ** xref:topology.adoc[2.0 Unveiling Starknet's Structure: Sequencers, Provers, and Nodes]
+    ** xref:horizon.adoc[2.1 Starknet's Horizon: Peering Into The Future]
+    ** xref:transactions.adoc[2.2 Starknet Transaction Lifecycle]
     ** xref:scarb.adoc[2.1 The Scarb Package Manager and the Structure of a Cairo Project]
     ** xref:types.adoc[2.2 Types]
     ** xref:functions.adoc[2.3 Functions and Modules]

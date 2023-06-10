@@ -1,0 +1,53 @@
+= Starknet's Horizon: Peering Into The Future
+
+This chapter, while optional, offers a glimpse into the exciting developments expected to shape Starknet's future. If you're intrigued about the imminent advancements in Starknet, this chapter is for you. For those eager to delve into Cairo programming, feel free to move to the next chapter.
+
+Starknet, ever-evolving, has a roadmap replete with ambitious goals, all aimed at honing its performance, increasing throughput, reducing latency, and progressing towards decentralization. In this chapter, we explore these significant future developments and their expected impact on the Starknet topology.
+
+== The Rust Sequencer: Powering Up Performance
+
+A significant update is the Rust sequencer which will be part of version 0.12 of Starknet. The original sequencer was written in Python which, while user-friendly and quick for development, isn't as efficient for production-level applications. Rust will bring a substantial performance boost, increasing throughput and reducing latency, and this will be a significant step in the progression towards decentralization.
+
+The fact that parts of the Rust sequencer were developed by community members outside of StarkWare is a testament to the power of open-source development and decentralization. This upgrade is expected to be live by the end of May or the beginning of June.
+
+== Madara and Kakarot: Propelling Throughput
+
+Madara, a sequencer based on the Substrate tech stack, aims to facilitate the operation of individual Starknet instances. It allows users to operate their own network and then prove its honest operation on Layer 1 or Layer 2. Madara is reaching high throughput benchmarks and is expected to scale Starknet massively.
+
+Kakarot is a Zero-Knowledge Ethereum Virtual Machine (ZKEVM) written in Cairo, able to interpret and process Solidity bytecode. The Kakarot team is exploring the possibility of running Kakarot on top of Madara as an L3 on Starknet, and this functionality could be live by the end of the year.
+
+== Decentralization: Two-Pronged Approach
+
+StarkWare is considering two paths for increasing decentralization on Starknet. The first involves developing a unique proof-of-stake algorithm for the network. The second, more gradual approach would start with adding another sequencer to the network, moving from a single-sequence proof-of-authority (PoA) network to a multiple-sequence one, and eventually adopting a Byzantine Fault Tolerant (BFT) protocol for consensus.
+
+The community's input is valued in this discussion, as more people thinking about these things will make the network more resilient and efficient.
+
+== Layer 3 (L3): Flexibility at Its Core
+
+Layer 3 offers a wide range of possibilities, from users generating proofs on their own devices to running backend architecture on a small Cairo state machine. The keyword here is flexibility. This layer can scale the network in various directions and allows developers to execute off-chain and on-chain operations using the same language, Cairo.
+
+In summary, Starknet is a network in progress with ambitious future plans. Its focus on increased efficiency, community involvement, scalability, and eventual decentralization is poised to make it a force to be reckoned with in the world of blockchain technology.
+
+== Conclusion
+
+Starknet stands at the cusp of significant transformation, underpinned by enhanced efficiency, scalability, and an unwavering pursuit of decentralization. The network's vision, painted with developments like the Rust Sequencer, Madara, Kakarot, and Layer 3, among others, is set to make it a the Starknet ecosystem an interesting space to watch.
+
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
