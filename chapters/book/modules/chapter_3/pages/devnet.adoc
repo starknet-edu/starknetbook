@@ -58,16 +58,7 @@ WARNING: Use these accounts and their keys ONLY for local testing. DO NOT use th
 
 与devnet的交互和与测试网的交互非常相似。如果您想查看 starknet-devnet 调用中可用的所有参数，您可以调用 starknet-devnet --help 或转到 https://shard-labs.github.io/starknet-devnet/docs/intro[文档]。
 
-== Contributing
 
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarknetBook*
-
-StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
-
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
 
 == **贡献力量**
 
