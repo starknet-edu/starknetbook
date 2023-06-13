@@ -18,15 +18,7 @@
 请记住，此进程的目的是在将合约部署到实时环境之前，以可控且具有成本效益的方式彻底测试和调试合约。
 
 
-== Contributing
 
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarknetBook*
-
-StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
-
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
 ____
 
 == **贡献力量**
