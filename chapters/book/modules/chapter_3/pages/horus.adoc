@@ -5,16 +5,7 @@
 https://nethermind.io/horus/[Horus] 是一个 https://github.com/NethermindEth/horus-checker[open-source] 形式化验证工具，旨在验证 Starknet 智能合约。 它提供了一种用户友好的方法，可以根据以直接断言语言编写的规范来正式验证 Starknet 智能合约。 通过利用各种可满足性模数理论 (SMT) 求解器，Horus 确保您的合约实施符合提供的规范。 Horus alpha 版本支持 Cairo 0.10.1，预计在不久的将来会发布 Cairo 1.0。
 
 
-== Contributing
 
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarknetBook*
-
-StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
-
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
 
 == **贡献力量**
 
