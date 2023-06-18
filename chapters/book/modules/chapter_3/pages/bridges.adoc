@@ -6,7 +6,7 @@
 
 == StarkGate
 
-StarkGate (https://starkgate.starknet.io/) 是以太坊和 Starknet 之间的代币桥梁。 它允许用户使用 L1 和 L2 跨链桥合约在两者之间存入和取出 ETH 和 ERC-20 代币。
+StarkGate https://starkgate.starknet.io/ 是以太坊和 Starknet 之间的代币桥梁。 它允许用户使用 L1 和 L2 跨链桥合约在两者之间存入和取出 ETH 和 ERC-20 代币。
 
 === L1 → L2 转账（存款）
 
@@ -33,7 +33,7 @@ Orbiter Finance (https://www.orbiter.finance/) 是一个去中心化的交叉汇
 > 
 > *《Starknet 之书》依然在不断完善中，而你的热情、专业知识和独到见解可以将它塑造成一部真正卓越的作品。不要害怕挑战现状或是颠覆这本书！齐心协力，我们一起创造这份宝贵的资源，造福无数人。*
 > 
-> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc) 并加入活力满满的社区。一起无畏共建 Starknet！*
+> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南]https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc 并加入活力满满的社区。一起无畏共建 Starknet！*
 > 
 
 — Starknet 社区
