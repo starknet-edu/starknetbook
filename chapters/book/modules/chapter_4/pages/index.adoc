@@ -26,7 +26,7 @@
 > 
 > *《Starknet 之书》依然在不断完善中，而你的热情、专业知识和独到见解可以将它塑造成一部真正卓越的作品。不要害怕挑战现状或是颠覆这本书！齐心协力，我们一起创造这份宝贵的资源，造福无数人。*
 > 
-> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc) 并加入活力满满的社区。一起无畏共建 Starknet！*
+> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南]https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc 并加入活力满满的社区。一起无畏共建 Starknet！*
 > 
 
 — Starknet 社区
