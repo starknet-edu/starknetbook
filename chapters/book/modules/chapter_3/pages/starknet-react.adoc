@@ -6,7 +6,7 @@
 贡献：我们希望添加一个具体示例，说明如何使用 Starknet React（可能与 starknet.js 交互）。如果您有使用 Starknet React 的项目，请提交 PR。
 ====
 
-Starknet React 是由 [Apibara](https://github.com/apibara) 团队开发的, 是 React 提供者的一个开源合集及 Starknet 的钩子。 
+Starknet React 是由 [Apibara]https://github.com/apibara 团队开发的, 是 React 提供者的一个开源合集及 Starknet 的钩子。 
 
 要开始使用 Starknet-React，首先安装适当的包管理器 PNPM：
 
@@ -50,7 +50,7 @@ function App() {
 > 
 > *《Starknet 之书》依然在不断完善中，而你的热情、专业知识和独到见解可以将它塑造成一部真正卓越的作品。不要害怕挑战现状或是颠覆这本书！齐心协力，我们一起创造这份宝贵的资源，造福无数人。*
 > 
-> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc) 并加入活力满满的社区。一起无畏共建 Starknet！*
+> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南]https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc 并加入活力满满的社区。一起无畏共建 Starknet！*
 > 
 
 — Starknet 社区
