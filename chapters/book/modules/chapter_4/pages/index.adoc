@@ -11,7 +11,7 @@
 目前，我们能够与 Starknet Alpha 进行交互。合约部署的建议步骤是：
 
 1. 单元测试：首先为您的合同编写单元测试。为此，可以使用 Protostar、Nile 或 starknet.py 等工具。
-2. 部署：一旦您的单元测试通过，下一步就是在开发网上部署您的合同。 Shard Lab 的 starknet-devnet，在 [**Github**]https://github.com/0xSpaceShard/starknet-devnet 上可用，是一个不错的选择。
+2. 部署：一旦您的单元测试通过，下一步就是在开发网上部署您的合同。 Shard Lab 的 starknet-devnet，在 https://github.com/0xSpaceShard/starknet-devnet[Github] 上可用，是一个不错的选择。
 3. 测试网部署：成功部署开发网后，可以将合约部署到测试网，例如 Goerli、alpha-goerli 或 Goerli 2。这可以使用 Protostar、Nile、Hardhat 等工具来实现。
 4. 主网部署：最后，在对测试网进行严格测试后，可以将合约部署到 Alpha Starknet（alpha-mainnet）。 用于测试网部署的工具也可以用于主网部署。
 
