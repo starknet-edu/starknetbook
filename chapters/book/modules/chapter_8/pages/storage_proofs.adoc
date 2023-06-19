@@ -83,7 +83,7 @@ image::storage3.png[storage3]
 
 The output of the code above looks something like this:
 
-image::storage1.png[storage4]
+image::storage4.png[storage4]
 
 The "storageProof" returned contains the storage proof for the "owner" variable. Since Ethereum uses Merkle Patricia Trees to commit to its state, the state of accounts and their storage, the storage generated can be used to prove a storage slot (or account state). However, as previously stated, these proofs are not scalable enough to discuss cross-chain message transfers. Using complex ZK mathematics on top of this can decrease the computation required to verify the proof.
 
