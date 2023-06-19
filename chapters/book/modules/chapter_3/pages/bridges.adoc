@@ -18,7 +18,7 @@ https://starkgate.starknet.io/[StarkGate] 是以太坊和 Starknet 之间的代�
 
 == Orbiter
 
-Orbiter Finance https://www.orbiter.finance/ 是一个去中心化的交叉汇总桥，设计用于在各种网络（包括以太坊、第 2 层解决方案和侧链）之间传输以太坊原生资产。
+https://www.orbiter.finance/[Orbiter Finance] 是一个去中心化的交叉汇总桥，设计用于在各种网络（包括以太坊、第 2 层解决方案和侧链）之间传输以太坊原生资产。
 
 该系统由两个主要角色组成：Sender 和 Maker。 “Maker”将超额保证金存入 Orbiter 的合约，作为“Sender”的交叉汇总服务提供商。 “发送方”将资产发送给“源网络”上的“制造商”，“制造商”将资产发送回“目标网络”上的“发送方”。 Orbiter 的安全模型依赖于三种类型的智能合约：Maker 存款合约 (MDC)、事件绑定合约 (EBC) 和简单支付验证 (SPV)。
 
