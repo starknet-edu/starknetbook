@@ -20,7 +20,7 @@ Starknet 区块链浏览器,按字母顺序排列
 |https://nethermind.io/voyager[Voyager]|https://voyager.online/[Mainnet]|https://goerli.voyager.online/[Goerli]|https://goerli-2.voyager.online/[Goerli2]
 |===
 
-== 索引器 🚧
+== 索引器
 
 
 附注
