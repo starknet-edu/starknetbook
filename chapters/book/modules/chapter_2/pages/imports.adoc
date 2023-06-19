@@ -29,7 +29,7 @@ We are importing `get_caller_address` and `ContractAddress` from the starknet co
 ----
 .
 ├── src
-│   ├── Ex01.cairo
+│   ├── ex01.cairo
 │   ├── utils.cairo
 │   ├── lib.cairo
 │   ├── ...
@@ -62,7 +62,7 @@ mod utils;
 mod ex01;
 ----
 
-These are the parths we will use to import the `utils` and `ex01` modules. The `lib.cairo` file is the entry point for the Cairo compiler, and it is the file we will use to import all the modules we want to use in our contract. Every time we want to import a module, we will add the following line to the `lib.cairo` file:
+These are the paths we will use to import the `utils` and `ex01` modules. The `lib.cairo` file is the entry point for the Cairo compiler, and it is the file we will use to import all the modules we want to use in our contract. Every time we want to import a module, we will add the following line to the `lib.cairo` file:
 
 [source,rust]
 ----
