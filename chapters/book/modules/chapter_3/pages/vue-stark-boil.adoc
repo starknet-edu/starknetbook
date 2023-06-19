@@ -6,7 +6,7 @@ s
 贡献：我们正在寻找如何使用 Starknet Vue 的具体示例。 如果您有使用 Starknet React 的项目，请提交 PR。
 ====
 
-Starknet生态系统提供了适用于 Vue 和 React 的框架。 对于那些喜欢 Vue 的人来说，由 [Don't Panic DAO]https://github.com/dontpanicdao 团队开发的 vue-stark-boil 是一个不错的选择。
+Starknet生态系统提供了适用于 Vue 和 React 的框架。 对于那些喜欢 Vue 的人来说，由 https://github.com/dontpanicdao[Don't Panic DAO] 团队开发的 vue-stark-boil 是一个不错的选择。
 
 首先，从 https://github.com/dontpanicdao/vue-stark-boil 将项目克隆到您的设备。要更深入地了解 Vue，请访问他们的网站 https://vuejs.org/ 。 vue-stark-boil 样板文件支持各种功能，例如连接到钱包、监听帐户更改和调用合约。
 
@@ -27,7 +27,7 @@ npm install
 > 
 > *《Starknet 之书》依然在不断完善中，而你的热情、专业知识和独到见解可以将它塑造成一部真正卓越的作品。不要害怕挑战现状或是颠覆这本书！齐心协力，我们一起创造这份宝贵的资源，造福无数人。*
 > 
-> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的[指南]https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc 并加入活力满满的社区。一起无畏共建 Starknet！*
+> *为公共事业贡献力量。如果你发现本书有改进的空间，那就抓住机会吧！查看我们的 https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[指南]并加入活力满满的社区。一起无畏共建 Starknet！*
 > 
 
 — Starknet 社区
