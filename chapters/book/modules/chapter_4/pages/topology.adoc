@@ -1,6 +1,6 @@
 [id="topology"]
 
-= Unveiling Starknet's Structure: Sequencers, Provers, and Nodes
+= Starknet's Structure: Sequencers, Provers, and Nodes
 
 Starknet, with its innovative architecture, ushers in a new era of Layer 2 solutions, promising higher scalability and security. This chapter provides a high-level overview of the Starknet network structure and its transaction lifecycle, highlighting the pivotal roles of sequencers, provers, and nodes within the network. This simplified explanation is tailored to the needs of developers and users, both experienced and newcomers. For a deep dive into the architecture, please refer to the "Starknet Architecture" chapter.
 

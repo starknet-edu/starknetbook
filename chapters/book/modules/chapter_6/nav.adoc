@@ -1,1 +1,3 @@
-* xref:index.adoc[Running a Node]
+* xref:index.adoc[6. Pioneering Applications]
+    ** xref:storage_proofs.adoc[Storage Proofs]
+    ** xref:storage_proofs.adoc[On-Chain Artificial Intelligence 🚧]

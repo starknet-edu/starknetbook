@@ -27,7 +27,7 @@ Before submitting a PR, make sure you can run the book locally by following thes
 
 . Clone the repository locally: `git clone https://github.com/starknet-edu/starknetbook.git`.
 . Change directory to the repository: `cd starknetbook`.
-. Install https://yarnpkg.com/getting-started/install[yarn] package manager.
+. Install https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable[yarn] package manager.
 . Install the project dependencies with `yarn install`.
 . Run the book locally in watch mode with `yarn start`.
 

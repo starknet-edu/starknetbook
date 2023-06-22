@@ -1,8 +1,12 @@
 [id="structure"]
 
-= The Structure of a Cairo Smart Contract
+= Cairo Features
 
-In this section, we will explain the structure and format of several utilities like functions, using the following Vote contract as an example (do not worry about the code for now, we will explain it in the following sections):
+In this chapter, we'll review the features of the Cairo language as it pertains to Starknet, a Layer 2 solution for Ethereum. We will use a series of practical smart contract examples from voting systems to Pokemon contracts.
+
+For those seeking a more in-depth exploration of Cairo, outside its Starknet application, the **https://cairo-book.github.io/[Cairo Book]** and **https://github.com/shramee/starklings-cairo1[Starklings]** are your go-to resources. We also recommend you finish the https://github.com/starknet-edu/starknet-cairo-101[*starknet-cairo-101*] automated workshop to get a better understanding of the structure of a smart contract, however, neither of these resources are required to understand the content of the following subchapters or the Starknet Book in general.
+
+Our journey begins with a 'Vote' contract. No need to fret over the code just yet - we'll dissect and explain every element in the upcoming sections.
 
 [source,rust]
 ----
@@ -152,7 +156,7 @@ In the Vote contract, you will find the following sections:
 * External functions
 * Internal functions
 
-We will now go through each section and explain the code.
+We will now go through each section and explain the code. But before let's get into types and functions.
 
 [NOTE]
 ====

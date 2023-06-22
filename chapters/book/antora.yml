@@ -3,7 +3,6 @@ version: ~
 title: Starknet Book
 nav:
   - modules/ROOT/nav.adoc
-  - modules/chapter_0/nav.adoc
   - modules/chapter_1/nav.adoc 
   - modules/chapter_2/nav.adoc 
   - modules/chapter_3/nav.adoc
@@ -12,5 +11,3 @@ nav:
   - modules/chapter_6/nav.adoc
   - modules/chapter_7/nav.adoc
   - modules/chapter_8/nav.adoc
-  - modules/chapter_9/nav.adoc
-  - modules/chapter_10/nav.adoc

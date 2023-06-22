@@ -1,4 +1,4 @@
-= Starknet's Horizon: Peering Into The Future
+= Future Innovations in the Starknet Architecture
 
 This chapter, while optional, offers a glimpse into the exciting developments expected to shape Starknet's future. If you're intrigued about the imminent advancements in Starknet, this chapter is for you. For those eager to delve into Cairo programming, feel free to move to the next chapter.
 

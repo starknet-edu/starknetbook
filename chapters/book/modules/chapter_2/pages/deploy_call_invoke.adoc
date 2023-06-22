@@ -2,7 +2,6 @@
 
 = Deploying, Calling and Invoking Contracts
 
-
 In this chapter, we'll explore how to interact with deployed Starknet contracts using _calling_ and _invoking_. We'll use the voting contract as an example.
 
 * Calling contracts: Interacting with contract functions marked with the `#[view]` entry point. These functions do not alter the state of the network, so they don't require fees or signing. This is similar to a `call` in the Ethereum API.

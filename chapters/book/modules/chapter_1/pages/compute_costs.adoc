@@ -1,0 +1,96 @@
+= Lower computation costs with Starknet
+
+== The Problem: High Compute Costs in Blockchains
+
+Blockchains, despite their revolutionary implications, have been hitherto limited by high computational costs, translating to expensive transaction fees for users. This challenge becomes especially pronounced during peak network activities when congestion leads to sky-high gas prices. 
+
+In 2021 and during the 'Pepe season' in May 2023, gas prices on Ethereum could soar up to 200 Gwei or more, making even a simple transaction, such as transferring 10 USDC, exorbitantly expensive. 
+
+High computation costs do not just inconvenience users but also restrain the full potential of blockchain applications. The impacts of these costs are far-reaching and include:
+
+* Regular Transactions: The dream of using crypto for daily transactions remains largely unfulfilled, primarily due to prohibitive transaction fees. For instance, no user wants to pay a transaction fee of $1 for a $2 cup of coffee.
+* Oracles: Oracles, which fetch off-chain data for blockchains, cannot refresh data as frequently due to expensive transaction costs, leading to stale and inaccurate data on-chain.
+* Governance: On-chain governance, a transparent, decentralized decision-making method, is affected as users are dissuaded from voting due to high costs, leading to lower participation and less effective governance.
+* Gaming: The potential of truly decentralized gaming is limited as high computation costs restrict on-chain components in games.
+
+== The Solution: Starknet's Approach to Lower Computation Costs
+
+Starknet, as a pioneering Layer 2 solution, addresses these problems head-on. By dramatically reducing the computation costs, Starknet makes blockchain applications more accessible and efficient, thereby unlocking their true potential. 
+
+=== Leveraging Affordable Transactions and Account Abstraction
+
+The advent of affordable transactions and account abstraction paves the way for more commonplace, day-to-day usage of blockchain technologies. This transformation breaks down into several critical elements:
+
+1. **Microtransactions**: The reduced cost of transactions on Starknet allows for the feasibility of small transactions, or microtransactions. These are transactions of a very small value, such as buying a cup of coffee, which would have been prohibitively expensive with higher transaction fees. Now, such transactions only cost you a couple of cents or even a fraction of a cent.
+
+2. **Familiar Wallet Experience**: Account abstraction allows your crypto wallet to function similarly to a traditional wallet, bringing a sense of familiarity to users. Key points include:
+   * Users can store the majority of their assets in a highly secure wallet, akin to a savings account in traditional banking.
+   * This wallet can incorporate multiple layers of security. For instance, it may require a trusted individual to co-sign large transfers, or use a unique private key for access.
+   * This ensures that users' assets are well protected, enhancing the overall user experience and fostering trust in the system.
+
+By bridging the gap between traditional financial systems and blockchain technology, affordable transactions and account abstraction are set to usher in a new era of daily, practical blockchain usage.
+
+
+=== Revolutionizing Data Feeds with Affordable On-Chain Computation
+
+The advent of economical on-chain computation has the potential to significantly transform the functionality of oracles in the blockchain ecosystem:
+
+1. **Frequent Updates**: With lower transaction costs, oracles can now afford to update their data feeds more frequently. This offers the promise of:
+   * Higher accuracy in the data feeds, thereby enabling users to build more sophisticated market structures based on this data, including intricate options protocols and prediction markets.
+
+2. **Efficient State Commitments**: As Starknet operates as a rollup, it must periodically send a commitment to the Ethereum mainnet to update the state of the rollup. However, rollups only need to commit the most recent state to Layer 1, meaning:
+   * If the same storage slot is overwritten multiple times in a single block, it doesn't result in high storage costs. 
+   * For instance, in the case of oracles, if a variable (such as the price of an asset) is updated frequently within the same commitment, the Layer 1 cost would be equivalent to a single write, as only the final state is published to the mainnet as calldata.
+
+3. **Computational Feeds**: The lower cost of execution also opens the door for computational feeds, which are feeds of aggregated and calculated data. 
+   * Traditional financial applications often rely on sophisticated data feeds that provide information on risk, yield, and volatility.
+   * Teams like Pragma are dedicated to bringing these types of feeds to the web3 space. Currently, Pragma has already launched two computational feeds on the Starknet testnet, including a volatility index and a yield curve.
+
+4. **Storage Proofs**: In the realm of oracles, storage proofs promise to revolutionize how data is handled and verified. These cryptographic measures help to maintain an accurate record of storage.
+   * With these cryptographic commitments, it is possible to trustlessly prove that a particular state existed at a specific time or block. 
+   * While these proofs require some computation to verify, the low computational cost greatly enhances user experience.
+   * Storage proofs not only allow for the transfer of information between different chains in a decentralized manner but also offer access to historical data from the blockchain and much more. 
+   * For a deeper dive into storage proofs, be sure to check out our Medium article.
+
+
+=== Realization of On-Chain Gaming
+
+Gaming is a mammoth industry, with the largest gaming market, the United States, generating a staggering 54 billion USD annually in revenue. Recently, blockchain games have garnered significant attention, yet many fall short of being fully realized web3 experiences, existing instead within a liminal "web2.5" space.
+
+For a game to earn the title of a "blockchain game", it must satisfy certain criteria:
+
+1. The game's logic should be entirely on-chain.
+2. The game should remain functional, even if the developers were to suddenly disappear.
+
+The litmus test for the second criterion is reminiscent of the independence smart contracts possess. Much like how a smart contract lives autonomously on-chain, a true web3 game should also endure regardless of the activity of its creators. This means the foundational mechanics and rules of the game are embedded on-chain, allowing different interfaces to be constructed atop the unalterable game logic.
+
+To facilitate the creation of games that meet these benchmarks, developers are motivated through the issuance of game-specific tokens. While no major game currently exists fully on-chain, several projects on Starknet are progressing in the right direction. Notable among these are Realms and Influence.
+
+Supporting this transformative shift in game development is Dojo, an ecosystem developer providing an open-source Entity-Component-System (ECS) framework for the Starknet ecosystem. In the game development sphere, the ECS is a time-honored design pattern, crucial for constructing games in a modular fashion. 
+
+To illustrate, let's take a popular game like Mario Kart as an example. In ECS parlance, "Mario" and "his car" would be referred to as entities. The position and velocity of the car would be considered components, and the logic that determines the outcomes of car collisions would be implemented as a System. Game developers would then use these components to create their games.
+
+As the Starknet ecosystem expands, the requirement for projects like Dojo will increase. With more game developers entering the Starknet landscape, foundational tools like ECS frameworks will be instrumental in establishing a new era of web3 games that marry the thrill of gaming with the decentralized ethos of blockchain.
+
+
+=== Paving the Way for Transparent AI Applications
+
+The ever-evolving landscape of artificial intelligence (AI) signals that AI integration into our digital existence is imminent. Although it's not yet a certainty that AI models will be placed on-chain, there are compelling reasons why this could be advantageous. Cheap computation is an essential requirement for these potential use cases:
+
+1. **Verifiable Inference**: This concept relies on models being pre-trained on centralized servers. However, the benefits include:
+   * Once training is completed, the model weights could be published on-chain.
+   * Inputs could then be passed to the model on-chain, with the outputs providing a transparent and verifiable outcome. Users have proof that the model generated a specific output.
+
+2. **On-Chain Model Ensembles**: If computation becomes cheap enough, it becomes feasible to run models on-chain to generate outputs. The benefits of this approach include:
+   * Outputs from multiple models could be aggregated on-chain to form an "ensemble" model. This approach is commonly used in machine learning (ML) applications to improve accuracy and predictive performance.
+
+3. **Verifiable Training**: This means that models could potentially be trained on-chain, offering verifiable proof of benign training without introducing external biases. However, this is the most computationally intensive application and the least likely to be implemented soon due to:
+   * Current large AI/ML models take days (or even years) to train on GPUs with significant resources.
+   * Generating zk-SNARK proofs for the computation done during training would add additional overhead.
+   * Cairo, the language used for Starknet smart contracts, is designed to run on CPUs, which are considerably slower than GPUs.
+
+Research teams such as Giza and Modulus Labs are leading the way in exploring the potential of bringing AI on-chain using zero-knowledge (ZK) proofs.
+
+== Conclusion
+
+In essence, Starknet's groundbreaking approach to reducing computation costs has wide-ranging implications for the blockchain ecosystem. This chapter mainly focused on its impact on transaction costs and usability improvements for blockchain applications. However, Starknet's relevance does not end here. In the next chapter, we will explore Starknet's approach to data security, its evolution, and how it furthers the blockchain revolution. 

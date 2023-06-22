@@ -1,6 +1,11 @@
-* xref:index.adoc[Getting Started]
-    ** xref:intro_starknet.adoc[What is Starknet]
-    ** xref:environment_setup.adoc[Setting up Your Environment]
-    ** xref:deploying_contracts.adoc[Deploying Smart Contracts]
-    ** xref:writing_first_contract.adoc[Writing your first Starknet contract]
-    ** xref:compatibility.adoc[Starknet and Cairo Compiler: Compatibility Across Environments]
+* xref:index.adoc[1. Introduction to Starknet]
+    ** Why Starknet?
+        *** xref:compute_costs.adoc[Costs and Throughput]
+        *** xref:data_security.adoc[Data Security]
+    ** Your First Program
+        *** xref:environment_setup.adoc[Setup]
+        *** xref:deploying_contracts.adoc[Deploying a contract]
+        *** xref:hello_world.adoc[Hello World]
+    ** xref:roadmap.adoc[Roadmap]
+    ** xref:compatibility.adoc[Starknet and Cairo Compatibility Table]
+        

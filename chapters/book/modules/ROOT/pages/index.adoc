@@ -1,5 +1,5 @@
 = The Starknet Book
-:navtitle: Introduction
+:navtitle: The Starknet Book
 
 == Work in Progress and Community Contributions
 

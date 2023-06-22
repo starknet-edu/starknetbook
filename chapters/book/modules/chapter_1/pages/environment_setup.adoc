@@ -2,19 +2,21 @@
 
 = Setting Up Your Starknet Development Environment
 
-In this chapter, we guide you through setting up your development environment for Cairo and Starknet. The goal is to equip you with the tools necessary to build, deploy, and interact with Cairo smart contracts on the Starknet network. We'll be installing the Cairo compiler, a fundamental tool for this task, and the Starknet Command Line Interface (CLI), a utility to interact with the Starknet network.
+== Installing the Starknet CLI and the Cairo Compiler Manually
+
+We'll be installing the Cairo compiler, a fundamental tool for this task, and the Starknet Command Line Interface (CLI), a utility to interact with the Starknet network.
 
 . The Starknet CLI is a command-line interface that allows you to interact with Starknet. This is one of the tools that allow us to interact with Starknet, however, it is not the only one. We will cover other tools in later chapters (e.g., the Starknet JavaScript/Python/Rust SDK or Protostar).
 . The Cairo compiler is a tool that compiles Cairo code to Sierra.
 
-The setup process can be accomplished through two different methods: setting up a local development environment or using a Docker container. Both options are covered in this chapter, allowing you to choose the one that best suits your needs and preferences.
+The setup process can be accomplished through two different methods: setting up a local development environment or using a Docker container (if you are using Windows, you will need to follow this approach). Both options are covered in this subchapter, allowing you to choose the one that best suits your needs and preferences.
 
 [NOTE]
 ====
 For support or feedback regarding this critical section, please visit our https://github.com/starknet-edu/starknetbook/issues[Issues section of the Book's GitHub repository] or reach out to espejelomar directly on Telegram. 
 ====
 
-== Prerequisites
+=== Prerequisites
 
 Before you proceed, ensure that you have the following prerequisites installed on your system:
 
@@ -22,7 +24,7 @@ Before you proceed, ensure that you have the following prerequisites installed o
 * https://www.rust-lang.org/tools/install[Rust]
 
 
-== Starknet CLI Installation
+=== Starknet CLI Installation
 
 To install the Starknet CLI, follow these steps:
 
@@ -153,7 +155,7 @@ pip install cairo-lang --upgrade
 You can receive updates about the Starknet versions and releases by joining the https://airtable.com/shrFYJjlo9KCpBFMA[email list].
 ====
 
-== Cairo Compiler Installation
+=== Cairo Compiler Installation
 
 To install the Cairo compiler, follow these steps:
 
@@ -214,7 +216,7 @@ cairo-compile --version
 
 Your local development environment for Starknet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
 
-== Docker Setup for Starknet Development
+=== Docker Setup for Starknet Development
 
 [NOTE]
 ====
@@ -273,7 +275,7 @@ cairo-compile --version
 
 The output should show the installed version of Starknet CLI and Cairo compiler. Ensure the versions match https://github.com/starkware-libs/cairo-lang/releases[the latest release].
 
-=== Managing the Docker Container
+==== Managing the Docker Container
 
 To start the container in the future, execute:
 

@@ -16,6 +16,7 @@ package-lock.json
 public_html/
 target/
 tmp*
+yarn.lock
 
 **/*.sum
 
