@@ -50,7 +50,7 @@ The advent of economical on-chain computation has the potential to significantly
    * With these cryptographic commitments, it is possible to trustlessly prove that a particular state existed at a specific time or block. 
    * While these proofs require some computation to verify, the low computational cost greatly enhances user experience.
    * Storage proofs not only allow for the transfer of information between different chains in a decentralized manner but also offer access to historical data from the blockchain and much more. 
-   * For a deeper dive into storage proofs, be sure to check out our Medium article.
+   * For a deeper dive into storage proofs, be sure to check out our https://www.starknet.io/en/posts/developers/what-are-storage-proofs-and-how-can-they-improve-oracles[Medium article].
 
 
 === Realization of On-Chain Gaming
