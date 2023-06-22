@@ -1,14 +1,13 @@
-= Chapter 8: Starknet Architecture
+= Starknet Architecture
 
-As you embark on your journey to build scalable web3 applications, it's essential to understand the architecture of Starknet and its various components. Starknet has experienced significant growth since its inception as the first ZK-based rollup, thanks to the remarkable contributions from its community. This chapter aims to provide an in-depth understanding of the key building blocks of Starknet, which will enable you to develop and deploy decentralized applications (dApps) efficiently.
+As you embark on your journey to build scalable web3 applications, it's essential to understand the architecture of Starknet and its various components. This chapter aims to provide an in-depth understanding of the key building blocks of Starknet, which will enable you to develop and deploy decentralized applications (dApps) efficiently.
 
-In this chapter, we will cover the following topics:
+In this chapter, we will cover topics such as:
 
 * L2 Nodes: A high-level overview of the different Starknet nodes (Sequencer, Prover, Full Nodes, and Indexer) and their roles within the network.
 * Tx Lifecycle: A detailed explanation of the various states an L2 transaction goes through, discussing the benefits and risks of considering a particular state as "finality."
 * Starknet OS: An exploration of how the Sequencer validates and executes transactions, and its connection with Account Abstraction (AA).
 * SHARP: An examination of the Prover's workflow for generating proofs for Starknet and Starkex using recursion, focusing on the workflow rather than the math behind STARKs.
-* Data Availability: A discussion of Starknet's Data Availability in Rollup mode (excluding Volition for now).
 * L1 Components: A comprehensive analysis of the on-chain Verifier and Fact Registry, and a discussion on how an L1 escape hatch would work.
 * Bridges: An explanation of how L1-L2 communication works and how it can be used to create bridges between networks.
 
