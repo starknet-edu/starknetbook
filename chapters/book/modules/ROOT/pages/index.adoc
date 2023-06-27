@@ -58,7 +58,7 @@ Here are things you can do to help:
 * Propose an additional section if you think it is needed.
 * Modify a section if you feel it can be improved.
 * Add an alternative programming language to an example.
-* Add an explanation to an exercise's comments if you feel they need them.
+* Add an explanation to an exercise's comments if you feel it is needed.
 * Add exercises that show your favorite features of Cairo.
 * Correct any bugs you find.
 
