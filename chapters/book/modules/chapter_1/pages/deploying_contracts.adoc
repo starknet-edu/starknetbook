@@ -57,7 +57,7 @@ NOTE: This is a modified version of the OpenZeppelin account contract. The signa
 differently.
 ----
 
-Next step is to fund it.
+Next step is to fund it. Use one of the following methods:
 
 * Use the https://faucet.goerli.starknet.io[faucet] to get some funds and send them to the account
 * Bridge funds using https://goerli.starkgate.starknet.io/[Starkgate]
