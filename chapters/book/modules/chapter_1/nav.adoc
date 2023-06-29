@@ -7,5 +7,5 @@
         *** xref:deploying_contracts.adoc[Deploying a contract]
         *** xref:hello_world.adoc[Hello World]
     ** xref:roadmap.adoc[Roadmap]
-    ** xref:compatibility.adoc[Starknet and Cairo Compatibility Table]
+    ** xref:compatibility.adoc[Versioning]
         
