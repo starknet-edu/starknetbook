@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.64](https://github.com/starknet-edu/starknetbook/compare/v1.2.63...v1.2.64) (2023-07-02)
+
+### [1.2.63](https://github.com/starknet-edu/starknetbook/compare/v1.2.62...v1.2.63) (2023-06-29)
+
+### [1.2.62](https://github.com/starknet-edu/starknetbook/compare/v1.2.61...v1.2.62) (2023-06-29)
+
+### [1.2.61](https://github.com/starknet-edu/starknetbook/compare/v1.2.60...v1.2.61) (2023-06-29)
+
+### [1.2.60](https://github.com/starknet-edu/starknetbook/compare/v1.2.59...v1.2.60) (2023-06-29)
+
+### [1.2.59](https://github.com/starknet-edu/starknetbook/compare/v1.2.58...v1.2.59) (2023-06-29)
+
+### [1.2.58](https://github.com/starknet-edu/starknetbook/compare/v1.2.57...v1.2.58) (2023-06-29)
+
+### [1.2.57](https://github.com/starknet-edu/starknetbook/compare/v1.2.56...v1.2.57) (2023-06-29)
+
 ### [1.2.56](https://github.com/starknet-edu/starknetbook/compare/v1.2.55...v1.2.56) (2023-06-26)
 
 ### [1.2.55](https://github.com/starknet-edu/starknetbook/compare/v1.2.54...v1.2.55) (2023-06-26)

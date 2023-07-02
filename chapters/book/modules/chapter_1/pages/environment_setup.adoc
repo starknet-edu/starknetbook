@@ -13,10 +13,14 @@ The setup process can be accomplished through two different methods: setting up 
 
 [NOTE]
 ====
-For support or feedback regarding this critical section, please visit our https://github.com/starknet-edu/starknetbook/issues[Issues section of the Book's GitHub repository] or reach out to espejelomar directly on Telegram. 
+For support or feedback regarding this critical section, please visit our https://github.com/starknet-edu/starknetbook/issues[Issues section of the Book's GitHub repository] or reach out to espejelomar directly on Telegram.
 ====
 
-=== Prerequisites
+=== Without Docker
+
+Follow this section if you're setting up the local development environment without Docker.
+
+==== Prerequisites
 
 Before you proceed, ensure that you have the following prerequisites installed on your system:
 
@@ -24,7 +28,7 @@ Before you proceed, ensure that you have the following prerequisites installed o
 * https://www.rust-lang.org/tools/install[Rust]
 
 
-=== Starknet CLI Installation
+==== Starknet CLI Installation
 
 To install the Starknet CLI, follow these steps:
 
@@ -132,7 +136,7 @@ Try downgrading the version of urllib3:
 
 [source, bash]
 ---
-pip install urllib3==1.26.6 
+pip install urllib3==1.26.6
 ---
 
 Then check the version again:
@@ -147,7 +151,7 @@ The output should show the installed version of Starknet CLI. Make sure the vers
 To upgrade to the latest version of the Starknet CLI, run the following command:
 [source, bash]
 ----
-pip install cairo-lang --upgrade  
+pip install cairo-lang --upgrade
 ----
 
 [NOTE]
@@ -155,7 +159,7 @@ pip install cairo-lang --upgrade
 You can receive updates about the Starknet versions and releases by joining the https://airtable.com/shrFYJjlo9KCpBFMA[email list].
 ====
 
-=== Cairo Compiler Installation
+==== Cairo Compiler Installation
 
 To install the Cairo compiler, follow these steps:
 
@@ -216,7 +220,9 @@ cairo-compile --version
 
 Your local development environment for Starknet is now set up. You can now start building, deploying, and interacting with Cairo smart contracts.
 
-=== Docker Setup for Starknet Development
+=== With Docker
+
+Follow this section if you're setting up the local development environment with Docker.
 
 [NOTE]
 ====
@@ -241,7 +247,7 @@ With these benefits in mind, the following sections will guide you through setti
 
 - https://www.docker.com/[Docker]
 
-=== Pulling the Docker Image
+==== Pulling the Docker Image
 
 The first step is to pull the Docker image containing the necessary tools for Starknet development. Execute the following command in your terminal:
 
@@ -252,7 +258,7 @@ docker pull artudev19/cairo-env:latest
 
 This command downloads the Starknet Docker image.
 
-=== Running the Docker Container
+==== Running the Docker Container
 
 To run a container from the image, execute the `docker run` command. To make certain information persistent, use a volume by passing the flag `-v from_host_path:to_container_path`. This will reflect the content in the host_path inside the container. If you specify a path in the container that does not exist, Docker will create it automatically.
 
@@ -263,7 +269,7 @@ docker run -it --name stark-env -v /Desktop/stark-apps/contracts:/contracts artu
 
 This command runs a container named `stark-env` (ensure your Docker daemon is running) and opens a terminal where you can execute Starknet and Cairo commands. In the example above, the Cairo contracts from your local machine will be in the `stark-app/contracts` directory, while in the container, they will be in the `contracts` path.
 
-=== Verifying the Installation
+==== Verifying the Installation
 
 Check the installed versions of Starknet CLI and Cairo compiler:
 
@@ -309,5 +315,5 @@ ____
 
 StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
 
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet!
 ____

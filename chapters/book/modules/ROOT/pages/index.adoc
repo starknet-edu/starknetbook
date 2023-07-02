@@ -1,8 +1,8 @@
-= Welcome to The Starknet Book
+= Welcome to the Starknet Book
 :navtitle: The Starknet Book
 
 ====
-IMPORTANT: The Starknet Book is a work in progress, and its content is rapidly evolving as the community contributes to its development. As a result, some sections may be incomplete or contain information that is still green. We highly encourage readers to contribute by suggesting improvements, providing feedback, or submitting new content to help us expand and refine the book. Your contributions are invaluable in making The Starknet Book a comprehensive and reliable resource for the community.
+IMPORTANT: The Starknet Book is a work in progress, and its content is rapidly evolving as the community contributes to its development. As a result, some sections may be incomplete or contain information that is still green. We highly encourage readers to contribute by suggesting improvements, providing feedback, or submitting new content to help us expand and refine the book. Your contributions are invaluable in making the Starknet Book a comprehensive and reliable resource for the community.
 ====
 
 The Starknet Book is a curriculum created to teach the Cairo programming language and Starknet development. It is divided by Chapters and built by the Starknet community (you!). Finish the resume and you will conquer the Ethereum world.
@@ -14,7 +14,7 @@ The Starknet Book is a curriculum created to teach the Cairo programming languag
 |Chapter | Objective
 |1: Introduction to Starknet | Grasp Starknet's basics and get introduced to deploying smart contracts.
 |2: Smart Contracts in Cairo | Write Cairo smart contracts suited for Starknet.
-|3: Starknet Tooling | Learn to work with tools such as Protostar or Hardhat, and languages like Javascript, Python, Rust for interacting with Starknet.
+|3: Starknet Tooling | Learn to work with tools like Protostar or Hardhat and languages like Javascript, Python, and Rust for interacting with Starknet.
 |4: Starknet Architecture | Discover the inner workings of Starknet, including the transaction lifecycle and the interaction of Sequencer, Prover, and Nodes.
 |5: Account Abstraction | Understand the concept of user accounts in Starknet and the process of creating custom accounts.
 |6: Pioneering Applications | Delve into cutting-edge applications on Starknet like On-Chain AI and Storage Proofs.
@@ -36,7 +36,7 @@ Depending on your goals and interests, you can choose different paths through th
 
 * If you're a *security researcher* or *smart contract auditor* wanting to learn about the Account Abstraction feature and its implications, go for *Account Abstraction*.
 
-* If you're a *blockchain enthusiast* curious about the underlying architecture and mechanics of Starknet and Cairo, explore *Starknet and Cairo CPU Arquitecture*.
+* If you're a *blockchain enthusiast* curious about the underlying architecture and mechanics of Starknet and Cairo, explore *Starknet and Cairo CPU Architecture*.
 
 * If you're a *cryptography expert* or *researcher* eager to understand the fundamentals of STARKs and their connection to the Starknet ecosystem, delve into *STARKs*.
 
@@ -54,24 +54,26 @@ Please refer to the existing https://github.com/starknet-edu/starknetbook/blob/m
 
 Here are things you can do to help:
 
-* In most sections there is a message for builders who want to collaborate with content.
-* Empty section in a Chapter? Go for it!
-* Do you think the Starknet Book needs an additional section? Propose it.
-* Can a section be improved? Feel free to modify it.
-* Do you want to add an alternative programming language for the examples? Yes please.
-* Correct the bugs if you find any.
-* Please add an explanation in the exercise comments if you feel they need them.
-* Add exercises that show your favorite feature of Cairo.
+* Complete an empty section in a Chapter.
+* Propose an additional section if you think it is needed.
+* Modify a section if you feel it can be improved.
+* Add an alternative programming language to an example.
+* Add an explanation to an exercise's comments if you feel it is needed.
+* Add exercises that show your favorite features of Cairo.
+* Correct any bugs you find.
+
+In most sections, there is a message for builders who want to collaborate with content.
 
 == Additional Key Educational Resources
 
 We've compiled a list of valuable educational resources that will help deepen your understanding and enhance your skills in coding with Cairo and staying abreast with Starknet developments:
 
-1. **Starklings**: A resource specifically designed to guide you through learning Cairo programming, ensuring that you reach a proficient level. You can access it https://github.com/shramee/starklings-cairo1[here].
-2. **Starknet Community Forum**: An online platform where you can engage in discussions about the latest developments in Starknet. Join the conversation https://community.starknet.io/[here].
-3. **Starknet Documentation**: You can browse through the documentation https://docs.starknet.io/[here].
-4. **Cairo Documentation**: Explore it https://www.cairo-lang.org/docs/v1.0/[here].
-5. **Starknet Developer Telegram (English)**: A community for English-speaking Starknet developers. This is a great platform for networking, sharing ideas, and troubleshooting together. Join us on Telegram https://t.me/starknetna[here].
+1. **https://github.com/shramee/starklings-cairo1[Starklings]**: A resource specifically designed to guide you through learning Cairo programming, ensuring that you reach a proficient level.
+2. **https://community.starknet.io/[Starknet Community Forum]**: An online platform where you can engage in discussions about the latest developments in Starknet.
+3. **https://t.me/starknetn[Starknet Developer Telegram (English)]**: A community for English-speaking Starknet developers. This is a great platform for networking, sharing ideas, and troubleshooting together.
+3. **Starknet Documentation**
+4. **Cairo Documentation**
+
 
 == Starknet Book Authors ✨
 
@@ -210,6 +212,6 @@ image::https://avatars.githubusercontent.com/u/46480795?v=4&s=100[width=100, lin
 0xlenny 
 a|
 image::https://avatars.githubusercontent.com/u/125185051?v=4&s=100[width=100, link="https://github.com/LandauRaz"]
-razlandau-starkware
+razlandau
 a|
 |===
