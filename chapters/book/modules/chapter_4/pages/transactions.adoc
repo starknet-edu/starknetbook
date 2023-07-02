@@ -68,9 +68,9 @@ Let's dive into the transaction finality in both Starknet and Ethereum, and how 
 
 === Ethereum Transaction Finality
 
-Ethereum operates on a Proof of Work (PoW) consensus mechanism (as of my knowledge cut-off in September 2021). It means that Ethereum doesn't have absolute finality. Instead, it has probabilistic finality. In PoW, the longer the transaction is in the blockchain (i.e., the more blocks that are added on top of the block containing the transaction), the less likely it is that the transaction will be reversed.
+Ethereum operates on a Proof of Stake (PoS) consensus mechanism. A transaction has the finality status when it is part of a block that can't change without a significant amount of ETH getting burned. The number of blocks required to ensure that a transaction won't be rolled back is called 'blocks to finality', and the time to create those blocks is called 'time to finality'.
 
-In Ethereum, it is often recommended to wait for about six confirmations (i.e., six blocks added after the block containing your transaction) to consider a transaction reasonably final. It's because it becomes computationally impractical for an attacker to change the transaction after so many confirmations.
+It is considered to be an average of 6 blocks to reach the finality status; given that a new block is validated each 12 seconds, the average time to finality for a transaction is 75 seconds.
 
 === Starknet Transaction Finality
 
@@ -83,7 +83,7 @@ Starknet, a Layer-2 (L2) solution on Ethereum, has a two-step transaction finali
 
 The main difference between Ethereum and Starknet's transaction finality lies in the stages of finality and their reliance on consensus mechanisms.
 
-* Ethereum's finality is probabilistic, meaning the transaction is never 100% final but becomes increasingly unlikely to be reversed as more blocks are added.
+* Ethereum's transaction finality becomes increasingly unlikely to be reversed as more blocks are added.
 * Starknet's finality process is two-fold. The initial finality (L2) is quicker but relies on L2 consensus and carries a small risk of collusion. The ultimate finality (L1) is slower, as it involves generation and validation of proofs and updates on Ethereum. However, once reached, it provides the same level of security as an Ethereum transaction.
 
 == Handling of Rejected Transactions ==
