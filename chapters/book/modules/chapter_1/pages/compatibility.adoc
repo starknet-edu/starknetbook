@@ -36,11 +36,11 @@ cd ~/.cairo
 
 git fetch
 
-git checkout tags/v1.1.0
+git checkout tags/v2.0.1
 cargo build --all --release
 ----
 
-Remember, the tag version (`v1.1.0` in the example above) may change as new versions are released, so be sure to replace it with the latest version.
+Remember, the tag version (`v2.0.1` in the example above) may change as new versions are released, so be sure to replace it with the latest version.
 
 == Version Features and Changelog
 
