@@ -19,6 +19,20 @@ Similarly, to check the version of the Cairo compiler you're currently using, ru
 cairo-compile --version
 ----
 
+If you want to compile using Scarb, you can check the version of Scarb with:
+
+[source,bash]
+----
+scarb --version
+----
+
+Finally, to check the version of Protostar, run:
+
+[source,bash]
+----
+protostar --version
+----
+
 == Upgrading to the Latest Versions
 
 To upgrade your Starknet CLI to the latest version, use the `pip install` command with the `--upgrade` flag:
@@ -41,6 +55,13 @@ cargo build --all --release
 ----
 
 Remember, the tag version (`v2.0.1` in the example above) may change as new versions are released, so be sure to replace it with the latest version.
+
+Alternatively, if you want to compile using Scarb, you can update `scarb` with:
+
+[source, bash]
+----
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+----
 
 == Version Features and Changelog
 
