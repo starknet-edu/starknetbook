@@ -2,40 +2,53 @@
 
 = Storage in Cairo
 
-In the Storage section of a Cairo contract, you define the data structures that will be stored on the blockchain and can be accessed by the contract functions. These data structures represent the state of the contract and can be read or modified throughout the contract's lifecycle.
+The "Storage" section in a Starknet contract defines the persistent data that will be stored on the blockchain and accessible by the contract functions. This data represents the state of the contract and can be manipulated throughout the contract's lifecycle.
 
-In the Vote contract, the Storage section consists of the following variables:
+In Starknet, you define a struct and annotate it with **`#[storage]`** to represent the contract's storage. The struct can contain scalar types like **`u8`** or **`felt252`**, as well as collections like **`LegacyMap`**.
 
-* `yes_votes`: A `u8` (unsigned 8-bit integer) variable to store the number of yes votes.
-* `no_votes`: A `u8` (unsigned 8-bit integer) variable to store the number of no votes.
-* `can_vote`: A `LegacyMap` (a mapping data structure) that associates each registered voter's `ContractAddress` with a `bool` value. This value indicates whether the voter is allowed to vote (true) or not (false).
-* `registered_voter`: Another `LegacyMap` that associates each voter's `ContractAddress` with a `bool` value, representing whether the voter is registered (true) or not (false).
+The **`LegacyMap`** in Starknet is similar to a mapping in Solidity, allowing you to associate keys with values. However, unlike Solidity where you use the **`mapping`** keyword to declare a mapping, in Starknet you declare it within a struct and use the **`LegacyMap`** type.
 
-The `LegacyMap` data structure allows you to associate keys (in this case, `ContractAddress`) with values (in this case, `bool`). You can read from and write to `LegacyMap` using the `read` and `write` functions.
-
-For example, to check if a voter is registered, you can use the following code:
+Here's the storage struct for the Vote contract:
 
 [source,rust]
-----
-let is_voter: bool = registered_voter::read(address);
-----
+```
+#[storage]
+struct Storage {
+    yes_votes: u8,
+    no_votes: u8,
+    can_vote: LegacyMap::<ContractAddress, bool>,
+    registered_voter: LegacyMap::<ContractAddress, bool>,
+}
+```
 
-To register a voter, you can use the following code:
+In this struct:
+
+- **`yes_votes`** and **`no_votes`** are **`u8`** (unsigned 8-bit integer) variables to store the number of yes and no votes respectively.
+- **`can_vote`** and **`registered_voter`** are **`LegacyMap`**s that map each registered voter's **`ContractAddress`** to a **`bool`** value. For **`can_vote`**, the **`bool`** value indicates whether the voter is allowed to vote (true) or not (false). For **`registered_voter`**, it represents whether the voter is registered (true) or not (false).
+
+To read and write to the storage, you use the read and write methods on the `self` variable, which is a reference to the contract state.
+
+For instance, to check if a voter is registered, you can do (note the double parentheses):
 
 [source,rust]
-----
-registered_voter::write(voter_address, true);
-----
+```
+let is_voter: bool = self.registered_voter.read((address));
+```
 
-Some similarities and differences between Cairo and Solidity in the storage implementation are:
+To register a voter, you can do (no need for double parentheses):
 
-1. Cairo uses a struct to define the storage, while Solidity uses state variables and mappings directly in the contract.
+[source,rust]
+```
+self.registered_voter.write(voter_address, true);
+```
 
-2. In Cairo, you use the `LegacyMap` type to create a mapping, while in Solidity, you use the `mapping` keyword.
+Here are some key points about how Cairo for Starknet handles storage:
 
-3. In Cairo, storage fields are accessed using specific functions such as `read` and `write` (e.g., `yes_votes::write(0_u8)`). In Solidity, storage fields are accessed using assignment and indexing (e.g., `yes_votes = 0`).
+1. Cairo uses a **`struct`** to define the storage, unlike Solidity which uses state variables and mappings directly within the contract.
+2. Cairo employs the **`LegacyMap`** type to create a mapping, while Solidity uses the **`mapping`** keyword.
+3. Cairo accesses storage fields using the **`read`** and **`write`** methods on the storage variable. In contrast, Solidity uses assignment and indexing to access storage fields.
+4. Variables in Starknet are stored in memory according to their name rather than their type or their order of declaration. For more details, please refer to the **[https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-storage/[Starknet](https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-storage/%5BStarknet)** documentation].
 
-4. In Starknet, variables are stored in memory according to their name rather than according to their type or their order of declaration. Please refer to the https://docs.starknet.io/documentation/architecture_and_concepts/Contracts/contract-storage/[Starknet documentation] for further information.
 
 [NOTE]
 ====

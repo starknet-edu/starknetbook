@@ -10,8 +10,7 @@ mod PokeArray {
 
     /// @notice Constructor for the PokeArray contract.
     #[constructor]
-    fn constructor() { 
-    }
+    fn constructor() {}
 
     /// @notice Creates an array of pokemons.
     /// @return Array of felt252 representing pokemons.

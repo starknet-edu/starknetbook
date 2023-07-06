@@ -34,14 +34,23 @@ Once we have deployed account contracts for all the voters, we can proceed with 
 
 == Deploying the Voting Contract
 
-Here's the command to deploy the voting contract, which will register voter_1, voter_2, and voter_3 as eligible voters. Note these are arguments that the constructor takes.
+Before deploying you need to declare the contract. However, note that the contract has already been declared (Class Hash: 0x748762322d0ee8ee30e924ba68b0633ea704fa419e86a51bc1d75be4a115ca5) so you can skip this step. If you try to declare a contract that has been declared before you will receive an error, however, here is how you declare it:
 
 [source,bash]
 ----
-starknet deploy --class_hash <class-hash-of-voting-contract> --inputs <voter_1> <voter_2> <voter_3> --account <deployer-account> --max_fee 100000000000000000
+❯ starknet declare --contract target/dev/scarb_project_Vote.sierra.json --account <deployer-account>
 ----
 
-The contract that we would be interacting has been deployed at address: *0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf*. You can find it https://testnet.starkscan.co/contract/0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf[here] on Starkscan.
+Wait for the transaction to be confirmed in L2. You can check the status of the transaction by copying the transaction hash into a block explorer such as https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]; the transaction should be confirmed in a few minutes at most.
+
+Here's the command to deploy the voting contract, which will register voter_1, voter_2, and voter_3 as eligible voters. Note these are arguments that the constructor takes. Add as a voter an account that you have access to so you can vote with it later.
+
+[source,bash]
+----
+starknet deploy --class_hash 0x748762322d0ee8ee30e924ba68b0633ea704fa419e86a51bc1d75be4a115ca5 --inputs <voter_1_address> <voter_2_address> <voter_3_address> --account <deployer-account> --max_fee 100000000000000000
+----
+
+The contract that we would be interacting has been deployed at address: *0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9*. You can find it https://testnet.starkscan.co/contract/0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9[here] on Starkscan.
 
 
 == Verifying Voter Eligibility
@@ -52,7 +61,7 @@ To check if a registered voter can vote, use the following command:
 
 [source,bash]
 ----
-starknet call --function voter_can_vote --inputs 0x072c49c0f3a76640855c6d56104b034f2a61b95da5eb1c1a6afb8f7277856220 --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --account vote_admin
+starknet call --function voter_can_vote --inputs <voter_1_address> --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --account <deployer-account> 
 ----
 
 Since we provided a registered voter address as an input, the result is 1 (boolean true), indicating the voter is eligible to vote.
@@ -61,7 +70,7 @@ Next, let's call the `is_voter_registered` function using an unregistered accoun
 
 [source, bash]
 ----
-starknet call --function is_voter_registered --inputs 0x0265a5a55cd3b03c2a3519f9b7a796a2c770fc9f85538df1e27f268f2885a616 --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --account vote_admin
+starknet call --function is_voter_registered --inputs <not_registered_address> --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --account <deployer-account> 
 ----
 
 With an unregistered account address, the terminal output is 0 (i.e., false), confirming that the account is not eligible to vote.
@@ -79,13 +88,13 @@ The syntax for `invoke` is similar to `call`, but in this case, we'll provide th
 [source,bash]
 ----
 //Voting Yes
-starknet invoke --function vote --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --inputs 1 --account voter_2
+starknet invoke --function vote --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --inputs 1 --account voter_2
 
 //Voting No
-starknet invoke --function vote --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --inputs 0 --account voter_3
+starknet invoke --function vote --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --inputs 0 --account voter_3
 ----
 
-Don't forget to cast a vote with the voter_1 account before moving on to the next step.
+Don't forget to cast a vote with the voter_1 account before moving on to the next step. 
 
 == Viewing Vote Results
 
@@ -93,7 +102,7 @@ To view the results, we can call the `get_vote_results` function, which is a vie
 
 [source,bash]
 ----
-starknet call --function get_vote_results --address 0x06ce0bdf1985308cbb800364385ac66cbae203688e3e28f3b1c234da62a754bf --account vote_admin
+starknet call --function get_vote_status --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --account <deployer-account> 
 
 //Example output if one voted Yes
 1 0 100 0
