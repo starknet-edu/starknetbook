@@ -2,11 +2,11 @@
 
 = Events in Starknet Contracts
 
-In this chapter, we will focus on events in a Starknet contract, using an extended version of the voting contract as an example. Events are a useful tool for logging and notifying external entities about specific occurrences within a contract. They emit data that can be accessed by clients.
+Events are a useful tool for logging and notifying external entities about specific occurrences within a contract. They emit data that can be accessed by clients.
 
 == Defining Events
 
-To define an event in a Starknet contract, you can use the **`#[event]`** attribute followed by the event definition. In our extended voting contract, we have two events, **`VoteCast`** and **`UnauthorizedAttempt`**.
+To define an event in a Starknet contract, you can use the **`#[event]`** attribute followed by the event definition. In our voting contract, we have two events, **`VoteCast`** and **`UnauthorizedAttempt`**.
 
 The **`VoteCast`** event is emitted when a vote is cast. The event takes two parameters: the voter's address and the vote value (0 for No, 1 for Yes).
 
@@ -25,7 +25,7 @@ The **`UnauthorizedAttempt`** event is emitted when an unauthorized attempt to v
 ----
 #[derive(Drop, starknet::Event)]
 struct UnauthorizedAttempt {
-unauthorized_address: ContractAddress,
+    unauthorized_address: ContractAddress,
 }
 ----
 
