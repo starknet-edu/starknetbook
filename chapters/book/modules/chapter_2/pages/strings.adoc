@@ -2,7 +2,7 @@
 
 = Strings in Cairo
 
-Cairo currently has limited support for strings, which makes it challenging to work with long strings. However, you can use short strings in your Cairo contracts, as we did in the https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_2/pages/contracts/src/pokemon_array.cairo[Pokémon example]. These short strings are ultimately converted into `felt252`.
+Cairo currently (this will change in the near future) has limited support for strings, which makes it challenging to work with long strings. However, you can use short strings in your Cairo contracts, as we did in the https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_2/pages/contracts/src/pokemon_array.cairo[Pokémon example]. These short strings are ultimately converted into `felt252`.
 
 == Working with Short Strings
 
@@ -33,7 +33,7 @@ image::starkutils.png[starkutils]
 
 This is a tedious process, which the Cairo community is improving in the near the future.
 
-== Conclusion and Summary
+== Summary
 
 In this chapter, we explored strings in Cairo and learned about their limitations. As a quick recap:
 
