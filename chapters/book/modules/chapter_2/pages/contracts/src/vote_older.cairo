@@ -84,7 +84,6 @@ mod Vote {
 
     #[external(v0)]
     impl VoteImpl of super::VoteTrait<ContractState> {
-
         /// @notice Returns the voting results
         /// @return n_yes Number of yes votes
         /// @return n_no Number of no votes
@@ -139,7 +138,6 @@ mod Vote {
     /// @notice Implement the InternalFunctionsTrait for the Vote contract
     #[generate_trait]
     impl InternalFunctions of InternalFunctionsTrait {
-        
         // @dev Internal function to prepare the list of voters
         // @param voter_1 (ContractAddress): address of the first registered voter
         // @param voter_2 (ContractAddress): address of the second registered voter
@@ -183,7 +181,6 @@ mod Vote {
     /// @notice Implement the VotingResultTrait for the Vote contract
     #[generate_trait]
     impl VoteResultFunctionsImpl of VoteResultFunctionsTrait {
-
         // @dev Internal function to get the voting results (yes and no vote counts)
         // @return (n_yes, n_no): number of yes votes and no votes
         /// @notice Returns the number of yes and no votes

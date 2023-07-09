@@ -72,7 +72,7 @@ mod Vote {
     /// @dev Represents an unauthorized attempt to vote
     #[derive(Drop, starknet::Event)]
     struct UnauthorizedAttempt {
-        unauthorized_address: ContractAddress,
+        unauthorized_address: ContractAddress, 
     }
 
     /// @dev Implementation of VoteTrait for ContractState
