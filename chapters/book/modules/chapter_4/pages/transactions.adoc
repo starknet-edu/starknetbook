@@ -18,6 +18,8 @@ Preparing Transactions
 
 The node, analogous to a post office, receives the transaction and broadcasts it on the Starknet network, primarily to the sequencer. As the network evolves, the transaction will be broadcasted to multiple sequencers.
 
+It is worth mentioning that before broadcasting the transaction to the sequencer, the gateways perform some validations, such as checking that the max fee exceeds a minimum fee and the account's balance is greater than the max fee. The transaction will be saved in the storage if the validation function passes.
+
 == Reception and Processing: The Sequencer's Role
 
 On receiving the transaction, the sequencer acknowledges its receipt but hasn't processed it yet—similar to Ethereum's mempool state. 
@@ -35,20 +37,17 @@ It's crucial to remember the sequentiality of transaction processing in Starknet
 
 == Acceptance on Layer-2 (L2)
 
-When the sequencer validates and executes a transaction, it immediately updates the state without waiting for the block emission. The transaction status changes from 'received' to 'pending' at this stage.
+When the sequencer validates and executes a transaction, it immediately updates the state without waiting for the block emission. The transaction status changes from 'received' to 'accepted on L2' at this stage.
 
-Following the state update, the transaction is included in a block. However, the block isn't emitted immediately. The sequencer decides the opportune moment to emit the block, either when there are enough transactions to form a block or after a certain time has passed. When the block is emitted, the transaction's status changes to 'accepted on L2', and the block becomes available for other nodes to query.
+Following the state update, the transaction is included in a block. However, the block isn't emitted immediately. The sequencer decides the opportune moment to emit the block, either when there are enough transactions to form a block or after a certain time has passed. When the block is emitted, the block becomes available for other nodes to query.
 
 [source]
 ----
 Transaction Status Transition
-1. Received -> Pending
-2. Pending -> Accepted on L2
+1. Received -> Accepted on L2
 ----
 
 It's essential to remember that at this stage, no proof has been generated, and the transaction relies on L2 consensus for security. There remains a slim possibility of transaction reversal if all sequencers collude. Therefore, these stages should be seen as different layers of transaction finality.
-
-To improve user experience, the 'pending' status will be removed in future versions, and all transactions waiting to be in a block will be marked as 'accepted on L2'.
 
 == Acceptance on Layer-1 (L1)
 
@@ -88,14 +87,24 @@ The main difference between Ethereum and Starknet's transaction finality lies in
 
 == Handling of Rejected Transactions ==
 
-A transaction can be rejected at any stage if it's found to be invalid or erroneous.
-
-In the upcoming version 0.12.1, Starknet will start charging for failed transactions, which will mitigate the potential for Denial of Service (DoS) attacks. However, this change adds a trust assumption for the sequencer to be honest and non-censoring. In later versions, there will be an OS change that will enable the sequencer to prove that a transaction failed and charge the correct amount of gas for it, thus making it censorship-resistant with provably failed transactions.
+In rare scenarios, a transaction can be rejected by the sequencer if it's found to be invalid or erroneous, even if the gateways already validate it.
 
 [source]
 ----
 Transaction Status Transition
-1. Any Stage -> Rejected (if invalid or erroneous)
+1. Received -> Rejected (if invalid or erroneous)
+----
+
+== Handling of Reverted Transactions ==
+
+A transaction can be reverted due to failed execution, the transaction will still be included in a block, and the account will be charged for the resources consumed.
+
+This adds a trust assumption for the sequencer to be honest and non-censoring. In later versions, there will be an OS change that will enable the sequencer to prove that a transaction failed and charge the correct amount of gas for it, thus making it censorship-resistant with provably failed transactions.
+
+[source]
+----
+Transaction Status Transition
+1. Received -> Reverted
 ----
 
 == Transaction Lifecycle Summary ==
@@ -104,7 +113,7 @@ The following outlines the various steps in a transaction's lifecycle:
 
 image::transactions.png[transactions]
 
-A transaction can be rejected at any stage if it's found to be invalid or erroneous. This comprehensive lifecycle ensures that transactions on Starknet are processed efficiently, securely, and transparently.
+This comprehensive lifecycle ensures that transactions on Starknet are processed efficiently, securely, and transparently.
 
 == Conclusion
 
