@@ -23,11 +23,11 @@ We'll use a Pokémon example to illustrate the concepts. You can find the docume
 
 To create an array in Cairo, you can use the `ArrayTrait::new()` method. Arrays are mutable by default, which means you can modify their contents.
 
-Here's an example of creating an array with Pokémon names and appending elements to it (remember the actual contract is in the https://github.com/starknet-edu/starknetbook/blob/main/chapters/modules/chapter_2/pages/contracts/src/pokemon_array.cairo[Book repository]):
+Here's an example of creating an array with Pokémon names and appending elements to it (remember the actual contract is in the https://github.com/starknet-edu/starknetbook/blob/main/chapters/book/modules/chapter_2/pages/contracts/src/pokemon_array.cairo[Book repository]):
 
 [source, rust]
 ----
-fn create_pokemon_array() -> Array::<felt252> {
+fn _create_pokemon_array() -> Array::<felt252> {
     let mut pokemons = ArrayTrait::new(); // create a new array of type felt252
     pokemons.append('Pikachu'); // append 'Pikachu' to the pokemons array
     pokemons.append('Charmander');
@@ -64,7 +64,7 @@ Here's an example of removing an element and obtaining the length of a Pokémon 
 
 [source, rust]
 ----
-fn pop_pokemon_array() {
+fn _pop_pokemon_array() {
     let mut pokemons: Array<felt252> = create_pokemon_array();
     assert(pokemons.len() == 4_usize, "Unexpected length");
 
@@ -90,7 +90,7 @@ Here's an example of accessing elements in a Pokémon array:
 
 [source, rust]
 ----
-fn index_pokemon_array() {
+fn _index_pokemon_array() {
     let mut pokemons: Array<felt252> = create_pokemon_array();
 
     assert(*pokemons.get(0_usize).unwrap().unbox() == 'Pikachu', "Wrong pokemon");
@@ -147,7 +147,7 @@ Consider the following example, which demonstrates how to access elements in a P
 
 [source, rust]
 ----
-fn index_pokemon_span() {
+fn _index_pokemon_span() {
     let pokemons_span: Span<felt252> = create_pokemon_array().span();
 
     assert(*pokemons_span.get(2_usize).unwrap().unbox() == 'Bulbasaur', "Wrong pokemon");

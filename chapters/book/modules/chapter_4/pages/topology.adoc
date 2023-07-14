@@ -12,7 +12,7 @@ Sequencers are a crucial part of the Starknet network and have a central role in
 
 The greatest asset of ZK rollups is their ability to delegate some of the network's tasks – specifically, the aggregation and processing of transactions – to specialized entities. This process is similar to how Ethereum and Bitcoin outsource their security to miners and then validate their work. Just as mining isn't a small business, sequencing requires significant resources due to its high-capacity and liveness requirements.
 
-For networks like StarkNet and other platforms utilizing ZK rollups, a similar parallel is drawn. These networks outsource transaction processing to specialized entities and then verify their work. These specialized entities in the context of ZK rollups are known as "sequencers."
+For networks like Starknet and other platforms utilizing ZK rollups, a similar parallel is drawn. These networks outsource transaction processing to specialized entities and then verify their work. These specialized entities in the context of ZK rollups are known as "sequencers."
 
 Instead of providing security, as miners do, sequencers provide transaction capacity. They aggregate multiple transactions into a single batch, process them, and produce a block that will later be proved by the Prover and submited to the Layer 1 network as a single, compact proof, known as a "rollup." In other words, just as validators in Ethereum and miners in Bitcoin are specialized actors securing the network, sequencers in ZK rollup-based networks are specialized actors that provide transaction capacity.
 
@@ -51,7 +51,7 @@ When it comes to defining what nodes do in Bitcoin or Ethereum, people often mis
 
 Nodes serve as auditors of the network, maintaining the state of the network, such as how much Bitcoin each participant owns or the current state of a specific smart contract. They accomplish this by processing transactions and preserving a record of all transactions, but that's a means to an end, not the end itself.
 
-In ZK rollups and specifically within StarkNet, this concept is somewhat reversed. Nodes don't necessarily have to process transactions to get the state. In contrast to Ethereum or Bitcoin, Starknet nodes aren't required to process all transactions to maintain the state of the network. 
+In ZK rollups and specifically within Starknet, this concept is somewhat reversed. Nodes don't necessarily have to process transactions to get the state. In contrast to Ethereum or Bitcoin, Starknet nodes aren't required to process all transactions to maintain the state of the network. 
 
 [NOTE]
 ====

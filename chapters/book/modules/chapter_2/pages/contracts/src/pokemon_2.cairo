@@ -16,9 +16,8 @@ mod BigPokemon {
 
     fn create_pokemon_array() -> Array::<Pokemon> {
         let mut pokemons: Array<Pokemon> = ArrayTrait::new(); // create a new array of type felt252
-        pokemons.append(
-            Pokemon { name: 'Pikachu', id: 1 }
-        ); // append 'Pikachu' to the pokemons array
+        pokemons
+            .append(Pokemon { name: 'Pikachu', id: 1 }); // append 'Pikachu' to the pokemons array
         pokemons.append(Pokemon { name: 'Charmander', id: 2 });
         pokemons.append(Pokemon { name: 'Bulbasaur', id: 3 });
         pokemons.append(Pokemon { name: 'Squirtle', id: 4 });

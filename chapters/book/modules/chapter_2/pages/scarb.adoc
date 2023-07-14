@@ -2,11 +2,11 @@
 
 = Scarb and the Structure of a Cairo Project
 
-Scarb is the Cairo package manager specifically created to streamline your Cairo and Starknet development process. This powerhouse of a tool is capable of managing project dependencies, compiling projects (both pure Cairo and Starknet contracts), downloading the necessary libraries, building these libraries, and even integrating seamlessly with other essential development tools such as Protostar. 
+Scarb is the Cairo package manager specifically created to streamline your Cairo and Starknet development process. Scarb is capable of managing project dependencies, compiling projects (both pure Cairo and Starknet contracts), downloading the necessary libraries, building these libraries, and integrating seamlessly with other essential development tools such as Protostar. 
 
 == Integrating Scarb into Your Development Workflow
 
-Scarb offers flexibility and convenience for your Cairo development workflow. The steps below illustrate a typical workflow in developing a Starknet contract using Scarb:
+The steps below illustrate a typical workflow in developing a Starknet contract using Scarb:
 
 1. **Initializing the Project:** Start by running `scarb new` to create a new project. This command will automatically generate the project's basic structure, including a `Scarb.toml` configuration file and an initial `src/lib.cairo` file.
 
@@ -20,15 +20,11 @@ Scarb offers flexibility and convenience for your Cairo development workflow. Th
 
 By integrating Scarb into your workflow, you leverage its features to make your development process more efficient and manageable.
 
-== Getting Started with Scarb
-
-To begin using Scarb, you'll first need a Git executable available in the `PATH` environment; it will be created automatically.
-
-=== Installation
+== Installation
 
 Scarb is compatible with macOS, Linux, and Windows operating systems. 
 
-==== macOS and Linux
+=== macOS and Linux
 
 For macOS and Linux users, open your terminal and execute the following command:
 
@@ -44,7 +40,7 @@ If you wish to install a specific version of Scarb, such as a preview version, u
 $ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | bash -s -- -v 0.2.0-alpha.2
 ----
 
-==== Windows
+=== Windows
 
 Scarb's installation on Windows requires manual setup. Follow the steps below to install Scarb on Windows:
 
@@ -97,7 +93,7 @@ version = "0.1.0"
 other_package = { path = "../other_package" }
 ----
 
-=== Setting Up a Project with Scarb
+== Setting Up a Project with Scarb
 
 To create a new project using Scarb, navigate to your desired project directory and execute the following command:
 
@@ -129,7 +125,7 @@ version = "0.1.0"
 # foo = { path = "vendor/foo" }
 ----
 
-=== Understanding Scarb.toml
+== Understanding Scarb.toml
 
 The `Scarb.toml` file uses [TOML](https://toml.io/en/), an easy-to-read configuration format.
 
@@ -138,7 +134,7 @@ The `Scarb.toml` file uses [TOML](https://toml.io/en/), an easy-to-read configur
 * `[dependencies]`: This section is designed for listing your project’s dependencies.
 
 
-=== Building a Scarb Project
+== Building a Scarb Project
 
 Clear all content in `src/lib.cairo` and replace with the following:
 
@@ -167,22 +163,12 @@ To build your project from your `hello_scarb` directory, use the following comma
 
 [source, bash]
 ----
-$ scarb build
-
-Compiling hello_scarb v0.1.0 (file:///projects/Scarb.toml)
-Finished release target(s) in 0 seconds
+scarb build
 ----
 
 This command compiles your project and produces the Sierra code in the `target/dev/hello_scarb.sierra` file. Sierra serves as an intermediate layer between high-level Cairo and compilation targets such as Cairo Assembly (CASM). To understand more about Sierra, check out this https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-exploring-sierra-7f32808421f5/[article].
 
 To remove the build artifacts and delete the target directory, use the `scarb clean` command.
-
-Optionally, you can specify a build profile with the `--profile` or `-P` flag. For instance, to build in the release profile, use the following command:
-
-[source, bash]
-----
-scarb --profile release build
-----
 
 The resulting Sierra code file will be located in the `target/release/` directory.
 
@@ -204,7 +190,7 @@ error: Found argument 'src/lib.cairo' which wasn't expected, or isn't valid in t
 Usage: cairo-run [OPTIONS] --path <PATH>
 ----
 
-You need to have Cairo version alpha.7 installed. Check out this https://cairo-book.github.io/ch01-01-installation.html/[guide] for installation instructions.
+You need to have Cairo the most recent version of Cairo installed. To install Cairo, review the setup section subsection on https://book.starknet.io/chapter_1/environment_setup.html#cairo_compiler_installation[Chapter 1].
 
 Alternatively, you could try running:
 

@@ -1,3 +1,61 @@
+[id="structure"]
+
+= Fundamentals of Cairo for Starknet
+
+In this chapter, we'll review the features of the Cairo language as it pertains to Starknet, a Layer 2 solution for Ethereum. We will use a series of practical smart contract examples from voting systems to Pokemon contracts.
+
+For those seeking a more in-depth exploration of Cairo, outside its Starknet application, the **https://cairo-book.github.io/[Cairo Book]** and **https://github.com/shramee/starklings-cairo1[Starklings]** are your go-to resources. We also recommend you finish the https://github.com/starknet-edu/starknet-cairo-101[*starknet-cairo-101*] automated workshop to get a better understanding of the structure of a smart contract, however, neither of these resources are required to understand the content of the following subchapters or the Starknet Book in general.
+
+Our journey begins with a 'Vote' contract. The Vote contract represents a straightforward demonstration of the foundational elements of a Cairo contract. It serves as an on-chain voting system, enabling a pre-defined set of voters to cast votes ('1' for 'Yes' and '0' for 'No') on a given proposal.
+
+Primarily, the Vote contract maintains a record of the count of 'Yes' and 'No' votes and offers functions that read and write from the contract's state. These functions are crucial for examining the voting status and voter eligibility. The contract is initialized with three registered voters and is deployed on the Starknet testnet.
+
+== Structure of a Cairo Contract
+
+A Cairo contract is made up of several sections, which are outlined and discussed in the Vote contract:
+
+* Imports: These represent the necessary libraries and dependencies required for the contract's operation.
+* Trait Interfaces: Defines the functions that can be implemented or called by the Cairo contract. They are characterized by the `#[starknet::interface]` attribute.
+* Contract Definition: The core part of the contract where the contract's functionalities are defined. It's marked with the `#[starknet::contract]` attribute.
+* Storage: It represents the state variables that the contract uses to store data.
+* Constructor: The function that sets the initial state of the contract.
+* Functions: These are categorically divided into read functions (which only fetch data from the contract's state) and write functions (which can alter the state of the contract). Both types of functions can be external (callable from outside the contract) or internal (used within the contract). 
+* Event: An event is a way to notify the outside world about the contract's state changes. It's marked with the `#[event]` attribute.
+
+== Starknet Modules
+
+The **`mod`** keyword is used to define a module in Cairo, and modules provide a way to organize code into namespaces. In the context of Starknet, a module represents a smart contract.
+
+To declare a Starknet contract, the **`mod`** keyword is used in combination with the **`#[starknet::contract]`** attribute. The **`#[starknet::contract]`** attribute informs the compiler that the following module should be compiled as a Starknet contract.
+
+For example, here's how we declare a Starknet contract:
+
+```
+#[starknet::contract]
+mod Vote {
+    // contract definition goes here
+}
+```
+
+In this example, **`Vote`** is the name of the Starknet contract. All the contract's storage variables, functions (constructor, external and internal), and any associated `impl` are defined within this module.
+
+The contract can then be deployed to the Starknet network, where it will have its own unique contract address and state, and its functions can be called by users and other contracts in the network.
+
+=== Functions 
+
+Functions in Cairo contracts are defined within implementation blocks (`impls`), except for the constructor (more in following subchapters):
+
+* External functions are prefixed with `#[external(v0)]` and defined in an `impl` block for the interface trait (`VoteTrait` in our example). These functions can be called from outside the contract and can modify the contract's state if necessary.
+* Internal functions are defined in `impl` blocks marked with `#[generate_trait]`. These functions are helper functions and can only be called by other functions within the contract.
+
+The Vote contract provides an example of these principles, featuring a clear division between functions that read data (`get_vote_status`, `voter_can_vote`, `is_voter_registered`) and those that write data (`vote`). 
+
+Note: The `VoteTrait` in our example outlines the primary interface of the Vote contract, providing a blueprint for the external functions that the contract can perform.
+
+Here is the Vote contract's code, however, we will break down the code in the following subchapters:
+
+[source,rust]
+----
 /// The Contract Class Hash is 0x8873aa28af0a0e6ac6aa647aa8e8c02cea7752bb7950284dbbbae1be35e9cb
 /// The contract is deployed on the Starknet testnet. The contract address is 0x056d42ddcc1c85959989aaef369e284804a8e59cc5ce519e579fcb121b18f724
 
@@ -72,7 +130,7 @@ mod Vote {
     /// @dev Represents an unauthorized attempt to vote
     #[derive(Drop, starknet::Event)]
     struct UnauthorizedAttempt {
-        unauthorized_address: ContractAddress, 
+        unauthorized_address: ContractAddress,
     }
 
     /// @dev Implementation of VoteTrait for ContractState
@@ -178,3 +236,26 @@ mod Vote {
         }
     }
 }
+----
+
+Before we proceed with the Vote contract, let's get an understanding of types and imports.
+
+
+[NOTE]
+====
+The Book is a community-driven effort created for the community.
+
+* If you've learned something, or not, please take a moment to provide feedback through https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=[this 3-question survey].
+* If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
+====
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
