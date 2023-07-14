@@ -29,32 +29,6 @@ fn mint_tokens(amount: u256) {
 
 In this example, any user can call the `mint_tokens` function and mint new tokens, potentially leading to an exploit or manipulation of the token supply.
 
-To mitigate access control vulnerabilities, implement proper authorization mechanisms such as role-based access control (RBAC) or ownership checks. You can create your own custom solution or use existing templates like those provided by https://docs.openzeppelin.com/contracts-cairo/0.6.1/access[OpenZeppelin,window=_blank].
-
-In the example above, we can add an owner variable, set the owner value in the constructor, and add an assert condition in the `mint_tokens` function to ensure that only the owner can mint new tokens.
-
-[source,rust]
-----
-struct Storage {
-    owner: ContractAddress,
-}
-
-#[constructor]
-fn constructor() {
-    let sender = get_caller_address();
-    owner::write(sender);
-}
-
-#[external]
-fn mint_tokens(amount: u256) {
-    let sender = get_caller_address();
-    assert(sender == owner::read());
-    total_supply::write(total_supply::read() + amount);
-}
-----
-
-By implementing proper access control, you can ensure that your smart contract functions are only executed by authorized parties, reducing the risk of unauthorized manipulation.
-
 **Recommendation**
 
 To mitigate access control vulnerabilities, implement proper authorization mechanisms such as role-based access control (RBAC) or ownership checks. You can create your own custom solution or use existing templates like those provided by https://docs.openzeppelin.com/contracts-cairo/0.6.1/access[OpenZeppelin,window=_blank].
