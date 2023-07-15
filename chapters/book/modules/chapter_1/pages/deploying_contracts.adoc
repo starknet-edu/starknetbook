@@ -1,271 +1,294 @@
-= Deploying Starknet contracts
+= Deploying and Interacting with Starknet contracts
 
 In this chapter, you will learn to compile, deploy and interact with a Starknet contract written in Cairo.
 
-Follow the below steps in order to accomplish your goal!
-
-== Setting up environment variables
-
-The following commands must run every time you open a new terminal to interact with Starknet. Setting them saves you time when using the CLI within the same terminal session.
-
-[source, bash]
-----
-# Use Starknet testnet
-export STARKNET_NETWORK=alpha-goerli
-# Set the default wallet implementation to be used by the CLI
-export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
-# Set the path to the cairo 1 compiler binary. Adapt this path to fit your installation if needed
-export CAIRO_COMPILER_DIR=~/.cairo/target/release/
-# Compiler arguments
-export CAIRO_COMPILER_ARGS=--add-pythonic-hints
-----
-
-== Setting up an account
-
-You need to set up your CLI with an account contract and fund it.
-
-[NOTE]
-====
-Starknet accounts are smart contracts. As such, creating one involves sending a transaction, and takes a bit longer than creating an EOA on other networks.
-You can learn more in the https://docs.starknet.io/documentation/architecture_and_concepts/Account_Abstraction/introduction/[accounts] section of the documentation.
-====
-
-This process will involve three steps:
-
-* Generating your account address locally
-* Funding it
-* Deploying it
-
-The Starknet account declared through the CLI are stored on your machine in folder `~/.starknet_accounts/`.
-
-[source, bash]
-----
-# Creating a new account.
-starknet new_account --account account_name
-----
-
-Your terminal will return your account's address.
-
-[source, bash]
-----
-Account address: 0x00d9d851f600d539a9f7811de4d9613a6b3c2634f8c0386a305c03216bd67559
-Public key: 0x0293d6625d860b9a37a0319d1e3c1eecc27685075cbeaae4ef29ed717d93c58b
-Move the appropriate amount of funds to the account, and then deploy the account
-by invoking the 'starknet deploy_account' command.
-
-NOTE: This is a modified version of the OpenZeppelin account contract. The signature is computed
-differently.
-----
-
-Next step is to fund it. Use one of the following methods:
-
-* Use the https://faucet.goerli.starknet.io[faucet] to get some funds and send them to the account
-* Bridge funds using https://goerli.starkgate.starknet.io/[Starkgate]
-
-However you chose to do it, please make sure that the funding transaction reaches the "PENDING" status before moving on. You can look for it on https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]
-
-[source, bash]
-----
-# Deploying your account
-starknet deploy_account --account account_name
-----
-
-Your sample output should look something like this:
-
-[source, bash]
-----
-Sending the transaction with max_fee: 0.000568 ETH (568383605914463 WEI).
-Sent deploy account contract transaction.
-Contract address: 0x03f42fc2355be54197a8b270ff2cb8e2eb7902e777b3498f8ad58c6c147cce60
-Transaction hash: 0x3d15e05389ecd1ff65555220be57f0ab43729877b20ca086048276917ed2838
-----
-
-Monitor the transaction until it passes the "PENDING" state.
-
-== Create and compile a contract
-
 Before we get started, make sure that the below commands are working properly on your system. If
-they don't, please check the xref:chapter_1:environment_setup.adoc[Setting up your environment]
-section.
+they don't, please check the https://book.starknet.io/chapter_1/environment_setup.html[Setting up your environment] subchapter.
 
 [source, bash]
 ----
-starknet --version
-starknet-compile  --version
+scarb --version # To compile Cairo code
+starkli  --version # To interact with Starknet
 ----
 
-You can now create a folder of your choice (in any location) where you would like to practice
-your Cairo skills . Inside the new folder, create a file name `hello_starknet.cairo`.
+== Setting up a smart wallet
 
-[source, bash]
+A smart wallet is composed of two parts: a Signer and an Account Descriptor. The signer is a smart contract that can sign transactions (we need its private key). The account descriptor is a json file that contains information about the smart wallet, such as its address and public key.
+
+First, create a smart wallet via the Braavos or Argent X browser extensions. Follow you wallet (Argent or Braavos) instructions. After creating and funding your smart wallet with ETH (use the https://faucet.goerli.starknet.io/[Starknet Goerli Faucet] whenever you require it), you can deploy it to the Starknet's testnet for this tutorial.
+
+=== Creating a Signer
+
+A Signer is an smart contract that can sign transactions. It's a crucial component of accounts in Starknet. To create a Signer we just need the private key of our smart wallet (the public key can be derived from it).
+
+Starkli provides us with the ability to create a "keystore" file that securely stores the private key of our smart wallets each with a password. The accounts in the keystore file can be used to sign transactions using Starkli. The main advantage of this approach is that it prevents storing the private key as plain text on our computer. Instead, we use a password to create an encrypted file in the location of our choosing.
+
+Normally, the keystore file is stored in the default location of the Starkli CLI. The following command creates a keystore file for our smart wallet in the default location in "~/.starkli-wallets/deployer" 
+
+[source,shell]
 ----
-#Create a new folder for practicing your cairo skills
-cd ~/
-mkdir cairo_practice && cd cairo_practice
-
-#Create a new file called hello_starknet.cairo
-touch hello_starknet.cairo
+mkdir ~/.starkli-wallets/deployer
 ----
 
-Copy and paste the following piece of code into your `hello_starknet.cairo` file:
-
-[source, rust]
+[source,shell]
 ----
-#[contract]
-mod HelloStarknet {
-    use starknet::get_caller_address;
-    use starknet::ContractAddress;
+starkli signer keystore from-key ~/.starkli-wallets/deployer/keystore.json
 
-    #[event]
-    fn Hello(from:ContractAddress, value:felt252) {}
+Enter private key:
+Enter password:
+Created new encrypted keystore file: /home/parallels/.starkli-wallets/deployer/keystore.json
+Public key: 0x0550…
+----
 
-    #[external]
-    fn say_hello(message:felt252) {
-        let caller=get_caller_address();
-        Hello(caller, message);
-    }
+In the private key prompt, paste the private key of your smart wallet. In the password prompt, enter a password of your choice. You will need this password to sign transactions using Starkli.
+
+Export the private key from your Braavos or Argent wallet. For Argent X, you can find it in the "Settings" section -> Select your Account -> "Export Private Key". For Braavos, you can find it in the "Settings" section -> "Privacy and Security" -> "Export Private Key".
+
+While knowing the private key of a smart wallet is necessary to sign transactions, it's not sufficient. We also need to inform Starkli about the signing mechanism employed by our smart wallet created by Braavos or Argent X. Does it use an elliptic curve? If yes, which one? This is the reason why we need an account descriptor file.
+
+=== Creating an Account Descriptor
+
+Starkli offers a command to collect all the required information from a smart wallet by providing its on-chain address. Using this data, the CLI generates a json file that can be used to sign transactions.
+
+[source,shell]
+----
+starkli account fetch -- help
+Fetch account config from an already deployed account contract
+----
+
+Currently, the "fetch" command does not support Braavos or Argent X smart wallets. However, there's an open PR to add this functionality. For now, we have to create the account descriptor file manually.
+
+[source,shell]
+----
+touch ~/.starkli-wallets/deployer/account.json
+----
+
+The account descriptor should have the following structure:
+
+[source,json]
+----
+{
+  "version": 1,
+  "variant": {
+        "type": "open_zeppelin",
+        "version": 1,
+        "public_key": "<SMART_WALLET_PUBLIC_KEY>"
+  },
+    "deployment": {
+        "status": "deployed",
+        "class_hash": "<SMART_WALLET_CLASS_HASH>",
+        "address": "<SMART_WALLET_ADDRESS>"
+  }
 }
 ----
 
-Customize the above code by adding a new type of event. Find a name that is unique (this is important).
-Add the following code:
+Edit the file with the right fields for the public key, class hash, and address. Here is how to find them:
 
-[source, rust]
-----
-    #[event]
-    fn My_Unique_Event_Name(from:ContractAddress, value:felt252) {}
-----
+The public key was returned by the "starkli signer keystore from-key ~/.starkli-wallets/deployer/keystore.json" command. However, you can also find it using the following command and writing the password you used to create the keystore file:
 
-Compile the above Starknet contract using the following command:
-
-[source, bash]
+[source,shell]
 ----
-starknet-compile hello_starknet.cairo hello_starknet.json
+starkli signer keystore inspect ~/.starkli-wallets/deployer/keystore.json
 ----
 
-The above command should compile to produce a `hello_starknet.json` file  in the same folder.
+The address is the address of your smart wallet. You can find it in the Braavos or Argent X browser extensions. Then use this address to fetch the class hash of your smart wallet with the following Starkli command:
 
-== Declare a contract class
+[source,shell]
+----
+starkli class-hash-at <SMART_WALLET_ADDRESS>
+----
+
+You might be wondering why the type is defined as "open_zeppelin" even though we're working with a Braavos wallet. This is because the CLI uses Open Zeppelin's default algorithm to sign transactions, which happens to be the same one used by Braavos and Argent X by default.
+
+However, note that a Braavos smart wallet with a hardware signer enabled will not work in this context, as a hardware signer uses a different elliptic curve to sign transactions.
+
+== Setting up Environment Variables
+
+For most of the flags of the different commands available on Starkli we can define environment variables to make the commands shorter and easier to manage.
+
+There are two primary environment variables that are vital for effective usage of Starkli's CLI. These are the location of the keystore file for the Signer, and the location of the Account Descriptor file.
+
+[source,bash]
+----
+export STARKNET_ACCOUNT=~/.starkli-wallets/deployer/account.json
+export STARKNET_KEYSTORE=~/.starkli-wallets/deployer/keystore.json
+----
+
+Here, it's noteworthy that the network does not need to be explicitly specified, given that the RPC provider is already configured for the testnet. This behavior holds true for Infura as well.
+
+Setting environment variables for Starkli significantly simplifies command execution and management, thereby enhancing efficiency, readability, and control in your Starkli-related development activities.
+
+== Declaring Smart Contracts in Starknet
 
 On Starknet, the deployment process is in two steps:
 
 * Declaring the class of your contract, or sending your contract's code to the network
 * Deploying a contract, or creating an instance of the code you previously declared
 
-Let's start with declaring the above code.
+In the contracts/ directory of the https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages[first chapter] in the Starknet Book repository, you can find a file called `lib.cairo`. This file contains a simple contract that you can use to deploy your first Starknet contract. 
 
-[source, bash]
-----
-starknet declare --contract hello_starknet.json --account account_name
-----
+We need to compile the smart contract using the Scarb compiler. If Scarb is not installed on your system, you can refer to its installation instructions in the https://book.starknet.io/chapter_1/environment_setup.html[Setting up your Environment] subchapter. 
 
-[NOTE]
-====
-The above command may fail if you are using code that has already been declared by someone else! Please make sure to add custom code to your contract to create a new contract class.
-====
-
-You will see something like (if you get an error, see the next section on troubleshooting):
-
-[source, bash]
-----
-Sending the transaction with max_fee: 0.000132 ETH (131904173791637 WEI).
-Declare transaction was sent.
-Contract class hash: 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d5924f
-Transaction hash: 0x334f16d9da30913c4a30194057793379079f35efa6bf5753bc6e724a591e9f0
-----
-The transaction hash allows you to track when the network will have received your contract's code. Once this transaction has moved to "PENDING", you can deploy an instance of your contract.
-
-=== Troubleshooting: Contract Declaration Process
-
-In the contract declaration process, you may encounter hiccups due to diverse factors such as software compatibility, architectural discrepancies, and execution errors.
-
-Here is an error that can arise during the contract declaration:
+To compile the smart contract, navigate into the contracts/ directory in the https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages[Starknet Book repo] (the one with the Scarb.toml file in it) and run the build command:
 
 [source,bash]
 ----
-Error: OSError: [Errno 8] Exec format error: '/opt/homebrew/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile'
+scarb build
 ----
 
-This error is generated when cairo-lang attempts to compile your Sierra code using an imported Rust binary, 'starknet-sierra-compile'. However, in some instances, the imported binary may not be compatible with your system architecture.
+The compiled contract will be saved in the target/dev/ directory as "contracts_Ownable.sierra.json" (in Chapter 2 of the book we will learn more details about Scarb).
 
-The solution is to replace the incompatible Rust binary with a locally built version. The following steps can guide you through this process:
+With the smart contract compiled, we're ready to declare it using Starkli. However, before we do that, let's take a look at how the RPC provider works (we need this to declare our contract). The following are the RPC providers available for Starknet in order of ease:
 
-. *Build the 'starknet-sierra-compile' binary locally.* We did this before when we set up our environment by cloning the starknet repository and building the binary. If you have not done this yet, please refer to the Setting Up Your Environment subchapter.
+. The default an easiest option is to use Starknet Sequencer's Gateway. This is the option we will use in this tutorial and it is the default for Starkli. However, as you proceed with your Starknet journey, we recommend you to set up your own node or use a provider like Infura or Alchemy, because the Starknet Sequencer's Gateway could get saturated with requests and you may experience delays in your transactions.
+. Use a provider like Infura or Alchemy. You can find more information about this in the https://book.starknet.io/chapter_1/environment_setup.html[Setting up your Environment] subchapter. Set up an API key and as endpoint select Starknet's testnet/goerli. In the Infura case, the endpoint looks like this: https://starknet-goerli.infura.io/v3/<API_KEY>; review the https://docs.infura.io/networks/starknet/how-to/choose-a-network[Infura documentation] for more information.
+. Set up you own node and use the RPC provider of your node. Check out https://www.kasar.io/[Kasar] or the https://book.starknet.io/chapter_4/node.html[Chapter 4] of the Starknet Book to learn how to set up your own node.
 
-. *Replace the incompatible binary in the Python package.* The locally built 'starknet-sierra-compile' binary can be moved into the Python package directory. Here's an example of how to do this:
+Here's the structure for the declaration command using the Starknet Sequencer's Gateway:
 
 [source,bash]
 ----
-cp ~/.cairo/target/release/starknet-sierra-compile /opt/homebrew/lib/python3.9/site-packages/starkware/starknet/compiler/v1/bin/starknet-sierra-compile
+starkli declare target/dev/contracts_Ownable.sierra.json --network=goerli-1 --compiler-version=2.0.1
 ----
 
-. *Retry the contract declaration.* After replacing the binary, try declaring your contract again. The process should work without any issues.
+The network flag is used to specify the network you want to use, it could also be "mainnet" for example. The compiler-version flag is used to specify the version of the compiler you want to use. Starkli is currently running on version 2.0.1 of the compiler. You can know the compiler version supported by Starkli by running:
 
-This section is by no means exhaustive, and it is possible to encounter a multitude of different issues during the contract declaration process. When facing issues, remember to check for any updates or changes in the documentation and don't hesitate to add an issue on the starknet book repository.
-
-== Deploy a contract
-
-Using the above generated class hash, deploy the contract:
-
-[source, bash]
+[source,bash]
 ----
-starknet deploy --class_hash 0x8ceb9796d2809438d1e992b8ac17cfe83d0cf5944dbad948a370e0b5d5924f --account account_name
+starkli declare --help 
 ----
 
-[NOTE]
-====
-If you run into any fee related issues, please add the flag  `--max_fee 100000000000000000` to your CLI commands to set an arbitrary high gas limit for your deploy transaction.
-====
+In the --compiler-version flag you will see possible versions of the compiler: 
 
-You will see something like:
-
-[source, bash]
+[source,bash]
 ----
-Sending the transaction with max_fee: 0.000197 ETH (197273405375932 WEI).
-Invoke transaction for contract deployment was sent.
-Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d
-Transaction hash: 0x7895267b3e967e1c9c2f7da145e323bed60dfdd1b8ecc8efd243c9d587d579a
+--compiler-version <COMPILER_VERSION>
+          Statically-linked Sierra compiler version [possible values: 2.0.1]
 ----
 
-Monitor the deploy transaction. Once it has passed "PENDING", your contract has been successfully
-deployed!
+However, it could be that the Scarb compiler version is 2.0.2, you can know this by running:
 
-Wohooo! You have just deployed your first Cairo 1.0 contract on Starknet! Congratulations.
-
-== Interact with your contract
-
-If you quickly browse through the above contract (`hello_starknet.cairo`), you can see the
-contract has a simple function: `say_hello` which we are going to learn to trigger.
-
-[source, rust]
+[source,bash]
 ----
-#Function that we will be invoking
-#[external]
-fn say_hello(message:felt252) {
-    let caller=get_caller_address();
-    Hello(caller, message);
-}
+scarb --version
 ----
 
-The syntax to invoke a function in your contract is:
+This is because Starkli and Scarb are not always in sync. In this case you would need to use the compiler version that Starkli is using by installing a previous version of Scarb (check out the releases in the https://github.com/software-mansion/scarb/releases[Scarb github repo]). You can do this by running the following command for installing Scarb version 0.5.1:
 
-[source, bash]
+[source,bash]
 ----
-starknet invoke --function <name of the function> --address <address of the deployed contract> --account <account_name>
-
-# Invoking our say_hello function
-starknet invoke --function say_hello --address 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d --input 152  --account account_name
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.5.1
 ----
 
-You will see something like:
+If you get an error "Error: Invalid contract class", it means that you are using a version of Scarb that is not supported by Starkli. In this case, you need to install a previous version of Scarb as explained above.
 
-[source, bash]
+If you were using a provider like Infura or Alchemy, the declaration command would look like this:
+
+[source,bash]
 ----
-Sending the transaction with max_fee: 0.000080 ETH (79590795788372 WEI).
-Invoke transaction was sent.
-Contract address: 0x03a5cac216edec20350e1fd8369536fadebb20b83bfceb0c33aab0175574d35d
-Transaction hash: 0xbfb3ec183b4ee58db67113cf8832c31e78fe8000f091cc598d5aa9ca6a62af
+starkli declare target/dev/contracts_Ownable.sierra.json \
+    --rpc=https://starknet-goerli.infura.io/v3/<API_KEY> \ 
+    --compiler-version=2.0.1
 ----
+
+The result of the declaration command is a contract class hash (Class hash declared:
+0x00e68b4b07aeecc72f768b1c086d9b0aadce131a40a1067ffb92d0b480cf325d). This hash is the identifier of the contract class in Starknet. You can think of it as the address of the contract class. You can use a block explorer like https://testnet.starkscan.co/class/0x00e68b4b07aeecc72f768b1c086d9b0aadce131a40a1067ffb92d0b480cf325d[StarkScan] to see the contract class hash in the blockchain.
+
+If the contract you are declaring has previously been declared by someone else, you will get an output like this:
+
+[source,bash]
+----
+Not declaring class as its already declared. Class hash:
+0x00e68b4b07aeecc72f768b1c086d9b0aadce131a40a1067ffb92d0b480cf325d
+----
+
+== Deploying Smart Contracts in Starknet
+
+Deploying a smart contract involves instantiating it on the Starknet testnet. The deployment command requires the class hash of the smart contract and any arguments expected by the constructor. For our example, the constructor expects an address to assign as the owner:
+
+[source,bash]
+----
+starkli deploy \
+    <CLASS_HASH> \
+    <CONSTRUCTOR_INPUTS> \
+    --network=goerli-1
+----
+
+With the class hash and constructor inputs, the command looks like this:
+
+[source,bash]
+----
+starkli deploy \
+    0x00e68b4b07aeecc72f768b1c086d9b0aadce131a40a1067ffb92d0b480cf325d \
+    0x02cdAb749380950e7a7c0deFf5ea8eDD716fEb3a2952aDd4E5659655077B8510 \
+    --network=goerli-1
+----
+
+After running the command and adding your password, you will see something like:
+
+[source,bash]
+----
+Deploying class 0x00e68b4b07aeecc72f768b1c086d9b0aadce131a40a1067ffb92d0b480cf325d with salt 0x04bc3fc2284c8e41fb3d2a37bb0354fd0506131cc77a8c91e4e67ce3aed1d19e...
+The contract will be deployed at address 0x014825acb37c36563d3b96c450afe363d2fdfa3cfbd618b323f95b68b55ebf7e
+Contract deployment transaction: 0x0086972e7463d5673d8b553ae521ec2df974a97c2ce6aafc1d1c20d22c6b96c6
+Contract deployed:
+0x014825acb37c36563d3b96c450afe363d2fdfa3cfbd618b323f95b68b55ebf7e
+----
+
+== Interacting with the Starknet Contract
+
+Starkli enables interaction with smart contracts via two primary methods: 'call' for read-only functions and 'invoke' for write functions that modify the state.
+
+=== Calling a Function
+
+The call command allows querying a smart contract function without sending a transaction. For our smart contract, we can use the get_owner function which doesn't expect any arguments and returns the address of the current owner:
+
+[source,bash]
+----
+starkli call \
+    0x014825acb37c36563d3b96c450afe363d2fdfa3cfbd618b323f95b68b55ebf7e \
+    get_owner
+    --network=goerli-1
+----
+
+As expected, it returns the address that we passed to the constructor during deployment:
+
+[source,bash]
+----
+[
+    "0x02cdab749380950e7a7c0deff5ea8edd716feb3a2952add4e5659655077b8510"
+]
+----
+
+=== Invoking a Function
+
+To modify the state of the smart contract, we use the invoke command. Unlike the call command, invoke requires additional flags because we need to pay gas fees to execute the transaction:
+
+In this example, we'll invoke the transfer_ownership function to transfer the ownership from our deployer address to a different smart wallet address:
+
+[source,bash]
+----
+starkli invoke \
+    0x014825acb37c36563d3b96c450afe363d2fdfa3cfbd618b323f95b68b55ebf7e \
+    transfer_ownership \
+    0x011088d3cbe4289bc6750ee3a9cf35e52f4fa4e0ac9f42fb0b62e983139e135a \
+    --network=goerli-1
+----
+
+After the transaction is accepted on L2 (you can use a block explorer like StarkScan or Voyager, and the transaction hash returned by the starkli invoke command to know the status of your transaction), we can confirm the state transition by calling the get_owner function again:
+
+[source,bash]
+----
+starkli call \
+    0x014825acb37c36563d3b96c450afe363d2fdfa3cfbd618b323f95b68b55ebf7e \
+    get_owner \
+    --network=goerli-1
+----
+
+The get_owner function now returns the new owner address, confirming the successful ownership transfer. 
+
+Congratulations! You have successfully deployed and interacted with a Starknet contract. Go to the Chapter 2 of the Starknet Book to learn more about Starknet and Cairo.
+
 
 [NOTE]
 ====
