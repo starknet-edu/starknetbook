@@ -1,4 +1,4 @@
-= Deploying and Interacting with Starknet contracts
+= Your First Starknet Smart Contract
 
 In this chapter, you will learn to compile, deploy and interact with a Starknet contract written in Cairo.
 
