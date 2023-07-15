@@ -7,4 +7,6 @@
         *** xref:first_contract.adoc[First Starknet Contract]
     ** xref:roadmap.adoc[Roadmap]
     ** xref:compatibility.adoc[Versioning]
+    ** Community
+        *** xref:community_funds.adoc[Community Development Funds]
         

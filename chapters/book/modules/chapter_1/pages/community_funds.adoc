@@ -1,0 +1,53 @@
+= Starknet Community Development Funds: Guidelines & Rules
+
+Rooted in developer-centric principles, Starknet champions high performance, innovation, creativity, and a strong community spirit. As we transition to the Starknet Foundation, we continue to place great importance on shared knowledge, collective problem-solving, and the irreplaceable value of our community members, especially those driving growth and unity initiatives.
+
+Starknet is dedicated to bolstering community strength, unity, and outreach. As such, we provide financial support to communities working actively towards this shared goal. The funds should ideally be employed in the following areas:
+
+. Organization and execution of inclusive community events such as meetups, hackathons, seminars, and workshops, ensuring active participation of all, particularly developers and organizers.
+. Provision of grants to community members undertaking projects that align with our philosophy and contribute to our broader objectives.
+. Allocation of member education and training resources via online tutorials, webinars, mentorship programs, and more.
+. Enhancement and upkeep of open, inclusive communication channels, such as Telegram groups, Discord servers and community forums.
+.P romotion of community engagement via incentivized activities like idea contests, art contests, and problem-solving challenges.
+. In addition, we are open to other creative initiatives that align with our philosophy and goals. Starknet recognizes that all community members are potential contributors to our mission, and we discourage any attempts to deter participation or collaboration.
+
+== Community Ethics and Code of Conduct:
+
+To ensure a respectful, inclusive, and safe community, all members must adhere to the following:
+
+. Abstinence from any form of disrespect, including but not limited to hate speech, racism, misogyny, gender-based hatred, ageism, religion, sexual orientation and ableism and ad hominem attacks.
+. Avoidance of the promotion or endorsement of violent behavior or harmful actions.
+. Prevention of favoritism and self-dealing, such as bribery or corruption.
+. Maintenance of honesty, integrity, and accountability in all interactions.
+. Promotion of a positive and respectful communication culture.
+. Respect for diversity and inclusivity.
+. Violations of this code may result in fund termination and potential exclusion from future opportunities.
+
+== Social Media Promotion Guidelines:
+
+While promoting under the Starknet brand, the community is expected to respect the following:
+
+. Avoid disparaging or negative comments about other projects.
+. Refrainment from excessive sales promotion; occasional retweets are acceptable.
+. Prohibition of bot usage for promotional purposes.
+
+== Discouraged Use of the Funds:
+
+The funds must not be used for:
+
+. Direct investment into community leaders' own products or businesses.
+. Personal enrichment or non-community related expenses.
+. Activities potentially harmful to the community's reputation or in violation of legal norms.
+
+== Transparency and Accountability:
+
+Communities are expected to maintain accessible, clear, and thorough records of all fund usage.
+
+== Non-compliance:
+
+Non-compliance with these guidelines may result in fund termination and possible exclusion from future funding opportunities.
+
+== Revision and Updates:
+
+The funds aim to help grow and strengthen the community. Adherence to these guidelines ensures effective and beneficial use of these funds for all community members.
+We appreciate your cooperation and commitment to creating a vibrant, engaging, and supportive Starknet community. Together, we can construct a future unfettered by creative and innovative bounds.
