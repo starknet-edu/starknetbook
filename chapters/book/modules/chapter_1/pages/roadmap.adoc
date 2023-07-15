@@ -12,8 +12,8 @@ This is a general overview of the Starknet roadmap. For more details, please ref
 
 The core focus of Starknet's immediate future developments is enhancing performance, with a major emphasis on boosting throughput and decreasing latency.
 
-* The upcoming Starknet v0.12.0, planned for release soon, will incorporate substantial throughput and latency improvements, primarily attributed to transitioning to a Rust-based Sequencer and the new Rust-Cairo Virtual Machine (VM).
-* This transition is expected to dramatically reduce block execution time, thereby significantly increasing the throughput of transactions.
+* Starknet v0.12.0, incorporated substantial throughput and latency improvements, primarily attributed to transitioning to a Rust-based Sequencer and the new Rust-Cairo Virtual Machine (VM).
+* The transition reduced block execution time, thereby significantly increasing the throughput of transactions.
 
 As Starknet continues to grow and evolve, throughput and latency will remain top priorities as the network strives to offer an increasingly performant platform for developers to build upon.
 
