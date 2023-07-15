@@ -7,7 +7,7 @@ This chapter will guide you through the process of setting up your Starknet deve
 We need to install tools that allow us to interact with Starknet and compile Cairo code. The following tools are suggested:
 
 . https://github.com/xJonathanLEI/starkli[Starkli] is a command-line interface that allows you to interact with Starknet. This is one of the tools that allow us to interact with Starknet, however, it is not the only one. We will cover other tools in the Chapter 3 (e.g., the Starknet JavaScript/Python/Rust SDK, Hardhat, or Protostar).
-. https://github.com/software-mansion/scarb[Scarb] is the package manager for Cairo. Among other things, it allows us to compile Cairo code to Sierra, the intermediate language that is deployed to Starknet.
+. https://github.com/software-mansion/scarb[Scarb] is the package manager for Cairo. Among other things, it allows us to compile Cairo code to Sierra, the intermediate language between high-level Cairo and the low-level Cairo Assembly (CASM).
 
 [NOTE]
 ====
