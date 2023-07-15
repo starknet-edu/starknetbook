@@ -2,7 +2,7 @@
     ** Why Starknet?
         *** xref:compute_costs.adoc[Costs]
         *** xref:data_security.adoc[Data Security]
-    ** Your Starknet Smart Contract
+    ** Your First Starknet Smart Contract
         *** xref:environment_setup.adoc[Setup]
         *** xref:first_contract.adoc[First Starknet Contract]
     ** xref:roadmap.adoc[Roadmap]
