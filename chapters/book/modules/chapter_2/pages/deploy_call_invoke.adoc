@@ -94,7 +94,7 @@ The contract has been deployed at address: 0x0447025aad44c69080e821ffef78f03b520
 
 == Voter Eligibility Verification
 
-In our voting contract, we have two functions to validate voter eligibility, `voter_can_vote` and `is_voter_registered`. These are read external functions, which mean they don't alter the state of the contract but only read the current state.
+In our voting contract, we have two functions to validate voter eligibility, `voter_can_vote` and `is_voter_registered`. These are read external functions, which means they don't alter the state of the contract but only read the current state.
 
 The `is_voter_registered` function checks whether a particular address is registered as an eligible voter in the contract. The `voter_can_vote` function, on the other hand, checks whether the voter at a specific address is currently eligible to vote, i.e., they are registered and haven't voted already.
 
