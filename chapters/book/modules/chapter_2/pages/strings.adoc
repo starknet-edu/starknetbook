@@ -31,7 +31,7 @@ Currently, when coding with Cairo we need to constantly be converting between fe
 
 image::starkutils.png[starkutils]
 
-This is a tedious process, which the Cairo community is improving in the near the future.
+This is a tedious process, which the Cairo community is improving in the near future.
 
 == Summary
 
