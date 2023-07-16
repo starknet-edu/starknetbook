@@ -7,61 +7,102 @@ In this chapter, we'll explore how to interact with deployed Starknet contracts 
 * Calling contracts: Interacting with contract functions marked with the `#[view]` entry point. These functions do not alter the state of the network, so they don't require fees or signing. This is similar to a `call` in the Ethereum API.
 * Invoking contracts: Interacting with contract functions marked with the `#[external]` entry point. These functions do alter the state of the network and require fees and signing. This is similar to a `deploy` in the Ethereum API.
 
-== Deploying Account Contracts for Voters
+== Preparing Smart Wallets for Voting
 
-Before interacting with the voting contract, we need to ensure that voter accounts are deployed as account contracts on Starknet. Each voter account must be registered and funded to participate in the voting process. This process is required since we are using Account Abstraction (more in this later in the book).
+Before we can interact with the voting contract, we need to prepare the voter and admin accounts on Starknet. Each voter account must be registered and sufficiently funded for voting. For a more detailed understanding of how accounts operate with Account Abstraction, refer to the https://book.starknet.io/chapter_5/index.html[Account Abstraction] chapter.
 
-To deploy an account contract for a voter, follow these steps:
+Ensure your https://book.starknet.io/chapter_1/environment_setup.html[environment] is ready as detailed in Chapter 1.
 
-1) Create a new account with a name, for example, "voter_1":
-[source,bash]
-----
-starknet new_account --account voter_1
-----
+As mentioned in the https://book.starknet.io/chapter_1/first_contract.html[first Starknet smart contract of Chapter 1], for each smart wallet we'll use, we must create a Signer within the encrypted keystore and an Account Descriptor. Let's create a smart wallet for voting in our smart contract.
 
-2) Fund the newly created account (this can be done using a https://faucet.goerli.starknet.io/[faucet] or transferring funds from another account). Wait for the transaction to be confirmed in L2. You can check the status of the transaction by copying the transaction hash into a block explorer such as https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]; the transaction should be confirmed in a few minutes.
-
-3) Deploy the account contract:
-[source,bash]
-----
-starknet deploy_account --account voter_1
-----
-
-Repeat these steps for each voter account you want to register in the voting contract.
-
-Once we have deployed account contracts for all the voters, we can proceed with deploying and interacting with the voting contract.
-
-
-== Deploying the Voting Contract
-
-Before deploying you need to declare the contract. However, note that the contract has already been declared (Class Hash: 0x748762322d0ee8ee30e924ba68b0633ea704fa419e86a51bc1d75be4a115ca5) so you can skip this step. If you try to declare a contract that has been declared before you will receive an error, however, here is how you declare it:
+Firstly, we create a signer from a private key:
 
 [source,bash]
 ----
-❯ starknet declare --contract target/dev/scarb_project_Vote.sierra.json --account <deployer-account>
+starkli signer keystore from-key ~/.starkli-wallets/deployer/account0_keystore.json
 ----
 
-Wait for the transaction to be confirmed in L2. You can check the status of the transaction by copying the transaction hash into a block explorer such as https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]; the transaction should be confirmed in a few minutes at most.
-
-Here's the command to deploy the voting contract, which will register voter_1, voter_2, and voter_3 as eligible voters. Note these are arguments that the constructor takes. Add as a voter an account that you have access to so you can vote with it later.
+Then, we create the Account Descriptor:
 
 [source,bash]
 ----
-starknet deploy --class_hash 0x748762322d0ee8ee30e924ba68b0633ea704fa419e86a51bc1d75be4a115ca5 --inputs <voter_1_address> <voter_2_address> <voter_3_address> --account <deployer-account> --max_fee 100000000000000000
+touch ~/.starkli-wallets/deployer/account0_account.json
 ----
 
-The contract that we would be interacting has been deployed at address: *0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9*. You can find it https://testnet.starkscan.co/contract/0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9[here] on Starkscan.
-
-
-== Verifying Voter Eligibility
-
-Let's confirm that the registered voters are eligible to vote. We can use the `voter_can_vote` and `is_voter_registered` functions to do this. Since both functions are view functions, we can utilize the `starknet call` syntax to interact with them.
-
-To check if a registered voter can vote, use the following command:
+The Account Descriptor will look something like this:
 
 [source,bash]
 ----
-starknet call --function voter_can_vote --inputs <voter_1_address> --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --account <deployer-account> 
+{
+  "version": 1,
+  "variant": {
+        "type": "open_zeppelin",
+        "version": 1,
+        "public_key": "<SMART_WALLET_PUBLIC_KEY>"
+  },
+    "deployment": {
+        "status": "deployed",
+        "class_hash": "<SMART_WALLET_CLASS_HASH>",
+        "address": "<SMART_WALLET_ADDRESS>"
+  }
+}
+----
+
+You can retrieve the smart wallet class hash with:
+
+[source,bash]
+----
+starkli class-hash-at <SMART_WALLET_ADDRESS>
+----
+
+Define environmental variables for convenience:
+
+[source,bash]
+----
+export STARKNET_ACCOUNT=~/.starkli-wallets/deployer/account0_account.json
+export STARKNET_KEYSTORE=~/.starkli-wallets/deployer/account0_keystore.json
+----
+
+This process is identical for account1 in case you want to have a second voter.
+
+== Contract Deployment
+
+Before deploying, we need to declare the contract. However, if the contract is already declared (Class Hash: 0x06974677a079b7edfadcd70aa4d12aac0263a4cda379009fca125e0ab1a9ba52), you can skip this step. If you attempt to declare a previously declared contract, you'll receive a warning. But, for reference, here is the declaration command:
+
+[source,bash]
+----
+starkli declare target/dev/starknetbook_chapter_2_Vote.sierra --compiler-version=2.0.1
+----
+
+Wait for L2 confirmation of the transaction. You can check the status of the transaction on a block explorer such as https://testnet.starkscan.co/[Starkscan] or https://goerli.voyager.online/[Voyager]. The confirmation typically takes a few seconds.
+
+The following command deploys the voting contract and registers voter_0, voter_1, and voter_2 as eligible voters. These are the constructor arguments, so add a voter account that you can later vote with.
+
+[source,bash]
+----
+starknet deploy 0x06974677a079b7edfadcd70aa4d12aac0263a4cda379009fca125e0ab1a9ba52 <voter_0_address> <voter_1_address> <voter_2_address>
+----
+
+An example command:
+
+[source,bash]
+----
+starkli deploy 0x06974677a079b7edfadcd70aa4d12aac0263a4cda379009fca125e0ab1a9ba52 0x06dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821 0x02cdAb749380950e7a7c0deFf5ea8eDD716fEb3a2952aDd4E5659655077B8510 0x053fd3749380950e7a7c0deFf5ea8eDD716fEb3a2952aDd4E5659655077B8321
+----
+
+The contract has been deployed at address: 0x0447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf. You can find it https://goerli.voyager.online/contract/0x0447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf[on any block explorer].
+
+== Voter Eligibility Verification
+
+In our voting contract, we have two functions to validate voter eligibility, `voter_can_vote` and `is_voter_registered`. These are read external functions, which mean they don't alter the state of the contract but only read the current state.
+
+The `is_voter_registered` function checks whether a particular address is registered as an eligible voter in the contract. The `voter_can_vote` function, on the other hand, checks whether the voter at a specific address is currently eligible to vote, i.e., they are registered and haven't voted already.
+
+You can call these functions using the `starkli call` command:
+
+[source,bash]
+----
+starkli call 0x0447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf voter_can_vote 0x06dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821
 ----
 
 Since we provided a registered voter address as an input, the result is 1 (boolean true), indicating the voter is eligible to vote.
@@ -70,39 +111,35 @@ Next, let's call the `is_voter_registered` function using an unregistered accoun
 
 [source, bash]
 ----
-starknet call --function is_voter_registered --inputs <not_registered_address> --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --account <deployer-account> 
+starkli call 0x0447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf is_voter_registered 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9
 ----
 
 With an unregistered account address, the terminal output is 0 (i.e., false), confirming that the account is not eligible to vote.
 
-====
-FUN ASSIGNMENT: Before proceeding to vote, ensure that all three voter accounts are registered and eligible to vote!
-====
+== Casting a Vote
 
-== Voting
+Now that we have established how to verify voter eligibility, we can vote! To vote, we interact with the `vote` function, which is flagged as external, necessitating the use of the `starknet invoke` command.
 
-With voter eligibility confirmed, we can now proceed to cast votes using the `vote` function. This function is marked as external, so we'll use the `starknet invoke` command to interact with it. This process is comparable to using `send` in the Ethereum API when interacting with a contract function that modifies the contract state.
-
-The syntax for `invoke` is similar to `call`, but in this case, we'll provide the input as either 1 (Yes) or 0 (No) to represent our vote.
+The `invoke` command syntax resembles the `call` command, but for voting, we submit either 1 (for Yes) or 0 (for No) as our input.
 
 [source,bash]
 ----
 //Voting Yes
-starknet invoke --function vote --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --inputs 1 --account voter_2
+starkli invoke 0x0447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf vote 1
 
 //Voting No
-starknet invoke --function vote --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --inputs 0 --account voter_3
+starkli invoke 0x0447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf vote 0
 ----
 
-Don't forget to cast a vote with the voter_1 account before moving on to the next step. 
+Remember to cast your vote from the `voter_1` account to proceed to the subsequent step.
 
-== Viewing Vote Results
+== Visualizing Vote Outcomes
 
-To view the results, we can call the `get_vote_results` function, which is a view function. We'll use the `starknet call` command.
+To examine the voting results, we invoke the `get_vote_results` function, another view function, through the `starknet call` command.
 
 [source,bash]
 ----
-starknet call --function get_vote_status --address 0x027f4989d3cbf1654bc95f3e0083bb4542634c7cc8c7c406f17a4335fa5860a9 --account <deployer-account> 
+starkli call 0x0447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf get_vote_status
 
 //Example output if one voted Yes
 1 0 100 0
@@ -111,9 +148,19 @@ starknet call --function get_vote_status --address 0x027f4989d3cbf1654bc95f3e008
 2 1 66 33
 ----
 
-The output will display the number of "Yes" votes, the number of "No" votes, and their respective percentages.
+The output reveals the tally of "Yes" and "No" votes along with their relative percentages.
 
-Congratulations! You've successfully deployed and interacted with a voting smart contract on Starknet!
+Recall that we implemented a safeguard against duplicate votes. Attempt voting with a smart wallet that has already been used for voting, and you'll be met with an error:
+
+[source,bash]
+----
+Error in the called contract (0x447025aad44c69080e821ffef78f03b520393acf20179a7acc23b4c696494bf):
+Execution was reverted; failure reason: [0x555345525f414c52454144595f564f544544]. (TransactionFailed)
+----
+
+The string `0x555345525f414c52454144595f564f544544` is a felt252 value in Cairo, which translates to a short string. Using a tool such as the https://www.stark-utils.xyz/converter[Stark Utils] converter, we find that it corresponds to "USER_ALREADY_VOTED".
+
+Bravo! You have now successfully deployed and interacted with a StarkNet voting smart contract!
 
 [NOTE]
 ====
