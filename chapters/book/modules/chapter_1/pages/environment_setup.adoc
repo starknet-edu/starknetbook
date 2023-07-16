@@ -43,6 +43,8 @@ To upgrade to the latest version of Starkli simply follow the past steps again.
 
 == The Scarb Package Manager Installation
 
+In this section we go into the fundamentals of Scarb, if you want to get deeper refer to the https://book.starknet.io/chapter_2/scarb.html[Scarb subchapter in Chapter 2].
+
 Scarb is compatible with macOS, Linux, and Windows operating systems. 
 
 For macOS and Linux users, open your terminal and execute the following command:
