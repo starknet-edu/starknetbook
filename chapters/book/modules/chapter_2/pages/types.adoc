@@ -26,7 +26,7 @@ A list of primitive types in Cairo (not all), along with a brief description of 
 | Array<T> | A dynamic array data structure for elements of type T, used for creating and manipulating arrays.
 |===
 
-Similar to Rust, Cairo also supports type inference so the compiler will try to guess the type of a variable based on how the value is used. Incases where its not possible for compiler to guess the type of a variable, explicit annotation must be added.
+Similar to Rust, Cairo also supports type inference so the compiler will try to guess the type of a variable based on how the value is used. In cases where it's not possible for compiler to guess the type of a variable, explicit annotation must be added.
 
 Here is an example of using types in Cairo:
 

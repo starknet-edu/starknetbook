@@ -2,7 +2,7 @@
 
 = Starknet Hardhat Plugin
 
-Hardhat is a popular JS development environment for Ethereum, and if you are already familiar with it and want to use it on Starknet, then this plugin will come in hand!
+Hardhat is a popular JS development environment for Ethereum, and if you are already familiar with it and want to use it on Starknet, then this plugin will come in handy!
 
 == Getting Started
 

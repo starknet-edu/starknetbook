@@ -292,7 +292,7 @@ image::sec_over_u128.png[u128]
 
 == 5. Private Data On-Chain.
 
-In some cases, a smart contracts may needs to store secret values that can't be revelead to users, however this is not possible
+In some cases, a smart contract may need to store secret values that can't be revealed to users, however this is not possible
 if you store data on chain because all stored data is public and can be retrieved even if you don't publish your code. In the next
 example, our smart contract will use a contructor parameter to set a password (12345678) and store it on chain:
 

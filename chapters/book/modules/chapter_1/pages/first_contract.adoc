@@ -15,11 +15,11 @@ starkli  --version # To interact with Starknet
 
 A smart wallet is composed of two parts: a Signer and an Account Descriptor. The signer is a smart contract that can sign transactions (we need its private key). The account descriptor is a json file that contains information about the smart wallet, such as its address and public key.
 
-First, create a smart wallet via the Braavos or Argent X browser extensions. Follow you wallet (Argent or Braavos) instructions. After creating and funding your smart wallet with ETH (use the https://faucet.goerli.starknet.io/[Starknet Goerli Faucet] whenever you require it), you can deploy it to the Starknet's testnet for this tutorial.
+First, create a smart wallet via the Braavos or Argent X browser extensions. Follow your wallet (Argent or Braavos) instructions. After creating and funding your smart wallet with ETH (use the https://faucet.goerli.starknet.io/[Starknet Goerli Faucet] whenever you require it), you can deploy it to the Starknet's testnet for this tutorial.
 
 === Creating a Signer
 
-A Signer is an smart contract that can sign transactions. It's a crucial component of accounts in Starknet. To create a Signer we just need the private key of our smart wallet (the public key can be derived from it).
+A Signer is a smart contract that can sign transactions. It's a crucial component of accounts in Starknet. To create a Signer we just need the private key of our smart wallet (the public key can be derived from it).
 
 Starkli provides us with the ability to create a "keystore" file that securely stores the private key of our smart wallets each with a password. The accounts in the keystore file can be used to sign transactions using Starkli. The main advantage of this approach is that it prevents storing the private key as plain text on our computer. Instead, we use a password to create an encrypted file in the location of our choosing.
 
@@ -142,7 +142,7 @@ With the smart contract compiled, we're ready to declare it using Starkli. Howev
 
 . The default an easiest option is to use Starknet Sequencer's Gateway. This is the option we will use in this tutorial and it is the default for Starkli. However, as you proceed with your Starknet journey, we recommend you to set up your own node or use a provider like Infura or Alchemy, because the Starknet Sequencer's Gateway could get saturated with requests and you may experience delays in your transactions.
 . Use a provider like Infura or Alchemy. You can find more information about this in the https://book.starknet.io/chapter_1/environment_setup.html[Setting up your Environment] subchapter. Set up an API key and as endpoint select Starknet's testnet/goerli. In the Infura case, the endpoint looks like this: https://starknet-goerli.infura.io/v3/<API_KEY>; review the https://docs.infura.io/networks/starknet/how-to/choose-a-network[Infura documentation] for more information.
-. Set up you own node and use the RPC provider of your node. Check out https://www.kasar.io/[Kasar] or the https://book.starknet.io/chapter_4/node.html[Chapter 4] of the Starknet Book to learn how to set up your own node.
+. Set up your own node and use the RPC provider of your node. Check out https://www.kasar.io/[Kasar] or the https://book.starknet.io/chapter_4/node.html[Chapter 4] of the Starknet Book to learn how to set up your own node.
 
 Here's the structure for the declaration command using the Starknet Sequencer's Gateway:
 

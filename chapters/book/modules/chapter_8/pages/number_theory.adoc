@@ -19,7 +19,7 @@ A system of arithmetic for integers where numbers "wrap around" when reaching a 
 
 image:modular.png[modular]
 
-A real-world example of modular arithmetic is time-keeping via a clock. When the hour of the day exceed the modulus(12) we "wrap" around and begin at zero.
+A real-world example of modular arithmetic is time-keeping via a clock. When the hour of the day exceeds the modulus(12) we "wrap" around and begin at zero.
 
 Example:
 
@@ -28,9 +28,9 @@ Example:
 python3 finite_fields/python/modular_arithmetic.py
 ----
 
-In other words, of an division we sometimes are more interested in the *remainder*. Here is where we use the operator named as *modulo operator* or simply *mod*. For example,  $13\bmod5 = 3$ because $\frac\{13}\{5}=2$ remainder $3$.
+In other words, of a division we sometimes are more interested in the *remainder*. Here is where we use the operator named as *modulo operator* or simply *mod*. For example,  $13\bmod5 = 3$ because $\frac\{13}\{5}=2$ remainder $3$.
 
-Let's go trough a couple examples:
+Let's go through a couple examples:
 
 * $-29\bmod3 = 1$
 
@@ -69,7 +69,7 @@ We need to make our finite field closed under arithmetic operations as addition,
 
 Now, for our finite field $F_3$, $1$ $+_f$ $2$ $=$ $(1+2) \bmod 3$ $=$ $0$. Also $2$ $⋅_f$ $2$ $=$ $(2⋅2) \bmod 3$ $=$ $1$. Now we have close operations for our finite field.
 
-What about substraction? It is the same. For a finite field $F_3$, $1$ $-_f$ $2$ $=$ $(1-2) \bmod 3$ $=$ $2$. We are basically performing modular arithmetic where the the modulo is the finite field's order. For multiplication the case is similar.
+What about substraction? It is the same. For a finite field $F_3$, $1$ $-_f$ $2$ $=$ $(1-2) \bmod 3$ $=$ $2$. We are basically performing modular arithmetic where the modulo is the finite field's order. For multiplication the case is similar.
 
 Addition, Multiplication, Exponentiation, and Substraction of fields are intuitive. However, Division of fields can be a bit challenging at the beginning. Let's begin with easy operations:
 
@@ -78,7 +78,7 @@ Addition, Multiplication, Exponentiation, and Substraction of fields are intuiti
 * For the finite field $F_3$, the operation $1$ $/_f$ $0$ $=$ $(1/0) \bmod 3$ can not be performed since we can not divide by 0.
 * For the finite field $F_3$, $8$ $/_f$ $5$ $=$ $(2/2) \bmod 3$ $=$ $1$. It makes sense since $2/2=1$.
 
-Until now eveything seems ok. However, what happens when, for the finite field $F_5$, we divide $8$ $/_f$ $4$ $=$ $(3/4) \bmod 5$? The result is not trivial.
+Until now everything seems ok. However, what happens when, for the finite field $F_5$, we divide $8$ $/_f$ $4$ $=$ $(3/4) \bmod 5$? The result is not trivial.
 
 == Congruences
 

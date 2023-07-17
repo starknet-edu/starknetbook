@@ -299,7 +299,7 @@ way we got latexmath:[G] a few minutes ago.
 
 [source,rust]
 ----
-// Fix the following, make sure that the the element of H are powers of its generator (let's call it h) in 
+// Fix the following, make sure that the element of H are powers of its generator (let's call it h) in 
 // order, that is - H[0] will be the unit (i.e 1), H[1] will be h (H's generator), H[2] will be H's
 // generator squared (h^2), etc.
 let h: FieldElement = todo!();
@@ -352,7 +352,7 @@ Success!
 == Evaluate on a Coset
 
 Time to use `+interpolate+` and `+eval+` to evaluate over the coset.
-Note that it is implemented fairely naively in our Rust module, so
+Note that it is implemented fairly naively in our Rust module, so
 interpolation may take some seconds. Indeed - interpolating and
 evaluating the trace polynomial is one of the most
 computationally-intensive steps in the STARK protocol, even when using

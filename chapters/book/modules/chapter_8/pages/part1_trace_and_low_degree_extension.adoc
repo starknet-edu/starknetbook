@@ -244,7 +244,7 @@ print('Success!')
 == Evaluate on a Coset
 
 Time to use `+interpolate_poly+` and `+Polynomial.poly+` to evaluate
-over the coset. Note that it is implemented fairely naively in our
+over the coset. Note that it is implemented fairly naively in our
 Python module, so interpolation may take up to a minute. Indeed -
 interpolating and evaluating the trace polynomial is one of the most
 computationally-intensive steps in the STARK protocol, even when using

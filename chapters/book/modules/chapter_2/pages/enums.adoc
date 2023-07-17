@@ -80,7 +80,7 @@ You can define traits and implement them for your custom enums, this allows you 
     }
 ----
 
-In the example above, we implemented the Processing traits for Message .Hers is ow it could be used to process a Quit message:
+In the example above, we implemented the Processing traits for Message. Here is how it could be used to process a Quit message:
 
 [source, bash]
 ----
@@ -107,7 +107,7 @@ mod Enum{
 use option::OptionTrait;
 
 // This function returns how much icecream there is left in the fridge.
-// If it is  before 10PM, there is 5 pieces left. At 10PM, someone eats them all, so there will be no more left. 
+// If it is before 10PM, there is 5 pieces left. At 10PM, someone eats them all, so there will be no more left. 
 
 fn maybe_icecream(time_of_day: u32) -> Option<u32> {
        if time_of_day < 22_u32 {

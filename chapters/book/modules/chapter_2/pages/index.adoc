@@ -37,7 +37,7 @@ In practice, there are two different technologies for proving general programs: 
 
 Cairo addresses these limitations and offers more efficient solutions:
 
-1. A low-level field data type called "felt252" is available, alongside a several types of uints
+1. A low-level field data type called "felt252" is available, alongside several types of uints
 2. Cairo is idiomatically write-once, resembling a functional programming language
 3. Cairo provides full low-level access to underlying primitives
 
