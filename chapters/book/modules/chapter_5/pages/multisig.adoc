@@ -47,7 +47,7 @@ mod MultisigAccount {
         curr_tx_index: felt252,
         //Mapping between tx_index and num of confirmations
         tx_confirms: LegacyMap<felt252, usize>,
-        //Mapping between tx_index and it's execution state
+        //Mapping between tx_index and its execution state
         tx_is_executed: LegacyMap<felt252, bool>,
         //Mapping between a transaction index and its hash
         transactions: LegacyMap<felt252, felt252>,
@@ -166,7 +166,7 @@ mod MultisigAccount {
     }
 
     //INTERNAL FUNCTION 
-    //Function to add the public keys of the multi sig in permanent storage
+    //Function to add the public keys of the multisig in permanent storage
     fn _set_owners(owners_len: usize, public_keys: Array::<felt252>) {
         if owners_len == 0_usize {
         }
@@ -245,7 +245,7 @@ This is an internal function designed to add the public keys of the account owne
 [,Rust]
 ----
 //INTERNAL FUNCTION 
-//Function to add the public keys of the multi sig in permanent storage
+//Function to add the public keys of the multisig in permanent storage
 fn _set_owners(owners_len: usize, public_keys: Array::<felt252>) {
     if owners_len == 0_usize {
     }
