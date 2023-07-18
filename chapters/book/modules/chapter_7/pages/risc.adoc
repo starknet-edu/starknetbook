@@ -1,6 +1,6 @@
 [id="risc"]
 
-= The Cairo Intruction Set (Algebraic RISC)
+= The Cairo Instruction Set (Algebraic RISC)
 
 Here is a nice mental model by https://twitter.com/liamzebedee/status/1516298353080152064[@liamzebedee] to think about Cairo:
 
