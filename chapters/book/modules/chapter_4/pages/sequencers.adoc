@@ -32,12 +32,6 @@ link:https://medium.com/starkware/papyrus-an-open-source-starknet-full-node-396f
 
 Optimistic concurrency implementation also contributes to sequencer performance improvements by executing transactions in parallel, checking for conflicts in touched storage cells, and invalidating subsequent transactions when necessary.
 
-== Future Developments
-
-As Starknet evolves, sequencer development will progress, focusing on enhancing capabilities and ensuring seamless integration with the network. Developers will work on new features, such as fee mechanisms, to be implemented in upcoming releases like Memphis.
-
-Continuous improvement and optimization of sequencers are vital for the sustained growth of Starknet. The transition to Rust-based sequencers and ongoing efforts to enhance their performance will undoubtedly contribute
-
 == Conclusion
 
 Sequencers play a pivotal role in the Starknet ecosystem by managing transaction ordering and execution. As the network continues to evolve, enhancing sequencer performance through optimizations and transitions to more efficient languages like Rust is essential to ensure scalability, security, and throughput. The ongoing development and improvement of sequencers will support the growth of the Starknet network and empower developers and users to harness the full potential of this innovative Layer-2 solution.
