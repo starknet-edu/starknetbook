@@ -28,7 +28,7 @@ https://etherscan.io/tx/0xde0bcb45698e8ef67fef8bff8615715dac0cf0882a131a21273e58
 
     - `call` CpuFrilessVerifier.verifyProofExternal(), code https://github.com/starkware-libs/starkex-contracts/blob/aecf37f2278b2df233edd13b686d0aa9462ada02/evm-verifier/solidity/contracts/cpu/CpuVerifier.sol#L54[here] that leads to the https://github.com/starkware-libs/starkex-contracts/blob/aecf37f2278b2df233edd13b686d0aa9462ada02/evm-verifier/solidity/contracts/StarkVerifier.sol#L500[StarkVerifier] contract. 
     
-    - Then that makes a `staticcall` to MemoryPageFactRegistry.isValid() with argument is the factHash mentioned above, and get the respond true
+    - Then that makes a `staticcall` to MemoryPageFactRegistry.isValid() with argument is the factHash mentioned above, and gets the response true
 
     - You can check by yourself by querying the `isValid` function on MemoryPageFactRegistry contract with input `0x72C8D723081B60693B32D77A369782FF189754A5897002314FB1569B7E2EE1E2` to have `true` as output.
 
@@ -39,7 +39,7 @@ The example above shows the example of verifying/registering proof on Ethereum a
 
 In general, SHARP takes the Cairo program’s execution trace, proves that it’s valid, and sends this proof to the Verifier contract on Ethereum. After verifying the proof, the on-chain verifier takes an important extra step: it writes a fact attesting to the validity of the proof in the Fact Registry. This fact is like a trustless stamp of approval, certifying that the Cairo program was computed correctly. Now all that is left for the dApp’s smart contract is to check that this fact exists, in order to rely on the computation that was executed off-chain.
 
-Here is the overall diagram of the how each component interacts with each other in the Starknet architecture.
+Here is the overall diagram of how each component interacts with each other in the Starknet architecture.
 
 image::starknet_architecture.png[starknet architecture]
 
