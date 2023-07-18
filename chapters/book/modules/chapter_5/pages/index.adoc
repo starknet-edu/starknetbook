@@ -77,7 +77,7 @@ As the crypto ecosystem matures and attracts a broader user base, it faces pivot
 
 Without AA, Ethereum's ability to provide a seamless, empowering, and secure experience for its users is hampered. This could lead to users abandoning the platform for centralized exchanges and wallets, a trend that would undermine the very ethos of decentralization that cryptocurrency and blockchain technology espouse.
 
-There are several compelling reasons why Ethereum, and the larger crypto ecosystem, needs Account Abstraction:
+There are several compelling reasons why Ethereum, and the larger crypto ecosystem, need Account Abstraction:
 
 * *Risk of Centralization:* The inefficiencies and limitations of the current account model may push users towards centralized exchanges and wallets. These entities defy the principles of decentralization, presenting familiar risks such as censorship, discrimination, and potential abuse of power. Account Abstraction, by enabling easier and more secure account management, can help uphold the principles of decentralization.
 
