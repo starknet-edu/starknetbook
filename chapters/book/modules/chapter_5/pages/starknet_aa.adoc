@@ -10,7 +10,7 @@ Although account contracts are nothing more than smart contracts, they have meth
 
 * `constructor`: This optional method initializes the account contract. While an account contract can exist without a constructor, it is common practice to establish the associated public key within the constructor.
 * `validate_transaction`: An optional helper method, `validate_transaction`, checks the validity of a transaction. This could involve comparing a signature against an associated public key, or any other validation process as defined by the contract creator.
-* `__validate_deploy__`: This method is invoked during the deployment process and serves to validate the deployment of a new contract.
+* `__validate_deploy__`: This method is invoked when deploying **this** account contract using counterfactual deployment. It validates the deployment.
 * `__validate_declare__`: This method validates the declaration of a new contract. It confirms the syntax and semantics of the contract declaration are correct.
 * `__validate__`: This method validates transactions before they are executed. It ensures that the transaction adheres to the rules defined in the contract.
 * `__execute__`: After the transactions have been validated, `__execute__` is the method that executes a series of contract calls.
