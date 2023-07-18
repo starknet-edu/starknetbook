@@ -95,7 +95,7 @@ Lets make sure that everything that should be listening is listening:
 
 [source,bash]
 ----
-# should see all ports in commanad output
+# should see all ports in command output
 
 # besu ports
 sudo netstat -lpnut | grep -E '30303|8551|8545'
@@ -105,7 +105,7 @@ sudo netstat -lpnut | grep -E '5054|9000'
 [source,bash]
 ----
 
-We’ve used docker to abscract a lot of the nuance of running a Eth L1 node, but the important things to note are how the two processes EL/CL point to each other and communicate via JSON-RPC:
+We’ve used docker to abstract a lot of the nuance of running an Eth L1 node, but the important things to note are how the two processes EL/CL point to each other and communicate via JSON-RPC:
 
 [source,bash]
 ----
@@ -217,7 +217,7 @@ We see the same need for data refinement as we did in the OSI model. On L1 packe
 
 This is the role of an indexer. To process and filter useful information for an application. Information that an application MUST be opinionated about and the underlying layer MUST NOT be opinionated about.
 
-Indexers provide applications flexibility as they can be written in any programming language and have any data layout that suites the application.
+Indexers provide applications flexibility as they can be written in any programming language and have any data layout that suits the application.
 
 To start our toy https://github.com/starknet-edu/starknet-stack/blob/main/indexer/indexer.sh[indexer] run:
 
