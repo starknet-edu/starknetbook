@@ -14,7 +14,7 @@ The greatest asset of ZK rollups is their ability to delegate some of the networ
 
 For networks like Starknet and other platforms utilizing ZK rollups, a similar parallel is drawn. These networks outsource transaction processing to specialized entities and then verify their work. These specialized entities in the context of ZK rollups are known as "sequencers."
 
-Instead of providing security, as miners do, sequencers provide transaction capacity. They aggregate multiple transactions into a single batch, process them, and produce a block that will later be proved by the Prover and submited to the Layer 1 network as a single, compact proof, known as a "rollup." In other words, just as validators in Ethereum and miners in Bitcoin are specialized actors securing the network, sequencers in ZK rollup-based networks are specialized actors that provide transaction capacity.
+Instead of providing security, as miners do, sequencers provide transaction capacity. They aggregate multiple transactions into a single batch, process them, and produce a block that will later be proved by the Prover and submmited to the Layer 1 network as a single, compact proof, known as a "rollup." In other words, just as validators in Ethereum and miners in Bitcoin are specialized actors securing the network, sequencers in ZK rollup-based networks are specialized actors that provide transaction capacity.
 
 This mechanism allows Validity (or ZK) rollups to handle a higher volume of transactions while maintaining the security of the underlying Ethereum network. It enhances scalability without compromising on security.
 
