@@ -46,7 +46,7 @@ Let's go over a concrete example first. For example, imagine the following trace
 
 The proof will be closed and sent to L1 when any of these components becomes full. It's important to realize that the division to builtins must be predetermined! We can't decide on the fly to have proof with 20,000,001 Pedersen and nothing else.
 
-Suppose, for example, that a transaction uses 10,000 Cairo steps and 500 Pedersen hashes. We can squeeze at most 40,000 such transactions into our hypothetical trace (20,000,000/500). Therefore, its gas price will be correlated with 1/40,000 the cost of submitting proof. Notice we completely ignored the number of Cairo steps this transaction performance estimation, as it is not the limiting factor (since 500,000,000/10,000 > 20,000,000/500). With this example in mind, we can now formulate the exact fee associated with L2 computation.
+Suppose, for example, that a transaction uses 10,000 Cairo steps and 500 Pedersen hashes. We can squeeze at most 40,000 such transactions into our hypothetical trace (20,000,000/500). Therefore, its gas price will be correlated with 1/40,000 the cost of submitting proof. Notice we completely ignored the number of Cairo steps in this transaction performance estimation, as it is not the limiting factor (since 500,000,000/10,000 > 20,000,000/500). With this example in mind, we can now formulate the exact fee associated with L2 computation.
 
 ==== General Case
 
@@ -138,7 +138,7 @@ Consequently, the fee associated with a single l2→l1 message is:
 
 ==== Deployed Contracts
 
-When a transactions which raises the `deploy` syscall is included in a state update, the following xref:../Data_Availability/on-chain-data.adoc#format[data] reaches L1:
+When a transaction which raises the `deploy` syscall is included in a state update, the following xref:../Data_Availability/on-chain-data.adoc#format[data] reaches L1:
 
 * contract address
 * class hash
