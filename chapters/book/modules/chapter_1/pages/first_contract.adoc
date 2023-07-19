@@ -52,7 +52,7 @@ Starkli offers a command to collect all the required information from a smart wa
 
 [source,shell]
 ----
-starkli account fetch -- help
+starkli account fetch --help
 Fetch account config from an already deployed account contract
 ----
 
