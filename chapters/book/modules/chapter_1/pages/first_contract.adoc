@@ -27,7 +27,7 @@ Normally, the keystore file is stored in the default location of the Starkli CLI
 
 [source,shell]
 ----
-mkdir ~/.starkli-wallets/deployer
+mkdir ~/.starkli-wallets/deployer -p
 ----
 
 [source,shell]
