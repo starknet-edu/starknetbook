@@ -214,7 +214,7 @@ This concludes the promised reduction, that translates the problem of checking w
 
 Succinctness
 
-Having a very efficient verification technique is key to STARKs, and it can be seen as comprised of two parts -- using a small number of queries, and having the verifier perform a small computation on each query. The former is achieved by error correction codes, which allow querying in very few places, and the latter we have sort of sweeped under the rug throughout this post, until now. The verifier's work can be summed up as 1) querying the composition polynomial in random places, and 2) checking low-degreeness based on these queries. Low degreeness succinct checking will be handled in the next post, but what exactly do we mean by "`querying the composition polynomial`"? The avid reader may have been suspicious of this expression, and rightfully so. The prover, after all, may be malicious. When the verifier asks for the evaluation of the composition polynomial at some x, the prover may reply with the evaluation of some truly low-degree polynomial, that will pass any low-degree testing, but is not the composition polynomial.
+Having a very efficient verification technique is key to STARKs, and it can be seen as comprised of two parts -- using a small number of queries, and having the verifier perform a small computation on each query. The former is achieved by error correction codes, which allow querying in very few places, and the latter we have sort of swept under the rug throughout this post, until now. The verifier's work can be summed up as 1) querying the composition polynomial in random places, and 2) checking low-degreeness based on these queries. Low degreeness succinct checking will be handled in the next post, but what exactly do we mean by "`querying the composition polynomial`"? The avid reader may have been suspicious of this expression, and rightfully so. The prover, after all, may be malicious. When the verifier asks for the evaluation of the composition polynomial at some x, the prover may reply with the evaluation of some truly low-degree polynomial, that will pass any low-degree testing, but is not the composition polynomial.
 
 To prevent this, the verifier explicitly queries the Fibonacci execution trace at some row w by asking for the values of $f$ in three places: $f(w)$, $f(gw)$, $f(g²w)$.
 
@@ -222,7 +222,7 @@ The verifier can now compute the value of the composition polynomial at w by:
 
 image::succinctness.png[succintness]
 
-Where the numerator can be computed using the values obtained from the prover, and the denominator... well, there's the rub (that was sweeped under the rug).
+Where the numerator can be computed using the values obtained from the prover, and the denominator... well, there's the rub (that was swept under the rug).
 
 On the one hand the denominator is completely independent of the execution trace, so the verifier can compute it before ever communicating with the prover.
 

@@ -22,7 +22,7 @@ Some key points about the `assert` statement in Cairo are:
 
 3. The `assert` statement is helpful for input validation, ensuring that only valid inputs are processed by the contract.
 
-4. The compiler will not notice if an assertions is not complied with. That is, the compiler will not check if the condition is true or false. The assertion is only checked at runtime: for example, in tests (more on this in a following chapter) or when the contract is deployed.
+4. The compiler will not notice if an assertion is not complied with. That is, the compiler will not check if the condition is true or false. The assertion is only checked at runtime: for example, in tests (more on this in a following chapter) or when the contract is deployed.
 
 [NOTE]
 ====

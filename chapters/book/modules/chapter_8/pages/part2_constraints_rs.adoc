@@ -401,7 +401,7 @@ where latexmath:[$\alpha_0, \alpha_1, \alpha_2$] are random field elements obtai
 from the verifier, or in our case - from the channel.
 
 Proving that (the rational function) latexmath:[$CP$] is a polynomial
-guarantess, with high probability, that each of latexmath:[$p_0$],
+guarantees, with high probability, that each of latexmath:[$p_0$],
 latexmath:[$p_1$], latexmath:[$p_2$] are themselves polynomials.
 
 In the next part, you will generate a proof for an equivalent fact. But
@@ -449,7 +449,7 @@ Success!
 
 Lastly, we evaluate latexmath:[$cp$] over the evaluation domain
 (`eval_domain`), build a Merkle tree on top of that and send its root
-over the channel. This is similar to commiting on the LDE trace, as we
+over the channel. This is similar to committing on the LDE trace, as we
 did at the end of part 1.
 
 [source,rust]

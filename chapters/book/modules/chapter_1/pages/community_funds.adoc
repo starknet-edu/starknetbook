@@ -8,7 +8,7 @@ Starknet is dedicated to bolstering community strength, unity, and outreach. As 
 . Provision of grants to community members undertaking projects that align with our philosophy and contribute to our broader objectives.
 . Allocation of member education and training resources via online tutorials, webinars, mentorship programs, and more.
 . Enhancement and upkeep of open, inclusive communication channels, such as Telegram groups, Discord servers and community forums.
-.P romotion of community engagement via incentivized activities like idea contests, art contests, and problem-solving challenges.
+. Promotion of community engagement via incentivized activities like idea contests, art contests, and problem-solving challenges.
 . In addition, we are open to other creative initiatives that align with our philosophy and goals. Starknet recognizes that all community members are potential contributors to our mission, and we discourage any attempts to deter participation or collaboration.
 
 == Community Ethics and Code of Conduct:

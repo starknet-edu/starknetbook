@@ -39,11 +39,11 @@ Polynomial arithmetic is quite simple. The more complex operation is the divisio
 
 image::poly2.png[poly2]
 
-We can define several polynomials belonging to the same field. For example, for the $F_2$ field, which only contains $0$ and $1$ as members, we can generate an infinite number of polynomials without caring for the their degree. That is, the members of the field only populate the coefficients of the polynomial without caring for the exponents.
+We can define several polynomials belonging to the same field. For example, for the $F_2$ field, which only contains $0$ and $1$ as members, we can generate an infinite number of polynomials without caring for their degree. That is, the members of the field only populate the coefficients of the polynomial without caring for the exponents.
 
 image::poly6.png[poly6]
 
-We can follow the same logic for polynomial arithmetic operations when the coefficients belong to finite field. We just need to remember the modular nature of finite fields. As an example, let's operate with polynomals whose coefficients belong to the $F_7$ field. You will notice that we are simply using field arithmetic within the coefficients.
+We can follow the same logic for polynomial arithmetic operations when the coefficients belong to finite field. We just need to remember the modular nature of finite fields. As an example, let's operate with polynomials whose coefficients belong to the $F_7$ field. You will notice that we are simply using field arithmetic within the coefficients.
 
 Addition:
 
@@ -61,7 +61,7 @@ Again the division case is out of the scope of this tutorial for now.
 
 A polynomial $f(x)$ over a field $F$ is called prime or irreducible if $f(x)$ cannot be expressed as a product of two polynomials. Both polynomials have to be part of $F$ and of a lower degree than $f(x)$. That is, an irreducible polynomial as a polynomial that cannot be factorized into lower-degree polynomials.
 
-The concept of generator, $g$, frequently appears in cryptography. A generator is an element in the subgroup whose powers span the entire subgroup. In easier words, it is a number that is capable of of generating the entire set or the entire field by exponentiating the generator. For example, for the field $Z_\{13}$, a generator $g$ is $g=2$. Why? Because if we exponentiate $2$ we can get all the 13 elements in the field $Z_\{13} = {0,1,...,12}$ (except for the 0). Notice $2{caret}\{0}\bmod13 = 1$, $2{caret}\{1}\bmod13 = 2$, $2{caret}\{2}\bmod13 = 4$, $2{caret}\{3}\bmod13 = 8$, $2{caret}\{4}\bmod13 = 3$, $2{caret}\{5}\bmod13 = 6$, and so on. Not all elements in a set can be generators, make the exercise and you will notice 3 is not a generator of the field $Z_\{13}$.
+The concept of generator, $g$, frequently appears in cryptography. A generator is an element in the subgroup whose powers span the entire subgroup. In easier words, it is a number that is capable of generating the entire set or the entire field by exponentiating the generator. For example, for the field $Z_\{13}$, a generator $g$ is $g=2$. Why? Because if we exponentiate $2$ we can get all the 13 elements in the field $Z_\{13} = {0,1,...,12}$ (except for the 0). Notice $2{caret}\{0}\bmod13 = 1$, $2{caret}\{1}\bmod13 = 2$, $2{caret}\{2}\bmod13 = 4$, $2{caret}\{3}\bmod13 = 8$, $2{caret}\{4}\bmod13 = 3$, $2{caret}\{5}\bmod13 = 6$, and so on. Not all elements in a set can be generators, make the exercise and you will notice 3 is not a generator of the field $Z_\{13}$.
 
 More generally, note that if $g$ is the generator of a field $Z_\{n}$, then $Z_\{n} = {0, g{caret}\{0}, g{caret}\{1}, ..., g{caret}\{n-2}}$ (because by exponentiating generator $g$ we can get each element in the field).
 
