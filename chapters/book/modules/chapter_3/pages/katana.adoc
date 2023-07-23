@@ -4,6 +4,8 @@
 
 We suggest employing either `katana` or `starknet-devnet` for testing your contracts, with the latter discussed in detail in the following subchapter. The `starknet-devnet` is a public testnet, maintained by the https://github.com/Shard-Labs/starknet-devnet[Shard Labs team]. Both these tools offer an effective environment for development and testing.
 
+For an example of how to use `katana` to deploy and interact with a contract, see https://book.starknet.io/chapter_2/deploy_call_invoke.html[Chapter 2's Voting contract example].
+
 == Understanding RPC in Starknet
 
 Remote Procedure Call (RPC) establishes the communication between nodes in the Starknet network. Essentially, it allows us to interact with a node in the Starknet network. The RPC server is responsible for receiving these calls. 
