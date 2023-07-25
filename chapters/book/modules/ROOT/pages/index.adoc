@@ -36,7 +36,7 @@ Depending on your goals and interests, you can choose different paths through th
 
 * If you're a *security researcher* or *smart contract auditor* wanting to learn about the Account Abstraction feature and its implications, go for *Account Abstraction*.
 
-* If you're a *blockchain enthusiast* curious about the underlying architecture and mechanics of Starknet and Cairo, explore *Starknet and Cairo CPU Arquitecture*.
+* If you're a *blockchain enthusiast* curious about the underlying architecture and mechanics of Starknet and Cairo, explore *Starknet and Cairo CPU Architecture*.
 
 * If you're a *cryptography expert* or *researcher* eager to understand the fundamentals of STARKs and their connection to the Starknet ecosystem, delve into *STARKs*.
 
@@ -218,6 +218,8 @@ a|
 image::https://avatars.githubusercontent.com/u/75367288?v=4&s=100[width=100, link="https://github.com/Brivan-26"]
 Mohamed Abdessamed
 a|
+image::https://avatars.githubusercontent.com/u/18651846?v=4&s=100[width=100, link="https://github.com/wenzhenxiang"]
+xiang
 a|
 a|
 a|
