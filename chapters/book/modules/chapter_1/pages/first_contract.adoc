@@ -27,7 +27,7 @@ Normally, the keystore file is stored in the default location of the Starkli CLI
 
 [source,shell]
 ----
-mkdir ~/.starkli-wallets/deployer
+mkdir ~/.starkli-wallets/deployer -p
 ----
 
 [source,shell]
@@ -52,7 +52,7 @@ Starkli offers a command to collect all the required information from a smart wa
 
 [source,shell]
 ----
-starkli account fetch -- help
+starkli account fetch --help
 Fetch account config from an already deployed account contract
 ----
 
