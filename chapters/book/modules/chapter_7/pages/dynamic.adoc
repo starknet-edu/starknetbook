@@ -12,7 +12,7 @@ To resolve the relative inefficiency of the CVM, the Cairo stack introduced the 
 
 In a nutshell, proof complexity is correlated (roughly linearly) to a resource called trace cells, and builtins streamline proofs of particular operations by using far fewer trace cells than the Cairo VM.
 
-Having explained the benefit from builtins, it seems natural to develop them for many frequently used operations. This is easier said than done. The current process of introducing new builtins into Starknet involves several steps:
+Having explained the benefit of builtins, it seems natural to develop them for many frequently used operations. This is easier said than done. The current process of introducing new builtins into Starknet involves several steps:
 
 1. Write the AIR
 2. Integrate into the prover by creating new layouts (explained below)

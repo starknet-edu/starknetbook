@@ -2,7 +2,7 @@
 
 = SHARP (Shared Prover) in Starknet
 
-SHARP is like public transportation for proofs on Starknet, aggregating multiple Cairo programs to save costs and boost efficiency. It uses recursive proofs, allowing parallelization and optimization, making it more affordable for all users. Critical services like the gateway, validator, and Prover work together with a stateless design for flexibility. SHARP’s adoption by StarkEx, Starknet, and external users (trough the Cairo Playground) highlights its significance and potential for future optimization.
+SHARP is like public transportation for proofs on Starknet, aggregating multiple Cairo programs to save costs and boost efficiency. It uses recursive proofs, allowing parallelization and optimization, making it more affordable for all users. Critical services like the gateway, validator, and Prover work together with a stateless design for flexibility. SHARP’s adoption by StarkEx, Starknet, and external users (through the Cairo Playground) highlights its significance and potential for future optimization.
 
 This chapter will discuss SHARP, how it has evolved to incorporate recursive proofs, and its role in reducing costs and improving efficiency within the Starknet network.
 
@@ -80,7 +80,7 @@ SHARP back end architecture consists of several services that work together to p
 . *Dispatcher*: The Dispatcher serves two functions in the SHARP system. 
     .. In the case of a recursive proof, the Dispatcher runs the Cairo Verifier program on the proof it has received from the Prover, resulting in a new Cairo job that goes back to the Validator.
     .. In the case of a proof that needs to go on chain (e.g., to Ethereum), the Dispatcher creates "packages" from the proof, which can then be sent to the Blockchain Writer. 
-. *Blockchain Writer*: Once the packages have been created by the Dispatcher, they are sent to the Blockchain Writer. The Blockchain Writer is responsible for sending the packages to the appropriate blockchain (e.g., Ethereum) for verification. This is an important step in the SHARP system, as it ensures that the proofs are properly verfied and that the transactions are securely recorded on the blockchain.
+. *Blockchain Writer*: Once the packages have been created by the Dispatcher, they are sent to the Blockchain Writer. The Blockchain Writer is responsible for sending the packages to the appropriate blockchain (e.g., Ethereum) for verification. This is an important step in the SHARP system, as it ensures that the proofs are properly verified and that the transactions are securely recorded on the blockchain.
 . *Catcher*: The Catcher monitors blockchain (e.g., Ethereum) transactions to ensure that they have been accepted. While the Catcher is relevant for internal monitoring purposes, it is important to note that if a transaction fails, the fact won't be registered on-chain in the fact registry. As a result, the soundness of the system is still preserved even without the catcher.
 
 SHARP is designed to be stateless (each Cairo job is executed in its own context and has no dependency on other jobs), allowing for greater flexibility in processing jobs.

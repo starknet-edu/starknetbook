@@ -30,7 +30,7 @@ In summary, Starknet is a network in progress with ambitious future plans. Its f
 
 == Conclusion
 
-Starknet stands at the cusp of significant transformation, underpinned by enhanced efficiency, scalability, and an unwavering pursuit of decentralization. The network's vision, painted with developments like the Rust Sequencer, Madara, Kakarot, and Layer 3, among others, is set to make it a the Starknet ecosystem an interesting space to watch.
+Starknet stands at the cusp of significant transformation, underpinned by enhanced efficiency, scalability, and an unwavering pursuit of decentralization. The network's vision, painted with developments like the Rust Sequencer, Madara, Kakarot, and Layer 3, among others, is set to make the Starknet ecosystem an interesting space to watch.
 
 
 [NOTE]
