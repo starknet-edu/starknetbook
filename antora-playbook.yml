@@ -15,6 +15,7 @@ ui:
   bundle:
     url: https://github.com/starknet-io/starknet-docs-antora-ui/raw/HEAD/build/ui-bundle.zip
     snapshot: true
+  supplemental_files: ./ui/supplemental_ui
 
 runtime:
   fetch: true
