@@ -28,13 +28,4 @@ Orbiter Finance (https://www.orbiter.finance/) is a decentralized cross-rollup b
 The system consists of two main roles: Sender and Maker. The 'Maker' deposits excess margin into Orbiter's contract to act as a cross-rollup service provider for the 'Sender'. The 'Sender' sends assets to the 'Maker' on the 'Source Network', and the 'Maker' sends them back to the 'Sender' on the 'Destination Network'. Orbiter's security model relies on three types of smart contracts: Maker Deposit Contract (MDC), Event Binding Contract (EBC), and Simple Payment Verification (SPV).
 
 
-== Contributing
-
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarknetBook*
-
-StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
-
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
+include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

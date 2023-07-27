@@ -41,13 +41,4 @@ specifically, $x=120616759622204373789910759436502336854103573844386556665769735
 It won't be $2.3333$ because $x$ has to be an integer and since $3 * x$ is larger than $2{caret}\{251} + 17 * 2{caret}\{192} + 1$ it will overflow to exactly $7$.
 In other words, when we are using modular arithmetic, unless the denominator is zero, there will always be an integer $x$ satisfying $denominator * x = numerator$.
 
-== Contributing
-
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarknetBook*
-
-StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
-
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
+include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
