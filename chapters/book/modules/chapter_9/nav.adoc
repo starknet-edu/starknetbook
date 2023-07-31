@@ -1,0 +1,9 @@
+* xref:index.adoc[9. Community Projects 🚧]
+    ** xref:blockchain_basics.adoc[Blockchain Basics]
+    ** xref:beerus.adoc[Beerus]  
+    ** xref:madara.adoc[Madara]
+    ** xref:kakarot.adoc[kakarot]  
+
+        
+
+ 

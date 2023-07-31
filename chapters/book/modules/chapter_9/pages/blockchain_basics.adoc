@@ -1,0 +1,48 @@
+[id="blockchain_basics"]
+
+= Blockchain Basics
+
+A blockchain is basically a peer to peer network. The logic behind this network is implemented in a piece of software called a client. For instance, an Ethereum client is an ‘implementation’ of the Ethereum specification (as outlined by the beige paper), which verifies data against the protocol rules and keeps the network secure.
+
+A node is a computer running Ethereum client software, while being connected to other computers also running Ethereum software (a.k.a clients). 
+
+_What types of clients exist on Ethereum ?_ 
+
+Since the merge, there are 2 distinct types of clients on the Ethereum network - 
+
+== Consensus Client
+
+A consensus client on Ethereum implements the proof-of-stake based consensus mechanism, which enables the network to achieve agreement based on validated data from the execution client.
+
+A computer can optionally run the consensus client as a validator. In order to do so, the agent must stake 32 Eth (or be part of a staking group) as a security guarantee. 
+
+The https://kb.beaconcha.in/glossary[Ethereum network] randomly selects one of the validators to build a block from transactions in the network’s mempool. Once built, the validator must propose this block to all the other active validators. These validators then vote on the validity of the block - a process called attestation. 
+
+_What’s in it for the validator ?_
+
+Validators make money by staying online and either proposing, or voting on new blocks being put out by the network. This reward, which can be thought of as an interest rate, is the validator’s incentive to keep the network alive and well. 
+
+Notably, the more validators there are on a network, the higher its security guarantees but the lower the individual rewards for a node. Moreover, if a validator node goes offline, or is otherwise engaged in collusion - their stake is “slashed” by the network as per a pre-programmed https://www.blocknative.com/blog/an-ethereum-stakers-guide-to-slashing-other-penalties[penalty system]. 
+
+By rule of thumb, a validator node has to be reliably honest and online for at least 50% of the network up-time in order to have positive returns.
+
+== Execution Client 
+
+An execution client listens to new transactions broadcasted in the network, executes them in the EVM, and holds the latest state and database of all current Ethereum data. This may be seen as the part that executes Solidity code in the Ethereum ecosystem. 
+
+== Summary 
+
+Running a node on Ethereum means running at least the execution and consensus clients at the same time. The node runner may or may not run as a validator. This is encapsulated in the diagram - 
+
+image:client_diagram.png[client_diagram]
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
