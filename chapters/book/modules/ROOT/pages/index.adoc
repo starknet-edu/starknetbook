@@ -221,6 +221,8 @@ a|
 image::https://avatars.githubusercontent.com/u/18651846?v=4&s=100[width=100, link="https://github.com/wenzhenxiang"]
 xiang
 a|
+image::https://avatars.githubusercontent.com/u/39279277?v=4&s=100[width=100, link="https://github.com/stoobie"]
+Steve Goodman
 a|
 a|
 a|
