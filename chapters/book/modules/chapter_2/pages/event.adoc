@@ -6,7 +6,7 @@ Events are a useful tool for logging and notifying external entities about speci
 
 == Defining Events
 
-To define an event in a Starknet contract, you can use the **`#[event]`** attribute followed by defining an **`enum`** that will contain the event variants. 
+To define an event in a Starknet contract, you can use the **`#[event]`** attribute followed by defining an **`enum`** that contains the event variants. 
 [source,rust]
 ----
 #[event]
