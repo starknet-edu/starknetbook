@@ -6,9 +6,18 @@ Events are a useful tool for logging and notifying external entities about speci
 
 == Defining Events
 
-To define an event in a Starknet contract, you can use the **`#[event]`** attribute followed by the event definition. In our voting contract, we have two events, **`VoteCast`** and **`UnauthorizedAttempt`**.
+To define an event in a Starknet contract, you can use the **`#[event]`** attribute followed by defining an **`enum`** that contains the event variants. 
+[source,rust]
+----
+#[event]
+#[derive(Drop, starknet::Event]
+enum Event {
+    VoteCast: VoteCast,
+    UnauthorizedAttempt: UnauthorizedAttempt,
+}
+----
 
-The **`VoteCast`** event is emitted when a vote is cast. The event takes two parameters: the voter's address and the vote value (0 for No, 1 for Yes).
+The voting contract has two events, *`VoteCast`* and *`UnauthorizedAttempt`*, which are defined in the enum above. The *`VoteCast`* event is emitted when a vote is cast. The event takes two parameters: the voter's address and the vote value: 0 for No, 1 for Yes.
 
 [source,rust]
 ----
