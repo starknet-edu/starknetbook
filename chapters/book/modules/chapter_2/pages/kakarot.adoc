@@ -53,13 +53,4 @@ Thus, Kakarot will massively reduce the time to migrate any existing Solidity sm
 Perhaps one does not necessarily wishes to learn a whole new language just for a tiny side project, for example. In that case, even though Cairo is, for many different reasons, https://cairo-book.github.io/ch00-00-introduction.html[a wonderful language] thanks to Kakarot, developers will not be totally obligated to learn Cairo in order to create and deploy smart-contracts on Starknet:
 they will have the possibility to make their Solidity smart-contracts become provable and will also be able to be ran them on Starknet with no effort!
 
-== Contributing
-
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarknetBook*
-
-StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
-
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
+include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

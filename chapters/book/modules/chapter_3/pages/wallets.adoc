@@ -13,13 +13,4 @@ Once you have deployed your first account on Starknet - you are going to need a 
 |https://braavos.app/[Braavos]|https://chrome.google.com/webstore/detail/braavos-smart-wallet/jnlgamecbpmbajjfhmmmlhejkemejdma[Chrome], https://microsoftedge.microsoft.com/addons/detail/braavos-wallet/hkkpjehhcnhgefhbdcgfkeegglpjchdc[Edge], https://addons.mozilla.org/en-US/firefox/addon/braavos-wallet[Firefox]|https://apps.apple.com/us/app/braavos-wallet/id1636013523[iOS], https://play.google.com/store/apps/details?id=app.braavos.wallet[Android]
 |===
 
-== Contributing
-
-[quote, The Starknet Community]
-____
-*Unleash Your Passion to Perfect StarknetBook*
-
-StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
-
-Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
-____
+include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
