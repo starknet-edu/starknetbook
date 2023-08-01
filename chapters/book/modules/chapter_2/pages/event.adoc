@@ -17,7 +17,7 @@ enum Event {
 }
 ----
 
-In our voting contract, we have two events, **`VoteCast`** and **`UnauthorizedAttempt`** which are defined in the enum above. The **`VoteCast`** event is emitted when a vote is cast. The event takes two parameters: the voter's address and the vote value (0 for No, 1 for Yes).
+The voting contract has two events, *`VoteCast`* and *`UnauthorizedAttempt`*, which are defined in the enum above. The *`VoteCast`* event is emitted when a vote is cast. The event takes two parameters: the voter's address and the vote value: 0 for No, 1 for Yes.
 
 [source,rust]
 ----
