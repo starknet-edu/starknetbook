@@ -6,7 +6,7 @@ Welcome to the Starknet Book, a comprehensive guide to understanding and navigat
 
 == What is Starknet?
 
-Starknet is a permissionless network that leverages the power of zk-STARKs technology for scalability, privacy, and security. As a Layer-2 scalability solution for Ethereum, Starknet offers fast, secure, and low-cost transactions. It functions as a Validity Rollup (commonly known as a zero-knowledge Rollup) that uses cryptographic systems called STARKs to reduce computation costs.
+Starknet is a permissionless network that leverages the power of zk-STARKs technology for scalability: lower costs, faster transactions. As a Layer-2 scalability solution for Ethereum, Starknet offers fast, secure, and low-cost transactions. It functions as a Validity Rollup (commonly known as a zero-knowledge Rollup) that uses cryptographic systems called STARKs to reduce computation costs.
 
 Critical features of Starknet include:
 
