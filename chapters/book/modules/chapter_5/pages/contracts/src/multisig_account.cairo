@@ -3,7 +3,7 @@ mod MultisigAccount {
     use ecdsa::check_ecdsa_signature;
     use starknet::ContractAddress;
     use zeroable::Zeroable;
-    use array::ArrayTrait; 
+    use array::ArrayTrait;
     use starknet::get_caller_address;
     use box::BoxTrait;
     use array::SpanTrait;
@@ -34,7 +34,7 @@ mod MultisigAccount {
     //GETTERS
     //Get number of confirmations for a given transaction index
     #[view]
-    fn get_confirmations(tx_index : felt252) -> usize {
+    fn get_confirmations(tx_index: felt252) -> usize {
         tx_confirms::read(tx_index)
     }
 
@@ -48,12 +48,10 @@ mod MultisigAccount {
     //Get the public key of the owners 
     //TODO - Recursively add the owners into an array and return, maybe wait for loops to be enabled
 
-
     //EXTERNAL FUNCTIONS
 
     #[external]
     fn submit_tx(public_key: felt252) {
-
         //Need to check if caller is one of the owners.
         let tx_info = starknet::get_tx_info().unbox();
         let signature: Span<felt252> = tx_info.signature;
@@ -76,12 +74,10 @@ mod MultisigAccount {
 
         transactions::write(tx_index, tx_info.transaction_hash);
         curr_tx_index::write(tx_index + 1);
-
     }
 
     #[external]
     fn confirm_tx(tx_index: felt252, public_key: felt252) {
-
         let transaction_hash = transactions::read(tx_index);
         //TBD: Assert that tx_hash is not null
 
@@ -94,7 +90,7 @@ mod MultisigAccount {
         let tx_info = starknet::get_tx_info().unbox();
         let signature: Span<felt252> = tx_info.signature;
 
-         assert(
+        assert(
             check_ecdsa_signature(
                 message_hash: tx_info.transaction_hash,
                 public_key: public_key,
@@ -106,11 +102,9 @@ mod MultisigAccount {
 
         let confirmed = has_confirmed::read((caller, tx_index));
 
-        assert (confirmed == false, 'CALLER_ALREADY_CONFIRMED');
-        tx_confirms::write(tx_index, num_confirmations+1_usize);
+        assert(confirmed == false, 'CALLER_ALREADY_CONFIRMED');
+        tx_confirms::write(tx_index, num_confirmations + 1_usize);
         has_confirmed::write((caller, tx_index), true);
-
-
     }
 
     //An example function to validate that there are at least two signatures
@@ -130,15 +124,14 @@ mod MultisigAccount {
             ),
             'INVALID_SIGNATURE',
         );
-        
+
         starknet::VALIDATED
     }
 
     //INTERNAL FUNCTION 
     //Function to add the public keys of the multi sig in permanent storage
     fn _set_owners(owners_len: usize, public_keys: Array::<felt252>) {
-        if owners_len == 0_usize {
-        }
+        if owners_len == 0_usize {}
 
         index_to_owner::write(owners_len, *public_keys.at(owners_len - 1_usize));
         owner_to_index::write(*public_keys.at(owners_len - 1_usize), owners_len);
@@ -160,7 +153,10 @@ mod MultisigAccount {
 
     #[external]
     fn __validate__(
-        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>, public_key_: felt252
+        contract_address: ContractAddress,
+        entry_point_selector: felt252,
+        calldata: Array::<felt252>,
+        public_key_: felt252
     ) -> felt252 {
         validate_transaction(public_key_)
     }
@@ -168,7 +164,9 @@ mod MultisigAccount {
     #[external]
     #[raw_output]
     fn __execute__(
-        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>, 
+        contract_address: ContractAddress,
+        entry_point_selector: felt252,
+        calldata: Array::<felt252>,
         tx_index: felt252
     ) -> Span::<felt252> {
         // Validate caller.
@@ -187,8 +185,7 @@ mod MultisigAccount {
 
         tx_is_executed::write(tx_index, true);
 
-        starknet::call_contract_syscall(
-            contract_address, entry_point_selector, calldata.span()
-        ).unwrap_syscall()
+        starknet::call_contract_syscall(contract_address, entry_point_selector, calldata.span())
+            .unwrap_syscall()
     }
 }
