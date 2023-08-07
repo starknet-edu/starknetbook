@@ -75,9 +75,9 @@ Your Besu/Lighthouse node will take approximately 600 GB of disk space. Navigate
 
 [source,bash]
 ----
-git clone git@github.com:starknet-edu/starknet-stack.git
+git clone https://github.com/starknet-edu/starknet-stack.git
 cd starknet-stack
-docker compose -f dc-l1.yaml up -d 
+docker-compose -f dc-l1.yaml up -d 
 ----
 
 This will begin the fairly long process of spinning up our Consensus Client, Execution Client, and syncing them to the current state of the Goerli Testnet. If you would like to see the logs from either process you can run:
@@ -102,7 +102,6 @@ sudo netstat -lpnut | grep -E '30303|8551|8545'
 
 # lighthouse ports
 sudo netstat -lpnut | grep -E '5054|9000'
-[source,bash]
 ----
 
 We’ve used docker to abstract a lot of the nuance of running an Eth L1 node, but the important things to note are how the two processes EL/CL point to each other and communicate via JSON-RPC:
@@ -156,7 +155,7 @@ Check that your L1 has completed its sync:
 
 [source,bash]
 ----
-# check goerli etherscan to make sure you have the latest block
+# check goerli etherscan to make sure you have the latest block https://goerli.etherscan.io
 
 curl --location --request POST 'http://localhost:8545' \
 --header 'Content-Type: application/json' \
@@ -166,6 +165,9 @@ curl --location --request POST 'http://localhost:8545' \
     "params":[],
     "id":83
 }'
+
+# Convert the result, which is hex (remove 0x) to decimal. Example:
+echo $(( 16#246918 ))
 ----
 
 Start your L2 Execution Client and note that we are syncing Starknet’s state from our LOCAL ETH L1 NODE!
@@ -178,7 +180,7 @@ PATHFINDER_ETHEREUM_API_URL=http://127.0.0.1:8545
 [source,bash]
 ----
 # from starknet-stack project root
-docker compose -f dc-l2.yaml up -d
+docker-compose -f dc-l2.yaml up -d
 ----
 
 To follow the sync:
@@ -188,7 +190,7 @@ To follow the sync:
 docker container logs -f $(docker ps | grep pathfinder | awk '{print $1}')
 ----
 
-Starknet Testnet_1 currently comprises ~600,000 blocks so this will take some time to sync fully. To check L2 sync:
+Starknet https://testnet.starkscan.co[Testnet_1] currently comprises 800,000+ blocks so this will take some time (days) to sync fully. To check L2 sync:
 
 [source,bash]
 ----
