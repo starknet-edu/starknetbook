@@ -2,7 +2,7 @@
 
 = Scarb and the Structure of a Cairo Project
 
-Scarb is the Cairo package manager specifically created to streamline your Cairo and Starknet development process. Scarb is capable of managing project dependencies, compiling projects (both pure Cairo and Starknet contracts), downloading the necessary libraries, building these libraries, and integrating seamlessly with other essential development tools such as Protostar. 
+Scarb is the Cairo package manager specifically created to streamline your Cairo and Starknet development process. Scarb is capable of managing project dependencies, compiling projects (both pure Cairo and Starknet contracts), downloading the necessary libraries, building these libraries, and integrating seamlessly with other essential development tools such as Protostar.
 
 == Integrating Scarb into Your Development Workflow
 
@@ -20,7 +20,7 @@ By integrating Scarb into your workflow, you leverage its features to make your 
 
 == Installation
 
-Scarb is compatible with macOS, Linux, and Windows operating systems. 
+Scarb is compatible with macOS, Linux, and Windows operating systems.
 
 Follow the instructions in the https://book.starknet.io/chapter_1/environment_setup.html#the_scarb_package_manager_installation[setup guide of Chapter 1].
 
@@ -81,7 +81,7 @@ This command will create a new project directory named `hello_scarb`, including 
 ----
 hello_scarb/
 ├── src/
-│   └── lib.cairo  
+│   └── lib.cairo
 └── Scarb.toml
 ----
 
@@ -93,7 +93,7 @@ Upon opening `Scarb.toml` in a text editor, you should see something similar to 
 name = "hello_scarb"
 version = "0.1.0"
 
-# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
 [dependencies]
 # foo = { path = "vendor/foo" }
 ----
@@ -203,7 +203,7 @@ Here's a quick cheat sheet of some of the most commonly used Scarb commands:
 
 Scarb is a versatile tool, and this is just the beginning of what you can achieve with it. As you gain more experience in the Cairo language and the Starknet platform, you'll discover how much more you can do with Scarb.
 
-To stay updated on Scarb and its features, be sure to check the https://docs.swmansion.com/scarb/docs/[official Scarb documentation] regularly. Happy coding!
+To stay updated on Scarb and its features, be sure to check the https://docs.swmansion.com/scarb/docs.html[official Scarb documentation] regularly. Happy coding!
 
 
 [NOTE]
