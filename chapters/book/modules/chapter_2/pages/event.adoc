@@ -21,7 +21,7 @@ The voting contract has two events, *`VoteCast`* and *`UnauthorizedAttempt`*, wh
 
 [source,rust]
 ----
-[derive(Drop, starknet::Event)]
+#[derive(Drop, starknet::Event)]
 struct VoteCast {
     voter: ContractAddress,
     vote: u8,
