@@ -67,7 +67,7 @@ fn constructor(
 
 External functions are defined with the `#[external(v0)]` attribute and can be invoked within the same contact or by other contracts. In the Vote contract, there are several external functions defined, for instance, `get_vote_status` returns the current voting results, and `vote` accepts a vote from a registered and eligible voter. There are two main types of external functions, which are differentiated by how they can interact with the contract's state: read functions and write functions.
 
-They should be defined in an impl block. The impl should be done for the trait that defined what external functions the contract woyld have.
+They should be defined in an impl block. The impl should be done for the trait that defined what external functions the contract would have.
 
 [source,cairo]
 ----
