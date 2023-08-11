@@ -28,9 +28,10 @@ Below is a table detailing the compatibility between the versions of Starknet CL
 |-
 |2.0.2
 
-|Protostar
+|Starkli
 |0.11.2
 |1.1.0
+
 |===
 
 

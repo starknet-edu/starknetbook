@@ -9,6 +9,7 @@ deploy = "starknet deploy --class_hash 0x07e813097812d58afbb4fb015e683f2b84e4f00
 
 [dependencies]
 starknet = "2.1.0-rc2"
+openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", branch = "cairo-2" }
 
 [[target.starknet-contract]]
 # Enable Sierra codegen.

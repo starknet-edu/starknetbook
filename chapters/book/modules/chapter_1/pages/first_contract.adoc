@@ -173,7 +173,7 @@ However, it could be that the Scarb compiler version is 2.0.2, you can know this
 scarb --version
 ----
 
-This is because Starkli and Scarb are not always in sync. In this case you would need to use the compiler version that Starkli is using by installing a previous version of Scarb (check out the releases in the https://github.com/software-mansion/scarb/releases[Scarb github repo]). You can do this by running the following command for installing Scarb version 0.5.1:
+This is because Starkli and Scarb are not always in sync. In this case you would need to use the compiler version that Starkli is using by installing a previous version of Scarb (check out the releases in the https://github.com/software-mansion/scarb/releases[Scarb github repo]). For example, you can do this by running the following command for installing Scarb version 0.5.1:
 
 [source,bash]
 ----
