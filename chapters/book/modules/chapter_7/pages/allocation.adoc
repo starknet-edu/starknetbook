@@ -1,5 +1,0 @@
-[id="allocation"]
-
-= Allocation
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

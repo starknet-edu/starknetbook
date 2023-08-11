@@ -1,5 +1,0 @@
-[id="sierra"]
-
-= Sierra
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

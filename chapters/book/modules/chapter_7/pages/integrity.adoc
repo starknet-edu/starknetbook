@@ -1,5 +1,0 @@
-[id="integrity"]
-
-= Statement of Computational Integrity
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
