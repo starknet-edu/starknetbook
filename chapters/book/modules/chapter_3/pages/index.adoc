@@ -1,20 +1,18 @@
-[id="chapter_3"]
+= Starknet Architecture
 
-= Starknet Tooling
+As you embark on your journey to build scalable web3 applications, it's essential to understand the architecture of Starknet and its various components. This chapter aims to provide an in-depth understanding of the key building blocks of Starknet, which will enable you to develop and deploy decentralized applications (dApps) efficiently.
 
-Today, you will find all the necessary tools you need to build decentralized applications (dApps) on Starknet. Even using different languages such as JavaScript, Rust, and Python, you can still develop on Starknet. You can also use the Starknet SDK to build your applications. For a front-end developer, you can use the Starknet.js SDK paired with React; however, you can also make the back-end with Rust or Python.
+In this chapter, we will cover topics such as:
 
-Contributors are always welcome to join the Starknet community and help improve the existing tooling or create new solutions.
+* L2 Nodes: A high-level overview of the different Starknet nodes (Sequencer, Prover, Full Nodes, and Indexer) and their roles within the network.
+* Tx Lifecycle: A detailed explanation of the various states an L2 transaction goes through, discussing the benefits and risks of considering a particular state as "finality."
+* Starknet OS: An exploration of how the Sequencer validates and executes transactions, and its connection with Account Abstraction (AA).
+* SHARP: An examination of the Prover's workflow for generating proofs for Starknet and Starkex using recursion, focusing on the workflow rather than the math behind STARKs.
+* L1 Components: A comprehensive analysis of the on-chain Verifier and Fact Registry, and a discussion on how an L1 escape hatch would work.
+* Bridges: An explanation of how L1-L2 communication works and how it can be used to create bridges between networks.
 
-In this chapter, you can expect to learn about the following topics:
-
-* Wallets: Using Starknet wallets interfaces such as Argent and Braavos
-* Frameworks: Use Protostar (inspired by Foundry) or Hardhat to build Starknet applications 
-* Common SDKs: Using Starknet.js, Starknet-rs, Starknet_py, and Caigo for different programming languages
-* Front-end SDKs: Using Starknet.js and React to build front-end applications
-* Testing: Learn how to test your Starknet applications using Protostar and the Devnet
-
-By the end of this chapter, you will have a comprehensive understanding of the tools available in the Starknet ecosystem and how they can help you build and deploy dApps efficiently.
+By the end of this chapter, you will have a deep understanding of the architecture and components of the Starknet ecosystem, empowering you to make informed decisions when building and deploying dApps on the platform.
 
 
 include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
+

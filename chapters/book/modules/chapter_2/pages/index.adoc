@@ -1,0 +1,20 @@
+[id="chapter_3"]
+
+= Starknet Tooling
+
+Today, you will find all the necessary tools you need to build decentralized applications (dApps) on Starknet. Even using different languages such as JavaScript, Rust, and Python, you can still develop on Starknet. You can also use the Starknet SDK to build your applications. For a front-end developer, you can use the Starknet.js SDK paired with React; however, you can also make the back-end with Rust or Python.
+
+Contributors are always welcome to join the Starknet community and help improve the existing tooling or create new solutions.
+
+In this chapter, you can expect to learn about the following topics:
+
+* Wallets: Using Starknet wallets interfaces such as Argent and Braavos
+* Frameworks: Use Protostar (inspired by Foundry) or Hardhat to build Starknet applications 
+* Common SDKs: Using Starknet.js, Starknet-rs, Starknet_py, and Caigo for different programming languages
+* Front-end SDKs: Using Starknet.js and React to build front-end applications
+* Testing: Learn how to test your Starknet applications using Protostar and the Devnet
+
+By the end of this chapter, you will have a comprehensive understanding of the tools available in the Starknet ecosystem and how they can help you build and deploy dApps efficiently.
+
+
+include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
