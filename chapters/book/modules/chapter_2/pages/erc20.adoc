@@ -1,5 +1,0 @@
-[id="erc20"]
-
-= Deploying an ERC20
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

@@ -1,5 +1,0 @@
-[id="warp"]
-
-= Transpiling Solidity into Cairo using WARP
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
