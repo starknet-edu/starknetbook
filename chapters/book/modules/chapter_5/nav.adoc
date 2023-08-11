@@ -1,3 +1,6 @@
 * xref:index.adoc[6. Pioneering Applications]
+    ** xref:beerus.adoc[Beerus]
+    ** xref:madara.adoc[Madara]
+    ** xref:kakarot.adoc[kakarot]
     ** xref:storage_proofs.adoc[Storage Proofs]
     ** xref:artificial_intelligence.adoc[On-Chain Artificial Intelligence]

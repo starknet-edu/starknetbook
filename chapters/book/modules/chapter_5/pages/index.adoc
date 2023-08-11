@@ -2,12 +2,6 @@
 
 = Pioneering Applications: Expanding Starknet's Horizons
 
-Developers working in the Starknet ecosystem seek to push the boundaries, developing innovative applications and use-cases. This chapter illuminates two pioneering areas of exploration in the Starknet ecosystem (more soon): On-Chain Artificial Intelligence and Storage Proofs.
+Starknet's progression is often reflected in the depth and breadth of applications developed within its framework. These applications, crafted by a community of dedicated developers, illustrate the practical utility and versatility of the Starknet ecosystem.
 
-* *On-Chain Artificial Intelligence*: Starknet's increased transactions per second (TPS) and affordable computation costs have made it feasible to host AI models on-chain, marking a paradigm shift towards decentralized and transparent AI applications.
-
-* *Storage Proofs*: As a cryptographic tool, storage proofs facilitate trustless cross-chain information access. They provide a robust method for verifying data's integrity across different chains, reinforcing security and efficiency in the decentralized ecosystem.
-
-Each of these applications harnesses Starknet's capabilities, coupled with cutting-edge cryptographic techniques, to offer revolutionary solutions that contribute to a more transparent, efficient, and secure decentralized environment. 
-
-This chapter delves deep into these topics, beginning with an examination of on-chain AI and the technological advancements in Starknet that have made this possibility a reality. We then explore the realm of storage proofs, understanding their role and the significant impact they have on cross-chain information access.
+From its inception, Starknet has witnessed the emergence of diverse projects, each seeking to address unique challenges and leverage the network's capabilities. This section offers an exploration of notable projects led by the https://github.com/keep-starknet-strange[Exploration] team and other ecosystem's projects. These initiatives not only underscore the potential of Starknet but also serve as a resource for fellow developers navigating similar paths. Readers are encouraged to delve deeper, understanding the intricacies of these projects, and, if inclined, contribute to their evolution.s
