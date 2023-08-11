@@ -1,4 +1,4 @@
-* xref:index.adoc[8. STARKs]
+* xref:index.adoc[6. STARKs]
     ** xref:trust_verification.adoc[Trust vs. Verification]
     ** xref:introduction_starks.adoc[STARKs Basics]
     ** Math Primer 🚧

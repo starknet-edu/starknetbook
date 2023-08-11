@@ -1,4 +1,4 @@
-* xref:index.adoc[4. Starknet Architecture]
+* xref:index.adoc[3. Starknet Architecture]
     ** xref:topology.adoc[Sequencer, Prover, Nodes]
     ** xref:transactions.adoc[Transaction Lifecycle]
     ** xref:sequencers.adoc[Sequencers]

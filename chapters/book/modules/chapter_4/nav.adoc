@@ -1,4 +1,4 @@
-* xref:index.adoc[5. Account Abstraction]
+* xref:index.adoc[4. Account Abstraction]
     ** xref:starknet_aa.adoc[Starknet's Account Abstraction Model]
     ** xref:hello_account.adoc['Hello World' Account Contract]
     ** xref:standard_account.adoc[Standard Account Contract and Signing]
