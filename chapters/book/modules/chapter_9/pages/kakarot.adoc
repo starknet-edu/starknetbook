@@ -1,92 +1,69 @@
 [id="kakarot"]
 
-= Kakarot
+= Kakarot zkEVM
 
-A https://www.vmware.com/topics/glossary/content/virtual-machine.html[Virtual Machine (VM)] is a compute resource that uses software instead of a physical computer to run programs and deploy apps. One or more virtual “guest” machines run on a physical “host” machine.  Each virtual machine runs its own operating system and functions separately from the other VMs, even when they are all running on the same host. 
+Built atop CairoVM, Kakarot zkEVM provides a bridge between the Ethereum Virtual Machine (EVM) and Cairo, offering a recognizable abstraction layer for EVM developers.
 
-This means that, for example, a virtual MacOS virtual machine can run on a physical PC. 
+== The Role of Virtual Machines
 
-Virtual machine technology is used for many use cases across on-premises and cloud environments. More recently, public cloud services are using virtual machines to provide varied computer architectures as well as application resources to multiple users at once, for even more cost efficient and flexible compute.  
+A https://www.vmware.com/topics/glossary/content/virtual-machine.html[Virtual Machine (VM)] is a software entity emulating a physical computer, running its distinct OS. For example, a virtual MacOS can operate within a physical PC. VMs have become indispensable in cloud contexts, providing resources for various users efficiently.
 
-== zkEVM
+== Understanding zkEVM
 
-A zkEVM is a virtual machine that can execute the same high level programming language or low level bytecode as the Ethereum execution client, i.e the EVM. Further, a zkEVM can prove that it executed this Ethereum code correctly to the Ethereum blockchain by leveraging validity proofs. 
+zkEVM emulates the EVM, interpreting high-level languages or bytecodes just like the Ethereum client. It authenticates Ethereum code executions using validity proofs. By condensing transactions into a digest for Ethereum, zkEVM optimizes block space, reducing gas costs and boosting speed.
 
-The main reason for using zkEVMs is quite similar to the reason for using any other rollup. It allows users to submit transactions to a large and powerful validator which then makes a proof of their validity, compresses them and sends them as a “digest” to Ethereum. This way, more transactions can be included in a single Ethereum block for lower gas costs, and often at faster speeds. 
+Given the EVM wasn’t initially designed for zero-knowledge proofs, optimizing zkEVM's efficiency is pivotal for Ethereum’s scalability.
 
-The main advantage of using a zkEVM is its ability to work with all the code and infrastructure already deployed on Ethereum - the de facto programmable blockchain - without introducing a new learning curve for most developers. 
+== Degrees of EVM Compatibility
 
-At the same time, the EVM was never designed to be ZK provable and hence zkEVMs have to deal with massive computational overhead which can make them less efficient at executing programs than Ethereum, or even other rollups like Starknet. 
+zkEVM's fidelity to Ethereum varies across three categories:
 
-It should suffice to say, making efficient zkEVMs is an ambitious and long term plan to scale the Ethereum blockchain. 
+=== Language Equivalence 
 
-== Kakarot
+Translates EVM bytecode to languages like Cairo optimized for zero-knowledge proof generation. While efficient, transitioning existing EVM tools and protocols poses challenges.
 
-https://www.kakarot.org/[Kakarot zkEVM] is an implementation of the Ethereum Virtual Machine (Ethereum’s execution client) written in Cairo. Because of this, all the Solidity bytecode that is run on Kakarot can also simultaneously be proven for executional correctness to the Ethereum network itself. 
+=== Bytecode Equivalence 
 
-Kakarot zkEVM enables teams to build & deploy EVM apps. Developers can deploy any Solidity (or EVM code) on Kakarot, as they would on Ethereum or Polygon. Their end-users are then able to interact with dApps with their usual toolchain (Metamask, Wallet connect) and so on.
+These VMs directly interpret EVM bytecode, achieving in-depth Ethereum compatibility. The challenge is EVM’s non-alignment with zero-knowledge proofs, causing inefficiencies.
+
+=== Consensus Equivalence 
+
+The peak of EVM compatibility. Here, zkEVMs don't require Ethereum to re-process cryptographic proofs. Though currently theoretical, Kakarot's team is actively exploring this level of compatibility.
+
+== Dive into Kakarot
+
+Written in Cairo, https://www.kakarot.org/[Kakarot zkEVM] interprets the EVM, enabling verification of Solidity bytecode on Ethereum. It streamlines the development and deployment of EVM applications, offering a platform akin to Ethereum or Polygon.
 
 image:kakarot_diagram.png[kakarot_diagram]
 
-== Data Availability
+== Addressing Data Availability
 
-zkEVMs, just like all other rollup solutions, must make an engineering decision regarding the storage of the state data they process. This way, users can reconstruct the state on Ethereum if the rollup becomes malicious or stops functioning. Hence, many developers argue that an Ethereum rollup can only consider itself trustless if it writes all of this state data on Ethereum. 
-
-At the same time, writing data on Ethereum is extremely expensive. This has opened up the debate for various methods of data availability. As of now, there are 2 leading solutions - 
+Storing state data on Ethereum ensures user trust, but the high costs necessitate alternatives:
 
 === Validium:
 
-The rollup writes all state data off-chain. This means all the state updates caused by smart contracts are stored externally in an accessible source such as https://docs.starkware.co/starkex/con_data_availability.html[Data Availability Committee (DAC)]. 
-
-Doing so allows the rollup to improve throughput by processing transactions off the Ethereum Mainnet.
+Stores all state data off-chain to increase transaction throughput.
 
 === Volition:
- 
-Users have a choice to make data available to Ethereum (for better security at a higher cost). Or, they can store the data off chain with a trusted, albeit centralized committee. 
-	
-In the future, Starknet L2 might serve solely as a proof verification layer for Kakarot. At the same time, new data availability solutions, such as Celestia or EigenDA, might be utilized for posting transaction data. Users will have the choice to opt-in to either option, depending on their security requirements.
 
-== EVM Equivalence
-
-So far, we have learned that a zkEVM is a special type of ZK rollup which mimics the execution environment of mainnet Ethereum. There are 3 main types of zkEVMs based on how closely they mimic Ethereum - 
-
-=== Language Equivalent 
-
-These types of zkEVMs can translate EVM bytecode into a custom built language optimized for generating ZK proofs - eg. Cairo. This is considered to be the easiest and most efficient way to achieve EVM compatibility with rollups. Moreover, this was the original approach taken by Netheremind through the much celebrated transpiler https://github.com/NethermindEth/warp[Warp]. 
-
-However, sophisticated developer tooling, frameworks, security practices and testing environments built for the EVM may not translate so well to language equivalent zkEVMs.
-
-=== Bytecode Equivalent 
-
-A bytecode equivalent VM can interpret EVM bytecode just like the Ethereum execution client, and hence achieve a deeper level of compatibility with Ethereum. This is done by implementing the various EVM opcodes into the zkEVM’s computer architecture. 
-
-However, because the EVM was not designed with ZK friendliness in mind - this often comes with the massive downside of creating an extremely inefficient machine that is expensive to run.
-
-This is where the https://github.com/kkrt-labs/kakarot[Kakarot repository] stands currently. It is able to execute all the existing opcodes from Ethereum - regardless of how cheap or expensive it is to do so. It also charges users accordingly, i.e, it is more expensive to execute less ZK friendly opcodes and so on. 
-
-=== Consensus Equivalent 
-
-This is the highest level of compatibility with the EVM that a blockchain can accomplish. Consensus equivalent zkEVMs are also sometimes called enshrined VMs. The idea is that cryptographic proofs executed by a zkEVM do not need to be re-executed on Ethereum in any capacity. 
-
-The proofs themselves can be used to validate blocks produced on Ethereum mainnet. Such zkEVMs do not change any part of the Ethereum system to make it easier to generate proofs, and are hence able to benefit from the existing Ethereum infrastructure as much as possible. 
-
-No consensus equivalent zkEVM exists today. However, this is a field of active research for the Kakarot team. 
+Allows users to decide between Ethereum-based or off-chain storage via a centralized entity.
 
 == Kakachin L3 zkEVM 
 
-Kakarot and Madara can be combined into a unified tech stack to fully accomplish Starknet’s vision for fractal scaling. This is part of Starknet’s mission to support the rollup-centric roadmap for Ethereum.
+Combining Kakarot and Madara leads to Kakachin, echoing Starknet's scaling vision. To make Kakachin consensus-equivalent, modifications like translating Ethereum rules into Cairo and shifting to Keccak MPT are essential.
 
-A Madara full node can be configured to work with the Kakarot zkEVM runtime environment, as opposed to vanilla Cairo VM. Ethereum’s consensus rules can also be implemented in Cairo and enshrined in this Kakarot x Madara full node. This is also called Kakachin. 
+== Kakachin’s Role in Scalability
 
-To make Kakachine a consensus equivalent system, they would have to -
+Functioning as an advanced Ethereum node on Starknet L2, Kakachin facilitates multiple L3 to L5 zkEVMs writing to Starknet, enhancing scalability while cutting costs.
 
-- Write the Ethereum consensus rules in Cairo inside the Madara x Kakarot full node, thus enabling the proving of L1 consensus.
-- Switch from Pedersen Merkle Patricia Trie (MPT) to Keccak MPT in the VM architecture.
+== Harnessing Kakarot
 
-Then, Kakachin would become a type 1 zkEVM client, able to prove L1 blocks. This is a more advanced use-case that depends on Ethereum’s roadmap, most notably the Verge. After the Verge, keccak might be replaced by poseidon as the hash function of choice for Ethereum. 
+=== Migrating Ethereum Contracts to Starknet
 
-== Kakachin for Fractal Scaling
+With Kakarot's tools, Ethereum-deployed contracts can run on Starknet without modifications. This facilitates faster migrations without needing Solidity-to-Cairo conversions.
 
-The Kakachin project creates a version of a normal Ethereum full node, which can run as a layer on top of Starknet Layer 2, or other Layer 3s implementing a similar architecture. This way, you could have multiple Layer 3, 4 or 5 zkEVMS writing to Starknet which then settles these state updates on Ethereum.
+=== Simplifying Starknet Deployments for Solidity Developers
 
-As a result, teams will be able to deploy their solidity code on zkEVM app-chains, and leverage validity proofs to settle transactions on Starknet. Gas costs will be exponentially lower than on L2 (and hence much lower than L1), and performance (TPS) will be higher. This is in addition to the scalability perks of Starknet and zkRollups in general.
+Kakarot allows developers to deploy on Starknet using familiar Solidity, without diving into Cairo, marrying convenience with performance benefits.
+
+include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
