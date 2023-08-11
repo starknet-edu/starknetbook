@@ -1,0 +1,68 @@
+[id="madara"]
+
+= Madara
+
+By now, everyone knows that blockchains need a scaling solution to grow. And one of the industry’s most common solutions is the “rollup”. 
+
+== Layer 2
+
+Layer 2s, a.k.a rollups, are essentially an off chain environment where users can execute smart contracts, or make transactions, which they otherwise meant to make on Ethereum itself. The rollup then reports these changes as state updates to the Ethereum network. 
+
+The architecture of a rollup is such that making any state update here is much cheaper, and also sometimes faster, than doing so on Ethereum. 
+
+The 3 golden traits of a layer 2 are 
+
+- State transition integrity 
+- Data availability
+- Censorship resistance 
+
+By means of running the provable, secure STARK protocol, Starknet is able to achieve state transition integrity. And by writing all its state changes to Ethereum L1 - it is also able to achieve the highest level of data availability. 
+
+However, as of now, most layer 2s still have a monopoly over their sequencer. So there is still a need to make the network censorship resistant. 
+
+== Beyond L2
+
+In his most recent https://vitalik.ca/general/2023/06/09/three_transitions.html[article] on the future of Ethereum, Vitalik talks about the 3 transitions that his network needs to undergo to reach scale and maturity. One of these is the concept of fractal scaling. 
+
+https://hackmd.io/@kalmanlajko/rkgg9GLG5[Fractal scaling] is a crucial part of Ethereum’s roadmap whereby users will be able to deploy application specific, hyper optimized blockchains as “layers” on top of Ethereum and ultimately allow for much greater flexibility and scale in the network. 
+
+Starknet is focussed on enabling it’s community to spin up their own, highly customizable fractal blockchains using Starknet as a base layer. This way, Starknet can lend its highly effective and battle tested technology to further Ethereum’s rollup-based roadmap. 
+
+_What is a layer though ?_  
+
+Before this reaches a point of nausea, let’s first define what a layer is. As per Vitalik, a “layer 2” should be defined as a system which - 
+
+- Exists to increase scalability, i.e enhance transactional throughput for a blockchain
+- Follows the "blockchain within a blockchain" pattern, i.e has its own mechanism for processing transactions and maintains an internal state
+- Inherits the full safety guarantees of Ethereum. 
+
+== Substrate
+
+https://substrate.io/[Substrate] offers an SDK that anyone can use to spin up a peer to peer network with a functional consensus system. You can think of this as a way for anyone to deploy a highly customizable white labeled blockchain with just a few clicks. 
+
+Substrate contains a number of modules. In Substrate terminology those are called pallets. Substrate comes with a set of pallets that can be picked and added to a blockchain – staking, fungible tokens, non-fungible tokens, governance, etc.
+
+Substrate also ships with a module, i.e pallet, for smart contracts. This module is called pallet-contracts. If a chain is developed in Substrate it can easily add smart contract functionality by including this pallet.
+
+By default, a substrate node is configured to use https://docs.substrate.io/learn/consensus/[Aura] protocol for consensus and https://medium.com/polkadot-network/grandpa-block-finality-in-polkadot-an-introduction-part-1-d08a24a021b5[Grandpa] for finality. It can also run WASM and EVM based byte code via its pre-configured execution client. 
+
+== Madara
+	
+https://github.com/keep-starknet-strange/madara[Madara] is first and foremost a Substrate based blockchain framework. Just like Substrate allows you to spin up a customizable chain that can execute Solidity code by default - Madara allows you to spin up a chain that uses the https://github.com/lambdaclass/cairo-vm[Cairo VM] and the https://github.com/starkware-libs/blockifier[blockifier] to execute Cairo programs and Starknet smart contracts. This is done mainly by implementing a “starknet” pallet on Substrate.
+
+Further, Madara leverages the power of Cairo to make any program execution actually provable by using the STARK protocol. To read more about Madara architecture, please look https://docs.madara.zone/architecture[this] up. Moreover, do try and deploy your own Madara chain in a few clicks by following https://docs.madara.zone/build[this] tutorial.
+
+image:madara_diagram.png[madara_diagram]
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
+
+

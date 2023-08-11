@@ -1,0 +1,119 @@
+[id="beerus"]
+
+= Beerus
+
+Almost any conversation about blockchains is incomplete without using the word “decentralize”. And why not? At the end of the day, decentralization is the single most salient feature of blockchains as a database. But how exactly do you measure the degree of decentralization of a blockchain?
+
+There are many measures of decentralization in the web3 world - an example being the https://learn.bybit.com/blockchain/nakamoto-coefficient-decentralization/[Nakamoto coefficient]. But no matter how you look at it, all these measures suggest that a blockchain can only be considered decentralized if anyone is able to read, verify and update the data stored on a chain in a fair and honest way. 
+
+== Full Nodes 
+
+As we have already seen, running a full node is the most trustless, decentralized and censorship resistant way to interact with Ethereum. With a full node, users can keep their own copy of the blockchain that they can query instantly and get direct access to Ethereum's peer-to-peer network. 
+
+This is because a full node verifies the signatures on all transactions being added to the Ethereum blockchain. It also maintains an up-to-date copy of the Patricia Merkle Trie of the entire Ethereum blockchain, including its leaves and root hash. 
+
+However, as the Ethereum blockchain scales to support more applications and users, running a full node requires an ever greater amount of memory, storage and CPU. This means it is not feasible for everyone to run their own node, and might have to rely on centralized RPC service providers like https://www.alchemy.com/[Alchemy] to be able to access the blockchain. Sound like a problem? 
+
+*_Yes!_*
+
+RPC node providers have proved to be a powerful application in the web3 tech stack. Yet, between the node they query and any web application you may be running on your browser - there are simply too many vulnerabilities. Eg. Traditional cross-scripting attacks on your browser, DDoS attacks on the node, man in the middle attacks and so on. 
+
+== Storage Proofs
+
+In the context of blockchains, Storage proofs allow you to create a small and verifiable proof that certain data exists within the blockchain’s state at a particular point in time. This is done using cryptographic techniques that are built into the storage system itself.
+
+=== Mechanism
+
+When a piece of data is added to the blockchain, it’s hashed and added as a “leaf” to a data structure called a state tree. This, along with other data in the tree, is hashed together to create parent nodes. This process continues until a single root hash, known as the state root is obtained. 
+
+The root hash represents the entire dataset and serves as a commitment to the data.
+
+To generate a storage proof, one must provide a specific piece of data and its associated path within the tree. The path consists of the sibling hashes required to reconstruct the root hash using the same hashing algorithm. The storage proof is essentially the combination of the data and its path.
+
+When verifying a storage proof, a recipient can use the provided data and Merkle or Verkle path to recompute the root hash. If the recomputed root hash matches the known root hash, the recipient can be confident that the data is authentic and part of the committed dataset.
+
+=== Optimisation  
+	
+Storage proofs can be optimized by combining them with a succing proof system such as a STARK. Here, a client looking to verify that some data is part of a blockchain’s state - can simply query a centralized and more powerful computer which can run the Merkle path algorithm on its behalf. 
+
+Then the more powerful computer can generate a succinct proof regarding the result it obtained and send it down to the client. Now the client can be sure of the result without having to execute the entire storage proof locally. 
+
+== Light Node
+
+Running a light node is an effective solution to this problem, and indeed, Ethereum has been specifically designed to support light nodes at its most fundamental level. A light node is a node running light client software. Light clients, just like the clients discussed above, also come in 2 flavors: 
+
+- Light Consensus Client 
+- Light Execution Client 
+
+And they allow users to access the blockchain even if they are running these clients in a computationally bounded environment. 
+
+_What is a computationally bounded environment ?_ 
+
+Formally, an Ethereum light client is defined as one which is able to maintain accurate information about the state of a blockchain while being …
+
+- Low on resource usage, eg. space, time, I.O etc.
+- Embeddable in hardware applications, eg. Desktop or Mobile 
+- Has trustless state updates
+
+=== Consensus
+
+Instead of keeping local copies of blockchain data and independently verifying all state updates, light clients like https://github.com/a16z/helios[Helios] allow users to request data from centralized RPC nodes. At the same time, a light client verifies the RPC’s response against a compressed version of Ethereum’s state before returning the result to the user.
+
+_How does a light client work ?_ 
+
+On the consensus layer, a light client makes use of a subset of Ethereum validator nodes, called “sync committee” to achieve consensus over the latest block header on the chain. The sync committee is a random set of 512 validator nodes selected from all of Ethereum’s validators, every 27 hours. 
+
+These nodes then arrive at consensus over the latest block header (containing root hash) of the beacon chain and sign on it individually. Each of these nodes already has a stake on the Ethereum network, which will be slashed if they act maliciously over here. 
+
+The light node, which only has to track 512 full nodes, now verifies the signatures on the data it receives from this sync committee. If more than 66.6% of them report the same root hash, it accepts it as the latest state of the chain. Notably, it only stores the block header, not the entire block data in its local state.  
+
+This allows the light node to keep up with the head of the chain by trusting the newest state changes approved by an honest majority of Ethereum validators.
+
+=== Header Verification
+
+Since the light node has the newest state root of the chain, any RPC node can provide it with a leaf (eg. the state of their account) and a path to the root in order to verify whether the data they have is accurate or not. All of this happens on the execution layer of the light client. 
+
+In a simplistic way, imagine a light node latexmath:[LightN], and latexmath:[r] being the height(in blocks) of the beacon chain. latexmath:[LightN] stores the block header latexmath:[B_{r}], which contains the hash of the most recent block. Then, if an RPC node provides the light node with a state proof of an account’s information, it can verify… 
+
+latexmath:[LightN(B_{r}, Proof) = {0, 1}]
+
+Now, anyone running this light node can be fully sure of the information they have received without having to store all the previous blocks and run the full consensus and execution client logic. 
+
+_Are there different types of light nodes ?_ 
+
+Nodes can vary in their lightness, depending upon the combinations of light and full client software they run. For example, the lightest configuration would be to run a light execution client and a light consensus client. It is also likely that many nodes will choose to run light consensus clients with full execution clients, or vice versa. 
+
+=== Properties
+
+Any light node must satisfy the following requirements:
+
+- Succinctness: Processing a state update on a light node must take less time and memory space than the corresponding full node 
+- Liveness: For any transaction that an honest full node receives on a blockchain, it must be reflected in a block header on a light node at some time
+- Consistency: All light nodes must be in agreement, with each other and the beacon chain, over their block headers at all points in time
+
+== Beerus
+
+The fact that Starknet programs are provable means Starknet can do one better than Ethereum when it comes to client software. Where Ethereum has its light clients, Starknet has gone ahead and launched a stateless client - https://github.com/keep-starknet-strange/beerus[Beerus]. 
+
+A stateless client is one which does not have to store ANY data regarding Starknet, or the Ethereum blockchain’s state locally. Not even the state roots.
+
+Whenever a user queries data regarding Starknet’s state via Beerus, Beerus just passes the query onto a centralized RPC node running Starknet client software. The RPC node returns the result, along with a storage proof proving the data actually exists in the last block proven by Starknet to Ethereum. 
+
+At the same time, Beerus syncs with Helios to get Starknet’s latest proven state root. Since Starknet’s state root is tracked by a smart contract on Ethereum, this means Beerus is able to use the latest proven state root of Starknet without ever having to run a full node on Starknet.
+
+Finally, Beerus verifies that the value returned by the RPC node is also part of the Starknet state root on Ethereum, simply by resolving the relevant section of the Ethereum Patricia Merkle Trie.
+
+This is summarized in the following diagram - 
+
+image:beerus_diagram.png[beerus_diagram]
+
+== Contributing
+
+[quote, The Starknet Community]
+____
+*Unleash Your Passion to Perfect StarknetBook*
+
+StarknetBook is a work in progress, and your passion, expertise, and unique insights can help transform it into something truly exceptional. Don't be afraid to challenge the status quo or break the Book! Together, we can create an invaluable resource that empowers countless others.
+
+Embrace the excitement of contributing to something bigger than ourselves. If you see room for improvement, seize the opportunity! Check out our https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[guidelines] and join our vibrant community. Let's fearlessly build Starknet! 
+____
