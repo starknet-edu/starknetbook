@@ -1,5 +1,5 @@
 * xref:index.adoc[3. Starknet Tooling]
-    ** xref:wallets.adoc[Wallet UI]
+    ** xref:scarb.adoc[Scarb: Package Manager]
     ** xref:katana.adoc[Local Node for Development]
     ** xref:devnet.adoc[Devnet]
     ** xref:hardhat.adoc[Starknet-Hardhat]
