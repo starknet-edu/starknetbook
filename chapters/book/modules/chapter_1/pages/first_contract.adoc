@@ -57,7 +57,7 @@ Fetch account config from an already deployed account contract
 ----
 
 
-Currently, the "fetch" command does support Braavos or Argent X smart wallets. The following command creates and saves the account descriptor file.
+Currently, the "fetch" command does support Braavos or Argent X smart wallets. Make sure your wallet address is already deployed and input following command to create and save the account descriptor file.
 
 [source,shell]
 ----
@@ -90,10 +90,9 @@ The account descriptor should have the following structure:
         "address": "<SMART_WALLET_ADDRESS>"
   }
 }
+----
 
-You might be wondering why the type is defined as "open_zeppelin" even though we're working with a Braavos wallet. This is because the CLI uses Open Zeppelin's default algorithm to sign transactions, which happens to be the same one used by Braavos and Argent X by default.
-
-However, note that a Braavos smart wallet with a hardware signer enabled will not work in this context, as a hardware signer uses a different elliptic curve to sign transactions.
+If you are working with Braavos wallet, the type is defined as "braavos" and the account descriptor strcuture might be slightly different.
 
 == Setting up Environment Variables
 
@@ -141,10 +140,10 @@ Here's the structure for the declaration command using the Starknet Sequencer's 
 
 [source,bash]
 ----
-starkli declare target/dev/contracts_Ownable.sierra.json --network=goerli-1 --compiler-version=2.0.1
+starkli declare target/dev/contracts_Ownable.sierra.json --network=goerli-1 --compiler-version=2.1.0
 ----
 
-The network flag is used to specify the network you want to use, it could also be "mainnet" for example. The compiler-version flag is used to specify the version of the compiler you want to use. Starkli is currently running on version 2.0.1 of the compiler. You can know the compiler version supported by Starkli by running:
+The network flag is used to specify the network you want to use, it could also be "mainnet" for example. The compiler-version flag is used to specify the version of the compiler you want to use. Starkli is currently running on version 2.1.0 and 2.0.1 of the compiler. You can know the compiler version supported by Starkli by running:
 
 [source,bash]
 ----
@@ -156,21 +155,21 @@ In the --compiler-version flag you will see possible versions of the compiler:
 [source,bash]
 ----
 --compiler-version <COMPILER_VERSION>
-          Statically-linked Sierra compiler version [possible values: 2.0.1]
+          Statically-linked Sierra compiler version [possible values: 2.0.1, 2.1.0]
 ----
 
-However, it could be that the Scarb compiler version is 2.0.2, you can know this by running:
+However, it could be that the Scarb compiler version is 2.2.0, you can know this by running:
 
 [source,bash]
 ----
 scarb --version
 ----
 
-This is because Starkli and Scarb are not always in sync. In this case you would need to use the compiler version that Starkli is using by installing a previous version of Scarb (check out the releases in the https://github.com/software-mansion/scarb/releases[Scarb github repo]). For example, you can do this by running the following command for installing Scarb version 0.5.1:
+This is because Starkli and Scarb are not always in sync. In this case you would need to use the compiler version that Starkli is using by installing a previous version of Scarb (check out the releases in the https://github.com/software-mansion/scarb/releases[Scarb github repo]). For example, you can do this by running the following command for installing Scarb version 0.6.1:
 
 [source,bash]
 ----
-curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.5.1
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.6.1
 ----
 
 If you get an error "Error: Invalid contract class", it means that you are using a version of Scarb that is not supported by Starkli. In this case, you need to install a previous version of Scarb as explained above.
@@ -181,7 +180,7 @@ If you were using a provider like Infura or Alchemy, the declaration command wou
 ----
 starkli declare target/dev/contracts_Ownable.sierra.json \
     --rpc=https://starknet-goerli.infura.io/v3/<API_KEY> \ 
-    --compiler-version=2.0.1
+    --compiler-version=2.1.0
 ----
 
 The result of the declaration command is a contract class hash (Class hash declared:
