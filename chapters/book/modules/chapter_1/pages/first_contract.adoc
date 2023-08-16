@@ -57,11 +57,18 @@ Fetch account config from an already deployed account contract
 ----
 
 
-//Currently, the "fetch" command does not support Braavos or Argent X smart wallets. However, there's an open PR to add this functionality. For now, we have to create the account descriptor file manually.
+Currently, the "fetch" command does support Braavos or Argent X smart wallets. The following command creates and saves the account descriptor file.
 
 [source,shell]
 ----
-touch ~/.starkli-wallets/deployer/account.json
+starkli account fetch <SMART_WALLET_ADDRESS> ~/.starkli-wallets/deployer/account.json
+----
+
+You can see the details of the account descriptor with the following command.
+
+[source,shell]
+----
+cat ~/.starkli-wallets/deployer/account.json
 ----
 
 The account descriptor should have the following structure:
@@ -71,9 +78,11 @@ The account descriptor should have the following structure:
 {
   "version": 1,
   "variant": {
-        "type": "open_zeppelin",
+        "type": "argent",
         "version": 1,
-        "public_key": "<SMART_WALLET_PUBLIC_KEY>"
+        "implementation": "<ARGENT_CLASS_HASH>",
+        "signer": "<SMART_WALLET_PUBLIC_KEY>",
+        "guardian": "0x0"
   },
     "deployment": {
         "status": "deployed",
@@ -81,23 +90,6 @@ The account descriptor should have the following structure:
         "address": "<SMART_WALLET_ADDRESS>"
   }
 }
-----
-
-Edit the file with the right fields for the public key, class hash, and address. Here is how to find them:
-
-The public key was returned by the "starkli signer keystore from-key ~/.starkli-wallets/deployer/keystore.json" command. However, you can also find it using the following command and writing the password you used to create the keystore file:
-
-[source,shell]
-----
-starkli signer keystore inspect ~/.starkli-wallets/deployer/keystore.json
-----
-
-The address is the address of your smart wallet. You can find it in the Braavos or Argent X browser extensions. Then use this address to fetch the class hash of your smart wallet with the following Starkli command:
-
-[source,shell]
-----
-starkli class-hash-at <SMART_WALLET_ADDRESS>
-----
 
 You might be wondering why the type is defined as "open_zeppelin" even though we're working with a Braavos wallet. This is because the CLI uses Open Zeppelin's default algorithm to sign transactions, which happens to be the same one used by Braavos and Argent X by default.
 
