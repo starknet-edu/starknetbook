@@ -56,7 +56,8 @@ starkli account fetch --help
 Fetch account config from an already deployed account contract
 ----
 
-Currently, the "fetch" command does not support Braavos or Argent X smart wallets. However, there's an open PR to add this functionality. For now, we have to create the account descriptor file manually.
+
+//Currently, the "fetch" command does not support Braavos or Argent X smart wallets. However, there's an open PR to add this functionality. For now, we have to create the account descriptor file manually.
 
 [source,shell]
 ----
