@@ -254,7 +254,7 @@ As expected, it returns the address that we passed to the constructor during dep
 
 === Invoking a Function
 
-To modify the state of the smart contract, we use the invoke command. Unlike the call command, invoke requires additional flags because we need to pay gas fees to execute the transaction:
+To modify the state of the smart contract, we use the invoke command.
 
 In this example, we'll invoke the transfer_ownership function to transfer the ownership from our deployer address to a different smart wallet address:
 

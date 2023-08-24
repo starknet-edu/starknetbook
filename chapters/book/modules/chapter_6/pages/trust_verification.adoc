@@ -35,8 +35,7 @@ A good analogy is the examination process practiced in a court of law when one p
 We say that a proof system _solves_ CI if when updating the system from state A to state B, the following properties hold:
 
 * *Completeness*: If the prover indeed knows how to change the state from A to B in a valid way then the prover will manage to convince the verifier to accept the change.
-* {blank}
- ** *Soundness*: If the prover doesn't know how to change the state from A to B, then the verifier will notice an inconsistency in the interaction and reject the suggested state transition. There remains a tiny false-positive probability, i.e., a probability of the verifier accepting an invalid proof. This probability is a system security parameter which can be set to an acceptable level like 1/(2¹²⁸), similar odds to winning the powerball five times in a row.
+* *Soundness*: If the prover doesn't know how to change the state from A to B, then the verifier will notice an inconsistency in the interaction and reject the suggested state transition. There remains a tiny false-positive probability, i.e., a probability of the verifier accepting an invalid proof. This probability is a system security parameter which can be set to an acceptable level like 1/(2¹²⁸), similar odds to winning the powerball five times in a row.
 
 This pair of properties has a crucial implication to the principle of Inclusive Accountability discussed earlier. The verifier can accept the state transition suggested by the prover without making any assumptions about the integrity of the prover. In fact, the prover can run on faulty hardware, it can be closed source and it can be executed on a computer controlled by a malicious entity. The only thing that matters¹ is that the messages sent by the prover lead the verifier to accept the statement. If that is the case, we know that computational integrity holds.
 
