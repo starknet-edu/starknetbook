@@ -232,6 +232,8 @@ a|
 image::https://avatars.githubusercontent.com/u/39279277?v=4&s=100[width=100, link="https://github.com/stoobie"]
 Steve Goodman
 a|
+image::https://avatars.githubusercontent.com/u/22782504?v=4&s=100[width=100, link="https://github.com/gianmarcoalarcon"]
+GianMarco
 a|
 a|
 |===
