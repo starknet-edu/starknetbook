@@ -61,7 +61,7 @@ Currently, the "fetch" command does support Braavos or Argent X smart wallets. M
 
 [source,shell]
 ----
-starkli account fetch <SMART_WALLET_ADDRESS> ~/.starkli-wallets/deployer/account.json
+starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/account.json
 ----
 
 You can see the details of the account descriptor with the following command.
