@@ -2,19 +2,19 @@
 
 = Starknet Tooling
 
-Today, you will find all the necessary tools you need to build decentralized applications (dApps) on Starknet. Even using different languages such as JavaScript, Rust, and Python, you can still develop on Starknet. You can also use the Starknet SDK to build your applications. For a front-end developer, you can use the Starknet.js SDK paired with React; however, you can also make the back-end with Rust or Python.
+Today, Starknet provides all essential tools for building decentralized applications (dApps), compatible with multiple languages like JavaScript, Rust, and Python. You can use the Starknet SDK for development. Front-end developers can use Starknet.js with React, while Rust and Python work well for back-end tasks.
 
-Contributors are always welcome to join the Starknet community and help improve the existing tooling or create new solutions.
+We welcome contributors to enhance existing tools or develop new solutions.
 
-In this chapter, you can expect to learn about the following topics:
+In this chapter, you'll explore:
 
-* Wallets: Using Starknet wallets interfaces such as Argent and Braavos
-* Frameworks: Use Protostar (inspired by Foundry) or Hardhat to build Starknet applications 
-* Common SDKs: Using Starknet.js, Starknet-rs, Starknet_py, and Caigo for different programming languages
-* Front-end SDKs: Using Starknet.js and React to build front-end applications
-* Testing: Learn how to test your Starknet applications using Protostar and the Devnet
+* Wallets: Learn about Starknet-compatible wallets like Argent and Braavos
+* Frameworks: Build using Protostar or Hardhat
+* SDKs: Discover multi-language support through Starknet.js, Starknet-rs, Starknet_py, and Caigo
+* Front-end Development: Use Starknet.js and React
+* Testing: Understand testing methods with Protostar and the Devnet
 
-By the end of this chapter, you will have a comprehensive understanding of the tools available in the Starknet ecosystem and how they can help you build and deploy dApps efficiently.
+By chapter's end, you'll have a complete grasp of Starknet's toolset, enabling efficient dApp development.
 
 
 include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
