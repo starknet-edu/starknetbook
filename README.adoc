@@ -2,14 +2,15 @@
 :navtitle: The Starknet Book
 
 ====
-IMPORTANT: The Starknet Book is a work in progress, and its content is rapidly evolving as the community contributes to its development. As a result, some sections may be incomplete or contain information that is still green. We highly encourage readers to contribute by suggesting improvements, providing feedback, or submitting new content to help us expand and refine the book. Your contributions are invaluable in making The Starknet Book a comprehensive and reliable resource for the community.
+IMPORTANT: The Starknet Book is a work in progress, shaped by ongoing community input. Some sections may be incomplete or still under review and are marked under a 🚧 emoji. We welcome your suggestions, feedback, and content contributions to make this book a reliable guide for everyone.
 ====
 
-The Starknet Book offers a structured curriculum, designed to equip individuals with the essential skills for Starknet development. It is collaboratively assembled by the Starknet community, with each chapter serving as a step on your journey to mastering the Starknet ecosystem.
+The Starknet Book is a step-by-step guide aimed at teaching you the essentials of Starknet development. It's a community effort, with each chapter guiding you through the Starknet ecosystem.
 
-The foundation of Starknet development rests heavily on understanding Cairo - the programming language pivotal for crafting Starknet smart contracts. To this end, The Starknet Book is intrinsically linked with the Cairo Book, another community-driven guide. The Cairo Book delves deep into the nuances of Cairo programming and can be accessed https://book.cairo-lang.org/[here]. 
+Understanding Cairo, the key programming language for Starknet smart contracts, is crucial. That's why this book works hand-in-hand with the Cairo Book, another community resource. You can access the Cairo Book https://book.cairo-lang.org/[**here**].
 
-For clarity: mastering Cairo is achieved through the Cairo Book, while Starknet's intricacies are unfolded in The Starknet Book. An aspiring Starknet developer would greatly benefit from a thorough engagement with both resources. Within these pages, you will uncover insights on tooling, architecture, account abstractions, STARKs, and Starknet-specific applications.
+In short, the Cairo Book helps you master Cairo, while The Starknet Book focuses on Starknet's specific features. For a well-rounded understanding, we recommend exploring both. This book will introduce you to tools, architecture, account setups, STARKs, and Starknet-specific apps.
+
 
 == Table of Contents
 
@@ -52,34 +53,30 @@ Feel free to mix and match these paths based on your unique interests and requir
 
 == Your Contributions Matter
 
-We're thrilled to have you join us on this incredible journey to create the ultimate resource for Cairo and Starknet development. By contributing to the Starknet Book, you're not only sharing your knowledge and expertise with the world, but you're also helping shape the future of decentralized technology. Together, we'll build a comprehensive, accessible, and engaging curriculum that will empower developers everywhere to harness the full potential of Starknet.
+Welcome aboard! By contributing to the Starknet Book, you're doing more than sharing expertise—you're shaping the future of decentralized tech. Let's build a guide that helps developers unlock Starknet's potential.
 
-As a contributor, you'll be part of a vibrant and growing community dedicated to pushing the boundaries of what's possible with decentralized technology. You'll have the opportunity to collaborate with like-minded individuals from around the globe, share your unique insights, and learn from one another. Your contributions will not only enrich the Starknet community but also leave a lasting impact on the broader field of blockchain technology.
+For detailed contribution guidelines, visit the https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[Contributors Guide]. Every contribution counts. Your skills and passion will help make this book an invaluable tool.
 
-So, are you ready to embark on this epic adventure? Let's dive in and explore the vast and exciting world of Starknet together. Here's to the countless discoveries, breakthroughs, and innovations that await us!
+=== How You Can Help
 
-Please refer to the existing https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc[Contributors Guide] for detailed instructions on how to contribute. Remember, every contribution, no matter how small, makes a difference. Your expertise and passion are invaluable in helping us create a truly exceptional resource for the Starknet community. Let's make history together!
-
-Here are things you can do to help:
-
-* In most sections there is a message for builders who want to collaborate with content.
-* Empty section in a Chapter? Go for it!
-* Do you think the Starknet Book needs an additional section? Propose it.
-* Can a section be improved? Feel free to modify it.
-* Do you want to add an alternative programming language for the examples? Yes please.
-* Correct the bugs if you find any.
-* Please add an explanation in the exercise comments if you feel they need them.
-* Add exercises that show your favorite feature of Cairo.
+* Found an empty section? Fill it in!
+* Think we need a new section? Suggest one.
+* See room for improvement? Go ahead and tweak it.
+* Want to add code in a new programming language? Go for it.
+* Found a bug? Fix it.
+* Exercises unclear? Add explanations.
+* Show off your favorite Cairo features through new exercises.
 
 == Additional Key Educational Resources
 
 We've compiled a list of valuable educational resources that will help deepen your understanding and enhance your skills in coding with Cairo and staying abreast with Starknet developments:
 
-1. **Starklings**: A resource specifically designed to guide you through learning Cairo programming, ensuring that you reach a proficient level. You can access it https://github.com/shramee/starklings-cairo1[here].
-2. **Starknet Community Forum**: An online platform where you can engage in discussions about the latest developments in Starknet. Join the conversation https://community.starknet.io/[here].
-3. **Starknet Documentation**: You can browse through the documentation https://docs.starknet.io/[here].
-4. **Cairo Documentation**: Explore it https://www.cairo-lang.org/docs[here].
-5. **Starknet Developer Telegram (English)**: A community for English-speaking Starknet developers. This is a great platform for networking, sharing ideas, and troubleshooting together. Join us on Telegram https://t.me/starknetna[here].
+. **Cairo Book**: A comprehensive guide to Cairo, the programming language for Starknet smart contracts. You can access it https://book.cairo-lang.org/[here].
+. **Starklings**: A resource specifically designed to guide you through learning Cairo programming, ensuring that you reach a proficient level. You can access it https://github.com/shramee/starklings-cairo1[here].
+. **Starknet Community Forum**: An online platform where you can engage in discussions about the latest developments in Starknet. Join the conversation https://community.starknet.io/[here].
+. **Starknet Documentation**: You can browse through the documentation https://docs.starknet.io/[here].
+. **Cairo Documentation**: Explore it https://www.cairo-lang.org/docs[here].
+. **Starknet Developer Telegram (English)**: A community for English-speaking Starknet developers. This is a great platform for networking, sharing ideas, and troubleshooting together. Join us on Telegram https://t.me/starknetna[here].
 
 == Starknet Book Authors ✨
 
