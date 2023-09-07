@@ -1,78 +1,60 @@
-[#setup]
+= Starknet Development Environment Setup
 
-= Setting Up Your Starknet Development Environment
+This chapter walks you through setting up your Starknet development tools.
 
-This chapter will guide you through the process of setting up your Starknet development environment.
+Essential tools to install:
 
-We need to install tools that allow us to interact with Starknet and compile Cairo code. The following tools are suggested:
-
-. https://github.com/xJonathanLEI/starkli[Starkli] is a command-line interface that allows you to interact with Starknet. This is one of the tools that allow us to interact with Starknet, however, it is not the only one. We will cover other tools in the Chapter 3 (e.g., the Starknet JavaScript/Python/Rust SDK, Hardhat, or Protostar).
-. https://github.com/software-mansion/scarb[Scarb] is the package manager for Cairo. Among other things, it allows us to compile Cairo code to Sierra, the intermediate language between high-level Cairo and the low-level Cairo Assembly (CASM).
+. link:https://github.com/xJonathanLEI/starkli[Starkli] - A CLI tool for interacting with Starknet. More tools are discussed in Chapter 2.
+. link:https://github.com/software-mansion/scarb[Scarb] - Cairo's package manager that compiles code to Sierra, a mid-level language between Cairo and CASM.
 
 [NOTE]
 ====
-For support or feedback regarding this critical section, please visit our https://github.com/starknet-edu/starknetbook/issues[Issues section of the Book's GitHub repository] or reach out to espejelomar directly on Telegram.
+For support or queries, visit our link:https://github.com/starknet-edu/starknetbook/issues[GitHub Issues] or contact espejelomar on Telegram.
 ====
 
 == Starkli Installation
 
-Starkliup is the installer for the Starkli environment, and it can be easily installed using the command line with curl:
+Easily install Starkli using Starkliup, an installer invoked through the command line.
 
 [source,shell]
 ----
 curl https://get.starkli.sh | sh
-----
-
-Restart the terminal after executing the command. Once starkliup has been successfully installed, it can then be used to install Starkli:
-
-[source,shell]
-----
 starkliup
 ----
 
-Upon executing the command, you'll see the following:
-
-Restart the terminal and run the following command to verify the installation:
+Restart your terminal and confirm installation:
 
 [source,shell]
 ----
 starkli --version
 ----
 
-To upgrade to the latest version of Starkli simply follow the past steps again.
+To upgrade Starkli, simply repeat the steps.
 
-== The Scarb Package Manager Installation
+== Scarb Package Manager Installation
 
-In this section we go into the fundamentals of Scarb, if you want to get deeper refer to the https://book.starknet.io/chapter_2/scarb.html[Scarb subchapter in Chapter 2].
+We will get deeper into Scarb in link:https://book.starknet.io/chapter_2/scarb.html[Chapter 2].
 
-Scarb is compatible with macOS, Linux, and Windows operating systems. 
+For macOS and Linux:
 
-For macOS and Linux users, open your terminal and execute the following command:
-
-[source, bash]
-----
-$ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
-----
-
-You can run the same command to upgrade it.
-
-Scarb's installation on Windows requires manual setup. Follow the steps in the https://docs.swmansion.com/scarb/download#install-via-installation-script[Scarb documentation] to install it.
-
-Restart the terminal and run the following command to verify the installation:
-
-[source, bash]
-----
-$ scarb --version
-----
-
-You can run the same command to upgrade it:
-
-[source, bash]
+[source,bash]
 ----
 curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
 ----
 
-You know are ready to start writing Cairo code and deploying it to Starknet!
+For Windows, follow manual setup in the link:https://docs.swmansion.com/scarb/download.html#windows[Scarb documentation].
+
+Restart the terminal and run:
+
+[source,bash]
+----
+scarb --version
+----
+
+To upgrade Scarb, rerun the installation command.
+
+You are now set to code in Cairo and deploy to Starknet!
+
 
 [NOTE]
 ====
