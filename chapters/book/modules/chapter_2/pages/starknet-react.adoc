@@ -7,7 +7,7 @@ Several tools exist in the starknet ecosystem to build the front-end for your ap
 * https://github.com/apibara/starknet-react[starknet-react] (https://apibara.github.io/starknet-react[documentation]): Collection of React hooks for Starknet. It is inspired by https://github.com/tmm/wagmi[wagmi], powered by https://github.com/0xs34n/starknet.js[starknet.js].
 * https://github.com/0xs34n/starknet.js[starknet.js]: A JavaScript library for interacting with Starknet contracts. It would be the equivalent of https://web3js.org/[web3.js] for Ethereum.
 
-For Vue developers, vue-stark-boil, created by the team at [Don't Panic DAO](https://github.com/dontpanicdao), is a great option. For a deeper understanding of Vue, visit their [website](https://vuejs.org/). The vue-stark-boil boilerplate enables various functionalities, such as connecting to a wallet, listening for account changes, and calling a contract.
+For Vue developers, vue-stark-boil, created by the team at https://github.com/dontpanicdao[Don't Panic DAO], is a great option. For a deeper understanding of Vue, visit their https://vuejs.org/[website]. The vue-stark-boil boilerplate enables various functionalities, such as connecting to a wallet, listening for account changes, and calling a contract.
 
 Authored by the https://github.com/apibara/[Apibara] team, https://github.com/apibara/starknet-react/[Starknet React] is an open-source collection of React providers and hooks meticulously designed for Starknet.
 
@@ -179,7 +179,7 @@ To improve your dApp User Experience, you can track the user wallet changes, esp
 You could want to reload correct balances when the user changes the account, or to reset the state of your dApp when the user changes the network.
 To do so, you can use a previous hook we already looked at: `useAccount` and a new one `useNetwork`.
 
-The `useNetwork` hook will give you the current Chain currently used.
+The `useNetwork` hook can provide you with the network chain currently in use.
 
 [source,typescript]
 ----
@@ -193,7 +193,7 @@ return (
 )
 ----
 
-You also have additional information you can get from this hook -> **blockExplorer**, **testnet** which can give you more precise information about the current using network.
+You also have additional information you can get from this hook -> **blockExplorer**, **testnet** which can give you more precise information about the current network being used.
 
 After knowing this you have all you need to track user interaction on the using account and network. You can use the `useEffect` hook to do some work on changes.
 
