@@ -402,7 +402,7 @@ If the function returns the new owner's address, the transfer was successful.
 
 Congratulations! You've successfully deployed and interacted with a Starknet contract. 
 
-=== Your Next Steps
+== Your Next Steps
 
 You're now familiar with deploying and interacting with Starknet smart contracts. The next step is learning how to write one. Here are your options:
 
