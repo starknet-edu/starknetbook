@@ -400,7 +400,17 @@ starkli call \
 
 If the function returns the new owner's address, the transfer was successful.
 
-Congratulations! You've successfully deployed and interacted with a Starknet contract. For more in-depth knowledge, refer to Chapter 2 of the Starknet Book.
+Congratulations! You've successfully deployed and interacted with a Starknet contract. 
+
+=== Your Next Steps
+
+You're now familiar with deploying and interacting with Starknet smart contracts. The next step is learning how to write one. Here are your options:
+
+1. **Deep Dive into Starknet**: Continue with Chapter 3 of the Starknet Book for an in-depth look at Starknet's architecture and cutting-edge applications.
+
+2. **Learn Cairo**: If you're keen on hands-on coding, focus on learning Cairo—the language used for Starknet contracts. Start by reading Chapters 1-6 of the link:https://book.cairo-lang.org/title-page.html[Cairo Book], which covers essentials like 'Getting Started' and 'Enums and Pattern Matching.' Follow up with the link:https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html[Starknet Smart Contracts chapter] for a thorough understanding.
+
+Choose the path that aligns with your interests, and you'll be well-prepared to continue with your Starknet path.
 
 
 [NOTE]
