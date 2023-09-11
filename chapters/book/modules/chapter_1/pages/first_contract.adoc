@@ -13,6 +13,42 @@ scarb --version  # For Cairo code compilation
 starkli --version  # To interact with Starknet
 ----
 
+=== Find the compiler versions supported
+
+We have to make sure that our Starkli compiler version match Scarb compiler version
+
+To find the compiler versions supported by Starkli, execute:
+
+[source,bash]
+----
+starkli declare --help 
+----
+
+You'll see a list of possible compiler versions under the `--compiler-version` flag.
+
+[source,bash]
+----
+--compiler-version <COMPILER_VERSION>
+          Statically-linked Sierra compiler version [possible values: [COMPILER VERSIONS]]]
+----
+
+Note that the Scarb compiler version might not align with Starkli's supported versions. To check Scarb's version:
+
+[source,bash]
+----
+scarb --version
+----
+
+If there's a mismatch, it is suggested that you install the version of Scarb that uses the compiler version that Starkli supports. You can find previous releases on https://github.com/software-mansion/scarb/releases[Scarb]'s GitHub repo.
+
+To install a specific version, such as 0.6.1, run:
+
+[source,bash]
+----
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.6.1
+----
+
+
 == Smart Wallet Setup
 
 A smart wallet comprises a Signer and an Account Descriptor. The Signer is a smart contract with a private key for signing transactions, while the Account Descriptor is a JSON file detailing the wallet's address and public key.
