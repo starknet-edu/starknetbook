@@ -278,8 +278,7 @@ starkli declare target/dev/contracts_Ownable.sierra.json
 
 According to the STARKNET_RPC url, starkli can recognize the target blockchain network, in this case "goerli", so it is not necessary explicitly specify it.
 
-Unless you're working with custom networks where it's infeasible for Starkli to detect the right compiler version, you shouldn't need to manually choose a version with --compiler-version.
-The `--network` and `--compiler-version` flags are critical for successful smart contract declaration and deployment with Starkli. 
+Unless you're working with custom networks where it's infeasible for Starkli to detect the right compiler version, you shouldn't need to manually choose a version with `--network` and `--compiler-version`.
 
 If you encounter an "Error: Invalid contract class," it likely means your Scarb's compiler version is incompatible with Starkli. Follow the steps above to align the versions. Starkli usually supports compiler versions accepted by mainnet, even if Scarb's latest version is not yet compatible.
 
