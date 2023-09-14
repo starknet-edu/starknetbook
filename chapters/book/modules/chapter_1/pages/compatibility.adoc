@@ -9,7 +9,7 @@ Below is a table detailing the compatibility between the versions of Starknet CL
 [cols="3", options="header"]
 |===
 |Environment
-|https://github.com/starkware-libs/cairo-lang/releases[Starknet CLI version]
+|https://github.com/starkware-libs/cairo-lang/releases[Starknet version]
 |https://github.com/starkware-libs/cairo/releases[Cairo compiler version]
 
 |Mainnet
