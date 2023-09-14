@@ -20,7 +20,7 @@ However, the Cairo VM allow us to innovate beyond the Ethereum Virtual Machine (
 
 * Account Abstraction: Implemented at the protocol level, this facilitates diverse signing schemes while ensuring user security and self-custody of assets.
 * Volition: Will be implemented on testnet during Q4 2023 will allow developers to regulate data availability on Ethereum (L1) or on Starknet (L2). Reducing L1 onchain data can radically reduce costs.
-* Paymaster: StarkNet follows the guidelines laid out in EIP 4337 and allows the transaction to specify a specific contract, a *Paymaster*, to pay for their transaction. Supports gasless transactions, enhancing user accessibility.
+* Paymaster: StarkNet will allow users to choose how to pay for transaction fee, follows the guidelines laid out in EIP 4337 and allows the transaction to specify a specific contract, a *Paymaster*, to pay for their transaction. Supports gasless transactions, enhancing user accessibility.
 
 == Starknet Philosophy: Built for Developers
 
