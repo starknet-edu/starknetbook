@@ -60,11 +60,11 @@ export default function Connect() {
     <div>
       {connectors.map((connector) => (
         <button
-          key={connector.id()}
+          key={connector.id}
           onClick={() => connect(connector)}
           disabled={!connector.available()}
         >
-          Connect with {connector.id()}
+          Connect with {connector.id}
         </button>
       ))}
     </div>
