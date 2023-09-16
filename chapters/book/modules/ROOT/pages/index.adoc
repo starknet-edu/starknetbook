@@ -238,7 +238,8 @@ a|
 image::https://avatars.githubusercontent.com/u/2598660?v=4&s=100[width=100, link="https://github.com/t4t5"]
 Tristan
 a|
-
+image::https://avatars.githubusercontent.com/u/15204272?v=4&s=100[width=100, link="https://github.com/sinsotec"]
+Orlando Sanchez
 a|
 
 a|
