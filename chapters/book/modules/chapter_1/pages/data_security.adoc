@@ -1,6 +1,6 @@
 = The need of Starknet from a data security perspective
 
-This chapter will provide an overview of the evolution of data security and how Starknet addresses the challenges posed by the blockchain trilemma. In the https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_0/pages[GitHub repo of the Book], you'll find code examples to enhance your learning experience. We welcome contributions from the community, so if you can provide examples in other languages, please feel free to submit a PR.
+This chapter will provide an overview of the evolution of data security and how Starknet addresses the challenges posed by the blockchain trilemma. In the https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules[GitHub repo of the Book], you'll find code examples to enhance your learning experience. We welcome contributions from the community, so if you can provide examples in other languages, please feel free to submit a PR.
 
 The topics covered in this chapter have been thoroughly explored and analyzed by countless experts in the field. We will reference their invaluable resources throughout the book to ensure you receive the most comprehensive and accurate information.
 
