@@ -235,4 +235,15 @@ a|
 image::https://avatars.githubusercontent.com/u/19387360?v=4&s=100[width=100, link="https://github.com/TEMHITHORPHE"]
 TEMHITHORPHE
 a|
+image::https://avatars.githubusercontent.com/u/2598660?v=4&s=100[width=100, link="https://github.com/t4t5"]
+Tristan
+a|
+
+a|
+
+a|
+
+a|
+
+a|
 |===
