@@ -2,31 +2,31 @@
 
 = Scarb and the Structure of a Cairo Project
 
-Scarb is the Cairo package manager specifically created to streamline your Cairo and Starknet development process. Scarb is capable of managing project dependencies, compiling projects (both pure Cairo and Starknet contracts), downloading the necessary libraries, building these libraries, and integrating seamlessly with other essential development tools such as Protostar.
+[NOTE]
+====
+To make the most of this chapter, a basic grasp of the Cairo programming language is advised. We suggest reading chapters 1-6 of the link:https://book.cairo-lang.org/title-page.html[Cairo Book], covering topics from 'Getting Started' to 'Enums and Pattern Matching.' Follow this by studying the link:https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html[Starknet Smart Contracts chapter] in the same book. With this background, you'll be well-equipped to understand the examples presented here.
+====
 
-== Integrating Scarb into Your Development Workflow
+Scarb is Cairo's package manager designed for both Cairo and Starknet projects. It handles dependencies, compiles projects, and integrates with tools like Foundry. It is built by the same team that created Foundry for Starknet.
 
-The steps below illustrate a typical workflow in developing a Starknet contract using Scarb:
+== Scarb Workflow
 
-1. **Initializing the Project:** Start by running `scarb new` to create a new project. This command will automatically generate the project's basic structure, including a `Scarb.toml` configuration file and an initial `src/lib.cairo` file.
+Follow these steps to develop a Starknet contract using Scarb:
 
-2. **Developing the Contract:** Write your Cairo code and store it in the `src` directory.
+1. **Initialize:** Use `scarb new` to set up a new project, generating a `Scarb.toml` file and initial `src/lib.cairo`.
+2. **Code:** Add your Cairo code in the `src` directory.
+3. **Dependencies:** Add external libraries using `scarb add`.
+4. **Compile:** Execute `scarb build` to convert your contract into Sierra code.
 
-3. **Managing Dependencies:** If your contract depends on external libraries, use `scarb add` to effortlessly include these dependencies in your project.
-
-4. **Compiling the Contract:** Run `scarb build` to compile your contract into Sierra code. This resulting code can then be examined further, or used as input for other tools or processes.
-
-By integrating Scarb into your workflow, you leverage its features to make your development process more efficient and manageable.
+Scarb simplifies your development workflow, making it efficient and streamlined.
 
 == Installation
 
-Scarb is compatible with macOS, Linux, and Windows operating systems.
+Scarb is cross-platform, supporting macOS, Linux, and Windows. For installation, refer to the link:https://book.starknet.io/chapter_1/environment_setup.html#the_scarb_package_manager_installation[Chapter 1 setup guide].
 
-Follow the instructions in the https://book.starknet.io/chapter_1/environment_setup.html#the_scarb_package_manager_installation[setup guide of Chapter 1].
+== Cairo Project Structure
 
-== Structure of a Cairo Project
-
-A Cairo project includes several crucial components that help create and manage a smart contract. Let's explore each part in detail.
+Next, we'll dive into the key components that make up a Cairo project.
 
 === Cairo Packages
 
