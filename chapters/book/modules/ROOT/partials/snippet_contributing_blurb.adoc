@@ -1,4 +1,5 @@
-[NOTE]
+= Contributing
+
 ====
 The Book is a community-driven effort created for the community.
 
@@ -6,7 +7,6 @@ The Book is a community-driven effort created for the community.
 * If you discover any errors or have additional suggestions, don't hesitate to open an https://github.com/starknet-edu/starknetbook/issues[issue on our GitHub repository].
 ====
 
-= Contributing
 
 [quote, The Starknet Community]
 ____
