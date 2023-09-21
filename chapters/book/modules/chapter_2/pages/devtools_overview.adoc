@@ -1,0 +1,4 @@
+:starknetbook:
+include::1.0.0@docs-common-content:ROOT:partial$partial_devtools.adoc[]
+
+include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

@@ -11,7 +11,9 @@ content:
     edit_url: 'https://github.com/starknet-edu/starknetbook/edit/main/{path}'
     start_paths:
       - chapters/book
-
+  - url: https://github.com/starknet-io/docs-common-content.git
+    branches: HEAD
+    edit_url: 'https://github.com/starknet-io/docs-common-content/edit/main/{path}'
 ui:
   bundle:
     url: https://github.com/starknet-io/starknet-docs-antora-ui/raw/HEAD/build/ui-bundle.zip
