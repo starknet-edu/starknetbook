@@ -1,5 +1,0 @@
-[id="starknetrs"]
-
-= Starknet-rs - a Rust library for Starknet
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

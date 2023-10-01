@@ -1,0 +1,201 @@
+# The Starknet Network
+
+Welcome to the Starknet Book. This is your roadmap to Starknet’s key
+features, its core philosophy, and its unique language, Cairo. Whether
+you’re a developer, a crypto fan, or just curious, this book is your
+starting point.
+
+# What is Starknet?
+
+Starknet is a Layer-2 network that makes Ethereum transactions faster,
+cheaper, and more secure using zk-STARKs technology. Think of it as a
+boosted layer on top of Ethereum, optimized for speed and cost.
+
+## Key Features
+
+These are some key features of Starknet:
+
+-   Low Costs: Transactions on Starknet cost less than on Ethereum.
+    Future updates like Volition and EIP 4844 will make it even cheaper.
+
+-   Developer-Friendly: Starknet lets developers easily build
+    decentralized apps using its native language, Cairo.
+
+-   Speed and Efficiency: Upcoming releases aim to make transactions
+    even faster and cheaper.
+
+-   CVM: Thanks to Cairo, Starknet runs on it´s own VM, called Cairo VM
+    (CVM), that allow us to innovate beyond the Ethereum Virtual Machine
+    (EVM) and create a new paradigm for decentralized applications.
+
+Here some of them:
+
+-   Account Abstraction: Implemented at the protocol level, this
+    facilitates diverse signing schemes while ensuring user security and
+    self-custody of assets.
+
+-   Volition: Will be implemented on testnet during Q4 2023 will allow
+    developers to regulate data availability on Ethereum (L1) or on
+    Starknet (L2). Reducing L1 onchain data can radically reduce costs.
+
+-   Paymaster: StarkNet will allow users to choose how to pay for
+    transaction fee, follows the guidelines laid out in EIP 4337 and
+    allows the transaction to specify a specific contract, a
+    **Paymaster**, to pay for their transaction. Supports gasless
+    transactions, enhancing user accessibility.
+
+# Starknet Philosophy: Built for Developers
+
+Starknet is all about being developer-friendly. It’s a high-performance
+platform designed to make building decentralized apps easier and more
+powerful. Here are its pillars:
+
+-   Speed and Cost: Fast transactions and low fees make it ideal for
+    resource-heavy apps.
+
+-   Cairo: This evolving language makes it easier to use validity proofs
+    and zk-STARKs tech.
+
+-   Community: Active communication with developers through Telegram and
+    Discord.
+
+-   Freedom: No more tech limitations. Build what you’ve always wanted.
+
+-   Tools: A full suite of dev tools, including multiple SDKs and
+    testing frameworks.
+
+This philosophy drives Starknet’s roadmap.
+
+# Cairo: The Language of Starknet
+
+Cairo is tailor-made for creating STARK-based smart contracts. As
+Starknet’s native language, it’s central to building scalable and secure
+decentralized apps. To start learning now, check out the [Cairo
+Book](https://cairo-book.github.io/) and
+[Starklings](https://github.com/shramee/starklings-cairo1).
+
+Inspired by Rust, Cairo lets you write contracts safely and
+conveniently.
+
+## Why Choose Cairo?
+
+Cairo is designed for *Provable Computation,* a new paradigm that lets
+programs prove their correctness without re-running them. Here’s why it
+stands out:
+
+-   Purpose-Built: Designed specifically for smart contracts.
+
+-   No EVM Limits: Goes beyond what the Ethereum Virtual Machine can do.
+
+-   Flexibility: Uses traits for more flexibility than inheritance.
+
+# Governance
+
+The Starknet Foundation oversees Starknet’s governance. Its duties
+include:
+
+-   Managing Starknet’s development and operations
+
+-   Overseeing the Starknet DAO, which enables community involvement
+
+-   Setting rules to maintain network integrity
+
+Our focus is on technical input and debate for improving the protocol.
+While we value all perspectives, it’s often the technical insights that
+steer us forward.
+
+Members can influence Starknet by voting on changes. Here’s the process:
+A new version is tested on the Goerli Testnet. Members then have six
+days to review it. A Snapshot proposal is made, and the community votes.
+A majority of *YES* votes means an upgrade to the Mainnet.
+
+In short, governance is key to Starknet’s evolution.
+
+To propose an improvement, create a SNIP.
+
+## SNIP: StarkNet Improvement Proposals
+
+SNIP is short for StarkNet Improvement Proposal. It’s essentially a
+blueprint that details proposed enhancements or changes to the StarkNet
+ecosystem. A well-crafted SNIP includes both the technical
+specifications of the change and the reasons behind it. If you’re
+proposing a SNIP, it’s your job to rally community support and document
+any objections (more details
+[here](https://community.starknet.io/t/draft-simp-1-simp-purpose-and-guidelines/1197#what-is-a-snip-2)).
+Once a SNIP is approved, it becomes a part of the Starknet protocol. All
+the SNIPs can be found in [this
+repository](https://github.com/starknet-io/SNIPs).
+
+SNIPs serve three crucial roles:
+
+1.  They are the main avenue for proposing new features or changes.
+
+2.  They act as a platform for technical discussions within the
+    community.
+
+3.  They document the decision-making process, offering a historical
+    view of how StarkNet has evolved.
+
+Because SNIPs are stored as text files in a [version-controlled
+repository](https://github.com/starknet-io/SNIPs), you can easily track
+changes and understand the history of proposals.
+
+For those who are building on Starknet, SNIPs aren’t just
+suggestions—they’re a roadmap. It’s beneficial for implementers to keep
+a list of the SNIPs they’ve executed. This transparency helps users
+gauge the state of a particular implementation or software library.
+
+# Development
+
+The Starknet Foundation actively nurtures the ecosystem by:
+
+-   Supporting research and development
+
+-   Promoting Starknet technology adoption
+
+-   Funding and organizing conferences and events for knowledge sharing
+
+## Community Engagement
+
+Community strength matters to the Foundation. To foster engagement, it:
+
+-   Organizes events and discussions
+
+-   Collaborates with allied blockchain communities
+
+-   Creates avenues for community contributions to Starknet’s growth
+
+# What is Starkware?
+
+Starkware, founded in 2018, focuses on zk-STARK technology. Its key
+products include:
+
+-   StarkEx: A Layer 2 solution on Ethereum, efficient through STARK
+    proofs
+
+-   Cairo: An open-source language for efficient, scalable computation
+    in decentralized apps ([see
+    repo](https://github.com/starkware-libs/cairo/tree/73c3ed0a1af65f53490866426ae49360b2304374))
+
+Starknet, its latest project, aims for community-driven evolution under
+the Starknet Foundation’s governance.
+
+# Learning Resources
+
+For deeper insights into Starknet and Cairo:
+
+-   [The Starknet Book](https://book.starknet.io): For mastering
+    Starknet
+
+-   [The Cairo Book](https://cairo-book.github.io/): For mastering Cairo
+
+-   [Starklings](https://github.com/shramee/starklings-cairo1):
+    Practical tutorials and examples
+
+# Conclusion
+
+Starknet offers scalable, secure, and cost-effective decentralized apps,
+backed by zk-STARKs technology. It’s not just the tech; Starknet puts
+emphasis on empowering its developer community with robust tools and
+resources. This book aims to guide all those keen to explore Starknet’s
+technologies and philosophies.

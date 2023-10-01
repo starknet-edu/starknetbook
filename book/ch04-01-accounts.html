@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Accounts - The Starknet Book</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Starknet Book</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="ch02-00-starknet-tooling.html"><strong aria-hidden="true">2.</strong> Tooling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-01-basic-installation.html"><strong aria-hidden="true">2.1.</strong> Basic Installation</a></li><li class="chapter-item expanded "><a href="ch02-02-compile-deploy-interact.html"><strong aria-hidden="true">2.2.</strong> Compile, Deploy, Interact</a></li><li class="chapter-item expanded "><a href="ch02-03-scarb.html"><strong aria-hidden="true">2.3.</strong> Scarb: The Package Manager</a></li><li class="chapter-item expanded "><a href="ch02-04-starkli.html"><strong aria-hidden="true">2.4.</strong> Starkli: A CLI interface 🚧</a></li><li class="chapter-item expanded "><a href="ch02-05-katana.html"><strong aria-hidden="true">2.5.</strong> Katana: A Local Node</a></li><li class="chapter-item expanded "><a href="ch02-06-starknet-devnet.html"><strong aria-hidden="true">2.6.</strong> Starknet Devnet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-07-starknet-js.html"><strong aria-hidden="true">2.7.</strong> Starknet-js: Javascript SDK</a></li><li class="chapter-item expanded "><a href="ch02-08-starknet-react.html"><strong aria-hidden="true">2.8.</strong> Starknet-React: React Integration</a></li><li class="chapter-item expanded "><a href="ch02-09-starknet-py.html"><strong aria-hidden="true">2.9.</strong> Starknet-py: Python SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-10-starknet-rs.html"><strong aria-hidden="true">2.10.</strong> Starknet-rs: Rust SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-11-foundry-cast.html"><strong aria-hidden="true">2.11.</strong> Foundry Cast: Interacting with Starknet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-12-foundry-forge.html"><strong aria-hidden="true">2.12.</strong> Foundry Forge: Testing 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-00-architecture.html"><strong aria-hidden="true">3.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-transactions.html"><strong aria-hidden="true">3.1.</strong> Transactions</a></li><li class="chapter-item expanded "><a href="ch03-02-sequencers.html"><strong aria-hidden="true">3.2.</strong> Sequencers</a></li><li class="chapter-item expanded "><a href="ch03-03-provers.html"><strong aria-hidden="true">3.3.</strong> Provers 🚧</a></li><li class="chapter-item expanded "><a href="ch03-04-nodes.html"><strong aria-hidden="true">3.4.</strong> Nodes 🚧</a></li><li class="chapter-item expanded "><a href="ch03-05-layer-3.html"><strong aria-hidden="true">3.5.</strong> Layer 3 and App Chains 🚧  </a></li><li class="chapter-item expanded "><a href="ch03-06-solidity-verifier.html"><strong aria-hidden="true">3.6.</strong> Solidity Verifier 🚧</a></li><li class="chapter-item expanded "><a href="ch03-07-decentralization.html"><strong aria-hidden="true">3.7.</strong> Decentralization 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-account-abstraction.html"><strong aria-hidden="true">4.</strong> Account Abstraction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-accounts.html" class="active"><strong aria-hidden="true">4.1.</strong> Accounts</a></li><li class="chapter-item expanded "><a href="ch04-02-hello-account.html"><strong aria-hidden="true">4.2.</strong> Hello, Account! 🚧</a></li><li class="chapter-item expanded "><a href="ch04-03-standard-account.html"><strong aria-hidden="true">4.3.</strong> Standard AccounT 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-examples.html"><strong aria-hidden="true">4.4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-04-01-multicaller.html"><strong aria-hidden="true">4.4.1.</strong> Multicaller 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-02-multisig.html"><strong aria-hidden="true">4.4.2.</strong> Multisig 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-03-auto-payments.html"><strong aria-hidden="true">4.4.3.</strong> Auto-Payments 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-04-alternative-signature-schemes.html"><strong aria-hidden="true">4.4.4.</strong> Alternative Signature Schemes 🚧</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-starks.html"><strong aria-hidden="true">5.</strong> STARKs 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-basics.html"><strong aria-hidden="true">5.1.</strong> Basics 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-math-primer.html"><strong aria-hidden="true">5.2.</strong> Math Primer 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-02-01-number-theory.html"><strong aria-hidden="true">5.2.1.</strong> Number Theory 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-02-geometry.html"><strong aria-hidden="true">5.2.2.</strong> Geometry 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-03-cryptographic-primitives.html"><strong aria-hidden="true">5.2.3.</strong> Cryptographic Primitives 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-03-arithimization.html"><strong aria-hidden="true">5.3.</strong> Arithimization 🚧</a></li><li class="chapter-item expanded "><a href="ch05-04-low-degree-testing.html"><strong aria-hidden="true">5.4.</strong> Low Degree Testing 🚧</a></li><li class="chapter-item expanded "><a href="ch05-05-fri-protocol.html"><strong aria-hidden="true">5.5.</strong> FRI Protocol 🚧</a></li><li class="chapter-item expanded "><a href="ch05-06-efficient-starks.html"><strong aria-hidden="true">5.6.</strong> Efficient STARKs</a></li><li class="chapter-item expanded "><a href="ch05-07-starks-protocol-python.html"><strong aria-hidden="true">5.7.</strong> STARKs Protocol (Python) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-07-01-trace-low-degree-extension-python.html"><strong aria-hidden="true">5.7.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-02-constraints-python.html"><strong aria-hidden="true">5.7.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-03-fri-commitments-python.html"><strong aria-hidden="true">5.7.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-04-query-phase-python.html"><strong aria-hidden="true">5.7.4.</strong> Query Phase 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-08-starks-protocol-rust.html"><strong aria-hidden="true">5.8.</strong> STARKs Protocol (Rust) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-08-01-trace-low-degree-extension-rust.html"><strong aria-hidden="true">5.8.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-02-constraints-rust.html"><strong aria-hidden="true">5.8.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-03-fri-commitments-rust.html"><strong aria-hidden="true">5.8.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-04-query-phase-rust.html"><strong aria-hidden="true">5.8.4.</strong> Query Phase 🚧</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Starknet Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="account-contracts"><a class="header" href="#account-contracts">Account Contracts</a></h1>
+<p>Now that we know better the concept of AA, let’s actually code it in
+Starknet.</p>
+<h2 id="account-contract-interface"><a class="header" href="#account-contract-interface">Account Contract Interface</a></h2>
+<p>Account contracts, while essentially being smart contracts,
+differentiate themselves through unique methods. A smart contract gains
+the status of an account contract when it implements the interface as
+described by SNIP-6 (<a href="https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/SNIPS/snip-6.md">StarkNet IMprovement Proposa-6: Standar Account
+Interface</a>).
+This standard borrows from SRC-6 and SRC-5, which are akin to Ethereum’s
+ERCs, setting application-level conventions and contract standards.</p>
+<p>To initiate, let’s formulate the <code>ISRC6</code> (SNIP-6: Standard Account
+Interface) trait, which outlines the requisite functions for an account
+contract:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    trait ISRC6 {
+        fn __validate__(calls: Array&lt;Call&gt;) -&gt; felt252;
+        fn is_valid_signature(hash: felt252, signature: Array&lt;felt252&gt;) -&gt; felt252;
+        fn __execute__(calls: Array&lt;Call&gt;) -&gt; Array&lt;Span&lt;felt252&gt;&gt;;
+    }
+<span class="boring">}</span></code></pre></pre>
+<p>The functions represented above serve the following purposes:</p>
+<ul>
+<li>
+<p><code>__validate__</code>: This function takes in the list of calls scheduled
+for execution and validates them in line with the rules specified in
+the contract. It returns a short string (e.g., VALID) encapsulated
+within a <code>felt252</code> that signifies the validation outcome.</p>
+</li>
+<li>
+<p><code>is_valid_signature</code>: This function is tasked with validating the
+signature of a transaction. It receives a hash of the transaction
+data and a signature, which may be validated against a public key or
+through any other method as specified by the contract creator. It
+returns a short string (e.g., VALID) encapsulated within a <code>felt252</code>
+that signifies the validation outcome.</p>
+</li>
+<li>
+<p><code>__execute__</code>: Post-validation, the <code>__execute__</code> function is
+responsible for executing an array of contract calls (as <code>Call</code>
+structs). It returns an array of <code>Span&lt;felt252&gt;</code> structs
+representing the return values of the executed calls.</p>
+</li>
+</ul>
+<p>Moreover, the <code>SNIP-5</code> (Standard Interface Detection) trait needs to be
+defined with a function called <code>supports_interface</code>. This function
+verifies whether a contract supports a specific interface, receiving an
+interface ID and returning a boolean.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    trait ISRC5 {
+        fn supports_interface(interface_id: felt252) -&gt; bool;
+    }
+<span class="boring">}</span></code></pre></pre>
+<p>Until now, we’ve mentioned contract calls without explicitly defining
+them. Let’s remedy that.</p>
+<p>The <code>Call</code> struct represents a single contract call:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    struct Call {
+        to: ContractAddress,
+        selector: felt252,
+        calldata: Array&lt;felt252&gt;
+    }
+<span class="boring">}</span></code></pre></pre>
+<p>Here’s what each field signifies:</p>
+<ul>
+<li>
+<p><code>to</code>: The address of the target contract.</p>
+</li>
+<li>
+<p><code>selector</code>: The function’s selector to be invoked on the target
+contract.</p>
+</li>
+<li>
+<p><code>calldata</code>: An array that encapsulates the function parameters.</p>
+</li>
+</ul>
+<p>The elements described above are foundational to defining an account
+contract and sufficient to implement the SNIP-6 standard. Nevertheless,
+there are additional components that can be incorporated to bolster the
+account contract’s functionality. For instance, the
+<code>__validate_declare__</code> function might be added if the contract is used
+to declare other contracts, providing a mechanism to validate the
+contract declaration. Additionally, to counterfactually deploy a smart
+contract (i.e., have it pay for its own deployment), one can include the
+<code>__validate_deploy__</code> function. Detailed implementations of these
+functions will be covered in the subsequent chapters.</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>We elucidated the unique aspects of account contracts and their
+derivation from basic smart contracts by adhering to specific methods
+outlined in SNIP-6.</p>
+<p>We defined the <code>ISRC6</code> trait, detailing the critical functions, namely,
+<code>__validate__</code>, <code>is_valid_signature</code>, and <code>__execute__</code>. These functions
+carry out tasks such as transaction validation, signature verification,
+and contract call execution, respectively. We further introduced the
+<code>ISRC5</code> trait, emphasizing the <code>supports_interface</code> function for
+verifying interface support in contracts.</p>
+<p>Furthermore, we defined a single contract call using the <code>Call</code> struct,
+explaining its fields— <code>to</code>, <code>selector</code>, and <code>calldata</code>. We also
+discussed potential enhancements to account contracts using
+<code>__validate_declare__</code> and <code>__validate_deploy__</code> functions. These
+additional features, along with detailed function implementations, will
+be explored in the chapters ahead.</p>
+<p>In the next subchapter, we will implement a simple account contract and
+learn how to deploy it on Starknet. This will provide a practical
+understanding of how account contracts work and how to interact with
+them.</p>
+<p>The Book is a community-driven effort created for the community.</p>
+<ul>
+<li>
+<p>If you’ve learned something, or not, please take a moment to provide
+feedback through <a href="https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=">this 3-question
+survey</a>.</p>
+</li>
+<li>
+<p>If you discover any errors or have additional suggestions, don’t
+hesitate to open an <a href="https://github.com/starknet-edu/starknetbook/issues">issue on our GitHub
+repository</a>.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch04-00-account-abstraction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch04-02-hello-account.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch04-00-account-abstraction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch04-02-hello-account.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

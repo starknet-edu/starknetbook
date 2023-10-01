@@ -1,5 +1,0 @@
-[id="signatures"]
-
-= Alternative Signature Schemes
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

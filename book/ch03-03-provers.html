@@ -1,0 +1,486 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Provers 🚧 - The Starknet Book</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Starknet Book</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="ch02-00-starknet-tooling.html"><strong aria-hidden="true">2.</strong> Tooling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-01-basic-installation.html"><strong aria-hidden="true">2.1.</strong> Basic Installation</a></li><li class="chapter-item expanded "><a href="ch02-02-compile-deploy-interact.html"><strong aria-hidden="true">2.2.</strong> Compile, Deploy, Interact</a></li><li class="chapter-item expanded "><a href="ch02-03-scarb.html"><strong aria-hidden="true">2.3.</strong> Scarb: The Package Manager</a></li><li class="chapter-item expanded "><a href="ch02-04-starkli.html"><strong aria-hidden="true">2.4.</strong> Starkli: A CLI interface 🚧</a></li><li class="chapter-item expanded "><a href="ch02-05-katana.html"><strong aria-hidden="true">2.5.</strong> Katana: A Local Node</a></li><li class="chapter-item expanded "><a href="ch02-06-starknet-devnet.html"><strong aria-hidden="true">2.6.</strong> Starknet Devnet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-07-starknet-js.html"><strong aria-hidden="true">2.7.</strong> Starknet-js: Javascript SDK</a></li><li class="chapter-item expanded "><a href="ch02-08-starknet-react.html"><strong aria-hidden="true">2.8.</strong> Starknet-React: React Integration</a></li><li class="chapter-item expanded "><a href="ch02-09-starknet-py.html"><strong aria-hidden="true">2.9.</strong> Starknet-py: Python SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-10-starknet-rs.html"><strong aria-hidden="true">2.10.</strong> Starknet-rs: Rust SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-11-foundry-cast.html"><strong aria-hidden="true">2.11.</strong> Foundry Cast: Interacting with Starknet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-12-foundry-forge.html"><strong aria-hidden="true">2.12.</strong> Foundry Forge: Testing 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-00-architecture.html"><strong aria-hidden="true">3.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-transactions.html"><strong aria-hidden="true">3.1.</strong> Transactions</a></li><li class="chapter-item expanded "><a href="ch03-02-sequencers.html"><strong aria-hidden="true">3.2.</strong> Sequencers</a></li><li class="chapter-item expanded "><a href="ch03-03-provers.html" class="active"><strong aria-hidden="true">3.3.</strong> Provers 🚧</a></li><li class="chapter-item expanded "><a href="ch03-04-nodes.html"><strong aria-hidden="true">3.4.</strong> Nodes 🚧</a></li><li class="chapter-item expanded "><a href="ch03-05-layer-3.html"><strong aria-hidden="true">3.5.</strong> Layer 3 and App Chains 🚧  </a></li><li class="chapter-item expanded "><a href="ch03-06-solidity-verifier.html"><strong aria-hidden="true">3.6.</strong> Solidity Verifier 🚧</a></li><li class="chapter-item expanded "><a href="ch03-07-decentralization.html"><strong aria-hidden="true">3.7.</strong> Decentralization 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-account-abstraction.html"><strong aria-hidden="true">4.</strong> Account Abstraction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-accounts.html"><strong aria-hidden="true">4.1.</strong> Accounts</a></li><li class="chapter-item expanded "><a href="ch04-02-hello-account.html"><strong aria-hidden="true">4.2.</strong> Hello, Account! 🚧</a></li><li class="chapter-item expanded "><a href="ch04-03-standard-account.html"><strong aria-hidden="true">4.3.</strong> Standard AccounT 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-examples.html"><strong aria-hidden="true">4.4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-04-01-multicaller.html"><strong aria-hidden="true">4.4.1.</strong> Multicaller 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-02-multisig.html"><strong aria-hidden="true">4.4.2.</strong> Multisig 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-03-auto-payments.html"><strong aria-hidden="true">4.4.3.</strong> Auto-Payments 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-04-alternative-signature-schemes.html"><strong aria-hidden="true">4.4.4.</strong> Alternative Signature Schemes 🚧</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-starks.html"><strong aria-hidden="true">5.</strong> STARKs 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-basics.html"><strong aria-hidden="true">5.1.</strong> Basics 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-math-primer.html"><strong aria-hidden="true">5.2.</strong> Math Primer 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-02-01-number-theory.html"><strong aria-hidden="true">5.2.1.</strong> Number Theory 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-02-geometry.html"><strong aria-hidden="true">5.2.2.</strong> Geometry 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-03-cryptographic-primitives.html"><strong aria-hidden="true">5.2.3.</strong> Cryptographic Primitives 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-03-arithimization.html"><strong aria-hidden="true">5.3.</strong> Arithimization 🚧</a></li><li class="chapter-item expanded "><a href="ch05-04-low-degree-testing.html"><strong aria-hidden="true">5.4.</strong> Low Degree Testing 🚧</a></li><li class="chapter-item expanded "><a href="ch05-05-fri-protocol.html"><strong aria-hidden="true">5.5.</strong> FRI Protocol 🚧</a></li><li class="chapter-item expanded "><a href="ch05-06-efficient-starks.html"><strong aria-hidden="true">5.6.</strong> Efficient STARKs</a></li><li class="chapter-item expanded "><a href="ch05-07-starks-protocol-python.html"><strong aria-hidden="true">5.7.</strong> STARKs Protocol (Python) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-07-01-trace-low-degree-extension-python.html"><strong aria-hidden="true">5.7.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-02-constraints-python.html"><strong aria-hidden="true">5.7.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-03-fri-commitments-python.html"><strong aria-hidden="true">5.7.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-04-query-phase-python.html"><strong aria-hidden="true">5.7.4.</strong> Query Phase 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-08-starks-protocol-rust.html"><strong aria-hidden="true">5.8.</strong> STARKs Protocol (Rust) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-08-01-trace-low-degree-extension-rust.html"><strong aria-hidden="true">5.8.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-02-constraints-rust.html"><strong aria-hidden="true">5.8.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-03-fri-commitments-rust.html"><strong aria-hidden="true">5.8.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-04-query-phase-rust.html"><strong aria-hidden="true">5.8.4.</strong> Query Phase 🚧</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Starknet Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="provers"><a class="header" href="#provers">Provers</a></h1>
+<p>SHARP is like public transportation for proofs on Starknet, aggregating
+multiple Cairo programs to save costs and boost efficiency. It uses
+recursive proofs, allowing parallelization and optimization, making it
+more affordable for all users. Critical services like the gateway,
+validator, and Prover work together with a stateless design for
+flexibility. SHARP’s adoption by StarkEx, Starknet, and external users
+(through the Cairo Playground) highlights its significance and potential
+for future optimization.</p>
+<p>This chapter will discuss SHARP, how it has evolved to incorporate
+recursive proofs, and its role in reducing costs and improving
+efficiency within the Starknet network.</p>
+<h2 id="what-is-sharp"><a class="header" href="#what-is-sharp">What is SHARP?</a></h2>
+<p>SHARP, which stands for &quot;Shared Prover&quot;, is a mechanism used in Starknet
+that aggregates multiple Cairo programs from different users, each
+containing different logic. These Cairo programs are then executed
+together, generating a single proof common to all the programs. Rather
+than sending the proof directly to the Solidity Verifier in Ethereum, it
+is initially sent to a STARK Verifier program written in Cairo. The
+STARK Verifier generates a new proof to confirm that the initial proofs
+were verified, which can be sent back into SHARP and the STARK Verifier.
+This recursive proof process will be discussed in more detail later in
+this chapter. Ultimately, the last proof in the series is sent to the
+Solidity Verifier on Ethereum. In other words, there are many proofs
+generated until we reach Ethereum and the Solidity Verifier.</p>
+<p>The primary benefit of SHARP system lies in its ability to decrease
+costs and enhance efficiency within the Starknet network. It achieves
+this by aggregating multiple Cairo jobs, which are individual sets of
+computations. This aggregation allows the protocol to leverage the
+exponential amortization offered by STARK proofs.</p>
+<p>Exponential amortization means that as the computational load of the
+proofs increases, the cost of verifying those proofs rises at a slower
+logarithmic rate than the computation increase. In other words, the
+computation itself grows slower than the verification cost. As a result,
+the cost of each transaction within the aggregated set is significantly
+reduced, making the overall process more cost-effective and accessible
+for users.</p>
+<p>In SHARP and Cairo context, &quot;jobs&quot; refer to the individual Cairo
+programs or tasks submitted by different users. These jobs contain
+specific logic or computations that must be executed on the Starknet
+network.</p>
+<p>Additionally, SHARP allows smaller users with limited computation to
+benefit from joining other jobs and share the cost of generating the
+proofs. This collaborative approach is similar to using public
+transportation instead of a private car, where the cost is distributed
+among all participants, making it more affordable for everyone.</p>
+<h2 id="recursive-proofs-in-sharp"><a class="header" href="#recursive-proofs-in-sharp">Recursive Proofs in SHARP</a></h2>
+<p>One of the most powerful features of SHARP is its use of recursive
+proofs. Rather than directly sending the generated proofs to the
+Solidity Verifier, they are first sent to a STARK Verifier program
+written in Cairo. This Verifier, which is also a Cairo Program, receives
+the proof and creates a new Cairo job that is sent to the Prover. The
+Prover then generates a new proof to confirm that the initial proofs
+were verified. These new proofs can be sent back into SHARP and the
+STARK Verifier, restarting the process.</p>
+<p>This process continues recursively, with each new proof being sent to
+the Cairo Verifier until a trigger is reached. At this point, the last
+proof in the series is sent to the Solidity Verifier on Ethereum. This
+approach allows for greater parallelization of the computation and
+reduces the time and cost associated with generating and verifying
+proofs.</p>
+<pre><code>     Generated Proofs
+             |
+             V
+STARK Verifier program (in Cairo)
+             |
+             V
+        Cairo Job
+             |
+             V
+            Prover
+             |
+             V
+  New Proof Generated
+             |
+             V
+       Repeat Process
+             |
+             V
+ Trigger Reached (last proof)
+             |
+             V
+    Solidity Verifier
+</code></pre>
+<p>At first glance, recursive proofs may seem more complex and
+time-consuming. However, there are several benefits to this approach:</p>
+<ol>
+<li>
+<p><strong>Parallelization</strong>: Recursive proofs allow for work
+parallelization, reducing user latency and improving SHARP
+efficiency.</p>
+</li>
+<li>
+<p><strong>Cheaper on-chain costs</strong>: Parallelization enables SHARP to create
+larger proofs, which would have previously been limited by the
+availability of large cloud machines (which are rare and limited).
+As a result, on-chain costs are reduced.</p>
+</li>
+<li>
+<p><strong>Lower cloud costs</strong>: Since each job is shorter, the required
+memory for processing is reduced, resulting in lower cloud costs.</p>
+</li>
+<li>
+<p><strong>Optimization</strong>: Recursive proofs enable SHARP to optimize for
+various factors, including latency, on-chain costs, and time to
+proof.</p>
+</li>
+<li>
+<p><strong>Cairo support</strong>: Recursive proofs only require support in Cairo,
+without the need to add support in the Solidity Verifier.</p>
+</li>
+</ol>
+<p>Latency in Starknet encompasses the time taken for processing,
+confirming, and including transactions in a block. It is affected by
+factors like network congestion, transaction fees, and system
+efficiency. Minimizing latency ensures faster transaction processing and
+user feedback.</p>
+<p>Time to proof, however, specifically pertains to the duration required
+to generate and verify cryptographic proofs for transactions or
+operations.</p>
+<h2 id="sharp-backend-architecture-and-data-pipeline"><a class="header" href="#sharp-backend-architecture-and-data-pipeline">SHARP Backend Architecture and Data Pipeline</a></h2>
+<p>SHARP back end architecture consists of several services that work
+together to process Cairo jobs and generate proofs. These services
+include:</p>
+<ol>
+<li>
+<p><strong>Gateway</strong>: Cairo jobs enter SHARP through the gateway.</p>
+</li>
+<li>
+<p><strong>Job Creator</strong>: It prevents job duplication and ensures that the
+system operates consistently, regardless of multiple identical
+requests.</p>
+</li>
+<li>
+<p><strong>Validator</strong>: This is the first important step. The validator
+service runs validation checks on each job, ensuring they meet the
+requirements and can fit within the prover machines. Invalid jobs
+are tagged as such and do not proceed to the Prover.</p>
+</li>
+<li>
+<p><strong>Scheduler</strong>: The scheduler service creates &quot;trains&quot; that aggregate
+jobs and send them to the Prover. Recursive jobs are paired and sent
+to the Prover together.</p>
+</li>
+<li>
+<p><strong>Cairo Runner</strong>: This service runs Cairo for the Prover’s needs.
+The Cairo Runner service runs Cairo programs, executing the
+necessary computations and generating the execution trace as an
+intermediate result. The Prover then uses this execution trace.</p>
+</li>
+<li>
+<p><strong>Prover</strong>: The Prover computes the proofs for each train (that
+contains a few jobs).</p>
+</li>
+<li>
+<p><strong>Dispatcher</strong>: The Dispatcher serves two functions in the SHARP
+system.</p>
+<ol>
+<li>
+<p>In the case of a recursive proof, the Dispatcher runs the Cairo
+Verifier program on the proof it has received from the Prover,
+resulting in a new Cairo job that goes back to the Validator.</p>
+</li>
+<li>
+<p>In the case of a proof that needs to go on chain (e.g., to
+Ethereum), the Dispatcher creates &quot;packages&quot; from the proof,
+which can then be sent to the Blockchain Writer.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Blockchain Writer</strong>: Once the packages have been created by the
+Dispatcher, they are sent to the Blockchain Writer. The Blockchain
+Writer is responsible for sending the packages to the appropriate
+blockchain (e.g., Ethereum) for verification. This is an important
+step in the SHARP system, as it ensures that the proofs are properly
+verified and that the transactions are securely recorded on the
+blockchain.</p>
+</li>
+<li>
+<p><strong>Catcher</strong>: The Catcher monitors blockchain (e.g., Ethereum)
+transactions to ensure that they have been accepted. While the
+Catcher is relevant for internal monitoring purposes, it is
+important to note that if a transaction fails, the fact won’t be
+registered on-chain in the fact registry. As a result, the soundness
+of the system is still preserved even without the catcher.</p>
+</li>
+</ol>
+<p>SHARP is designed to be stateless (each Cairo job is executed in its own
+context and has no dependency on other jobs), allowing for greater
+flexibility in processing jobs.</p>
+<h2 id="current-sharp-users"><a class="header" href="#current-sharp-users">Current SHARP Users</a></h2>
+<p>Currently, the primary users of SHARP include:</p>
+<ul>
+<li>
+<p>StarkEx</p>
+</li>
+<li>
+<p>Starknet</p>
+</li>
+<li>
+<p>External users who use the Cairo Playground</p>
+</li>
+</ul>
+<h2 id="challenges-and-optimization"><a class="header" href="#challenges-and-optimization">Challenges and Optimization</a></h2>
+<p>Optimizing the Prover involves numerous challenges and potential
+projects on which the Starkware team and the community are currently
+working:</p>
+<ul>
+<li>
+<p>Exploring more efficient hash functions: SHARP is constantly
+exploring more efficient hash functions for Cairo, the Prover, and
+Solidity.</p>
+</li>
+<li>
+<p>Investigating smaller fields: Investigating smaller fields for
+recursive proof steps could lead to more efficient computations.</p>
+</li>
+<li>
+<p>Adjusting various parameters: SHARP is continually adjusting various
+parameters of the STARK protocol, such as FRI parameters and block
+factors.</p>
+</li>
+<li>
+<p>Optimizing the Cairo code: SHARP is optimizing the Cairo code to
+make it faster, resulting in a faster recursive prover.</p>
+</li>
+<li>
+<p>Developing dynamic layouts: This will allow Cairo programs to scale
+resources depending on their needs.</p>
+</li>
+<li>
+<p>Improving scheduling algorithm: This is another optimization path
+that can be taken. It is not within the Prover itself.</p>
+</li>
+</ul>
+<p>In particular, dynamic layouts (you can learn more about layouts here
+(TODO)) will allow Cairo programs to scale resources depending on their
+needs. This can lead to more efficient computation and better
+utilization of resources. Dynamic layouts allow SHARP to determine the
+required resources for a specific job and adjust the layout accordingly
+instead of relying on predefined layouts with fixed resources. This
+approach can provide tailored solutions for each job, improving overall
+efficiency.</p>
+<p>The Book is a community-driven effort created for the community.</p>
+<ul>
+<li>
+<p>If you’ve learned something, or not, please take a moment to provide
+feedback through <a href="https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=">this 3-question
+survey</a>.</p>
+</li>
+<li>
+<p>If you discover any errors or have additional suggestions, don’t
+hesitate to open an <a href="https://github.com/starknet-edu/starknetbook/issues">issue on our GitHub
+repository</a>.</p>
+</li>
+</ul>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>In conclusion, SHARP is a critical component of Starknet’s architecture,
+providing a more efficient and cost-effective solution for processing
+Cairo programs and verifying their proofs. By leveraging the power of
+STARK technology and incorporating recursive proofs, SHARP plays a vital
+role in improving the overall performance and scalability of the
+Starknet network. The stateless nature of SHARP and the reliance on the
+cryptographic soundness of the STARK proving system make it an
+innovative and valuable addition to the blockchain ecosystem.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch03-02-sequencers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch03-04-nodes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch03-02-sequencers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch03-04-nodes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

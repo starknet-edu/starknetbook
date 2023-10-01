@@ -1,0 +1,469 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Architecture - The Starknet Book</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Starknet Book</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="ch02-00-starknet-tooling.html"><strong aria-hidden="true">2.</strong> Tooling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-01-basic-installation.html"><strong aria-hidden="true">2.1.</strong> Basic Installation</a></li><li class="chapter-item expanded "><a href="ch02-02-compile-deploy-interact.html"><strong aria-hidden="true">2.2.</strong> Compile, Deploy, Interact</a></li><li class="chapter-item expanded "><a href="ch02-03-scarb.html"><strong aria-hidden="true">2.3.</strong> Scarb: The Package Manager</a></li><li class="chapter-item expanded "><a href="ch02-04-starkli.html"><strong aria-hidden="true">2.4.</strong> Starkli: A CLI interface 🚧</a></li><li class="chapter-item expanded "><a href="ch02-05-katana.html"><strong aria-hidden="true">2.5.</strong> Katana: A Local Node</a></li><li class="chapter-item expanded "><a href="ch02-06-starknet-devnet.html"><strong aria-hidden="true">2.6.</strong> Starknet Devnet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-07-starknet-js.html"><strong aria-hidden="true">2.7.</strong> Starknet-js: Javascript SDK</a></li><li class="chapter-item expanded "><a href="ch02-08-starknet-react.html"><strong aria-hidden="true">2.8.</strong> Starknet-React: React Integration</a></li><li class="chapter-item expanded "><a href="ch02-09-starknet-py.html"><strong aria-hidden="true">2.9.</strong> Starknet-py: Python SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-10-starknet-rs.html"><strong aria-hidden="true">2.10.</strong> Starknet-rs: Rust SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-11-foundry-cast.html"><strong aria-hidden="true">2.11.</strong> Foundry Cast: Interacting with Starknet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-12-foundry-forge.html"><strong aria-hidden="true">2.12.</strong> Foundry Forge: Testing 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-00-architecture.html" class="active"><strong aria-hidden="true">3.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-transactions.html"><strong aria-hidden="true">3.1.</strong> Transactions</a></li><li class="chapter-item expanded "><a href="ch03-02-sequencers.html"><strong aria-hidden="true">3.2.</strong> Sequencers</a></li><li class="chapter-item expanded "><a href="ch03-03-provers.html"><strong aria-hidden="true">3.3.</strong> Provers 🚧</a></li><li class="chapter-item expanded "><a href="ch03-04-nodes.html"><strong aria-hidden="true">3.4.</strong> Nodes 🚧</a></li><li class="chapter-item expanded "><a href="ch03-05-layer-3.html"><strong aria-hidden="true">3.5.</strong> Layer 3 and App Chains 🚧  </a></li><li class="chapter-item expanded "><a href="ch03-06-solidity-verifier.html"><strong aria-hidden="true">3.6.</strong> Solidity Verifier 🚧</a></li><li class="chapter-item expanded "><a href="ch03-07-decentralization.html"><strong aria-hidden="true">3.7.</strong> Decentralization 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-account-abstraction.html"><strong aria-hidden="true">4.</strong> Account Abstraction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-accounts.html"><strong aria-hidden="true">4.1.</strong> Accounts</a></li><li class="chapter-item expanded "><a href="ch04-02-hello-account.html"><strong aria-hidden="true">4.2.</strong> Hello, Account! 🚧</a></li><li class="chapter-item expanded "><a href="ch04-03-standard-account.html"><strong aria-hidden="true">4.3.</strong> Standard AccounT 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-examples.html"><strong aria-hidden="true">4.4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-04-01-multicaller.html"><strong aria-hidden="true">4.4.1.</strong> Multicaller 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-02-multisig.html"><strong aria-hidden="true">4.4.2.</strong> Multisig 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-03-auto-payments.html"><strong aria-hidden="true">4.4.3.</strong> Auto-Payments 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-04-alternative-signature-schemes.html"><strong aria-hidden="true">4.4.4.</strong> Alternative Signature Schemes 🚧</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-starks.html"><strong aria-hidden="true">5.</strong> STARKs 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-basics.html"><strong aria-hidden="true">5.1.</strong> Basics 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-math-primer.html"><strong aria-hidden="true">5.2.</strong> Math Primer 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-02-01-number-theory.html"><strong aria-hidden="true">5.2.1.</strong> Number Theory 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-02-geometry.html"><strong aria-hidden="true">5.2.2.</strong> Geometry 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-03-cryptographic-primitives.html"><strong aria-hidden="true">5.2.3.</strong> Cryptographic Primitives 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-03-arithimization.html"><strong aria-hidden="true">5.3.</strong> Arithimization 🚧</a></li><li class="chapter-item expanded "><a href="ch05-04-low-degree-testing.html"><strong aria-hidden="true">5.4.</strong> Low Degree Testing 🚧</a></li><li class="chapter-item expanded "><a href="ch05-05-fri-protocol.html"><strong aria-hidden="true">5.5.</strong> FRI Protocol 🚧</a></li><li class="chapter-item expanded "><a href="ch05-06-efficient-starks.html"><strong aria-hidden="true">5.6.</strong> Efficient STARKs</a></li><li class="chapter-item expanded "><a href="ch05-07-starks-protocol-python.html"><strong aria-hidden="true">5.7.</strong> STARKs Protocol (Python) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-07-01-trace-low-degree-extension-python.html"><strong aria-hidden="true">5.7.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-02-constraints-python.html"><strong aria-hidden="true">5.7.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-03-fri-commitments-python.html"><strong aria-hidden="true">5.7.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-04-query-phase-python.html"><strong aria-hidden="true">5.7.4.</strong> Query Phase 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-08-starks-protocol-rust.html"><strong aria-hidden="true">5.8.</strong> STARKs Protocol (Rust) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-08-01-trace-low-degree-extension-rust.html"><strong aria-hidden="true">5.8.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-02-constraints-rust.html"><strong aria-hidden="true">5.8.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-03-fri-commitments-rust.html"><strong aria-hidden="true">5.8.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-04-query-phase-rust.html"><strong aria-hidden="true">5.8.4.</strong> Query Phase 🚧</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Starknet Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="architecture"><a class="header" href="#architecture">Architecture</a></h1>
+<p>This is an introduction to Starknet’s Layer 2 architecture, designed for
+both beginners and experienced users. It focuses on the key components:
+Sequencers, Provers, and nodes.</p>
+<p>Starknet is a coordinated system, with each component—Sequencers,
+Provers, and nodes—playing a specific yet interconnected role. Although
+Starknet hasn’t fully decentralized yet, it’s actively moving toward
+that goal. This understanding of the roles and interactions within the
+system will help you better grasp the intricacies of the Starknet
+ecosystem.</p>
+<h2 id="high-level-overview"><a class="header" href="#high-level-overview">High-Level Overview</a></h2>
+<p>Starknet’s operation begins when a transaction is received by a gateway,
+which serves as the Mempool. This stage could also be managed by the
+Sequencer. The transaction is initially marked as &quot;RECEIVED.&quot; The
+Sequencer then incorporates the transaction into the network state and
+tags it as &quot;ACCEPTED_ON_L2.&quot; The final step involves the Prover, which
+executes the operating system on the new block, calculates its proof,
+and submits it to the Layer 1 (L1) for verification.</p>
+<img alt="Starknet Architecture" src="img/ch03-architecture.png" class="center" style="width: 50%;" />
+<p><span class="caption">Starknet architecture</span></p>
+<p>In essence, Starknet’s architecture involves multiple components:</p>
+<ul>
+<li>
+<p>The Sequencer is responsible for receiving transactions, ordering
+them, and producing blocks. It operates similarly to validators in
+Ethereum or Bitcoin.</p>
+</li>
+<li>
+<p>The Prover is tasked with generating proofs for the created blocks
+and transactions. It uses Cairo’s Virtual Machine to run provable
+programs, thereby creating execution traces necessary for generating
+STARK proofs.</p>
+</li>
+<li>
+<p>Layer 1 (L1), in this case Ethereum, hosts a smart contract capable
+of verifying these STARK proofs. If the proofs are valid, Starknet’s
+state root on L1 is updated.</p>
+</li>
+</ul>
+<p>Starknet’s state is a comprehensive snapshot maintained through Merkle
+trees, much like in Ethereum. This establishes the architecture of the
+validity roll-up and the roles of each component.</p>
+<p>For a more in-depth look at each component, read on.</p>
+<p>After exploring the introductory overview of the different components,
+delve deeper into their specific roles by referring to their dedicated
+subchapters in this Chapter.</p>
+<h2 id="sequencers"><a class="header" href="#sequencers">Sequencers</a></h2>
+<p>Sequencers are the backbone of the Starknet network, akin to Ethereum’s
+validators. They usher transactions into the system.</p>
+<p>Validity rollups excel at offloading some network chores, like bundling
+and processing transactions, to specialized players. This setup is
+somewhat like how Ethereum and Bitcoin delegate security to miners.
+Sequencing, like mining, demands hefty resources.</p>
+<p>For networks like Starknet and other platforms utilizing Validity
+rollups, a similar parallel is drawn. These networks outsource
+transaction processing to specialized entities and then verify their
+work. These specialized entities in the context of Validity rollups are
+known as &quot;Sequencers.&quot;</p>
+<p>Instead of providing security, as miners do, Sequencers provide
+transaction capacity. They order (sequence) multiple transactions into a
+single batch, executes them, and produce a block that will later be
+proved by the Prover and submmited to the Layer 1 network as a single,
+compact proof, known as a &quot;rollup.&quot; In other words, just as validators
+in Ethereum and miners in Bitcoin are specialized actors securing the
+network, Sequencers in Validity rollup-based networks are specialized
+actors that provide transaction capacity.</p>
+<p>This mechanism allows Validity (or ZK) rollups to handle a higher volume
+of transactions while maintaining the security of the underlying
+Ethereum network. It enhances scalability without compromising on
+security.</p>
+<p>Sequencers follow a systematic method for transaction processing:</p>
+<ol>
+<li>
+<p>Sequencing: They collect transactions from users and order
+(sequence) them.</p>
+</li>
+<li>
+<p>Executing: Sequencers then process these transactions.</p>
+</li>
+<li>
+<p>Batching: Transactions are grouped together in batches or blocks for
+efficiency.</p>
+</li>
+<li>
+<p>Block Production: Sequencers produce blocks that contain batches of
+processed transactions.</p>
+</li>
+</ol>
+<p>Sequencers must be reliable and highly available, as their role is
+critical to the network’s smooth functioning. They need powerful and
+well-connected machines to perform their role effectively, as they must
+process transactions rapidly and continuously.</p>
+<p>The current roadmap for Starknet includes decentralizing the Sequencer
+role. This shift towards decentralization will allow more participants
+to become Sequencers, contributing to the robustness of the network.</p>
+<p>For more details in the Sequencer role, refer to the dedicated
+subchapter in this Chapter.</p>
+<h2 id="provers"><a class="header" href="#provers">Provers</a></h2>
+<p>Provers serve as the second line of verification in the Starknet
+network. Their main task is to validate the work of the Sequencers (when
+they receive the block produced by the Sequencer) and to generate proofs
+that these processes were correctly performed.</p>
+<p>The duties of a Prover include:</p>
+<ol>
+<li>
+<p>Receiving Blocks: Provers obtain blocks of processed transactions
+from Sequencers.</p>
+</li>
+<li>
+<p>Processing: Provers process these blocks a second time, ensuring
+that all transactions within the block have been correctly handled.</p>
+</li>
+<li>
+<p>Proof Generation: After processing, Provers generate a proof of
+correct transaction processing.</p>
+</li>
+<li>
+<p>Sending Proof to Ethereum: Finally, the proof is sent to the
+Ethereum network for validation. If the proof is correct, the
+Ethereum network accepts the block of transactions.</p>
+</li>
+</ol>
+<p>Provers need even more computational power than Sequencers because they
+have to calculate and generate proofs, a process that is computationally
+heavy. However, the work of Provers can be split into multiple parts,
+allowing for parallelism and efficient proof generation. The proof
+generation process is asynchronous, meaning it doesn’t have to occur
+immediately or in real-time. This flexibility allows for the workload to
+be distributed among multiple Provers. Each Prover can work on a
+different block, allowing for parallelism and efficient proof
+generation.</p>
+<p>The design of Starknet relies on these two types of actors — Sequencers
+and Provers — working in tandem to ensure efficient processing and
+secure verification of transactions.</p>
+<p>For more details in the Prover role, refer to the dedicated subchapter
+in this Chapter.</p>
+<h2 id="optimizing-sequencers-and-provers-debunking-common-misconceptions"><a class="header" href="#optimizing-sequencers-and-provers-debunking-common-misconceptions">Optimizing Sequencers and Provers: Debunking Common Misconceptions</a></h2>
+<p>The relationship between Sequencers and Provers in blockchain technology
+often sparks debate. A common misunderstanding suggests that either the
+Prover or the Sequencer is the main bottleneck. To set the record
+straight, let’s discuss the optimization of both components.</p>
+<p>Starknet, utilizing the Cairo programming language, currently supports
+only sequential transactions. Plans are in place to introduce parallel
+transactions in the future. However, as of now, the Sequencer operates
+one transaction at a time, making it the bottleneck in the system.</p>
+<p>In contrast, Provers operate asynchronously and can execute multiple
+tasks in parallel. The use of proof recursion allows for task
+distribution across multiple machines, making scalability less of an
+issue for Provers.</p>
+<p>Given the asynchronous and scalable nature of Provers, focus in Starknet
+has shifted to enhancing the Sequencer’s efficiency. This explains why
+current development efforts are primarily aimed at the sequencing side
+of the equation.</p>
+<h2 id="nodes"><a class="header" href="#nodes">Nodes</a></h2>
+<p>When it comes to defining what nodes do in Bitcoin or Ethereum, people
+often misinterpret their role as keeping track of every transaction
+within the network. This, however, is not entirely accurate.</p>
+<p>Nodes serve as auditors of the network, maintaining the state of the
+network, such as how much Bitcoin each participant owns or the current
+state of a specific smart contract. They accomplish this by processing
+transactions and preserving a record of all transactions, but that’s a
+means to an end, not the end itself.</p>
+<p>In Validity rollups and specifically within Starknet, this concept is
+somewhat reversed. Nodes don’t necessarily have to process transactions
+to get the state. In contrast to Ethereum or Bitcoin, Starknet nodes
+aren’t required to process all transactions to maintain the state of the
+network.</p>
+<p>There are two main ways to access network state data: via an API gateway
+or using the RPC protocol to communicate with a node. Operating your own
+node is typically faster than using a shared architecture, like the
+gateway. Over time, Starknet plans to deprecate APIs and replace them
+with a JSON RPC standard, making it even more beneficial to operate your
+own node.</p>
+<p>It’s worth noting that encouraging more people to run nodes increases
+the resilience of the network and prevents server flooding, which has
+been an issue in networks in other L2s.</p>
+<p>Currently, there are primarily three methods for a node to keep track of
+the network’s state and we can have nodes implement any of these
+methods:</p>
+<ol>
+<li>
+<p><strong>Replaying Old Transactions</strong>: Like Ethereum or Bitcoin, a node can
+take all the transactions and re-execute them. Although this
+approach is accurate, it isn’t scalable unless you have a powerful
+machine that’s capable of handling the load. If you can replay all
+transactions, you can become a Sequencer.</p>
+</li>
+<li>
+<p><strong>Relying on L2 Consensus</strong>: Nodes can trust the Sequencer(s) to
+execute the network correctly. When the Sequencer updates the state
+and adds a new block, nodes accept the update as accurate.</p>
+</li>
+<li>
+<p><strong>Checking Proof Validation on L1</strong>: Nodes can monitor the state of
+the network by observing L1 and ensuring that every time a proof is
+sent, they receive the updated state. This way, they don’t have to
+trust anyone and only need to keep track of the latest valid
+transaction for Starknet.</p>
+</li>
+</ol>
+<p>Each type of node setup comes with its own set of hardware requirements
+and trust assumptions.</p>
+<h3 id="nodes-that-replay-transactions"><a class="header" href="#nodes-that-replay-transactions">Nodes That Replay Transactions</a></h3>
+<p>Nodes that replay transactions require powerful machines to track and
+execute all transactions. These nodes don’t have trust assumptions; they
+rely solely on the transactions they execute, guaranteeing that the
+state at any given point is valid.</p>
+<h3 id="nodes-that-rely-on-l2-consensus"><a class="header" href="#nodes-that-rely-on-l2-consensus">Nodes That Rely on L2 Consensus</a></h3>
+<p>Nodes relying on L2 consensus require less computational power. They
+need sufficient storage to keep the state but don’t need to process a
+lot of transactions. The trade-off here is a trust assumption.
+Currently, Starknet revolves around one Sequencer, so these nodes are
+trusting Starkware not to disrupt the network. However, once a consensus
+mechanism and leader election amongst Sequencers are in place, these
+nodes will only need to trust that a Sequencer who staked their stake to
+produce a block is not willing to lose it.</p>
+<h3 id="nodes-that-check-proof-validation-on-l1"><a class="header" href="#nodes-that-check-proof-validation-on-l1">Nodes That Check Proof Validation on L1</a></h3>
+<p>Nodes that only update their state based on proof validation on L1
+require the least hardware. They have the same requirements as an
+Ethereum node, and once Ethereum light nodes become a reality,
+maintaining such a node could be as simple as using a smartphone. The
+only trade-off is latency. Proofs are not sent to Ethereum every block
+but intermittently, resulting in delayed state updates. Plans are in
+place to produce proofs more frequently, even if they are not sent to
+Ethereum immediately, allowing these nodes to reduce their latency.
+However, this development is still a way off in the Starknet roadmap.</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>Through this chapter, we delve into Starknet’s structure, uncovering the
+importance of Sequencers, Provers, and nodes. Each plays a unique role,
+but together, they create a highly scalable, efficient, and secure
+network that marks a significant step forward in Layer 2 solutions. As
+Starknet evolves towards decentralization, understanding these roles
+will provide valuable insight into the inner workings of this network.</p>
+<p>As we venture further into the Starknet universe, our next stop will be
+an exploration of the transaction lifecycle before we dive into the
+heart of coding with Cairo.</p>
+<p>The Book is a community-driven effort created for the community.</p>
+<ul>
+<li>
+<p>If you’ve learned something, or not, please take a moment to provide
+feedback through <a href="https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=">this 3-question
+survey</a>.</p>
+</li>
+<li>
+<p>If you discover any errors or have additional suggestions, don’t
+hesitate to open an <a href="https://github.com/starknet-edu/starknetbook/issues">issue on our GitHub
+repository</a>.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch02-12-foundry-forge.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch03-01-transactions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch02-12-foundry-forge.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch03-01-transactions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

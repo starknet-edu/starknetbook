@@ -1,0 +1,669 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Compile, Deploy, Interact - The Starknet Book</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Starknet Book</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="ch02-00-starknet-tooling.html"><strong aria-hidden="true">2.</strong> Tooling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-01-basic-installation.html"><strong aria-hidden="true">2.1.</strong> Basic Installation</a></li><li class="chapter-item expanded "><a href="ch02-02-compile-deploy-interact.html" class="active"><strong aria-hidden="true">2.2.</strong> Compile, Deploy, Interact</a></li><li class="chapter-item expanded "><a href="ch02-03-scarb.html"><strong aria-hidden="true">2.3.</strong> Scarb: The Package Manager</a></li><li class="chapter-item expanded "><a href="ch02-04-starkli.html"><strong aria-hidden="true">2.4.</strong> Starkli: A CLI interface 🚧</a></li><li class="chapter-item expanded "><a href="ch02-05-katana.html"><strong aria-hidden="true">2.5.</strong> Katana: A Local Node</a></li><li class="chapter-item expanded "><a href="ch02-06-starknet-devnet.html"><strong aria-hidden="true">2.6.</strong> Starknet Devnet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-07-starknet-js.html"><strong aria-hidden="true">2.7.</strong> Starknet-js: Javascript SDK</a></li><li class="chapter-item expanded "><a href="ch02-08-starknet-react.html"><strong aria-hidden="true">2.8.</strong> Starknet-React: React Integration</a></li><li class="chapter-item expanded "><a href="ch02-09-starknet-py.html"><strong aria-hidden="true">2.9.</strong> Starknet-py: Python SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-10-starknet-rs.html"><strong aria-hidden="true">2.10.</strong> Starknet-rs: Rust SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-11-foundry-cast.html"><strong aria-hidden="true">2.11.</strong> Foundry Cast: Interacting with Starknet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-12-foundry-forge.html"><strong aria-hidden="true">2.12.</strong> Foundry Forge: Testing 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-00-architecture.html"><strong aria-hidden="true">3.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-transactions.html"><strong aria-hidden="true">3.1.</strong> Transactions</a></li><li class="chapter-item expanded "><a href="ch03-02-sequencers.html"><strong aria-hidden="true">3.2.</strong> Sequencers</a></li><li class="chapter-item expanded "><a href="ch03-03-provers.html"><strong aria-hidden="true">3.3.</strong> Provers 🚧</a></li><li class="chapter-item expanded "><a href="ch03-04-nodes.html"><strong aria-hidden="true">3.4.</strong> Nodes 🚧</a></li><li class="chapter-item expanded "><a href="ch03-05-layer-3.html"><strong aria-hidden="true">3.5.</strong> Layer 3 and App Chains 🚧  </a></li><li class="chapter-item expanded "><a href="ch03-06-solidity-verifier.html"><strong aria-hidden="true">3.6.</strong> Solidity Verifier 🚧</a></li><li class="chapter-item expanded "><a href="ch03-07-decentralization.html"><strong aria-hidden="true">3.7.</strong> Decentralization 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-account-abstraction.html"><strong aria-hidden="true">4.</strong> Account Abstraction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-accounts.html"><strong aria-hidden="true">4.1.</strong> Accounts</a></li><li class="chapter-item expanded "><a href="ch04-02-hello-account.html"><strong aria-hidden="true">4.2.</strong> Hello, Account! 🚧</a></li><li class="chapter-item expanded "><a href="ch04-03-standard-account.html"><strong aria-hidden="true">4.3.</strong> Standard AccounT 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-examples.html"><strong aria-hidden="true">4.4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-04-01-multicaller.html"><strong aria-hidden="true">4.4.1.</strong> Multicaller 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-02-multisig.html"><strong aria-hidden="true">4.4.2.</strong> Multisig 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-03-auto-payments.html"><strong aria-hidden="true">4.4.3.</strong> Auto-Payments 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-04-alternative-signature-schemes.html"><strong aria-hidden="true">4.4.4.</strong> Alternative Signature Schemes 🚧</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-starks.html"><strong aria-hidden="true">5.</strong> STARKs 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-basics.html"><strong aria-hidden="true">5.1.</strong> Basics 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-math-primer.html"><strong aria-hidden="true">5.2.</strong> Math Primer 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-02-01-number-theory.html"><strong aria-hidden="true">5.2.1.</strong> Number Theory 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-02-geometry.html"><strong aria-hidden="true">5.2.2.</strong> Geometry 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-03-cryptographic-primitives.html"><strong aria-hidden="true">5.2.3.</strong> Cryptographic Primitives 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-03-arithimization.html"><strong aria-hidden="true">5.3.</strong> Arithimization 🚧</a></li><li class="chapter-item expanded "><a href="ch05-04-low-degree-testing.html"><strong aria-hidden="true">5.4.</strong> Low Degree Testing 🚧</a></li><li class="chapter-item expanded "><a href="ch05-05-fri-protocol.html"><strong aria-hidden="true">5.5.</strong> FRI Protocol 🚧</a></li><li class="chapter-item expanded "><a href="ch05-06-efficient-starks.html"><strong aria-hidden="true">5.6.</strong> Efficient STARKs</a></li><li class="chapter-item expanded "><a href="ch05-07-starks-protocol-python.html"><strong aria-hidden="true">5.7.</strong> STARKs Protocol (Python) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-07-01-trace-low-degree-extension-python.html"><strong aria-hidden="true">5.7.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-02-constraints-python.html"><strong aria-hidden="true">5.7.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-03-fri-commitments-python.html"><strong aria-hidden="true">5.7.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-04-query-phase-python.html"><strong aria-hidden="true">5.7.4.</strong> Query Phase 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-08-starks-protocol-rust.html"><strong aria-hidden="true">5.8.</strong> STARKs Protocol (Rust) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-08-01-trace-low-degree-extension-rust.html"><strong aria-hidden="true">5.8.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-02-constraints-rust.html"><strong aria-hidden="true">5.8.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-03-fri-commitments-rust.html"><strong aria-hidden="true">5.8.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-04-query-phase-rust.html"><strong aria-hidden="true">5.8.4.</strong> Query Phase 🚧</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Starknet Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="hello-world"><a class="header" href="#hello-world">Hello, World!</a></h1>
+<p>In this chapter, you’ll learn how to compile, deploy, and interact with
+a Starknet smart contract written in Cairo.</p>
+<p>First, confirm that the following commands work on your system. If they
+don’t, refer to Basic Installation in this chapter.</p>
+<pre><code class="language-bash">    scarb --version  # For Cairo code compilation
+    starkli --version  # To interact with Starknet
+</code></pre>
+<h2 id="find-the-compiler-versions-supported"><a class="header" href="#find-the-compiler-versions-supported">Find the compiler versions supported</a></h2>
+<p>We have to make sure that our Starkli compiler version match Scarb
+compiler version</p>
+<p>To find the compiler versions supported by Starkli, execute:</p>
+<pre><code class="language-bash">    starkli declare --help
+</code></pre>
+<p>You’ll see a list of possible compiler versions under the
+<code>--compiler-version</code> flag.</p>
+<pre><code class="language-bash">    ...
+    --compiler-version &lt;COMPILER_VERSION&gt;
+              Statically-linked Sierra compiler version [possible values: [COMPILER VERSIONS]]]
+    ...
+</code></pre>
+<p>Note that the Scarb compiler version might not align with Starkli’s
+supported versions. To check Scarb’s version:</p>
+<pre><code class="language-bash">    scarb --version
+</code></pre>
+<p>You’ll see a list that contains scarb, cairo and sierra version.</p>
+<pre><code class="language-bash">    scarb &lt;SCARB VERSION&gt;
+    cairo: &lt;COMPILER VERSION&gt;
+    sierra: &lt;SIERRA VERSION&gt;
+</code></pre>
+<p>If there’s a mismatch, it is suggested that you install the version of
+Scarb that uses the compiler version that Starkli supports. You can find
+previous releases on
+<a href="https://github.com/software-mansion/scarb/releases">Scarb</a>'s GitHub
+repo.</p>
+<p>To install a specific version, such as <code>0.6.1</code>, run:</p>
+<pre><code class="language-bash">    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.6.1
+</code></pre>
+<h2 id="smart-wallet-setup"><a class="header" href="#smart-wallet-setup">Smart Wallet Setup</a></h2>
+<p>A smart wallet comprises a Signer and an Account Descriptor. The Signer
+is a smart contract with a private key for signing transactions, while
+the Account Descriptor is a JSON file detailing the wallet’s address and
+public key.</p>
+<ol>
+<li>
+<p>Use Braavos or Argent X browser extensions to create your smart
+wallet.</p>
+</li>
+<li>
+<p>Follow the provided instructions for your chosen wallet (Argent or
+Braavos).</p>
+</li>
+<li>
+<p>Fund your wallet with ETH. Use <a href="https://faucet.goerli.starknet.io/">Starknet Goerli
+Faucet</a> as needed.</p>
+</li>
+</ol>
+<p>Now you’re ready to interact with Starknet smart contracts.</p>
+<h3 id="creating-a-signer"><a class="header" href="#creating-a-signer">Creating a Signer</a></h3>
+<p>The Signer is an essential smart contract capable of signing
+transactions in Starknet. You’ll need the private key from your smart
+wallet to create one, from which the public key can be derived.</p>
+<p>Starkli enables secure storage of your private key through a keystore
+file. This encrypted file can be accessed using a password and is
+generally stored in the default Starkli directory.</p>
+<p>First, create the default directory:</p>
+<pre><code class="language-bash">    mkdir ~/.starkli-wallets/deployer -p
+</code></pre>
+<p>Then generate the keystore file. The signer command contains subcommands
+for creating a keystore file from a private key or completely create a
+new one. In this tutorial, we’ll use the private key option which is the
+most common use case. You need to provide the path to the keystore file
+you want to create. You can give any name to the keystore file, you will
+likely have several wallets. In this tutorial, we will use the name
+<code>my_keystore_ 1.json</code>.</p>
+<pre><code class="language-bash">    starkli signer keystore from-key ~/.starkli-wallets/deployer/my_keystore_1.json
+    Enter private key:
+    Enter password:
+</code></pre>
+<p>In the private key prompt, paste the private key of your smart wallet.
+In the password prompt, enter a password of your choice. You will need
+this password to sign transactions using Starkli.</p>
+<p>Export the private key from your Braavos or Argent wallet. For Argent X,
+you can find it in the &quot;Settings&quot; section → Select your Account →
+&quot;Export Private Key&quot;. For Braavos, you can find it in the &quot;Settings&quot;
+section → &quot;Privacy and Security&quot; → &quot;Export Private Key&quot;.</p>
+<p>While knowing the private key of a smart wallet is necessary to sign
+transactions, it’s not sufficient. We also need to inform Starkli about
+the signing mechanism employed by our smart wallet created by Braavos or
+Argent X. Does it use an elliptic curve? If yes, which one? This is the
+reason why we need an account descriptor file.</p>
+<h4 id="optional-the-architecture-of-the-starknet-signer"><a class="header" href="#optional-the-architecture-of-the-starknet-signer">[OPTIONAL] The Architecture of the Starknet Signer</a></h4>
+<p>The Starknet Signer plays an instrumental role in securing your
+transactions. Let’s demystify what goes on under the hood.</p>
+<p>Key Components:</p>
+<ol>
+<li>
+<p><strong>Private Key</strong>: A 256-bit/32-byte/64-character (ignoring the <em>0x</em>
+prefix) hexadecimal key that is the cornerstone of your wallet’s
+security.</p>
+</li>
+<li>
+<p><strong>Public Key</strong>: Derived from the private key, it’s also a
+256-bit/32-byte/64-character hexadecimal key.</p>
+</li>
+<li>
+<p><strong>Smart Wallet Address</strong>: Unlike Ethereum, the address here is
+influenced by the public key, class hash, and a salt. <strong><a href="https://docs.starknet.io/documentation/architecture_and_concepts/Smart_Contracts/contract-address/">Learn more
+in Starknet
+Documentation</a></strong>.</p>
+</li>
+</ol>
+<p>To view the details of the previously created keystore file:</p>
+<pre><code class="language-bash">    cat ~/.starkli-wallets/deployer/my_keystore_1.json
+</code></pre>
+<p>Anatomy of the <code>keystore.json</code> File:</p>
+<pre><code class="language-json">    {
+      &quot;crypto&quot;: {
+        &quot;cipher&quot;: &quot;aes-128-ctr&quot;,
+        &quot;cipherparams&quot;: {
+          &quot;iv&quot;: &quot;dba5f9a67456b121f3f486aa18e24db7&quot;
+        },
+        &quot;ciphertext&quot;: &quot;b3cda3df39563e3dd61064149d6ed8c9ab5f07fbcd6347625e081fb695ddf36c&quot;,
+        &quot;kdf&quot;: &quot;scrypt&quot;,
+        &quot;kdfparams&quot;: {
+          &quot;dklen&quot;: 32,
+          &quot;n&quot;: 8192,
+          &quot;p&quot;: 1,
+          &quot;r&quot;: 8,
+          &quot;salt&quot;: &quot;6dd5b06b1077ba25a7bf511510ea0c608424c6657dd3ab51b93029244537dffb&quot;
+        },
+        &quot;mac&quot;: &quot;55e1616d9ddd052864a1ae4207824baac58a6c88798bf28585167a5986585ce6&quot;
+      },
+      &quot;id&quot;: &quot;afbb9007-8f61-4e62-bf14-e491c30fd09a&quot;,
+      &quot;version&quot;: 3
+    }
+</code></pre>
+<ul>
+<li>
+<p><strong><code>version</code></strong>: The version of the smart wallet implementation.</p>
+</li>
+<li>
+<p><strong><code>id</code></strong>: A randomly generated identification string.</p>
+</li>
+<li>
+<p><strong><code>crypto</code></strong>: Houses all encryption details.</p>
+</li>
+</ul>
+<p>Inside <strong><code>crypto</code></strong>:</p>
+<ul>
+<li>
+<p><strong><code>cipher</code></strong>: Specifies the encryption algorithm used, which in this
+case is AES-128-CTR.</p>
+<ul>
+<li>
+<p><strong>AES (Advanced Encryption Standard)</strong>: A globally accepted
+encryption standard.</p>
+</li>
+<li>
+<p><strong>128</strong>: Refers to the key size in bits, making it a 128-bit
+key.</p>
+</li>
+<li>
+<p><strong>CTR (Counter Mode)</strong>: A specific mode of operation for the AES
+cipher.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>cipherparams</code></strong>: Contains an Initialization Vector (IV), which
+ensures that encrypting the same plaintext with the same key will
+produce different ciphertexts.</p>
+<ul>
+<li><strong><code>iv</code> (Initialization Vector)</strong>: A 16-byte hex string that
+serves as a random and unique starting point for each encryption
+operation.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>ciphertext</code></strong>: This is the private key after encryption, securely
+stored so that only the correct password can reveal it.</p>
+</li>
+<li>
+<p><strong><code>kdf</code> and <code>kdfparams</code></strong>: KDF stands for Key Derivation Function.
+This adds a layer of security by requiring computational work,
+making brute-force attacks harder.</p>
+<ul>
+<li>
+<p><strong><code>dklen</code></strong>: The length (in bytes) of the derived key. Typically
+32 bytes.</p>
+</li>
+<li>
+<p><strong><code>n</code></strong>: A cost factor representing CPU/memory usage. A higher
+value means more computational work is needed, thus increasing
+security.</p>
+</li>
+<li>
+<p><strong><code>p</code></strong>: Parallelization factor, affecting the computational
+complexity.</p>
+</li>
+<li>
+<p><strong><code>r</code></strong>: Block size for the hash function, again affecting
+computational requirements.</p>
+</li>
+<li>
+<p><strong><code>salt</code></strong>: A random value that is combined with the password to
+deter dictionary attacks.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>mac</code> (Message Authentication Code)</strong>: This is a cryptographic
+code that ensures the integrity of the message (the encrypted
+private key in this case). It is generated using a hash of both the
+ciphertext and a portion of the derived key.</p>
+</li>
+</ul>
+<h3 id="creating-an-account-descriptor"><a class="header" href="#creating-an-account-descriptor">Creating an Account Descriptor</a></h3>
+<p>An Account Descriptor informs Starkli about your smart wallet’s unique
+features, such as its signing mechanism. You can generate this
+descriptor using Starkli’s <code>fetch</code> subcommand under the <code>account</code>
+command. The <code>fetch</code> subcommand takes your on-chain wallet address as
+input and generates the account descriptor file. The account descriptor
+file is a JSON file that contains the details of your smart wallet.</p>
+<pre><code class="language-bash">    starkli account fetch &lt;SMART_WALLET_ADDRESS&gt; --output ~/.starkli-wallets/deployer/my_account_1.json
+</code></pre>
+<p>After running the command, you’ll see a message like the one below.
+We’re using a Braavos wallet as an example, but the steps are the same
+for an Argent wallet.</p>
+<pre><code class="language-bash">    Account contract type identified as: Braavos
+    Description: Braavos official proxy account
+    Downloaded new account config file: ~/.starkli-wallets/deployer/my_account_1.json
+</code></pre>
+<p>To see the details of your Account Descriptor, run:</p>
+<pre><code class="language-bash">    cat ~/.starkli-wallets/deployer/my_account_1.json
+</code></pre>
+<p>Here’s what a typical descriptor might look like:</p>
+<pre><code class="language-json">    {
+      &quot;version&quot;: 1,
+      &quot;variant&quot;: {
+        &quot;type&quot;: &quot;braavos&quot;,
+        &quot;version&quot;: 1,
+        &quot;implementation&quot;: &quot;0x5dec330eebf36c8672b60db4a718d44762d3ae6d1333e553197acb47ee5a062&quot;,
+        &quot;multisig&quot;: {
+          &quot;status&quot;: &quot;off&quot;
+        },
+        &quot;signers&quot;: [
+          {
+            &quot;type&quot;: &quot;stark&quot;,
+            &quot;public_key&quot;: &quot;0x49759ed6197d0d385a96f9d8e7af350848b07777e901f5570b3dc2d9744a25e&quot;
+          }
+        ]
+      },
+      &quot;deployment&quot;: {
+        &quot;status&quot;: &quot;deployed&quot;,
+        &quot;class_hash&quot;: &quot;0x3131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e&quot;,
+        &quot;address&quot;: &quot;0x6dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821&quot;
+      }
+    }
+</code></pre>
+<p>Note: The structure will differ if you use an Argent wallet.</p>
+<h2 id="setting-up-environment-variables"><a class="header" href="#setting-up-environment-variables">Setting up Environment Variables</a></h2>
+<p>To simplify Starkli commands, you can set environment variables. Two key
+variables are crucial: one for the Signer’s keystore file location and
+another for the Account Descriptor file.</p>
+<pre><code class="language-bash">    export STARKNET_ACCOUNT=~/.starkli-wallets/deployer/my_account_1.json
+    export STARKNET_KEYSTORE=~/.starkli-wallets/deployer/my_keystore_1.json
+</code></pre>
+<p>Setting these variables makes running Starkli commands easier and more
+efficient.</p>
+<h2 id="declaring-smart-contracts-in-starknet"><a class="header" href="#declaring-smart-contracts-in-starknet">Declaring Smart Contracts in Starknet</a></h2>
+<p>Deploying a smart contract on Starknet involves two steps:</p>
+<ul>
+<li>
+<p>Declare your contract’s code.</p>
+</li>
+<li>
+<p>Deploy an instance of the declared code.</p>
+</li>
+</ul>
+<p>To get started, navigate to the <code>contracts/</code> directory in the <a href="https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages/contracts">first
+chapter</a>
+of the Starknet Book repo. The <code>src/lib.cairo</code> file contains a basic
+contract to practice with.</p>
+<p>First, compile the contract using the Scarb compiler. If you haven’t
+installed Scarb, follow the installation guide in the <a href="https://book.starknet.io/chapter_1/environment_setup.html">Setting up your
+Environment</a>
+section.</p>
+<pre><code class="language-bash">    scarb build
+</code></pre>
+<p>This creates a compiled contract in <code>target/dev/</code> as
+&quot;contracts_Ownable.sierra.json&quot; (in Chapter 2 of the book we will learn
+more details about Scarb).</p>
+<p>With the smart contract compiled, we’re ready to declare it using
+Starkli. Before declaring your contract, decide on an RPC provider.</p>
+<h3 id="choosing-an-rpc-provider"><a class="header" href="#choosing-an-rpc-provider">Choosing an RPC Provider</a></h3>
+<p>There are three main options for RPC providers, sorted by ease of use:</p>
+<ol>
+<li>
+<p><strong>Starknet Sequencer’s Gateway</strong>: The quickest option and it’s the
+default for Starkli for now. The sequencer gateway is deprecated and
+will be disabled by StarkWare soon. You’re strongly recommended to
+use a third-party JSON-RPC API provider like Infura, Alchemy, or
+Chainstack.</p>
+</li>
+<li>
+<p><strong>Infura or Alchemy</strong>: A step up in complexity. You’ll need to set
+up an API key and choose an endpoint. For Infura, it would look like
+<code>https://starknet-goerli.infura.io/v3/&lt;API_KEY&gt;</code>. Learn more in the
+<a href="https://docs.infura.io/networks/starknet/how-to/choose-a-network">Infura
+documentation</a>.</p>
+</li>
+<li>
+<p><strong>Your Own Node</strong>: For those who want full control. It’s the most
+complex but offers the most freedom. Check out <a href="https://book.starknet.io/chapter_4/node.html">Chapter 4 of the
+Starknet Book</a> or
+<a href="https://www.kasar.io/">Kasar</a> for setup guides.</p>
+</li>
+</ol>
+<p>In this tutorial, we will use Alchemy. We can set the STARKNET_RPC
+environment variable to make command invocations easier:</p>
+<pre><code class="language-bash">    export STARKNET_RPC=&quot;https://starknet-goerli.g.alchemy.com/v2/&lt;API_KEY&gt;&quot;
+</code></pre>
+<h3 id="declaring-your-contract"><a class="header" href="#declaring-your-contract">Declaring Your Contract</a></h3>
+<p>Run this command to declare your contract using the default Starknet
+Sequencer’s Gateway:</p>
+<pre><code class="language-bash">    starkli declare target/dev/contracts_Ownable.sierra.json
+</code></pre>
+<p>According to the <code>STARKNET_RPC</code> url, starkli can recognize the target
+blockchain network, in this case &quot;goerli&quot;, so it is not necessary
+explicitly specify it.</p>
+<p>Unless you’re working with custom networks where it’s infeasible for
+Starkli to detect the right compiler version, you shouldn’t need to
+manually choose a version with <code>--network</code> and <code>--compiler-version</code>.</p>
+<p>If you encounter an &quot;Error: Invalid contract class,&quot; it likely means
+your Scarb’s compiler version is incompatible with Starkli. Follow the
+steps above to align the versions. Starkli usually supports compiler
+versions accepted by mainnet, even if Scarb’s latest version is not yet
+compatible.</p>
+<p>After running the command, you’ll receive a contract class hash. This
+unique hash serves as the identifier for your contract class within
+Starknet. For example:</p>
+<pre><code class="language-bash">    Class hash declared: 0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8
+</code></pre>
+<p>You can think of this hash as the contract class’s <em>address.</em> Use a
+block explorer like
+<a href="https://testnet.starkscan.co/class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8">StarkScan</a>
+to verify this hash on the blockchain.</p>
+<p>If the contract class you’re attempting to declare already exists, it is
+ok we can continue. You’ll receive a message like:</p>
+<pre><code class="language-bash">    Not declaring class as its already declared. Class hash:
+    0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8
+</code></pre>
+<h2 id="deploying-smart-contracts-on-starknet"><a class="header" href="#deploying-smart-contracts-on-starknet">Deploying Smart Contracts on Starknet</a></h2>
+<p>To deploy a smart contract, you’ll need to instantiate it on Starknet’s
+testnet. This process involves executing a command that requires two
+main components:</p>
+<ol>
+<li>
+<p>The class hash of your smart contract.</p>
+</li>
+<li>
+<p>Any constructor arguments that the contract expects.</p>
+</li>
+</ol>
+<p>In our example, the constructor expects an <em>owner</em> address. You can
+learn more about constructors in [Chapter 12 of The Cairo
+Book](<a href="https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors">https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors</a>).</p>
+<p>The command would look like this:</p>
+<pre><code class="language-bash">    starkli deploy \
+        &lt;CLASS_HASH&gt; \
+        &lt;CONSTRUCTOR_INPUTS&gt;
+</code></pre>
+<p>Here’s a specific example with an actual class hash and constructor
+inputs (as the owner address use the address of your smart wallet so you
+can invoke the transfer_ownership function later):</p>
+<pre><code class="language-bash">    starkli deploy \
+        0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 \
+        0x02cdAb749380950e7a7c0deFf5ea8eDD716fEb3a2952aDd4E5659655077B8510
+</code></pre>
+<p>After executing the command and entering your password, you should see
+output like the following:</p>
+<pre><code class="language-bash">    Deploying class 0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 with salt 0x065034b27a199cbb2a5b97b78a8a6a6c6edd027c7e398b18e5c0e5c0c65246b7...
+    The contract will be deployed at address 0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012
+    Contract deployment transaction: 0x0743de1e233d38c4f3e9fb13f1794276f7d4bf44af9eac66e22944ad1fa85f14
+    Contract deployed:
+    0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012
+</code></pre>
+<p>The contract is now live on the Starknet testnet. You can verify its
+status using a block explorer like
+<a href="https://testnet.starkscan.co/contract/0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012">StarkScan</a>.
+On the &quot;Read/Write Contract&quot; tab, you’ll see the contract’s external
+functions.</p>
+<h2 id="interacting-with-the-starknet-contract"><a class="header" href="#interacting-with-the-starknet-contract">Interacting with the Starknet Contract</a></h2>
+<p>Starkli enables interaction with smart contracts via two primary
+methods: <code>call</code> for read-only functions and <code>invoke</code> for write functions
+that modify the state.</p>
+<h3 id="calling-a-read-function"><a class="header" href="#calling-a-read-function">Calling a Read Function</a></h3>
+<p>The <code>call</code> command enables you to query a smart contract function
+without sending a transaction. For instance, to find out who the current
+owner of the contract is, you can use the <code>get_owner</code> function, which
+requires no arguments.</p>
+<pre><code class="language-bash">    starkli call \
+        &lt;CONTRACT_ADDRESS&gt; \
+        get_owner
+</code></pre>
+<p>Replace <code>&lt;CONTRACT_ADDRESS&gt;</code> with the address of your contract. The
+command will return the owner’s address, which was initially set during
+the contract’s deployment:</p>
+<pre><code class="language-bash">    [
+        &quot;0x02cdab749380950e7a7c0deff5ea8edd716feb3a2952add4e5659655077b8510&quot;
+    ]
+</code></pre>
+<h2 id="invoking-a-write-function"><a class="header" href="#invoking-a-write-function">Invoking a Write Function</a></h2>
+<p>You can modify the contract’s state using the <code>invoke</code> command. For
+example, let’s transfer the contract’s ownership with the
+<code>transfer_ownership</code> function.</p>
+<pre><code class="language-bash">    starkli invoke \
+        &lt;CONTRACT_ADDRESS&gt; \
+        transfer_ownership \
+        &lt;NEW_OWNER_ADDRESS&gt;
+</code></pre>
+<p>Replace <code>&lt;CONTRACT_ADDRESS&gt;</code> with the address of the contract and
+<code>&lt;NEW_OWNER_ADDRESS&gt;</code> with the address you want to transfer ownership
+to. If the smart wallet you’re using isn’t the contract’s owner, an
+error will appear. Note that the initial owner was set when deploying
+the contract:</p>
+<pre><code class="language-bash">    Execution was reverted; failure reason: [0x43616c6c6572206973206e6f7420746865206f776e6572].
+</code></pre>
+<p>The failure reason is encoded as a felt. o decode it, use the starkli’s
+<code>parse-cairo-string</code> command.</p>
+<pre><code class="language-bash">    starkli parse-cairo-string &lt;ENCODED_ERROR&gt;
+</code></pre>
+<p>For example, if you see
+<code>0x43616c6c6572206973206e6f7420746865206f776e6572</code>, decoding it will
+yield &quot;Caller is not the owner.&quot;</p>
+<p>After a successful transaction on L2, use a block explorer like
+StarkScan or Voyager to confirm the transaction status using the hash
+provided by the <code>invoke</code> command.</p>
+<p>To verify that the ownership has successfully transferred, you can call
+the <code>get_owner</code> function again:</p>
+<pre><code class="language-bash">    starkli call \
+        &lt;CONTRACT_ADDRESS&gt; \
+        get_owner
+</code></pre>
+<p>If the function returns the new owner’s address, the transfer was
+successful.</p>
+<p>Congratulations! You’ve successfully deployed and interacted with a
+Starknet contract.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch02-01-basic-installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch02-03-scarb.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch02-01-basic-installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch02-03-scarb.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

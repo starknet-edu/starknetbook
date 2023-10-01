@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>FRI Commitments 🚧 - The Starknet Book</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Starknet Book</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="ch02-00-starknet-tooling.html"><strong aria-hidden="true">2.</strong> Tooling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-01-basic-installation.html"><strong aria-hidden="true">2.1.</strong> Basic Installation</a></li><li class="chapter-item expanded "><a href="ch02-02-compile-deploy-interact.html"><strong aria-hidden="true">2.2.</strong> Compile, Deploy, Interact</a></li><li class="chapter-item expanded "><a href="ch02-03-scarb.html"><strong aria-hidden="true">2.3.</strong> Scarb: The Package Manager</a></li><li class="chapter-item expanded "><a href="ch02-04-starkli.html"><strong aria-hidden="true">2.4.</strong> Starkli: A CLI interface 🚧</a></li><li class="chapter-item expanded "><a href="ch02-05-katana.html"><strong aria-hidden="true">2.5.</strong> Katana: A Local Node</a></li><li class="chapter-item expanded "><a href="ch02-06-starknet-devnet.html"><strong aria-hidden="true">2.6.</strong> Starknet Devnet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-07-starknet-js.html"><strong aria-hidden="true">2.7.</strong> Starknet-js: Javascript SDK</a></li><li class="chapter-item expanded "><a href="ch02-08-starknet-react.html"><strong aria-hidden="true">2.8.</strong> Starknet-React: React Integration</a></li><li class="chapter-item expanded "><a href="ch02-09-starknet-py.html"><strong aria-hidden="true">2.9.</strong> Starknet-py: Python SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-10-starknet-rs.html"><strong aria-hidden="true">2.10.</strong> Starknet-rs: Rust SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-11-foundry-cast.html"><strong aria-hidden="true">2.11.</strong> Foundry Cast: Interacting with Starknet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-12-foundry-forge.html"><strong aria-hidden="true">2.12.</strong> Foundry Forge: Testing 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-00-architecture.html"><strong aria-hidden="true">3.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-transactions.html"><strong aria-hidden="true">3.1.</strong> Transactions</a></li><li class="chapter-item expanded "><a href="ch03-02-sequencers.html"><strong aria-hidden="true">3.2.</strong> Sequencers</a></li><li class="chapter-item expanded "><a href="ch03-03-provers.html"><strong aria-hidden="true">3.3.</strong> Provers 🚧</a></li><li class="chapter-item expanded "><a href="ch03-04-nodes.html"><strong aria-hidden="true">3.4.</strong> Nodes 🚧</a></li><li class="chapter-item expanded "><a href="ch03-05-layer-3.html"><strong aria-hidden="true">3.5.</strong> Layer 3 and App Chains 🚧  </a></li><li class="chapter-item expanded "><a href="ch03-06-solidity-verifier.html"><strong aria-hidden="true">3.6.</strong> Solidity Verifier 🚧</a></li><li class="chapter-item expanded "><a href="ch03-07-decentralization.html"><strong aria-hidden="true">3.7.</strong> Decentralization 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-account-abstraction.html"><strong aria-hidden="true">4.</strong> Account Abstraction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-accounts.html"><strong aria-hidden="true">4.1.</strong> Accounts</a></li><li class="chapter-item expanded "><a href="ch04-02-hello-account.html"><strong aria-hidden="true">4.2.</strong> Hello, Account! 🚧</a></li><li class="chapter-item expanded "><a href="ch04-03-standard-account.html"><strong aria-hidden="true">4.3.</strong> Standard AccounT 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-examples.html"><strong aria-hidden="true">4.4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-04-01-multicaller.html"><strong aria-hidden="true">4.4.1.</strong> Multicaller 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-02-multisig.html"><strong aria-hidden="true">4.4.2.</strong> Multisig 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-03-auto-payments.html"><strong aria-hidden="true">4.4.3.</strong> Auto-Payments 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-04-alternative-signature-schemes.html"><strong aria-hidden="true">4.4.4.</strong> Alternative Signature Schemes 🚧</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-starks.html"><strong aria-hidden="true">5.</strong> STARKs 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-basics.html"><strong aria-hidden="true">5.1.</strong> Basics 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-math-primer.html"><strong aria-hidden="true">5.2.</strong> Math Primer 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-02-01-number-theory.html"><strong aria-hidden="true">5.2.1.</strong> Number Theory 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-02-geometry.html"><strong aria-hidden="true">5.2.2.</strong> Geometry 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-03-cryptographic-primitives.html"><strong aria-hidden="true">5.2.3.</strong> Cryptographic Primitives 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-03-arithimization.html"><strong aria-hidden="true">5.3.</strong> Arithimization 🚧</a></li><li class="chapter-item expanded "><a href="ch05-04-low-degree-testing.html"><strong aria-hidden="true">5.4.</strong> Low Degree Testing 🚧</a></li><li class="chapter-item expanded "><a href="ch05-05-fri-protocol.html"><strong aria-hidden="true">5.5.</strong> FRI Protocol 🚧</a></li><li class="chapter-item expanded "><a href="ch05-06-efficient-starks.html"><strong aria-hidden="true">5.6.</strong> Efficient STARKs</a></li><li class="chapter-item expanded "><a href="ch05-07-starks-protocol-python.html"><strong aria-hidden="true">5.7.</strong> STARKs Protocol (Python) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-07-01-trace-low-degree-extension-python.html"><strong aria-hidden="true">5.7.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-02-constraints-python.html"><strong aria-hidden="true">5.7.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-03-fri-commitments-python.html" class="active"><strong aria-hidden="true">5.7.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-04-query-phase-python.html"><strong aria-hidden="true">5.7.4.</strong> Query Phase 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-08-starks-protocol-rust.html"><strong aria-hidden="true">5.8.</strong> STARKs Protocol (Rust) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-08-01-trace-low-degree-extension-rust.html"><strong aria-hidden="true">5.8.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-02-constraints-rust.html"><strong aria-hidden="true">5.8.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-03-fri-commitments-rust.html"><strong aria-hidden="true">5.8.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-04-query-phase-rust.html"><strong aria-hidden="true">5.8.4.</strong> Query Phase 🚧</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Starknet Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><em>Copyright 2019 Starkware Industries Ltd. Licensed under the Apache
+License, Version 2.0 (the &quot;License&quot;). You may not use this file except
+in compliance with the License. You may obtain a copy of the License at
+<a href="https://www.starkware.co/open-source-license/">https://www.starkware.co/open-source-license/</a> Unless required by
+applicable law or agreed to in writing, software distributed under the
+License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for
+the specific language governing permissions and limitations under the
+License.</em></p>
+<h1 id="part-3-fri-commitments"><a class="header" href="#part-3-fri-commitments">Part 3: FRI Commitments</a></h1>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=gd1NbKUOJwA">Video Lecture
+(youtube)</a></p>
+</li>
+<li>
+<p><a href="https://starkware.co/wp-content/uploads/2021/12/STARK101-Part3.pdf">Slides
+(PDF)</a></p>
+</li>
+</ul>
+<h1 id="load-previous-session"><a class="header" href="#load-previous-session">Load Previous Session</a></h1>
+<p>Run the next cell to load the relevant variables. As usual - it will
+take a while to run.</p>
+<pre><code>from channel import Channel
+from field import FieldElement
+from merkle import MerkleTree
+from polynomial import interpolate_poly, Polynomial
+from tutorial_sessions import part1, part2
+
+cp, cp_eval, cp_merkle, channel, eval_domain = part2()
+print(&quot;Success&quot;)
+</code></pre>
+<h1 id="fri-folding"><a class="header" href="#fri-folding">FRI Folding</a></h1>
+<p>Our goal in this part is to construct the FRI layers and commit on them.
+To obtain each layer we need:</p>
+<ol>
+<li>
+<p>To generate a domain for the layer (from the previous layer’s
+domain).</p>
+</li>
+<li>
+<p>To generate a polynomial for the layer (from the previous layer’s
+polynomial and domain).</p>
+</li>
+<li>
+<p>To evaluate said polynomial on said domain - <strong>this is the next FRI
+layer</strong>.</p>
+</li>
+</ol>
+<h1 id="domain-generation"><a class="header" href="#domain-generation">Domain Generation</a></h1>
+<p>The first FRI domain is simply the <code>eval_domain</code> that you already
+generated in Part 1, namely a coset of a group of order 8192. Each
+subsequent FRI domain is obtained by taking the first half of the
+previous FRI domain (dropping the second half), and squaring each of its
+elements.</p>
+<p>Formally - we got <code>eval_domain</code> by taking:</p>
+<p>The next layer will therefore be:</p>
+<p>Note that taking the squares of the second half of each elements in
+<code>eval_domain</code> yields exactly the same result as taking the squares of
+the first half. This is true for the next layers as well. For example:</p>
+<pre><code>print(eval_domain[100] ** 2)
+half_domain_size = len(eval_domain) // 2
+print(eval_domain[half_domain_size + 100] ** 2)
+</code></pre>
+<p>Similarly, the domain of the third layer will be:</p>
+<p>And so on.</p>
+<p>Write a function <code>next_fri_domain</code> that takes the previous domain as an
+argument, and outputs the next one.</p>
+<p>Solution:</p>
+<pre><code>def next_fri_domain(fri_domain):
+    return [x ** 2 for x in fri_domain[:len(fri_domain) // 2]]
+</code></pre>
+<p>Run test:</p>
+<pre><code># Test against a precomputed hash.
+from hashlib import sha256
+next_domain = next_fri_domain(eval_domain)
+assert '5446c90d6ed23ea961513d4ae38fc6585f6614a3d392cb087e837754bfd32797' == sha256(','.join([str(i) for i in next_domain]).encode()).hexdigest()
+print('Success!')
+</code></pre>
+<h1 id="fri-folding-operator"><a class="header" href="#fri-folding-operator">FRI Folding Operator</a></h1>
+<p>The first FRI polynomial is simply the composition polynomial, i.e.,
+<code>cp</code>. Each subsequent FRI polynomial is obtained by:</p>
+<ol>
+<li>
+<p>Getting a random field element (by calling
+<code>Channel.receive_random_field_element</code>).</p>
+</li>
+<li>
+<p>Multiplying the odd coefficients of the previous polynomial by .</p>
+</li>
+<li>
+<p>Summing together consecutive pairs (even-odd) of coefficients.</p>
+</li>
+</ol>
+<p>Formally, let’s say that the k-th polynomial is of degree (for some
+which is a power of 2):</p>
+<p>Then the (k+1)-th polynomial, whose degree is will be:</p>
+<p>Write a function <code>next_fri_polynomial</code> that takes as arguments a
+polynomial and a field element (the one we referred to as ), and returns
+the &quot;folded&quot; next polynomial.</p>
+<p>Note that:</p>
+<ol>
+<li>
+<p><code>Polynomial.poly</code> contains a list of a polynomial’s coefficients,
+the free term first, and the highest degree last, so
+<code>p.poly[i] == u</code> if the coefficient of is .*</p>
+</li>
+<li>
+<p><code>Polynomial</code>'s default constructor takes the list of coefficients as
+argument. So a polynomial can be instantiated from a list of
+coefficients <code>l</code> by calling <code>Polynomial(l)</code>.</p>
+</li>
+</ol>
+<p>Solution:</p>
+<pre><code>def next_fri_polynomial(poly,  beta):
+    odd_coefficients = poly.poly[1::2]
+    even_coefficients = poly.poly[::2]
+    odd = beta * Polynomial(odd_coefficients)
+    even = Polynomial(even_coefficients)
+    return odd + even
+</code></pre>
+<p>Run test:</p>
+<pre><code>next_p = next_fri_polynomial(cp, FieldElement(987654321))
+assert '6bff4c35e1aa9693f9ceb1599b6a484d7636612be65990e726e52a32452c2154' == sha256(','.join([str(i) for i in next_p.poly]).encode()).hexdigest()
+print('Success!')
+</code></pre>
+<h1 id="putting-it-together-to-get-the-next-fri-layer"><a class="header" href="#putting-it-together-to-get-the-next-fri-layer">Putting it Together to Get the Next FRI Layer</a></h1>
+<p>Write a function <code>next_fri_layer</code> that takes a polynomial, a domain, and
+a field element (again - ), and returns the next polynomial, the next
+domain, and the evaluation of this next polynomial on this next domain.</p>
+<p>Solution:</p>
+<pre><code>def next_fri_layer(poly, domain, beta):
+    next_poly = next_fri_polynomial(poly, beta)
+    next_domain = next_fri_domain(domain)
+    next_layer = [next_poly(x) for x in next_domain]
+    return next_poly, next_domain, next_layer
+</code></pre>
+<p>Run test:</p>
+<pre><code>test_poly = Polynomial([FieldElement(2), FieldElement(3), FieldElement(0), FieldElement(1)])
+test_domain = [FieldElement(3), FieldElement(5)]
+beta = FieldElement(7)
+next_p, next_d, next_l = next_fri_layer(test_poly, test_domain, beta)
+assert next_p.poly == [FieldElement(23), FieldElement(7)]
+assert next_d == [FieldElement(9)]
+assert next_l == [FieldElement(86)]
+print('Success!')
+</code></pre>
+<h1 id="generating-fri-commitments"><a class="header" href="#generating-fri-commitments">Generating FRI Commitments</a></h1>
+<p>We have now developed the tools to write the <code>FriCommit</code> method, that
+contains the main FRI commitment loop.</p>
+<p>It takes the following 5 arguments:</p>
+<ol>
+<li>
+<p>The composition polynomial, that is also the first FRI polynomial,
+that is - <code>cp</code>.</p>
+</li>
+<li>
+<p>The coset of order 8192 that is also the first FRI domain, that is -
+<code>eval_domain</code>.</p>
+</li>
+<li>
+<p>The evaluation of the former over the latter, which is also the
+first FRI layer, that is - <code>cp_eval</code>.</p>
+</li>
+<li>
+<p>The first Merkle tree (we will have one for each FRI layer)
+constructed from these evaluations, that is - <code>cp_merkle</code>.</p>
+</li>
+<li>
+<p>A channel object, that is <code>channel</code>.</p>
+</li>
+</ol>
+<p>The method accordingly returns 4 lists:</p>
+<ol>
+<li>
+<p>The FRI polynomials.</p>
+</li>
+<li>
+<p>The FRI domains.</p>
+</li>
+<li>
+<p>The FRI layers.</p>
+</li>
+<li>
+<p>The FRI Merkle trees.</p>
+</li>
+</ol>
+<p>The method contains a loop, in each iteration of which we extend these
+four lists, using the last element in each. The iteration should stop
+once the last FRI polynomial is of degree 0, that is - when the last FRI
+polynomial is just a constant. It should then send over the channel this
+constant (i.e. - the polynomial’s free term). The <code>Channel</code> class only
+supports sending strings, so make sure you convert anything you wish to
+send over the channel to a string before sending.</p>
+<p>Solution:</p>
+<pre><code>def FriCommit(cp, domain, cp_eval, cp_merkle, channel):
+    fri_polys = [cp]
+    fri_domains = [domain]
+    fri_layers = [cp_eval]
+    fri_merkles = [cp_merkle]
+    while fri_polys[-1].degree() &gt; 0:
+        beta = channel.receive_random_field_element()
+        next_poly, next_domain, next_layer = next_fri_layer(fri_polys[-1], fri_domains[-1], beta)
+        fri_polys.append(next_poly)
+        fri_domains.append(next_domain)
+        fri_layers.append(next_layer)
+        fri_merkles.append(MerkleTree(next_layer))
+        channel.send(fri_merkles[-1].root)
+    channel.send(str(fri_polys[-1].poly[0]))
+    return fri_polys, fri_domains, fri_layers, fri_merkles
+</code></pre>
+<p>Run test:</p>
+<pre><code>test_channel = Channel()
+fri_polys, fri_domains, fri_layers, fri_merkles = FriCommit(cp, eval_domain, cp_eval, cp_merkle, test_channel)
+assert len(fri_layers) == 11, f'Expected number of FRI layers is 11, whereas it is actually {len(fri_layers)}.'
+assert len(fri_layers[-1]) == 8, f'Expected last layer to contain exactly 8 elements, it contains {len(fri_layers[-1])}.'
+assert all([x == FieldElement(-1138734538) for x in fri_layers[-1]]), f'Expected last layer to be constant.'
+assert fri_polys[-1].degree() == 0, 'Expected last polynomial to be constant (degree 0).'
+assert fri_merkles[-1].root == '1c033312a4df82248bda518b319479c22ea87bd6e15a150db400eeff653ee2ee', 'Last layer Merkle root is wrong.'
+assert test_channel.state == '61452c72d8f4279b86fa49e9fb0fdef0246b396a4230a2bfb24e2d5d6bf79c2e', 'The channel state is not as expected.'
+print('Success!')
+</code></pre>
+<p>Run the following cell to execute the function with your channel object
+and print the proof so far:</p>
+<pre><code>fri_polys, fri_domains, fri_layers, fri_merkles = FriCommit(cp, eval_domain, cp_eval, cp_merkle, channel)
+print(channel.proof)
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch05-07-02-constraints-python.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch05-07-04-query-phase-python.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch05-07-02-constraints-python.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch05-07-04-query-phase-python.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

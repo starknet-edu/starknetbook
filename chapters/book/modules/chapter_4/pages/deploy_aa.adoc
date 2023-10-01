@@ -1,5 +1,0 @@
-[id="deploy_aa"]
-
-= Deploying and Interacting with Account Contracts
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

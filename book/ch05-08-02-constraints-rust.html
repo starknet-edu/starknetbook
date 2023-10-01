@@ -1,0 +1,535 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Constraints 🚧 - The Starknet Book</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Starknet Book</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="ch02-00-starknet-tooling.html"><strong aria-hidden="true">2.</strong> Tooling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-01-basic-installation.html"><strong aria-hidden="true">2.1.</strong> Basic Installation</a></li><li class="chapter-item expanded "><a href="ch02-02-compile-deploy-interact.html"><strong aria-hidden="true">2.2.</strong> Compile, Deploy, Interact</a></li><li class="chapter-item expanded "><a href="ch02-03-scarb.html"><strong aria-hidden="true">2.3.</strong> Scarb: The Package Manager</a></li><li class="chapter-item expanded "><a href="ch02-04-starkli.html"><strong aria-hidden="true">2.4.</strong> Starkli: A CLI interface 🚧</a></li><li class="chapter-item expanded "><a href="ch02-05-katana.html"><strong aria-hidden="true">2.5.</strong> Katana: A Local Node</a></li><li class="chapter-item expanded "><a href="ch02-06-starknet-devnet.html"><strong aria-hidden="true">2.6.</strong> Starknet Devnet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-07-starknet-js.html"><strong aria-hidden="true">2.7.</strong> Starknet-js: Javascript SDK</a></li><li class="chapter-item expanded "><a href="ch02-08-starknet-react.html"><strong aria-hidden="true">2.8.</strong> Starknet-React: React Integration</a></li><li class="chapter-item expanded "><a href="ch02-09-starknet-py.html"><strong aria-hidden="true">2.9.</strong> Starknet-py: Python SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-10-starknet-rs.html"><strong aria-hidden="true">2.10.</strong> Starknet-rs: Rust SDK 🚧</a></li><li class="chapter-item expanded "><a href="ch02-11-foundry-cast.html"><strong aria-hidden="true">2.11.</strong> Foundry Cast: Interacting with Starknet 🚧</a></li><li class="chapter-item expanded "><a href="ch02-12-foundry-forge.html"><strong aria-hidden="true">2.12.</strong> Foundry Forge: Testing 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-00-architecture.html"><strong aria-hidden="true">3.</strong> Architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-transactions.html"><strong aria-hidden="true">3.1.</strong> Transactions</a></li><li class="chapter-item expanded "><a href="ch03-02-sequencers.html"><strong aria-hidden="true">3.2.</strong> Sequencers</a></li><li class="chapter-item expanded "><a href="ch03-03-provers.html"><strong aria-hidden="true">3.3.</strong> Provers 🚧</a></li><li class="chapter-item expanded "><a href="ch03-04-nodes.html"><strong aria-hidden="true">3.4.</strong> Nodes 🚧</a></li><li class="chapter-item expanded "><a href="ch03-05-layer-3.html"><strong aria-hidden="true">3.5.</strong> Layer 3 and App Chains 🚧  </a></li><li class="chapter-item expanded "><a href="ch03-06-solidity-verifier.html"><strong aria-hidden="true">3.6.</strong> Solidity Verifier 🚧</a></li><li class="chapter-item expanded "><a href="ch03-07-decentralization.html"><strong aria-hidden="true">3.7.</strong> Decentralization 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-account-abstraction.html"><strong aria-hidden="true">4.</strong> Account Abstraction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-accounts.html"><strong aria-hidden="true">4.1.</strong> Accounts</a></li><li class="chapter-item expanded "><a href="ch04-02-hello-account.html"><strong aria-hidden="true">4.2.</strong> Hello, Account! 🚧</a></li><li class="chapter-item expanded "><a href="ch04-03-standard-account.html"><strong aria-hidden="true">4.3.</strong> Standard AccounT 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-examples.html"><strong aria-hidden="true">4.4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-04-01-multicaller.html"><strong aria-hidden="true">4.4.1.</strong> Multicaller 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-02-multisig.html"><strong aria-hidden="true">4.4.2.</strong> Multisig 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-03-auto-payments.html"><strong aria-hidden="true">4.4.3.</strong> Auto-Payments 🚧</a></li><li class="chapter-item expanded "><a href="ch04-04-04-alternative-signature-schemes.html"><strong aria-hidden="true">4.4.4.</strong> Alternative Signature Schemes 🚧</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-starks.html"><strong aria-hidden="true">5.</strong> STARKs 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-basics.html"><strong aria-hidden="true">5.1.</strong> Basics 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-math-primer.html"><strong aria-hidden="true">5.2.</strong> Math Primer 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-02-01-number-theory.html"><strong aria-hidden="true">5.2.1.</strong> Number Theory 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-02-geometry.html"><strong aria-hidden="true">5.2.2.</strong> Geometry 🚧</a></li><li class="chapter-item expanded "><a href="ch05-02-03-cryptographic-primitives.html"><strong aria-hidden="true">5.2.3.</strong> Cryptographic Primitives 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-03-arithimization.html"><strong aria-hidden="true">5.3.</strong> Arithimization 🚧</a></li><li class="chapter-item expanded "><a href="ch05-04-low-degree-testing.html"><strong aria-hidden="true">5.4.</strong> Low Degree Testing 🚧</a></li><li class="chapter-item expanded "><a href="ch05-05-fri-protocol.html"><strong aria-hidden="true">5.5.</strong> FRI Protocol 🚧</a></li><li class="chapter-item expanded "><a href="ch05-06-efficient-starks.html"><strong aria-hidden="true">5.6.</strong> Efficient STARKs</a></li><li class="chapter-item expanded "><a href="ch05-07-starks-protocol-python.html"><strong aria-hidden="true">5.7.</strong> STARKs Protocol (Python) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-07-01-trace-low-degree-extension-python.html"><strong aria-hidden="true">5.7.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-02-constraints-python.html"><strong aria-hidden="true">5.7.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-03-fri-commitments-python.html"><strong aria-hidden="true">5.7.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-07-04-query-phase-python.html"><strong aria-hidden="true">5.7.4.</strong> Query Phase 🚧</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-08-starks-protocol-rust.html"><strong aria-hidden="true">5.8.</strong> STARKs Protocol (Rust) 🚧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-08-01-trace-low-degree-extension-rust.html"><strong aria-hidden="true">5.8.1.</strong> Trace/Low Degree Extension 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-02-constraints-rust.html" class="active"><strong aria-hidden="true">5.8.2.</strong> Constraints 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-03-fri-commitments-rust.html"><strong aria-hidden="true">5.8.3.</strong> FRI Commitments 🚧</a></li><li class="chapter-item expanded "><a href="ch05-08-04-query-phase-rust.html"><strong aria-hidden="true">5.8.4.</strong> Query Phase 🚧</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Starknet Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><em>Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
+License, Version 2.0 (the &quot;License&quot;). You may not use this file except
+in compliance with the License. You may obtain a copy of the License at
+<a href="https://www.starkware.co/open-source-license/">https://www.starkware.co/open-source-license/</a> Unless required by
+applicable law or agreed to in writing, software distributed under the
+License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for
+the specific language governing permissions and limitations under the
+License.</em></p>
+<h1 id="part-2-constraints"><a class="header" href="#part-2-constraints">Part 2: Constraints</a></h1>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=fg3mFPXEYQY">Video Lecture
+(youtube)</a></p>
+</li>
+<li>
+<p><a href="https://starkware.co/wp-content/uploads/2021/12/STARK101-Part2.pdf">Slides
+(PDF)</a></p>
+</li>
+</ul>
+<p>In this part, we are going to create a set of constraints over the trace
+<code>a</code>. The constraints will be expressions in the trace’s cells that are
+polynomials (rather than <a href="https://en.wikipedia.org/wiki/Rational_function">rational
+functions</a>) if and only
+if the trace represents a valid computation of the FibonacciSq. We will
+get there in three steps:</p>
+<ol>
+<li>
+<p>Start by specifying the constraints we care about (the <strong>FibonacciSq
+constraints</strong>).</p>
+</li>
+<li>
+<p>Translate the FibonacciSq constraints into <strong>polynomial
+constraints</strong>.</p>
+</li>
+<li>
+<p>Translate those into <strong>rational functions</strong> that represent
+polynomials if and only if the original constraints hold.</p>
+</li>
+</ol>
+<h1 id="step-1---fibonaccisq-constraints"><a class="header" href="#step-1---fibonaccisq-constraints">Step 1 - FibonacciSq Constraints</a></h1>
+<p>For <code>a</code> to be a correct trace of a FibonacciSq sequence that proves our
+claim:</p>
+<ol>
+<li>
+<p>The first element has to be 1, namely = 1].</p>
+</li>
+<li>
+<p>The last element has to be 2338775057, namely = 2338775057].</p>
+</li>
+<li>
+<p>The FibonacciSq rule must apply, that is - for every ,
+[i+2]=a[i+1]²+a[i]².</p>
+</li>
+</ol>
+<h1 id="step-2---polynomial-constraints"><a class="header" href="#step-2---polynomial-constraints">Step 2 - Polynomial Constraints</a></h1>
+<p>Recall that <code>f</code> is a polynomial over the trace domain, that evaluates
+exactly to <code>a</code> over where is the &quot;small&quot; group generated by .</p>
+<p>We now rewrite the above three constraints in a form of polynomial
+constraints over <code>f</code>:</p>
+<ol>
+<li>
+<p>= 1] is translated to the polynomial , which evalutes to 0 for
+(note that is ).</p>
+</li>
+<li>
+<p>= 2338775057] is translated to the polynomial , which evalutes to 0
+for .</p>
+</li>
+<li>
+<p>[i+2]=a[i+1]²+a[i]² for every is translated to the polynomial
+, which evaluates to 0 for .</p>
+</li>
+</ol>
+<h1 id="hands-on"><a class="header" href="#hands-on">Hands on</a></h1>
+<p>First, since this is a separate notebook from Part 1, let’s run the
+following piece of code to have all the variables here with their
+correct values. Note that it may take up to 30 seconds, since it reruns
+the polynomial interpolation.</p>
+<pre><code>:dep stark101-rs = { path = &quot;stark101&quot; }
+:dep sha256 = &quot;1.1.2&quot;
+use stark101_rs::{field::FieldElement, channel::Channel, polynomial::{Polynomial, x}};
+use stark101_rs::parts::part1();
+
+let (a, g, G, h, H, eval_domain, f, f_eval, f_merkle, channel) = part1();
+println!(&quot;Success!&quot;);
+
+Success!
+</code></pre>
+<p>You will obtain each of the three constraints as a quotient of two
+polynomials, making sure the remainder is the zero polynomial.</p>
+<h1 id="step-3---rational-functions-that-are-in-fact-polynomials"><a class="header" href="#step-3---rational-functions-that-are-in-fact-polynomials">Step 3 - Rational Functions (That are in Fact Polynomials)</a></h1>
+<p>Each of the constraints above is represented by a polynomial that
+supposedly evaluates to on certain elements of the group . That is, for
+some , we claim that</p>
+<p>(note that for the first two constaints, because they only refer to one
+point and for the third ).</p>
+<p>This is equivalent to saying that is divisible, as a polynomial, by all
+of , or, equivalently, by</p>
+<p>Therefore, each of the three constraints above can be written as a
+rational function of the form:</p>
+<p>for the corresponding and . In this step we will construct these three
+rational functions and show that they are indeed polynomials.</p>
+<h1 id="the-first-constraint"><a class="header" href="#the-first-constraint">The First Constraint:</a></h1>
+<p>In the first constraint, and .</p>
+<p>We will now construct the <strong>polynomial</strong> , making sure that is indeed
+divisible by .</p>
+<pre><code>// First constraint. Construct numer0 and denom0.
+let numer0: Polynomial = todo!();
+let denom0: Polynomial = todo!();
+</code></pre>
+<p>Solution:</p>
+<pre><code>let numer0: Polynomial = f.clone() - FieldElement::one();
+let denom0: Polynomial = x() - FieldElement::one();
+</code></pre>
+<p>Convince yourself that vanishes at by making sure that evaluating this
+polynomial at yields :</p>
+<pre><code>todo!(&quot;You should evaluate f(x) - 1 at x = 1&quot;);
+</code></pre>
+<p>The fact that has a root at implies that it is divisible by . Run the
+following cell to convince yourself that the remainder of <code>numer0</code>
+modulo <code>denom0</code> is , and therefore division indeed yields a polynomial:</p>
+<pre><code>numer0.clone() % denom0.clone()
+
+Polynomial([])
+</code></pre>
+<p>Run the following cell to construct <code>p0</code>, the polynomial representing
+the first constraint, by dividing <code>numer0</code> by <code>denom0</code>:</p>
+<pre><code>let p0: Polynomial = numer0 / denom0;
+</code></pre>
+<p>Run test:</p>
+<pre><code>assert_eq!(p0(2718), 2509888982);
+println!(&quot;Success!&quot;);
+
+Success!
+</code></pre>
+<h1 id="the-second-constraint"><a class="header" href="#the-second-constraint">The Second Constraint</a></h1>
+<p>Construct the polynomial <code>p1</code> representing the second constraint, ,
+similarly:</p>
+<pre><code>// Second constraint.
+let p1: Polynomial = todo!();
+</code></pre>
+<p>Solution:</p>
+<pre><code>let numer1: Polynomial = f.clone() - FieldElement::new(2338775057);
+let denom1: Polynomial = x() - g.pow(1022usize);
+let p1: Polynomial = numer1 / denom1.clone();
+</code></pre>
+<p>Run test:</p>
+<pre><code>assert_eq!(p1(5772), 232961446);
+println!(&quot;Success!&quot;);
+
+Success!
+</code></pre>
+<h1 id="the-third-constraint---succinctness"><a class="header" href="#the-third-constraint---succinctness">The Third Constraint - Succinctness</a></h1>
+<p>The last constraint’s rational function is slightly more complicated:</p>
+<p>whose denominator can be rewritten, so that the entire expression is
+easier to compute:</p>
+<p>This follows from the equality</p>
+<p>Convince yourself of this equality using the function <code>prod</code> that takes
+a list and computes its product:</p>
+<pre><code>// Construct a list `lst` of the linear terms (x-g**i):
+let lst: Vec&lt;Polynomial&gt; = todo!();
+// Compute the product of `lst` and see that it is indeed the succinct polynomial x**1024 - 1
+Polynomial::prod(&amp;lst);
+
+thread '&lt;unnamed&gt;' panicked at 'not yet implemented', src/lib.rs:134:28
+stack backtrace:
+   0: _rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::panic
+   3: &lt;core::panic::unwind_safe::AssertUnwindSafe&lt;F&gt; as core::ops::function::FnOnce&lt;()&gt;&gt;::call_once
+   4: _run_user_code_14
+   5: evcxr::runtime::Runtime::run_loop
+   6: evcxr::runtime::runtime_hook
+   7: evcxr_jupyter::main
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+</code></pre>
+<p>Solution:</p>
+<pre><code>let lst: Vec&lt;Polynomial&gt; = (0..1024).into_iter().map(|i| x() - g.pow(i)).collect();
+Polynomial::prod(&amp;lst)
+
+Polynomial([FieldElement(3221225472), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(0), FieldElement(1)])
+</code></pre>
+<p>For more information, see our blog post titled <a href="https://medium.com/starkware/arithmetization-ii-403c3b3f4355">Arithmetization
+II</a>.</p>
+<p>Let’s pause for a moment, and look at a simple example on how
+polynomials are composed. After that we will generate the third
+constraint.</p>
+<h1 id="composing-polynomials-a-detour"><a class="header" href="#composing-polynomials-a-detour">Composing Polynomials (a detour)</a></h1>
+<p>Create the two polynomials , :</p>
+<pre><code>let q: Polynomial = x().pow(2)*2usize + 1;
+let r = x() - 3usize;
+</code></pre>
+<p>Composing on yields a new polynomial: Run the following cell to create a
+third polynomial <code>cmp</code> by composing <code>q</code> on <code>r</code> and convince yourself
+that <code>cmp</code> is indeed the composition of <code>q</code> and <code>r</code>:</p>
+<pre><code>let cmp = q(r);
+cmp
+
+Polynomial([FieldElement(19), FieldElement(3221225461), FieldElement(2)])
+</code></pre>
+<h1 id="back-to-polynomial-constraints"><a class="header" href="#back-to-polynomial-constraints">Back to Polynomial Constraints</a></h1>
+<p>Construct the third constraint <code>p2</code> in a similar manner to the
+construction of <code>p0</code> and <code>p1</code>, using polynomial composition. Along the
+way, verify that is a root of the <strong>numerator</strong> while is not.</p>
+<pre><code>let p2: Polynomial = todo!();
+</code></pre>
+<p>Solution:</p>
+<pre><code>let numer_1: Polynomial = f(x() * g.pow(2));
+let numer_2: Polynomial = f(x() * g).pow(2) * FieldElement::new((-1 + FieldElement::k_modulus() as i128) as usize);
+let numer_3: Polynomial = f.pow(2) * FieldElement::new((-1 + FieldElement::k_modulus() as i128) as usize);
+let numer2: Polynomial = numer_1 + numer_2 + numer_3;
+println!(&quot;Numerator at g^1020 is {:?}&quot;, numer2.clone()(g.pow(1020)));
+println!(&quot;Numerator at g^1021 is {:?}&quot;, numer2(g.pow(1021usize)));
+let denom2 = (x().pow(1024usize) - 1) / ((x() - g.pow(1021)) * (x() - g.pow(1022)) * (x() - g.pow(1023)));
+
+let p2: Polynomial = numer2 / denom2;
+
+Numerator at g^1020 is FieldElement(0)
+Numerator at g^1021 is FieldElement(230576507)
+</code></pre>
+<p>Run test:</p>
+<pre><code>let p2_degree = p2.degree();
+assert_eq!(p2.degree(), 1023, &quot;The degree of the third constraint is {p2_degree} when it should be 1023.&quot;);
+assert_eq!(p2(31415), 2090051528);
+println!(&quot;Success!&quot;);
+
+Success!
+</code></pre>
+<p>Run the following cell to observe the degrees of the constraint
+polynomials <code>p0</code>, <code>p1</code> and <code>p2</code>, all less than . This will be important
+in the next part.</p>
+<pre><code>println!(&quot;deg p0 = {}&quot;, p0.degree());
+println!(&quot;deg p1 = {}&quot;, p1.degree());
+println!(&quot;deg p2 = {}&quot;, p2.degree());
+
+deg p0 = 1021
+deg p1 = 1021
+deg p2 = 1023
+</code></pre>
+<h1 id="step-4---composition-polynomial"><a class="header" href="#step-4---composition-polynomial">Step 4 - Composition Polynomial</a></h1>
+<p>Recall that we’re translating a problem of checking the validity of
+three polynomial constraints to checking that each of the rational
+functions are polynomials.</p>
+<p>Our protocol uses an algorithm called
+<a href="https://eccc.weizmann.ac.il/report/2017/134/">FRI</a> to do so, which will
+be discussed in the next part. In order for the proof to be succinct
+(short), we prefer to work with just one rational function instead of
+three. For that, we take a random linear combination of called the
+<strong>compostion polynomial</strong> (CP for short):</p>
+<p>where are random field elements obtained from the verifier, or in our
+case - from the channel.</p>
+<p>Proving that (the rational function) is a polynomial guarantees, with
+high probability, that each of , , are themselves polynomials.</p>
+<p>In the next part, you will generate a proof for an equivalent fact. But
+first, let’s create <code>CP</code> using <code>Channel.receive_random_field_element</code> to
+obtain :</p>
+<pre><code>// Note that alpha0, alpha1, alpha2 have to be drawn from the channel in this order.
+fn get_CP(p1: Polynomial, p2: Polynomial, p3: Polynomial, channel: Channel) -&gt; Polynomial {
+    todo!();
+}
+</code></pre>
+<p>Solution:</p>
+<pre><code>fn get_CP(p0: Polynomial, p1: Polynomial, p2: Polynomial, channel: &amp;mut Channel) -&gt; Polynomial {
+    let alpha0 = channel.receive_random_field_element();
+    let alpha1 = channel.receive_random_field_element();
+    let alpha2 = channel.receive_random_field_element();
+    (p0 * alpha0) + (p1 * alpha1) + (p2 * alpha2)
+}
+</code></pre>
+<p>Run test:</p>
+<pre><code>let mut test_channel: Channel = Channel::new();
+let cp_test = get_CP(p0, p1, p2, &amp;mut test_channel);
+let cp_test_degree = cp_test.degree();
+assert_eq!(cp_test.degree(), 1023, &quot;The degree of cp is {cp_test_degree} when it should be 1023.&quot;);
+let expected = cp_test(2439804);
+assert_eq!(cp_test(2439804), 838767343, &quot;cp(2439804) = {expected:?}, when it should be 838767343&quot;);
+println!(&quot;Success!&quot;);
+
+Success!
+</code></pre>
+<h1 id="commit-on-the-composition-polynomial"><a class="header" href="#commit-on-the-composition-polynomial">Commit on the Composition Polynomial</a></h1>
+<p>Lastly, we evaluate over the evaluation domain (<code>eval_domain</code>), build a
+Merkle tree on top of that and send its root over the channel. This is
+similar to committing on the LDE trace, as we did at the end of part 1.</p>
+<pre><code>// Fix this. CP_eval is the evaluation of CP on all the points in domain. For a hint - look at &quot;Evaluate on a Coset&quot; on part 1.
+fn cp_eval(p0: Polynomial, p1: Polynomial, p2: Polynomial, domain: Vec&lt;FieldElement&gt;, channel: &amp;mut Channel) {
+    let cp = get_CP(p0, p1, p2, channel);
+    todo!();
+}
+</code></pre>
+<p>Solution:</p>
+<pre><code>fn cp_eval(p0: Polynomial, p1: Polynomial, p2: Polynomial, domain: Vec&lt;FieldElement&gt;, channel: &amp;mut Channel) -&gt; Vec&lt;FieldElement&gt; {
+    let cp = get_CP(p0, p1, p2, channel);
+    domain.into_iter().map(|d| cp(d)).collect()
+}
+</code></pre>
+<p>Construct a Merkle Tree over the evaluation and send its root over the
+channel.</p>
+<pre><code>let channel = Channel::new();
+let cp_merkle = MerkleTree::new(todo!()); // Fix this line
+channel.send(cp_merkle.root);
+</code></pre>
+<p>Solution:</p>
+<pre><code>use stark101_rs::merkle_tree::MerkleTree;
+let mut channel = Channel::new();
+let cp_merkle: MerkleTree = MerkleTree::new(cp_eval(p0, p1, p2, eval_domain, &amp;mut channel));
+channel.send(cp_merkle.root());
+</code></pre>
+<p>Test your code:</p>
+<pre><code>assert_eq!(cp_merkle.root(), &quot;26db4de93f69af9591eac0bf224a26f5ffd99d07a325b82ee34381069a205a53&quot;, &quot;Merkle tree root is wrong.&quot;);
+println!(&quot;Success!&quot;);
+
+Success!
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch05-08-01-trace-low-degree-extension-rust.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ch05-08-03-fri-commitments-rust.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch05-08-01-trace-low-degree-extension-rust.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ch05-08-03-fri-commitments-rust.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
