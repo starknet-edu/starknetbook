@@ -1,15 +1,50 @@
 # The Starknet Network
 
-Welcome to the Starknet Book. This is your roadmap to Starknet’s key
-features, its core philosophy, and its unique language, Cairo. Whether
-you’re a developer, a crypto fan, or just curious, this book is your
-starting point.
+## Preamble
 
-# What is Starknet?
+Historically, societal roles like currency, property rights, and social status titles have been governed by *protocols* and *registries*. Their value stems from a widely accepted understanding of their integrity. These functions have predominantly been overseen by centralized entities prone to challenges such as corruption, agency conflicts, and exclusion ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)).
 
-Starknet is a Layer-2 network that makes Ethereum transactions faster,
-cheaper, and more secure using zk-STARKs technology. Think of it as a
-boosted layer on top of Ethereum, optimized for speed and cost.
+Satoshi's creation, Bitcoin, introduced a novel approach for these functions, termed an *integrity web*. This is an infrastructure for societal roles that:
+1. Is openly described by a public protocol.
+2. Operates over a wide, inclusive, peer-to-peer network.
+3. Distributes value fairly and extensively to maintain societal consensus on its integrity.
+
+While Bitcoin addressed monetary functions, Ethereum expanded this to include any function that can be defined by computer programming. Both faced the challenge of balancing scalability with decentralization. These integrity webs have often favored inclusivity over capacity, ensuring even those with limited resources can authenticate the system's integrity. Yet, this means they struggle to meet global demand.
+
+## Defining "Blockchain"
+
+In the ever-evolving realm of technology, defining a term as multifaceted as "Blockchain" can be challenging. Based on current understandings and applications, a Blockchain can be characterized by the following three properties ([Eli Ben-Sasson, 2023](https://twitter.com/EliBenSasson/status/1709272086504485265)):
+
+1. **Public Protocol:** The foundation of a Blockchain rests upon a protocol that is openly available. This transparency ensures that any interested party can understand its workings, fostering trust and enabling wider adoption.
+2. **Open P2P Network:** Instead of relying on a centralized entity, a Blockchain operates over a peer-to-peer (P2P) network. This decentralized approach ensures that operations are distributed across various participants or nodes, making the system more resilient to failures and censorship.
+3. **Value Distribution:** Central to the Blockchain's operation is the way it rewards its operators. The system autonomously distributes value in a manner that is wide-ranging and equitable. This incentivization not only motivates participants to maintain the system's integrity but also ensures a broader societal consensus.
+
+While these properties capture the essence of many Blockchains, the term's definition might need refinement as the technology matures and finds new applications. Engaging in continuous dialogue and revisiting definitions will be crucial in this dynamic landscape.
+
+## Starknet Definition
+
+Starknet is a Layer-2 network that makes Ethereum transactions faster, cheaper, and more secure using zk-STARKs technology. Think of it as a boosted layer on top of Ethereum, optimized for speed and cost.
+
+Starknet bridges the gap between scalability and broad consensus. It integrates a mathematical framework to navigate the balance between capacity and inclusivity. Its integrity hinges on the robustness of succinct, transparent proofs of computational integrity. This method lets powerful operators enhance Starknet's capacity, ensuring everyone can authenticate Starknet's integrity using universally accessible tools ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)).
+
+## Starknet’s Mission
+
+*Starknet’s mission is to allow individuals to freely implement and use any social function they desire.*
+
+## Starknet’s Values
+
+Starknet's ethos is anchored in core principles ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)):
+
+- **Lasting Broadness.** Starknet continuously resists power consolidation. Key points include:
+    - Broad power distribution underpins Starknet's legitimacy and must persist across operations and decision-making. While centralized operation may be necessary at times, it should be short-lived.
+    - Starknet's protocol and governance should always be open and transparent.
+    - Governance should bolster inclusivity, with a flexible structure that can evolve to ensure enduring inclusivity.
+
+- **Neutrality.** Starknet remains impartial to the societal functions it supports.
+    - The objectives and ethos of functions on Starknet lie with their creators.
+    - **Censorship resistance:** Starknet remains agnostic to the nature and meaning of user transactions.
+
+- **Individual Empowerment.** At its core, Starknet thrives on a well-informed and autonomous user base. This is achieved by fostering a culture rooted in its core mission and values, with a strong emphasis on education.
 
 ## Key Features
 
@@ -44,29 +79,7 @@ Here some of them:
     **Paymaster**, to pay for their transaction. Supports gasless
     transactions, enhancing user accessibility.
 
-# Starknet Philosophy: Built for Developers
-
-Starknet is all about being developer-friendly. It’s a high-performance
-platform designed to make building decentralized apps easier and more
-powerful. Here are its pillars:
-
--   Speed and Cost: Fast transactions and low fees make it ideal for
-    resource-heavy apps.
-
--   Cairo: This evolving language makes it easier to use validity proofs
-    and zk-STARKs tech.
-
--   Community: Active communication with developers through Telegram and
-    Discord.
-
--   Freedom: No more tech limitations. Build what you’ve always wanted.
-
--   Tools: A full suite of dev tools, including multiple SDKs and
-    testing frameworks.
-
-This philosophy drives Starknet’s roadmap.
-
-# Cairo: The Language of Starknet
+## Cairo: The Language of Starknet
 
 Cairo is tailor-made for creating STARK-based smart contracts. As
 Starknet’s native language, it’s central to building scalable and secure
@@ -77,7 +90,7 @@ Book](https://cairo-book.github.io/) and
 Inspired by Rust, Cairo lets you write contracts safely and
 conveniently.
 
-## Why Choose Cairo?
+### Why Choose Cairo?
 
 Cairo is designed for *Provable Computation,* a new paradigm that lets
 programs prove their correctness without re-running them. Here’s why it
@@ -89,7 +102,7 @@ stands out:
 
 -   Flexibility: Uses traits for more flexibility than inheritance.
 
-# Governance
+## Governance
 
 The Starknet Foundation oversees Starknet’s governance. Its duties
 include:
@@ -113,7 +126,8 @@ In short, governance is key to Starknet’s evolution.
 
 To propose an improvement, create a SNIP.
 
-## SNIP: StarkNet Improvement Proposals
+
+### SNIP: StarkNet Improvement Proposals
 
 SNIP is short for StarkNet Improvement Proposal. It’s essentially a
 blueprint that details proposed enhancements or changes to the StarkNet
@@ -145,42 +159,8 @@ suggestions—they’re a roadmap. It’s beneficial for implementers to keep
 a list of the SNIPs they’ve executed. This transparency helps users
 gauge the state of a particular implementation or software library.
 
-# Development
 
-The Starknet Foundation actively nurtures the ecosystem by:
-
--   Supporting research and development
-
--   Promoting Starknet technology adoption
-
--   Funding and organizing conferences and events for knowledge sharing
-
-## Community Engagement
-
-Community strength matters to the Foundation. To foster engagement, it:
-
--   Organizes events and discussions
-
--   Collaborates with allied blockchain communities
-
--   Creates avenues for community contributions to Starknet’s growth
-
-# What is Starkware?
-
-Starkware, founded in 2018, focuses on zk-STARK technology. Its key
-products include:
-
--   StarkEx: A Layer 2 solution on Ethereum, efficient through STARK
-    proofs
-
--   Cairo: An open-source language for efficient, scalable computation
-    in decentralized apps ([see
-    repo](https://github.com/starkware-libs/cairo/tree/73c3ed0a1af65f53490866426ae49360b2304374))
-
-Starknet, its latest project, aims for community-driven evolution under
-the Starknet Foundation’s governance.
-
-# Learning Resources
+## Learning Resources
 
 For deeper insights into Starknet and Cairo:
 
@@ -192,10 +172,8 @@ For deeper insights into Starknet and Cairo:
 -   [Starklings](https://github.com/shramee/starklings-cairo1):
     Practical tutorials and examples
 
-# Conclusion
+## Conclusion
 
-Starknet offers scalable, secure, and cost-effective decentralized apps,
-backed by zk-STARKs technology. It’s not just the tech; Starknet puts
-emphasis on empowering its developer community with robust tools and
-resources. This book aims to guide all those keen to explore Starknet’s
-technologies and philosophies.
+In decentralized technology, Starknet offers a solution to challenges that previous systems encountered. It's based on established *protocols* and *registries*, following the initial concepts introduced by figures such as Satoshi. Through a specific mathematical method, Starknet seeks a balance between scalability and consensus. As this technology progresses, Starknet adheres to principles of inclusivity, neutrality, and user empowerment. It's poised for continuous adaptation and improvement in the field.
+
+
