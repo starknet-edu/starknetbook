@@ -46,24 +46,20 @@ Stores all state data off-chain to increase transaction throughput.
 
 === Volition:
 
-Allows users to decide between Ethereum-based or off-chain storage via a centralized entity.
+Allows users to decide between Ethereum L1 or off-chain storage via a centralized entity.
 
-== Kakachin L3 zkEVM 
+== Saiyan Chains: L3 zkEVMs
 
-Combining Kakarot and Madara leads to Kakachin, echoing Starknet's scaling vision. To make Kakachin consensus-equivalent, modifications like translating Ethereum rules into Cairo and shifting to Keccak MPT are essential.
+Combining Kakarot and Madara leads to the ability to spawn Kakarot enabled rollups, named Saiyan Chains. Empowering users in a similar way to the [OP-Stack](https://stack.optimism.io/) or the [Polygon CDK](https://polygon.technology/polygon-cdk), Kakarot is echoing Starknet's scaling vision.
 
-== Kakachin’s Role in Scalability
+== Saiyan Chains’s Role in Scalability
 
-Functioning as an advanced Ethereum node on Starknet L2, Kakachin facilitates multiple L3 to L5 zkEVMs writing to Starknet, enhancing scalability while cutting costs.
+Saiyan Chains facilitates multiple L3 zkEVMs settling on Starknet, enhancing scalability while cutting costs.
 
 == Harnessing Kakarot
 
 === Migrating Ethereum Contracts to Starknet
 
-With Kakarot's tools, Ethereum-deployed contracts can run on Starknet without modifications. This facilitates faster migrations without needing Solidity-to-Cairo conversions.
-
-=== Simplifying Starknet Deployments for Solidity Developers
-
-Kakarot allows developers to deploy on Starknet using familiar Solidity, without diving into Cairo, marrying convenience with performance benefits.
+With Kakarot's tools, Ethereum-deployed contracts can run on Starknet (or any CairoVM enabled chain) without modifications. This facilitates faster migrations without needing Solidity-to-Cairo conversions.
 
 include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
