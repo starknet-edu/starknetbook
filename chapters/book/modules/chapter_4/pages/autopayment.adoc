@@ -1,5 +1,0 @@
-[id="autopayment"]
-
-= Auto-Payments Accounts
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

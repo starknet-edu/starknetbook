@@ -1,7 +1,0 @@
-[id="pioneering_applications"]
-
-= Pioneering Applications: Expanding Starknet's Horizons
-
-Starknet's progression is often reflected in the depth and breadth of applications developed within its framework. These applications, crafted by a community of dedicated developers, illustrate the practical utility and versatility of the Starknet ecosystem.
-
-From its inception, Starknet has witnessed the emergence of diverse projects, each seeking to address unique challenges and leverage the network's capabilities. This section offers an exploration of notable projects led by the https://github.com/keep-starknet-strange[Exploration] team and other ecosystem's projects. These initiatives not only underscore the potential of Starknet but also serve as a resource for fellow developers navigating similar paths. Readers are encouraged to delve deeper, understanding the intricacies of these projects, and, if inclined, contribute to their evolution.s

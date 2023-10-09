@@ -1,4 +1,0 @@
-include::1.0.0@docs-common-content:ROOT:partial$partial_environment_setup.adoc[]
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[]
-

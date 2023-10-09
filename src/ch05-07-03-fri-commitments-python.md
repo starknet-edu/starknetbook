@@ -1,0 +1,231 @@
+*Copyright 2019 Starkware Industries Ltd. Licensed under the Apache
+License, Version 2.0 (the "License"). You may not use this file except
+in compliance with the License. You may obtain a copy of the License at
+<https://www.starkware.co/open-source-license/> Unless required by
+applicable law or agreed to in writing, software distributed under the
+License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for
+the specific language governing permissions and limitations under the
+License.*
+
+# Part 3: FRI Commitments
+
+-   [Video Lecture
+    (youtube)](https://www.youtube.com/watch?v=gd1NbKUOJwA)
+
+-   [Slides
+    (PDF)](https://starkware.co/wp-content/uploads/2021/12/STARK101-Part3.pdf)
+
+# Load Previous Session
+
+Run the next cell to load the relevant variables. As usual - it will
+take a while to run.
+
+    from channel import Channel
+    from field import FieldElement
+    from merkle import MerkleTree
+    from polynomial import interpolate_poly, Polynomial
+    from tutorial_sessions import part1, part2
+
+    cp, cp_eval, cp_merkle, channel, eval_domain = part2()
+    print("Success")
+
+# FRI Folding
+
+Our goal in this part is to construct the FRI layers and commit on them.
+To obtain each layer we need:
+
+1.  To generate a domain for the layer (from the previous layer’s
+    domain).
+
+2.  To generate a polynomial for the layer (from the previous layer’s
+    polynomial and domain).
+
+3.  To evaluate said polynomial on said domain - **this is the next FRI
+    layer**.
+
+# Domain Generation
+
+The first FRI domain is simply the `eval_domain` that you already
+generated in Part 1, namely a coset of a group of order 8192. Each
+subsequent FRI domain is obtained by taking the first half of the
+previous FRI domain (dropping the second half), and squaring each of its
+elements.
+
+Formally - we got `eval_domain` by taking:
+
+The next layer will therefore be:
+
+Note that taking the squares of the second half of each elements in
+`eval_domain` yields exactly the same result as taking the squares of
+the first half. This is true for the next layers as well. For example:
+
+    print(eval_domain[100] ** 2)
+    half_domain_size = len(eval_domain) // 2
+    print(eval_domain[half_domain_size + 100] ** 2)
+
+Similarly, the domain of the third layer will be:
+
+And so on.
+
+Write a function `next_fri_domain` that takes the previous domain as an
+argument, and outputs the next one.
+
+Solution:
+
+    def next_fri_domain(fri_domain):
+        return [x ** 2 for x in fri_domain[:len(fri_domain) // 2]]
+
+Run test:
+
+    # Test against a precomputed hash.
+    from hashlib import sha256
+    next_domain = next_fri_domain(eval_domain)
+    assert '5446c90d6ed23ea961513d4ae38fc6585f6614a3d392cb087e837754bfd32797' == sha256(','.join([str(i) for i in next_domain]).encode()).hexdigest()
+    print('Success!')
+
+# FRI Folding Operator
+
+The first FRI polynomial is simply the composition polynomial, i.e.,
+`cp`. Each subsequent FRI polynomial is obtained by:
+
+1.  Getting a random field element (by calling
+    `Channel.receive_random_field_element`).
+
+2.  Multiplying the odd coefficients of the previous polynomial by .
+
+3.  Summing together consecutive pairs (even-odd) of coefficients.
+
+Formally, let’s say that the k-th polynomial is of degree (for some
+which is a power of 2):
+
+Then the (k+1)-th polynomial, whose degree is will be:
+
+Write a function `next_fri_polynomial` that takes as arguments a
+polynomial and a field element (the one we referred to as ), and returns
+the "folded" next polynomial.
+
+Note that:
+
+1.  `Polynomial.poly` contains a list of a polynomial’s coefficients,
+    the free term first, and the highest degree last, so
+    `p.poly[i] == u` if the coefficient of is .\*
+
+2.  `Polynomial`'s default constructor takes the list of coefficients as
+    argument. So a polynomial can be instantiated from a list of
+    coefficients `l` by calling `Polynomial(l)`.
+
+Solution:
+
+    def next_fri_polynomial(poly,  beta):
+        odd_coefficients = poly.poly[1::2]
+        even_coefficients = poly.poly[::2]
+        odd = beta * Polynomial(odd_coefficients)
+        even = Polynomial(even_coefficients)
+        return odd + even
+
+Run test:
+
+    next_p = next_fri_polynomial(cp, FieldElement(987654321))
+    assert '6bff4c35e1aa9693f9ceb1599b6a484d7636612be65990e726e52a32452c2154' == sha256(','.join([str(i) for i in next_p.poly]).encode()).hexdigest()
+    print('Success!')
+
+# Putting it Together to Get the Next FRI Layer
+
+Write a function `next_fri_layer` that takes a polynomial, a domain, and
+a field element (again - ), and returns the next polynomial, the next
+domain, and the evaluation of this next polynomial on this next domain.
+
+Solution:
+
+    def next_fri_layer(poly, domain, beta):
+        next_poly = next_fri_polynomial(poly, beta)
+        next_domain = next_fri_domain(domain)
+        next_layer = [next_poly(x) for x in next_domain]
+        return next_poly, next_domain, next_layer
+
+Run test:
+
+    test_poly = Polynomial([FieldElement(2), FieldElement(3), FieldElement(0), FieldElement(1)])
+    test_domain = [FieldElement(3), FieldElement(5)]
+    beta = FieldElement(7)
+    next_p, next_d, next_l = next_fri_layer(test_poly, test_domain, beta)
+    assert next_p.poly == [FieldElement(23), FieldElement(7)]
+    assert next_d == [FieldElement(9)]
+    assert next_l == [FieldElement(86)]
+    print('Success!')
+
+# Generating FRI Commitments
+
+We have now developed the tools to write the `FriCommit` method, that
+contains the main FRI commitment loop.
+
+It takes the following 5 arguments:
+
+1.  The composition polynomial, that is also the first FRI polynomial,
+    that is - `cp`.
+
+2.  The coset of order 8192 that is also the first FRI domain, that is -
+    `eval_domain`.
+
+3.  The evaluation of the former over the latter, which is also the
+    first FRI layer, that is - `cp_eval`.
+
+4.  The first Merkle tree (we will have one for each FRI layer)
+    constructed from these evaluations, that is - `cp_merkle`.
+
+5.  A channel object, that is `channel`.
+
+The method accordingly returns 4 lists:
+
+1.  The FRI polynomials.
+
+2.  The FRI domains.
+
+3.  The FRI layers.
+
+4.  The FRI Merkle trees.
+
+The method contains a loop, in each iteration of which we extend these
+four lists, using the last element in each. The iteration should stop
+once the last FRI polynomial is of degree 0, that is - when the last FRI
+polynomial is just a constant. It should then send over the channel this
+constant (i.e. - the polynomial’s free term). The `Channel` class only
+supports sending strings, so make sure you convert anything you wish to
+send over the channel to a string before sending.
+
+Solution:
+
+    def FriCommit(cp, domain, cp_eval, cp_merkle, channel):
+        fri_polys = [cp]
+        fri_domains = [domain]
+        fri_layers = [cp_eval]
+        fri_merkles = [cp_merkle]
+        while fri_polys[-1].degree() > 0:
+            beta = channel.receive_random_field_element()
+            next_poly, next_domain, next_layer = next_fri_layer(fri_polys[-1], fri_domains[-1], beta)
+            fri_polys.append(next_poly)
+            fri_domains.append(next_domain)
+            fri_layers.append(next_layer)
+            fri_merkles.append(MerkleTree(next_layer))
+            channel.send(fri_merkles[-1].root)
+        channel.send(str(fri_polys[-1].poly[0]))
+        return fri_polys, fri_domains, fri_layers, fri_merkles
+
+Run test:
+
+    test_channel = Channel()
+    fri_polys, fri_domains, fri_layers, fri_merkles = FriCommit(cp, eval_domain, cp_eval, cp_merkle, test_channel)
+    assert len(fri_layers) == 11, f'Expected number of FRI layers is 11, whereas it is actually {len(fri_layers)}.'
+    assert len(fri_layers[-1]) == 8, f'Expected last layer to contain exactly 8 elements, it contains {len(fri_layers[-1])}.'
+    assert all([x == FieldElement(-1138734538) for x in fri_layers[-1]]), f'Expected last layer to be constant.'
+    assert fri_polys[-1].degree() == 0, 'Expected last polynomial to be constant (degree 0).'
+    assert fri_merkles[-1].root == '1c033312a4df82248bda518b319479c22ea87bd6e15a150db400eeff653ee2ee', 'Last layer Merkle root is wrong.'
+    assert test_channel.state == '61452c72d8f4279b86fa49e9fb0fdef0246b396a4230a2bfb24e2d5d6bf79c2e', 'The channel state is not as expected.'
+    print('Success!')
+
+Run the following cell to execute the function with your channel object
+and print the proof so far:
+
+    fri_polys, fri_domains, fri_layers, fri_merkles = FriCommit(cp, eval_domain, cp_eval, cp_merkle, channel)
+    print(channel.proof)

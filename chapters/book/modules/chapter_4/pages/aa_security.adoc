@@ -1,5 +1,0 @@
-[id="aa_security"]
-
-= Security Considerations
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]

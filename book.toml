@@ -1,0 +1,4 @@
+[book]
+authors = ["Starknet Community with support from Starkware and the Starknet Foundation"]
+src = "src"
+title = "The Starknet Book"

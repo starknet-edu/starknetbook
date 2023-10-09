@@ -1,5 +1,0 @@
-[id="starknetpy"]
-
-= Starknet_py - Python SDK for Starknet
-
-include::ROOT:partial$snippet_contributing_blurb.adoc[leveloffset=+1]
