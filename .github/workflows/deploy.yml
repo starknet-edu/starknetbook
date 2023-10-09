@@ -39,9 +39,9 @@ jobs:
         with:
           # Upload entire repository
           path: 'book'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v2
     
       - name: scp upload to production site
         run: sshpass -p ${{ secrets.PROD_PASS }} scp -o 'StrictHostKeyChecking no' -r book/ ${{ secrets.PROD_USER }}@${{ secrets.PROD_IP }}:~/
