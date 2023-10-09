@@ -1,22 +1,8 @@
-*.txt
-node_modules/
-cache/
+book
+target
+output
+
+# Editors tmp files.
+*~
 .idea/
-artifacts/
-starknet-artifacts/
-.pytest_cache/
-build/
-tmp/
-package-lock.json
-**/*compiled.json
-**/*abi.json
-**/*.bin
-*.DS_STORE*
-**/*.txt
-public_html/
-target/
-tmp*
 
-**/*.sum
-
-*/**/__pycache__
