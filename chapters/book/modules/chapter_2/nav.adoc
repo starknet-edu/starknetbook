@@ -1,4 +1,5 @@
 * xref:index.adoc[2. Starknet Tooling]
+    ** xref:devtools_overview.adoc[Overview: Development tools]
     ** xref:scarb.adoc[Scarb: Package Manager]
     ** xref:katana.adoc[Local Node for Development]
     ** xref:hardhat.adoc[Starknet-Hardhat]
