@@ -5,4 +5,4 @@ output
 # Editors tmp files.
 *~
 .idea/
-
+.vscode
