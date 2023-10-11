@@ -29,6 +29,9 @@ $ mdbook build
 ```
     
 2. After building, the compiled content will be located in the **`book`** subdirectory.
+```bash
+$ cd starknetbook   
+```
 3. To view the content in a browser:
     
 ```bash
