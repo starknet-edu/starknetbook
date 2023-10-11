@@ -17,6 +17,8 @@
   - [Katana: A Local Node](ch02-05-katana.md)
   - [Starknet Devnet 🚧](ch02-06-starknet-devnet.md)
   - [Starknet-js: Javascript SDK](ch02-07-starknet-js.md)
+    - [Examples](ch02-07-01-examples.md)
+      - [Million Dollar Homepage](ch02-07-01-01-million-dollar-homepage.md)
   - [Starknet-React: React Integration](ch02-08-starknet-react.md)
   - [Starknet-py: Python SDK 🚧](ch02-09-starknet-py.md)
   - [Starknet-rs: Rust SDK 🚧](ch02-10-starknet-rs.md)
