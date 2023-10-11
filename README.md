@@ -23,16 +23,16 @@ $ cargo install mdbook --version 0.4.31
 Follow these steps to build and view the book:
 
 1. Build the book:
-    
+
 ```bash
-$ mdbook build    
+$ mdbook build
 ```
-    
+
 2. After building, the compiled content will be located in the **`book`** subdirectory.
 3. To view the content in a browser:
-    
+
 ```bash
-$ mdbook serve --open    
-```    
+$ mdbook serve --open
+```
+
 Tip: After making edits, simply refresh your browser to see the updates.
-    

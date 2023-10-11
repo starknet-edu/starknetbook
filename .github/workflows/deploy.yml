@@ -12,15 +12,15 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-    group: pages
-    cancel-in-progress: true
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read  # To push a branch 
-      pages: write  # To push to a GitHub Pages site
+      contents: read # To push a branch
+      pages: write # To push to a GitHub Pages site
       id-token: write # To update the deployment status
     steps:
       - uses: actions/checkout@v3
@@ -42,7 +42,7 @@ jobs:
       # - name: Deploy to GitHub Pages
       #   id: deployment
       #   uses: actions/deploy-pages@v2
-      
+
       - name: Rename book to public_html
         run: mv book public_html
 

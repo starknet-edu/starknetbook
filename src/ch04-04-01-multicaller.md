@@ -62,9 +62,9 @@ Apart from the traditional **`execute`** function, adding the
 you can make a multicall using your smart contract account.
 
 The above code is a simple example snippet where the **"return
-*execute\_calls(calls, res);"* statement makes recursive calls to the
+_execute_calls(calls, res);"_ statement makes recursive calls to the
 **`_execute_calls`** function thereby bundling the calls together.
-The final result will be aggregated and returned in the ***res***
+The final result will be aggregated and returned in the \***res\*\*\*
 variable.
 
 ### `_call_contract` Function
@@ -90,10 +90,10 @@ block, providing a much-improved user experience.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

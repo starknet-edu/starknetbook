@@ -59,30 +59,30 @@ Let’s delve into Sequencers by focusing on
 two high-performance Starknet Sequencers. A Sequencer must, at least, do
 two things: order and execute transactions.
 
--   **Ordering**: Madara handles the sequencing process, supporting
-    methods from simple FCFS and PGA to complex ones like Narwhall &
-    Bullshark. It also manages the mempool, a critical data structure
-    that holds unconfirmed transactions. Developers can choose the
-    consensus protocol through Madara’s use of Substrate, which offers
-    multiple built-in options.
+- **Ordering**: Madara handles the sequencing process, supporting
+  methods from simple FCFS and PGA to complex ones like Narwhall &
+  Bullshark. It also manages the mempool, a critical data structure
+  that holds unconfirmed transactions. Developers can choose the
+  consensus protocol through Madara’s use of Substrate, which offers
+  multiple built-in options.
 
--   **Execution**: Madara lets you choose between two execution crates:
-    [Blockifier](https://github.com/starkware-libs/blockifier/tree/main)
-    and
-    [Starknet\_in\_Rust](https://github.com/lambdaclass/starknet_in_rust).
-    Both use the [Cairo VM](https://github.com/lambdaclass/cairo-vm) for
-    their framework.
+- **Execution**: Madara lets you choose between two execution crates:
+  [Blockifier](https://github.com/starkware-libs/blockifier/tree/main)
+  and
+  [Starknet_in_Rust](https://github.com/lambdaclass/starknet_in_rust).
+  Both use the [Cairo VM](https://github.com/lambdaclass/cairo-vm) for
+  their framework.
 
 We also have the Kraken Sequencer as another option.
 
--   **Ordering**: It employs Narwhall & Bullshark for mempool
-    management. You can choose from multiple consensus methods, like
-    Bullshark, Tendermint, or Hotstuff.
+- **Ordering**: It employs Narwhall & Bullshark for mempool
+  management. You can choose from multiple consensus methods, like
+  Bullshark, Tendermint, or Hotstuff.
 
--   **Execution**: Runs on Starknet\_in\_Rust. Execution can be deferred
-    to either [Cairo
-    Native](https://github.com/lambdaclass/cairo_native) or [Cairo
-    VM](https://github.com/lambdaclass/cairo-vm).
+- **Execution**: Runs on Starknet_in_Rust. Execution can be deferred
+  to either [Cairo
+  Native](https://github.com/lambdaclass/cairo_native) or [Cairo
+  VM](https://github.com/lambdaclass/cairo-vm).
 
 <table style="width:100%;">
 <colgroup>
@@ -144,18 +144,18 @@ href="https://github.com/lambdaclass/cairo_native">Cairo Native</a> or
 
 ### Understanding the Execution Layer
 
--   [Blockifier](https://github.com/starkware-libs/blockifier/tree/main),
-    a Rust component in Starknet Sequencers, generates state diffs and
-    blocks. It uses [Cairo VM](https://github.com/lambdaclass/cairo-vm).
-    Its goal is to become a full Starknet Sequencer.
+- [Blockifier](https://github.com/starkware-libs/blockifier/tree/main),
+  a Rust component in Starknet Sequencers, generates state diffs and
+  blocks. It uses [Cairo VM](https://github.com/lambdaclass/cairo-vm).
+  Its goal is to become a full Starknet Sequencer.
 
--   Starknet\_in\_Rust is another Rust component for Starknet that also
-    generates state diffs and blocks. It uses [Cairo
-    VM](https://github.com/lambdaclass/cairo-vm).
+- Starknet_in_Rust is another Rust component for Starknet that also
+  generates state diffs and blocks. It uses [Cairo
+  VM](https://github.com/lambdaclass/cairo-vm).
 
--   [Cairo Native](https://github.com/lambdaclass/cairo_native) stands
-    out by converting Cairo’s Sierra code to MLIR. See an example
-    [here](https://github.com/lambdaclass/cairo_native/blob/main/examples/erc20.rs).
+- [Cairo Native](https://github.com/lambdaclass/cairo_native) stands
+  out by converting Cairo’s Sierra code to MLIR. See an example
+  [here](https://github.com/lambdaclass/cairo_native/blob/main/examples/erc20.rs).
 
 ## The Need for Decentralized Sequencers
 
@@ -193,18 +193,17 @@ reordering).
 
 A centralized validity roll-up looks like this:
 
--   User Interaction & Selection: Users send transactions to a
-    centralized Sequencer, which selects and orders them.
+- User Interaction & Selection: Users send transactions to a
+  centralized Sequencer, which selects and orders them.
 
--   Block Formation: The Sequencer packages these ordered transactions
-    into a block.
+- Block Formation: The Sequencer packages these ordered transactions
+  into a block.
 
--   Proof & Verification: The block is sent to a proving service, which
-    generates a proof and posts it to Layer 1 (L1) for verification.
+- Proof & Verification: The block is sent to a proving service, which
+  generates a proof and posts it to Layer 1 (L1) for verification.
 
--   Verification: Once verified on L1, the transactions are considered
-    finalized and integrated into the L1 blockchain.
-
+- Verification: Once verified on L1, the transactions are considered
+  finalized and integrated into the L1 blockchain.
 
 <img alt="Centralized rollup" src="img/ch03-centralized-rollup.png" class="center" style="width: 50%;" />
 
@@ -254,10 +253,10 @@ technology so revolutionary.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

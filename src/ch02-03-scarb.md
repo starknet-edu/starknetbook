@@ -3,7 +3,7 @@
 To make the most of this chapter, a basic grasp of the Cairo programming
 language is advised. We suggest reading chapters 1-6 of the [Cairo
 Book](https://book.cairo-lang.org/title-page.html), covering topics from
-*Getting Started* to *Enums and Pattern Matching.* Follow this by
+_Getting Started_ to _Enums and Pattern Matching._ Follow this by
 studying the [Starknet Smart Contracts
 chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)
 in the same book. With this background, you’ll be well-equipped to
@@ -47,12 +47,12 @@ Cairo packages, also referred to as "crates" in some contexts, are the
 building blocks of a Cairo project. Each package must follow several
 rules:
 
--   A package must include a `Scarb.toml` file, which is Scarb’s
-    manifest file. It contains the dependencies for your package.
+- A package must include a `Scarb.toml` file, which is Scarb’s
+  manifest file. It contains the dependencies for your package.
 
--   A package must include a `src/lib.cairo` file, which is the root of
-    the package tree. It allows you to define functions and declare used
-    modules.
+- A package must include a `src/lib.cairo` file, which is the root of
+  the package tree. It allows you to define functions and declare used
+  modules.
 
 Package structures might look like the following case where we have a
 package named `my_package`, which includes a `src` directory with the
@@ -129,7 +129,7 @@ following:
     }
 
 In this instance, the `lib.cairo` file contains a module declaration
-referencing *hello\_scarb*, which includes the *hello\_scarb.cairo*
+referencing _hello_scarb_, which includes the _hello_scarb.cairo_
 file’s implementation. For more on modules, imports, and the `lib.cairo`
 file, please refer to the subchapter on [imports in Chapter
 2](https://book.starknet.io/chapter_2/imports.html).
@@ -156,7 +156,7 @@ To remove the build artifacts and delete the target directory, use the
 Scarb facilitates the seamless management of dependencies for your Cairo
 packages. Here are two methods to add dependencies to your project:
 
--   Edit Scarb.toml File
+- Edit Scarb.toml File
 
 Open the Scarb.toml file in your project directory and locate the
 `[dependencies]` section. If it doesn’t exist, add it. To include a
@@ -174,14 +174,14 @@ hash:
 
 After adding the dependency, remember to save the file.
 
--   Use the scarb add Command
+- Use the scarb add Command
 
 Alternatively, you can use the `scarb add` command to add dependencies
 to your project. Open your terminal and execute the following command:
 
     $ scarb add alexandria_math --git https://github.com/keep-starknet-strange/alexandria.git
 
-This command will add the alexandria\_math dependency from the specified
+This command will add the alexandria_math dependency from the specified
 Git repository to your project.
 
 To remove a dependency, you can use the `scarb rm` command.
@@ -194,9 +194,9 @@ updated with the new dependency information.
 After dependencies are added to your project, you can start utilizing
 them in your Cairo code.
 
-For example, let’s assume you have added the alexandria\_math
+For example, let’s assume you have added the alexandria_math
 dependency. Now, you can import and utilize functions from the
-alexandria\_math library in your `src/hello_scarb.cairo` file:
+alexandria_math library in your `src/hello_scarb.cairo` file:
 
     // src/hello_scarb.cairo
     use alexandria_math::fibonacci;
@@ -206,25 +206,25 @@ alexandria\_math library in your `src/hello_scarb.cairo` file:
     }
 
 In the above example, we import the fibonacci function from the
-alexandria\_math library and utilize it in the main function.
+alexandria_math library and utilize it in the main function.
 
 # Scarb Cheat Sheet
 
 Here’s a quick cheat sheet of some of the most commonly used Scarb
 commands:
 
--   `scarb new <project_name>`: Initialize a new project with the given
-    project name.
+- `scarb new <project_name>`: Initialize a new project with the given
+  project name.
 
--   `scarb build`: Compile your Cairo code into Sierra code.
+- `scarb build`: Compile your Cairo code into Sierra code.
 
--   `scarb add <dependency> --git <repository>`: Add a dependency to
-    your project from a specified Git repository.
+- `scarb add <dependency> --git <repository>`: Add a dependency to
+  your project from a specified Git repository.
 
--   `scarb rm <dependency>`: Remove a dependency from your project.
+- `scarb rm <dependency>`: Remove a dependency from your project.
 
--   `scarb run <script>`: Run a custom script defined in your
-    `Scarb.toml` file.
+- `scarb run <script>`: Run a custom script defined in your
+  `Scarb.toml` file.
 
 Scarb is a versatile tool, and this is just the beginning of what you
 can achieve with it. As you gain more experience in the Cairo language
@@ -238,10 +238,10 @@ Happy coding!
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

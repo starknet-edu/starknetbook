@@ -77,7 +77,7 @@ validation and execution of transactions. These functions are:
 
 4.  `__execute__`: Executes a transaction after successful validation.
 
-### *validate\_deploy*
+### _validate_deploy_
 
 This function is responsible for validating the deployment of the
 account contract. It returns `starknet::VALIDATED` to confirm successful
@@ -92,7 +92,7 @@ validation.
     }
 ```
 
-### *validate\_declare*
+### _validate_declare_
 
 This function enforces that transactions now require accounts to pay
 fees. It returns `starknet::VALIDATED` to confirm successful validation.
@@ -104,7 +104,7 @@ fees. It returns `starknet::VALIDATED` to confirm successful validation.
     }
 ```
 
-### *validate*
+### _validate_
 
 This function is called by the account contract upon receiving a
 transaction. If the validation is successful, it returns
@@ -119,7 +119,7 @@ transaction. If the validation is successful, it returns
     }
 ```
 
-### *execute*
+### _execute_
 
 If the `__validate__` function is successful, this `__execute__`
 function will be called. It forwards the call to the target contract
@@ -151,16 +151,16 @@ Remember to compile using `scarb build` (refer to the Scarb subchapter
 in Chapter 2 of the Book). Then follow the steps below to declare and
 deploy the Hello World account contract:
 
--   Export the required environment variables:
+- Export the required environment variables:
 
 <!-- -->
 
     export STARKNET_NETWORK=alpha-goerli
     export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 
--   Declare the contract (since the contract is already declared, you
-    can skip this step. If you want to declare it anyway, run the
-    following command but you will receive an error):
+- Declare the contract (since the contract is already declared, you
+  can skip this step. If you want to declare it anyway, run the
+  following command but you will receive an error):
 
 <!-- -->
 
@@ -169,7 +169,7 @@ deploy the Hello World account contract:
 The class hash is:
 0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa6dece7734a2cdfe
 
--   Deploy the contract:
+- Deploy the contract:
 
 <!-- -->
 
@@ -198,10 +198,10 @@ account contracts operate within the Starknet ecosystem.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

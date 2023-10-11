@@ -2,9 +2,10 @@
 
 ## Preamble
 
-Historically, societal roles like currency, property rights, and social status titles have been governed by *protocols* and *registries*. Their value stems from a widely accepted understanding of their integrity. These functions have predominantly been overseen by centralized entities prone to challenges such as corruption, agency conflicts, and exclusion ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)).
+Historically, societal roles like currency, property rights, and social status titles have been governed by _protocols_ and _registries_. Their value stems from a widely accepted understanding of their integrity. These functions have predominantly been overseen by centralized entities prone to challenges such as corruption, agency conflicts, and exclusion ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)).
 
-Satoshi's creation, Bitcoin, introduced a novel approach for these functions, termed an *integrity web*. This is an infrastructure for societal roles that:
+Satoshi's creation, Bitcoin, introduced a novel approach for these functions, termed an _integrity web_. This is an infrastructure for societal roles that:
+
 1. Is openly described by a public protocol.
 2. Operates over a wide, inclusive, peer-to-peer network.
 3. Distributes value fairly and extensively to maintain societal consensus on its integrity.
@@ -29,20 +30,22 @@ Starknet bridges the gap between scalability and broad consensus. It integrates 
 
 ## Starknet’s Mission
 
-*Starknet’s mission is to allow individuals to freely implement and use any social function they desire.*
+_Starknet’s mission is to allow individuals to freely implement and use any social function they desire._
 
 ## Starknet’s Values
 
 Starknet's ethos is anchored in core principles ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)):
 
 - **Lasting Broadness.** Starknet continuously resists power consolidation. Key points include:
-    - Broad power distribution underpins Starknet's legitimacy and must persist across operations and decision-making. While centralized operation may be necessary at times, it should be short-lived.
-    - Starknet's protocol and governance should always be open and transparent.
-    - Governance should bolster inclusivity, with a flexible structure that can evolve to ensure enduring inclusivity.
+
+  - Broad power distribution underpins Starknet's legitimacy and must persist across operations and decision-making. While centralized operation may be necessary at times, it should be short-lived.
+  - Starknet's protocol and governance should always be open and transparent.
+  - Governance should bolster inclusivity, with a flexible structure that can evolve to ensure enduring inclusivity.
 
 - **Neutrality.** Starknet remains impartial to the societal functions it supports.
-    - The objectives and ethos of functions on Starknet lie with their creators.
-    - **Censorship resistance:** Starknet remains agnostic to the nature and meaning of user transactions.
+
+  - The objectives and ethos of functions on Starknet lie with their creators.
+  - **Censorship resistance:** Starknet remains agnostic to the nature and meaning of user transactions.
 
 - **Individual Empowerment.** At its core, Starknet thrives on a well-informed and autonomous user base. This is achieved by fostering a culture rooted in its core mission and values, with a strong emphasis on education.
 
@@ -50,34 +53,34 @@ Starknet's ethos is anchored in core principles ([Eli Ben-Sasson, Bareli, Brandt
 
 These are some key features of Starknet:
 
--   Low Costs: Transactions on Starknet cost less than on Ethereum.
-    Future updates like Volition and EIP 4844 will make it even cheaper.
+- Low Costs: Transactions on Starknet cost less than on Ethereum.
+  Future updates like Volition and EIP 4844 will make it even cheaper.
 
--   Developer-Friendly: Starknet lets developers easily build
-    decentralized apps using its native language, Cairo.
+- Developer-Friendly: Starknet lets developers easily build
+  decentralized apps using its native language, Cairo.
 
--   Speed and Efficiency: Upcoming releases aim to make transactions
-    even faster and cheaper.
+- Speed and Efficiency: Upcoming releases aim to make transactions
+  even faster and cheaper.
 
--   CVM: Thanks to Cairo, Starknet runs on it´s own VM, called Cairo VM
-    (CVM), that allow us to innovate beyond the Ethereum Virtual Machine
-    (EVM) and create a new paradigm for decentralized applications.
+- CVM: Thanks to Cairo, Starknet runs on it´s own VM, called Cairo VM
+  (CVM), that allow us to innovate beyond the Ethereum Virtual Machine
+  (EVM) and create a new paradigm for decentralized applications.
 
 Here some of them:
 
--   Account Abstraction: Implemented at the protocol level, this
-    facilitates diverse signing schemes while ensuring user security and
-    self-custody of assets.
+- Account Abstraction: Implemented at the protocol level, this
+  facilitates diverse signing schemes while ensuring user security and
+  self-custody of assets.
 
--   Volition: Will be implemented on testnet during Q4 2023 will allow
-    developers to regulate data availability on Ethereum (L1) or on
-    Starknet (L2). Reducing L1 onchain data can radically reduce costs.
+- Volition: Will be implemented on testnet during Q4 2023 will allow
+  developers to regulate data availability on Ethereum (L1) or on
+  Starknet (L2). Reducing L1 onchain data can radically reduce costs.
 
--   Paymaster: StarkNet will allow users to choose how to pay for
-    transaction fee, follows the guidelines laid out in EIP 4337 and
-    allows the transaction to specify a specific contract, a
-    **Paymaster**, to pay for their transaction. Supports gasless
-    transactions, enhancing user accessibility.
+- Paymaster: StarkNet will allow users to choose how to pay for
+  transaction fee, follows the guidelines laid out in EIP 4337 and
+  allows the transaction to specify a specific contract, a
+  **Paymaster**, to pay for their transaction. Supports gasless
+  transactions, enhancing user accessibility.
 
 ## Cairo: The Language of Starknet
 
@@ -92,26 +95,26 @@ conveniently.
 
 ### Why Choose Cairo?
 
-Cairo is designed for *Provable Computation,* a new paradigm that lets
+Cairo is designed for _Provable Computation,_ a new paradigm that lets
 programs prove their correctness without re-running them. Here’s why it
 stands out:
 
--   Purpose-Built: Designed specifically for smart contracts.
+- Purpose-Built: Designed specifically for smart contracts.
 
--   No EVM Limits: Goes beyond what the Ethereum Virtual Machine can do.
+- No EVM Limits: Goes beyond what the Ethereum Virtual Machine can do.
 
--   Flexibility: Uses traits for more flexibility than inheritance.
+- Flexibility: Uses traits for more flexibility than inheritance.
 
 ## Governance
 
 The Starknet Foundation oversees Starknet’s governance. Its duties
 include:
 
--   Managing Starknet’s development and operations
+- Managing Starknet’s development and operations
 
--   Overseeing the Starknet DAO, which enables community involvement
+- Overseeing the Starknet DAO, which enables community involvement
 
--   Setting rules to maintain network integrity
+- Setting rules to maintain network integrity
 
 Our focus is on technical input and debate for improving the protocol.
 While we value all perspectives, it’s often the technical insights that
@@ -120,12 +123,11 @@ steer us forward.
 Members can influence Starknet by voting on changes. Here’s the process:
 A new version is tested on the Goerli Testnet. Members then have six
 days to review it. A Snapshot proposal is made, and the community votes.
-A majority of *YES* votes means an upgrade to the Mainnet.
+A majority of _YES_ votes means an upgrade to the Mainnet.
 
 In short, governance is key to Starknet’s evolution.
 
 To propose an improvement, create a SNIP.
-
 
 ### SNIP: StarkNet Improvement Proposals
 
@@ -159,21 +161,18 @@ suggestions—they’re a roadmap. It’s beneficial for implementers to keep
 a list of the SNIPs they’ve executed. This transparency helps users
 gauge the state of a particular implementation or software library.
 
-
 ## Learning Resources
 
 For deeper insights into Starknet and Cairo:
 
--   [The Starknet Book](https://book.starknet.io): For mastering
-    Starknet
+- [The Starknet Book](https://book.starknet.io): For mastering
+  Starknet
 
--   [The Cairo Book](https://cairo-book.github.io/): For mastering Cairo
+- [The Cairo Book](https://cairo-book.github.io/): For mastering Cairo
 
--   [Starklings](https://github.com/shramee/starklings-cairo1):
-    Practical tutorials and examples
+- [Starklings](https://github.com/shramee/starklings-cairo1):
+  Practical tutorials and examples
 
 ## Conclusion
 
-In decentralized technology, Starknet offers a solution to challenges that previous systems encountered. It's based on established *protocols* and *registries*, following the initial concepts introduced by figures such as Satoshi. Through a specific mathematical method, Starknet seeks a balance between scalability and consensus. As this technology progresses, Starknet adheres to principles of inclusivity, neutrality, and user empowerment. It's poised for continuous adaptation and improvement in the field.
-
-
+In decentralized technology, Starknet offers a solution to challenges that previous systems encountered. It's based on established _protocols_ and _registries_, following the initial concepts introduced by figures such as Satoshi. Through a specific mathematical method, Starknet seeks a balance between scalability and consensus. As this technology progresses, Starknet adheres to principles of inclusivity, neutrality, and user empowerment. It's poised for continuous adaptation and improvement in the field.

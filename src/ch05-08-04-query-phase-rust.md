@@ -1,4 +1,4 @@
-*Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
+_Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
 License, Version 2.0 (the "License"). You may not use this file except
 in compliance with the License. You may obtain a copy of the License at
 <https://www.starkware.co/open-source-license/> Unless required by
@@ -6,15 +6,15 @@ applicable law or agreed to in writing, software distributed under the
 License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied. See the License for
 the specific language governing permissions and limitations under the
-License.*
+License._
 
 # Part 4: Query Phase
 
--   [Video Lecture
-    (youtube)](https://www.youtube.com/watch?v=CxP28qM4tAc)
+- [Video Lecture
+  (youtube)](https://www.youtube.com/watch?v=CxP28qM4tAc)
 
--   [Slides
-    (PDF)](https://starkware.co/wp-content/uploads/2021/12/STARK101-Part4.pdf)
+- [Slides
+  (PDF)](https://starkware.co/wp-content/uploads/2021/12/STARK101-Part4.pdf)
 
 # Load the Previous Session
 
@@ -76,8 +76,8 @@ element in the last layer. In the last layer, all the elements are
 equal, regardless of the query, as they are evaluations of a constant
 polynomial.
 
-*(Remember to convert non-string variables into string before sending
-over the channel.)*
+_(Remember to convert non-string variables into string before sending
+over the channel.)_
 
     // Fix this.
     fn decommit_on_fri_layers(idx: usize, channel: &mut Channel, fri_layers: Vec<Vec<FieldElement>>, fri_merkles: Vec<MerkleTree>) {
@@ -139,8 +139,8 @@ Importantly, even though are consecutive elements (modulo the group size
 8 elements apart. The reason for this is that we "blew up" the trace to
 8 times its size in part I, to obtain a Reed Solomon codeword.
 
-*Reminder: `f_eval` is the evaluation of the composition polynomial, and
-`f_merkle` is the corresponding Merkle tree.*
+_Reminder: `f_eval` is the evaluation of the composition polynomial, and
+`f_merkle` is the corresponding Merkle tree._
 
     fn decommit_on_query(idx: usize, channel: &mut Channel, fri_layers: Vec<Vec<FieldElement>>) {
         // Send elements and authentication pathes for f(x), f(gx) and f(g^2x) over the channel.

@@ -2,17 +2,17 @@
 
 In [number theory](https://en.wikipedia.org/wiki/Number_theory),
 **Euler’s theorem** (also known as the **Fermat–Euler theorem** or
-**Euler’s totient theorem**) states that, if *n* and *a* are
+**Euler’s totient theorem**) states that, if _n_ and _a_ are
 [coprime](https://en.wikipedia.org/wiki/Coprime_integers) positive
-integers, and *φ(n)* is [Euler’s totient
+integers, and _φ(n)_ is [Euler’s totient
 function](https://en.wikipedia.org/wiki/Euler%27s_totient_function),
-then *a* raised to the power *φ(n)* is congruent to 1
-[modulo](https://en.wikipedia.org/wiki/Modular_arithmetic) *n*; that is
+then _a_ raised to the power _φ(n)_ is congruent to 1
+[modulo](https://en.wikipedia.org/wiki/Modular_arithmetic) _n_; that is
 
 # Modular Arithmetic
 
 A system of arithmetic for integers where numbers "wrap around" when
-reaching a certain value (aka *modulus*)
+reaching a certain value (aka _modulus_)
 
 ![modular](modular.png)
 
@@ -31,17 +31,17 @@ $\frac{13}{5}=2$ remainder $3$.
 
 Let’s go through a couple examples:
 
--   $-29\bmod3 = 1$
+- $-29\bmod3 = 1$
 
 If we divide $-29$ by $3$ we get a quotient of $9$ with a remainder of
 $-2$; we substract $-2$ from $3$ (our modulus) to get $1$.
 
--   $-9\bmod6 = 3$
+- $-9\bmod6 = 3$
 
 Divide $-9$ by $6$ to get $-1$ as quotient with a remainder of $-3$. We
 then substract $-3$ from $6$ to get $3$ as our result.
 
--   $7\bmod6 = 1$
+- $7\bmod6 = 1$
 
 Divide $7$ by $6$ to get a quotient of $1$ with a remainder of $1$, our
 result.
@@ -97,17 +97,17 @@ Addition, Multiplication, Exponentiation, and Substraction of fields are
 intuitive. However, Division of fields can be a bit challenging at the
 beginning. Let’s begin with easy operations:
 
--   For the finite field $F\_3$, $2$ $/\_f$ $2$ $=$ $(2/2) \bmod 3$ $=$
-    $1$. It makes sense since $2/2=1$.
+- For the finite field $F\_3$, $2$ $/\_f$ $2$ $=$ $(2/2) \bmod 3$ $=$
+  $1$. It makes sense since $2/2=1$.
 
--   For the finite field $F\_3$, $6$ $/\_f$ $2$ $=$ $(0/2) \bmod 3$ $=$
-    $0$. It makes sense since $0/2=0$.
+- For the finite field $F\_3$, $6$ $/\_f$ $2$ $=$ $(0/2) \bmod 3$ $=$
+  $0$. It makes sense since $0/2=0$.
 
--   For the finite field $F\_3$, the operation $1$ $/\_f$ $0$ $=$ $(1/0)
+- For the finite field $F\_3$, the operation $1$ $/\_f$ $0$ $=$ $(1/0)
     \bmod 3$ can not be performed since we can not divide by 0.
 
--   For the finite field $F\_3$, $8$ $/\_f$ $5$ $=$ $(2/2) \bmod 3$ $=$
-    $1$. It makes sense since $2/2=1$.
+- For the finite field $F\_3$, $8$ $/\_f$ $5$ $=$ $(2/2) \bmod 3$ $=$
+  $1$. It makes sense since $2/2=1$.
 
 Until now everything seems ok. However, what happens when, for the
 finite field $F\_5$, we divide $8$ $/\_f$ $4$ $=$ $(3/4) \bmod 5$? The
@@ -117,10 +117,10 @@ result is not trivial.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

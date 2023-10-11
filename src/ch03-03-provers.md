@@ -189,11 +189,11 @@ flexibility in processing jobs.
 
 Currently, the primary users of SHARP include:
 
--   StarkEx
+- StarkEx
 
--   Starknet
+- Starknet
 
--   External users who use the Cairo Playground
+- External users who use the Cairo Playground
 
 ## Challenges and Optimization
 
@@ -201,25 +201,25 @@ Optimizing the Prover involves numerous challenges and potential
 projects on which the Starkware team and the community are currently
 working:
 
--   Exploring more efficient hash functions: SHARP is constantly
-    exploring more efficient hash functions for Cairo, the Prover, and
-    Solidity.
+- Exploring more efficient hash functions: SHARP is constantly
+  exploring more efficient hash functions for Cairo, the Prover, and
+  Solidity.
 
--   Investigating smaller fields: Investigating smaller fields for
-    recursive proof steps could lead to more efficient computations.
+- Investigating smaller fields: Investigating smaller fields for
+  recursive proof steps could lead to more efficient computations.
 
--   Adjusting various parameters: SHARP is continually adjusting various
-    parameters of the STARK protocol, such as FRI parameters and block
-    factors.
+- Adjusting various parameters: SHARP is continually adjusting various
+  parameters of the STARK protocol, such as FRI parameters and block
+  factors.
 
--   Optimizing the Cairo code: SHARP is optimizing the Cairo code to
-    make it faster, resulting in a faster recursive prover.
+- Optimizing the Cairo code: SHARP is optimizing the Cairo code to
+  make it faster, resulting in a faster recursive prover.
 
--   Developing dynamic layouts: This will allow Cairo programs to scale
-    resources depending on their needs.
+- Developing dynamic layouts: This will allow Cairo programs to scale
+  resources depending on their needs.
 
--   Improving scheduling algorithm: This is another optimization path
-    that can be taken. It is not within the Prover itself.
+- Improving scheduling algorithm: This is another optimization path
+  that can be taken. It is not within the Prover itself.
 
 In particular, dynamic layouts (you can learn more about layouts here
 (TODO)) will allow Cairo programs to scale resources depending on their
@@ -232,13 +232,13 @@ efficiency.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).
 
 ## Conclusion
 
