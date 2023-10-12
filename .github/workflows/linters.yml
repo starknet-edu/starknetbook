@@ -1,0 +1,14 @@
+name: Task - Linters
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run prettier
+        run: |-
+          npx prettier --check .

@@ -25,7 +25,6 @@
   - [Foundry Forge: Testing 🚧](ch02-11-foundry-forge.md)
   - [Foundry Cast: Interacting with Starknet 🚧](ch02-12-foundry-cast.md)
 
-
 ## Architecture
 
 - [Architecture](ch03-00-architecture.md)
@@ -33,7 +32,7 @@
   - [Sequencers](ch03-02-sequencers.md)
   - [Provers 🚧](ch03-03-provers.md)
   - [Nodes 🚧](ch03-04-nodes.md)
-  - [Layer 3 and App Chains 🚧  ](ch03-05-layer-3.md)
+  - [Layer 3 and App Chains 🚧 ](ch03-05-layer-3.md)
   - [Solidity Verifier 🚧](ch03-06-solidity-verifier.md)
   - [Decentralization 🚧](ch03-07-decentralization.md)
 

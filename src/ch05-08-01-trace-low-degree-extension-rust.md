@@ -1,4 +1,4 @@
-*Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
+_Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
 License, Version 2.0 (the "License"). You may not use this file except
 in compliance with the License. You may obtain a copy of the License at
 <https://www.starkware.co/open-source-license/> Unless required by
@@ -6,19 +6,19 @@ applicable law or agreed to in writing, software distributed under the
 License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied. See the License for
 the specific language governing permissions and limitations under the
-License.*
+License._
 
 # Part 1: Trace and Low-Degree Extension
 
--   [Video Lecture
-    (youtube)](https://www.youtube.com/watch?v=Y0uJz9VL3Fo)
+- [Video Lecture
+  (youtube)](https://www.youtube.com/watch?v=Y0uJz9VL3Fo)
 
--   [Slides
-    (PDF)](https://starkware.co/wp-content/uploads/2021/12/STARK101-Part1.pdf)
+- [Slides
+  (PDF)](https://starkware.co/wp-content/uploads/2021/12/STARK101-Part1.pdf)
 
 Today we will develop a STARK prover for the FibonacciSq sequence over a
 finite field. The FibonacciSq sequence is defined by the recurrence
-relation . By the end of the day, your code will produce a *STARK* proof
+relation . By the end of the day, your code will produce a _STARK_ proof
 attesting to the following statement: **I know a field element such that
 the 1023rd element of the FibonacciSq sequence starting with is** .
 
@@ -116,8 +116,8 @@ generate such a group. The struct `+FieldElement+` provides a method
 2.  Create a vec called `+G+` with all the elements of , such that :=
     g^i\].
 
-*Hint: When divides , generates a group of size , and the n-th power of
-some `+FieldElement+` can be computed by calling `+x ** n+`.*
+_Hint: When divides , generates a group of size , and the n-th power of
+some `+FieldElement+` can be computed by calling `+x ** n+`._
 
     // Change the following line so that g will generate a group of size 1024
     let g = FieldElement::generator();
@@ -169,10 +169,10 @@ represents the formal variable :
 Our `+Polynomial+` datatype provides a Lagrange interpolation method,
 whose arguments are:
 
--   x\_values: x-values of G that the polynomial’s values for them is
-    known. &\[FieldElement\]
+- x_values: x-values of G that the polynomial’s values for them is
+  known. &\[FieldElement\]
 
--   y\_values: the corresponding y-values. &\[FieldElement\]
+- y_values: the corresponding y-values. &\[FieldElement\]
 
 It returns the unique `+Polynomial+` of degree &lt; `+x_values.len()+`
 instance that evaluates to `+y_values[i]+` on `+x_values[i]+` for all i.
@@ -226,7 +226,7 @@ thereby obtaining a [coset](https://en.wikipedia.org/wiki/Coset) of .
 
 Create a vec called `+H+` of the elements of , and multiply each of them
 by the generator of to obtain a vec called `+eval_domain+`. In other
-words, eval\_domain = for the generator of and the generator of .
+words, eval_domain = for the generator of and the generator of .
 
 Hint: You already know how to obtain - similarly to the way we got a few
 minutes ago.

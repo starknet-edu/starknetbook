@@ -25,9 +25,9 @@ critical actions.
 
 Key specifications of a multisig account include:
 
--   Public keys that form the account
+- Public keys that form the account
 
--   Threshold number of signatures required
+- Threshold number of signatures required
 
 A transaction signed by a multisig account must be individually signed
 by the different keys specified for the account. If fewer than the
@@ -47,8 +47,6 @@ production-grade multisig contract.
 ## Multisig Account Contract
 
 This is the Rust code for a multisig account contract:
-
-
 
 ```rust
     #[account_contract]
@@ -289,7 +287,6 @@ requiring the threshold number of signatures.
     }
 ```
 
-
 ### `submit_tx` Function
 
 This external function allows the owners of the account to submit
@@ -330,7 +327,7 @@ transaction index.
 
 ### `confirm_tx` Function
 
-Similarly, the ***`confirm_tx`*** function provides a way to record
+Similarly, the **_`confirm_tx`_** function provides a way to record
 confirmations for each transaction. An account owner, who did not submit
 the transaction, can confirm it, increasing its confirmation count.
 
@@ -368,9 +365,9 @@ the transaction, can confirm it, increasing its confirmation count.
         }
 ```
 
-### *`execute`* Function
+### _`execute`_ Function
 
-The *execute* function serves as the final step in the transaction
+The _execute_ function serves as the final step in the transaction
 process. It checks the validity of the transaction, whether it has been
 previously executed, and if the threshold number of signatures has been
 reached. The transaction is executed if all the checks pass.
@@ -414,10 +411,10 @@ additional checks and validations for robustness and security.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

@@ -68,7 +68,7 @@ enables:
     assets.
 
 4.  **Session keys:** AA can enhance the usability of web3 applications
-    by allowing a *sign in once* feature. This would enable websites to
+    by allowing a _sign in once_ feature. This would enable websites to
     execute transactions on your behalf, reducing the need for
     continuous approvals.
 
@@ -104,9 +104,9 @@ To fully understand the benefits of Account Abstraction (AA), let’s
 delve into Ethereum’s current account system. The system is split into
 two types of accounts:
 
--   **Externally Owned Accounts** (EOAs)  
+- **Externally Owned Accounts** (EOAs)
 
--   **Contract Accounts** (CAs).
+- **Contract Accounts** (CAs).
 
 EOAs are the accounts used by individuals, wallets, or any entity
 external to the Ethereum network. These accounts are identified by their
@@ -169,30 +169,30 @@ cryptocurrency and blockchain technology espouse.
 There are several compelling reasons why Ethereum, and the larger crypto
 ecosystem, need Account Abstraction:
 
--   **Risk of Centralization:** The inefficiencies and limitations of
-    the current account model may push users towards centralized
-    exchanges and wallets. These entities defy the principles of
-    decentralization, presenting familiar risks such as censorship,
-    discrimination, and potential abuse of power. Account Abstraction,
-    by enabling easier and more secure account management, can help
-    uphold the principles of decentralization.
+- **Risk of Centralization:** The inefficiencies and limitations of
+  the current account model may push users towards centralized
+  exchanges and wallets. These entities defy the principles of
+  decentralization, presenting familiar risks such as censorship,
+  discrimination, and potential abuse of power. Account Abstraction,
+  by enabling easier and more secure account management, can help
+  uphold the principles of decentralization.
 
--   **Quantum Threat:** Quantum computing poses a potential threat to
-    cryptographic systems, with its ability to break traditional
-    security measures. Account Abstraction can address this by enabling
-    the use of different signature schemes, including quantum-resistant
-    ones, enhancing the security of assets on the blockchain.
+- **Quantum Threat:** Quantum computing poses a potential threat to
+  cryptographic systems, with its ability to break traditional
+  security measures. Account Abstraction can address this by enabling
+  the use of different signature schemes, including quantum-resistant
+  ones, enhancing the security of assets on the blockchain.
 
--   **Scaling Self-Custody:** As the next billion users approach the
-    crypto ecosystem, the importance of scaling self-custody becomes
-    paramount. AA can improve the scalability of self-custody, which is
-    essential for onboarding these new users.
+- **Scaling Self-Custody:** As the next billion users approach the
+  crypto ecosystem, the importance of scaling self-custody becomes
+  paramount. AA can improve the scalability of self-custody, which is
+  essential for onboarding these new users.
 
--   **User Experience:** Simplifying the onboarding process and user
-    experience is essential for widespread adoption. The complexity
-    associated with current wallets and key management systems can be
-    daunting for newcomers. Account Abstraction promises to simplify
-    these aspects, paving the way for a more intuitive user experience.
+- **User Experience:** Simplifying the onboarding process and user
+  experience is essential for widespread adoption. The complexity
+  associated with current wallets and key management systems can be
+  daunting for newcomers. Account Abstraction promises to simplify
+  these aspects, paving the way for a more intuitive user experience.
 
 Starknet is currently leading the efforts to implement Account
 Abstraction at the protocol level. Many consider it to be the "proving
@@ -275,31 +275,31 @@ could become next.
 
 # References:
 
--   \[1\] Martin Triay, Devcon 6:
-    <https://www.youtube.com/watch?v=Osc_gwNW3Fw>
+- \[1\] Martin Triay, Devcon 6:
+  <https://www.youtube.com/watch?v=Osc_gwNW3Fw>
 
--   \[2\] Julien Niset: <https://www.youtube.com/watch?v=OwppworJGzs>
+- \[2\] Julien Niset: <https://www.youtube.com/watch?v=OwppworJGzs>
 
--   \[3\] lightclient, Devcon 6:
-    <https://app.devcon.org/schedule/9mvqce>
+- \[3\] lightclient, Devcon 6:
+  <https://app.devcon.org/schedule/9mvqce>
 
--   \[4\] Starkware:
-    <https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79>
+- \[4\] Starkware:
+  <https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79>
 
--   \[5\] Julien Niset, 2022:
-    <https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/>
+- \[5\] Julien Niset, 2022:
+  <https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/>
 
--   \[6\] Yoav, Devcon 6: <https://app.devcon.org/schedule/9mvqce>
+- \[6\] Yoav, Devcon 6: <https://app.devcon.org/schedule/9mvqce>
 
--   \[7\] Motty Lavie, 2023:
-    <https://www.youtube.com/watch?v=FrxAdJYhSY8>
+- \[7\] Motty Lavie, 2023:
+  <https://www.youtube.com/watch?v=FrxAdJYhSY8>
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

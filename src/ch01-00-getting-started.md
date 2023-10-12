@@ -14,7 +14,6 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 4. After enabling, the Starknet logo appears on the left sidebar. Click it to interact with opened Cairo files.
 
-
 ## Introduction to Starknet Smart Contracts
 
 The script below is a simple `Ownable` contract pattern written in Cairo for Starknet. It features:
@@ -23,7 +22,7 @@ The script below is a simple `Ownable` contract pattern written in Cairo for Sta
 - A method to transfer ownership.
 - A method to check the current owner.
 - An event notification for ownership changes.
-  
+
 ```rust
 use starknet::ContractAddress;
 
@@ -41,7 +40,7 @@ mod Ownable {
     #[event]
     #[derive(Drop, starknet::Event)]
     enum Event {
-      OwnershipTransferred1: OwnershipTransferred1,  
+      OwnershipTransferred1: OwnershipTransferred1,
     }
 
     #[derive(Drop, starknet::Event)]
@@ -94,18 +93,18 @@ mod Ownable {
 The following is a brief description of the components in the contract. We will get into more details when we get deeper into Cairo so feel free to skip this section for now if you are not familiar with smart contract development.
 
 1. **Dependencies and Interface**:
-    - **`starknet::ContractAddress`**: Represents a Starknet contract address.
-    - **`OwnableTrait`**: Specifies functions for transferring and getting ownership.
+   - **`starknet::ContractAddress`**: Represents a Starknet contract address.
+   - **`OwnableTrait`**: Specifies functions for transferring and getting ownership.
 2. **Events**:
-    - **`OwnershipTransferred1`**: Indicates ownership change with previous and new owner details.
+   - **`OwnershipTransferred1`**: Indicates ownership change with previous and new owner details.
 3. **Storage**:
-    - **`Storage`**: Holds the contract's state with the current owner's address.
+   - **`Storage`**: Holds the contract's state with the current owner's address.
 4. **Constructor**:
-    - Initializes the contract with a starting owner.
+   - Initializes the contract with a starting owner.
 5. **External Functions**:
-    - Functions for transferring ownership and retrieving the current owner's details.
+   - Functions for transferring ownership and retrieving the current owner's details.
 6. **Private Methods**:
-    - **`only_owner`**: Validates if the caller is the current owner.
+   - **`only_owner`**: Validates if the caller is the current owner.
 
 ## Compilation Process
 
@@ -150,9 +149,9 @@ Here's a step-by-step guide to deploying your smart contract on the development 
 
 Post-deployment, Remix's terminal will send various logs. These logs provide crucial details, including:
 
-   - `transaction_hash`: The unique hash of the transaction. This hash can be used to track the transaction's status.
-   - `contract_address`: The address of the deployed contract. Use this address to interact with your contract.
-   - `calldata`: Contains the `init_owner` address fed to the constructor.
+- `transaction_hash`: The unique hash of the transaction. This hash can be used to track the transaction's status.
+- `contract_address`: The address of the deployed contract. Use this address to interact with your contract.
+- `calldata`: Contains the `init_owner` address fed to the constructor.
 
 ```bash
 {
@@ -168,7 +167,6 @@ Post-deployment, Remix's terminal will send various logs. These logs provide cru
 
 By following the above process, you successfully deploy your smart contract on the development network.
 
-
 ## Interaction with the Contract
 
 With the contract now active on the development network, interaction becomes possible. Here's a guide to effectively interact with your contract on Starknet:
@@ -177,7 +175,7 @@ With the contract now active on the development network, interaction becomes pos
 
    - Navigate to the "Starknet" tab.
    - Select the "Interact" option.
-  
+
 2. **Calling the `get_owner` Function**
 
    - Choose the `get_owner` function. Since this function doesn't require arguments, the calldata field remains blank. (This is a read function, hence calling it is termed as a "call".)
@@ -219,7 +217,6 @@ For these transactions, the terminal logs will exhibit a "status" variable, indi
 
 You've now adeptly compiled, deployed, and interacted with your inaugural Starknet smart contract. Well done!
 
-
 ## Deploying on Starknet Testnet
 
 After testing your smart contract on a development network, it's time to deploy it to the Starknet Testnet. Starknet Testnet is a public platform available for everyone, ideal for testing smart contracts and collaborating with fellow developers.
@@ -255,11 +252,10 @@ You can monitor transaction hashes and addresses using any Starknet block explor
 
 These tools provide a visual representation of transactions and contract state alterations. Notably, when you alter the contract ownership using the `transfer_ownership` function, the event emitted by the contract appears in the block explorer. It's an effective method to track contract events.
 
-
 ## Your Next Steps
 
 Decide your direction from the following choices:
 
 1. **Deepen Your Starknet Knowledge**: For an extensive grasp of Starknet's inner workings and potential use cases, delve into Chapter 3 of the Starknet Book. This chapter details Starknet’s architectural nuances. Then go ahead from there.
 
-2. **Dive into Cairo**: If you're more attuned to coding and wish to craft Starknet contracts, then Cairo is essential. It stands as Starknet's core contract language. Begin with Chapters 1-6 of the [Cairo Book](https://book.cairo-lang.org/title-page.html), ranging from basics in *Getting Started* to more advanced aspects such as *Enums and Pattern Matching*. Conclude by navigating to the [Starknet Smart Contracts chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html), ensuring you have a well-rounded understanding.
+2. **Dive into Cairo**: If you're more attuned to coding and wish to craft Starknet contracts, then Cairo is essential. It stands as Starknet's core contract language. Begin with Chapters 1-6 of the [Cairo Book](https://book.cairo-lang.org/title-page.html), ranging from basics in _Getting Started_ to more advanced aspects such as _Enums and Pattern Matching_. Conclude by navigating to the [Starknet Smart Contracts chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html), ensuring you have a well-rounded understanding.

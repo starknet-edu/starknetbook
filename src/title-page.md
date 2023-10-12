@@ -24,14 +24,13 @@ apps.
 
 **Chapter Titles**
 
-| Chapter                 | Description                                                                                                                                               |
-|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet and acquaint yourself with the deployment of smart contracts.                                              |
-| 2: Starknet Tooling     | Familiarize yourself with vital tools, such as Protostar and Hardhat, and explore how languages like Javascript, Python, and Rust can be leveraged for Starknet interactions. |
-| 3: Starknet Architecture| Uncover Starknet’s core structure, gaining insights into the transaction lifecycle and the interplay between the Sequencer, Prover, and Nodes.                |
-| 4: Account Abstraction  | Delve deep into Starknet’s unique approach to user accounts, and master the art of crafting custom accounts.                                               |
-| 5: STARKs               | Dive into the intricacies of STARKs and their pivotal role in shaping Starknet’s landscape.                                                                |
-
+| Chapter                  | Description                                                                                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet and acquaint yourself with the deployment of smart contracts.                                                                 |
+| 2: Starknet Tooling      | Familiarize yourself with vital tools, such as Protostar and Hardhat, and explore how languages like Javascript, Python, and Rust can be leveraged for Starknet interactions. |
+| 3: Starknet Architecture | Uncover Starknet’s core structure, gaining insights into the transaction lifecycle and the interplay between the Sequencer, Prover, and Nodes.                                |
+| 4: Account Abstraction   | Delve deep into Starknet’s unique approach to user accounts, and master the art of crafting custom accounts.                                                                  |
+| 5: STARKs                | Dive into the intricacies of STARKs and their pivotal role in shaping Starknet’s landscape.                                                                                   |
 
 # Where to Start?
 
@@ -39,35 +38,35 @@ Depending on your goals and interests, you can choose different paths
 through the Starknet Book. Here are some recommendations based on
 various objectives:
 
--   If you’re a **complete beginner** and want to start learning about
-    Cairo and Starknet from scratch, follow the book in its entirety,
-    starting with **Introduction to Starknet**.
+- If you’re a **complete beginner** and want to start learning about
+  Cairo and Starknet from scratch, follow the book in its entirety,
+  starting with **Introduction to Starknet**.
 
--   If you’re an **experienced developer** looking to quickly dive into
-    writing scalable and decentralized smart contracts, focus on the
-    Cairo Book, particularly **chapter 12: Starknet Smart Contracts**
-    ([link](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)).
+- If you’re an **experienced developer** looking to quickly dive into
+  writing scalable and decentralized smart contracts, focus on the
+  Cairo Book, particularly **chapter 12: Starknet Smart Contracts**
+  ([link](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)).
 
--   If you’re a **frontend developer** wanting to integrate Starknet
-    with a React frontend using Javascript, prioritize the
-    **starknet-js** and **starknet-react** subchapters in **Starknet
-    Tooling**
+- If you’re a **frontend developer** wanting to integrate Starknet
+  with a React frontend using Javascript, prioritize the
+  **starknet-js** and **starknet-react** subchapters in **Starknet
+  Tooling**
 
--   If you’re a **DevOps engineer** or **node operator** interested in
-    running a Starknet node and indexer, head straight to **Starknet
-    Architecture**.
+- If you’re a **DevOps engineer** or **node operator** interested in
+  running a Starknet node and indexer, head straight to **Starknet
+  Architecture**.
 
--   If you’re a **security researcher** or **smart contract auditor**
-    wanting to learn about the Account Abstraction feature and its
-    implications, go for **Account Abstraction**.
+- If you’re a **security researcher** or **smart contract auditor**
+  wanting to learn about the Account Abstraction feature and its
+  implications, go for **Account Abstraction**.
 
--   If you’re a **blockchain enthusiast** curious about the underlying
-    architecture and mechanics of Starknet and Cairo, explore **Starknet
-    Architecture**.
+- If you’re a **blockchain enthusiast** curious about the underlying
+  architecture and mechanics of Starknet and Cairo, explore **Starknet
+  Architecture**.
 
--   If you’re a **cryptography expert** or **researcher** eager to
-    understand the fundamentals of STARKs and their connection to the
-    Starknet ecosystem, delve into **STARKs**.
+- If you’re a **cryptography expert** or **researcher** eager to
+  understand the fundamentals of STARKs and their connection to the
+  Starknet ecosystem, delve into **STARKs**.
 
 Feel free to mix and match these paths based on your unique interests
 and requirements.
@@ -85,19 +84,19 @@ book an invaluable tool.
 
 ## How You Can Help
 
--   Found an empty section? Fill it in!
+- Found an empty section? Fill it in!
 
--   Think we need a new section? Suggest one.
+- Think we need a new section? Suggest one.
 
--   See room for improvement? Go ahead and tweak it.
+- See room for improvement? Go ahead and tweak it.
 
--   Want to add code in a new programming language? Go for it.
+- Want to add code in a new programming language? Go for it.
 
--   Found a bug? Fix it.
+- Found a bug? Fix it.
 
--   Exercises unclear? Add explanations.
+- Exercises unclear? Add explanations.
 
--   Show off your favorite Cairo features through new exercises.
+- Show off your favorite Cairo features through new exercises.
 
 # Additional Key Educational Resources
 

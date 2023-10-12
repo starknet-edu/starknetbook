@@ -48,7 +48,7 @@ return (
 );
 ```
 
-Both `CacheProvider` and `ThemeProvider` are components that facilitate the seamless integration of MaterialUI with NextJS. For a comprehensive setup guide on these components, please refer to [this link](<https://blog.logrocket.com/getting-started-with-mui-and-next-js/>).
+Both `CacheProvider` and `ThemeProvider` are components that facilitate the seamless integration of MaterialUI with NextJS. For a comprehensive setup guide on these components, please refer to [this link](https://blog.logrocket.com/getting-started-with-mui-and-next-js/).
 
 ## Main Functionality
 
@@ -82,9 +82,9 @@ impl StoreFelt252Array of Store<Array<felt252>> {
         // Read the stored array's length. If the length is superior to 255, the read will fail.
         let len: u8 = Store::<u8>::read_at_offset(address_domain, base, offset)
             .expect('Storage Span too large');
-        
+
         offset += 1;
-        
+
         // Sequentially read all stored elements and append them to the array.
         let exit = len + offset;
         loop {
@@ -137,7 +137,7 @@ struct Cell {
 }
 ```
 
-The OpenZeppelin Cairo Contracts library played a crucial role in speeding up the development of the ERC721 contract for Starknet Homepage. You can find the contract for review [here](<https://github.com/dbejarano820/starknet_homepage/blob/main/cairo_contracts/src/ERC721.cairo>). Once you have installed the library, you can refer to the following example for typical usage:
+The OpenZeppelin Cairo Contracts library played a crucial role in speeding up the development of the ERC721 contract for Starknet Homepage. You can find the contract for review [here](https://github.com/dbejarano820/starknet_homepage/blob/main/cairo_contracts/src/ERC721.cairo). Once you have installed the library, you can refer to the following example for typical usage:
 
 ```rust
 #[starknet::contract]
@@ -176,18 +176,18 @@ The Grid component represents a 100x100 matrix, with each cell being 100 pixels.
 ```typescript
 const [allNfts, setAllNfts] = useState<any[]>([]);
 const { data, isLoading } = useContractRead({
-    address: STARKNET_HOMEPAGE_ERC721_ADDRESS,
-    functionName: "getAllTokens",
-    abi: starknetHomepageABI,
-    args: [],
+  address: STARKNET_HOMEPAGE_ERC721_ADDRESS,
+  functionName: "getAllTokens",
+  abi: starknetHomepageABI,
+  args: [],
 });
 useEffect(() => {
-    if (!isLoading) {
-        const arr = data?.map((nft) => {
-            return deserializeTokenObject(nft);
-        });
-        setAllNfts(arr || []);
-    }
+  if (!isLoading) {
+    const arr = data?.map((nft) => {
+      return deserializeTokenObject(nft);
+    });
+    setAllNfts(arr || []);
+  }
 }, [data, isLoading]);
 ```
 
@@ -211,7 +211,6 @@ link: deserializeFeltArray(tokenObject.link),
 Furthermore, the Grid component manages the cell selection process, leading to the minting of a corresponding token. Once an area is chosen, a modal appears displaying the mint details and other necessary inputs for the call data. The intricacies of the multicall will be addressed subsequently.
 
 <img alt="Wallets" src="img/ch02-starknet-homepage-select.jpg" class="center" style="width: 75%;" />
-
 
 #### Modals
 
@@ -321,13 +320,13 @@ The dropdown component is dedicated to showcasing the tokens associated with the
 
 ```typescript
 const readTx = useMemo(() => {
-    const tx = {
-        address: STARKNET_HOMEPAGE_ERC721_ADDRESS,
-        functionName: "getTokensByOwner",
-        abi: starknetHomepageABI,
-        args: [account || "0x0000000"],
-    };
-    return tx;
+  const tx = {
+    address: STARKNET_HOMEPAGE_ERC721_ADDRESS,
+    functionName: "getTokensByOwner",
+    abi: starknetHomepageABI,
+    args: [account || "0x0000000"],
+  };
+  return tx;
 }, [account]);
 
 const { data, isLoading } = useContractRead(readTx);
@@ -341,30 +340,30 @@ The `useContractWrite` is a Hook dedicated to executing a Starknet multicall, wh
 
 ```typescript
 const calls = useMemo(() => {
-    const splitNewImage: string[] = shortString.splitLongString(newImage);
-    const splitNewLink: string[] = shortString.splitLongString(newLink);
+  const splitNewImage: string[] = shortString.splitLongString(newImage);
+  const splitNewLink: string[] = shortString.splitLongString(newLink);
 
-    const tx2 = {
-        contractAddress: STARKNET_HOMEPAGE_ERC721_ADDRESS,
-        entrypoint: "mint",
-        calldata: [
-            startCell.col,
-            startCell.row,
-            width,
-            height,
-            splitNewImage,
-            splitNewLink,
-        ],
-    };
+  const tx2 = {
+    contractAddress: STARKNET_HOMEPAGE_ERC721_ADDRESS,
+    entrypoint: "mint",
+    calldata: [
+      startCell.col,
+      startCell.row,
+      width,
+      height,
+      splitNewImage,
+      splitNewLink,
+    ],
+  };
 
-    const price = selectedCells.length * 1000000000000000;
+  const price = selectedCells.length * 1000000000000000;
 
-    const tx1 = {
-        contractAddress: ERC_20_ADDRESS,
-        entrypoint: "approve",
-        calldata: [STARKNET_HOMEPAGE_ERC721_ADDRESS, `${price}`, "0"],
-    };
-    return [tx1, tx2];
+  const tx1 = {
+    contractAddress: ERC_20_ADDRESS,
+    entrypoint: "approve",
+    calldata: [STARKNET_HOMEPAGE_ERC721_ADDRESS, `${price}`, "0"],
+  };
+  return [tx1, tx2];
 }, [startCell, newImage, newLink, width, height, selectedCells.length]);
 
 const { writeAsync: writeMulti } = useContractWrite({ calls });
@@ -376,19 +375,19 @@ Once the multicall is prepared, the next step is to initiate the function and si
 
 ```typescript
 const handleMintClick = async (): Promise<void> => {
-    setIsMintLoading(true);
-    try {
-        await writeMulti();
-        setIsMintLoading(false);
-        setState((prevState) => ({
-            ...prevState,
-            showPopup: false,
-            selectedCells: [],
-            mintPrice: undefined,
-        }));
-    } catch (error) {
-        console.error("Error approving transaction:", error);
-    }
+  setIsMintLoading(true);
+  try {
+    await writeMulti();
+    setIsMintLoading(false);
+    setState((prevState) => ({
+      ...prevState,
+      showPopup: false,
+      selectedCells: [],
+      mintPrice: undefined,
+    }));
+  } catch (error) {
+    console.error("Error approving transaction:", error);
+  }
 };
 ```
 
@@ -396,37 +395,35 @@ const handleMintClick = async (): Promise<void> => {
 
 Another instructive illustration of a conditional multicall setup is the modal used to modify the data associated with a token.
 
-
 <img alt="homepage" src="img/ch02-starknet-homepage-edit.jpg" class="center" style="width: 75%;" />
-
 
 There are scenarios where the user may wish to alter just one attribute of the token, rather than both. Consequently, a conditional multicall configuration becomes necessary. It's essential to recall that the token id in the Cairo contract is defined as a `u256`, implying it comprises two `felt252` values.
 
 ```typescript
 const calls = useMemo(() => {
-    const txs = [];
-    const splitNewImage: string[] = shortString.splitLongString(newImage);
-    const splitNewLink: string[] = shortString.splitLongString(newLink);
+  const txs = [];
+  const splitNewImage: string[] = shortString.splitLongString(newImage);
+  const splitNewLink: string[] = shortString.splitLongString(newLink);
 
-    if (newImage !== "" && nft) {
-        const tx1 = {
-            contractAddress: STARKNET_HOMEPAGE_ERC721_ADDRESS,
-            entrypoint: "setTokenImg",
-            calldata: [nft.token_id, 0, splitNewImage],
-        };
-        txs.push(tx1);
-    }
+  if (newImage !== "" && nft) {
+    const tx1 = {
+      contractAddress: STARKNET_HOMEPAGE_ERC721_ADDRESS,
+      entrypoint: "setTokenImg",
+      calldata: [nft.token_id, 0, splitNewImage],
+    };
+    txs.push(tx1);
+  }
 
-    if (newLink !== "" && nft) {
-        const tx2 = {
-            contractAddress: STARKNET_HOMEPAGE_ERC721_ADDRESS,
-            entrypoint: "setTokenLink",
-            calldata: [nft.token_id, 0, splitNewLink],
-        };
-        txs.push(tx2);
-    }
+  if (newLink !== "" && nft) {
+    const tx2 = {
+      contractAddress: STARKNET_HOMEPAGE_ERC721_ADDRESS,
+      entrypoint: "setTokenLink",
+      calldata: [nft.token_id, 0, splitNewLink],
+    };
+    txs.push(tx2);
+  }
 
-    return txs;
+  return txs;
 }, [nft, newImage, newLink]);
 ```
 

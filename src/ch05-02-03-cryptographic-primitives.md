@@ -1,17 +1,17 @@
 # Cryptographic Hash Functions
 
-*Hashing* is a process that uses an algorithm to take data and convert
+_Hashing_ is a process that uses an algorithm to take data and convert
 it to a fixed length known as a hash value, which varies widely even
 with small variations in the input.
 
 Here are two examples using the `SHA-256 hash function` (one of the most
 broadly used hash functions in use today):
 
--   If the input is `"Starknet"`, this would be the output:
+- If the input is `"Starknet"`, this would be the output:
 
 `a22979efeb74ca6aa02eaf2be8899e65b43dca9788a45ea687a96d970c32d96b`
 
--   And if the input is `"Starknet."` then the output is:
+- And if the input is `"Starknet."` then the output is:
 
 `78874a2e5dc07ce99d6fb8d71016e7edcb4fda2e64c0642762999baa6b5a0568`
 
@@ -129,8 +129,7 @@ and if elliptic curves break or when quantum computers come around
 
 "With the T standing for "transparent", ZK-STARKs resolve one of the
 primary weaknesses of ZK-SNARKs, its reliance on a 'trusted setup´."
-[(Vitalik
-2017)](https://vitalik.ca/general/2017/11/09/starks_part_1.html).
+[(Vitalik 2017)](https://vitalik.ca/general/2017/11/09/starks_part_1.html).
 
 # Commitment Schemes
 
@@ -138,10 +137,10 @@ primary weaknesses of ZK-SNARKs, its reliance on a 'trusted setup´."
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

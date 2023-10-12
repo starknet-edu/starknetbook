@@ -126,27 +126,27 @@ Digital Signature Algorithm (DSA), ECDSA leverages elliptic curve
 cryptography, offering superior security with shorter keys than the
 traditional DSA.
 
-An ECDSA signature comprises two components, commonly referred to as *r*
-and *s*. These two values, generated using the signer’s private key and
+An ECDSA signature comprises two components, commonly referred to as _r_
+and _s_. These two values, generated using the signer’s private key and
 the hash of the message (or transaction) being signed, collectively form
 the signature for a given input.
 
-### Deciphering signature\_r and signature\_s
+### Deciphering signature_r and signature_s
 
-Within the context of the Standard Account Contract, *signature\_r* and
-*signature\_s* represent the two constituents of the ECDSA signature.
-These are utilized in the *check\_ecdsa\_signature* function to
+Within the context of the Standard Account Contract, _signature_r_ and
+_signature_s_ represent the two constituents of the ECDSA signature.
+These are utilized in the _check_ecdsa_signature_ function to
 authenticate the transaction’s legitimacy.
 
--   `signature_r (r)`: A random number generated during the signing
-    process, unique for each signature. Reusing *r* across different
-    messages may lead to private key exposure.
+- `signature_r (r)`: A random number generated during the signing
+  process, unique for each signature. Reusing _r_ across different
+  messages may lead to private key exposure.
 
--   `signature_s (s)`: This is computed using *r*, the private key, and
-    the hash of the message. Like *r*, *s* is also unique for each
-    signature.
+- `signature_s (s)`: This is computed using _r_, the private key, and
+  the hash of the message. Like _r_, _s_ is also unique for each
+  signature.
 
-The function *check\_ecdsa\_signature* takes these two values, the
+The function _check_ecdsa_signature_ takes these two values, the
 public key of the signer, and the hash of the message to authenticate
 the signature. A valid signature indicates that the message was indeed
 signed by the private key owner and remains unaltered.
@@ -163,19 +163,19 @@ signed by the private key owner and remains unaltered.
             );
 ```
 
-The above code snippet employs *check\_ecdsa\_signature* function to
+The above code snippet employs _check_ecdsa_signature_ function to
 assert the legitimacy of the transaction signature. If the signature is
-not valid, the assertion fails, returning *INVALID\_SIGNATURE*.
+not valid, the assertion fails, returning _INVALID_SIGNATURE_.
 
 ## Contract Anatomy
 
 ### Storage
 
 In the standard account contract, we declare a single storage variable:
-*public\_key*. This assists in transaction signature validation. The
-public key, stored as a *felt252* (a 252-bit unsigned integer), is
+_public_key_. This assists in transaction signature validation. The
+public key, stored as a _felt252_ (a 252-bit unsigned integer), is
 written to the storage in the constructor function and is accessed from
-the storage in the *validate\_transaction* function.
+the storage in the _validate_transaction_ function.
 
 ```rust
     struct Storage {
@@ -234,7 +234,7 @@ facilitate its reuse in all three validation functions.
 The Call struct outlines the parameters required for a contract call.
 These parameters comprise the target contract address (to), the function
 to be called (selector), and the function’s arguments (calldata). The
-Call struct is utilized in the *execute* function.
+Call struct is utilized in the _execute_ function.
 
 ```rust
     #[derive(Drop, Serde)]
@@ -280,13 +280,13 @@ the target contract.
 The implementation of the Standard Account Contract has a few
 limitations:
 
--   It currently supports only single calls. We could support multicalls
-    to improve the flexibility and utility of the contract.
+- It currently supports only single calls. We could support multicalls
+  to improve the flexibility and utility of the contract.
 
--   The ECDSA signature algorithm, while secure, can be computationally
-    intensive. Future versions could explore using more efficient
-    signature algorithms, such as Schnorr or BLS. Or quantum-resistant
-    signature algorithms, such as the STARKs.
+- The ECDSA signature algorithm, while secure, can be computationally
+  intensive. Future versions could explore using more efficient
+  signature algorithms, such as Schnorr or BLS. Or quantum-resistant
+  signature algorithms, such as the STARKs.
 
 Despite these limitations, the Standard Account Contract provides a
 robust and secure foundation for creating and interacting with smart
@@ -300,16 +300,16 @@ public key.
 
 TODO: add section on how to generate a private key and public key.
 
--   Export the required environment variables:
+- Export the required environment variables:
 
 <!-- -->
 
     export STARKNET_NETWORK=alpha-goerli
     export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
 
--   Declare the contract (since the contract is already declared, you
-    can skip this step. If you want to declare it anyway, run the
-    following command but you will receive an error):
+- Declare the contract (since the contract is already declared, you
+  can skip this step. If you want to declare it anyway, run the
+  following command but you will receive an error):
 
 <!-- -->
 
@@ -318,7 +318,7 @@ TODO: add section on how to generate a private key and public key.
 The class hash is:
 0x05501f7806d3d11cab101e19001e409dd4760200c2da2fe03761750f66e4a5e1
 
--   Deploy the contract:
+- Deploy the contract:
 
 TODO: add section on how to deploy the contract.
 
@@ -326,36 +326,36 @@ Elliptic Curve Digital Signature Algorithm (ECDSA) is a popular choice
 for ensuring data integrity and sender authenticity in blockchain
 networks, but it’s not the only option. Other alternatives include:
 
--   EdDSA (Edwards-curve Digital Signature Algorithm): EdDSA is another
-    form of elliptic curve cryptography that is designed to be faster
-    and more secure than ECDSA. EdDSA uses twisted Edwards curves, which
-    have strong security properties and allow for more efficient
-    computations. An example of EdDSA in use is Monero.
+- EdDSA (Edwards-curve Digital Signature Algorithm): EdDSA is another
+  form of elliptic curve cryptography that is designed to be faster
+  and more secure than ECDSA. EdDSA uses twisted Edwards curves, which
+  have strong security properties and allow for more efficient
+  computations. An example of EdDSA in use is Monero.
 
--   Schnorr Signatures: Schnorr signatures offer a level of security
-    similar to ECDSA but with shorter signatures. They have the
-    additional property of being linear, which allows for signature
-    aggregation and multi-signatures. This can lead to increased
-    efficiency and privacy. Bitcoin developers have proposed adding
-    Schnorr signatures to the Bitcoin protocol with the Taproot upgrade.
+- Schnorr Signatures: Schnorr signatures offer a level of security
+  similar to ECDSA but with shorter signatures. They have the
+  additional property of being linear, which allows for signature
+  aggregation and multi-signatures. This can lead to increased
+  efficiency and privacy. Bitcoin developers have proposed adding
+  Schnorr signatures to the Bitcoin protocol with the Taproot upgrade.
 
--   RSA (Rivest–Shamir–Adleman): RSA is an older cryptographic algorithm
-    that is widely used for secure data transmission. However, RSA
-    requires larger key sizes for equivalent security levels, making it
-    less efficient than elliptic curve techniques. RSA is not commonly
-    used in modern blockchain systems, but it is still used in many
-    traditional secure communication protocols.
+- RSA (Rivest–Shamir–Adleman): RSA is an older cryptographic algorithm
+  that is widely used for secure data transmission. However, RSA
+  requires larger key sizes for equivalent security levels, making it
+  less efficient than elliptic curve techniques. RSA is not commonly
+  used in modern blockchain systems, but it is still used in many
+  traditional secure communication protocols.
 
--   BLS (Boneh-Lynn-Shacham) Signatures: BLS signatures, like Schnorr,
-    allow for signature aggregation, making them useful in systems that
-    require a large number of signatures. This property makes BLS
-    signatures particularly useful for consensus algorithms in
-    distributed systems and blockchains, such as Ethereum 2.0.
+- BLS (Boneh-Lynn-Shacham) Signatures: BLS signatures, like Schnorr,
+  allow for signature aggregation, making them useful in systems that
+  require a large number of signatures. This property makes BLS
+  signatures particularly useful for consensus algorithms in
+  distributed systems and blockchains, such as Ethereum 2.0.
 
--   Post-Quantum Cryptography: With the advent of quantum computing,
-    researchers are developing new cryptographic algorithms that are
-    resistant to quantum attacks. One example are the STARKs used in
-    Starknet.
+- Post-Quantum Cryptography: With the advent of quantum computing,
+  researchers are developing new cryptographic algorithms that are
+  resistant to quantum attacks. One example are the STARKs used in
+  Starknet.
 
 Each of these alternatives has its strengths and weaknesses in terms of
 security, efficiency, complexity, and mathematical properties.
@@ -369,10 +369,10 @@ work together to validate and execute transactions.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

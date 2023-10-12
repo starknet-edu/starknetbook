@@ -1,11 +1,11 @@
 The goal of the STARK protocol is to verify computations succinctly and
 transparently. It follows three steps:
 
-1.  The first step in a STARK is called *arithmetization*, and it is the
-    translation (often referred to as *`reduction`*) of the problem of
+1.  The first step in a STARK is called _arithmetization_, and it is the
+    translation (often referred to as _`reduction`_) of the problem of
     verifying a computation to the problem of checking that a certain
     polynomial, which can be evaluated efficiently on the verifier’s
-    side (this is the *`succinctly`* part), is of low degree.
+    side (this is the _`succinctly`_ part), is of low degree.
     Arithmetization is useful since it enables the use of tools from the
     realm of Error Correction Codes that efficiently test low
     degree-ness.
@@ -609,10 +609,10 @@ polynomial is of low degree, is done.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

@@ -1,6 +1,7 @@
 book
 target
 output
+node_modules
 
 # Editors tmp files.
 *~

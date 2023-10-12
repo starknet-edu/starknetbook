@@ -10,7 +10,7 @@ Run:
 
 # \[,bash\]
 
-python3 finite\_fields/python/polynomial.py ---
+python3 finite_fields/python/polynomial.py ---
 
 Polynomial arithmetic deals with the addition, subtraction,
 multiplication, and division of polynomials.
@@ -19,11 +19,11 @@ We can represent a bit pattern by a polynomial in, say, the variable
 $x$. Each power of $x$ in the polynomial can stand for a bit position in
 a bit pattern. For example, we can represent:
 
--   
+-
 
--   
+-
 
--   the pattern $011$ by the polynomial $x + 1$.
+- the pattern $011$ by the polynomial $x + 1$.
 
 Representing bit patterns with polynomials will allow us to create a
 finite field with bit patterns.
@@ -105,10 +105,10 @@ factorized into lower-degree polynomials.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

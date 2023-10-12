@@ -14,13 +14,13 @@ work with.
 
 To install Starknet.js, follow these steps:
 
--   For the latest official release (main branch):
+- For the latest official release (main branch):
 
 <!-- -->
 
     npm install starknet
 
--   To use the latest features (merges in develop branch):
+- To use the latest features (merges in develop branch):
 
 <!-- -->
 
@@ -36,7 +36,7 @@ which allows you to manage wallet connections.
 With these tools ready, there are basically 3 main concepts to know on
 the frontend: Account, Provider, and Contracts.
 
-### Account 
+### Account
 
 We can generally think of the account as the "end user" of a
 dapp, and some user interaction will be involved to gain access to it.
@@ -55,14 +55,15 @@ difference.
 async function connectWallet() {
     const starknet = await connect();
     console.log(starknet.account);
-    
+
     const nonce = await starknet.account.getNonce();
     const message = await starknet.account.signMessage(...)
 }
 ```
+
 The snippet above uses the `connect` function provided by `get-starknet` to establish a connection to the user wallet. Once connected, we are able to access account methods, such as `signMessage` or `execute`.
 
-### Provider 
+### Provider
 
 The provider allows you to interact with the Starknet
 network. You can think of it as a "read" connection to the blockchain,
@@ -82,11 +83,11 @@ export const provider = new Provider({
   // }
 });
 
-const block = await provider.getBlock("latest"); // <- Get latest block    
+const block = await provider.getBlock("latest"); // <- Get latest block
 console.log(block.block_number);
 ```
 
-## Contracts 
+## Contracts
 
 Your frontend will likely be interacting with deployed
 contracts. For each contract, there should be a counterpart on the
@@ -94,15 +95,11 @@ frontend. To create these instances, you will need the contract’s
 address and ABI, and either a provider or signer.
 
 ```ts
-const contract = new Contract(
-  abi_erc20,
-  contractAddress,
-  starknet.account
-);
+const contract = new Contract(abi_erc20, contractAddress, starknet.account);
 
 const balance = await contract.balanceOf(starknet.account.address);
 const transfer = await contract.transfer(recipientAddress, amountFormatted);
-//or: const transfer = await contract.invoke("transfer", [to, amountFormatted]); 
+//or: const transfer = await contract.invoke("transfer", [to, amountFormatted]);
 
 console.log(`Tx hash: ${transfer.transaction_hash}`);
 ```
@@ -113,11 +110,7 @@ change the state of the blockchain. However, you are able to connect a
 previously created `Contract` instance with a new account:
 
 ```ts
-const contract = new Contract(
-  abi_erc20,
-  contractAddress,
-  provider
-);
+const contract = new Contract(abi_erc20, contractAddress, provider);
 
 contract.connect(starknet.account);
 ```
@@ -126,7 +119,7 @@ In the snippet above, after
 calling the `connect` method, it would be possible to call read
 functions on the contract, but not before.
 
-### Units 
+### Units
 
 If you have previous experience with web3, you know dealing
 with units requires care, and Starknet is no exception. Once again, the
@@ -138,15 +131,15 @@ are returned from contracts into numbers:
 
 ```ts
 // Uint256 shape:
-// { 
-//    type: 'struct', 
-//    low: Uint256.low, 
-//    high: Uint256.high 
-// 
+// {
+//    type: 'struct',
+//    low: Uint256.low,
+//    high: Uint256.high
+//
 // }
 const balance = await contract.balanceOf(address); // <- uint256
 const asBN = uint256.uint256ToBN(uint256); // <- uint256 into BN
-const asString = asBN.toString() //<- BN into string
+const asString = asBN.toString(); //<- BN into string
 ```
 
 And vice versa:
@@ -155,8 +148,8 @@ And vice versa:
 const amount = 1;
 
 const amountFormatted = {
-    type: "struct",
-    ...uint256.bnToUint256(amount),
+  type: "struct",
+  ...uint256.bnToUint256(amount),
 };
 ```
 
@@ -169,21 +162,21 @@ are covered in chaper 5.
 
 ## Additional Resources
 
--   Starknet.js GitHub Repository:
-    <https://github.com/0xs34n/starknet.js>
+- Starknet.js GitHub Repository:
+  <https://github.com/0xs34n/starknet.js>
 
--   Official Starknet.js Website and documentation:
-    <https://www.starknetjs.com/>
+- Official Starknet.js Website and documentation:
+  <https://www.starknetjs.com/>
 
 Stay tuned for more updates on Starknet.js, including detailed guides,
 examples, and comprehensive documentation.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

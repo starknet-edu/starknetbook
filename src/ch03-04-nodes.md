@@ -35,16 +35,16 @@ decentralized applications (dApps) and utilizes Ethereum’s Layer 1 for
 proof verification and data availability. Key aspects of Starknet
 include:
 
--   **Cairo execution environment**: Cairo, the execution environment of
-    Starknet, facilitates writing and execution of complex smart
-    contracts.
+- **Cairo execution environment**: Cairo, the execution environment of
+  Starknet, facilitates writing and execution of complex smart
+  contracts.
 
--   **Scalability**: Starknet achieves scalability through zk-STARK
-    proofs, minimizing the data needed to be posted on-chain.
+- **Scalability**: Starknet achieves scalability through zk-STARK
+  proofs, minimizing the data needed to be posted on-chain.
 
--   **Node network**: The Starknet network comprises nodes that
-    synchronize and process transactions, contributing to the network’s
-    overall security and decentralization.
+- **Node network**: The Starknet network comprises nodes that
+  synchronize and process transactions, contributing to the network’s
+  overall security and decentralization.
 
 ## Starknet Stack
 
@@ -53,13 +53,13 @@ TCP/IP models. The most appropriate model depends on your understanding
 and requirements. A simplified version of the modular blockchain stack
 might look like this:
 
--   Layer 1: Data Layer
+- Layer 1: Data Layer
 
--   Layer 2: Execution Layer
+- Layer 2: Execution Layer
 
--   Layer 3: Application Layer
+- Layer 3: Application Layer
 
--   Layer 4: Transport Layer
+- Layer 4: Transport Layer
 
 <img alt="Modular blockchain layers" src="img/ch03-modular-blockcahain-layers.png" class="center" style="width: 50%;" />
 
@@ -74,37 +74,37 @@ options](https://github.com/rocket-pool/docs.rocketpool.net/blob/main/src/guides
 
 **Minimum Requirements:**
 
--   CPU: 2+ cores
+- CPU: 2+ cores
 
--   RAM: 4 GB
+- RAM: 4 GB
 
--   Disk: 600 GB
+- Disk: 600 GB
 
--   Connection Speed: 8 mbps/sec
+- Connection Speed: 8 mbps/sec
 
 **Recommended Specifications:**
 
--   CPU: 4+ cores
+- CPU: 4+ cores
 
--   RAM: 16 GB+
+- RAM: 16 GB+
 
--   Disk 2 TB
+- Disk 2 TB
 
--   Connection Speed: 25+ mbps/sec
+- Connection Speed: 25+ mbps/sec
 
 **You can refer to these links for the hardware:**
 
--   [CPU](https://a.co/d/iAWpTzQ) — $193
+- [CPU](https://a.co/d/iAWpTzQ) — $193
 
--   [Board](https://a.co/d/cTUk9Kd) (can attempt w/ Raspberry Pi) — $110
+- [Board](https://a.co/d/cTUk9Kd) (can attempt w/ Raspberry Pi) — $110
 
--   [Disk](https://a.co/d/0US61Y5) — $100
+- [Disk](https://a.co/d/0US61Y5) — $100
 
--   [RAM](https://a.co/d/br867sk) — $60
+- [RAM](https://a.co/d/br867sk) — $60
 
--   [PSU](https://a.co/d/2k3Gn40) — $40
+- [PSU](https://a.co/d/2k3Gn40) — $40
 
--   [Case](https://a.co/d/apCBGwF) — $50
+- [Case](https://a.co/d/apCBGwF) — $50
 
 Total — $553
 
@@ -239,7 +239,7 @@ Check that your L1 has completed its sync:
 Start your L2 Execution Client and note that we are syncing Starknet’s
 state from our LOCAL ETH L1 NODE!
 
-PATHFINDER\_ETHEREUM\_API\_URL=http://127.0.0.1:8545
+PATHFINDER_ETHEREUM_API_URL=http://127.0.0.1:8545
 
     # from starknet-stack project root
     docker-compose -f dc-l2.yaml up -d
@@ -248,7 +248,7 @@ To follow the sync:
 
     docker container logs -f $(docker ps | grep pathfinder | awk '{print $1}')
 
-Starknet [Testnet\_1](https://testnet.starkscan.co) currently comprises
+Starknet [Testnet_1](https://testnet.starkscan.co) currently comprises
 800,000+ blocks so this will take some time (days) to sync fully. To
 check L2 sync:
 
@@ -410,7 +410,7 @@ platform like Starknet operates. For instance, the OSI Model, a
 foundational model for understanding network interactions, underpins our
 modular stack.
 
-A key concept to grasp is *Fractal Scaling.* This concept allows us to
+A key concept to grasp is _Fractal Scaling._ This concept allows us to
 extend our model to include additional layers beyond Layer 2, such as
 Layer 3. In this extended model, the entire stack recurs above our
 existing stack, as shown in the following diagram:
@@ -438,10 +438,10 @@ experiment with, and innovate within the Starknet ecosystem.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

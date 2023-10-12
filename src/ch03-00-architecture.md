@@ -17,7 +17,7 @@ Starknet’s operation begins when a transaction is received by a gateway,
 which serves as the Mempool. This stage could also be managed by the
 Sequencer. The transaction is initially marked as "RECEIVED." The
 Sequencer then incorporates the transaction into the network state and
-tags it as "ACCEPTED\_ON\_L2." The final step involves the Prover, which
+tags it as "ACCEPTED_ON_L2." The final step involves the Prover, which
 executes the operating system on the new block, calculates its proof,
 and submits it to the Layer 1 (L1) for verification.
 
@@ -27,18 +27,18 @@ and submits it to the Layer 1 (L1) for verification.
 
 In essence, Starknet’s architecture involves multiple components:
 
--   The Sequencer is responsible for receiving transactions, ordering
-    them, and producing blocks. It operates similarly to validators in
-    Ethereum or Bitcoin.
+- The Sequencer is responsible for receiving transactions, ordering
+  them, and producing blocks. It operates similarly to validators in
+  Ethereum or Bitcoin.
 
--   The Prover is tasked with generating proofs for the created blocks
-    and transactions. It uses Cairo’s Virtual Machine to run provable
-    programs, thereby creating execution traces necessary for generating
-    STARK proofs.
+- The Prover is tasked with generating proofs for the created blocks
+  and transactions. It uses Cairo’s Virtual Machine to run provable
+  programs, thereby creating execution traces necessary for generating
+  STARK proofs.
 
--   Layer 1 (L1), in this case Ethereum, hosts a smart contract capable
-    of verifying these STARK proofs. If the proofs are valid, Starknet’s
-    state root on L1 is updated.
+- Layer 1 (L1), in this case Ethereum, hosts a smart contract capable
+  of verifying these STARK proofs. If the proofs are valid, Starknet’s
+  state root on L1 is updated.
 
 Starknet’s state is a comprehensive snapshot maintained through Merkle
 trees, much like in Ethereum. This establishes the architecture of the
@@ -263,10 +263,10 @@ heart of coding with Cairo.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

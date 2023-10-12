@@ -1,4 +1,4 @@
-*Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
+_Copyright 2019 StarkWare Industries Ltd. Licensed under the Apache
 License, Version 2.0 (the "License"). You may not use this file except
 in compliance with the License. You may obtain a copy of the License at
 <https://www.starkware.co/open-source-license/> Unless required by
@@ -6,15 +6,15 @@ applicable law or agreed to in writing, software distributed under the
 License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied. See the License for
 the specific language governing permissions and limitations under the
-License.*
+License._
 
 # Part 2: Constraints
 
--   [Video Lecture
-    (youtube)](https://www.youtube.com/watch?v=fg3mFPXEYQY)
+- [Video Lecture
+  (youtube)](https://www.youtube.com/watch?v=fg3mFPXEYQY)
 
--   [Slides
-    (PDF)](https://starkware.co/wp-content/uploads/2021/12/STARK101-Part2.pdf)
+- [Slides
+  (PDF)](https://starkware.co/wp-content/uploads/2021/12/STARK101-Part2.pdf)
 
 In this part, we are going to create a set of constraints over the trace
 `a`. The constraints will be expressions in the trace’s cells that are
