@@ -47,4 +47,6 @@ jobs:
       - name: Rename book to public_html
         run: mv book public_html
 
-     
+      - name: scp upload to production site
+        run: |
+          sshpass -p ${{ secrets.PROD_PASS }} scp -o 'StrictHostKeyChecking no' -r public_html/ ${{ secrets.PROD_USER }}@${{ secrets.PROD_IP }}:~/
