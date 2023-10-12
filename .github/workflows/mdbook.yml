@@ -1,8 +1,6 @@
-# Sample workflow for building and deploying a mdBook site to GitHub Pages
-#
 # To get started with mdBook see: https://rust-lang.github.io/mdBook/index.html
 #
-name: Deploy mdBook site to Pages
+name: Deploy mdBook to Production Site
 
 on:
   push:
@@ -25,13 +23,16 @@ env:
 
 jobs:
   publish:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read  # To push a branch 
+      pages: write  # To push to a GitHub Pages site
+      id-token: write # To update the deployment status
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Rust cache
         uses: ./.github/workflows/setup-rust-cache
