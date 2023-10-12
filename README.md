@@ -16,13 +16,14 @@ Every contribution, regardless of its size, plays a pivotal role in refining thi
 1. **Rust Packages**:
    - Install the `cargo` toolchain via [rustup](https://rustup.rs/).
    - Install [mdBook](https://rust-lang.github.io/mdBook/guide/installation.html) and its translation extension:
-    
+
 ```shell
 cargo install mdbook --version 0.4.31 mdbook-i18n-helpers --version 0.1.0
 ```
 
 2. **Machine Packages**:
 - For translations, install [gettext](https://www.gnu.org/software/gettext/): `sudo apt install gettext`.
+- On Mac, you can use `brew install gettext` to install.
 
 3. **Repository Operations**:
 - Clone the main repository: `git clone https://github.com/starknet-edu/starknetbook && cd starknetbook`.
@@ -65,4 +66,3 @@ For starting translations in a new language:
 - Employ `./translations.sh new xx`, replacing `xx` with your language code. This action generates a language file.
 - For updating the `xx.po` file, use `./translations.sh xx`.
 - Avoid the above command if the `xx.po` file already exists (which means you are not initiating a new translation).
-
