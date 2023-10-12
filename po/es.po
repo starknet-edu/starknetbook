@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Starknet Book\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-10-10 09:54-0300\n"
+"PO-Revision-Date: 2023-10-12 08:01+0100\n"
 "Last-Translator: dami <pinonesdamian@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #: src/SUMMARY.md:1
 msgid "The Starknet Book"
-msgstr "El libro de Starknet"
+msgstr "El Libro de Starknet"
 
 #: src/SUMMARY.md:4
 msgid "Introduction"
@@ -34,191 +34,191 @@ msgstr "Instalación básica"
 
 #: src/SUMMARY.md:14
 msgid "Compile, Deploy, Interact"
-msgstr ""
+msgstr "Compilar, Desplegar, Interactuar"
 
 #: src/SUMMARY.md:15
 msgid "Scarb: The Package Manager"
-msgstr ""
+msgstr "Scarb: El Gestor de Paquetes"
 
 #: src/SUMMARY.md:16
 msgid "Starkli: A CLI interface 🚧"
-msgstr ""
+msgstr "Starkli: Una interfaz CLI 🚧"
 
 #: src/SUMMARY.md:17
 msgid "Katana: A Local Node"
-msgstr ""
+msgstr "Katana: Un Nodo Local"
 
 #: src/SUMMARY.md:18
 msgid "Starknet Devnet 🚧"
-msgstr ""
+msgstr "Starknet Devnet 🚧"
 
 #: src/SUMMARY.md:19
 msgid "Starknet-js: Javascript SDK"
-msgstr ""
+msgstr "Starknet-js: Javascript SDK"
 
 #: src/SUMMARY.md:20 src/SUMMARY.md:46
 msgid "Examples"
-msgstr ""
+msgstr "Ejemplos"
 
 #: src/SUMMARY.md:21
 msgid "Beginner - ERC-20 UI"
-msgstr ""
+msgstr "Principiante - ERC-20 UI"
 
 #: src/SUMMARY.md:22
 msgid "Intermediate - Million Dollar Homepage"
-msgstr ""
+msgstr "Intermedio - Página de inicio de Million Dollar"
 
 #: src/SUMMARY.md:23
 msgid "Starknet-React: React Integration"
-msgstr ""
+msgstr "Starknet-React: Integración de React"
 
 #: src/SUMMARY.md:24
 msgid "Starknet-py: Python SDK 🚧"
-msgstr ""
+msgstr "Starknet-py: Python SDK 🚧"
 
 #: src/SUMMARY.md:25
 msgid "Starknet-rs: Rust SDK 🚧"
-msgstr ""
+msgstr "Starknet-py: Python SDK 🚧"
 
 #: src/SUMMARY.md:26
 msgid "Foundry Forge: Testing 🚧"
-msgstr ""
+msgstr "Foundry Forge: Testing 🚧"
 
 #: src/SUMMARY.md:27
 msgid "Foundry Cast: Interacting with Starknet 🚧"
-msgstr ""
+msgstr "Foundry Cast: Interactuando con Starknet 🚧"
 
 #: src/SUMMARY.md:29
 msgid "Architecture"
-msgstr ""
+msgstr "Arquitectura"
 
 #: src/SUMMARY.md:32
 msgid "Transactions"
-msgstr ""
+msgstr "Transacciones"
 
 #: src/SUMMARY.md:33
 msgid "Sequencers"
-msgstr ""
+msgstr "Secuenciadores"
 
 #: src/SUMMARY.md:34
 msgid "Provers 🚧"
-msgstr ""
+msgstr "Provers🚧"
 
 #: src/SUMMARY.md:35
 msgid "Nodes 🚧"
-msgstr ""
+msgstr "Nodos 🚧"
 
 #: src/SUMMARY.md:36
 msgid "Layer 3 and App Chains 🚧 "
-msgstr ""
+msgstr "Layer 3 y App Chains 🚧 "
 
 #: src/SUMMARY.md:37
 msgid "Solidity Verifier 🚧"
-msgstr ""
+msgstr "Solidity Verifier 🚧"
 
 #: src/SUMMARY.md:38
 msgid "Decentralization 🚧"
-msgstr ""
+msgstr "Descentralización 🚧"
 
 #: src/SUMMARY.md:40
 msgid "Account Abstraction"
-msgstr ""
+msgstr "Abstracción de Cuenta"
 
 #: src/SUMMARY.md:43
 msgid "Accounts"
-msgstr ""
+msgstr "Cuentas"
 
 #: src/SUMMARY.md:44
 msgid "Hello, Account! 🚧"
-msgstr ""
+msgstr "¡Hola Cuenta! 🚧"
 
 #: src/SUMMARY.md:45
 msgid "Standard AccounT 🚧"
-msgstr ""
+msgstr "Cuenta Estándar 🚧"
 
 #: src/SUMMARY.md:47
 msgid "Multicaller 🚧"
-msgstr ""
+msgstr "Multicaller 🚧"
 
 #: src/SUMMARY.md:48
 msgid "Multisig 🚧"
-msgstr ""
+msgstr "Multisig 🚧"
 
 #: src/SUMMARY.md:49
 msgid "Auto-Payments 🚧"
-msgstr ""
+msgstr "Auto-Payments 🚧"
 
 #: src/SUMMARY.md:50
 msgid "Alternative Signature Schemes 🚧"
-msgstr ""
+msgstr "Esquemas de Firma Alternativos 🚧"
 
 #: src/SUMMARY.md:54
 msgid "STARKs 🚧"
-msgstr ""
+msgstr "STARKs 🚧"
 
 #: src/SUMMARY.md:55
 msgid "Basics 🚧"
-msgstr ""
+msgstr "Básicos 🚧"
 
 #: src/SUMMARY.md:56
 msgid "Math Primer 🚧"
-msgstr ""
+msgstr "Manual de Matemáticas 🚧"
 
 #: src/SUMMARY.md:57
 msgid "Number Theory 🚧"
-msgstr ""
+msgstr "Teoría de Números 🚧"
 
 #: src/SUMMARY.md:58
 msgid "Geometry 🚧"
-msgstr ""
+msgstr "Geometría 🚧"
 
 #: src/SUMMARY.md:59
 msgid "Cryptographic Primitives 🚧"
-msgstr ""
+msgstr "Primitivas Criptográficas 🚧"
 
 #: src/SUMMARY.md:60
 msgid "Arithimization 🚧"
-msgstr ""
+msgstr "Aritimización 🚧"
 
 #: src/SUMMARY.md:61
 msgid "Low Degree Testing 🚧"
-msgstr ""
+msgstr "Pruebas de Bajo Grado 🚧"
 
 #: src/SUMMARY.md:62
 msgid "FRI Protocol 🚧"
-msgstr ""
+msgstr "FRI  🚧"
 
 #: src/SUMMARY.md:63
 msgid "Efficient STARKs"
-msgstr ""
+msgstr "STARK Eficientes"
 
 #: src/SUMMARY.md:64
 msgid "STARKs Protocol (Python) 🚧"
-msgstr ""
+msgstr "Protocolo STARK (Python) 🚧"
 
 #: src/SUMMARY.md:65 src/SUMMARY.md:70
 msgid "Trace/Low Degree Extension 🚧"
-msgstr ""
+msgstr "Traza/Extensión de Bajo Grado 🚧"
 
 #: src/SUMMARY.md:66 src/SUMMARY.md:71
 msgid "Constraints 🚧"
-msgstr ""
+msgstr "Restricciones 🚧"
 
 #: src/SUMMARY.md:67 src/SUMMARY.md:72
 msgid "FRI Commitments 🚧"
-msgstr ""
+msgstr "Compromisos de FRI 🚧"
 
 #: src/SUMMARY.md:68 src/SUMMARY.md:73
 msgid "Query Phase 🚧"
-msgstr ""
+msgstr "Fase de Consulta 🚧"
 
 #: src/SUMMARY.md:69
 msgid "STARKs Protocol (Rust) 🚧"
-msgstr ""
+msgstr "Protocolo STARK (Rust) 🚧"
 
 #: src/title-page.md:1
 msgid "# The Starknet Book"
-msgstr ""
+msgstr "# El Libro de Starknet"
 
 #: src/title-page.md:3
 msgid ""
@@ -227,6 +227,10 @@ msgid ""
 "marked under a 🚧 emoji. We welcome your suggestions, feedback, and\n"
 "content contributions to make this book a reliable guide for everyone."
 msgstr ""
+"El Libro de Starknet es un trabajo en progreso, moldeado por los aportes\n"
+"continuos de la comunidad. Algunas secciones pueden estar incompletas o aún bajo revisión y son\n"
+"marcado debajo de un emoji 🚧. Agradecemos sus sugerencias, comentarios y\n"
+"contribuciones de contenido para hacer de este libro una guía confiable para todos."
 
 #: src/title-page.md:8
 msgid ""
@@ -234,6 +238,9 @@ msgid ""
 "essentials of Starknet development. It’s a community effort, with each\n"
 "chapter guiding you through the Starknet ecosystem."
 msgstr ""
+"El Libro de Starknet es una guía paso a paso destinada a enseñarle los\n"
+"Conceptos básicos del desarrollo de Starknet. Es un esfuerzo comunitario, en el que cada\n"
+"capítulo lo guiará a través del ecosistema Starknet."
 
 #: src/title-page.md:12
 msgid ""
@@ -242,6 +249,10 @@ msgid ""
 "Cairo Book, another community resource. You can access the Cairo Book\n"
 "[**here**](https://book.cairo-lang.org/)."
 msgstr ""
+"Entendiendo Cairo, el lenguaje de programación clave para Smart Contract en\n"
+"Starknet, es crucial. Es por eso que este libro trabaja de la mano con el\n"
+"Libro de Cairo, otro recurso comunitario. Puedes acceder al Libro Cairo\n"
+"[**aquí**](https://book.cairo-lang.org/)."
 
 #: src/title-page.md:17
 msgid ""
@@ -251,14 +262,19 @@ msgid ""
 "to tools, architecture, account setups, STARKs, and Starknet-specific\n"
 "apps."
 msgstr ""
+"En resumen, el Libro de Cairo te ayuda a dominar Cairo, mientras que El Libro de Starknet\n"
+"se centra en las características específicas de Starknet. Para una completa\n"
+"comprensión, recomendamos explorar ambos. Este libro te presentará\n"
+"herramientas, arquitectura, configuraciones de cuentas, STARK y aplicaciones específicas\n"
+"de Starknet."
 
 #: src/title-page.md:23
 msgid "## Table of Contents"
-msgstr ""
+msgstr "## Tabla de Contenido"
 
 #: src/title-page.md:25
 msgid "**Chapter Titles**"
-msgstr ""
+msgstr "**Títulos de los Capítulos**"
 
 #: src/title-page.md:27
 msgid ""
@@ -268,29 +284,31 @@ msgid ""
 "| ------------------------ | "
 "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- "
 "|\n"
-"| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet "
-"and acquaint yourself with the deployment of smart "
-"contracts.                                                                 "
-"|\n"
-"| 2: Starknet Tooling      | Familiarize yourself with vital tools, such as "
-"Protostar and Hardhat, and explore how languages like Javascript, Python, "
-"and Rust can be leveraged for Starknet interactions. |\n"
-"| 3: Starknet Architecture | Uncover Starknet’s core structure, gaining "
-"insights into the transaction lifecycle and the interplay between the "
-"Sequencer, Prover, and Nodes.                                |\n"
-"| 4: Account Abstraction   | Delve deep into Starknet’s unique approach to "
-"user accounts, and master the art of crafting custom "
-"accounts.                                                                  "
-"|\n"
-"| 5: STARKs                | Dive into the intricacies of STARKs and their "
-"pivotal role in shaping Starknet’s "
-"landscape.                                                                                   "
-"|"
+"| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet and acquaint yourself with the deployment of smart "
+"contracts.                                                                 |\n"
+"| 2: Starknet Tooling      | Familiarize yourself with vital tools, such as Protostar and Hardhat, and explore how languages like Javascript, Python, and Rust can be "
+"leveraged for Starknet interactions. |\n"
+"| 3: Starknet Architecture | Uncover Starknet’s core structure, gaining insights into the transaction lifecycle and the interplay between the Sequencer, Prover, and "
+"Nodes.                                |\n"
+"| 4: Account Abstraction   | Delve deep into Starknet’s unique approach to user accounts, and master the art of crafting custom "
+"accounts.                                                                  |\n"
+"| 5: STARKs                | Dive into the intricacies of STARKs and their pivotal role in shaping Starknet’s "
+"landscape.                                                                                   |"
 msgstr ""
+"| Capítulo | Descripción |\n"
+"| ------------------------ | -------------------------------------------------- -------------------------------------------------- "
+"-------------------------------------------------- ----------------------- |\n"
+"| 1: Introducción a Starknet | Profundice en los conceptos fundamentales de Starknet y familiarícese con el despliegue de contratos inteligentes. |\n"
+"| 2: Herramientas Starknet | Familiarícese con herramientas vitales, como Protostar y Hardhat, y explore cómo se pueden aprovechar lenguajes como Javascript, Python y Rust "
+"para las interacciones con Starknet. |\n"
+"| 3: Arquitectura Starknet | Descubra la estructura central de Starknet y obtenga información sobre el ciclo de vida de las transacciones y la interacción entre el "
+"Secuenciador, el Prover y los nodos. |\n"
+"| 4: Abstracción de cuenta | Profundice en el enfoque único de Starknet para las cuentas de usuario y domine el arte de crear cuentas personalizadas. |\n"
+"| 5: STARK | Sumérgete en las complejidades de los STARK y su papel fundamental en la configuración del panorama de Starknet. |"
 
 #: src/title-page.md:35
 msgid "# Where to Start?"
-msgstr ""
+msgstr "# ¿Donde Empezar?"
 
 #: src/title-page.md:37
 msgid ""
@@ -298,6 +316,9 @@ msgid ""
 "through the Starknet Book. Here are some recommendations based on\n"
 "various objectives:"
 msgstr ""
+"Dependiendo de tus objetivos e intereses, puedes elegir diferentes caminos\n"
+"a través del Libro de Starknet. A continuación se presentan algunas recomendaciones basadas en\n"
+"varios objetivos:"
 
 #: src/title-page.md:41
 msgid ""
@@ -308,8 +329,7 @@ msgid ""
 "- If you’re an **experienced developer** looking to quickly dive into\n"
 "  writing scalable and decentralized smart contracts, focus on the\n"
 "  Cairo Book, particularly **chapter 12: Starknet Smart Contracts**\n"
-"  ([link](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts."
-"html)).\n"
+"  ([link](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)).\n"
 "\n"
 "- If you’re a **frontend developer** wanting to integrate Starknet\n"
 "  with a React frontend using Javascript, prioritize the\n"
@@ -332,16 +352,47 @@ msgid ""
 "  understand the fundamentals of STARKs and their connection to the\n"
 "  Starknet ecosystem, delve into **STARKs**."
 msgstr ""
+"- Si eres un **completo principiante** y quieres comenzar a aprender sobre\n"
+"   Cairo y Starknet desde cero, sigue el libro en su totalidad,\n"
+"   comenzando con **Introducción a Starknet**.\n"
+"\n"
+"- Si eres un **desarrollador experimentado** y buscas sumergirte rápidamente en\n"
+"   escribir contratos inteligentes escalables y descentralizados, centrarse en el\n"
+"   Libro de Cairo, en particular **capítulo 12: Contratos inteligentes de Starknet**\n"
+"   ([enlace](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)).\n"
+"\n"
+"- Si eres un **desarrollador frontend** que desea integrar Starknet\n"
+"   con una interfaz React usando Javascript, priorice la\n"
+"   **starknet-js** y **starknet-react** subcapítulos en **Starknet\n"
+"   Tooling**\n"
+"\n"
+"- Si es un **ingeniero de DevOps** o un **operador de nodo** interesado en\n"
+"   ejecutando un nodo Starknet y un indexador, diríjase directamente a **Starknet\n"
+"   Arquitectura**.\n"
+"\n"
+"- Si es un **investigador de seguridad** o un **auditor de contratos inteligentes**\n"
+"   querer aprender sobre la función de Abstracción de Cuenta y sus\n"
+"   implicaciones, opte por **Abstracción de cuenta**.\n"
+"\n"
+"- Si eres un **entusiasta de blockchain** y tienes curiosidad sobre lo subyacente\n"
+"   arquitectura y mecánica de Starknet y Cairo, explora **Starknet\n"
+"   Arquitectura**.\n"
+"\n"
+"- Si eres un **experto en criptografía** o un **investigador** deseoso de\n"
+"   comprender los fundamentos de STARK y su conexión con el\n"
+"   Ecosistema Starknet, profundiza en **STARKs**."
 
 #: src/title-page.md:71
 msgid ""
 "Feel free to mix and match these paths based on your unique interests\n"
 "and requirements."
 msgstr ""
+"Siéntete libre de mezclar y combinar estos caminos según tus intereses únicos\n"
+"y requisitos."
 
 #: src/title-page.md:74
 msgid "# Your Contributions Matter"
-msgstr ""
+msgstr "# Tus Contribuciones Importan"
 
 #: src/title-page.md:76
 msgid ""
@@ -349,19 +400,25 @@ msgid ""
 "than sharing expertise—you’re shaping the future of decentralized tech.\n"
 "Let’s build a guide that helps developers unlock Starknet’s potential."
 msgstr ""
+"¡Bienvenido a bordo! Al contribuir al Libro de Starknet, estás haciendo más\n"
+"que compartir experiencia, estás dando forma al futuro de la tecnología descentralizada.\n"
+"Creemos una guía que ayude a los desarrolladores a desbloquear el potencial de Starknet."
 
 #: src/title-page.md:80
 msgid ""
 "For detailed contribution guidelines, visit the [Contributors\n"
-"Guide](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING."
-"adoc).\n"
+"Guide](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc).\n"
 "Every contribution counts. Your skills and passion will help make this\n"
 "book an invaluable tool."
 msgstr ""
+"Para obtener pautas de contribución detalladas, visite [Contributors\n"
+"Guía](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc).\n"
+"Cada contribución cuenta. Tus habilidades y pasión te ayudarán a lograrlo.\n"
+"Reserve una herramienta invaluable."
 
 #: src/title-page.md:85
 msgid "## How You Can Help"
-msgstr ""
+msgstr "## Cómo Puedes Ayudar"
 
 #: src/title-page.md:87
 msgid ""
@@ -379,10 +436,23 @@ msgid ""
 "\n"
 "- Show off your favorite Cairo features through new exercises."
 msgstr ""
+"- ¿Encontraste una sección vacía? ¡Rellenalo!\n"
+"\n"
+"- ¿Crees que necesitamos una nueva sección? Sugiere uno.\n"
+"\n"
+"- ¿Ves margen de mejora? Continúe y modifíquelo.\n"
+"\n"
+"- ¿Quieres agregar código en un nuevo lenguaje de programación? A por ello.\n"
+"\n"
+"- ¿Encontraste un error? Arreglalo.\n"
+"\n"
+"- ¿Los ejercicios no están claros? Añade explicaciones.\n"
+"\n"
+"- Muestra tus características favoritas de Cairo a través de nuevos ejercicios."
 
 #: src/title-page.md:101
 msgid "# Additional Key Educational Resources"
-msgstr ""
+msgstr "# Recursos Educativos Clave Adicionales"
 
 #: src/title-page.md:103
 msgid ""
@@ -390,6 +460,9 @@ msgid ""
 "deepen your understanding and enhance your skills in coding with Cairo\n"
 "and staying abreast with Starknet developments:"
 msgstr ""
+"Hemos compilado una lista de valiosos recursos educativos que le ayudarán\n"
+"profundice su comprensión y mejore sus habilidades en codificación con Cairo\n"
+"y mantenerse al tanto de los desarrollos de Starknet:"
 
 #: src/title-page.md:107
 msgid ""
@@ -417,50 +490,73 @@ msgid ""
 "    networking, sharing ideas, and troubleshooting together. Join us on\n"
 "    Telegram [here](https://t.me/starknetna)."
 msgstr ""
+"1. **Libro de El Cairo**: Una guía completa de Cairo, la programación\n"
+"     lenguaje para contratos inteligentes de Starknet. Puedes acceder a él\n"
+"     [aquí](https://book.cairo-lang.org/).\n"
+"\n"
+"2. **Starklings**: un recurso diseñado específicamente para guiarte\n"
+"     a través del aprendizaje de la programación de Cairo, asegurándose de que alcance un\n"
+"     nivel competente. Puedes acceder a él\n"
+"     [aquí](https://github.com/shramee/starklings-cairo1).\n"
+"\n"
+"3. **Foro de la comunidad Starknet**: una plataforma en línea donde puedes\n"
+"     participar en debates sobre los últimos desarrollos en Starknet.\n"
+"     Únase a la conversación [aquí](https://community.starknet.io/).\n"
+"\n"
+"4. **Documentación de Starknet**: Puedes navegar a través de la documentación\n"
+"     [aquí](https://docs.starknet.io/).\n"
+"\n"
+"5. **Documentación de Cairo**: explórela\n"
+"     [aquí](https://www.cairo-lang.org/docs).\n"
+"\n"
+"6. **Starknet Developer Telegram (inglés)**: Una comunidad para\n"
+"     Desarrolladores Starknet de habla inglesa. Esta es una gran plataforma para\n"
+"     establecer contactos, compartir ideas y solucionar problemas juntos. Únete a nosotros\n"
+"     Telegram [aquí](https://t.me/starknetna)."
 
 #: src/ch00-00-introduction.md:1
 msgid "# The Starknet Network"
-msgstr ""
+msgstr "# La Red de Starknet"
 
 #: src/ch00-00-introduction.md:3
 msgid "## Preamble"
-msgstr ""
+msgstr "## Preámbulo"
 
 #: src/ch00-00-introduction.md:5
 msgid ""
-"Historically, societal roles like currency, property rights, and social "
-"status titles have been governed by _protocols_ and _registries_. Their "
-"value stems from a widely accepted understanding of their integrity. These "
-"functions have predominantly been overseen by centralized entities prone to "
-"challenges such as corruption, agency conflicts, and exclusion ([Eli Ben-"
-"Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/"
-"ryMelVulp))."
+"Historically, societal roles like currency, property rights, and social status titles have been governed by _protocols_ and _registries_. Their value stems from a widely "
+"accepted understanding of their integrity. These functions have predominantly been overseen by centralized entities prone to challenges such as corruption, agency conflicts, "
+"and exclusion ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp))."
 msgstr ""
+"Históricamente, los roles sociales como la moneda, los derechos de propiedad y los títulos de estatus social han estado gobernados por protocolos y registros. Su valor surge "
+"de una comprensión ampliamente aceptada de su integridad. Estas funciones han sido supervisadas predominantemente por entidades centralizadas propensas a desafíos como la "
+"corrupción, los conflictos de agencia y la exclusión ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp) )."
 
 #: src/ch00-00-introduction.md:7
-msgid ""
-"Satoshi's creation, Bitcoin, introduced a novel approach for these "
-"functions, termed an _integrity web_. This is an infrastructure for societal "
-"roles that:"
+msgid "Satoshi's creation, Bitcoin, introduced a novel approach for these functions, termed an _integrity web_. This is an infrastructure for societal roles that:"
 msgstr ""
+"La creación de Satoshi, Bitcoin, introdujo un enfoque novedoso para estas funciones, denominado _red de integridad_. Se trata de una infraestructura para roles sociales que:"
 
 #: src/ch00-00-introduction.md:9
 msgid ""
 "1. Is openly described by a public protocol.\n"
 "2. Operates over a wide, inclusive, peer-to-peer network.\n"
-"3. Distributes value fairly and extensively to maintain societal consensus "
-"on its integrity."
+"3. Distributes value fairly and extensively to maintain societal consensus on its integrity."
 msgstr ""
+"1. Está descrito abiertamente por un protocolo público.\n"
+"2. Opera a través de una red peer-to-peer amplia e inclusiva.\n"
+"3. Distribuye valor de manera justa y amplia para mantener el consenso social sobre su integridad."
 
 #: src/ch00-00-introduction.md:13
 msgid ""
-"While Bitcoin addressed monetary functions, Ethereum expanded this to "
-"include any function that can be defined by computer programming. Both faced "
-"the challenge of balancing scalability with decentralization. These "
-"integrity webs have often favored inclusivity over capacity, ensuring even "
-"those with limited resources can authenticate the system's integrity. Yet, "
-"this means they struggle to meet global demand."
+"While Bitcoin addressed monetary functions, Ethereum expanded this to include any function that can be defined by computer programming. Both faced the challenge of balancing "
+"scalability with decentralization. These integrity webs have often favored inclusivity over capacity, ensuring even those with limited resources can authenticate the "
+"system's integrity. Yet, this means they struggle to meet global demand."
 msgstr ""
+"Mientras que Bitcoin abordó las funciones monetarias, Ethereum amplió esto para incluir cualquier función que pueda definirse mediante programación informática. Ambos "
+"enfrentaron el desafío de equilibrar la escalabilidad con la descentralización. Estas redes de integridad a menudo han favorecido la inclusión sobre la capacidad, asegurando "
+"que incluso aquellos con recursos limitados puedan autenticar la integridad del sistema. Sin embargo, esto significa que tienen dificultades para satisfacer la demanda "
+"global."
 
 #: src/ch00-00-introduction.md:15
 msgid "## Defining \"Blockchain\""
@@ -468,36 +564,24 @@ msgstr ""
 
 #: src/ch00-00-introduction.md:17
 msgid ""
-"In the ever-evolving realm of technology, defining a term as multifaceted as "
-"\"Blockchain\" can be challenging. Based on current understandings and "
-"applications, a Blockchain can be characterized by the following three "
-"properties ([Eli Ben-Sasson, 2023](https://twitter.com/EliBenSasson/"
-"status/1709272086504485265)):"
+"In the ever-evolving realm of technology, defining a term as multifaceted as \"Blockchain\" can be challenging. Based on current understandings and applications, a "
+"Blockchain can be characterized by the following three properties ([Eli Ben-Sasson, 2023](https://twitter.com/EliBenSasson/status/1709272086504485265)):"
 msgstr ""
 
 #: src/ch00-00-introduction.md:19
 msgid ""
-"1. **Public Protocol:** The foundation of a Blockchain rests upon a protocol "
-"that is openly available. This transparency ensures that any interested "
-"party can understand its workings, fostering trust and enabling wider "
-"adoption.\n"
-"2. **Open P2P Network:** Instead of relying on a centralized entity, a "
-"Blockchain operates over a peer-to-peer (P2P) network. This decentralized "
-"approach ensures that operations are distributed across various participants "
-"or nodes, making the system more resilient to failures and censorship.\n"
-"3. **Value Distribution:** Central to the Blockchain's operation is the way "
-"it rewards its operators. The system autonomously distributes value in a "
-"manner that is wide-ranging and equitable. This incentivization not only "
-"motivates participants to maintain the system's integrity but also ensures a "
-"broader societal consensus."
+"1. **Public Protocol:** The foundation of a Blockchain rests upon a protocol that is openly available. This transparency ensures that any interested party can understand its "
+"workings, fostering trust and enabling wider adoption.\n"
+"2. **Open P2P Network:** Instead of relying on a centralized entity, a Blockchain operates over a peer-to-peer (P2P) network. This decentralized approach ensures that "
+"operations are distributed across various participants or nodes, making the system more resilient to failures and censorship.\n"
+"3. **Value Distribution:** Central to the Blockchain's operation is the way it rewards its operators. The system autonomously distributes value in a manner that is wide-"
+"ranging and equitable. This incentivization not only motivates participants to maintain the system's integrity but also ensures a broader societal consensus."
 msgstr ""
 
 #: src/ch00-00-introduction.md:23
 msgid ""
-"While these properties capture the essence of many Blockchains, the term's "
-"definition might need refinement as the technology matures and finds new "
-"applications. Engaging in continuous dialogue and revisiting definitions "
-"will be crucial in this dynamic landscape."
+"While these properties capture the essence of many Blockchains, the term's definition might need refinement as the technology matures and finds new applications. Engaging in "
+"continuous dialogue and revisiting definitions will be crucial in this dynamic landscape."
 msgstr ""
 
 #: src/ch00-00-introduction.md:25
@@ -506,20 +590,15 @@ msgstr ""
 
 #: src/ch00-00-introduction.md:27
 msgid ""
-"Starknet is a Layer-2 network that makes Ethereum transactions faster, "
-"cheaper, and more secure using zk-STARKs technology. Think of it as a "
-"boosted layer on top of Ethereum, optimized for speed and cost."
+"Starknet is a Layer-2 network that makes Ethereum transactions faster, cheaper, and more secure using zk-STARKs technology. Think of it as a boosted layer on top of "
+"Ethereum, optimized for speed and cost."
 msgstr ""
 
 #: src/ch00-00-introduction.md:29
 msgid ""
-"Starknet bridges the gap between scalability and broad consensus. It "
-"integrates a mathematical framework to navigate the balance between capacity "
-"and inclusivity. Its integrity hinges on the robustness of succinct, "
-"transparent proofs of computational integrity. This method lets powerful "
-"operators enhance Starknet's capacity, ensuring everyone can authenticate "
-"Starknet's integrity using universally accessible tools ([Eli Ben-Sasson, "
-"Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp))."
+"Starknet bridges the gap between scalability and broad consensus. It integrates a mathematical framework to navigate the balance between capacity and inclusivity. Its "
+"integrity hinges on the robustness of succinct, transparent proofs of computational integrity. This method lets powerful operators enhance Starknet's capacity, ensuring "
+"everyone can authenticate Starknet's integrity using universally accessible tools ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp))."
 msgstr ""
 
 #: src/ch00-00-introduction.md:31
@@ -527,9 +606,7 @@ msgid "## Starknet’s Mission"
 msgstr ""
 
 #: src/ch00-00-introduction.md:33
-msgid ""
-"_Starknet’s mission is to allow individuals to freely implement and use any "
-"social function they desire._"
+msgid "_Starknet’s mission is to allow individuals to freely implement and use any social function they desire._"
 msgstr ""
 
 #: src/ch00-00-introduction.md:35
@@ -537,35 +614,25 @@ msgid "## Starknet’s Values"
 msgstr ""
 
 #: src/ch00-00-introduction.md:37
-msgid ""
-"Starknet's ethos is anchored in core principles ([Eli Ben-Sasson, Bareli, "
-"Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)):"
+msgid "Starknet's ethos is anchored in core principles ([Eli Ben-Sasson, Bareli, Brandt, Volokh, 2023](https://hackmd.io/@Elibensasson/ryMelVulp)):"
 msgstr ""
 
 #: src/ch00-00-introduction.md:39
 msgid ""
-"- **Lasting Broadness.** Starknet continuously resists power consolidation. "
-"Key points include:\n"
+"- **Lasting Broadness.** Starknet continuously resists power consolidation. Key points include:\n"
 "\n"
-"  - Broad power distribution underpins Starknet's legitimacy and must "
-"persist across operations and decision-making. While centralized operation "
-"may be necessary at times, it should be short-lived.\n"
-"  - Starknet's protocol and governance should always be open and "
-"transparent.\n"
-"  - Governance should bolster inclusivity, with a flexible structure that "
-"can evolve to ensure enduring inclusivity.\n"
+"  - Broad power distribution underpins Starknet's legitimacy and must persist across operations and decision-making. While centralized operation may be necessary at times, "
+"it should be short-lived.\n"
+"  - Starknet's protocol and governance should always be open and transparent.\n"
+"  - Governance should bolster inclusivity, with a flexible structure that can evolve to ensure enduring inclusivity.\n"
 "\n"
-"- **Neutrality.** Starknet remains impartial to the societal functions it "
-"supports.\n"
+"- **Neutrality.** Starknet remains impartial to the societal functions it supports.\n"
 "\n"
-"  - The objectives and ethos of functions on Starknet lie with their "
-"creators.\n"
-"  - **Censorship resistance:** Starknet remains agnostic to the nature and "
-"meaning of user transactions.\n"
+"  - The objectives and ethos of functions on Starknet lie with their creators.\n"
+"  - **Censorship resistance:** Starknet remains agnostic to the nature and meaning of user transactions.\n"
 "\n"
-"- **Individual Empowerment.** At its core, Starknet thrives on a well-"
-"informed and autonomous user base. This is achieved by fostering a culture "
-"rooted in its core mission and values, with a strong emphasis on education."
+"- **Individual Empowerment.** At its core, Starknet thrives on a well-informed and autonomous user base. This is achieved by fostering a culture rooted in its core mission "
+"and values, with a strong emphasis on education."
 msgstr ""
 
 #: src/ch00-00-introduction.md:52
@@ -706,8 +773,7 @@ msgid ""
 "specifications of the change and the reasons behind it. If you’re\n"
 "proposing a SNIP, it’s your job to rally community support and document\n"
 "any objections (more details\n"
-"[here](https://community.starknet.io/t/draft-simp-1-simp-purpose-and-"
-"guidelines/1197#what-is-a-snip-2)).\n"
+"[here](https://community.starknet.io/t/draft-simp-1-simp-purpose-and-guidelines/1197#what-is-a-snip-2)).\n"
 "Once a SNIP is approved, it becomes a part of the Starknet protocol. All\n"
 "the SNIPs can be found in [this\n"
 "repository](https://github.com/starknet-io/SNIPs)."
@@ -762,21 +828,16 @@ msgid ""
 "  Practical tutorials and examples"
 msgstr ""
 
-#: src/ch00-00-introduction.md:176 src/ch02-08-starknet-react.md:361
-#: src/ch03-00-architecture.md:251 src/ch03-02-sequencers.md:216
-#: src/ch03-03-provers.md:243 src/ch04-00-account-abstraction.md:242
+#: src/ch00-00-introduction.md:176 src/ch02-08-starknet-react.md:361 src/ch03-00-architecture.md:251 src/ch03-02-sequencers.md:216 src/ch03-03-provers.md:243
+#: src/ch04-00-account-abstraction.md:242
 msgid "## Conclusion"
 msgstr ""
 
 #: src/ch00-00-introduction.md:178
 msgid ""
-"In decentralized technology, Starknet offers a solution to challenges that "
-"previous systems encountered. It's based on established _protocols_ and "
-"_registries_, following the initial concepts introduced by figures such as "
-"Satoshi. Through a specific mathematical method, Starknet seeks a balance "
-"between scalability and consensus. As this technology progresses, Starknet "
-"adheres to principles of inclusivity, neutrality, and user empowerment. It's "
-"poised for continuous adaptation and improvement in the field."
+"In decentralized technology, Starknet offers a solution to challenges that previous systems encountered. It's based on established _protocols_ and _registries_, following "
+"the initial concepts introduced by figures such as Satoshi. Through a specific mathematical method, Starknet seeks a balance between scalability and consensus. As this "
+"technology progresses, Starknet adheres to principles of inclusivity, neutrality, and user empowerment. It's poised for continuous adaptation and improvement in the field."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:1
@@ -785,20 +846,13 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:3
 msgid ""
-"Starknet is a scalable Layer-2 solution on Ethereum. This guide will walk "
-"you through the process of deploying and interacting with your first "
-"Starknet smart contract using the Cairo programming language, a language "
-"tailored for creating validity proofs and that Starknet uses. For seasoned "
-"developers looking to understand the core concepts and get hands-on "
-"experience, this guide offers step-by-step instructions and essential "
-"details."
+"Starknet is a scalable Layer-2 solution on Ethereum. This guide will walk you through the process of deploying and interacting with your first Starknet smart contract using "
+"the Cairo programming language, a language tailored for creating validity proofs and that Starknet uses. For seasoned developers looking to understand the core concepts and "
+"get hands-on experience, this guide offers step-by-step instructions and essential details."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:5
-msgid ""
-"We will use the Starknet Remix Plugin to compile, deploy and interact with "
-"our smart contract. It is a great tool to get started with Starknet "
-"development."
+msgid "We will use the Starknet Remix Plugin to compile, deploy and interact with our smart contract. It is a great tool to get started with Starknet development."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:7
@@ -809,9 +863,7 @@ msgid ""
 msgstr ""
 
 #: src/ch01-00-getting-started.md:11
-msgid ""
-"<img alt=\"Activate the Starknet Plugin\" src=\"img/ch01-starknet-plugin."
-"png\" class=\"center\" style=\"width: 100%;\" />"
+msgid "<img alt=\"Activate the Starknet Plugin\" src=\"img/ch01-starknet-plugin.png\" class=\"center\" style=\"width: 100%;\" />"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:13
@@ -819,9 +871,7 @@ msgid "<span class=\"caption\">Activate the Starknet Plugin</span>"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:15
-msgid ""
-"4. After enabling, the Starknet logo appears on the left sidebar. Click it "
-"to interact with opened Cairo files."
+msgid "4. After enabling, the Starknet logo appears on the left sidebar. Click it to interact with opened Cairo files."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:17
@@ -829,9 +879,7 @@ msgid "## Introduction to Starknet Smart Contracts"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:19
-msgid ""
-"The script below is a simple `Ownable` contract pattern written in Cairo for "
-"Starknet. It features:"
+msgid "The script below is a simple `Ownable` contract pattern written in Cairo for Starknet. It features:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:21
@@ -884,8 +932,7 @@ msgid ""
 "\n"
 "    #[external(v0)]\n"
 "    impl OwnableImpl of super::OwnableTrait<ContractState> {\n"
-"        fn transfer_ownership(ref self: ContractState, new_owner: "
-"ContractAddress) {\n"
+"        fn transfer_ownership(ref self: ContractState, new_owner: ContractAddress) {\n"
 "            self.only_owner();\n"
 "            let prev_owner = self.owner.read();\n"
 "            self.owner.write(new_owner);\n"
@@ -917,30 +964,23 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:93
 msgid ""
-"The following is a brief description of the components in the contract. We "
-"will get into more details when we get deeper into Cairo so feel free to "
-"skip this section for now if you are not familiar with smart contract "
-"development."
+"The following is a brief description of the components in the contract. We will get into more details when we get deeper into Cairo so feel free to skip this section for now "
+"if you are not familiar with smart contract development."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:95
 msgid ""
 "1. **Dependencies and Interface**:\n"
-"   - **`starknet::ContractAddress`**: Represents a Starknet contract "
-"address.\n"
-"   - **`OwnableTrait`**: Specifies functions for transferring and getting "
-"ownership.\n"
+"   - **`starknet::ContractAddress`**: Represents a Starknet contract address.\n"
+"   - **`OwnableTrait`**: Specifies functions for transferring and getting ownership.\n"
 "2. **Events**:\n"
-"   - **`OwnershipTransferred1`**: Indicates ownership change with previous "
-"and new owner details.\n"
+"   - **`OwnershipTransferred1`**: Indicates ownership change with previous and new owner details.\n"
 "3. **Storage**:\n"
-"   - **`Storage`**: Holds the contract's state with the current owner's "
-"address.\n"
+"   - **`Storage`**: Holds the contract's state with the current owner's address.\n"
 "4. **Constructor**:\n"
 "   - Initializes the contract with a starting owner.\n"
 "5. **External Functions**:\n"
-"   - Functions for transferring ownership and retrieving the current owner's "
-"details.\n"
+"   - Functions for transferring ownership and retrieving the current owner's details.\n"
 "6. **Private Methods**:\n"
 "   - **`only_owner`**: Validates if the caller is the current owner."
 msgstr ""
@@ -964,17 +1004,13 @@ msgid ""
 "\n"
 "   - Choose the `Ownable.cairo` file.\n"
 "   - In the \"Starknet\" tab, select \"Compile Ownable.cairo\".\n"
-"   - Post-compilation, an \"artifacts\" folder emerges containing the "
-"compiled contract in two distinct formats: Sierra (JSON file) and CASM. For "
-"Starknet deployment, Remix will use the Sierra file. Do not worry about this "
-"process for now; we will cover it in detail in a later chapter. For now, "
-"Remix will handle the compilation and deployment for us."
+"   - Post-compilation, an \"artifacts\" folder emerges containing the compiled contract in two distinct formats: Sierra (JSON file) and CASM. For Starknet deployment, Remix "
+"will use the Sierra file. Do not worry about this process for now; we will cover it in detail in a later chapter. For now, Remix will handle the compilation and deployment "
+"for us."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:124
-msgid ""
-"<img alt=\"Artifacts folder after compilation\" src=\"img/ch01-remix-file."
-"png\" class=\"center\" style=\"width: 100%;\" />"
+msgid "<img alt=\"Artifacts folder after compilation\" src=\"img/ch01-remix-file.png\" class=\"center\" style=\"width: 100%;\" />"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:126
@@ -986,15 +1022,11 @@ msgid "## Deployment on the Development Network"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:130
-msgid ""
-"To set your smart contract in motion, an initial owner must be defined. The "
-"Constructor function needs this information."
+msgid "To set your smart contract in motion, an initial owner must be defined. The Constructor function needs this information."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:132
-msgid ""
-"Here's a step-by-step guide to deploying your smart contract on the "
-"development network:"
+msgid "Here's a step-by-step guide to deploying your smart contract on the development network:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:134
@@ -1002,13 +1034,11 @@ msgid ""
 "1. **Select the Appropriate Network**\n"
 "\n"
 "   - Go to the Environment selection tab.\n"
-"   - Choose \"Remote Devnet\" for deploying your inaugural contract on a "
-"development network.\n"
+"   - Choose \"Remote Devnet\" for deploying your inaugural contract on a development network.\n"
 "\n"
 "2. **Choose a Devnet Account**\n"
 "\n"
-"   - Under \"Devnet account selection\", a list of accounts specific to the "
-"chosen devnet is presented.\n"
+"   - Under \"Devnet account selection\", a list of accounts specific to the chosen devnet is presented.\n"
 "   - Pick any account and copy its address.\n"
 "\n"
 "3. **Initiating Deployment**\n"
@@ -1019,17 +1049,13 @@ msgid ""
 msgstr ""
 
 #: src/ch01-00-getting-started.md:150
-msgid ""
-"Post-deployment, Remix's terminal will send various logs. These logs provide "
-"crucial details, including:"
+msgid "Post-deployment, Remix's terminal will send various logs. These logs provide crucial details, including:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:152
 msgid ""
-"- `transaction_hash`: The unique hash of the transaction. This hash can be "
-"used to track the transaction's status.\n"
-"- `contract_address`: The address of the deployed contract. Use this address "
-"to interact with your contract.\n"
+"- `transaction_hash`: The unique hash of the transaction. This hash can be used to track the transaction's status.\n"
+"- `contract_address`: The address of the deployed contract. Use this address to interact with your contract.\n"
 "- `calldata`: Contains the `init_owner` address fed to the constructor."
 msgstr ""
 
@@ -1037,10 +1063,8 @@ msgstr ""
 msgid ""
 "```bash\n"
 "{\n"
-"  \"transaction_hash\": "
-"\"0x275e6d2caf9bc98b47ba09fa9034668c6697160a74de89c4655e2a70be84247\",\n"
-"  \"contract_address\": "
-"\"0x5eb239955ad4c4333b8ab83406a3cf5970554b60a0d8e78a531df18c59a0db9\",\n"
+"  \"transaction_hash\": \"0x275e6d2caf9bc98b47ba09fa9034668c6697160a74de89c4655e2a70be84247\",\n"
+"  \"contract_address\": \"0x5eb239955ad4c4333b8ab83406a3cf5970554b60a0d8e78a531df18c59a0db9\",\n"
 "    ...\n"
 "  \"calldata\": [\n"
 "    \"0x4d9c8282b5633eeb1aab56393690d76f71e32f1b7be1bea03eb03e059245a28\"\n"
@@ -1051,9 +1075,7 @@ msgid ""
 msgstr ""
 
 #: src/ch01-00-getting-started.md:168
-msgid ""
-"By following the above process, you successfully deploy your smart contract "
-"on the development network."
+msgid "By following the above process, you successfully deploy your smart contract on the development network."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:170
@@ -1061,10 +1083,7 @@ msgid "## Interaction with the Contract"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:172
-msgid ""
-"With the contract now active on the development network, interaction becomes "
-"possible. Here's a guide to effectively interact with your contract on "
-"Starknet:"
+msgid "With the contract now active on the development network, interaction becomes possible. Here's a guide to effectively interact with your contract on Starknet:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:174
@@ -1076,12 +1095,10 @@ msgid ""
 "\n"
 "2. **Calling the `get_owner` Function**\n"
 "\n"
-"   - Choose the `get_owner` function. Since this function doesn't require "
-"arguments, the calldata field remains blank. (This is a read function, hence "
-"calling it is termed as a \"call\".)\n"
-"   - Press the \"get_owner\" button. Your terminal will display the result, "
-"revealing the owner's address provided during the contract's deployment as "
-"calldata for the constructor:"
+"   - Choose the `get_owner` function. Since this function doesn't require arguments, the calldata field remains blank. (This is a read function, hence calling it is termed "
+"as a \"call\".)\n"
+"   - Press the \"get_owner\" button. Your terminal will display the result, revealing the owner's address provided during the contract's deployment as calldata for the "
+"constructor:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:184
@@ -1100,9 +1117,7 @@ msgid ""
 msgstr ""
 
 #: src/ch01-00-getting-started.md:196
-msgid ""
-"This call currently doesn't spend gas because the function does not change "
-"the state of the contract."
+msgid "This call currently doesn't spend gas because the function does not change the state of the contract."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:198
@@ -1111,27 +1126,17 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:200
 msgid ""
-"- Now, for the **`transfer_ownership`** function, which requires the new "
-"owner's address as input.\n"
-"- Enter this address into the calldata field. (For this, use any address "
-"from the \"Devnet account selection\" listed in the Environment tab.)\n"
-"- Click the \"transfer_ownership\" button. The terminal then showcases the "
-"transaction hash indicating the contract's state alteration. Since we are "
-"altering the contract's state this typo of interaction is called an "
-"\"invoke\" and needs to be signed by the account that is calling the "
-"function."
+"- Now, for the **`transfer_ownership`** function, which requires the new owner's address as input.\n"
+"- Enter this address into the calldata field. (For this, use any address from the \"Devnet account selection\" listed in the Environment tab.)\n"
+"- Click the \"transfer_ownership\" button. The terminal then showcases the transaction hash indicating the contract's state alteration. Since we are altering the contract's "
+"state this typo of interaction is called an \"invoke\" and needs to be signed by the account that is calling the function."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:204
 msgid ""
-"For these transactions, the terminal logs will exhibit a \"status\" "
-"variable, indicating the transaction's fate. If the status reads "
-"\"ACCEPTED_ON_L2\", the Sequencer has accepted the transaction, pending "
-"block inclusion. However, a \"REJECTED\" status signifies the Sequencer's "
-"disapproval, and the transaction won't feature in the upcoming block. More "
-"often than not, this transaction gains acceptance, leading to a contract "
-"state modification. On calling the **`get_owner`** function again we get "
-"this:"
+"For these transactions, the terminal logs will exhibit a \"status\" variable, indicating the transaction's fate. If the status reads \"ACCEPTED_ON_L2\", the Sequencer has "
+"accepted the transaction, pending block inclusion. However, a \"REJECTED\" status signifies the Sequencer's disapproval, and the transaction won't feature in the upcoming "
+"block. More often than not, this transaction gains acceptance, leading to a contract state modification. On calling the **`get_owner`** function again we get this:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:206
@@ -1150,9 +1155,7 @@ msgid ""
 msgstr ""
 
 #: src/ch01-00-getting-started.md:218
-msgid ""
-"You've now adeptly compiled, deployed, and interacted with your inaugural "
-"Starknet smart contract. Well done!"
+msgid "You've now adeptly compiled, deployed, and interacted with your inaugural Starknet smart contract. Well done!"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:220
@@ -1161,10 +1164,8 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:222
 msgid ""
-"After testing your smart contract on a development network, it's time to "
-"deploy it to the Starknet Testnet. Starknet Testnet is a public platform "
-"available for everyone, ideal for testing smart contracts and collaborating "
-"with fellow developers."
+"After testing your smart contract on a development network, it's time to deploy it to the Starknet Testnet. Starknet Testnet is a public platform available for everyone, "
+"ideal for testing smart contracts and collaborating with fellow developers."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:224
@@ -1177,10 +1178,8 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:228
 msgid ""
-"Before deploying your smart contract to Starknet, you must handle the "
-"transaction cost. While deploying to the Starknet Goerli Testnet is free, a "
-"smart wallet account is essential. You can set up a smart wallet using "
-"either:"
+"Before deploying your smart contract to Starknet, you must handle the transaction cost. While deploying to the Starknet Goerli Testnet is free, a smart wallet account is "
+"essential. You can set up a smart wallet using either:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:230
@@ -1191,24 +1190,20 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:233
 msgid ""
-"Both are reliable Starknet wallets offering enhanced security and "
-"accessibility features thanks to the possibilities that the Cairo VM brings, "
-"such as Account Abstraction (keep reading the Book for more on this)."
+"Both are reliable Starknet wallets offering enhanced security and accessibility features thanks to the possibilities that the Cairo VM brings, such as Account Abstraction "
+"(keep reading the Book for more on this)."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:235
 msgid ""
 "1. Install the recommended chrome/brave extension for your chosen wallet.\n"
 "2. Follow your wallet provider's instructions to deploy your account.\n"
-"   1. Use the [Starknet Faucet](https://faucet.goerli.starknet.io/) to fund "
-"your account.\n"
+"   1. Use the [Starknet Faucet](https://faucet.goerli.starknet.io/) to fund your account.\n"
 "3. Deploy the account to the network. This usually takes around 10 seconds."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:240
-msgid ""
-"Once set up, you're ready to deploy your smart contracts to the Starknet "
-"Testnet."
+msgid "Once set up, you're ready to deploy your smart contracts to the Starknet Testnet."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:242
@@ -1219,14 +1214,11 @@ msgstr ""
 msgid ""
 "1. Follow the previous deployment steps.\n"
 "2. In the 'Environment selection' tab, choose 'Wallet Selection'.\n"
-"3. Select your Starknet account and continue with deploying and interacting "
-"with your contract."
+"3. Select your Starknet account and continue with deploying and interacting with your contract."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:248
-msgid ""
-"You can monitor transaction hashes and addresses using any Starknet block "
-"explorers like:"
+msgid "You can monitor transaction hashes and addresses using any Starknet block explorers like:"
 msgstr ""
 
 #: src/ch01-00-getting-started.md:250
@@ -1237,10 +1229,8 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:253
 msgid ""
-"These tools provide a visual representation of transactions and contract "
-"state alterations. Notably, when you alter the contract ownership using the "
-"`transfer_ownership` function, the event emitted by the contract appears in "
-"the block explorer. It's an effective method to track contract events."
+"These tools provide a visual representation of transactions and contract state alterations. Notably, when you alter the contract ownership using the `transfer_ownership` "
+"function, the event emitted by the contract appears in the block explorer. It's an effective method to track contract events."
 msgstr ""
 
 #: src/ch01-00-getting-started.md:255
@@ -1253,19 +1243,13 @@ msgstr ""
 
 #: src/ch01-00-getting-started.md:259
 msgid ""
-"1. **Deepen Your Starknet Knowledge**: For an extensive grasp of Starknet's "
-"inner workings and potential use cases, delve into Chapter 3 of the Starknet "
-"Book. This chapter details Starknet’s architectural nuances. Then go ahead "
-"from there.\n"
+"1. **Deepen Your Starknet Knowledge**: For an extensive grasp of Starknet's inner workings and potential use cases, delve into Chapter 3 of the Starknet Book. This chapter "
+"details Starknet’s architectural nuances. Then go ahead from there.\n"
 "\n"
-"2. **Dive into Cairo**: If you're more attuned to coding and wish to craft "
-"Starknet contracts, then Cairo is essential. It stands as Starknet's core "
-"contract language. Begin with Chapters 1-6 of the [Cairo Book](https://book."
-"cairo-lang.org/title-page.html), ranging from basics in _Getting Started_ to "
-"more advanced aspects such as _Enums and Pattern Matching_. Conclude by "
-"navigating to the [Starknet Smart Contracts chapter](https://book.cairo-lang."
-"org/ch99-00-starknet-smart-contracts.html), ensuring you have a well-rounded "
-"understanding."
+"2. **Dive into Cairo**: If you're more attuned to coding and wish to craft Starknet contracts, then Cairo is essential. It stands as Starknet's core contract language. Begin "
+"with Chapters 1-6 of the [Cairo Book](https://book.cairo-lang.org/title-page.html), ranging from basics in _Getting Started_ to more advanced aspects such as _Enums and "
+"Pattern Matching_. Conclude by navigating to the [Starknet Smart Contracts chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html), ensuring you have a "
+"well-rounded understanding."
 msgstr ""
 
 #: src/ch02-00-starknet-tooling.md:1
@@ -1343,8 +1327,7 @@ msgid ""
 "6.  Starknet-react: Builds front-end apps using React."
 msgstr ""
 
-#: src/ch02-01-basic-installation.md:1 src/ch02-03-scarb.md:34
-#: src/ch02-07-starknet-js.md:13
+#: src/ch02-01-basic-installation.md:1 src/ch02-03-scarb.md:34 src/ch02-07-starknet-js.md:13
 msgid "# Installation"
 msgstr ""
 
@@ -1413,9 +1396,7 @@ msgid "## Scarb Package Manager Installation"
 msgstr ""
 
 #: src/ch02-01-basic-installation.md:39
-msgid ""
-"We will get deeper into Scarb later in this chapter. For now, we will go "
-"over the installation process."
+msgid "We will get deeper into Scarb later in this chapter. For now, we will go over the installation process."
 msgstr ""
 
 #: src/ch02-01-basic-installation.md:41
@@ -1425,8 +1406,7 @@ msgstr ""
 #: src/ch02-01-basic-installation.md:43
 msgid ""
 "```bash\n"
-"    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/"
-"install.sh | sh\n"
+"    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh\n"
 "```"
 msgstr ""
 
@@ -1440,8 +1420,7 @@ msgstr ""
 msgid "Restart the terminal and run:"
 msgstr ""
 
-#: src/ch02-01-basic-installation.md:52
-#: src/ch02-02-compile-deploy-interact.md:38
+#: src/ch02-01-basic-installation.md:52 src/ch02-02-compile-deploy-interact.md:38
 msgid ""
 "```bash\n"
 "    scarb --version\n"
@@ -1512,8 +1491,7 @@ msgid ""
 "```bash\n"
 "    ...\n"
 "    --compiler-version <COMPILER_VERSION>\n"
-"              Statically-linked Sierra compiler version [possible values: "
-"[COMPILER VERSIONS]]]\n"
+"              Statically-linked Sierra compiler version [possible values: [COMPILER VERSIONS]]]\n"
 "    ...\n"
 "```"
 msgstr ""
@@ -1553,8 +1531,7 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:58
 msgid ""
 "```bash\n"
-"    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/"
-"install.sh | sh -s -- -v 0.6.1\n"
+"    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.6.1\n"
 "```"
 msgstr ""
 
@@ -1629,8 +1606,7 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:104
 msgid ""
 "```bash\n"
-"    starkli signer keystore from-key ~/.starkli-wallets/deployer/"
-"my_keystore_1.json\n"
+"    starkli signer keystore from-key ~/.starkli-wallets/deployer/my_keystore_1.json\n"
 "    Enter private key:\n"
 "    Enter password:\n"
 "```"
@@ -1686,8 +1662,7 @@ msgid ""
 "3.  **Smart Wallet Address**: Unlike Ethereum, the address here is\n"
 "    influenced by the public key, class hash, and a salt. **[Learn more\n"
 "    in Starknet\n"
-"    Documentation](https://docs.starknet.io/documentation/"
-"architecture_and_concepts/Smart_Contracts/contract-address/)**."
+"    Documentation](https://docs.starknet.io/documentation/architecture_and_concepts/Smart_Contracts/contract-address/)**."
 msgstr ""
 
 #: src/ch02-02-compile-deploy-interact.md:144
@@ -1714,19 +1689,16 @@ msgid ""
 "    \"cipherparams\": {\n"
 "      \"iv\": \"dba5f9a67456b121f3f486aa18e24db7\"\n"
 "    },\n"
-"    \"ciphertext\": "
-"\"b3cda3df39563e3dd61064149d6ed8c9ab5f07fbcd6347625e081fb695ddf36c\",\n"
+"    \"ciphertext\": \"b3cda3df39563e3dd61064149d6ed8c9ab5f07fbcd6347625e081fb695ddf36c\",\n"
 "    \"kdf\": \"scrypt\",\n"
 "    \"kdfparams\": {\n"
 "      \"dklen\": 32,\n"
 "      \"n\": 8192,\n"
 "      \"p\": 1,\n"
 "      \"r\": 8,\n"
-"      \"salt\": "
-"\"6dd5b06b1077ba25a7bf511510ea0c608424c6657dd3ab51b93029244537dffb\"\n"
+"      \"salt\": \"6dd5b06b1077ba25a7bf511510ea0c608424c6657dd3ab51b93029244537dffb\"\n"
 "    },\n"
-"    \"mac\": "
-"\"55e1616d9ddd052864a1ae4207824baac58a6c88798bf28585167a5986585ce6\"\n"
+"    \"mac\": \"55e1616d9ddd052864a1ae4207824baac58a6c88798bf28585167a5986585ce6\"\n"
 "  },\n"
 "  \"id\": \"afbb9007-8f61-4e62-bf14-e491c30fd09a\",\n"
 "  \"version\": 3\n"
@@ -1815,8 +1787,7 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:240
 msgid ""
 "```bash\n"
-"    starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/"
-"deployer/my_account_1.json\n"
+"    starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/my_account_1.json\n"
 "```"
 msgstr ""
 
@@ -1832,8 +1803,7 @@ msgid ""
 "```bash\n"
 "    Account contract type identified as: Braavos\n"
 "    Description: Braavos official proxy account\n"
-"    Downloaded new account config file: ~/.starkli-wallets/deployer/"
-"my_account_1.json\n"
+"    Downloaded new account config file: ~/.starkli-wallets/deployer/my_account_1.json\n"
 "```"
 msgstr ""
 
@@ -1860,25 +1830,21 @@ msgid ""
 "  \"variant\": {\n"
 "    \"type\": \"braavos\",\n"
 "    \"version\": 1,\n"
-"    \"implementation\": "
-"\"0x5dec330eebf36c8672b60db4a718d44762d3ae6d1333e553197acb47ee5a062\",\n"
+"    \"implementation\": \"0x5dec330eebf36c8672b60db4a718d44762d3ae6d1333e553197acb47ee5a062\",\n"
 "    \"multisig\": {\n"
 "      \"status\": \"off\"\n"
 "    },\n"
 "    \"signers\": [\n"
 "      {\n"
 "        \"type\": \"stark\",\n"
-"        \"public_key\": "
-"\"0x49759ed6197d0d385a96f9d8e7af350848b07777e901f5570b3dc2d9744a25e\"\n"
+"        \"public_key\": \"0x49759ed6197d0d385a96f9d8e7af350848b07777e901f5570b3dc2d9744a25e\"\n"
 "      }\n"
 "    ]\n"
 "  },\n"
 "  \"deployment\": {\n"
 "    \"status\": \"deployed\",\n"
-"    \"class_hash\": "
-"\"0x3131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e\",\n"
-"    \"address\": "
-"\"0x6dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821\"\n"
+"    \"class_hash\": \"0x3131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e\",\n"
+"    \"address\": \"0x6dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821\"\n"
 "  }\n"
 "}\n"
 "```"
@@ -1931,8 +1897,7 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:311
 msgid ""
 "To get started, navigate to the `contracts/` directory in the [first\n"
-"chapter](https://github.com/starknet-edu/starknetbook/tree/main/chapters/"
-"book/modules/chapter_1/pages/contracts)\n"
+"chapter](https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages/contracts)\n"
 "of the Starknet Book repo. The `src/lib.cairo` file contains a basic\n"
 "contract to practice with."
 msgstr ""
@@ -1985,8 +1950,7 @@ msgid ""
 "    up an API key and choose an endpoint. For Infura, it would look like\n"
 "    `https://starknet-goerli.infura.io/v3/<API_KEY>`. Learn more in the\n"
 "    [Infura\n"
-"    documentation](https://docs.infura.io/networks/starknet/how-to/choose-a-"
-"network).\n"
+"    documentation](https://docs.infura.io/networks/starknet/how-to/choose-a-network).\n"
 "\n"
 "3.  **Your Own Node**: For those who want full control. It’s the most\n"
 "    complex but offers the most freedom. Check out [Chapter 4 of the\n"
@@ -2003,8 +1967,7 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:356
 msgid ""
 "```bash\n"
-"    export STARKNET_RPC=\"https://starknet-goerli.g.alchemy.com/v2/"
-"<API_KEY>\"\n"
+"    export STARKNET_RPC=\"https://starknet-goerli.g.alchemy.com/v2/<API_KEY>\"\n"
 "```"
 msgstr ""
 
@@ -2058,8 +2021,7 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:387
 msgid ""
 "```bash\n"
-"    Class hash declared: "
-"0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8\n"
+"    Class hash declared: 0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8\n"
 "```"
 msgstr ""
 
@@ -2067,8 +2029,7 @@ msgstr ""
 msgid ""
 "You can think of this hash as the contract class’s _address._ Use a\n"
 "block explorer like\n"
-"[StarkScan](https://testnet.starkscan.co/"
-"class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8)\n"
+"[StarkScan](https://testnet.starkscan.co/class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8)\n"
 "to verify this hash on the blockchain."
 msgstr ""
 
@@ -2108,8 +2069,7 @@ msgstr ""
 msgid ""
 "In our example, the constructor expects an _owner_ address. You can\n"
 "learn more about constructors in \\[Chapter 12 of The Cairo\n"
-"Book\\](<https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?"
-"highlight=constructor#1-constructors>)."
+"Book\\](<https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors>)."
 msgstr ""
 
 #: src/ch02-02-compile-deploy-interact.md:418
@@ -2136,8 +2096,7 @@ msgstr ""
 msgid ""
 "```bash\n"
 "    starkli deploy \\\n"
-"        0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 "
-"\\\n"
+"        0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 \\\n"
 "        0x02cdAb749380950e7a7c0deFf5ea8eDD716fEb3a2952aDd4E5659655077B8510\n"
 "```"
 msgstr ""
@@ -2151,13 +2110,9 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:439
 msgid ""
 "```bash\n"
-"    Deploying class "
-"0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 with salt "
-"0x065034b27a199cbb2a5b97b78a8a6a6c6edd027c7e398b18e5c0e5c0c65246b7...\n"
-"    The contract will be deployed at address "
-"0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012\n"
-"    Contract deployment transaction: "
-"0x0743de1e233d38c4f3e9fb13f1794276f7d4bf44af9eac66e22944ad1fa85f14\n"
+"    Deploying class 0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 with salt 0x065034b27a199cbb2a5b97b78a8a6a6c6edd027c7e398b18e5c0e5c0c65246b7...\n"
+"    The contract will be deployed at address 0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012\n"
+"    Contract deployment transaction: 0x0743de1e233d38c4f3e9fb13f1794276f7d4bf44af9eac66e22944ad1fa85f14\n"
 "    Contract deployed:\n"
 "    0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012\n"
 "```"
@@ -2167,8 +2122,7 @@ msgstr ""
 msgid ""
 "The contract is now live on the Starknet testnet. You can verify its\n"
 "status using a block explorer like\n"
-"[StarkScan](https://testnet.starkscan.co/"
-"contract/0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012).\n"
+"[StarkScan](https://testnet.starkscan.co/contract/0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012).\n"
 "On the \"Read/Write Contract\" tab, you’ll see the contract’s external\n"
 "functions."
 msgstr ""
@@ -2196,8 +2150,7 @@ msgid ""
 "requires no arguments."
 msgstr ""
 
-#: src/ch02-02-compile-deploy-interact.md:466
-#: src/ch02-02-compile-deploy-interact.md:523
+#: src/ch02-02-compile-deploy-interact.md:466 src/ch02-02-compile-deploy-interact.md:523
 msgid ""
 "```bash\n"
 "    starkli call \\\n"
@@ -2255,8 +2208,7 @@ msgstr ""
 #: src/ch02-02-compile-deploy-interact.md:501
 msgid ""
 "```bash\n"
-"    Execution was reverted; failure reason: "
-"[0x43616c6c6572206973206e6f7420746865206f776e6572].\n"
+"    Execution was reverted; failure reason: [0x43616c6c6572206973206e6f7420746865206f776e6572].\n"
 "```"
 msgstr ""
 
@@ -2348,8 +2300,7 @@ msgstr ""
 msgid ""
 "Scarb is cross-platform, supporting macOS, Linux, and Windows. For\n"
 "installation, refer to the [Chapter 1 setup\n"
-"guide](https://book.starknet.io/chapter_1/environment_setup."
-"html#the_scarb_package_manager_installation)."
+"guide](https://book.starknet.io/chapter_1/environment_setup.html#the_scarb_package_manager_installation)."
 msgstr ""
 
 #: src/ch02-03-scarb.md:40
@@ -2467,8 +2418,7 @@ msgid ""
 "    name = \"hello_scarb\"\n"
 "    version = \"0.1.0\"\n"
 "\n"
-"    # See more keys and their definitions at https://docs.swmansion.com/"
-"scarb/docs/reference/manifest.html\n"
+"    # See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html\n"
 "    [dependencies]\n"
 "    # foo = { path = \"vendor/foo\" }"
 msgstr ""
@@ -2533,8 +2483,7 @@ msgid ""
 "`target/dev/hello_scarb.sierra` file. Sierra serves as an intermediate\n"
 "layer between high-level Cairo and compilation targets such as Cairo\n"
 "Assembly (CASM). To understand more about Sierra, check out this\n"
-"[article](https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-"
-"exploring-sierra-7f32808421f5/)."
+"[article](https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-exploring-sierra-7f32808421f5/)."
 msgstr ""
 
 #: src/ch02-03-scarb.md:151
@@ -2567,8 +2516,7 @@ msgstr ""
 #: src/ch02-03-scarb.md:165
 msgid ""
 "[dependencies]\n"
-"    alexandria_math = { git = \"https://github.com/keep-starknet-strange/"
-"alexandria.git\" }"
+"    alexandria_math = { git = \"https://github.com/keep-starknet-strange/alexandria.git\" }"
 msgstr ""
 
 #: src/ch02-03-scarb.md:168
@@ -2581,8 +2529,7 @@ msgstr ""
 #: src/ch02-03-scarb.md:172
 msgid ""
 "[dependencies]\n"
-"    alexandria_math = { git = \"https://github.com/keep-starknet-strange/"
-"alexandria.git\", rev = \"81bb93c\" }"
+"    alexandria_math = { git = \"https://github.com/keep-starknet-strange/alexandria.git\", rev = \"81bb93c\" }"
 msgstr ""
 
 #: src/ch02-03-scarb.md:175
@@ -2600,9 +2547,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-03-scarb.md:182
-msgid ""
-"$ scarb add alexandria_math --git https://github.com/keep-starknet-strange/"
-"alexandria.git"
+msgid "$ scarb add alexandria_math --git https://github.com/keep-starknet-strange/alexandria.git"
 msgstr ""
 
 #: src/ch02-03-scarb.md:184
@@ -2696,28 +2641,19 @@ msgid ""
 "Happy coding!"
 msgstr ""
 
-#: src/ch02-03-scarb.md:239 src/ch02-07-starknet-js.md:174
-#: src/ch02-08-starknet-react.md:395 src/ch03-00-architecture.md:264
-#: src/ch03-02-sequencers.md:254 src/ch03-03-provers.md:233
-#: src/ch03-04-nodes.md:439 src/ch04-00-account-abstraction.md:297
-#: src/ch04-01-accounts.md:116 src/ch04-02-hello-account.md:199
-#: src/ch04-03-standard-account.md:370 src/ch04-04-01-multicaller.md:91
-#: src/ch04-04-02-multisig.md:412
+#: src/ch02-03-scarb.md:239 src/ch02-07-starknet-js.md:174 src/ch02-08-starknet-react.md:395 src/ch03-00-architecture.md:264 src/ch03-02-sequencers.md:254
+#: src/ch03-03-provers.md:233 src/ch03-04-nodes.md:439 src/ch04-00-account-abstraction.md:297 src/ch04-01-accounts.md:116 src/ch04-02-hello-account.md:199
+#: src/ch04-03-standard-account.md:370 src/ch04-04-01-multicaller.md:91 src/ch04-04-02-multisig.md:412
 msgid "The Book is a community-driven effort created for the community."
 msgstr ""
 
-#: src/ch02-03-scarb.md:241 src/ch02-07-starknet-js.md:176
-#: src/ch02-08-starknet-react.md:397 src/ch03-00-architecture.md:266
-#: src/ch03-02-sequencers.md:256 src/ch03-03-provers.md:235
-#: src/ch03-04-nodes.md:441 src/ch04-00-account-abstraction.md:299
-#: src/ch04-01-accounts.md:118 src/ch04-02-hello-account.md:201
-#: src/ch04-03-standard-account.md:372 src/ch04-04-01-multicaller.md:93
-#: src/ch04-04-02-multisig.md:414
+#: src/ch02-03-scarb.md:241 src/ch02-07-starknet-js.md:176 src/ch02-08-starknet-react.md:397 src/ch03-00-architecture.md:266 src/ch03-02-sequencers.md:256
+#: src/ch03-03-provers.md:235 src/ch03-04-nodes.md:441 src/ch04-00-account-abstraction.md:299 src/ch04-01-accounts.md:118 src/ch04-02-hello-account.md:201
+#: src/ch04-03-standard-account.md:372 src/ch04-04-01-multicaller.md:93 src/ch04-04-02-multisig.md:414
 msgid ""
 "- If you’ve learned something, or not, please take a moment to provide\n"
 "  feedback through [this 3-question\n"
-"  survey](https://a.sprig.com/"
-"WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).\n"
+"  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).\n"
 "\n"
 "- If you discover any errors or have additional suggestions, don’t\n"
 "  hesitate to open an [issue on our GitHub\n"
@@ -2856,26 +2792,17 @@ msgid ""
 "    PREFUNDED ACCOUNTS\n"
 "    ==================\n"
 "\n"
-"    | Account address |  "
-"0x03ee9e18edc71a6df30ac3aca2e0b02a198fbce19b7480a63a0d71cbd76652e0\n"
-"    | Private key     |  "
-"0x0300001800000000300000180000000000030000000000003006001800006600\n"
-"    | Public key      |  "
-"0x01b7b37a580d91bc3ad4f9933ed61f3a395e0e51c9dd5553323b8ca3942bb44e\n"
+"    | Account address |  0x03ee9e18edc71a6df30ac3aca2e0b02a198fbce19b7480a63a0d71cbd76652e0\n"
+"    | Private key     |  0x0300001800000000300000180000000000030000000000003006001800006600\n"
+"    | Public key      |  0x01b7b37a580d91bc3ad4f9933ed61f3a395e0e51c9dd5553323b8ca3942bb44e\n"
 "\n"
-"    | Account address |  "
-"0x033c627a3e5213790e246a917770ce23d7e562baa5b4d2917c23b1be6d91961c\n"
-"    | Private key     |  "
-"0x0333803103001800039980190300d206608b0070db0012135bd1fb5f6282170b\n"
-"    | Public key      |  "
-"0x04486e2308ef3513531042acb8ead377b887af16bd4cdd8149812dfef1ba924d\n"
+"    | Account address |  0x033c627a3e5213790e246a917770ce23d7e562baa5b4d2917c23b1be6d91961c\n"
+"    | Private key     |  0x0333803103001800039980190300d206608b0070db0012135bd1fb5f6282170b\n"
+"    | Public key      |  0x04486e2308ef3513531042acb8ead377b887af16bd4cdd8149812dfef1ba924d\n"
 "\n"
-"    | Account address |  "
-"0x01d98d835e43b032254ffbef0f150c5606fa9c5c9310b1fae370ab956a7919f5\n"
-"    | Private key     |  "
-"0x07ca856005bee0329def368d34a6711b2d95b09ef9740ebf2c7c7e3b16c1ca9c\n"
-"    | Public key      |  "
-"0x07006c42b1cfc8bd45710646a0bb3534b182e83c313c7bc88ecf33b53ba4bcbc\n"
+"    | Account address |  0x01d98d835e43b032254ffbef0f150c5606fa9c5c9310b1fae370ab956a7919f5\n"
+"    | Private key     |  0x07ca856005bee0329def368d34a6711b2d95b09ef9740ebf2c7c7e3b16c1ca9c\n"
+"    | Public key      |  0x07006c42b1cfc8bd45710646a0bb3534b182e83c313c7bc88ecf33b53ba4bcbc\n"
 "\n"
 "\n"
 "    ACCOUNTS SEED\n"
@@ -2931,9 +2858,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-starknet-js.md:9
-msgid ""
-"<img alt=\"Starknet-js in your dapp\" src=\"img/ch02-starknet-js.png\" "
-"class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Starknet-js in your dapp\" src=\"img/ch02-starknet-js.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch02-07-starknet-js.md:11
@@ -2948,10 +2873,8 @@ msgstr ""
 msgid "- For the latest official release (main branch):"
 msgstr ""
 
-#: src/ch02-07-starknet-js.md:19 src/ch02-07-starknet-js.md:25
-#: src/ch04-02-hello-account.md:156 src/ch04-02-hello-account.md:165
-#: src/ch04-02-hello-account.md:174 src/ch04-03-standard-account.md:305
-#: src/ch04-03-standard-account.md:314
+#: src/ch02-07-starknet-js.md:19 src/ch02-07-starknet-js.md:25 src/ch04-02-hello-account.md:156 src/ch04-02-hello-account.md:165 src/ch04-02-hello-account.md:174
+#: src/ch04-03-standard-account.md:305 src/ch04-03-standard-account.md:314
 msgid "<!-- -->"
 msgstr ""
 
@@ -3026,9 +2949,8 @@ msgstr ""
 
 #: src/ch02-07-starknet-js.md:64
 msgid ""
-"The snippet above uses the `connect` function provided by `get-starknet` to "
-"establish a connection to the user wallet. Once connected, we are able to "
-"access account methods, such as `signMessage` or `execute`."
+"The snippet above uses the `connect` function provided by `get-starknet` to establish a connection to the user wallet. Once connected, we are able to access account methods, "
+"such as `signMessage` or `execute`."
 msgstr ""
 
 #: src/ch02-07-starknet-js.md:66
@@ -3080,14 +3002,11 @@ msgstr ""
 #: src/ch02-07-starknet-js.md:97
 msgid ""
 "```ts\n"
-"const contract = new Contract(abi_erc20, contractAddress, starknet."
-"account);\n"
+"const contract = new Contract(abi_erc20, contractAddress, starknet.account);\n"
 "\n"
 "const balance = await contract.balanceOf(starknet.account.address);\n"
-"const transfer = await contract.transfer(recipientAddress, "
-"amountFormatted);\n"
-"//or: const transfer = await contract.invoke(\"transfer\", [to, "
-"amountFormatted]);\n"
+"const transfer = await contract.transfer(recipientAddress, amountFormatted);\n"
+"//or: const transfer = await contract.invoke(\"transfer\", [to, amountFormatted]);\n"
 "\n"
 "console.log(`Tx hash: ${transfer.transaction_hash}`);\n"
 "```"
@@ -3205,10 +3124,8 @@ msgstr ""
 
 #: src/ch02-07-01-examples.md:3
 msgid ""
-"In this subchapter, readers will find practical examples demonstrating the "
-"usage of both `starknet-js` and `starknet-react`. It provides insight into "
-"real-world applications and serves as a guide for developers to understand "
-"and implement these tools effectively."
+"In this subchapter, readers will find practical examples demonstrating the usage of both `starknet-js` and `starknet-react`. It provides insight into real-world applications "
+"and serves as a guide for developers to understand and implement these tools effectively."
 msgstr ""
 
 #: src/ch02-07-01-examples.md:5
@@ -3222,9 +3139,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-examples.md:10
-msgid ""
-"Your insights and feedback are instrumental in making this resource more "
-"comprehensive and accurate."
+msgid "Your insights and feedback are instrumental in making this resource more comprehensive and accurate."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:1
@@ -3232,10 +3147,7 @@ msgid "# ERC-20 UI"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:3
-msgid ""
-"This guide offers steps to build an ERC20 smart contract using Cairo and to "
-"incorporate it within a React web application with Starknet React. Readers "
-"will:"
+msgid "This guide offers steps to build an ERC20 smart contract using Cairo and to incorporate it within a React web application with Starknet React. Readers will:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:5
@@ -3248,27 +3160,20 @@ msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:10
 msgid ""
-"A prerequisite for this guide is a foundational understanding of both the "
-"Cairo programming language and ReactJS. Additionally, ensure Node.js and NPM "
-"are installed on the system."
+"A prerequisite for this guide is a foundational understanding of both the Cairo programming language and ReactJS. Additionally, ensure Node.js and NPM are installed on the "
+"system."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:12
-msgid ""
-"The example will walk through creating an ERC20 token named MKT and crafting "
-"a web3 interface for functionalities such as balance verification and token "
-"transfer."
+msgid "The example will walk through creating an ERC20 token named MKT and crafting a web3 interface for functionalities such as balance verification and token transfer."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:14
-msgid ""
-"<img alt=\"Basic Dapp ERC20\" src=\"img/ch02-basic-dapp-screenshot.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Basic Dapp ERC20\" src=\"img/ch02-basic-dapp-screenshot.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:17
-msgid ""
-"Throughout this guide, the following tools and libraries will be utilized:"
+msgid "Throughout this guide, the following tools and libraries will be utilized:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:19
@@ -3288,8 +3193,7 @@ msgid "## Initiating a New Starknet Project"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:30
-msgid ""
-"Begin by establishing a new Starknet project named \"erc20\" using Scarb:"
+msgid "Begin by establishing a new Starknet project named \"erc20\" using Scarb:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:32
@@ -3302,9 +3206,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:38
-msgid ""
-"Subsequently, update the Scarb.toml to include the essential OpenZeppelin "
-"libraries. Post edits, the Scarb.toml should appear as:"
+msgid "Subsequently, update the Scarb.toml to include the essential OpenZeppelin libraries. Post edits, the Scarb.toml should appear as:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:40
@@ -3314,13 +3216,11 @@ msgid ""
 "name = \"erc20\"\n"
 "version = \"0.1.0\"\n"
 "\n"
-"# For more keys and definitions, visit https://docs.swmansion.com/scarb/docs/"
-"reference/manifest.html\n"
+"# For more keys and definitions, visit https://docs.swmansion.com/scarb/docs/reference/manifest.html\n"
 "\n"
 "[dependencies]\n"
 "starknet = \">=2.2.0\"\n"
-"openzeppelin = { git = \"https://github.com/OpenZeppelin-contracts.git\", "
-"tag = \"v0.7.0\" }\n"
+"openzeppelin = { git = \"https://github.com/OpenZeppelin-contracts.git\", tag = \"v0.7.0\" }\n"
 "\n"
 "[[target.starknet-contract]]\n"
 "```"
@@ -3331,9 +3231,7 @@ msgid "## Implementing the ERC20 Token"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:56
-msgid ""
-"Begin by creating a new file named `src/erc20.cairo`. In this file, the "
-"ERC20 token named MKT, along with its associated functions, will be defined:"
+msgid "Begin by creating a new file named `src/erc20.cairo`. In this file, the ERC20 token named MKT, along with its associated functions, will be defined:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:58
@@ -3358,21 +3256,18 @@ msgid ""
 "\n"
 "        let mut unsafe_state = ERC20::unsafe_new_contract_state();\n"
 "        ERC20::InternalImpl::initializer(ref unsafe_state, name, symbol);\n"
-"        ERC20::InternalImpl::_mint(ref unsafe_state, recipient, "
-"initial_supply);\n"
+"        ERC20::InternalImpl::_mint(ref unsafe_state, recipient, initial_supply);\n"
 "    }\n"
 "\n"
 "    #[external(v0)]\n"
 "    #[generate_trait]\n"
 "    impl Ierc20Impl of Ierc20 {\n"
-"        fn balance_of(self: @ContractState, account: ContractAddress) -> "
-"u256 {\n"
+"        fn balance_of(self: @ContractState, account: ContractAddress) -> u256 {\n"
 "            let unsafe_state = ERC20::unsafe_new_contract_state();\n"
 "            ERC20::ERC20Impl::balance_of(@unsafe_state, account)\n"
 "        }\n"
 "\n"
-"        fn transfer(ref self: ContractState, recipient: ContractAddress, "
-"amount: u256) -> bool {\n"
+"        fn transfer(ref self: ContractState, recipient: ContractAddress, amount: u256) -> bool {\n"
 "            let mut unsafe_state = ERC20::unsafe_new_contract_state();\n"
 "            ERC20::ERC20Impl::transfer(ref unsafe_state, recipient, amount)\n"
 "        }\n"
@@ -3382,9 +3277,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:97
-msgid ""
-"<img alt=\"Basic Dapp ERC20\" src=\"img/ch02-basic-dapp-erc20.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Basic Dapp ERC20\" src=\"img/ch02-basic-dapp-erc20.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:99
@@ -3399,17 +3292,13 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:105
-msgid ""
-"Subsequent to the compilation, declare the smart contract on the Starknet "
-"testnet:"
+msgid "Subsequent to the compilation, declare the smart contract on the Starknet testnet:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:108
 msgid ""
 "```bash\n"
-"starkli declare target/dev/erc20_erc20.sierra.json --account ../../demo-"
-"account.json --keystore ../../demo-key.json --compiler-version 2.1.0 --"
-"network goerli-1 --watch\n"
+"starkli declare target/dev/erc20_erc20.sierra.json --account ../../demo-account.json --keystore ../../demo-key.json --compiler-version 2.1.0 --network goerli-1 --watch\n"
 "```"
 msgstr ""
 
@@ -3421,27 +3310,21 @@ msgstr ""
 msgid ""
 "```bash\n"
 "Enter keystore password: \n"
-"Declaring Cairo 1 class: "
-"0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713\n"
+"Declaring Cairo 1 class: 0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713\n"
 "... [shortened for brevity]\n"
-"Class hash declared: "
-"0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713\n"
+"Class hash declared: 0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713\n"
 "```"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:121
-msgid ""
-"In cases where no modifications have been made to the provided contract, a "
-"notification will indicate that the contract has previously been declared on "
-"Starknet:"
+msgid "In cases where no modifications have been made to the provided contract, a notification will indicate that the contract has previously been declared on Starknet:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:123
 msgid ""
 "```bash\n"
 "Enter keystore password: \n"
-"Not declaring class as it's already declared. Class hash: "
-"0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713\n"
+"Not declaring class as it's already declared. Class hash: 0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713\n"
 "```"
 msgstr ""
 
@@ -3450,30 +3333,21 @@ msgid "## Deploying the ERC20 Contract"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:130
-msgid ""
-"Proceed to deploy the MKT Token using Starkli. Provide these arguments for "
-"successful deployment:"
+msgid "Proceed to deploy the MKT Token using Starkli. Provide these arguments for successful deployment:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:132
 msgid ""
-"- `Initial mint`: Mint 1,000,000 tokens. Given that the MKT token comprises "
-"18 decimals (a standard of OpenZeppelin), the input required is 1,000,000 * "
-"10^18 or 0xd3c21bcecceda1000000. Due to the contract's expectation of a u256 "
-"mint value, provide both low and high values: 0xd3c21bcecceda1000000 and 0 "
-"respectively.\n"
-"- `Receiver address`: Use a preferred address. In this example: "
-"0x0334863e3e851de87fb4b6b6113aa2a6b40ea20f22dbec55536e4eac912206fc"
+"- `Initial mint`: Mint 1,000,000 tokens. Given that the MKT token comprises 18 decimals (a standard of OpenZeppelin), the input required is 1,000,000 * 10^18 or "
+"0xd3c21bcecceda1000000. Due to the contract's expectation of a u256 mint value, provide both low and high values: 0xd3c21bcecceda1000000 and 0 respectively.\n"
+"- `Receiver address`: Use a preferred address. In this example: 0x0334863e3e851de87fb4b6b6113aa2a6b40ea20f22dbec55536e4eac912206fc"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:135
 msgid ""
 "```bash\n"
-"starkli deploy "
-"0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713 --"
-"account ../../demo-account.json --keystore ../../demo-key.json --network "
-"goerli-1 --watch 0xd3c21bcecceda1000000 0 "
-"0x0334863e3e851de87fb4b6b6113aa2a6b40ea20f22dbec55536e4eac912206fc\n"
+"starkli deploy 0x04940154eae35788e899ceb0ef2794eaa5ea6818af5c1c726d6d278fd4979713 --account ../../demo-account.json --keystore ../../demo-key.json --network goerli-1 --watch "
+"0xd3c21bcecceda1000000 0 0x0334863e3e851de87fb4b6b6113aa2a6b40ea20f22dbec55536e4eac912206fc\n"
 "```"
 msgstr ""
 
@@ -3482,22 +3356,18 @@ msgid ""
 "```bash\n"
 "Enter keystore password: \n"
 "... [shortened for brevity]\n"
-"Contract deployed: "
-"0x001892d81e09cb2c2005f0112891dacb92a6f8ce571edd03ed1f3e549abcf37f\n"
+"Contract deployed: 0x001892d81e09cb2c2005f0112891dacb92a6f8ce571edd03ed1f3e549abcf37f\n"
 "```"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:147
 msgid ""
-"NOTE: The deployed address received will differ for every user. Retain this "
-"address, as it will replace instances in subsequent TypeScript files to "
-"match the specific contract address."
+"NOTE: The deployed address received will differ for every user. Retain this address, as it will replace instances in subsequent TypeScript files to match the specific "
+"contract address."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:149
-msgid ""
-"Well done! The Cairo ERC20 smart contract has been deployed successfully on "
-"Starknet."
+msgid "Well done! The Cairo ERC20 smart contract has been deployed successfully on Starknet."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:151
@@ -3505,9 +3375,7 @@ msgid "## Installing the Starknet React Library"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:153
-msgid ""
-"With the contract in place, initiate the development of the web application. "
-"Begin by incorporating the Starknet React library:"
+msgid "With the contract in place, initiate the development of the web application. Begin by incorporating the Starknet React library:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:155
@@ -3529,9 +3397,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:165
-msgid ""
-"The output should display the installed version, such as `@starknet-react/"
-"core@1.0.4`."
+msgid "The output should display the installed version, such as `@starknet-react/core@1.0.4`."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:167
@@ -3539,9 +3405,7 @@ msgid "## Setting Up a New React Project"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:169
-msgid ""
-"Starknet React library provides the `create-starknet` script that "
-"streamlines the setup of a Starknet application using TypeScript:"
+msgid "Starknet React library provides the `create-starknet` script that streamlines the setup of a Starknet application using TypeScript:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:171
@@ -3552,9 +3416,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:175
-msgid ""
-"Once set up, make modifications to `erc20_web/index.tsx` by replacing its "
-"content with the following code:"
+msgid "Once set up, make modifications to `erc20_web/index.tsx` by replacing its content with the following code:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:177
@@ -3574,10 +3436,8 @@ msgid ""
 "    <>\n"
 "      <Head>\n"
 "        <title>Create Starknet</title>\n"
-"        <meta name=\"description\" content=\"Generated by create-starknet\" /"
-">\n"
-"        <meta name=\"viewport\" content=\"width=device-width, initial-"
-"scale=1\" />\n"
+"        <meta name=\"description\" content=\"Generated by create-starknet\" />\n"
+"        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n"
 "        <link rel=\"icon\" href=\"/favicon.ico\" />\n"
 "      </Head>\n"
 "      <main>\n"
@@ -3612,9 +3472,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:221
-msgid ""
-"NOTE: Observe the server port that appears during launch. This will be "
-"useful for subsequent testing."
+msgid "NOTE: Observe the server port that appears during launch. This will be useful for subsequent testing."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:224
@@ -3622,16 +3480,11 @@ msgid "## Enhancing Your React Application with Additional Features"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:226
-msgid ""
-"To enhance the app's functionality, create two components for balance and "
-"transfer. Subsequently, update the `Wallet.tsx` file to incorporate the new "
-"features:"
+msgid "To enhance the app's functionality, create two components for balance and transfer. Subsequently, update the `Wallet.tsx` file to incorporate the new features:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:228
-msgid ""
-"<img alt=\"Basic Dapp ERC20 React Files\" src=\"img/ch02-basic-dapp-react-"
-"files.png\" class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Basic Dapp ERC20 React Files\" src=\"img/ch02-basic-dapp-react-files.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:231
@@ -3639,9 +3492,7 @@ msgid "### Balance Component"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:232
-msgid ""
-"Design a balance component inside `components/Balance.tsx` and integrate the "
-"following code:"
+msgid "Design a balance component inside `components/Balance.tsx` and integrate the following code:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:234
@@ -3653,8 +3504,7 @@ msgid ""
 "function Balance() {\n"
 "  const { address } = useAccount();\n"
 "  const { data, isLoading, error, refetch } = useContractRead({\n"
-"    address: "
-"'0x001892d81e09cb2c2005f0112891dacb92a6f8ce571edd03ed1f3e549abcf37f',\n"
+"    address: '0x001892d81e09cb2c2005f0112891dacb92a6f8ce571edd03ed1f3e549abcf37f',\n"
 "    abi: erc20ABI,\n"
 "    functionName: 'balance_of',\n"
 "    args: [address],\n"
@@ -3687,9 +3537,7 @@ msgid "### Transfer Component"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:268
-msgid ""
-"Craft a transfer component in `components/Transfer.tsx` and embed the "
-"subsequent code:"
+msgid "Craft a transfer component in `components/Transfer.tsx` and embed the subsequent code:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:270
@@ -3706,8 +3554,7 @@ msgid ""
 "  \n"
 "    const calls = useMemo(() => {\n"
 "      const tx = {\n"
-"        contractAddress: "
-"'0x001892d81e09cb2c2005f0112891dacb92a6f8ce571edd03ed1f3e549abcf37f',\n"
+"        contractAddress: '0x001892d81e09cb2c2005f0112891dacb92a6f8ce571edd03ed1f3e549abcf37f',\n"
 "        entrypoint: 'transfer',\n"
 "        calldata: [recipient, amount, 0]\n"
 "      };\n"
@@ -3721,13 +3568,11 @@ msgid ""
 "        <p>Transfer:</p>\n"
 "        <p>\n"
 "          Recipient:\n"
-"          <input type=\"text\" value={recipient} onChange={(e) => "
-"setRecipient(e.target.value)} />\n"
+"          <input type=\"text\" value={recipient} onChange={(e) => setRecipient(e.target.value)} />\n"
 "        </p>\n"
 "        <p>\n"
 "          Amount (default: 1 MKT with 18 decimals):\n"
-"          <input type=\"number\" value={amount} onChange={(e) => setAmount(e."
-"target.value)} />\n"
+"          <input type=\"number\" value={amount} onChange={(e) => setAmount(e.target.value)} />\n"
 "        </p>\n"
 "        <p><button onClick={() => write()}>Execute Transfer</button></p>\n"
 "        <hr/>\n"
@@ -3740,8 +3585,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:311
-msgid ""
-"NOTE: Replace contractAddress with the address of your deployed contract."
+msgid "NOTE: Replace contractAddress with the address of your deployed contract."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:314
@@ -3749,9 +3593,7 @@ msgid "### Updating the Wallet Component"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:316
-msgid ""
-"Proceed to modify the `components/Wallet.tsx` file. Replace any existing "
-"content with the following enhanced code:"
+msgid "Proceed to modify the `components/Wallet.tsx` file. Replace any existing content with the following enhanced code:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:318
@@ -3808,9 +3650,7 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:368
-msgid ""
-"This updated code refines the Wallet component to offer a more interactive "
-"experience for users intending to connect or manage their wallets."
+msgid "This updated code refines the Wallet component to offer a more interactive experience for users intending to connect or manage their wallets."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:371
@@ -3818,50 +3658,36 @@ msgid "## Finalizing the MKT Token Application"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:373
-msgid ""
-"To finalize the application setup, we need the ABI file for the MKT token. "
-"Follow the steps below to generate and integrate it:"
+msgid "To finalize the application setup, we need the ABI file for the MKT token. Follow the steps below to generate and integrate it:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:375
 msgid ""
 "1. At the root of your project, create a new directory named `assets/`.\n"
-"2. Inside the `assets/` directory, create an empty JSON file named `erc20."
-"json`.\n"
-"3. Go back to your ERC20 Cairo project folder and locate the `erc20/target/"
-"erc20_erc20_sierra.json` file."
+"2. Inside the `assets/` directory, create an empty JSON file named `erc20.json`.\n"
+"3. Go back to your ERC20 Cairo project folder and locate the `erc20/target/erc20_erc20_sierra.json` file."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:379
-msgid ""
-"<img alt=\"ABI Original\" src=\"img/ch02-basic-dapp-abi.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"ABI Original\" src=\"img/ch02-basic-dapp-abi.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:381
-msgid ""
-"4. Extract the ABI definition (ensuring you include the square brackets) and "
-"integrate it into the previously created `assets/erc20.json` file."
+msgid "4. Extract the ABI definition (ensuring you include the square brackets) and integrate it into the previously created `assets/erc20.json` file."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:383
-msgid ""
-"<img alt=\"ABI Updated\" src=\"img/ch02-basic-dapp-abi-new.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"ABI Updated\" src=\"img/ch02-basic-dapp-abi-new.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:385
 msgid ""
-"Well done! The basic MKT token application is now operational locally. "
-"Access it via `http://localhost:3000` or the port noted from earlier server "
-"setup. The app allows users to connect their wallets, review their balances, "
-"and perform token transfers."
+"Well done! The basic MKT token application is now operational locally. Access it via `http://localhost:3000` or the port noted from earlier server setup. The app allows "
+"users to connect their wallets, review their balances, and perform token transfers."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:387
-msgid ""
-"<img alt=\"Localhost\" src=\"img/ch02-basic-dapp-localhost.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Localhost\" src=\"img/ch02-basic-dapp-localhost.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:390
@@ -3870,9 +3696,7 @@ msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:392
 msgid ""
-"To share your application with friends and allow them to check their "
-"balances and transfer tokens, publish your app online. Vercel offers a "
-"straightforward way to do this:"
+"To share your application with friends and allow them to check their balances and transfer tokens, publish your app online. Vercel offers a straightforward way to do this:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:394
@@ -3906,23 +3730,18 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:411
-msgid ""
-"After entering your email, check your inbox and click on the \"Verify\" "
-"button."
+msgid "After entering your email, check your inbox and click on the \"Verify\" button."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:413
 msgid ""
-"<img alt=\"Vercel login\" src=\"img/ch02-basic-dapp-vercel-login.png\" "
-"class=\"center\" style=\"width: 75%;\" />\n"
+"<img alt=\"Vercel login\" src=\"img/ch02-basic-dapp-vercel-login.png\" class=\"center\" style=\"width: 75%;\" />\n"
 "\n"
-"<img alt=\"Vercel verify\" src=\"img/ch02-basic-dapp-vercel-verify.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+"<img alt=\"Vercel verify\" src=\"img/ch02-basic-dapp-vercel-verify.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:418
-msgid ""
-"On successful verification, you'll receive a confirmation in the console."
+msgid "On successful verification, you'll receive a confirmation in the console."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:420
@@ -3959,15 +3778,11 @@ msgid ""
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:438
-msgid ""
-"Congratulations! Your MKT token web3 application is now accessible to "
-"everyone."
+msgid "Congratulations! Your MKT token web3 application is now accessible to everyone."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:440
-msgid ""
-"<img alt=\"Vercel publication\" src=\"img/ch02-basic-dapp-pub1.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Vercel publication\" src=\"img/ch02-basic-dapp-pub1.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:442
@@ -3979,9 +3794,7 @@ msgid "* Connecting your wallet:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:446
-msgid ""
-"<img alt=\"Vercel publication 2\" src=\"img/ch02-basic-dapp-pub2.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Vercel publication 2\" src=\"img/ch02-basic-dapp-pub2.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:448
@@ -3989,9 +3802,7 @@ msgid "* Checking your balance:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:450
-msgid ""
-"<img alt=\"Vercel publication 3\" src=\"img/ch02-basic-dapp-pub3.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Vercel publication 3\" src=\"img/ch02-basic-dapp-pub3.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:452
@@ -3999,9 +3810,7 @@ msgid "* Transferring tokens:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:454
-msgid ""
-"<img alt=\"Vercel publication 4\" src=\"img/ch02-basic-dapp-pub4.png\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Vercel publication 4\" src=\"img/ch02-basic-dapp-pub4.png\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:456
@@ -4010,40 +3819,29 @@ msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:458
 msgid ""
-"Throughout this tutorial, you've walked through the steps to craft a web3 "
-"application using React and Starknet Cairo. This application, complete with "
-"an ERC20 smart contract, offers a modern web interface for user interaction. "
-"Here's a snapshot of your achievements:"
+"Throughout this tutorial, you've walked through the steps to craft a web3 application using React and Starknet Cairo. This application, complete with an ERC20 smart "
+"contract, offers a modern web interface for user interaction. Here's a snapshot of your achievements:"
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:460
 msgid ""
-"- **Project Initialization**: Set up a Starknet project with Scarb and "
-"incorporated OpenZeppelin libraries.\n"
+"- **Project Initialization**: Set up a Starknet project with Scarb and incorporated OpenZeppelin libraries.\n"
 "  \n"
-"- **Crafting the ERC20 Contract**: Developed an ERC20 token using Cairo, "
-"enriched with functionalities like balance checks and token transfers. This "
-"was then compiled and launched on the Starknet network.\n"
+"- **Crafting the ERC20 Contract**: Developed an ERC20 token using Cairo, enriched with functionalities like balance checks and token transfers. This was then compiled and "
+"launched on the Starknet network.\n"
 "\n"
-"- **React Application**: Built a React application powered by Starknet "
-"React, featuring components dedicated to balance inquiries and token "
-"transactions.\n"
+"- **React Application**: Built a React application powered by Starknet React, featuring components dedicated to balance inquiries and token transactions.\n"
 "\n"
-"- **ABI Creation**: Produced the ABI for the MKT token, a critical component "
-"to liaise with the contract.\n"
+"- **ABI Creation**: Produced the ABI for the MKT token, a critical component to liaise with the contract.\n"
 "\n"
-"- **Online Deployment**: Brought your application to a wider audience by "
-"deploying it on Vercel. This empowered users to connect their wallets, "
-"scrutinize their balances, and execute token transactions."
+"- **Online Deployment**: Brought your application to a wider audience by deploying it on Vercel. This empowered users to connect their wallets, scrutinize their balances, "
+"and execute token transactions."
 msgstr ""
 
 #: src/ch02-07-01-00-erc20-ui.md:470
 msgid ""
-"The insights you've gathered from this tutorial lay a solid groundwork for "
-"creating intricate web3 applications. You're now equipped with the prowess "
-"to craft more intricate decentralized applications and smart contracts. The "
-"vast expanse of decentralized finance and blockchain is ripe for your "
-"innovative inputs. Dive in and happy coding!"
+"The insights you've gathered from this tutorial lay a solid groundwork for creating intricate web3 applications. You're now equipped with the prowess to craft more intricate "
+"decentralized applications and smart contracts. The vast expanse of decentralized finance and blockchain is ripe for your innovative inputs. Dive in and happy coding!"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:1
@@ -4052,32 +3850,23 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:3
 msgid ""
-"[Starknet Homepage](https://github.com/dbejarano820/starknet_homepage) is a "
-"decentralized application on the Starknet blockchain. It provides a virtual "
-"space where users can claim and personalize sections of a 100x100 grid, "
-"known as \"Starknet Homepage\". Each section is a 10x10 pixel area. Users "
-"can acquire these sections by minting non-fungible tokens (NFTs) and then "
-"personalizing them with images and other content."
+"[Starknet Homepage](https://github.com/dbejarano820/starknet_homepage) is a decentralized application on the Starknet blockchain. It provides a virtual space where users can "
+"claim and personalize sections of a 100x100 grid, known as \"Starknet Homepage\". Each section is a 10x10 pixel area. Users can acquire these sections by minting non-"
+"fungible tokens (NFTs) and then personalizing them with images and other content."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:5
-msgid ""
-"View the live app on testnet [here](https://starknet-homepage-kappa.vercel."
-"app/)."
+msgid "View the live app on testnet [here](https://starknet-homepage-kappa.vercel.app/)."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:7
-msgid ""
-"<img alt=\"homepage\" src=\"img/ch02-starknet-homepage.jpg\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"homepage\" src=\"img/ch02-starknet-homepage.jpg\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:9
 msgid ""
-"This initiative is an adaptation of the renowned Million Dollar Homepage and "
-"was conceived at the Starknet Summit 2023 Hacker House in Palo Alto, "
-"California. The following is a guide to understanding how this project was "
-"developed using the available tools in the ecosystem."
+"This initiative is an adaptation of the renowned Million Dollar Homepage and was conceived at the Starknet Summit 2023 Hacker House in Palo Alto, California. The following "
+"is a guide to understanding how this project was developed using the available tools in the ecosystem."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:11
@@ -4088,8 +3877,7 @@ msgstr ""
 msgid ""
 "- [Starknet-react](https://github.com/apibara/starknet-react)\n"
 "- [Starknet.js](https://github.com/0xs34n/starknet.js)\n"
-"- [OpenZeppelin Cairo Contracts](https://github.com/OpenZeppelin/cairo-"
-"contracts)\n"
+"- [OpenZeppelin Cairo Contracts](https://github.com/OpenZeppelin/cairo-contracts)\n"
 "- [MaterialUI](https://mui.com/material-ui/)"
 msgstr ""
 
@@ -4098,9 +3886,7 @@ msgid "## Initial Setup"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:20
-msgid ""
-"The `Starknet-react` app offers a command to initialize a Starknet app. This "
-"command sets up the foundational structure needed for a NextJS application."
+msgid "The `Starknet-react` app offers a command to initialize a Starknet app. This command sets up the foundational structure needed for a NextJS application."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:22
@@ -4112,10 +3898,8 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:26
 msgid ""
-"The `StarknetConfig` component accepts a `connectors` prop, which defines "
-"wallet connection options for the user. Additionally, it can take a "
-"`defaultProvider` to set the network the application should connect to by "
-"default."
+"The `StarknetConfig` component accepts a `connectors` prop, which defines wallet connection options for the user. Additionally, it can take a `defaultProvider` to set the "
+"network the application should connect to by default."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:28
@@ -4146,10 +3930,8 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:51
 msgid ""
-"Both `CacheProvider` and `ThemeProvider` are components that facilitate the "
-"seamless integration of MaterialUI with NextJS. For a comprehensive setup "
-"guide on these components, please refer to [this link](https://blog."
-"logrocket.com/getting-started-with-mui-and-next-js/)."
+"Both `CacheProvider` and `ThemeProvider` are components that facilitate the seamless integration of MaterialUI with NextJS. For a comprehensive setup guide on these "
+"components, please refer to [this link](https://blog.logrocket.com/getting-started-with-mui-and-next-js/)."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:53
@@ -4158,12 +3940,9 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:55
 msgid ""
-"The core functionality of the Starknet Homepage centers around selecting a 4-"
-"sided region on a matrix, representing the desired 10x10 cells, and minting "
-"a token based on those cells. The responsibility of the smart contract is to "
-"validate whether the selected cells are available for minting. If a user "
-"owns Starknet Homepage tokens, they can access a dropdown to modify the "
-"token's content, including the associated image and link on the grid."
+"The core functionality of the Starknet Homepage centers around selecting a 4-sided region on a matrix, representing the desired 10x10 cells, and minting a token based on "
+"those cells. The responsibility of the smart contract is to validate whether the selected cells are available for minting. If a user owns Starknet Homepage tokens, they can "
+"access a dropdown to modify the token's content, including the associated image and link on the grid."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:57
@@ -4182,22 +3961,19 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:66
 msgid ""
-"A significant aspect to consider is the string limitation in Cairo "
-"contracts. To store links of varying sizes, they are stored as arrays of "
-"`felt252`s. The contract uses the following logic for this purpose:"
+"A significant aspect to consider is the string limitation in Cairo contracts. To store links of varying sizes, they are stored as arrays of `felt252`s. The contract uses the "
+"following logic for this purpose:"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:68
 msgid ""
 "```rust\n"
 "impl StoreFelt252Array of Store<Array<felt252>> {\n"
-"    fn read(address_domain: u32, base: StorageBaseAddress) -> "
-"SyscallResult<Array<felt252>> {\n"
+"    fn read(address_domain: u32, base: StorageBaseAddress) -> SyscallResult<Array<felt252>> {\n"
 "        StoreFelt252Array::read_at_offset(address_domain, base, 0)\n"
 "    }\n"
 "    fn write(\n"
-"        address_domain: u32, base: StorageBaseAddress, value: "
-"Array<felt252>\n"
+"        address_domain: u32, base: StorageBaseAddress, value: Array<felt252>\n"
 "    ) -> SyscallResult<()> {\n"
 "        StoreFelt252Array::write_at_offset(address_domain, base, 0, value)\n"
 "    }\n"
@@ -4205,44 +3981,36 @@ msgid ""
 "        address_domain: u32, base: StorageBaseAddress, mut offset: u8\n"
 "    ) -> SyscallResult<Array<felt252>> {\n"
 "        let mut arr: Array<felt252> = ArrayTrait::new();\n"
-"        // Read the stored array's length. If the length is superior to 255, "
-"the read will fail.\n"
-"        let len: u8 = Store::<u8>::read_at_offset(address_domain, base, "
-"offset)\n"
+"        // Read the stored array's length. If the length is superior to 255, the read will fail.\n"
+"        let len: u8 = Store::<u8>::read_at_offset(address_domain, base, offset)\n"
 "            .expect('Storage Span too large');\n"
 "\n"
 "        offset += 1;\n"
 "\n"
-"        // Sequentially read all stored elements and append them to the "
-"array.\n"
+"        // Sequentially read all stored elements and append them to the array.\n"
 "        let exit = len + offset;\n"
 "        loop {\n"
 "            if offset >= exit {\n"
 "                break;\n"
 "            }\n"
-"            let value = Store::<felt252>::read_at_offset(address_domain, "
-"base, offset).unwrap();\n"
+"            let value = Store::<felt252>::read_at_offset(address_domain, base, offset).unwrap();\n"
 "            arr.append(value);\n"
 "            offset += Store::<felt252>::size();\n"
 "        };\n"
 "        Result::Ok(arr)\n"
 "    }\n"
 "    fn write_at_offset(\n"
-"        address_domain: u32, base: StorageBaseAddress, mut offset: u8, mut "
-"value: Array<felt252>\n"
+"        address_domain: u32, base: StorageBaseAddress, mut offset: u8, mut value: Array<felt252>\n"
 "    ) -> SyscallResult<()> {\n"
-"        // // Store the length of the array in the first storage slot. 255 "
-"of elements is max\n"
-"        let len: u8 = value.len().try_into().expect('Storage - Span too "
-"large');\n"
+"        // // Store the length of the array in the first storage slot. 255 of elements is max\n"
+"        let len: u8 = value.len().try_into().expect('Storage - Span too large');\n"
 "        Store::<u8>::write_at_offset(address_domain, base, offset, len);\n"
 "        offset += 1;\n"
 "        // Store the array elements sequentially\n"
 "        loop {\n"
 "            match value.pop_front() {\n"
 "                Option::Some(element) => {\n"
-"                    Store::<felt252>::write_at_offset(address_domain, base, "
-"offset, element);\n"
+"                    Store::<felt252>::write_at_offset(address_domain, base, offset, element);\n"
 "                    offset += Store::<felt252>::size();\n"
 "                },\n"
 "                Option::None => {\n"
@@ -4279,12 +4047,9 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:140
 msgid ""
-"The OpenZeppelin Cairo Contracts library played a crucial role in speeding "
-"up the development of the ERC721 contract for Starknet Homepage. You can "
-"find the contract for review [here](https://github.com/dbejarano820/"
-"starknet_homepage/blob/main/cairo_contracts/src/ERC721.cairo). Once you have "
-"installed the library, you can refer to the following example for typical "
-"usage:"
+"The OpenZeppelin Cairo Contracts library played a crucial role in speeding up the development of the ERC721 contract for Starknet Homepage. You can find the contract for "
+"review [here](https://github.com/dbejarano820/starknet_homepage/blob/main/cairo_contracts/src/ERC721.cairo). Once you have installed the library, you can refer to the "
+"following example for typical usage:"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:142
@@ -4306,8 +4071,7 @@ msgid ""
 "        let symbol = 'MTK';\n"
 "        let mut unsafe_state = ERC20::unsafe_new_contract_state();\n"
 "        ERC20::InternalImpl::initializer(ref unsafe_state, name, symbol);\n"
-"        ERC20::InternalImpl::_mint(ref unsafe_state, recipient, "
-"initial_supply);\n"
+"        ERC20::InternalImpl::_mint(ref unsafe_state, recipient, initial_supply);\n"
 "    }\n"
 "    #[external(v0)]\n"
 "    fn name(self: @ContractState) -> felt252 {\n"
@@ -4329,11 +4093,8 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:174
 msgid ""
-"The Grid component represents a 100x100 matrix, with each cell being 100 "
-"pixels. This layout corresponds to the data structure found in the smart "
-"contract. To showcase the tokens already minted on the Homepage, the app "
-"employs a React Hook from `starknet-react` to invoke the `getAllTokens` "
-"function from the contract."
+"The Grid component represents a 100x100 matrix, with each cell being 100 pixels. This layout corresponds to the data structure found in the smart contract. To showcase the "
+"tokens already minted on the Homepage, the app employs a React Hook from `starknet-react` to invoke the `getAllTokens` function from the contract."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:176
@@ -4359,9 +4120,8 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:194
 msgid ""
-"Deserialization ensures the data from the Starknet contract is aptly "
-"transformed for frontend use. This process involves decoding the array of "
-"`felt252`s into extensive strings."
+"Deserialization ensures the data from the Starknet contract is aptly transformed for frontend use. This process involves decoding the array of `felt252`s into extensive "
+"strings."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:196
@@ -4384,16 +4144,12 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:211
 msgid ""
-"Furthermore, the Grid component manages the cell selection process, leading "
-"to the minting of a corresponding token. Once an area is chosen, a modal "
-"appears displaying the mint details and other necessary inputs for the call "
-"data. The intricacies of the multicall will be addressed subsequently."
+"Furthermore, the Grid component manages the cell selection process, leading to the minting of a corresponding token. Once an area is chosen, a modal appears displaying the "
+"mint details and other necessary inputs for the call data. The intricacies of the multicall will be addressed subsequently."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:213
-msgid ""
-"<img alt=\"Wallets\" src=\"img/ch02-starknet-homepage-select.jpg\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Wallets\" src=\"img/ch02-starknet-homepage-select.jpg\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:215
@@ -4401,22 +4157,15 @@ msgid "#### Modals"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:217
-msgid ""
-"Modals offer a convenient means to present varied functionalities within the "
-"app, such as wallet connection, token minting, and token editing."
+msgid "Modals offer a convenient means to present varied functionalities within the app, such as wallet connection, token minting, and token editing."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:219
-msgid ""
-"<img alt=\"Wallets\" src=\"img/ch02-starknet-homepage-wallets.jpg\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"Wallets\" src=\"img/ch02-starknet-homepage-wallets.jpg\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:221
-msgid ""
-"A recognized best practice is to invoke the React hook for shared "
-"information at a top-level, ensuring components like the `WalletBar` remain "
-"streamlined and focused."
+msgid "A recognized best practice is to invoke the React hook for shared information at a top-level, ensuring components like the `WalletBar` remain streamlined and focused."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:223
@@ -4434,10 +4183,8 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:233
 msgid ""
-"Below, the `WalletConnected` function displays the connected wallet's "
-"address, while the `ConnectWallet` function allows users to select and "
-"connect their wallet. The `WalletBar` function renders the appropriate modal "
-"based on the connection status."
+"Below, the `WalletConnected` function displays the connected wallet's address, while the `ConnectWallet` function allows users to select and connect their wallet. The "
+"`WalletBar` function renders the appropriate modal based on the connection status."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:235
@@ -4483,8 +4230,7 @@ msgid ""
 "        <DialogTitle>Connect to a wallet</DialogTitle>\n"
 "        <DialogContent>\n"
 "          <DialogContentText>\n"
-"            <Grid container direction=\"column\" alignItems=\"flex-start\" "
-"gap={1}>\n"
+"            <Grid container direction=\"column\" alignItems=\"flex-start\" gap={1}>\n"
 "              {connectors.map((connector) => (\n"
 "                <ConnectWalletButton\n"
 "                  key={connector.id}\n"
@@ -4521,8 +4267,7 @@ msgid ""
 "}: {\n"
 "  account: string | undefined;\n"
 "}) {\n"
-"  return account ? <WalletConnected address={account} /> : <ConnectWallet /"
-">;\n"
+"  return account ? <WalletConnected address={account} /> : <ConnectWallet />;\n"
 "}\n"
 "```"
 msgstr ""
@@ -4533,10 +4278,8 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:319
 msgid ""
-"The dropdown component is dedicated to showcasing the tokens associated with "
-"the currently connected wallet. To retrieve these tokens, a transaction like "
-"the one shown below can be executed. The sole argument for this function is "
-"the contract address of the intended owner."
+"The dropdown component is dedicated to showcasing the tokens associated with the currently connected wallet. To retrieve these tokens, a transaction like the one shown below "
+"can be executed. The sole argument for this function is the contract address of the intended owner."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:321
@@ -4562,17 +4305,13 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:337
 msgid ""
-"The provided code offers an illustration of a multicall, specifically to "
-"approve a transaction for the mint price transfer followed by the actual "
-"minting action. Notably, the `shortString` module from `starknet.js` plays a "
-"pivotal role; it encodes and segments a lengthy string into an array of "
-"`felt252`s, the expected argument type for the contract on Starknet."
+"The provided code offers an illustration of a multicall, specifically to approve a transaction for the mint price transfer followed by the actual minting action. Notably, "
+"the `shortString` module from `starknet.js` plays a pivotal role; it encodes and segments a lengthy string into an array of `felt252`s, the expected argument type for the "
+"contract on Starknet."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:339
-msgid ""
-"The `useContractWrite` is a Hook dedicated to executing a Starknet "
-"multicall, which can be employed for a singular transaction or multiple ones."
+msgid "The `useContractWrite` is a Hook dedicated to executing a Starknet multicall, which can be employed for a singular transaction or multiple ones."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:341
@@ -4611,17 +4350,12 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:372
 msgid ""
-"Another crucial aspect to point out is the `calldata` of the approve "
-"function for the ether transfer: calldata: "
-"`[STARKNET_HOMEPAGE_ERC721_ADDRESS, '${price}', \"0\"],`. The amount "
-"argument is split into two parts because it's a `u256`, which is composed of "
-"two separate `felt252` values."
+"Another crucial aspect to point out is the `calldata` of the approve function for the ether transfer: calldata: `[STARKNET_HOMEPAGE_ERC721_ADDRESS, '${price}', \"0\"],`. The "
+"amount argument is split into two parts because it's a `u256`, which is composed of two separate `felt252` values."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:374
-msgid ""
-"Once the multicall is prepared, the next step is to initiate the function "
-"and sign the transaction using the connected wallet."
+msgid "Once the multicall is prepared, the next step is to initiate the function and sign the transaction using the connected wallet."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:376
@@ -4650,24 +4384,17 @@ msgid "### Conditional Multicall for Token Editing"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:396
-msgid ""
-"Another instructive illustration of a conditional multicall setup is the "
-"modal used to modify the data associated with a token."
+msgid "Another instructive illustration of a conditional multicall setup is the modal used to modify the data associated with a token."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:398
-msgid ""
-"<img alt=\"homepage\" src=\"img/ch02-starknet-homepage-edit.jpg\" "
-"class=\"center\" style=\"width: 75%;\" />"
+msgid "<img alt=\"homepage\" src=\"img/ch02-starknet-homepage-edit.jpg\" class=\"center\" style=\"width: 75%;\" />"
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:400
 msgid ""
-"There are scenarios where the user may wish to alter just one attribute of "
-"the token, rather than both. Consequently, a conditional multicall "
-"configuration becomes necessary. It's essential to recall that the token id "
-"in the Cairo contract is defined as a `u256`, implying it comprises two "
-"`felt252` values."
+"There are scenarios where the user may wish to alter just one attribute of the token, rather than both. Consequently, a conditional multicall configuration becomes "
+"necessary. It's essential to recall that the token id in the Cairo contract is defined as a `u256`, implying it comprises two `felt252` values."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:402
@@ -4707,24 +4434,18 @@ msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:432
 msgid ""
-"- **Grid Component**: Represents a 100x100 matrix, allowing users to select "
-"cells and mint corresponding tokens. It fetches existing tokens using the "
-"`getAllTokens` function from the contract and displays them.\n"
-"- **Modals**: Serve as the user interface for actions like wallet "
-"connection, token minting, and token editing.\n"
-"- **Token Dropdown**: Displays tokens associated with a connected wallet. It "
-"retrieves these tokens using the `getTokensByOwner` function.\n"
-"- **Multicall Contract Interaction**: Enables token minting and editing. "
-"This process utilizes conditional multicalls based on user preferences, "
-"especially for editing token attributes."
+"- **Grid Component**: Represents a 100x100 matrix, allowing users to select cells and mint corresponding tokens. It fetches existing tokens using the `getAllTokens` function "
+"from the contract and displays them.\n"
+"- **Modals**: Serve as the user interface for actions like wallet connection, token minting, and token editing.\n"
+"- **Token Dropdown**: Displays tokens associated with a connected wallet. It retrieves these tokens using the `getTokensByOwner` function.\n"
+"- **Multicall Contract Interaction**: Enables token minting and editing. This process utilizes conditional multicalls based on user preferences, especially for editing token "
+"attributes."
 msgstr ""
 
 #: src/ch02-07-01-01-million-dollar-homepage.md:437
 msgid ""
-"Throughout the platform, string limitations in Cairo contracts require "
-"encoding lengthy strings into arrays of `felt252`s. The OpenZeppelin Cairo "
-"Contracts library significantly expedites the development of the ERC721 "
-"contract for the Starknet Homepage."
+"Throughout the platform, string limitations in Cairo contracts require encoding lengthy strings into arrays of `felt252`s. The OpenZeppelin Cairo Contracts library "
+"significantly expedites the development of the ERC721 contract for the Starknet Homepage."
 msgstr ""
 
 #: src/ch02-08-starknet-react.md:1
@@ -4932,8 +4653,7 @@ msgstr ""
 #: src/ch02-08-starknet-react.md:139
 msgid ""
 "const { data, isError, isLoading, status } = useStarkName({ address });\n"
-"    // You can track the status of the request with the status variable "
-"('idle' | 'error' | 'loading' | 'success')\n"
+"    // You can track the status of the request with the status variable ('idle' | 'error' | 'loading' | 'success')\n"
 "\n"
 "    if (isLoading) return <p>Loading...</p>\n"
 "    return <p>Account: {isError ? address : data}</p>"
@@ -4959,8 +4679,7 @@ msgstr ""
 
 #: src/ch02-08-starknet-react.md:155
 msgid ""
-"const { data, isLoading, isError } = useAddressFromStarkName({ name: "
-"'vitalik.stark' })\n"
+"const { data, isLoading, isError } = useAddressFromStarkName({ name: 'vitalik.stark' })\n"
 "\n"
 "    if (isLoading) return <p>Loading...</p>\n"
 "    if (isError) return <p>Something went wrong</p>\n"
@@ -4998,8 +4717,7 @@ msgid ""
 "    }\n"
 "\n"
 "    return (\n"
-"        <p>Current block: {isFetching ? \"Loading...\" : data?.block_number}"
-"<p>\n"
+"        <p>Current block: {isFetching ? \"Loading...\" : data?.block_number}<p>\n"
 "    )"
 msgstr ""
 
@@ -5316,10 +5034,8 @@ msgstr ""
 
 #: src/ch02-11-foundry-forge.md:3
 msgid ""
-"[Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) is a tool "
-"designed for testing and developing Starknet contracts. It is an adaptation "
-"of the Ethereum Foundry for Starknet, aiming to expedite the development "
-"process."
+"[Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) is a tool designed for testing and developing Starknet contracts. It is an adaptation of the Ethereum "
+"Foundry for Starknet, aiming to expedite the development process."
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:5
@@ -5328,14 +5044,10 @@ msgstr ""
 
 #: src/ch02-11-foundry-forge.md:7
 msgid ""
-"- **Forge**: A testing tool specifically for Cairo contracts. This tool acts "
-"as a test runner and boasts features designed to enhance your testing "
-"process. Tests are written directly in Cairo, eliminating the need for other "
-"programming languages. Additionally, the Forge implementation uses Rust, "
-"mirroring Ethereum Foundry's choice of language.\n"
-"- **Cast**: This serves as a DevOps tool for StarkNet, initially supporting "
-"a series of commands to interface with StarkNet. In the future, Cast aims to "
-"offer deployment scripts for contracts and other DevOps functions."
+"- **Forge**: A testing tool specifically for Cairo contracts. This tool acts as a test runner and boasts features designed to enhance your testing process. Tests are written "
+"directly in Cairo, eliminating the need for other programming languages. Additionally, the Forge implementation uses Rust, mirroring Ethereum Foundry's choice of language.\n"
+"- **Cast**: This serves as a DevOps tool for StarkNet, initially supporting a series of commands to interface with StarkNet. In the future, Cast aims to offer deployment "
+"scripts for contracts and other DevOps functions."
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:10
@@ -5344,17 +5056,14 @@ msgstr ""
 
 #: src/ch02-11-foundry-forge.md:12
 msgid ""
-"Merely deploying contracts is not the end game. Many tools have offered this "
-"capability in the past. Forge sets itself apart by hosting a Cairo VM "
-"instance, enabling the sequential execution of tests. It employs Scarb for "
-"contract compilation."
+"Merely deploying contracts is not the end game. Many tools have offered this capability in the past. Forge sets itself apart by hosting a Cairo VM instance, enabling the "
+"sequential execution of tests. It employs Scarb for contract compilation."
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:14
 msgid ""
-"To utilize Forge, define test functions and label them with test attributes. "
-"Users can either test standalone Cairo functions or integrate contracts, "
-"dispatchers, and test contract interactions on-chain."
+"To utilize Forge, define test functions and label them with test attributes. Users can either test standalone Cairo functions or integrate contracts, dispatchers, and test "
+"contract interactions on-chain."
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:1
@@ -5363,11 +5072,8 @@ msgstr ""
 
 #: src/ch02-12-foundry-cast.md:3
 msgid ""
-"While Forge handles testing, Cast focuses on the Command Line Interface "
-"(CLI) for StarkNet. This straightforward tool, written in Rust, leverages "
-"StarkNet Rust for its operations and is also integrated with Scarb. This "
-"integration permits the specification of arguments in Scarb Toml, "
-"simplifying the overall process."
+"While Forge handles testing, Cast focuses on the Command Line Interface (CLI) for StarkNet. This straightforward tool, written in Rust, leverages StarkNet Rust for its "
+"operations and is also integrated with Scarb. This integration permits the specification of arguments in Scarb Toml, simplifying the overall process."
 msgstr ""
 
 #: src/ch03-00-architecture.md:1
@@ -5407,9 +5113,7 @@ msgid ""
 msgstr ""
 
 #: src/ch03-00-architecture.md:24
-msgid ""
-"<img alt=\"Starknet Architecture\" src=\"img/ch03-architecture.png\" "
-"class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Starknet Architecture\" src=\"img/ch03-architecture.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch03-00-architecture.md:26
@@ -5780,11 +5484,8 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:3
 msgid ""
-"A transaction's journey in Starknet, from its inception to finality, "
-"comprises a series of carefully orchestrated steps. Each stage plays a "
-"crucial role in ensuring data is accurately transmitted, processed, and "
-"stored within the network. In this chapter, we explore the lifecycle of a "
-"Starknet transaction."
+"A transaction's journey in Starknet, from its inception to finality, comprises a series of carefully orchestrated steps. Each stage plays a crucial role in ensuring data is "
+"accurately transmitted, processed, and stored within the network. In this chapter, we explore the lifecycle of a Starknet transaction."
 msgstr ""
 
 #: src/ch03-01-transactions.md:5
@@ -5793,11 +5494,8 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:7
 msgid ""
-"Every transaction's journey commences with its preparation. The sender "
-"queries the nonce of their account, serving as a unique identifier for each "
-"transaction, signs the transaction, and dispatches it to their Node. It's "
-"critical to understand the sender must be online during this process to "
-"access real-time data."
+"Every transaction's journey commences with its preparation. The sender queries the nonce of their account, serving as a unique identifier for each transaction, signs the "
+"transaction, and dispatches it to their Node. It's critical to understand the sender must be online during this process to access real-time data."
 msgstr ""
 
 #: src/ch03-01-transactions.md:9
@@ -5813,18 +5511,14 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:17
 msgid ""
-"The Node, analogous to a post office, receives the transaction and "
-"broadcasts it on the Starknet network, primarily to the Sequencer. As the "
-"network evolves, the transaction will be broadcasted to multiple Sequencers."
+"The Node, analogous to a post office, receives the transaction and broadcasts it on the Starknet network, primarily to the Sequencer. As the network evolves, the transaction "
+"will be broadcasted to multiple Sequencers."
 msgstr ""
 
 #: src/ch03-01-transactions.md:19
 msgid ""
-"It is worth mentioning that before broadcasting the transaction to the "
-"Sequencer, the gateways perform some validations, such as checking that the "
-"max fee exceeds a minimum fee and the account's balance is greater than the "
-"max fee. The transaction will be saved in the storage if the validation "
-"function passes."
+"It is worth mentioning that before broadcasting the transaction to the Sequencer, the gateways perform some validations, such as checking that the max fee exceeds a minimum "
+"fee and the account's balance is greater than the max fee. The transaction will be saved in the storage if the validation function passes."
 msgstr ""
 
 #: src/ch03-01-transactions.md:21
@@ -5832,9 +5526,7 @@ msgid "## Reception and Processing: The Sequencer's Role"
 msgstr ""
 
 #: src/ch03-01-transactions.md:23
-msgid ""
-"On receiving the transaction, the Sequencer acknowledges its receipt but "
-"hasn't processed it yet—similar to Ethereum's mempool state."
+msgid "On receiving the transaction, the Sequencer acknowledges its receipt but hasn't processed it yet—similar to Ethereum's mempool state."
 msgstr ""
 
 #: src/ch03-01-transactions.md:25
@@ -5851,11 +5543,8 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:34
 msgid ""
-"It's crucial to remember the sequentiality of transaction processing in "
-"Starknet: the nonce won't update until the Sequencer processes your "
-"transaction. This aspect could become a hurdle when building backend "
-"applications, as sending multiple transactions consecutively may result in "
-"confusion or errors."
+"It's crucial to remember the sequentiality of transaction processing in Starknet: the nonce won't update until the Sequencer processes your transaction. This aspect could "
+"become a hurdle when building backend applications, as sending multiple transactions consecutively may result in confusion or errors."
 msgstr ""
 
 #: src/ch03-01-transactions.md:36
@@ -5864,18 +5553,15 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:38
 msgid ""
-"When the Sequencer validates and executes a transaction, it immediately "
-"updates the state without waiting for the block emission. The transaction "
-"status changes from 'received' to 'accepted on L2' at this stage."
+"When the Sequencer validates and executes a transaction, it immediately updates the state without waiting for the block emission. The transaction status changes from "
+"'received' to 'accepted on L2' at this stage."
 msgstr ""
 
 #: src/ch03-01-transactions.md:40
 msgid ""
-"Following the state update, the transaction is included in a block. However, "
-"the block isn't emitted immediately. The Sequencer decides the opportune "
-"moment to emit the block, either when there are enough transactions to form "
-"a block or after a certain time has passed. When the block is emitted, the "
-"block becomes available for other Nodes to query."
+"Following the state update, the transaction is included in a block. However, the block isn't emitted immediately. The Sequencer decides the opportune moment to emit the "
+"block, either when there are enough transactions to form a block or after a certain time has passed. When the block is emitted, the block becomes available for other Nodes "
+"to query."
 msgstr ""
 
 #: src/ch03-01-transactions.md:42
@@ -5888,18 +5574,13 @@ msgid ""
 msgstr ""
 
 #: src/ch03-01-transactions.md:48
-msgid ""
-"If a transaction fails during execution, it will be included in the block "
-"with the status 'reverted'."
+msgid "If a transaction fails during execution, it will be included in the block with the status 'reverted'."
 msgstr ""
 
 #: src/ch03-01-transactions.md:50
 msgid ""
-"It's essential to remember that at this stage, no proof has been generated, "
-"and the transaction relies on L2 consensus for security against censorship. "
-"There remains a slim possibility of transaction reversal if all Sequencers "
-"collude. Therefore, these stages should be seen as different layers of "
-"transaction finality."
+"It's essential to remember that at this stage, no proof has been generated, and the transaction relies on L2 consensus for security against censorship. There remains a slim "
+"possibility of transaction reversal if all Sequencers collude. Therefore, these stages should be seen as different layers of transaction finality."
 msgstr ""
 
 #: src/ch03-01-transactions.md:52
@@ -5908,13 +5589,9 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:54
 msgid ""
-"The final step in the transaction's lifecycle is its acceptance on Layer-1 "
-"(L1). A Prover receives the block containing the transaction, re-executes "
-"the block, generates a proof, and sends it to Ethereum. Specifically, the "
-"proof is sent to a smart contract on Ethereum called the Verifier smart "
-"contract, which checks the proof's validity. If valid, the transaction's "
-"status changes to 'accepted on L1', signifying the transaction's security by "
-"Ethereum consensus."
+"The final step in the transaction's lifecycle is its acceptance on Layer-1 (L1). A Prover receives the block containing the transaction, re-executes the block, generates a "
+"proof, and sends it to Ethereum. Specifically, the proof is sent to a smart contract on Ethereum called the Verifier smart contract, which checks the proof's validity. If "
+"valid, the transaction's status changes to 'accepted on L1', signifying the transaction's security by Ethereum consensus."
 msgstr ""
 
 #: src/ch03-01-transactions.md:56
@@ -5932,17 +5609,12 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:64
 msgid ""
-"Transaction finality refers to the point at which a transaction is "
-"considered irreversible and is no longer susceptible to being reversed or "
-"undone. It's the assurance that once a transaction is committed, it can't be "
-"altered or rolled back, hence securing the integrity of the transaction and "
-"the system as a whole."
+"Transaction finality refers to the point at which a transaction is considered irreversible and is no longer susceptible to being reversed or undone. It's the assurance that "
+"once a transaction is committed, it can't be altered or rolled back, hence securing the integrity of the transaction and the system as a whole."
 msgstr ""
 
 #: src/ch03-01-transactions.md:66
-msgid ""
-"Let's dive into the transaction finality in both Starknet and Ethereum, and "
-"how they compare."
+msgid "Let's dive into the transaction finality in both Starknet and Ethereum, and how they compare."
 msgstr ""
 
 #: src/ch03-01-transactions.md:68
@@ -5951,19 +5623,15 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:70
 msgid ""
-"Ethereum operates on a Proof of Stake (PoS) consensus mechanism. A "
-"transaction has the finality status when it is part of a block that can't "
-"change without a significant amount of ETH getting burned. The number of "
-"blocks required to ensure that a transaction won't be rolled back is called "
-"'blocks to finality', and the time to create those blocks is called 'time to "
-"finality'."
+"Ethereum operates on a Proof of Stake (PoS) consensus mechanism. A transaction has the finality status when it is part of a block that can't change without a significant "
+"amount of ETH getting burned. The number of blocks required to ensure that a transaction won't be rolled back is called 'blocks to finality', and the time to create those "
+"blocks is called 'time to finality'."
 msgstr ""
 
 #: src/ch03-01-transactions.md:72
 msgid ""
-"It is considered to be an average of 6 blocks to reach the finality status; "
-"given that a new block is validated each 12 seconds, the average time to "
-"finality for a transaction is 75 seconds."
+"It is considered to be an average of 6 blocks to reach the finality status; given that a new block is validated each 12 seconds, the average time to finality for a "
+"transaction is 75 seconds."
 msgstr ""
 
 #: src/ch03-01-transactions.md:74
@@ -5972,23 +5640,17 @@ msgstr ""
 
 #: src/ch03-01-transactions.md:76
 msgid ""
-"Starknet, a Layer-2 (L2) solution on Ethereum, has a two-step transaction "
-"finality process. The first step is when the transaction gets accepted on "
-"Layer-2 (Starknet), and the second step is when the transaction gets "
-"accepted on Layer-1 (Ethereum)."
+"Starknet, a Layer-2 (L2) solution on Ethereum, has a two-step transaction finality process. The first step is when the transaction gets accepted on Layer-2 (Starknet), and "
+"the second step is when the transaction gets accepted on Layer-1 (Ethereum)."
 msgstr ""
 
 #: src/ch03-01-transactions.md:78
 msgid ""
-"- Accepted on L2: When a transaction is processed by the Sequencer and "
-"included in a block on Starknet, it reaches L2 finality. However, this "
-"finality relies on the L2 consensus and comes with a slight risk of "
-"collusion among Sequencers leading to transaction reversal.\n"
-"- Accepted on L1: The absolute finality comes when the block containing the "
-"transaction gets a proof generated, the proof is validated by the Verifier "
-"contract on Ethereum, and the state is updated on Ethereum. At this point, "
-"the transaction is as secure as the Ethereum's PoW consensus can provide, "
-"meaning it becomes computationally infeasible to alter or reverse."
+"- Accepted on L2: When a transaction is processed by the Sequencer and included in a block on Starknet, it reaches L2 finality. However, this finality relies on the L2 "
+"consensus and comes with a slight risk of collusion among Sequencers leading to transaction reversal.\n"
+"- Accepted on L1: The absolute finality comes when the block containing the transaction gets a proof generated, the proof is validated by the Verifier contract on Ethereum, "
+"and the state is updated on Ethereum. At this point, the transaction is as secure as the Ethereum's PoW consensus can provide, meaning it becomes computationally infeasible "
+"to alter or reverse."
 msgstr ""
 
 #: src/ch03-01-transactions.md:81
@@ -5996,17 +5658,13 @@ msgid "### Comparison"
 msgstr ""
 
 #: src/ch03-01-transactions.md:83
-msgid ""
-"The main difference between Ethereum and Starknet's transaction finality "
-"lies in the stages of finality and their reliance on consensus mechanisms."
+msgid "The main difference between Ethereum and Starknet's transaction finality lies in the stages of finality and their reliance on consensus mechanisms."
 msgstr ""
 
 #: src/ch03-01-transactions.md:85
 msgid ""
-"- Ethereum's transaction finality becomes increasingly unlikely to be "
-"reversed as more blocks are added.\n"
-"- Starknet's finality process is two-fold. The initial finality (L2) is "
-"quicker but relies on L2 consensus"
+"- Ethereum's transaction finality becomes increasingly unlikely to be reversed as more blocks are added.\n"
+"- Starknet's finality process is two-fold. The initial finality (L2) is quicker but relies on L2 consensus"
 msgstr ""
 
 #: src/ch03-02-sequencers.md:1
@@ -6081,9 +5739,7 @@ msgid ""
 msgstr ""
 
 #: src/ch03-02-sequencers.md:50
-msgid ""
-"<img alt=\"Sequencer role in the Starknet network\" src=\"img/ch03-sequencer."
-"png\" class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Sequencer role in the Starknet network\" src=\"img/ch03-sequencer.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch03-02-sequencers.md:52
@@ -6098,8 +5754,7 @@ msgstr ""
 msgid ""
 "Let’s delve into Sequencers by focusing on\n"
 "[Madara](https://github.com/keep-starknet-strange/madara) and\n"
-"[Kraken](https://github.com/lambdaclass/starknet_stack/tree/main/"
-"sequencer),\n"
+"[Kraken](https://github.com/lambdaclass/starknet_stack/tree/main/sequencer),\n"
 "two high-performance Starknet Sequencers. A Sequencer must, at least, do\n"
 "two things: order and execute transactions."
 msgstr ""
@@ -6151,8 +5806,7 @@ msgid ""
 "<th style=\"text-align: left;\"><a\n"
 "href=\"https://github.com/keep-starknet-strange/madara\">Madara</a></th>\n"
 "<th style=\"text-align: left;\"><a\n"
-"href=\"https://github.com/lambdaclass/starknet_stack/tree/main/"
-"sequencer\">Kraken</a></th>\n"
+"href=\"https://github.com/lambdaclass/starknet_stack/tree/main/sequencer\">Kraken</a></th>\n"
 "</tr>\n"
 "</thead>\n"
 "<tbody>\n"
@@ -6182,8 +5836,7 @@ msgid ""
 "<td style=\"text-align: left;\"><p><strong>Execution\n"
 "Crates</strong></p></td>\n"
 "<td style=\"text-align: left;\"><p><a\n"
-"href=\"https://github.com/starkware-libs/blockifier/tree/main\">Blockifier</"
-"a>,\n"
+"href=\"https://github.com/starkware-libs/blockifier/tree/main\">Blockifier</a>,\n"
 "Starknet_in_rust</p></td>\n"
 "<td style=\"text-align: left;\"><p>Starknet_in_rust</p></td>\n"
 "</tr>\n"
@@ -6217,8 +5870,7 @@ msgid ""
 "\n"
 "- [Cairo Native](https://github.com/lambdaclass/cairo_native) stands\n"
 "  out by converting Cairo’s Sierra code to MLIR. See an example\n"
-"  [here](https://github.com/lambdaclass/cairo_native/blob/main/examples/"
-"erc20.rs)."
+"  [here](https://github.com/lambdaclass/cairo_native/blob/main/examples/erc20.rs)."
 msgstr ""
 
 #: src/ch03-02-sequencers.md:160
@@ -6292,9 +5944,7 @@ msgid ""
 msgstr ""
 
 #: src/ch03-02-sequencers.md:208
-msgid ""
-"<img alt=\"Centralized rollup\" src=\"img/ch03-centralized-rollup.png\" "
-"class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Centralized rollup\" src=\"img/ch03-centralized-rollup.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch03-02-sequencers.md:210
@@ -6695,8 +6345,7 @@ msgid ""
 "operates on top of Ethereum Layer 1, creating a protocol stack that each\n"
 "addresses different functionalities, similar to the OSI model for\n"
 "internet connections. This chapter is an edit of\n"
-"[drspacemn](https://medium.com/starknet-edu/the-starknet-"
-"stack-7b0d70a7e1d4)'s\n"
+"[drspacemn](https://medium.com/starknet-edu/the-starknet-stack-7b0d70a7e1d4)'s\n"
 "blog."
 msgstr ""
 
@@ -6777,9 +6426,7 @@ msgid ""
 msgstr ""
 
 #: src/ch03-04-nodes.md:64
-msgid ""
-"<img alt=\"Modular blockchain layers\" src=\"img/ch03-modular-blockcahain-"
-"layers.png\" class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Modular blockchain layers\" src=\"img/ch03-modular-blockcahain-layers.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch03-04-nodes.md:66
@@ -6795,8 +6442,7 @@ msgid ""
 "There are various hardware specifications, including packaged options,\n"
 "that will enable you to run an Ethereum node from home. The goal here is\n"
 "to build the most cost-efficient Starknet stack possible ([see here more\n"
-"options](https://github.com/rocket-pool/docs.rocketpool.net/blob/main/src/"
-"guides/node/local/hardware.md))."
+"options](https://github.com/rocket-pool/docs.rocketpool.net/blob/main/src/guides/node/local/hardware.md))."
 msgstr ""
 
 #: src/ch03-04-nodes.md:75
@@ -6915,8 +6561,7 @@ msgid ""
 "    docker container logs -f $(docker ps | grep besu | awk '{print $1}')\n"
 "\n"
 "    # tail lighthouse logs\n"
-"    docker container logs -f $(docker ps | grep lighthouse | awk '{print "
-"$1}')"
+"    docker container logs -f $(docker ps | grep lighthouse | awk '{print $1}')"
 msgstr ""
 
 #: src/ch03-04-nodes.md:152
@@ -7018,8 +6663,7 @@ msgstr ""
 
 #: src/ch03-04-nodes.md:225
 msgid ""
-"# check goerli etherscan to make sure you have the latest block https://"
-"goerli.etherscan.io\n"
+"# check goerli etherscan to make sure you have the latest block https://goerli.etherscan.io\n"
 "\n"
 "    curl --location --request POST 'http://localhost:8545' \\\n"
 "    --header 'Content-Type: application/json' \\\n"
@@ -7055,8 +6699,7 @@ msgid "To follow the sync:"
 msgstr ""
 
 #: src/ch03-04-nodes.md:249
-msgid ""
-"docker container logs -f $(docker ps | grep pathfinder | awk '{print $1}')"
+msgid "docker container logs -f $(docker ps | grep pathfinder | awk '{print $1}')"
 msgstr ""
 
 #: src/ch03-04-nodes.md:251
@@ -7119,8 +6762,7 @@ msgstr ""
 #: src/ch03-04-nodes.md:287
 msgid ""
 "To start our toy\n"
-"[indexer](https://github.com/starknet-edu/starknet-stack/blob/main/indexer/"
-"indexer.sh)\n"
+"[indexer](https://github.com/starknet-edu/starknet-stack/blob/main/indexer/indexer.sh)\n"
 "run:"
 msgstr ""
 
@@ -7170,8 +6812,7 @@ msgid ""
 "                    \"0x7dd3a55d94a0de6f3d6c104d7e6c88ec719a82f4e2bbc12587c8c187584d3d5\",\n"
 "                    \"0x71456dded17015d1234779889d78f3e7c763ddcfd2662b19e7843c7542614f8\"\n"
 "                ],\n"
-"                \"contract_address\": "
-"\"0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd\",\n"
+"                \"contract_address\": \"0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd\",\n"
 "                \"calldata\": [\n"
 "                    \"0x1\",\n"
 "                    \"0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1\",\n"
@@ -7182,8 +6823,7 @@ msgid ""
 "                    \"0x2b\",\n"
 "                    \"0x0\"\n"
 "                ],\n"
-"                \"entry_point_selector\": "
-"\"0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad\"\n"
+"                \"entry_point_selector\": \"0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad\"\n"
 "            }\n"
 "        },\n"
 "        \"id\": 0\n"
@@ -7208,9 +6848,7 @@ msgid ""
 msgstr ""
 
 #: src/ch03-04-nodes.md:348
-msgid ""
-"<img alt=\"Starkscan block explorer\" src=\"img/ch03-starkscan-block-"
-"explorer.png\" class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Starkscan block explorer\" src=\"img/ch03-starkscan-block-explorer.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch03-04-nodes.md:350
@@ -7230,13 +6868,11 @@ msgstr ""
 #: src/ch03-04-nodes.md:357
 msgid ""
 "Pulled Block #: 638703\n"
-"    Found transaction: "
-"0x2053ae75adfb4a28bf3a01009f36c38396c904012c5fc38419f4a7f3b7d75a5\n"
+"    Found transaction: 0x2053ae75adfb4a28bf3a01009f36c38396c904012c5fc38419f4a7f3b7d75a5\n"
 "    Events to Index:\n"
 "    [\n"
 "      {\n"
-"        \"from_address\": "
-"\"0x806778f9b06746fffd6ca567e0cfea9b3515432d9ba39928201d18c8dc9fdf\",\n"
+"        \"from_address\": \"0x806778f9b06746fffd6ca567e0cfea9b3515432d9ba39928201d18c8dc9fdf\",\n"
 "        \"keys\": [\n"
 "          \"0x1fee98324df9b8703ae8de6de3068b8a8dce40c18752c3b550c933d6ac06765\"\n"
 "        ],\n"
@@ -7245,8 +6881,7 @@ msgid ""
 "        ]\n"
 "      },\n"
 "      {\n"
-"        \"from_address\": "
-"\"0x126dd900b82c7fc95e8851f9c64d0600992e82657388a48d3c466553d4d9246\",\n"
+"        \"from_address\": \"0x126dd900b82c7fc95e8851f9c64d0600992e82657388a48d3c466553d4d9246\",\n"
 "        \"keys\": [\n"
 "          \"0x5ad857f66a5b55f1301ff1ed7e098ac6d4433148f0b72ebc4a2945ab85ad53\"\n"
 "        ],\n"
@@ -7256,8 +6891,7 @@ msgid ""
 "        ]\n"
 "      },\n"
 "      {\n"
-"        \"from_address\": "
-"\"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n"
+"        \"from_address\": \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n"
 "        \"keys\": [\n"
 "          \"0x99cd8bde557814842a3121e8ddfd433a539b8c9f14bf31ebf108d12e6196e9\"\n"
 "        ],\n"
@@ -7310,15 +6944,11 @@ msgid ""
 msgstr ""
 
 #: src/ch03-04-nodes.md:418
-msgid ""
-"<img alt=\"Fractal scaling in a modular blockchain environment\" src=\"img/"
-"ch03-fractal-scaling.png\" class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Fractal scaling in a modular blockchain environment\" src=\"img/ch03-fractal-scaling.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch03-04-nodes.md:420
-msgid ""
-"<span class=\"caption\">Fractal scaling in a modular blockchain environment</"
-"span>"
+msgid "<span class=\"caption\">Fractal scaling in a modular blockchain environment</span>"
 msgstr ""
 
 #: src/ch03-04-nodes.md:422
@@ -7373,15 +7003,11 @@ msgid ""
 msgstr ""
 
 #: src/ch03-05-layer-3.md:16
-msgid ""
-"<img alt=\"Example of an environment with a Layers 3 and 4\" src=\"img/ch03-"
-"layer-3-ecosystem.png\" class=\"center\" style=\"width: 50%;\" />"
+msgid "<img alt=\"Example of an environment with a Layers 3 and 4\" src=\"img/ch03-layer-3-ecosystem.png\" class=\"center\" style=\"width: 50%;\" />"
 msgstr ""
 
 #: src/ch03-05-layer-3.md:18
-msgid ""
-"<span class=\"caption\">Example of an environment with a Layers 3 and 4</"
-"span>"
+msgid "<span class=\"caption\">Example of an environment with a Layers 3 and 4</span>"
 msgstr ""
 
 #: src/ch03-05-layer-3.md:20
@@ -7913,8 +7539,7 @@ msgid ""
 "  <https://app.devcon.org/schedule/9mvqce>\n"
 "\n"
 "- \\[4\\] Starkware:\n"
-"  <https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-"
-"signing-ba3724077a79>\n"
+"  <https://medium.com/@starkware/how-starknet-is-revolutionizing-crypto-signing-ba3724077a79>\n"
 "\n"
 "- \\[5\\] Julien Niset, 2022:\n"
 "  <https://www.argent.xyz/blog/part-2-wtf-is-account-abstraction/>\n"
@@ -7945,8 +7570,7 @@ msgid ""
 "differentiate themselves through unique methods. A smart contract gains\n"
 "the status of an account contract when it implements the interface as\n"
 "described by SNIP-6 ([StarkNet IMprovement Proposa-6: Standar Account\n"
-"Interface](https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/"
-"SNIPS/snip-6.md)).\n"
+"Interface](https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/SNIPS/snip-6.md)).\n"
 "This standard borrows from SRC-6 and SRC-5, which are akin to Ethereum’s\n"
 "ERCs, setting application-level conventions and contract standards."
 msgstr ""
@@ -7963,8 +7587,7 @@ msgid ""
 "```rust\n"
 "    trait ISRC6 {\n"
 "        fn __validate__(calls: Array<Call>) -> felt252;\n"
-"        fn is_valid_signature(hash: felt252, signature: Array<felt252>) -> "
-"felt252;\n"
+"        fn is_valid_signature(hash: felt252, signature: Array<felt252>) -> felt252;\n"
 "        fn __execute__(calls: Array<Call>) -> Array<Span<felt252>>;\n"
 "    }\n"
 "```"
@@ -8060,8 +7683,7 @@ msgid ""
 "functions will be covered in the subsequent chapters."
 msgstr ""
 
-#: src/ch04-01-accounts.md:91 src/ch04-02-hello-account.md:183
-#: src/ch04-03-standard-account.md:363
+#: src/ch04-01-accounts.md:91 src/ch04-02-hello-account.md:183 src/ch04-03-standard-account.md:363
 msgid "## Summary"
 msgstr ""
 
@@ -8104,21 +7726,16 @@ msgstr ""
 msgid "# Hello World Account Contract"
 msgstr ""
 
-#: src/ch04-02-hello-account.md:3 src/ch04-03-standard-account.md:3
-#: src/ch04-04-01-multicaller.md:3 src/ch04-04-02-multisig.md:3
+#: src/ch04-02-hello-account.md:3 src/ch04-03-standard-account.md:3 src/ch04-04-01-multicaller.md:3 src/ch04-04-02-multisig.md:3
 msgid ""
 "**NOTE:**\n"
-"**THIS CHAPTER NEEDS TO BE UPDATED TO REFLECT THE NEW SYNTAX FOR ACCOUNT "
-"CONTRACTS. PLEASE DO NOT USE THIS CHAPTER AS A REFERENCE UNTIL THIS NOTE IS "
-"REMOVED.**"
+"**THIS CHAPTER NEEDS TO BE UPDATED TO REFLECT THE NEW SYNTAX FOR ACCOUNT CONTRACTS. PLEASE DO NOT USE THIS CHAPTER AS A REFERENCE UNTIL THIS NOTE IS REMOVED.**"
 msgstr ""
 
-#: src/ch04-02-hello-account.md:6 src/ch04-03-standard-account.md:6
-#: src/ch04-04-01-multicaller.md:6 src/ch04-04-02-multisig.md:6
+#: src/ch04-02-hello-account.md:6 src/ch04-03-standard-account.md:6 src/ch04-04-01-multicaller.md:6 src/ch04-04-02-multisig.md:6
 msgid ""
-"**CONTRIBUTE: This subchapter is missing an example of declaration, "
-"deployment and interaction with the contract. We would love to see your "
-"contribution! Please submit a PR.**"
+"**CONTRIBUTE: This subchapter is missing an example of declaration, deployment and interaction with the contract. We would love to see your contribution! Please submit a PR."
+"**"
 msgstr ""
 
 #: src/ch04-02-hello-account.md:8
@@ -8144,15 +7761,13 @@ msgid ""
 "        // Returns starknet::VALIDATED to confirm successful validation.\n"
 "        #[external]\n"
 "        fn __validate_deploy__(\n"
-"            class_hash: felt252, contract_address_salt: felt252, "
-"public_key_: felt252\n"
+"            class_hash: felt252, contract_address_salt: felt252, public_key_: felt252\n"
 "        ) -> felt252 {\n"
 "            starknet::VALIDATED\n"
 "        }\n"
 "\n"
 "        // Validate declaration of transactions using this Account.\n"
-"        // This function enforces that transactions now require accounts to "
-"pay fees.\n"
+"        // This function enforces that transactions now require accounts to pay fees.\n"
 "        // Returns starknet::VALIDATED to confirm successful validation.\n"
 "        #[external]\n"
 "        fn __validate_declare__(class_hash: felt252) -> felt252 {\n"
@@ -8160,27 +7775,22 @@ msgid ""
 "        }\n"
 "\n"
 "        // Validate transaction before execution.\n"
-"        // This function is called by the account contract upon receiving a "
-"transaction.\n"
+"        // This function is called by the account contract upon receiving a transaction.\n"
 "        // If the validation is successful, it returns starknet::VALIDATED.\n"
 "        #[external]\n"
 "        fn __validate__(\n"
-"            contract_address: ContractAddress, entry_point_selector: "
-"felt252, calldata: Array::<felt252>\n"
+"            contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>\n"
 "        ) -> felt252 {\n"
 "            starknet::VALIDATED\n"
 "        }\n"
 "\n"
 "        // Execute transaction.\n"
-"        // If the '__validate__' function is successful, this '__execute__' "
-"function will be called.\n"
-"        // It forwards the call to the target contract using starknet::"
-"call_contract_syscall.\n"
+"        // If the '__validate__' function is successful, this '__execute__' function will be called.\n"
+"        // It forwards the call to the target contract using starknet::call_contract_syscall.\n"
 "        #[external]\n"
 "        #[raw_output]\n"
 "        fn __execute__(\n"
-"            contract_address: ContractAddress, entry_point_selector: "
-"felt252, calldata: Array::<felt252>\n"
+"            contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>\n"
 "        ) -> Span::<felt252> {\n"
 "            starknet::call_contract_syscall(\n"
 "                address: contract_address,\n"
@@ -8230,8 +7840,7 @@ msgid ""
 "```rust\n"
 "    #[external]\n"
 "    fn __validate_deploy__(\n"
-"        class_hash: felt252, contract_address_salt: felt252, public_key_: "
-"felt252\n"
+"        class_hash: felt252, contract_address_salt: felt252, public_key_: felt252\n"
 "    ) -> felt252 {\n"
 "        starknet::VALIDATED\n"
 "    }\n"
@@ -8274,8 +7883,7 @@ msgid ""
 "```rust\n"
 "    #[external]\n"
 "    fn __validate__(\n"
-"        contract_address: ContractAddress, entry_point_selector: felt252, "
-"calldata: Array::<felt252>\n"
+"        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>\n"
 "    ) -> felt252 {\n"
 "        starknet::VALIDATED\n"
 "    }\n"
@@ -8299,8 +7907,7 @@ msgid ""
 "    #[external]\n"
 "    #[raw_output]\n"
 "    fn __execute__(\n"
-"        contract_address: ContractAddress, entry_point_selector: felt252, "
-"calldata: Array::<felt252>\n"
+"        contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>\n"
 "    ) -> Span::<felt252> {\n"
 "        starknet::call_contract_syscall(\n"
 "            address: contract_address,\n"
@@ -8338,8 +7945,7 @@ msgstr ""
 #: src/ch04-02-hello-account.md:158 src/ch04-03-standard-account.md:307
 msgid ""
 "export STARKNET_NETWORK=alpha-goerli\n"
-"    export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin."
-"OpenZeppelinAccount"
+"    export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount"
 msgstr ""
 
 #: src/ch04-02-hello-account.md:161 src/ch04-03-standard-account.md:310
@@ -8350,10 +7956,7 @@ msgid ""
 msgstr ""
 
 #: src/ch04-02-hello-account.md:167
-msgid ""
-"starknet declare --contract target/release/"
-"starknetbook_chapter_7_HelloAccount.json --account my_account --max_fee "
-"100000000000000000"
+msgid "starknet declare --contract target/release/starknetbook_chapter_7_HelloAccount.json --account my_account --max_fee 100000000000000000"
 msgstr ""
 
 #: src/ch04-02-hello-account.md:169
@@ -8367,10 +7970,7 @@ msgid "- Deploy the contract:"
 msgstr ""
 
 #: src/ch04-02-hello-account.md:176
-msgid ""
-"starknet deploy --class_hash "
-"0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa6dece7734a2cdfe --account "
-"my_account --max_fee 100000000000000000"
+msgid "starknet deploy --class_hash 0x07e813097812d58afbb4fb015e683f2b84e4f008cbecc60fa6dece7734a2cdfe --account my_account --max_fee 100000000000000000"
 msgstr ""
 
 #: src/ch04-02-hello-account.md:178
@@ -8378,8 +7978,7 @@ msgid ""
 "After completing these steps, you will have successfully declared and\n"
 "deployed the Hello World account contract on Starknet. [Here is a\n"
 "deployed\n"
-"version](https://testnet.starkscan.co/"
-"contract/0x01e6d7698ca76788c8f9c1091ec3d6d3f7167a9effe520402d832ca9894eba4a#overview)."
+"version](https://testnet.starkscan.co/contract/0x01e6d7698ca76788c8f9c1091ec3d6d3f7167a9effe520402d832ca9894eba4a#overview)."
 msgstr ""
 
 #: src/ch04-02-hello-account.md:185
@@ -8457,11 +8056,9 @@ msgid ""
 "\n"
 "        // Internal function to validate the transaction signature\n"
 "        fn validate_transaction() -> felt252 {\n"
-"            let tx_info = starknet::get_tx_info().unbox(); // Unbox "
-"transaction info\n"
+"            let tx_info = starknet::get_tx_info().unbox(); // Unbox transaction info\n"
 "            let signature = tx_info.signature; // Extract signature\n"
-"            assert(signature.len() == 2_u32, 'INVALID_SIGNATURE_LENGTH'); // "
-"Check signature length\n"
+"            assert(signature.len() == 2_u32, 'INVALID_SIGNATURE_LENGTH'); // Check signature length\n"
 "\n"
 "            // Verify ECDSA signature\n"
 "            assert(\n"
@@ -8480,8 +8077,7 @@ msgid ""
 "        // Validate contract deployment\n"
 "        #[external]\n"
 "        fn __validate_deploy__(\n"
-"            class_hash: felt252, contract_address_salt: felt252, "
-"public_key_: felt252\n"
+"            class_hash: felt252, contract_address_salt: felt252, public_key_: felt252\n"
 "        ) -> felt252 {\n"
 "            validate_transaction()\n"
 "        }\n"
@@ -8495,8 +8091,7 @@ msgid ""
 "        // Validate contract execution\n"
 "        #[external]\n"
 "        fn __validate__(\n"
-"            contract_address: ContractAddress, entry_point_selector: "
-"felt252, calldata: Array<felt252>\n"
+"            contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array<felt252>\n"
 "        ) -> felt252 {\n"
 "            validate_transaction()\n"
 "        }\n"
@@ -8506,21 +8101,17 @@ msgid ""
 "        #[raw_output]\n"
 "        fn __execute__(mut calls: Array<Call>) -> Span<felt252> {\n"
 "            // Validate caller\n"
-"            assert(starknet::get_caller_address().is_zero(), "
-"'INVALID_CALLER');\n"
+"            assert(starknet::get_caller_address().is_zero(), 'INVALID_CALLER');\n"
 "\n"
-"            let tx_info = starknet::get_tx_info().unbox(); // Unbox "
-"transaction info\n"
+"            let tx_info = starknet::get_tx_info().unbox(); // Unbox transaction info\n"
 "            assert(tx_info.version != 0, 'INVALID_TX_VERSION');\n"
 "\n"
-"            assert(calls.len() == 1_u32, 'MULTI_CALL_NOT_SUPPORTED'); // "
-"Only single calls are supported\n"
+"            assert(calls.len() == 1_u32, 'MULTI_CALL_NOT_SUPPORTED'); // Only single calls are supported\n"
 "            let Call{to, selector, calldata } = calls.pop_front().unwrap();\n"
 "\n"
 "            // Call the target contract\n"
 "            starknet::call_contract_syscall(\n"
-"                address: to, entry_point_selector: selector, calldata: "
-"calldata.span()\n"
+"                address: to, entry_point_selector: selector, calldata: calldata.span()\n"
 "            ).unwrap_syscall()\n"
 "        }\n"
 "    }\n"
@@ -8681,11 +8272,9 @@ msgstr ""
 msgid ""
 "```rust\n"
 "    fn validate_transaction() -> felt252 {\n"
-"            let tx_info = starknet::get_tx_info().unbox(); // Unbox "
-"transaction info\n"
+"            let tx_info = starknet::get_tx_info().unbox(); // Unbox transaction info\n"
 "            let signature = tx_info.signature; // Extract signature\n"
-"            assert(signature.len() == 2_u32, 'INVALID_SIGNATURE_LENGTH'); // "
-"Check signature length\n"
+"            assert(signature.len() == 2_u32, 'INVALID_SIGNATURE_LENGTH'); // Check signature length\n"
 "\n"
 "            // Verify ECDSA signature\n"
 "            assert(\n"
@@ -8749,21 +8338,17 @@ msgid ""
 "        #[raw_output]\n"
 "        fn __execute__(mut calls: Array<Call>) -> Span<felt252> {\n"
 "            // Validate caller\n"
-"            assert(starknet::get_caller_address().is_zero(), "
-"'INVALID_CALLER');\n"
+"            assert(starknet::get_caller_address().is_zero(), 'INVALID_CALLER');\n"
 "\n"
-"            let tx_info = starknet::get_tx_info().unbox(); // Unbox "
-"transaction info\n"
+"            let tx_info = starknet::get_tx_info().unbox(); // Unbox transaction info\n"
 "            assert(tx_info.version != 0, 'INVALID_TX_VERSION');\n"
 "\n"
-"            assert(calls.len() == 1_u32, 'MULTI_CALL_NOT_SUPPORTED'); // "
-"Only single calls are supported\n"
+"            assert(calls.len() == 1_u32, 'MULTI_CALL_NOT_SUPPORTED'); // Only single calls are supported\n"
 "            let Call{to, selector, calldata } = calls.pop_front().unwrap();\n"
 "\n"
 "            // Call the target contract\n"
 "            starknet::call_contract_syscall(\n"
-"                address: to, entry_point_selector: selector, calldata: "
-"calldata.span()\n"
+"                address: to, entry_point_selector: selector, calldata: calldata.span()\n"
 "            ).unwrap_syscall()\n"
 "        }\n"
 "```"
@@ -8809,9 +8394,7 @@ msgid "TODO: add section on how to generate a private key and public key."
 msgstr ""
 
 #: src/ch04-03-standard-account.md:316
-msgid ""
-"starknet declare --contract target/release/starknetbook_chapter_7_Account."
-"json --account vote_admin --max_fee 100000000000000000"
+msgid "starknet declare --contract target/release/starknetbook_chapter_7_Account.json --account vote_admin --max_fee 100000000000000000"
 msgstr ""
 
 #: src/ch04-03-standard-account.md:318
@@ -9005,8 +8588,7 @@ msgstr ""
 #: src/ch04-04-01-multicaller.md:45
 msgid ""
 "```rust\n"
-"    fn _execute_calls(mut calls: Array<AccountCall>, mut res:Array::<Array::"
-"<felt>>) -> Array::<Array::<felt>> {\n"
+"    fn _execute_calls(mut calls: Array<AccountCall>, mut res:Array::<Array::<felt>>) -> Array::<Array::<felt>> {\n"
 "        match calls.pop_front() {\n"
 "            Option::Some(call) => {\n"
 "                let _res = _call_contract(call);\n"
@@ -9198,8 +8780,7 @@ msgid ""
 "\n"
 "\n"
 "        //Get the public key of the owners\n"
-"        //TODO - Recursively add the owners into an array and return, maybe "
-"wait for loops to be enabled\n"
+"        //TODO - Recursively add the owners into an array and return, maybe wait for loops to be enabled\n"
 "\n"
 "\n"
 "        //EXTERNAL FUNCTIONS\n"
@@ -9266,8 +8847,7 @@ msgid ""
 "\n"
 "        }\n"
 "\n"
-"        //An example function to validate that there are at least two "
-"signatures\n"
+"        //An example function to validate that there are at least two signatures\n"
 "        fn validate_transaction(public_key: felt252) -> felt252 {\n"
 "            let tx_info = starknet::get_tx_info().unbox();\n"
 "            let signature: Span<felt252> = tx_info.signature;\n"
@@ -9289,38 +8869,32 @@ msgid ""
 "        }\n"
 "\n"
 "        //INTERNAL FUNCTION\n"
-"        //Function to add the public keys of the multisig in permanent "
-"storage\n"
+"        //Function to add the public keys of the multisig in permanent storage\n"
 "        fn _set_owners(owners_len: usize, public_keys: Array::<felt252>) {\n"
 "            if owners_len == 0_usize {\n"
 "            }\n"
 "\n"
-"            index_to_owner::write(owners_len, *public_keys.at(owners_len - "
-"1_usize));\n"
-"            owner_to_index::write(*public_keys.at(owners_len - 1_usize), "
-"owners_len);\n"
+"            index_to_owner::write(owners_len, *public_keys.at(owners_len - 1_usize));\n"
+"            owner_to_index::write(*public_keys.at(owners_len - 1_usize), owners_len);\n"
 "            _set_owners(owners_len - 1_u32, public_keys);\n"
 "        }\n"
 "\n"
 "\n"
 "        #[external]\n"
 "        fn __validate_deploy__(\n"
-"            class_hash: felt252, contract_address_salt: felt252, "
-"public_key_: felt252\n"
+"            class_hash: felt252, contract_address_salt: felt252, public_key_: felt252\n"
 "        ) -> felt252 {\n"
 "            validate_transaction(public_key_)\n"
 "        }\n"
 "\n"
 "        #[external]\n"
-"        fn __validate_declare__(class_hash: felt252, public_key_: felt252) -"
-"> felt252 {\n"
+"        fn __validate_declare__(class_hash: felt252, public_key_: felt252) -> felt252 {\n"
 "            validate_transaction(public_key_)\n"
 "        }\n"
 "\n"
 "        #[external]\n"
 "        fn __validate__(\n"
-"            contract_address: ContractAddress, entry_point_selector: "
-"felt252, calldata: Array::<felt252>, public_key_: felt252\n"
+"            contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>, public_key_: felt252\n"
 "        ) -> felt252 {\n"
 "            validate_transaction(public_key_)\n"
 "        }\n"
@@ -9328,16 +8902,13 @@ msgid ""
 "        #[external]\n"
 "        #[raw_output]\n"
 "        fn __execute__(\n"
-"            contract_address: ContractAddress, entry_point_selector: "
-"felt252, calldata: Array::<felt252>,\n"
+"            contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>,\n"
 "            tx_index: felt252\n"
 "        ) -> Span::<felt252> {\n"
 "            // Validate caller.\n"
-"            assert(starknet::get_caller_address().is_zero(), "
-"'INVALID_CALLER');\n"
+"            assert(starknet::get_caller_address().is_zero(), 'INVALID_CALLER');\n"
 "\n"
-"            // Check the tx version here, since version 0 transaction skip "
-"the __validate__ function.\n"
+"            // Check the tx version here, since version 0 transaction skip the __validate__ function.\n"
 "            let tx_info = starknet::get_tx_info().unbox();\n"
 "            assert(tx_info.version != 0, 'INVALID_TX_VERSION');\n"
 "\n"
@@ -9346,8 +8917,7 @@ msgid ""
 "            let owners_len = num_owners::read();\n"
 "            //Subtracting one for the submitter\n"
 "            let required_confirmations = threshold::read() - 1_usize;\n"
-"            assert(num_confirmations >= required_confirmations, "
-"'MINIMUM_50%_CONFIRMATIONS');\n"
+"            assert(num_confirmations >= required_confirmations, 'MINIMUM_50%_CONFIRMATIONS');\n"
 "\n"
 "            tx_is_executed::write(tx_index, true);\n"
 "\n"
@@ -9417,10 +8987,8 @@ msgid ""
 "        if owners_len == 0_usize {\n"
 "        }\n"
 "\n"
-"        index_to_owner::write(owners_len, *public_keys.at(owners_len - "
-"1_usize));\n"
-"        owner_to_index::write(*public_keys.at(owners_len - 1_usize), "
-"owners_len);\n"
+"        index_to_owner::write(owners_len, *public_keys.at(owners_len - 1_usize));\n"
+"        owner_to_index::write(*public_keys.at(owners_len - 1_usize), owners_len);\n"
 "        _set_owners(owners_len - 1_u32, public_keys);\n"
 "    }\n"
 "```"
@@ -9538,16 +9106,13 @@ msgid ""
 "    #[external]\n"
 "        #[raw_output]\n"
 "        fn __execute__(\n"
-"            contract_address: ContractAddress, entry_point_selector: "
-"felt252, calldata: Array::<felt252>,\n"
+"            contract_address: ContractAddress, entry_point_selector: felt252, calldata: Array::<felt252>,\n"
 "            tx_index: felt252\n"
 "        ) -> Span::<felt252> {\n"
 "            // Validate caller.\n"
-"            assert(starknet::get_caller_address().is_zero(), "
-"'INVALID_CALLER');\n"
+"            assert(starknet::get_caller_address().is_zero(), 'INVALID_CALLER');\n"
 "\n"
-"            // Check the tx version here, since version 0 transaction skip "
-"the __validate__ function.\n"
+"            // Check the tx version here, since version 0 transaction skip the __validate__ function.\n"
 "            let tx_info = starknet::get_tx_info().unbox();\n"
 "            assert(tx_info.version != 0, 'INVALID_TX_VERSION');\n"
 "\n"
@@ -9556,8 +9121,7 @@ msgid ""
 "            let owners_len = num_owners::read();\n"
 "            //Subtracting one for the submitter\n"
 "            let required_confirmations = threshold::read() - 1_usize;\n"
-"            assert(num_confirmations >= required_confirmations, "
-"'MINIMUM_50%_CONFIRMATIONS');\n"
+"            assert(num_confirmations >= required_confirmations, 'MINIMUM_50%_CONFIRMATIONS');\n"
 "\n"
 "            tx_is_executed::write(tx_index, true);\n"
 "\n"
