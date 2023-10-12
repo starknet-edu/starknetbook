@@ -13,3 +13,7 @@ after = ["links"]
 
 [output.html]
 git-repository-url = "https://github.com/starknet-edu/starknetbook"
+
+[output.html.fold]
+enable = true
+level = 0
