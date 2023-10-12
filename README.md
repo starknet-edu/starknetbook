@@ -1,54 +1,68 @@
 # The Starknet Book
 
-This repository hosts the source for [The Starknet Book](book.starknet.io).
+This repository contains the source for [The Starknet Book](book.starknet.io).
 
 ## Contribution
 
-We value and welcome all contributions!
+Every contribution, regardless of its size, plays a pivotal role in refining this work. Together, we advance the Starknet narrative.
 
-- For insight into specific areas of focus, check [the repository issues](https://github.com/starknet-edu/starknetbook/issues).
-- Prioritize contributions that directly pertain to the book's content.
-- Even if an issue doesn't exist, feel free to create a PR for typos, errors, or content improvements and additions.
+- **General Guidelines**:
+  - Focus on enhancements directly related to the book's content.
+  - For typos, errors, or improvements, you don't need a related issue to submit a PR.
+  - Review specific areas of interest in [the repository issues](https://github.com/starknet-edu/starknetbook/issues).
 
 ### Setup
 
-1. Rust related packages:
-   - Install toolchain providing `cargo` using [rustup](https://rustup.rs/).
-   - Install [mdBook](https://rust-lang.github.io/mdBook/guide/installation.html) and the translation extension:
-   ```
-   cargo install mdbook --version 0.4.31 mdbook-i18n-helpers --version 0.1.0
-   ```
-2. Host machine packages:
-   - Install [gettext](https://www.gnu.org/software/gettext/) for translations, usually available with regular package manager:
-     `sudo apt install gettext`.
-3. Clone this repository.
+1. **Rust Packages**:
+   - Install the `cargo` toolchain via [rustup](https://rustup.rs/).
+   - Install [mdBook](https://rust-lang.github.io/mdBook/guide/installation.html) and its translation extension:
+    
+```shell
+cargo install mdbook --version 0.4.31 mdbook-i18n-helpers --version 0.1.0
+```
 
-### Work locally (english, main language)
+2. **Machine Packages**:
+- For translations, install [gettext](https://www.gnu.org/software/gettext/): `sudo apt install gettext`.
 
-All the Markdown files **MUST** be edited in english. To work locally in english:
+3. **Repository Operations**:
+- Clone the main repository: `git clone https://github.com/starknet-edu/starknetbook && cd starknetbook`.
+- Create and work on a branch in your fork. If you're unfamiliar, use this [guide](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/) for assistance.
+- Once done, submit a PR to merge your edits. Ensure you tag a reviewer for feedback (`l-henri` or `@omarespejel`).
 
-- Start a local server with `mdbook serve` and visit [localhost:3000](http://localhost:3000) to view the book.
-  You can use the `--open` flag to open the browser automatically: `mdbook serve --open`.
-- Make changes to the book and refresh the browser to see the changes.
-- Open a PR with your changes.
+### Understanding the Book's Structure
 
-### Work locally (translations)
+The Starknet Book is optimized for mdBook:
 
-This book is targetting international audience, and aims at being gradually translated in several languages.
-**All files in the `src` directory MUST be written in english**. This ensures that all the translation files can be
-auto-generated and updated by translators.
-To work with translations, those are the steps to update the translated content:
+- `src/SUMMARY.md`: The book's structural outline. For adding chapters, modify this document.
+- `src/`: This directory holds individual chapters. Each is a markdown file, like `ch35.md`. Use subdirectories for added resources.
+- `book.toml`: The primary configuration file (regular contributors might not need to adjust this).
 
-- Run a local server for the language you want to edit: `./translations.sh es` for instance. If no language is provided, the script will only extract translations from english.
-- Open the translation file you are interested in `po/es.po` for instance. You can also use editors like [poedit](https://poedit.net/) to help you on this task.
-- When you are done, you should only have changes into the `po/xx.po` file. Commit them and open a PR.
-  The PR must stars with `i18n` to let the maintainers know that the PR is only changing translation.
-  The translation work is inspired from [Comprehensive Rust repository](https://github.com/google/comprehensive-rust/blob/main/TRANSLATIONS.md).
+### Editing Guidelines
 
-#### Initiate a new translation for your language
+#### Work Locally in English
 
-If you wish to initiate a new translation for your language without running a local server, consider the following tips:
+Ensure all edits to Markdown files are in English.
 
-- Execute the command `./translations.sh new xx` (replace `xx` with your language code). This method can generate the `xx.po` file of your language for you.
-- To update your `xx.po` file, execute the command `./translations.sh xx` (replace `xx` with your language code), as mentioned in the previous chapter.
-- If the `xx.po` file already exists (which means you are not initiating a new translation), you should not run this command.
+- Use `mdbook serve` to initiate a local server. Access the book at [localhost:3000](http://localhost:3000) or append `--open` to the command to launch a browser automatically: `mdbook serve --open`.
+- After editing, refresh the browser to see updates. When satisfied, push your changes through a PR.
+
+#### Translations
+
+Targeting a global readership, this book will undergo translations over time.
+
+- **Initial Version Always in English**: Always write files in the `src` directory in English. This consistency allows for smooth auto-translation.
+- **Translation Process**:
+- Launch a local server for the intended language, e.g., `./translations.sh es`. Without specifying a language, only English translations get extracted.
+- Modify the translation file of interest, like `po/es.po`. Tools like [poedit](https://poedit.net/) can be beneficial.
+- Commit changes only in the `po/xx.po` file. When opening a PR, start with the prefix `i18n`.
+
+The translation work is inspired from [Comprehensive Rust repository](https://github.com/google/comprehensive-rust/blob/main/TRANSLATIONS.md).
+
+##### Initiating a New Translation
+
+For starting translations in a new language:
+
+- Employ `./translations.sh new xx`, replacing `xx` with your language code. This action generates a language file.
+- For updating the `xx.po` file, use `./translations.sh xx`.
+- Avoid the above command if the `xx.po` file already exists (which means you are not initiating a new translation).
+
