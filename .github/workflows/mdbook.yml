@@ -1,5 +1,3 @@
-# To get started with mdBook see: https://rust-lang.github.io/mdBook/index.html
-#
 name: Deploy mdBook to Production Site
 
 on:
@@ -10,13 +8,7 @@ on:
 
 permissions:
   contents: read
-  pages: write
   id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 env:
   CARGO_TERM_COLOR: always
@@ -26,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read  # To push a branch 
-      pages: write  # To push to a GitHub Pages site
       id-token: write # To update the deployment status
     steps:
       - name: Checkout
@@ -52,18 +43,6 @@ jobs:
               mdbook build -d book/$po_lang
               echo "::endgroup::"
           done
-
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v3
-
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v1
-      #   with:
-      #     path: ./book
-
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v2
 
       - name: Rename book to public_html
         run: mv book public_html
