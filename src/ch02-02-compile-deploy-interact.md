@@ -129,7 +129,7 @@ transactions. Let’s demystify what goes on under the hood.
 
 Key Components:
 
-1.  **Private Key**: A 256-bit/32-byte/64-character (ignoring the *0x*
+1.  **Private Key**: A 256-bit/32-byte/64-character (ignoring the _0x_
     prefix) hexadecimal key that is the cornerstone of your wallet’s
     security.
 
@@ -150,83 +150,83 @@ To view the details of the previously created keystore file:
 Anatomy of the `keystore.json` File:
 
 ```json
-    {
-      "crypto": {
-        "cipher": "aes-128-ctr",
-        "cipherparams": {
-          "iv": "dba5f9a67456b121f3f486aa18e24db7"
-        },
-        "ciphertext": "b3cda3df39563e3dd61064149d6ed8c9ab5f07fbcd6347625e081fb695ddf36c",
-        "kdf": "scrypt",
-        "kdfparams": {
-          "dklen": 32,
-          "n": 8192,
-          "p": 1,
-          "r": 8,
-          "salt": "6dd5b06b1077ba25a7bf511510ea0c608424c6657dd3ab51b93029244537dffb"
-        },
-        "mac": "55e1616d9ddd052864a1ae4207824baac58a6c88798bf28585167a5986585ce6"
-      },
-      "id": "afbb9007-8f61-4e62-bf14-e491c30fd09a",
-      "version": 3
-    }
+{
+  "crypto": {
+    "cipher": "aes-128-ctr",
+    "cipherparams": {
+      "iv": "dba5f9a67456b121f3f486aa18e24db7"
+    },
+    "ciphertext": "b3cda3df39563e3dd61064149d6ed8c9ab5f07fbcd6347625e081fb695ddf36c",
+    "kdf": "scrypt",
+    "kdfparams": {
+      "dklen": 32,
+      "n": 8192,
+      "p": 1,
+      "r": 8,
+      "salt": "6dd5b06b1077ba25a7bf511510ea0c608424c6657dd3ab51b93029244537dffb"
+    },
+    "mac": "55e1616d9ddd052864a1ae4207824baac58a6c88798bf28585167a5986585ce6"
+  },
+  "id": "afbb9007-8f61-4e62-bf14-e491c30fd09a",
+  "version": 3
+}
 ```
 
--   **`version`**: The version of the smart wallet implementation.
+- **`version`**: The version of the smart wallet implementation.
 
--   **`id`**: A randomly generated identification string.
+- **`id`**: A randomly generated identification string.
 
--   **`crypto`**: Houses all encryption details.
+- **`crypto`**: Houses all encryption details.
 
 Inside **`crypto`**:
 
--   **`cipher`**: Specifies the encryption algorithm used, which in this
-    case is AES-128-CTR.
+- **`cipher`**: Specifies the encryption algorithm used, which in this
+  case is AES-128-CTR.
 
-    -   **AES (Advanced Encryption Standard)**: A globally accepted
-        encryption standard.
+  - **AES (Advanced Encryption Standard)**: A globally accepted
+    encryption standard.
 
-    -   **128**: Refers to the key size in bits, making it a 128-bit
-        key.
+  - **128**: Refers to the key size in bits, making it a 128-bit
+    key.
 
-    -   **CTR (Counter Mode)**: A specific mode of operation for the AES
-        cipher.
+  - **CTR (Counter Mode)**: A specific mode of operation for the AES
+    cipher.
 
--   **`cipherparams`**: Contains an Initialization Vector (IV), which
-    ensures that encrypting the same plaintext with the same key will
-    produce different ciphertexts.
+- **`cipherparams`**: Contains an Initialization Vector (IV), which
+  ensures that encrypting the same plaintext with the same key will
+  produce different ciphertexts.
 
-    -   **`iv` (Initialization Vector)**: A 16-byte hex string that
-        serves as a random and unique starting point for each encryption
-        operation.
+  - **`iv` (Initialization Vector)**: A 16-byte hex string that
+    serves as a random and unique starting point for each encryption
+    operation.
 
--   **`ciphertext`**: This is the private key after encryption, securely
-    stored so that only the correct password can reveal it.
+- **`ciphertext`**: This is the private key after encryption, securely
+  stored so that only the correct password can reveal it.
 
--   **`kdf` and `kdfparams`**: KDF stands for Key Derivation Function.
-    This adds a layer of security by requiring computational work,
-    making brute-force attacks harder.
+- **`kdf` and `kdfparams`**: KDF stands for Key Derivation Function.
+  This adds a layer of security by requiring computational work,
+  making brute-force attacks harder.
 
-    -   **`dklen`**: The length (in bytes) of the derived key. Typically
-        32 bytes.
+  - **`dklen`**: The length (in bytes) of the derived key. Typically
+    32 bytes.
 
-    -   **`n`**: A cost factor representing CPU/memory usage. A higher
-        value means more computational work is needed, thus increasing
-        security.
+  - **`n`**: A cost factor representing CPU/memory usage. A higher
+    value means more computational work is needed, thus increasing
+    security.
 
-    -   **`p`**: Parallelization factor, affecting the computational
-        complexity.
+  - **`p`**: Parallelization factor, affecting the computational
+    complexity.
 
-    -   **`r`**: Block size for the hash function, again affecting
-        computational requirements.
+  - **`r`**: Block size for the hash function, again affecting
+    computational requirements.
 
-    -   **`salt`**: A random value that is combined with the password to
-        deter dictionary attacks.
+  - **`salt`**: A random value that is combined with the password to
+    deter dictionary attacks.
 
--   **`mac` (Message Authentication Code)**: This is a cryptographic
-    code that ensures the integrity of the message (the encrypted
-    private key in this case). It is generated using a hash of both the
-    ciphertext and a portion of the derived key.
+- **`mac` (Message Authentication Code)**: This is a cryptographic
+  code that ensures the integrity of the message (the encrypted
+  private key in this case). It is generated using a hash of both the
+  ciphertext and a portion of the derived key.
 
 ### Creating an Account Descriptor
 
@@ -260,28 +260,28 @@ To see the details of your Account Descriptor, run:
 Here’s what a typical descriptor might look like:
 
 ```json
-    {
-      "version": 1,
-      "variant": {
-        "type": "braavos",
-        "version": 1,
-        "implementation": "0x5dec330eebf36c8672b60db4a718d44762d3ae6d1333e553197acb47ee5a062",
-        "multisig": {
-          "status": "off"
-        },
-        "signers": [
-          {
-            "type": "stark",
-            "public_key": "0x49759ed6197d0d385a96f9d8e7af350848b07777e901f5570b3dc2d9744a25e"
-          }
-        ]
-      },
-      "deployment": {
-        "status": "deployed",
-        "class_hash": "0x3131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e",
-        "address": "0x6dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821"
+{
+  "version": 1,
+  "variant": {
+    "type": "braavos",
+    "version": 1,
+    "implementation": "0x5dec330eebf36c8672b60db4a718d44762d3ae6d1333e553197acb47ee5a062",
+    "multisig": {
+      "status": "off"
+    },
+    "signers": [
+      {
+        "type": "stark",
+        "public_key": "0x49759ed6197d0d385a96f9d8e7af350848b07777e901f5570b3dc2d9744a25e"
       }
-    }
+    ]
+  },
+  "deployment": {
+    "status": "deployed",
+    "class_hash": "0x3131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e",
+    "address": "0x6dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821"
+  }
+}
 ```
 
 Note: The structure will differ if you use an Argent wallet.
@@ -304,9 +304,9 @@ efficient.
 
 Deploying a smart contract on Starknet involves two steps:
 
--   Declare your contract’s code.
+- Declare your contract’s code.
 
--   Deploy an instance of the declared code.
+- Deploy an instance of the declared code.
 
 To get started, navigate to the `contracts/` directory in the [first
 chapter](https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages/contracts)
@@ -323,7 +323,7 @@ section.
 ```
 
 This creates a compiled contract in `target/dev/` as
-"contracts\_Ownable.sierra.json" (in Chapter 2 of the book we will learn
+"contracts_Ownable.sierra.json" (in Chapter 2 of the book we will learn
 more details about Scarb).
 
 With the smart contract compiled, we’re ready to declare it using
@@ -350,7 +350,7 @@ There are three main options for RPC providers, sorted by ease of use:
     Starknet Book](https://book.starknet.io/chapter_4/node.html) or
     [Kasar](https://www.kasar.io/) for setup guides.
 
-In this tutorial, we will use Alchemy. We can set the STARKNET\_RPC
+In this tutorial, we will use Alchemy. We can set the STARKNET_RPC
 environment variable to make command invocations easier:
 
 ```bash
@@ -388,7 +388,7 @@ Starknet. For example:
     Class hash declared: 0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8
 ```
 
-You can think of this hash as the contract class’s *address.* Use a
+You can think of this hash as the contract class’s _address._ Use a
 block explorer like
 [StarkScan](https://testnet.starkscan.co/class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8)
 to verify this hash on the blockchain.
@@ -411,7 +411,7 @@ main components:
 
 2.  Any constructor arguments that the contract expects.
 
-In our example, the constructor expects an *owner* address. You can
+In our example, the constructor expects an _owner_ address. You can
 learn more about constructors in \[Chapter 12 of The Cairo
 Book\](<https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors>).
 
@@ -425,7 +425,7 @@ The command would look like this:
 
 Here’s a specific example with an actual class hash and constructor
 inputs (as the owner address use the address of your smart wallet so you
-can invoke the transfer\_ownership function later):
+can invoke the transfer_ownership function later):
 
 ```bash
     starkli deploy \

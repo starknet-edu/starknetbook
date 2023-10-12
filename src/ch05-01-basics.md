@@ -13,18 +13,18 @@ following three properties: scalability (the S in STARK), transparency
 
 Scalability means that two efficiency properties hold simultaneously:
 
--   **Scalable Prover**: The prover’s running time is "`nearly-linear`"
-    in the time it would take a trusted computer to check CI by just
-    re-executing the computation themselves and checking that the result
-    matches what someone is claiming. The ratio of "`overhead`" (time
-    needed to generate a proof / time needed to just run the
-    computation) remains reasonably low.
+- **Scalable Prover**: The prover’s running time is "`nearly-linear`"
+  in the time it would take a trusted computer to check CI by just
+  re-executing the computation themselves and checking that the result
+  matches what someone is claiming. The ratio of "`overhead`" (time
+  needed to generate a proof / time needed to just run the
+  computation) remains reasonably low.
 
--   **Scalable Verifier**: The verifier’s running time is polynomial in
-    the logarithm of naive replay time. In other words, the verifier’s
-    runtime is exponentially smaller than simply replaying the
-    computation (recall that *`replay`* is the current blockchain method
-    to achieve Inclusive Accountability).
+- **Scalable Verifier**: The verifier’s running time is polynomial in
+  the logarithm of naive replay time. In other words, the verifier’s
+  runtime is exponentially smaller than simply replaying the
+  computation (recall that _`replay`_ is the current blockchain method
+  to achieve Inclusive Accountability).
 
 <figure>
 <img src="scalable.png" alt="scalable" />
@@ -59,7 +59,7 @@ In words, a 100x increase in transaction throughput led only to a 2.25x
 increase in the verifier’s running time!
 
 In some cases, the verifier will still need to download and verify
-*availability of data*, which is a linear-time process, but downloading
+_availability of data_, which is a linear-time process, but downloading
 data is generally much cheaper and faster than checking its validity.
 
 # Transparency: With Trust Toward None, with Integrity for All
@@ -96,17 +96,17 @@ heuristic which is a different beast). Many of these primitives exist
 today as hardware instructions, and the lean cryptography leads to two
 more benefits:
 
--   **Post-Quantum Security**: STARKs are plausibly secure against
-    efficient quantum computers.
+- **Post-Quantum Security**: STARKs are plausibly secure against
+  efficient quantum computers.
 
--   **Concrete Efficiency**: For a given computation, the STARK prover
-    is at least 10x faster than both the SNARK and Bulletproofs prover.
-    The STARK verifier is at least 2x faster than the SNARK verifier and
-    more than 10x faster than the Bulletproof verifier. As Starkware
-    continues to optimize STARKs these ratios will likely improve.
-    However, a STARK proof length is
-    <sub>100x\ larger\ than\ the\ corresponding\ SNARK\ and</sub> 20x
-    larger than BulletProofs.
+- **Concrete Efficiency**: For a given computation, the STARK prover
+  is at least 10x faster than both the SNARK and Bulletproofs prover.
+  The STARK verifier is at least 2x faster than the SNARK verifier and
+  more than 10x faster than the Bulletproof verifier. As Starkware
+  continues to optimize STARKs these ratios will likely improve.
+  However, a STARK proof length is
+  <sub>100x\ larger\ than\ the\ corresponding\ SNARK\ and</sub> 20x
+  larger than BulletProofs.
 
 To understand how STARKs are computed, we need to delve into the
 arithmetic of modular operations, finite fields, and polynomials. For
@@ -116,10 +116,10 @@ thought.
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

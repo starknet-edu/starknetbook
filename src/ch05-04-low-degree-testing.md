@@ -52,14 +52,14 @@ following two cases.</p></td>
 </tbody>
 </table>
 
--   **The function $f$ is equal to a low degree polynomial**. Namely,
-    there exists a polynomial $p(x)$ over $F$, of degree less than $d$,
-    that agrees with $f$ everywhere on $L$.
+- **The function $f$ is equal to a low degree polynomial**. Namely,
+  there exists a polynomial $p(x)$ over $F$, of degree less than $d$,
+  that agrees with $f$ everywhere on $L$.
 
--   **The function $f$ is far from ALL low degree polynomials**. For
-    example, we need to modify at least 10% of the values of $f$ before
-    we obtain a function that agrees with a polynomial of degree less
-    than $d$.
+- **The function $f$ is far from ALL low degree polynomials**. For
+  example, we need to modify at least 10% of the values of $f$ before
+  we obtain a function that agrees with a polynomial of degree less
+  than $d$.
 
 Note that there is another possibility — the function $f$ may be mildly
 close to a low degree polynomial, yet not equal to one. For example, a
@@ -136,26 +136,26 @@ which is $</p></td>
 We first discuss two simple special cases, to build intuition for how
 the test will work in the general case.
 
--   **The case of a constant function $(d=1)$.** This corresponds to the
-    problem of distinguishing between the case where $f$ is a constant
-    function ($f(x)=c$ for some $c$ in $F$), and the case where $f$ is
-    far from any constant function. In this special case there is a
-    natural 2-query test that might work: query $f$ at a fixed location
-    $z1$ and also at a random location $w$, and then check that
-    $f(z1)=f(w)$. Intuitively, $f(z1)$ determines the (alleged) constant
-    value of $f$, and $f(w)$ tests whether all of $f$ is close to this
-    constant value or not.
+- **The case of a constant function $(d=1)$.** This corresponds to the
+  problem of distinguishing between the case where $f$ is a constant
+  function ($f(x)=c$ for some $c$ in $F$), and the case where $f$ is
+  far from any constant function. In this special case there is a
+  natural 2-query test that might work: query $f$ at a fixed location
+  $z1$ and also at a random location $w$, and then check that
+  $f(z1)=f(w)$. Intuitively, $f(z1)$ determines the (alleged) constant
+  value of $f$, and $f(w)$ tests whether all of $f$ is close to this
+  constant value or not.
 
--   **The case of a linear function $(d=2)$.** This corresponds to the
-    problem of distinguishing between the case where $f$ is a linear
-    function ($f(x)=ax+b$ for some $a$,$b$ in $F$), and the case where
-    $f$ is far from any linear function. In this special case there is a
-    natural 3-query test that might work: query f at two fixed locations
-    z1,z2 and also at a random location $w$, and then check that
-    ($z1$,$f(z1)$), ($z2$,$f(z2)$), ($w$,$f(w)$) are collinear, namely,
-    we can draw a line through these points. Intuitively, the values of
-    $f(z1)$ and $f(z2)$ determine the (alleged) line, and $f(w)$ tests
-    whether all of $f$ is close to this line or not.
+- **The case of a linear function $(d=2)$.** This corresponds to the
+  problem of distinguishing between the case where $f$ is a linear
+  function ($f(x)=ax+b$ for some $a$,$b$ in $F$), and the case where
+  $f$ is far from any linear function. In this special case there is a
+  natural 3-query test that might work: query f at two fixed locations
+  z1,z2 and also at a random location $w$, and then check that
+  ($z1$,$f(z1)$), ($z2$,$f(z2)$), ($w$,$f(w)$) are collinear, namely,
+  we can draw a line through these points. Intuitively, the values of
+  $f(z1)$ and $f(z2)$ determine the (alleged) line, and $f(w)$ tests
+  whether all of $f$ is close to this line or not.
 
 The above special cases suggest a test for the general case of a degree
 bound $d$. Query $f$ at $d$ fixed locations $z1$,$z2$,$…$,$zd$ and also
@@ -353,10 +353,10 @@ over the naive n2 algorithm).
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

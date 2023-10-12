@@ -3,15 +3,15 @@
 Several tools exist in the starknet ecosystem to build the front-end for
 your application. The most popular ones are:
 
--   [starknet-react](https://github.com/apibara/starknet-react)
-    ([documentation](https://apibara.github.io/starknet-react)):
-    Collection of React hooks for Starknet. It is inspired by
-    [wagmi](https://github.com/tmm/wagmi), powered by
-    [starknet.js](https://github.com/0xs34n/starknet.js).
+- [starknet-react](https://github.com/apibara/starknet-react)
+  ([documentation](https://apibara.github.io/starknet-react)):
+  Collection of React hooks for Starknet. It is inspired by
+  [wagmi](https://github.com/tmm/wagmi), powered by
+  [starknet.js](https://github.com/0xs34n/starknet.js).
 
--   [starknet.js](https://github.com/0xs34n/starknet.js): A JavaScript
-    library for interacting with Starknet contracts. It would be the
-    equivalent of [web3.js](https://web3js.org/) for Ethereum.
+- [starknet.js](https://github.com/0xs34n/starknet.js): A JavaScript
+  library for interacting with Starknet contracts. It would be the
+  equivalent of [web3.js](https://web3js.org/) for Ethereum.
 
 For Vue developers, vue-stark-boil, created by the team at [Don’t Panic
 DAO](https://github.com/dontpanicdao), is a great option. For a deeper
@@ -384,20 +384,20 @@ and support.
 
 ## Further Reading
 
--   [Starknet.js](https://starknet.js.org)
+- [Starknet.js](https://starknet.js.org)
 
--   [Starknet React Docs](https://www.apibara.com/starknet-react-docs)
+- [Starknet React Docs](https://www.apibara.com/starknet-react-docs)
 
--   [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
+- [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
 
--   [Mastering Bitcoin](https://github.com/bitcoinbook/bitcoinbook)
+- [Mastering Bitcoin](https://github.com/bitcoinbook/bitcoinbook)
 
 The Book is a community-driven effort created for the community.
 
--   If you’ve learned something, or not, please take a moment to provide
-    feedback through [this 3-question
-    survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
+- If you’ve learned something, or not, please take a moment to provide
+  feedback through [this 3-question
+  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
 
--   If you discover any errors or have additional suggestions, don’t
-    hesitate to open an [issue on our GitHub
-    repository](https://github.com/starknet-edu/starknetbook/issues).
+- If you discover any errors or have additional suggestions, don’t
+  hesitate to open an [issue on our GitHub
+  repository](https://github.com/starknet-edu/starknetbook/issues).

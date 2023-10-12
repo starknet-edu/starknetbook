@@ -17,12 +17,13 @@
   - [Katana: A Local Node](ch02-05-katana.md)
   - [Starknet Devnet 🚧](ch02-06-starknet-devnet.md)
   - [Starknet-js: Javascript SDK](ch02-07-starknet-js.md)
+    - [Examples](ch02-07-01-examples.md)
+      - [Million Dollar Homepage](ch02-07-01-01-million-dollar-homepage.md)
   - [Starknet-React: React Integration](ch02-08-starknet-react.md)
   - [Starknet-py: Python SDK 🚧](ch02-09-starknet-py.md)
   - [Starknet-rs: Rust SDK 🚧](ch02-10-starknet-rs.md)
   - [Foundry Forge: Testing 🚧](ch02-11-foundry-forge.md)
   - [Foundry Cast: Interacting with Starknet 🚧](ch02-12-foundry-cast.md)
-
 
 ## Architecture
 
@@ -31,7 +32,7 @@
   - [Sequencers](ch03-02-sequencers.md)
   - [Provers 🚧](ch03-03-provers.md)
   - [Nodes 🚧](ch03-04-nodes.md)
-  - [Layer 3 and App Chains 🚧  ](ch03-05-layer-3.md)
+  - [Layer 3 and App Chains 🚧 ](ch03-05-layer-3.md)
   - [Solidity Verifier 🚧](ch03-06-solidity-verifier.md)
   - [Decentralization 🚧](ch03-07-decentralization.md)
 
