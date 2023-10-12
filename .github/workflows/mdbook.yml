@@ -1,0 +1,72 @@
+# Sample workflow for building and deploying a mdBook site to GitHub Pages
+#
+# To get started with mdBook see: https://rust-lang.github.io/mdBook/index.html
+#
+name: Deploy mdBook site to Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Rust cache
+        uses: ./.github/workflows/setup-rust-cache
+
+      - name: Install mdbook
+        uses: ./.github/workflows/install-mdbook
+
+      - name: Build in English
+        run: |
+          mdbook build -d book
+
+      - name: Build all translations
+        run: |
+          for po_lang in $(cat ./LANGUAGES); do
+              echo "::group::Building $po_lang translation"
+              MDBOOK_BOOK__LANGUAGE=$po_lang \
+              mdbook build -d book/$po_lang
+              echo "::endgroup::"
+          done
+
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v3
+
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v1
+      #   with:
+      #     path: ./book
+
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v2
+
+      - name: Rename book to public_html
+        run: mv book public_html
+
+      - name: scp upload to production site
+        run: |
+          sshpass -p ${{ secrets.PROD_PASS }} scp -o 'StrictHostKeyChecking no' -r public_html/ ${{ secrets.PROD_USER }}@${{ secrets.PROD_IP }}:~/
