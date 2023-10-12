@@ -1,0 +1,15 @@
+name: Install mdbook and dependencies
+
+description: Install mdbook with the dependencies we need.
+
+runs:
+  using: composite
+  steps:
+    # The --locked flag is important for reproducible builds.
+    - name: Install mdbook
+      run: cargo install mdbook --locked --version 0.4.31
+      shell: bash
+
+    - name: Install mdbook-i18n-helpers
+      run: cargo install mdbook-i18n-helpers --locked --version 0.1.0
+      shell: bash

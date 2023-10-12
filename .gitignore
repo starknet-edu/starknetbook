@@ -6,4 +6,4 @@ node_modules
 # Editors tmp files.
 *~
 .idea/
-
+.vscode
