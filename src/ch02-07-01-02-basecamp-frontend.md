@@ -4,13 +4,14 @@ This guide provides a walkthrough of the BaseCamp frontend session. It showcases
 
 The toolings utilized in this guide are:
 
-- [Reactjs](https://react.dev/learn/start-a-new-react-project) : a  framework for building frontend application
+- [Reactjs](https://react.dev/learn/start-a-new-react-project) : a framework for building frontend application
 - [@argent/get-starknet](https://www.npmjs.com/package/@argent/get-starknet) : a light wrapper around **[starknet.js](https://github.com/0xs34n/starknet.js)** to interact with the wallet extension.
 - [starknet](https://www.npmjs.com/package/starknet) : javascript library for Starkent
 
 To follow along, setup the development environment by installing the following:
 
-Clone the project repository: 
+Clone the project repository:
+
 ```bash
 https://github.com/Darlington02/basecamp-frontend-boilerplate
 ```
@@ -76,9 +77,9 @@ const connectWallet = async() => {
       setAddress(connection.selectedAddress)
     }
   }
-  ```
+```
 
-  The `connectWallet` function is asynchronous, allowing for the use of await to handle asynchronous operations.
+The `connectWallet` function is asynchronous, allowing for the use of await to handle asynchronous operations.
 
 - The `connect` function from the `@argent/get-starknet`` library is called to attempt the connection to Starknet.
 - If the connection is successful (connection && connection.isConnected), it updates the React component's state to store the connection details, `account`, and `selected address`.
@@ -92,8 +93,9 @@ const disconnectWallet = async() => {
     setAccount(undefined)
     setAddress('')
   }
-  ```
-The **`disconnectWallet`** function is an asynchronous function that disconnects from the web wallet, presumably using a **`disconnect`** function from an unspecified library. 
+```
+
+The **`disconnectWallet`** function is an asynchronous function that disconnects from the web wallet, presumably using a **`disconnect`** function from an unspecified library.
 
 - It calls the **`disconnect`** function using **`await`** to handle the asynchronous disconnection process.
 - After successfully disconnecting, it proceeds to update the React component's state by resetting the connection (**`setConnection`**), account (**`setAccount`**), and address (**`setAddress`**) to appropriate values. In this case, it sets the connection and account to **`undefined`** and the address to an empty string.
@@ -104,7 +106,7 @@ The **`disconnectWallet`** function is an asynchronous function that disconnects
 useEffect(() => {
     const connectToStarknet = async() => {
       const connection = await connect( { modalMode: "neverAsk", webWalletUrl: "https://web.argent.xyz" } );
-      
+
       if(connection && connection.isConnected) {
         setConnection(connection)
         setAccount(connection.account)
@@ -123,11 +125,11 @@ The **`useEffect`** hook in React is being used to trigger a connection to Stark
 
 # Important refresher
 
-After establishing a connection to the network, it is noteworthy to recall that in order to create an instance of the smart contract to interact with, you need the `contract address`,  `abi` `Signer` or `Provider`.
+After establishing a connection to the network, it is noteworthy to recall that in order to create an instance of the smart contract to interact with, you need the `contract address`, `abi` `Signer` or `Provider`.
 
 **ABI:**
 
- Application Binary Interface is a standardized format that defines how to interact with a smart contract on the blockchain. It specifies the structure of functions, events, and variables in a way that software applications can understand, enabling seamless communication and interaction with the smart contract. It includes function signatures, input/output types, event formats, and variable types, facilitating the invocation of functions and retrieval of data from the contract.
+Application Binary Interface is a standardized format that defines how to interact with a smart contract on the blockchain. It specifies the structure of functions, events, and variables in a way that software applications can understand, enabling seamless communication and interaction with the smart contract. It includes function signatures, input/output types, event formats, and variable types, facilitating the invocation of functions and retrieval of data from the contract.
 
 **Signer:**
 
@@ -136,7 +138,6 @@ A signer is an entity responsible for signing transactions, providing authorizat
 **Provider:**
 
 A provider facilitates communication, transaction creation, and data retrieval from the blockchain.
-
 
 To initiate a write transaction, the signer i.e connected account, has to be provided, in this case, the signer signs the transaction and pays the fee needed to execute a call.
 
@@ -154,6 +155,7 @@ const increaseCounter = async() => {
     }
   }
 ```
+
 The increaseCounter function is an asynchronous JavaScript function responsible for interacting with a smart contract to increment a counter. It first creates a contract instance using the contract's ABI, contract address, and the connected account (as this is a write transaction that modifies the contract's state). The function then calls the increment function of the contract using await to ensure it waits for the increment to complete. If successful, it alerts the user that the counter was incremented. If an error occurs during this process, it alerts the user with an appropriate error message.
 
 ## Invoking `decrement` function
@@ -191,7 +193,7 @@ const getCounter = async() => {
 
 The **`getCounter`** function first creates a provider instance. It then initializes a contract instance by passing the provider as the third parameter, designating the network where the contract is deployed, typically the `mainnet`. It's important to note that when reading data from the network, you specify the provider, not the signer (account).
 
-In conclusion, this guide demonstrated how to integrate a simple counter smart contract with the front end. 
+In conclusion, this guide demonstrated how to integrate a simple counter smart contract with the front end.
 
 The guide covered critical functions such as connecting and disconnecting from the blockchain using **`connectWallet`** and **`disconnectWallet`** functions, respectively. It also showcased how to interact with the smart contract through **`increaseCounter`**, **`decreaseCounter`**, and **`getCounter`** functions, demonstrating transaction initiation, counter manipulation, and data retrieval.
 
