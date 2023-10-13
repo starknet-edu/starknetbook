@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: The Starknet Book\n"
-"POT-Creation-Date: 2023-10-13T08:44:11+09:00\n"
+"POT-Creation-Date: 2023-10-13T09:44:00+09:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
