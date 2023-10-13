@@ -20,6 +20,7 @@
     - [Examples](ch02-07-01-examples.md)
       - [Beginner - ERC-20 UI](ch02-07-01-00-erc20-ui.md)
       - [Intermediate - Million Dollar Homepage](ch02-07-01-01-million-dollar-homepage.md)
+      - [BaseCamp Frontend Session](ch02-07-01-02-basecamp-frontend.md)
   - [Starknet-React: React Integration](ch02-08-starknet-react.md)
   - [Starknet-py: Python SDK 🚧](ch02-09-starknet-py.md)
   - [Starknet-rs: Rust SDK 🚧](ch02-10-starknet-rs.md)
