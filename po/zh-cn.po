@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Starknet Book\n"
 "POT-Creation-Date: 2023-10-13T08:44:11+09:00\n"
-"PO-Revision-Date: 2023-10-13 23:48+0900\n"
+"PO-Revision-Date: 2023-10-14 07:30+0900\n"
 "Last-Translator: y-bi <cryptonerdcn@gmail.com>\n"
 "Language-Team: Language zh-cn\n"
 "Language: zh_CN\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #: src/SUMMARY.md:1 src/title-page.md:1
 msgid "The Starknet Book"
-msgstr "The Starknet Book"
+msgstr "Starknet 之书"
 
 #: src/SUMMARY.md:4
 msgid "Introduction"
@@ -236,7 +236,8 @@ msgid ""
 "chapter guiding you through the Starknet ecosystem."
 msgstr ""
 "Starknet Book 是一本循序渐进的指南，旨在向你传授Starknet 开发的基本知识。这本"
-"书由社区的合力撰写，每一章都会引导你了解Starknet 的生态系统。"
+"书由社区的合力撰写，每一章都会引导你了解Starknet 的生态系统。中文版由"
+"[StarknetAstro](https://twitter.com/StarkNetAstroCN)翻译。"
 
 #: src/title-page.md:12
 msgid ""
@@ -278,7 +279,7 @@ msgstr "描述"
 
 #: src/title-page.md:29
 msgid "1: Starknet Introduction"
-msgstr "1: Starknet简介"
+msgstr "1: Starknet简介与入门"
 
 #: src/title-page.md:29
 msgid ""
@@ -288,7 +289,7 @@ msgstr "深入了解Starknet的基本概念，熟悉智能合约的部署。"
 
 #: src/title-page.md:30
 msgid "2: Starknet Tooling"
-msgstr "2: Starknet上的工具"
+msgstr "2: Starknet中的工具"
 
 #: src/title-page.md:30
 msgid ""
@@ -424,8 +425,8 @@ msgid ""
 "sharing expertise—you’re shaping the future of decentralized tech. Let’s "
 "build a guide that helps developers unlock Starknet’s potential."
 msgstr ""
-"欢迎加入！通过为《Starknet Book》做出贡献，您所做的不仅仅是分享专业知识，您还"
-"在塑造去中心化技术的未来。让我们共同打造一本帮助开发者释放Starknet潜力的指南。"
+"欢迎加入！通过为Starknet之书做出贡献，您所做的不仅仅是分享专业知识，您还在塑造"
+"去中心化技术的未来。让我们共同打造一本帮助开发者释放Starknet潜力的指南。"
 
 #: src/title-page.md:80
 msgid ""
@@ -489,8 +490,8 @@ msgid ""
 "Starknet smart contracts. You can access it [here](https://book.cairo-lang."
 "org/)."
 msgstr ""
-"**Cairo Book**：Starknet智能合约编程语言Cairo的综合指南。您可以通过 [此处]"
-"(https://book.cairo-lang.org/)访问。"
+"**Cairo 之书**：Starknet智能合约编程语言Cairo的综合指南。您可以通过 [此处]"
+"(https://book.cairo-lang.org/zh-cn/title-page.html) 访问。"
 
 #: src/title-page.md:111
 msgid ""
@@ -499,7 +500,7 @@ msgid ""
 "can access it [here](https://github.com/shramee/starklings-cairo1)."
 msgstr ""
 "**Starklings**：一份专为指导您学习Cairo编程而设计的教程，并确保您达到熟练水"
-"平。您可以通过 [此处](https://github.com/shramee/starklings-cairo1)访问。"
+"平。您可以通过 [此处](https://github.com/shramee/starklings-cairo1) 访问。"
 
 #: src/title-page.md:116
 msgid ""
@@ -508,13 +509,13 @@ msgid ""
 "[here](https://community.starknet.io/)."
 msgstr ""
 "**Starknet社区论坛**：一个在线平台，在这里您可以参与有关Starknet最新发展的讨"
-"论。您可以通过 [此处](https://community.starknet.io/)加入讨论。"
+"论。您可以通过 [此处](https://community.starknet.io/) 加入讨论。"
 
 #: src/title-page.md:120
 msgid ""
 "**Starknet Documentation**: You can browse through the documentation [here]"
 "(https://docs.starknet.io/)."
-msgstr "**Starknet文档**：您可以在[此处](https://docs.starknet.io/)浏览文档 。"
+msgstr "**Starknet文档**：您可以在[此处](https://docs.starknet.io/) 浏览文档 。"
 
 #: src/title-page.md:123
 msgid ""
@@ -1376,7 +1377,7 @@ msgid ""
 "calling it is termed as a \"call\".)"
 msgstr ""
 "选择 `get_owner` 函数。由于该函数不需要参数，因此 calldata 字段保持空白。(这是"
-"一个读取函数，因此调用它会被称为 \"call\"）。"
+"一个只读函数，因此调用它会被称为 \"call\"）。"
 
 #: src/ch01-00-getting-started.md:182
 msgid ""
@@ -1652,12 +1653,10 @@ msgstr ""
 "解。"
 
 #: src/ch02-00-starknet-tooling.md:1
-#, fuzzy
 msgid "Starknet Tooling"
 msgstr "Starknet工具"
 
 #: src/ch02-00-starknet-tooling.md:3 src/ch02-03-scarb.md:3
-#, fuzzy
 msgid ""
 "To make the most of this chapter, a basic grasp of the Cairo programming "
 "language is advised. We suggest reading chapters 1-6 of the [Cairo Book]"
@@ -1667,14 +1666,13 @@ msgid ""
 "starknet-smart-contracts.html) in the same book. With this background, you’ll "
 "be well-equipped to understand the examples presented here."
 msgstr ""
-"要充分利用本章内容，建议先掌握Cairo编程语言的基本知识。我们建议阅读[Cairo "
-"Book](https://book.cairo-lang.org/title-page.html)的第1-6章，内容包括_Getting "
-"Started_到_Enums and Pattern Matching。_之后，再学习同一本书中的[Starknet "
-"Smart Contracts chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-"
-"contracts.html)。有了这些背景知识，你就能很好地理解这里介绍的示例了。"
+"要充分理解本章内容，建议先掌握Cairo编程语言的基本知识。我们建议阅读[Cairo "
+"Book](https://book.cairo-lang.org/zh-cn/title-page.html)的第1-6章，内容包括从 "
+"_入门_ 章节的基础知识到 _枚举和模式匹配_。之后，再学习同一本书中的[Starknet 智"
+"能合约](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.htmll)。"
+"有了这些背景知识，你就能很好地理解这里介绍的示例了。"
 
 #: src/ch02-00-starknet-tooling.md:12
-#, fuzzy
 msgid ""
 "Today, Starknet provides all essential tools for building decentralized "
 "applications (dApps), compatible with multiple languages like JavaScript, "
@@ -1688,23 +1686,19 @@ msgstr ""
 "后端任务。"
 
 #: src/ch02-00-starknet-tooling.md:18
-#, fuzzy
 msgid ""
 "We welcome contributors to enhance existing tools or develop new solutions."
 msgstr "我们欢迎贡献者改进现有工具或开发新的解决方案。"
 
 #: src/ch02-00-starknet-tooling.md:21
-#, fuzzy
 msgid "In this chapter, you’ll explore:"
-msgstr "在本章中，您将了解"
+msgstr "在本章中，您将了解："
 
 #: src/ch02-00-starknet-tooling.md:23
-#, fuzzy
 msgid "Frameworks: Build using Protostar or Hardhat"
-msgstr "框架：使用 Protostar 或 Hardhat 构建"
+msgstr "框架：使用 Protostar 或 Hardhat 进行项目构建"
 
 #: src/ch02-00-starknet-tooling.md:25
-#, fuzzy
 msgid ""
 "SDKs: Discover multi-language support through Starknet.js, Starknet-rs, "
 "Starknet_py, and Caigo"
@@ -1712,60 +1706,50 @@ msgstr ""
 "SDKs：通过 Starknet.js、Starknet-rs、Starknet_py 和 Caigo 发现多语言支持"
 
 #: src/ch02-00-starknet-tooling.md:28
-#, fuzzy
 msgid "Front-end Development: Use Starknet.js and React"
 msgstr "前端开发：使用 Starknet.js 和 React"
 
 #: src/ch02-00-starknet-tooling.md:30
-#, fuzzy
 msgid "Testing: Understand testing methods with Protostar and the Devnet"
-msgstr "测试使用 Protostar 和 Devnet 了解测试方法"
+msgstr "测试：使用 Protostar 和 Devnet 来了解如何测试"
 
 #: src/ch02-00-starknet-tooling.md:32
-#, fuzzy
 msgid ""
 "By chapter’s end, you’ll have a complete grasp of Starknet’s toolset, "
 "enabling efficient dApp development."
-msgstr "本章结束时，您将完全掌握 Starknet 的工具集，实现高效的 dApp 开发。"
+msgstr "本章结束时，您将能完全掌握 Starknet 的工具集，实现高效的 dApp 开发。"
 
 #: src/ch02-00-starknet-tooling.md:35
-#, fuzzy
 msgid ""
 "Here’s a quick rundown of the tools that could be used for Starknet "
 "development and that we’ll cover in this chapter:"
 msgstr "以下是可用于Starknet开发的工具的简要介绍，我们将在本章介绍这些工具："
 
 #: src/ch02-00-starknet-tooling.md:38
-#, fuzzy
 msgid "Scarb: A package manager that compiles your contracts."
-msgstr "Scarb：编译合约的软件包管理器"
+msgstr "Scarb：编译合约的软件包管理器。"
 
 #: src/ch02-00-starknet-tooling.md:40
-#, fuzzy
 msgid "Starkli: A CLI tool for interacting with the Starknet network."
 msgstr "Starkli：与Starknet互动的 CLI 工具。"
 
 #: src/ch02-00-starknet-tooling.md:42
-#, fuzzy
 msgid "Foundry: For contract testing."
-msgstr "铸造厂：用于合约测试。"
+msgstr "Foundry：用于合约测试。"
 
 #: src/ch02-00-starknet-tooling.md:44
-#, fuzzy
 msgid "Katana: Creates a local test node."
-msgstr "卡塔纳创建本地测试节点"
+msgstr "Katana：创建本地测试节点。"
 
 #: src/ch02-00-starknet-tooling.md:46
-#, fuzzy
 msgid ""
 "SDKs: starknet.js, Starknet.py, and starknet.rs interface with Starknet using "
 "common programming languages."
 msgstr ""
-"SDKs: starknet.js、Starknet.py 和 starknet.rs 使用普通编程语言与 Starknet 接"
+"SDKs: 包括starknet.js、Starknet.py 和 starknet.rs， 普通编程语言与 Starknet 接"
 "口。"
 
 #: src/ch02-00-starknet-tooling.md:49
-#, fuzzy
 msgid "Starknet-react: Builds front-end apps using React."
 msgstr "Starknet-react：使用 React 构建前端应用程序。"
 
@@ -1775,18 +1759,15 @@ msgid "Installation"
 msgstr "安装"
 
 #: src/ch02-01-basic-installation.md:3
-#, fuzzy
 msgid ""
 "This chapter walks you through setting up your Starknet development tools."
-msgstr "本章将指导您设置 Starknet 开发工具。"
+msgstr "本章将指导您安装与设置 Starknet 开发工具。"
 
 #: src/ch02-01-basic-installation.md:6
-#, fuzzy
 msgid "Essential tools to install:"
-msgstr "安装必备工具"
+msgstr "安装必备工具："
 
 #: src/ch02-01-basic-installation.md:8
-#, fuzzy
 msgid ""
 "[Starkli](https://github.com/xJonathanLEI/starkli) - A CLI tool for "
 "interacting with Starknet. More tools are discussed in Chapter 2."
@@ -1795,37 +1776,32 @@ msgstr ""
 "具。第 2 章将讨论更多工具。"
 
 #: src/ch02-01-basic-installation.md:11
-#, fuzzy
 msgid ""
 "[Scarb](https://github.com/software-mansion/scarb) - Cairo’s package manager "
 "that compiles code to Sierra, a mid-level language between Cairo and CASM."
 msgstr ""
 "[Scarb](https://github.com/software-mansion/scarb) - Cairo 的软件包管理器，可"
-"将代码编译为 Sierra，一种介于 Cairo 和 CASM 之间的中级语言。"
+"将代码编译为 Sierra--这是一种一种介于 Cairo 和 CASM 之间的中级语言。"
 
 #: src/ch02-01-basic-installation.md:15
-#, fuzzy
 msgid ""
 "For support or queries, visit our [GitHub Issues](https://github.com/starknet-"
 "edu/starknetbook/issues) or contact espejelomar on Telegram."
 msgstr ""
-"有关支持或疑问，请访问我们的 [GitHub Issues](https://github.com/starknet-edu/"
+"有关支持或问题，请访问我们的 [GitHub Issues](https://github.com/starknet-edu/"
 "starknetbook/issues) 或在 Telegram 上联系 espejelomar。"
 
 #: src/ch02-01-basic-installation.md:19
-#, fuzzy
 msgid "Starkli Installation"
-msgstr "斯塔克利安装"
+msgstr "Starkli 安装"
 
 #: src/ch02-01-basic-installation.md:21
-#, fuzzy
 msgid ""
 "Easily install Starkli using Starkliup, an installer invoked through the "
 "command line."
-msgstr "使用通过命令行调用的安装程序 Starkliup，轻松安装 Starkli。"
+msgstr "使用通过命令行调用安装程序 Starkliup，可轻松安装 Starkli。"
 
 #: src/ch02-01-basic-installation.md:24
-#, fuzzy
 msgid ""
 "```bash\n"
 "curl https://get.starkli.sh | sh\n"
@@ -1838,47 +1814,40 @@ msgstr ""
 "```"
 
 #: src/ch02-01-basic-installation.md:29
-#, fuzzy
 msgid "Restart your terminal and confirm installation:"
-msgstr "重新启动终端并确认安装："
+msgstr "重新启动终端并确认安装成功："
 
 #: src/ch02-01-basic-installation.md:35
-#, fuzzy
 msgid "To upgrade Starkli, simply repeat the steps."
 msgstr "要升级 Starkli，只需重复上述步骤即可。"
 
 #: src/ch02-01-basic-installation.md:37
-#, fuzzy
 msgid "Scarb Package Manager Installation"
 msgstr "安装 Scarb 软件包管理器"
 
 #: src/ch02-01-basic-installation.md:39
-#, fuzzy
 msgid ""
 "We will get deeper into Scarb later in this chapter. For now, we will go over "
 "the installation process."
 msgstr "本章稍后我们将深入介绍 Scarb。现在，我们将介绍安装过程。"
 
 #: src/ch02-01-basic-installation.md:41
-#, fuzzy
 msgid "For macOS and Linux:"
-msgstr "适用于 macOS 和 Linux："
+msgstr "对于 macOS 和 Linux上："
 
 #: src/ch02-01-basic-installation.md:43
-#, fuzzy
 msgid ""
 "```bash\n"
 "    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/"
 "install.sh | sh\n"
 "```"
 msgstr ""
-"``bash\n"
+"```bash\n"
 "    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/"
 "install.sh | sh\n"
 "```"
 
 #: src/ch02-01-basic-installation.md:47
-#, fuzzy
 msgid ""
 "For Windows, follow manual setup in the [Scarb documentation](https://docs."
 "swmansion.com/scarb/download.html#windows)."
@@ -1887,26 +1856,23 @@ msgstr ""
 "html#windows)中的手册进行设置。"
 
 #: src/ch02-01-basic-installation.md:50
-#, fuzzy
 msgid "Restart the terminal and run:"
 msgstr "重启终端并运行："
 
 #: src/ch02-01-basic-installation.md:56
-#, fuzzy
 msgid "To upgrade Scarb, rerun the installation command."
 msgstr "要升级 Scarb，请重新运行安装命令。"
 
 #: src/ch02-01-basic-installation.md:58
-#, fuzzy
 msgid "You are now set to code in Cairo and deploy to Starknet."
-msgstr "现在您可以在Cairo编写代码并部署到Starknet。"
+msgstr ""
+"现在您已经将用Cairo编写代码并将其部署到Starknet所需的开发环境设置完成了。"
 
 #: src/ch02-02-compile-deploy-interact.md:1
 msgid "Hello, World!"
 msgstr "世界，你好！"
 
 #: src/ch02-02-compile-deploy-interact.md:3
-#, fuzzy
 msgid ""
 "In this chapter, you’ll learn how to compile, deploy, and interact with a "
 "Starknet smart contract written in Cairo."
@@ -1915,7 +1881,6 @@ msgstr ""
 "互。"
 
 #: src/ch02-02-compile-deploy-interact.md:6
-#, fuzzy
 msgid ""
 "First, confirm that the following commands work on your system. If they "
 "don’t, refer to Basic Installation in this chapter."
@@ -1923,31 +1888,26 @@ msgstr ""
 "首先，请确认以下命令在您的系统上是否有效。如果不行，请参阅本章的基本安装。"
 
 #: src/ch02-02-compile-deploy-interact.md:14
-#, fuzzy
 msgid "Find the compiler versions supported"
 msgstr "查找支持的编译器版本"
 
 #: src/ch02-02-compile-deploy-interact.md:16
-#, fuzzy
 msgid ""
 "We have to make sure that our Starkli compiler version match Scarb compiler "
 "version"
 msgstr "我们必须确保我们的 Starkli 编译器版本与 Scarb 编译器版本一致"
 
 #: src/ch02-02-compile-deploy-interact.md:19
-#, fuzzy
 msgid "To find the compiler versions supported by Starkli, execute:"
-msgstr "要查找 Starkli 支持的编译器版本，请执行"
+msgstr "要查找 Starkli 支持的编译器版本，请执行："
 
 #: src/ch02-02-compile-deploy-interact.md:25
-#, fuzzy
 msgid ""
 "You’ll see a list of possible compiler versions under the `--compiler-"
 "version` flag."
-msgstr "你会在 `--compiler-version` 标志下看到可能的编译器版本列表。"
+msgstr "你会在 `--compiler-version` 标志下看到可使用的编译器版本列表。"
 
 #: src/ch02-02-compile-deploy-interact.md:35
-#, fuzzy
 msgid ""
 "Note that the Scarb compiler version might not align with Starkli’s supported "
 "versions. To check Scarb’s version:"
@@ -1955,12 +1915,10 @@ msgstr ""
 "请注意，Scarb 编译器版本可能与 Starkli 支持的版本不一致。请检查 Scarb 的版本："
 
 #: src/ch02-02-compile-deploy-interact.md:42
-#, fuzzy
 msgid "You’ll see a list that contains scarb, cairo and sierra version."
 msgstr "你会看到一个包含 scarb、cairo 和 sierra 版本的列表。"
 
 #: src/ch02-02-compile-deploy-interact.md:50
-#, fuzzy
 msgid ""
 "If there’s a mismatch, it is suggested that you install the version of Scarb "
 "that uses the compiler version that Starkli supports. You can find previous "
@@ -1972,12 +1930,10 @@ msgstr ""
 "到以前的版本。"
 
 #: src/ch02-02-compile-deploy-interact.md:56
-#, fuzzy
 msgid "To install a specific version, such as `0.6.1`, run:"
-msgstr "要安装特定版本，如 `0.6.1`，请运行"
+msgstr "要安装特定版本，如 `0.6.1`，请运行："
 
 #: src/ch02-02-compile-deploy-interact.md:58
-#, fuzzy
 msgid ""
 "```bash\n"
 "    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/"
@@ -1990,57 +1946,49 @@ msgstr ""
 "```"
 
 #: src/ch02-02-compile-deploy-interact.md:64
-#, fuzzy
 msgid ""
 "A smart wallet comprises a Signer and an Account Descriptor. The Signer is a "
 "smart contract with a private key for signing transactions, while the Account "
 "Descriptor is a JSON file detailing the wallet’s address and public key."
 msgstr ""
-"智能钱包由签名器和账户描述符组成。签名者是一个智能合约，带有用于签署交易的私"
+"智能钱包由签名者和账户描述符组成。签名者是一个智能合约，带有用于签署交易的私"
 "钥，而账户描述符是一个 JSON 文件，详细说明了钱包的地址和公钥。"
 
 #: src/ch02-02-compile-deploy-interact.md:69
-#, fuzzy
 msgid "Use Braavos or Argent X browser extensions to create your smart wallet."
 msgstr "使用 Braavos 或 Argent X 浏览器扩展创建智能钱包。"
 
 #: src/ch02-02-compile-deploy-interact.md:72
-#, fuzzy
 msgid ""
 "Follow the provided instructions for your chosen wallet (Argent or Braavos)."
-msgstr "按照所选钱包（亚精文或布拉佛斯）提供的说明进行操作。"
+msgstr "按照所选钱包(Argent 或 Braavos)提供的说明进行操作。"
 
 #: src/ch02-02-compile-deploy-interact.md:75
-#, fuzzy
 msgid ""
 "Fund your wallet with ETH. Use [Starknet Goerli Faucet](https://faucet.goerli."
 "starknet.io/) as needed."
 msgstr ""
-"用 ETH 为钱包充值。根据需要使用 [Starknet Goerli Faucet](https://faucet."
-"goerli.starknet.io/)。"
+"为钱包充值 ETH 。你可以使用 [Starknet Goerli Faucet](https://faucet.goerli."
+"starknet.io/)。"
 
 #: src/ch02-02-compile-deploy-interact.md:78
-#, fuzzy
 msgid "Now you’re ready to interact with Starknet smart contracts."
 msgstr "现在，您已经准备好与Starknet智能合约互动了。"
 
 #: src/ch02-02-compile-deploy-interact.md:80
-#, fuzzy
 msgid "Creating a Signer"
 msgstr "创建签名者"
 
 #: src/ch02-02-compile-deploy-interact.md:82
-#, fuzzy
 msgid ""
 "The Signer is an essential smart contract capable of signing transactions in "
 "Starknet. You’ll need the private key from your smart wallet to create one, "
 "from which the public key can be derived."
 msgstr ""
 "签名者是一种重要的智能合约，能够在Starknet中签署交易。你需要从你的智能钱包中获"
-"取私钥来创建签名器，并从中获取公钥。"
+"取私钥来创建签名者，并从中获取公钥。"
 
 #: src/ch02-02-compile-deploy-interact.md:86
-#, fuzzy
 msgid ""
 "Starkli enables secure storage of your private key through a keystore file. "
 "This encrypted file can be accessed using a password and is generally stored "
@@ -2050,12 +1998,10 @@ msgstr ""
 "通常存储在默认的 Starkli 目录中。"
 
 #: src/ch02-02-compile-deploy-interact.md:90
-#, fuzzy
 msgid "First, create the default directory:"
 msgstr "首先，创建默认目录："
 
 #: src/ch02-02-compile-deploy-interact.md:96
-#, fuzzy
 msgid ""
 "Then generate the keystore file. The signer command contains subcommands for "
 "creating a keystore file from a private key or completely create a new one. "
@@ -2070,7 +2016,6 @@ msgstr ""
 "我们将使用 `my_keystore_ 1.json`。"
 
 #: src/ch02-02-compile-deploy-interact.md:110
-#, fuzzy
 msgid ""
 "In the private key prompt, paste the private key of your smart wallet. In the "
 "password prompt, enter a password of your choice. You will need this password "
@@ -2080,19 +2025,17 @@ msgstr ""
 "Starkli 签署交易时需要这个密码。"
 
 #: src/ch02-02-compile-deploy-interact.md:114
-#, fuzzy
 msgid ""
 "Export the private key from your Braavos or Argent wallet. For Argent X, you "
 "can find it in the \"Settings\" section → Select your Account → \"Export "
 "Private Key\". For Braavos, you can find it in the \"Settings\" section → "
 "\"Privacy and Security\" → \"Export Private Key\"."
 msgstr ""
-"从您的布拉佛斯或 Argent 钱包中导出私钥。对于 Argent X，可以在 \"设置\"→\"选择"
-"账户\"→\"导出私钥 \"中找到。对于布拉佛斯，您可以在 \"设置\"→\"隐私和安全"
-"\"→\"导出私人密钥 \"中找到它。"
+"从您的Braavos或 Argent 钱包中导出私钥。对于 Argent X，可以在 \"设置\"→\"选择账"
+"户\"→\"导出私钥 \"中找到。对于Braavos，您可以在 \"设置\"→\"隐私和安全\"→\"导出"
+"私人密钥 \"中找到它。"
 
 #: src/ch02-02-compile-deploy-interact.md:119
-#, fuzzy
 msgid ""
 "While knowing the private key of a smart wallet is necessary to sign "
 "transactions, it’s not sufficient. We also need to inform Starkli about the "
@@ -2100,30 +2043,26 @@ msgid ""
 "X. Does it use an elliptic curve? If yes, which one? This is the reason why "
 "we need an account descriptor file."
 msgstr ""
-"虽然知道智能钱包的私钥是签署交易的必要条件，但这还不够。我们还需要告知斯塔克"
-"利，由 Braavos 或 Argent X 创建的智能钱包所采用的签名机制。如果是，是哪一种？"
-"这就是我们需要账户描述文件的原因。"
+"虽然签署交易的必要条件是需要知晓智能钱包的私钥，但这还不够。我们还需要告知"
+"Starkli，由 Braavos 或 Argent X 创建的智能钱包所采用的签名机制。如果是，是哪一"
+"种？这就是我们需要账户描述文件的原因。"
 
 #: src/ch02-02-compile-deploy-interact.md:125
-#, fuzzy
 msgid "\\[OPTIONAL\\] The Architecture of the Starknet Signer"
-msgstr "\\选择性]Starknet签名器的架构"
+msgstr "\\[OPTIONAL\\] Starknet签名者的架构"
 
 #: src/ch02-02-compile-deploy-interact.md:127
-#, fuzzy
 msgid ""
 "The Starknet Signer plays an instrumental role in securing your transactions. "
 "Let’s demystify what goes on under the hood."
 msgstr ""
-"Starknet签名器在确保交易安全方面发挥着重要作用。让我们来揭开它的神秘面纱。"
+"Starknet签名者在确保交易安全方面发挥着重要作用。让我们来揭开它的神秘面纱。"
 
 #: src/ch02-02-compile-deploy-interact.md:130
-#, fuzzy
 msgid "Key Components:"
 msgstr "主要组成部分："
 
 #: src/ch02-02-compile-deploy-interact.md:132
-#, fuzzy
 msgid ""
 "**Private Key**: A 256-bit/32-byte/64-character (ignoring the _0x_ prefix) "
 "hexadecimal key that is the cornerstone of your wallet’s security."
@@ -2132,36 +2071,31 @@ msgstr ""
 "安全的基石。"
 
 #: src/ch02-02-compile-deploy-interact.md:136
-#, fuzzy
 msgid ""
 "**Public Key**: Derived from the private key, it’s also a 256-bit/32-byte/64-"
 "character hexadecimal key."
 msgstr "**公钥**：源自私人密钥，也是 256 位/32 字节/64 个字符的十六进制密钥。"
 
 #: src/ch02-02-compile-deploy-interact.md:139
-#, fuzzy
 msgid ""
 "**Smart Wallet Address**: Unlike Ethereum, the address here is influenced by "
 "the public key, class hash, and a salt. **[Learn more in Starknet "
 "Documentation](https://docs.starknet.io/documentation/"
 "architecture_and_concepts/Smart_Contracts/contract-address/)**."
 msgstr ""
-"**智能钱包地址**：与以太坊不同，这里的地址受公钥、类哈希值和盐的影响。 **[在"
-"Starknet文档中了解更多](https://docs.starknet.io/documentation/"
+"**智能钱包地址**：与以太坊不同，这里的地址受公钥、class hash和salt的影响。 "
+"**[在Starknet文档中了解更多](https://docs.starknet.io/documentation/"
 "architecture_and_concepts/Smart_Contracts/contract-address/)**。"
 
 #: src/ch02-02-compile-deploy-interact.md:144
-#, fuzzy
 msgid "To view the details of the previously created keystore file:"
 msgstr "查看先前创建的密钥存储文件的详细信息："
 
 #: src/ch02-02-compile-deploy-interact.md:150
-#, fuzzy
 msgid "Anatomy of the `keystore.json` File:"
-msgstr "keystore.json` 文件的剖析："
+msgstr "`keystore.json` 文件的剖析："
 
 #: src/ch02-02-compile-deploy-interact.md:152
-#, fuzzy
 msgid ""
 "```json\n"
 "{\n"
@@ -2189,165 +2123,145 @@ msgid ""
 "}\n"
 "```"
 msgstr ""
-"``json\n"
+"```json\n"
 "{\n"
-"  \"crypto\"：{\n"
-"    \"cipher\"：\"aes-128-ctr\"、\n"
-"    \"cipherparams\"：{\n"
-"      \"iv\"：\"dba5f9a67456b121f3f486aa18e24db7\"\n"
+"  \"crypto\": {\n"
+"    \"cipher\": \"aes-128-ctr\",\n"
+"    \"cipherparams\": {\n"
+"      \"iv\": \"dba5f9a67456b121f3f486aa18e24db7\"\n"
 "    },\n"
-"    \"密码文本\"："
+"    \"ciphertext\": "
 "\"b3cda3df39563e3dd61064149d6ed8c9ab5f07fbcd6347625e081fb695ddf36c\",\n"
-"    \"kdf\"：\"scrypt\"、\n"
-"    \"kdfparams\"：{\n"
-"      \"dklen\"：32,\n"
-"      \"n\":8192,\n"
-"      \"p\":1,\n"
-"      \"r\":8,\n"
-"      \"salt\"："
+"    \"kdf\": \"scrypt\",\n"
+"    \"kdfparams\": {\n"
+"      \"dklen\": 32,\n"
+"      \"n\": 8192,\n"
+"      \"p\": 1,\n"
+"      \"r\": 8,\n"
+"      \"salt\": "
 "\"6dd5b06b1077ba25a7bf511510ea0c608424c6657dd3ab51b93029244537dffb\"\n"
 "    },\n"
-"    \"mac\"："
+"    \"mac\": "
 "\"55e1616d9ddd052864a1ae4207824baac58a6c88798bf28585167a5986585ce6\"\n"
 "  },\n"
-"  \"id\"：\"afbb9007-8f61-4e62-bf14-e491c30fd09a\",\n"
-"  \"版本\"：3\n"
+"  \"id\": \"afbb9007-8f61-4e62-bf14-e491c30fd09a\",\n"
+"  \"version\": 3\n"
 "}\n"
 "```"
 
 #: src/ch02-02-compile-deploy-interact.md:175
-#, fuzzy
 msgid "**`version`**: The version of the smart wallet implementation."
-msgstr "**版本智能钱包实施的版本。"
+msgstr "**`version`**: 智能钱包所实现的版本。"
 
 #: src/ch02-02-compile-deploy-interact.md:177
-#, fuzzy
 msgid "**`id`**: A randomly generated identification string."
-msgstr "**`id`**：随机生成的标识字符串。"
+msgstr "**`id`**: 随机生成的标识字符串。"
 
 #: src/ch02-02-compile-deploy-interact.md:179
-#, fuzzy
 msgid "**`crypto`**: Houses all encryption details."
-msgstr "**`crypto`**：包含所有加密细节。"
+msgstr "**`crypto`**: 包含所有加密细节。"
 
 #: src/ch02-02-compile-deploy-interact.md:181
-#, fuzzy
 msgid "Inside **`crypto`**:"
-msgstr "在 **`crypto`** 内部："
+msgstr "在 **`crypto`** 内部:"
 
 #: src/ch02-02-compile-deploy-interact.md:183
-#, fuzzy
 msgid ""
 "**`cipher`**: Specifies the encryption algorithm used, which in this case is "
 "AES-128-CTR."
-msgstr "**`cipher`**：指定所使用的加密算法，本例中为 AES-128-CTR。"
+msgstr "**`cipher`**: 指定所使用的加密算法，本例中为 AES-128-CTR。"
 
 #: src/ch02-02-compile-deploy-interact.md:186
-#, fuzzy
 msgid ""
 "**AES (Advanced Encryption Standard)**: A globally accepted encryption "
 "standard."
-msgstr "**AES（高级加密标准）**：全球公认的加密标准。"
+msgstr "**AES（高级加密标准）**: 全球公认的加密标准。"
 
 #: src/ch02-02-compile-deploy-interact.md:189
-#, fuzzy
 msgid "**128**: Refers to the key size in bits, making it a 128-bit key."
-msgstr "**128**:指密钥大小（比特），即 128 位密钥。"
+msgstr "**128**: 指密钥大小（按bit计算），即 128 位密钥。"
 
 #: src/ch02-02-compile-deploy-interact.md:192
-#, fuzzy
 msgid "**CTR (Counter Mode)**: A specific mode of operation for the AES cipher."
-msgstr "**CTR（计数器模式）**：AES 密码的一种特定运行模式。"
+msgstr "**CTR (Counter Mode)**: AES 密码的一种特定运行模式。"
 
 #: src/ch02-02-compile-deploy-interact.md:195
-#, fuzzy
 msgid ""
 "**`cipherparams`**: Contains an Initialization Vector (IV), which ensures "
 "that encrypting the same plaintext with the same key will produce different "
 "ciphertexts."
 msgstr ""
-"**`cipherparams`**：包含初始化向量 (IV)，可确保使用相同密钥加密相同明文时产生"
+"**`cipherparams`**: 包含初始化向量 (IV)，可确保使用相同密钥加密相同明文时产生"
 "不同的密文。"
 
 #: src/ch02-02-compile-deploy-interact.md:199
-#, fuzzy
 msgid ""
 "**`iv` (Initialization Vector)**: A 16-byte hex string that serves as a "
 "random and unique starting point for each encryption operation."
 msgstr ""
-"**`iv`（初始化向量）**：一个 16 字节十六进制字符串，作为每次加密操作的随机唯一"
+"**`iv`（初始化向量）**: 一个 16 字节十六进制字符串，作为每次加密操作的随机唯一"
 "起点。"
 
 #: src/ch02-02-compile-deploy-interact.md:203
-#, fuzzy
 msgid ""
 "**`ciphertext`**: This is the private key after encryption, securely stored "
 "so that only the correct password can reveal it."
 msgstr ""
-"**`ciphertext`**：这是加密后的私人密钥，安全存储，只有正确的密码才能读取。"
+"**`ciphertext`**: 这是加密后的私人密钥，安全存储，只有正确的密码才能读取。"
 
 #: src/ch02-02-compile-deploy-interact.md:206
-#, fuzzy
 msgid ""
 "**`kdf` and `kdfparams`**: KDF stands for Key Derivation Function. This adds "
 "a layer of security by requiring computational work, making brute-force "
 "attacks harder."
 msgstr ""
-"**`kdf`和`kdfparams`**：KDF 代表密钥衍生函数。这需要计算工作，从而增加了一层安"
-"全性，使暴力攻击更加困难。"
+"**`kdf`和`kdfparams`**: KDF 代表密钥衍生函数。这需要计算工作，从而增加了一层安"
+"全性，使暴力破解更加困难。"
 
 #: src/ch02-02-compile-deploy-interact.md:210
-#, fuzzy
 msgid ""
 "**`dklen`**: The length (in bytes) of the derived key. Typically 32 bytes."
 msgstr "**`dklen`**：派生密钥的长度（字节）。通常为 32 字节。"
 
 #: src/ch02-02-compile-deploy-interact.md:213
-#, fuzzy
 msgid ""
 "**`n`**: A cost factor representing CPU/memory usage. A higher value means "
 "more computational work is needed, thus increasing security."
 msgstr ""
-"**`n`**:代表 CPU/内存使用量的成本系数。数值越大，意味着需要更多的计算工作，从"
+"**`n`**: 代表 CPU/内存使用量的消耗系数。数值越大，意味着需要更多的计算工作，从"
 "而提高安全性。"
 
 #: src/ch02-02-compile-deploy-interact.md:217
-#, fuzzy
 msgid "**`p`**: Parallelization factor, affecting the computational complexity."
-msgstr "**`p`**:并行化系数，影响计算复杂度。"
+msgstr "**`p`**: 并行化系数，影响计算复杂度。"
 
 #: src/ch02-02-compile-deploy-interact.md:220
-#, fuzzy
 msgid ""
 "**`r`**: Block size for the hash function, again affecting computational "
 "requirements."
-msgstr "**`r`**:散列函数的块大小，同样会影响计算要求。"
+msgstr "**`r`**: 散列函数的块大小，同样会影响计算要求。"
 
 #: src/ch02-02-compile-deploy-interact.md:223
-#, fuzzy
 msgid ""
 "**`salt`**: A random value that is combined with the password to deter "
 "dictionary attacks."
-msgstr "**`salt`**：与密码相结合的随机值，用于阻止字典攻击。"
+msgstr "**`salt`**: 与密码相结合的随机值，用于阻止字典攻击。"
 
 #: src/ch02-02-compile-deploy-interact.md:226
-#, fuzzy
 msgid ""
 "**`mac` (Message Authentication Code)**: This is a cryptographic code that "
 "ensures the integrity of the message (the encrypted private key in this "
 "case). It is generated using a hash of both the ciphertext and a portion of "
 "the derived key."
 msgstr ""
-"**`mac`（信息验证码）**：这是一种加密代码，可确保信息（此处为加密私人密钥）的"
+"**`mac`（信息验证码）**: 这是一种加密代码，可确保信息（此处为加密私人密钥）的"
 "完整性。它使用密文和部分派生密钥的哈希值生成。"
 
 #: src/ch02-02-compile-deploy-interact.md:231
-#, fuzzy
 msgid "Creating an Account Descriptor"
 msgstr "创建账户描述符"
 
 #: src/ch02-02-compile-deploy-interact.md:233
-#, fuzzy
 msgid ""
 "An Account Descriptor informs Starkli about your smart wallet’s unique "
 "features, such as its signing mechanism. You can generate this descriptor "
@@ -2358,31 +2272,27 @@ msgid ""
 msgstr ""
 "账户描述符（Account Descriptor）会告知 Starkli 你的智能钱包的独特功能，比如它"
 "的签名机制。你可以使用 Starkli `account` 命令下的 `fetch` 子命令来生成这个描述"
-"符。fetch \"子命令将你的链上钱包地址作为输入，并生成账户描述文件。账户描述文件"
+"符。`fetch`子命令将你的链上钱包地址作为输入，并生成账户描述文件。账户描述文件"
 "是一个 JSON 文件，包含了你的智能钱包的详细信息。"
 
 #: src/ch02-02-compile-deploy-interact.md:244
-#, fuzzy
 msgid ""
 "After running the command, you’ll see a message like the one below. We’re "
 "using a Braavos wallet as an example, but the steps are the same for an "
 "Argent wallet."
 msgstr ""
-"运行该命令后，你会看到如下信息。我们以布拉沃斯钱包为例，但步骤与阿根庭钱包相"
-"同。"
+"运行该命令后，你会看到如下信息。我们这里以Braavos钱包为例，但Argent钱包上步骤"
+"是一样的。"
 
 #: src/ch02-02-compile-deploy-interact.md:254
-#, fuzzy
 msgid "To see the details of your Account Descriptor, run:"
-msgstr "要查看账户描述符的详细信息，请运行"
+msgstr "要查看账户描述符的详细信息，请运行："
 
 #: src/ch02-02-compile-deploy-interact.md:260
-#, fuzzy
 msgid "Here’s what a typical descriptor might look like:"
-msgstr "下面是一个典型的描述："
+msgstr "下面是一个典型的描述符："
 
 #: src/ch02-02-compile-deploy-interact.md:262
-#, fuzzy
 msgid ""
 "```json\n"
 "{\n"
@@ -2413,47 +2323,44 @@ msgid ""
 "}\n"
 "```"
 msgstr ""
-"``json\n"
+"```json\n"
 "{\n"
-"  \"version\"：1,\n"
-"  \"variant\"：{\n"
-"    \"type\"：\"braavos\"、\n"
-"    \"版本\"：1,\n"
-"    \"实现\"："
+"  \"version\": 1,\n"
+"  \"variant\": {\n"
+"    \"type\": \"braavos\",\n"
+"    \"version\": 1,\n"
+"    \"implementation\": "
 "\"0x5dec330eebf36c8672b60db4a718d44762d3ae6d1333e553197acb47ee5a062\",\n"
-"    \"multisig\"：{\n"
-"      \"status\"：\"关闭\"\n"
+"    \"multisig\": {\n"
+"      \"status\": \"off\"\n"
 "    },\n"
-"    \"签名者\"：[\n"
+"    \"signers\": [\n"
 "      {\n"
-"        \"类型\"：\"stark\"、\n"
-"        \"公钥\"："
+"        \"type\": \"stark\",\n"
+"        \"public_key\": "
 "\"0x49759ed6197d0d385a96f9d8e7af350848b07777e901f5570b3dc2d9744a25e\"\n"
 "      }\n"
 "    ]\n"
 "  },\n"
-"  \"部署\"：{\n"
-"    \"status\"：\"已部署\"、\n"
-"    \"class_hash\"："
+"  \"deployment\": {\n"
+"    \"status\": \"deployed\",\n"
+"    \"class_hash\": "
 "\"0x3131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e\",\n"
-"    \"地址\"："
+"    \"address\": "
 "\"0x6dcb489c1a93069f469746ef35312d6a3b9e56ccad7f21f0b69eb799d6d2821\"\n"
 "  }\n"
 "}\n"
 "```"
 
 #: src/ch02-02-compile-deploy-interact.md:287
-#, fuzzy
 msgid "Note: The structure will differ if you use an Argent wallet."
 msgstr "注意：如果使用 Argent 钱包，结构会有所不同。"
 
 #: src/ch02-02-compile-deploy-interact.md:289
-#, fuzzy
 msgid "Setting up Environment Variables"
 msgstr "设置环境变量"
 
 #: src/ch02-02-compile-deploy-interact.md:291
-#, fuzzy
 msgid ""
 "To simplify Starkli commands, you can set environment variables. Two key "
 "variables are crucial: one for the Signer’s keystore file location and "
@@ -2463,46 +2370,40 @@ msgstr ""
 "的密钥存储文件位置，另一个是账户描述符文件。"
 
 #: src/ch02-02-compile-deploy-interact.md:300
-#, fuzzy
 msgid ""
 "Setting these variables makes running Starkli commands easier and more "
 "efficient."
 msgstr "设置这些变量可以让运行 Starkli 命令变得更简单、更高效。"
 
 #: src/ch02-02-compile-deploy-interact.md:303
-#, fuzzy
 msgid "Declaring Smart Contracts in Starknet"
-msgstr "在 Starknet 中声明智能合约"
+msgstr "在 Starknet 上声明智能合约"
 
 #: src/ch02-02-compile-deploy-interact.md:305
-#, fuzzy
 msgid "Deploying a smart contract on Starknet involves two steps:"
 msgstr "在 Starknet 上部署智能合约包括两个步骤："
 
 #: src/ch02-02-compile-deploy-interact.md:307
-#, fuzzy
 msgid "Declare your contract’s code."
 msgstr "声明您的合约代码。"
 
 #: src/ch02-02-compile-deploy-interact.md:309
-#, fuzzy
 msgid "Deploy an instance of the declared code."
 msgstr "部署已声明代码的实例。"
 
 #: src/ch02-02-compile-deploy-interact.md:311
-#, fuzzy
 msgid ""
 "To get started, navigate to the `contracts/` directory in the [first chapter]"
 "(https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/"
 "chapter_1/pages/contracts) of the Starknet Book repo. The `src/lib.cairo` "
 "file contains a basic contract to practice with."
 msgstr ""
-"要开始学习，请导航到Starknet图书 repo [第一章](https://github.com/starknet-"
-"edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages/contracts) 中"
-"的 `contracts/` 目录。src/lib.cairo \"文件包含一个基本合约，可供练习。"
+"要开始学习，请导航到Starknet之书 github仓库的 [第一章](https://github.com/"
+"starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages/"
+"contracts) 中的 `contracts/` 目录。`src/lib.cairo` 文件包含一个基本合约，可供"
+"练习。"
 
 #: src/ch02-02-compile-deploy-interact.md:316
-#, fuzzy
 msgid ""
 "First, compile the contract using the Scarb compiler. If you haven’t "
 "installed Scarb, follow the installation guide in the [Setting up your "
@@ -2514,61 +2415,54 @@ msgstr ""
 "安装。"
 
 #: src/ch02-02-compile-deploy-interact.md:325
-#, fuzzy
 msgid ""
 "This creates a compiled contract in `target/dev/` as \"contracts_Ownable."
 "sierra.json\" (in Chapter 2 of the book we will learn more details about "
 "Scarb)."
 msgstr ""
-"这将在 `target/dev/` 中创建一个编译后的合约，名为 \"contracts_Ownable.sierra."
+"这将在 `target/dev/` 中创建一个编译好的合约，名为 \"contracts_Ownable.sierra."
 "json\"（在本书第 2 章中，我们将了解有关 Scarb 的更多细节）。"
 
 #: src/ch02-02-compile-deploy-interact.md:329
-#, fuzzy
 msgid ""
 "With the smart contract compiled, we’re ready to declare it using Starkli. "
 "Before declaring your contract, decide on an RPC provider."
 msgstr ""
-"编译好智能合约后，我们就可以使用 Starkli 声明它了。在声明合约之前，先确定一个 "
-"RPC 提供者。"
+"编译好智能合约后，我们就可以使用 Starkli 声明它了。在声明合约之前，我们需要决"
+"定使用哪个 RPC 提供商。"
 
 #: src/ch02-02-compile-deploy-interact.md:332
-#, fuzzy
 msgid "Choosing an RPC Provider"
 msgstr "选择 RPC 提供商"
 
 #: src/ch02-02-compile-deploy-interact.md:334
-#, fuzzy
 msgid "There are three main options for RPC providers, sorted by ease of use:"
-msgstr "RPC 提供商主要有三种选择，按易用性排序："
+msgstr "你主要有三种RPC 提供商可供选择，按易用性排序："
 
 #: src/ch02-02-compile-deploy-interact.md:336
-#, fuzzy
 msgid ""
 "**Starknet Sequencer’s Gateway**: The quickest option and it’s the default "
 "for Starkli for now. The sequencer gateway is deprecated and will be disabled "
 "by StarkWare soon. You’re strongly recommended to use a third-party JSON-RPC "
 "API provider like Infura, Alchemy, or Chainstack."
 msgstr ""
-"**Starknet编曲器网关**：最快的选择，目前是 Starkli 的默认设置。音序器网关已经"
-"过时，StarkWare 将很快禁用它。强烈建议使用第三方 JSON-RPC API 提供商，如 "
-"Infura、Alchemy 或 Chainstack。"
+"**Starknet 排序器网关*：最无需设置的选择，目前是 Starkli 的默认设置。但排序器"
+"网关已经被标注为`deprecated`，StarkWare 将很快禁用它。强烈建议使用第三方 JSON-"
+"RPC API 提供商，如 Infura、Alchemy 或 Chainstack。"
 
 #: src/ch02-02-compile-deploy-interact.md:342
-#, fuzzy
 msgid ""
 "**Infura or Alchemy**: A step up in complexity. You’ll need to set up an API "
 "key and choose an endpoint. For Infura, it would look like `https://starknet-"
 "goerli.infura.io/v3/<API_KEY>`. Learn more in the [Infura documentation]"
 "(https://docs.infura.io/networks/starknet/how-to/choose-a-network)."
 msgstr ""
-"**因弗拉或炼金**：复杂程度更高。您需要设置一个 API 密钥并选择一个端点。对于 "
-"Infura，它看起来像 `https://starknet-goerli.infura.io/v3/<API_KEY>`。更多信息"
-"请参阅 [Infura 文档](https://docs.infura.io/networks/starknet/how-to/choose-a-"
-"network)。"
+"**Infura 或 Alchemy**：复杂程度更高。您需要设置一个 API 密钥并选择一个端点。对"
+"于 Infura，它看起来像 `https://starknet-goerli.infura.io/v3/<API_KEY>`。更多信"
+"息请参阅 [Infura 文档](https://docs.infura.io/networks/starknet/how-to/choose-"
+"a-network)。"
 
 #: src/ch02-02-compile-deploy-interact.md:348
-#, fuzzy
 msgid ""
 "**Your Own Node**: For those who want full control. It’s the most complex but "
 "offers the most freedom. Check out [Chapter 4 of the Starknet Book](https://"
@@ -2580,16 +2474,14 @@ msgstr ""
 "[Kasar](https://www.kasar.io/) 获取设置指南。"
 
 #: src/ch02-02-compile-deploy-interact.md:353
-#, fuzzy
 msgid ""
 "In this tutorial, we will use Alchemy. We can set the STARKNET_RPC "
 "environment variable to make command invocations easier:"
 msgstr ""
-"在本教程中，我们将使用 Alchemy。我们可以设置 STARKNET_RPC 环境变量，使命令调用"
-"更容易："
+"在本教程中，我们将使用 Alchemy。我们可以设置 `STARKNET_RPC` 环境变量，使命令调"
+"用更容易："
 
 #: src/ch02-02-compile-deploy-interact.md:356
-#, fuzzy
 msgid ""
 "```bash\n"
 "    export STARKNET_RPC=\"https://starknet-goerli.g.alchemy.com/v2/"
@@ -2602,29 +2494,25 @@ msgstr ""
 "```"
 
 #: src/ch02-02-compile-deploy-interact.md:360
-#, fuzzy
 msgid "Declaring Your Contract"
 msgstr "声明您的合约"
 
 #: src/ch02-02-compile-deploy-interact.md:362
-#, fuzzy
 msgid ""
 "Run this command to declare your contract using the default Starknet "
 "Sequencer’s Gateway:"
-msgstr "运行此命令可使用默认的 Starknet Sequencer 网关声明您的合约："
+msgstr "运行此命令可使用默认的 Starknet 排序器网关声明您的合约："
 
 #: src/ch02-02-compile-deploy-interact.md:369
-#, fuzzy
 msgid ""
 "According to the `STARKNET_RPC` url, starkli can recognize the target "
 "blockchain network, in this case \"goerli\", so it is not necessary "
 "explicitly specify it."
 msgstr ""
 "根据 `STARKNET_RPC` url，starkli 可以识别目标区块链网络，本例中为 \"goerli\"，"
-"因此无需明确指定。"
+"因此无需显式指定。"
 
 #: src/ch02-02-compile-deploy-interact.md:373
-#, fuzzy
 msgid ""
 "Unless you’re working with custom networks where it’s infeasible for Starkli "
 "to detect the right compiler version, you shouldn’t need to manually choose a "
@@ -2634,54 +2522,48 @@ msgstr ""
 "使用 `--network` 和 `--compiler-version` 来手动选择版本。"
 
 #: src/ch02-02-compile-deploy-interact.md:377
-#, fuzzy
 msgid ""
 "If you encounter an \"Error: Invalid contract class,\" it likely means your "
 "Scarb’s compiler version is incompatible with Starkli. Follow the steps above "
 "to align the versions. Starkli usually supports compiler versions accepted by "
 "mainnet, even if Scarb’s latest version is not yet compatible."
 msgstr ""
-"如果遇到 \"错误：无效合约类\"，这很可能意味着你的 Scarb 编译器版本与 Starkli "
-"不兼容。请按照上面的步骤调整版本。Starkli 通常支持主网接受的编译器版本，即使 "
-"Scarb 的最新版本还不兼容。"
+"如果遇到 `\"Error: Invalid contract class,\"`，这很可能意味着你的 Scarb 编译器"
+"版本与 Starkli 不兼容。请按照上面的步骤调整版本。Starkli 通常支持主网接受的编"
+"译器版本，即使 Scarb 的最新版本还不兼容。"
 
 #: src/ch02-02-compile-deploy-interact.md:383
-#, fuzzy
 msgid ""
 "After running the command, you’ll receive a contract class hash. This unique "
 "hash serves as the identifier for your contract class within Starknet. For "
 "example:"
 msgstr ""
-"运行该命令后，您将收到一个合约类别哈希值。这个唯一的哈希值是您的合约类别在"
-"Starknet中的标识符。例如"
+"运行该命令后，您将收到一个合约的class hash（类哈希）。这个唯一的哈希值是您的合"
+"约类在Starknet中的标识符。例如:"
 
 #: src/ch02-02-compile-deploy-interact.md:391
-#, fuzzy
 msgid ""
 "You can think of this hash as the contract class’s _address._ Use a block "
 "explorer like [StarkScan](https://testnet.starkscan.co/"
 "class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8) to "
 "verify this hash on the blockchain."
 msgstr ""
-"您可以将此散列值视为合约类的_地址。_使用类似 [StarkScan](https://testnet."
+"您可以将此散列值视为合约类的 _address_  使用如 [StarkScan](https://testnet."
 "starkscan.co/"
-"class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8) 的区"
-"块资源管理器在区块链上验证此散列值。"
+"class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8) 之类"
+"的区块浏览器在区块链上验证此hash。"
 
 #: src/ch02-02-compile-deploy-interact.md:396
-#, fuzzy
 msgid ""
 "If the contract class you’re attempting to declare already exists, it is ok "
 "we can continue. You’ll receive a message like:"
-msgstr "如果您试图声明的合约类已经存在，我们可以继续。您将收到如下信息"
+msgstr "如果您试图声明的合约类已经存在，我们可以继续。您将收到如下信息："
 
 #: src/ch02-02-compile-deploy-interact.md:404
-#, fuzzy
 msgid "Deploying Smart Contracts on Starknet"
 msgstr "在Starknet部署智能合约"
 
 #: src/ch02-02-compile-deploy-interact.md:406
-#, fuzzy
 msgid ""
 "To deploy a smart contract, you’ll need to instantiate it on Starknet’s "
 "testnet. This process involves executing a command that requires two main "
@@ -2691,17 +2573,14 @@ msgstr ""
 "令，该命令需要两个主要组件："
 
 #: src/ch02-02-compile-deploy-interact.md:410
-#, fuzzy
 msgid "The class hash of your smart contract."
 msgstr "智能合约的类哈希值。"
 
 #: src/ch02-02-compile-deploy-interact.md:412
-#, fuzzy
 msgid "Any constructor arguments that the contract expects."
-msgstr "合约所期望的构造函数参数。"
+msgstr "合约构造函数所要求的参数。"
 
 #: src/ch02-02-compile-deploy-interact.md:414
-#, fuzzy
 msgid ""
 "In our example, the constructor expects an _owner_ address. You can learn "
 "more about constructors in \\[Chapter 12 of The Cairo Book\\](<https://book."
@@ -2709,33 +2588,29 @@ msgid ""
 "constructors>)."
 msgstr ""
 "在我们的例子中，构造函数期望得到一个 _owner_ 地址。关于构造函数的更多信息，请"
-"参阅《Cairo宝典》第 12 章（<https://book.cairo-lang.org/ch99-01-03-02-"
-"contract-functions.html?highlight=constructor#1-constructors>）。"
+"参阅 [Cairo之书 第12章](<https://book.cairo-lang.org/ch99-01-03-02-contract-"
+"functions.html?highlight=constructor#1-constructors>)。"
 
 #: src/ch02-02-compile-deploy-interact.md:418
-#, fuzzy
 msgid "The command would look like this:"
-msgstr "命令如下"
+msgstr "命令如下："
 
 #: src/ch02-02-compile-deploy-interact.md:426
-#, fuzzy
 msgid ""
 "Here’s a specific example with an actual class hash and constructor inputs "
 "(as the owner address use the address of your smart wallet so you can invoke "
 "the transfer_ownership function later):"
 msgstr ""
 "下面是一个具体示例，其中包含一个实际类的哈希值和构造函数输入（作为所有者地址，"
-"请使用智能钱包的地址，以便稍后调用 transfer_ownership 函数）："
+"请使用智能钱包的地址，以便稍后调用 `transfer_ownership` 函数）："
 
 #: src/ch02-02-compile-deploy-interact.md:436
-#, fuzzy
 msgid ""
 "After executing the command and entering your password, you should see output "
 "like the following:"
 msgstr "执行命令并输入密码后，您应该会看到如下输出："
 
 #: src/ch02-02-compile-deploy-interact.md:447
-#, fuzzy
 msgid ""
 "The contract is now live on the Starknet testnet. You can verify its status "
 "using a block explorer like [StarkScan](https://testnet.starkscan.co/"
@@ -2743,45 +2618,40 @@ msgid ""
 "On the \"Read/Write Contract\" tab, you’ll see the contract’s external "
 "functions."
 msgstr ""
-"合约现已在Starknet测试网上运行。你可以使用像 [StarkScan](https://testnet."
+"合约现已存在于Starknet测试网上。你可以使用像 [StarkScan](https://testnet."
 "starkscan.co/"
 "contract/0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012) "
-"这样的区块浏览器来验证它的状态。在 \"读/写合约 \"选项卡上，你可以看到合约的外"
-"部功能。"
+"这样的区块浏览器来验证它的状态。在 \"Read/Write Contract\" 选项卡上，你可以看"
+"到合约的外部功能。"
 
 #: src/ch02-02-compile-deploy-interact.md:453
-#, fuzzy
 msgid "Interacting with the Starknet Contract"
-msgstr "与Starknet合约互动"
+msgstr "与Starknet合约交互"
 
 #: src/ch02-02-compile-deploy-interact.md:455
-#, fuzzy
 msgid ""
 "Starkli enables interaction with smart contracts via two primary methods: "
 "`call` for read-only functions and `invoke` for write functions that modify "
 "the state."
 msgstr ""
-"Starkli 通过两种主要方法实现与智能合约的交互：\"调用 \"用于只读函数，\"invoke "
+"Starkli 通过两种主要方法实现与智能合约的交互：`call`用于只读函数，\"invoke "
 "\"用于修改状态的写入函数。"
 
 #: src/ch02-02-compile-deploy-interact.md:459
-#, fuzzy
 msgid "Calling a Read Function"
-msgstr "调用读取函数"
+msgstr "调用只读函数"
 
 #: src/ch02-02-compile-deploy-interact.md:461
-#, fuzzy
 msgid ""
 "The `call` command enables you to query a smart contract function without "
 "sending a transaction. For instance, to find out who the current owner of the "
 "contract is, you can use the `get_owner` function, which requires no "
 "arguments."
 msgstr ""
-"调用 \"命令使你可以在不发送交易的情况下查询智能合约函数。例如，要想知道谁是合"
-"约的当前所有者，可以使用`get_owner`函数，该函数不需要参数。"
+"`call`命令使你可以在不发送交易的情况下查询智能合约函数。例如，要想知道谁是合约"
+"的当前所有者，可以使用`get_owner`函数，该函数不需要参数。"
 
 #: src/ch02-02-compile-deploy-interact.md:472
-#, fuzzy
 msgid ""
 "Replace `<CONTRACT_ADDRESS>` with the address of your contract. The command "
 "will return the owner’s address, which was initially set during the "
@@ -2791,7 +2661,6 @@ msgstr ""
 "最初是在部署合约时设置的："
 
 #: src/ch02-02-compile-deploy-interact.md:476
-#, fuzzy
 msgid ""
 "```bash\n"
 "    [\n"
@@ -2806,12 +2675,10 @@ msgstr ""
 "```"
 
 #: src/ch02-02-compile-deploy-interact.md:482
-#, fuzzy
 msgid "Invoking a Write Function"
 msgstr "调用写入函数"
 
 #: src/ch02-02-compile-deploy-interact.md:484
-#, fuzzy
 msgid ""
 "You can modify the contract’s state using the `invoke` command. For example, "
 "let’s transfer the contract’s ownership with the `transfer_ownership` "
@@ -2821,7 +2688,6 @@ msgstr ""
 "函数转移合约的所有权。"
 
 #: src/ch02-02-compile-deploy-interact.md:495
-#, fuzzy
 msgid ""
 "Replace `<CONTRACT_ADDRESS>` with the address of the contract and "
 "`<NEW_OWNER_ADDRESS>` with the address you want to transfer ownership to. If "
@@ -2833,46 +2699,42 @@ msgstr ""
 "所有者是在部署合约时设置的："
 
 #: src/ch02-02-compile-deploy-interact.md:505
-#, fuzzy
 msgid ""
 "The failure reason is encoded as a felt. o decode it, use the starkli’s "
 "`parse-cairo-string` command."
-msgstr "要解码失败原因，请使用 starkli 的 `parse-cairo-string` 命令。"
+msgstr ""
+"失败的原因被编码成了`felt`类型。要解码失败原因，请使用 starkli 的 `parse-"
+"cairo-string` 命令。"
 
 #: src/ch02-02-compile-deploy-interact.md:512
-#, fuzzy
 msgid ""
 "For example, if you see `0x43616c6c6572206973206e6f7420746865206f776e6572`, "
 "decoding it will yield \"Caller is not the owner.\""
 msgstr ""
-"例如，如果您看到 \"0x43616c6c6572206973206e6f7420746865206f776e6572\"，解码结"
-"果将是 \"呼叫者不是所有者\"。"
+"例如，如果您看到 \"0x43616c6c6572206973206e6f7420746865206f776e6572\"，它解码"
+"结果将是 \"Caller is not the owner.\"。"
 
 #: src/ch02-02-compile-deploy-interact.md:516
-#, fuzzy
 msgid ""
 "After a successful transaction on L2, use a block explorer like StarkScan or "
 "Voyager to confirm the transaction status using the hash provided by the "
 "`invoke` command."
 msgstr ""
 "在 L2 上成功进行交易后，使用 StarkScan 或 Voyager 等区块资源管理器，使用 "
-"\"invoke \"命令提供的哈希值确认交易状态。"
+"`invoke`命令提供的哈希值确认交易状态。"
 
 #: src/ch02-02-compile-deploy-interact.md:520
-#, fuzzy
 msgid ""
 "To verify that the ownership has successfully transferred, you can call the "
 "`get_owner` function again:"
 msgstr "要验证所有权是否已成功转移，可以再次调用 `get_owner` 函数："
 
 #: src/ch02-02-compile-deploy-interact.md:529
-#, fuzzy
 msgid ""
 "If the function returns the new owner’s address, the transfer was successful."
 msgstr "如果函数返回新所有者的地址，则说明转账成功。"
 
 #: src/ch02-02-compile-deploy-interact.md:532
-#, fuzzy
 msgid ""
 "Congratulations! You’ve successfully deployed and interacted with a Starknet "
 "contract."
@@ -3903,14 +3765,13 @@ msgstr ""
 "```"
 
 #: src/ch02-07-starknet-js.md:107
-#, fuzzy
 msgid ""
 "If you create a contract instance with a provider, you’ll be limited to "
 "calling read functions on the contract - only with a signer can you change "
 "the state of the blockchain. However, you are able to connect a previously "
 "created `Contract` instance with a new account:"
 msgstr ""
-"如果使用提供者创建合约实例，则只能调用合约上的读取函数，只有使用签名者才能改变"
+"如果使用提供者创建合约实例，则只能调用合约上的只读函数，只有使用签名者才能改变"
 "区块链的状态。不过，您可以将以前创建的 \"合约 \"实例与新账户连接起来："
 
 #: src/ch02-07-starknet-js.md:118
@@ -3919,7 +3780,7 @@ msgid ""
 "In the snippet above, after calling the `connect` method, it would be "
 "possible to call read functions on the contract, but not before."
 msgstr ""
-"在上面的代码段中，在调用 `connect` 方法后，可以调用合约上的读取函数，但在此之"
+"在上面的代码段中，在调用 `connect` 方法后，可以调用合约上的只读函数，但在此之"
 "前则不行。"
 
 #: src/ch02-07-starknet-js.md:122
@@ -9731,9 +9592,9 @@ msgid ""
 "biometric identity makes the process more secure and user-friendly "
 "(Starkware)\\[4\\], (Braavos)\\[7\\]."
 msgstr ""
-"**硬件签名器：** 通过 AA，您可以使用智能手机安全飞地生成并保护的密钥来签署交"
+"**硬件签名者：** 通过 AA，您可以使用智能手机安全飞地生成并保护的密钥来签署交"
 "易。这种生物识别身份的使用使交易过程更加安全和用户友好（斯塔克软件）\\[4\\]，"
-"（布拉佛斯）\\[7\\]。"
+"（Braavos）\\[7\\]。"
 
 #: src/ch04-00-account-abstraction.md:61
 #, fuzzy
