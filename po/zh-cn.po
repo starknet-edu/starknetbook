@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: The Starknet Book\n"
-"POT-Creation-Date: 2023-10-13T08:44:11+09:00\n"
-"PO-Revision-Date: 2023-10-14 23:44+0900\n"
+"POT-Creation-Date: 2023-10-14T23:48:22+09:00\n"
+"PO-Revision-Date: 2023-10-15 01:58+0900\n"
 "Last-Translator: y-bi <cryptonerdcn@gmail.com>\n"
 "Language-Team: Language zh-cn\n"
 "Language: zh_CN\n"
@@ -57,164 +57,168 @@ msgstr "Starknet Devnet 🚧"
 msgid "Starknet-js: Javascript SDK"
 msgstr "Starknet-js: Javascript SDK"
 
-#: src/SUMMARY.md:20 src/SUMMARY.md:46 src/ch02-07-01-examples.md:1
+#: src/SUMMARY.md:20 src/SUMMARY.md:47 src/ch02-07-01-examples.md:1
 #: src/ch04-04-examples.md:1
 msgid "Examples"
 msgstr "示例"
 
 #: src/SUMMARY.md:21
+msgid "Beginner - Counter UI"
+msgstr "初学者 - 计数器 UI"
+
+#: src/SUMMARY.md:22
 msgid "Beginner - ERC-20 UI"
 msgstr "初学者 - ERC-20 UI"
 
-#: src/SUMMARY.md:22
+#: src/SUMMARY.md:23
 msgid "Intermediate - Million Dollar Homepage"
 msgstr "中级 - 百万美元级别的主页"
 
-#: src/SUMMARY.md:23 src/ch02-08-starknet-react.md:1
+#: src/SUMMARY.md:24 src/ch02-08-starknet-react.md:1
 msgid "Starknet-React: React Integration"
 msgstr "Starknet-React: React 集成"
 
-#: src/SUMMARY.md:24 src/ch02-09-starknet-py.md:1
+#: src/SUMMARY.md:25 src/ch02-09-starknet-py.md:1
 msgid "Starknet-py: Python SDK 🚧"
 msgstr "Starknet-py: Python SDK 🚧"
 
-#: src/SUMMARY.md:25 src/ch02-10-starknet-rs.md:1
+#: src/SUMMARY.md:26 src/ch02-10-starknet-rs.md:1
 msgid "Starknet-rs: Rust SDK 🚧"
 msgstr "Starknet-rs: Rust SDK 🚧"
 
-#: src/SUMMARY.md:26 src/ch02-11-foundry-forge.md:1
+#: src/SUMMARY.md:27 src/ch02-11-foundry-forge.md:1
 msgid "Foundry Forge: Testing 🚧"
 msgstr "Foundry Forge: 测试工具 🚧"
 
-#: src/SUMMARY.md:27 src/ch02-12-foundry-cast.md:1
+#: src/SUMMARY.md:28 src/ch02-12-foundry-cast.md:1
 msgid "Foundry Cast: Interacting with Starknet 🚧"
 msgstr "Foundry Cast: 与 Starknet 交互🚧"
 
-#: src/SUMMARY.md:29 src/ch03-00-architecture.md:1
+#: src/SUMMARY.md:30 src/ch03-00-architecture.md:1
 msgid "Architecture"
 msgstr "架构"
 
-#: src/SUMMARY.md:32 src/ch03-01-transactions.md:1
+#: src/SUMMARY.md:33 src/ch03-01-transactions.md:1
 msgid "Transactions"
 msgstr "交易"
 
-#: src/SUMMARY.md:33 src/ch03-00-architecture.md:53 src/ch03-02-sequencers.md:1
+#: src/SUMMARY.md:34 src/ch03-00-architecture.md:53 src/ch03-02-sequencers.md:1
 msgid "Sequencers"
 msgstr "排序器"
 
-#: src/SUMMARY.md:34
+#: src/SUMMARY.md:35
 msgid "Provers 🚧"
 msgstr "证明器 🚧"
 
-#: src/SUMMARY.md:35
+#: src/SUMMARY.md:36
 msgid "Nodes 🚧"
 msgstr "节点 🚧"
 
-#: src/SUMMARY.md:36
+#: src/SUMMARY.md:37
 msgid "Layer 3 and App Chains 🚧 "
 msgstr "Layer 3 和应用链 🚧  "
 
-#: src/SUMMARY.md:37 src/ch03-06-solidity-verifier.md:1
+#: src/SUMMARY.md:38 src/ch03-06-solidity-verifier.md:1
 msgid "Solidity Verifier 🚧"
 msgstr "Solidity 验证器 🚧"
 
-#: src/SUMMARY.md:38 src/ch03-07-decentralization.md:1
+#: src/SUMMARY.md:39 src/ch03-07-decentralization.md:1
 msgid "Decentralization 🚧"
 msgstr "去中心化 🚧"
 
-#: src/SUMMARY.md:40 src/ch04-00-account-abstraction.md:1
+#: src/SUMMARY.md:41 src/ch04-00-account-abstraction.md:1
 msgid "Account Abstraction"
 msgstr "账户抽象"
 
-#: src/SUMMARY.md:43
+#: src/SUMMARY.md:44
 msgid "Accounts"
 msgstr "账户"
 
-#: src/SUMMARY.md:44
+#: src/SUMMARY.md:45
 msgid "Hello, Account! 🚧"
 msgstr "你好，账户！🚧"
 
-#: src/SUMMARY.md:45
+#: src/SUMMARY.md:46
 msgid "Standard AccounT 🚧"
 msgstr "标准账户 🚧"
 
-#: src/SUMMARY.md:47
+#: src/SUMMARY.md:48
 msgid "Multicaller 🚧"
 msgstr "Multicaller 🚧"
 
-#: src/SUMMARY.md:48
+#: src/SUMMARY.md:49
 msgid "Multisig 🚧"
 msgstr "多签 🚧"
 
-#: src/SUMMARY.md:49 src/ch04-04-03-auto-payments.md:1
+#: src/SUMMARY.md:50 src/ch04-04-03-auto-payments.md:1
 msgid "Auto-Payments 🚧"
 msgstr "自动付款 🚧"
 
-#: src/SUMMARY.md:50 src/ch04-04-04-alternative-signature-schemes.md:1
+#: src/SUMMARY.md:51 src/ch04-04-04-alternative-signature-schemes.md:1
 msgid "Alternative Signature Schemes 🚧"
 msgstr "替代签名方案 🚧"
 
-#: src/SUMMARY.md:54
+#: src/SUMMARY.md:55
 msgid "STARKs 🚧"
 msgstr "STARKs 🚧"
 
-#: src/SUMMARY.md:55
+#: src/SUMMARY.md:56
 msgid "Basics 🚧"
 msgstr "基础知识 🚧"
 
-#: src/SUMMARY.md:56
+#: src/SUMMARY.md:57
 msgid "Math Primer 🚧"
 msgstr "数学入门 🚧"
 
-#: src/SUMMARY.md:57
+#: src/SUMMARY.md:58
 msgid "Number Theory 🚧"
 msgstr "数论 🚧"
 
-#: src/SUMMARY.md:58
+#: src/SUMMARY.md:59
 msgid "Geometry 🚧"
 msgstr "几何 🚧"
 
-#: src/SUMMARY.md:59
+#: src/SUMMARY.md:60
 msgid "Cryptographic Primitives 🚧"
 msgstr "加密原语 🚧"
 
-#: src/SUMMARY.md:60
+#: src/SUMMARY.md:61
 msgid "Arithimization 🚧"
 msgstr "拟真 🚧"
 
-#: src/SUMMARY.md:61
+#: src/SUMMARY.md:62
 msgid "Low Degree Testing 🚧"
 msgstr "低度测试 🚧"
 
-#: src/SUMMARY.md:62
+#: src/SUMMARY.md:63
 msgid "FRI Protocol 🚧"
 msgstr "FRI 协议 🚧"
 
-#: src/SUMMARY.md:63
+#: src/SUMMARY.md:64
 msgid "Efficient STARKs"
 msgstr "高效 STARKs"
 
-#: src/SUMMARY.md:64
+#: src/SUMMARY.md:65
 msgid "STARKs Protocol (Python) 🚧"
 msgstr "STARKs 协议（Python） 🚧"
 
-#: src/SUMMARY.md:65 src/SUMMARY.md:70
+#: src/SUMMARY.md:66 src/SUMMARY.md:71
 msgid "Trace/Low Degree Extension 🚧"
 msgstr "追迹/低度 扩展 🚧"
 
-#: src/SUMMARY.md:66 src/SUMMARY.md:71
+#: src/SUMMARY.md:67 src/SUMMARY.md:72
 msgid "Constraints 🚧"
 msgstr "约束 🚧"
 
-#: src/SUMMARY.md:67 src/SUMMARY.md:72
+#: src/SUMMARY.md:68 src/SUMMARY.md:73
 msgid "FRI Commitments 🚧"
 msgstr "FRI 承诺 🚧"
 
-#: src/SUMMARY.md:68 src/SUMMARY.md:73
+#: src/SUMMARY.md:69 src/SUMMARY.md:74
 msgid "Query Phase 🚧"
 msgstr "查询阶段 🚧"
 
-#: src/SUMMARY.md:69
+#: src/SUMMARY.md:70
 msgid "STARKs Protocol (Rust) 🚧"
 msgstr "STARKs 协议（Rust） 🚧"
 
@@ -3579,7 +3583,7 @@ msgstr ""
 "上面的代码段使用`get-starknet`提供的`connect`函数与用户钱包建立连接。连接后，"
 "我们就可以访问账户方法，如 `signMessage` 或 `execute`。"
 
-#: src/ch02-07-starknet-js.md:66
+#: src/ch02-07-starknet-js.md:66 src/ch02-07-01-00-counter-ui.md:150
 msgid "Provider"
 msgstr "提供者"
 
@@ -3822,11 +3826,679 @@ msgid ""
 "comprehensive and accurate."
 msgstr "您的见解和反馈有助于使本资料更加全面和准确。"
 
-#: src/ch02-07-01-00-erc20-ui.md:1
+#: src/ch02-07-01-00-counter-ui.md:1
+msgid "Counter Smart Contract UI Integration"
+msgstr "计数器智能合约用户界面集成"
+
+#: src/ch02-07-01-00-counter-ui.md:3
+msgid ""
+"This guide walks readers through integrating a simple counter smart contract "
+"with a frontend. By the end of this guide, readers will understand how to:"
+msgstr ""
+"本指南指导读者如何将简单的计数器智能合约与前端集成。在本指南结束时，读者将了解"
+"如何："
+
+#: src/ch02-07-01-00-counter-ui.md:5
+msgid "Connect the frontend to a smart contract."
+msgstr "将前端连接到智能合约。"
+
+#: src/ch02-07-01-00-counter-ui.md:6
+msgid "Initiate transactions, such as incrementing or decrementing the counter."
+msgstr "启动交易，如递增或递减计数器。"
+
+#: src/ch02-07-01-00-counter-ui.md:7
+msgid ""
+"Read and display data, such as showing the counter value on the frontend."
+msgstr "读取和显示数据，例如在前端显示计数器的数值。"
+
+#: src/ch02-07-01-00-counter-ui.md:9 src/ch02-07-01-00-counter-ui.md:246
+msgid ""
+"For a visual walkthrough, do check out the [Basecamp frontend session]"
+"(https://drive.google.com/file/d/1Dtb3Ol_BVoNV4w-_MKV8aeyyRra8nRtz/view). "
+"This comprehensive session delves deeper into the nuances of the concepts "
+"we've touched upon, presenting a mix of theoretical explanations and hands-on "
+"demonstrations."
+msgstr ""
+"要获得直观的演示，请查看 [Basecamp 前端课程](https://drive.google.com/file/"
+"d/1Dtb3Ol_BVoNV4w-_MKV8aeyyRra8nRtz/view)。这节综合课程深入探讨了我们所涉及概"
+"念的细微差别，既有理论解释，也有实践演示。"
+
+#: src/ch02-07-01-00-counter-ui.md:11
+msgid "Tools Used"
+msgstr "使用的工具"
+
+#: src/ch02-07-01-00-counter-ui.md:13
+msgid ""
+"[Reactjs](https://react.dev/learn/start-a-new-react-project): A frontend "
+"building framework."
+msgstr ""
+"[Reactjs](https://react.dev/learn/start-a-new-react-project)：前端构建框架。"
+
+#: src/ch02-07-01-00-counter-ui.md:14
+msgid ""
+"[@argent/get-starknet](https://www.npmjs.com/package/@argent/get-starknet): A "
+"wrapper for **[starknet.js](https://github.com/0xs34n/starknet.js)**, aiding "
+"interaction with wallet extensions."
+msgstr ""
+"[@argent/get-starknet](https://www.npmjs.com/package/@argent/get-starknet)：一"
+"个对于 **[starknet.js](https://github.com/0xs34n/starknet.js)**的封装，帮助与"
+"钱包扩展进行交互。"
+
+#: src/ch02-07-01-00-counter-ui.md:15
+msgid ""
+"[starknet](https://www.npmjs.com/package/starknet): A JavaScript library for "
+"Starknet."
+msgstr ""
+"[starknet](https://www.npmjs.com/package/starknet)：用于 Starknet 的 "
+"JavaScript 库。"
+
+#: src/ch02-07-01-00-counter-ui.md:17
+msgid "Setting Up the Environment"
+msgstr "配置环境"
+
+#: src/ch02-07-01-00-counter-ui.md:19
+msgid "To begin, clone the project repository:"
+msgstr "首先，克隆项目仓库："
+
+#: src/ch02-07-01-00-counter-ui.md:21
+msgid ""
+"```bash\n"
+"git clone https://github.com/Darlington02/basecamp-frontend-boilerplate\n"
+"```"
+msgstr ""
+"```bash\n"
+"git clone https://github.com/Darlington02/basecamp-frontend-boilerplate\n"
+"```"
+
+#: src/ch02-07-01-00-counter-ui.md:25
+msgid "Then, navigate to the project directory and install necessary packages:"
+msgstr "然后，导航至项目目录并安装必要的软件包："
+
+#: src/ch02-07-01-00-counter-ui.md:32
+msgid "To launch the project, run:"
+msgstr "要启动该项目，请运行"
+
+#: src/ch02-07-01-00-counter-ui.md:38
+msgid "In `index.js`, several key functions are provided:"
+msgstr "在 `index.js` 中，提供了几个关键函数："
+
+#: src/ch02-07-01-00-counter-ui.md:40
+msgid ""
+"```javascript\n"
+"// Connect to the blockchain via a wallet provider (argentX or Bravoos)\n"
+"const connectWallet = async() => {\n"
+"}\n"
+"\n"
+"// Terminate the connection\n"
+"const disconnectWallet = async() => {\n"
+"}\n"
+"\n"
+"// Trigger increment\n"
+"const increaseCounter = async() => {\n"
+"}\n"
+"\n"
+"// Trigger decrement\n"
+"const decreaseCounter = async() => {\n"
+"}\n"
+"\n"
+"// Retrieve current count\n"
+"const getCounter = async() => {\n"
+"}\n"
+"```"
+msgstr ""
+"```javascript\n"
+"// Connect to the blockchain via a wallet provider (argentX or Bravoos)\n"
+"const connectWallet = async() => {\n"
+"}\n"
+"\n"
+"// Terminate the connection\n"
+"const disconnectWallet = async() => {\n"
+"}\n"
+"\n"
+"// Trigger increment\n"
+"const increaseCounter = async() => {\n"
+"}\n"
+"\n"
+"// Trigger decrement\n"
+"const decreaseCounter = async() => {\n"
+"}\n"
+"\n"
+"// Retrieve current count\n"
+"const getCounter = async() => {\n"
+"}\n"
+"```"
+
+#: src/ch02-07-01-00-counter-ui.md:62
+msgid "Managing Connection"
+msgstr "管理连接"
+
+#: src/ch02-07-01-00-counter-ui.md:64
+msgid "`connectWallet`"
+msgstr "`connectWallet`"
+
+#: src/ch02-07-01-00-counter-ui.md:66
+msgid ""
+"The `connectWallet` function serves as the mechanism to establish a "
+"connection to the blockchain through specific wallet providers such as "
+"ArgentX or Braavos. It is asynchronous, allowing the use of `await` for "
+"handling asynchronous tasks."
+msgstr ""
+"`connectWallet` 函数是通过 ArgentX 或 Braavos 等特定钱包提供商与区块链建立连接"
+"的机制。它是异步的，允许使用 `await` 来处理异步任务。"
+
+#: src/ch02-07-01-00-counter-ui.md:68
+msgid ""
+"```JavaScript\n"
+"const connectWallet = async() => {\n"
+"    const connection = await connect({webWalletUrl: \"https://web.argent."
+"xyz\"});\n"
+"    if (connection && connection.isConnected) {\n"
+"      setConnection(connection);\n"
+"      setAccount(connection.account);\n"
+"      setAddress(connection.selectedAddress);\n"
+"    }\n"
+"}\n"
+"```"
+msgstr ""
+"```JavaScript\n"
+"const connectWallet = async() => {\n"
+"    const connection = await connect({webWalletUrl: \"https://web.argent."
+"xyz\"});\n"
+"    if (connection && connection.isConnected) {\n"
+"      setConnection(connection);\n"
+"      setAccount(connection.account);\n"
+"      setAddress(connection.selectedAddress);\n"
+"    }\n"
+"}\n"
+"```"
+
+#: src/ch02-07-01-00-counter-ui.md:79
+msgid ""
+"Initiates the connection using the **`connect`** method from the **`@argent/"
+"get-starknet`** library, targeting Starknet."
+msgstr ""
+"使用 **`connect`** 方法从 **`@argent/get-starknet`** 库启动连接，目标是 "
+"Starknet。"
+
+#: src/ch02-07-01-00-counter-ui.md:80
+msgid ""
+"Upon a successful connection, updates the React component's state with "
+"details of the **`connection`**, **`account`**, and **`selectedAddress`**."
+msgstr ""
+"连接成功后，用**`connection`**, **`account`**, 和**`selectedAddress`**的详细信"
+"息更新 React 组件的状态。"
+
+#: src/ch02-07-01-00-counter-ui.md:83
+msgid "`disconnectWallet`"
+msgstr "`disconnectWallet`"
+
+#: src/ch02-07-01-00-counter-ui.md:85
+msgid ""
+"The `disconnectWallet` function is designed to sever the connection with the "
+"web wallet asynchronously. After disconnection, it updates the component's "
+"state, resetting connection details."
+msgstr ""
+"`disconnectWallet`函数旨在异步断开与网络钱包的连接。断开连接后，它会更新组件的"
+"状态，重置连接详情。"
+
+#: src/ch02-07-01-00-counter-ui.md:96
+msgid ""
+"It utilizes the **`disconnect`** function, possibly from an external library, "
+"and handles the operation asynchronously with **`await`**."
+msgstr ""
+"它会使用**`disconnect`**函数（可能来自外部库），并通过**`await`**异步处理操"
+"作。"
+
+#: src/ch02-07-01-00-counter-ui.md:97
+msgid "Post-disconnection, the state of the React component is updated:"
+msgstr "断开连接后，React 组件的状态会被更新："
+
+#: src/ch02-07-01-00-counter-ui.md:98
+msgid "**`setConnection`** is set to **`undefined`**."
+msgstr "***`setConnection`**被设置为**`undefined`**。"
+
+#: src/ch02-07-01-00-counter-ui.md:99
+msgid "**`setAccount`** is set to **`undefined`**."
+msgstr "***`setAccount`**被设置为**`undefined`**。"
+
+#: src/ch02-07-01-00-counter-ui.md:100
+msgid "**`setAddress`** is cleared with an empty string."
+msgstr "**`setAddress`** 被清空为空字符串。"
+
+#: src/ch02-07-01-00-counter-ui.md:103
+msgid "`EagerlyConnect`"
+msgstr "`EagerlyConnect`"
+
+#: src/ch02-07-01-00-counter-ui.md:105
+msgid ""
+"The `EagerlyConnect` mechanism leverages React's `useEffect` hook to initiate "
+"a connection to Starknet upon the component's mounting or initial rendering."
+msgstr ""
+"`EagerlyConnect`机制利用 React 的 `useEffect` 钩子，在组件挂载或初始渲染时启动"
+"与Starknet的连接。"
+
+#: src/ch02-07-01-00-counter-ui.md:107
+msgid ""
+"```javascript\n"
+"useEffect(() => {\n"
+"    const connectToStarknet = async() => {\n"
+"      const connection = await connect({ modalMode: \"neverAsk\", "
+"webWalletUrl: \"https://web.argent.xyz\" });\n"
+"\n"
+"      if(connection && connection.isConnected) {\n"
+"        setConnection(connection);\n"
+"        setAccount(connection.account);\n"
+"        setAddress(connection.selectedAddress);\n"
+"      }\n"
+"    }\n"
+"    connectToStarknet();\n"
+"  }, [])\n"
+"```"
+msgstr ""
+"```javascript\n"
+"useEffect(() => {\n"
+"    const connectToStarknet = async() => {\n"
+"      const connection = await connect({ modalMode: \"neverAsk\", "
+"webWalletUrl: \"https://web.argent.xyz\" });\n"
+"\n"
+"      if(connection && connection.isConnected) {\n"
+"        setConnection(connection);\n"
+"        setAccount(connection.account);\n"
+"        setAddress(connection.selectedAddress);\n"
+"      }\n"
+"    }\n"
+"    connectToStarknet();\n"
+"  }, [])\n"
+"```"
+
+#: src/ch02-07-01-00-counter-ui.md:122
+msgid ""
+"Inside the **`useEffect`**, the **`connectToStarknet`** function is defined, "
+"aiming to establish an asynchronous connection using the **`connect`** "
+"function. Parameters like **`modalMode`** and **`webWalletUrl`** are passed "
+"to guide the connection process."
+msgstr ""
+"在**`useEffect`**内部，定义了**`connectToStarknet`**函数，旨在使用"
+"**`connect`**函数建立异步连接。传递**`modalMode`**和**`webWalletUrl`**等参数以"
+"指导连接过程。"
+
+#: src/ch02-07-01-00-counter-ui.md:123
+msgid ""
+"If successful in connecting (**`connection && connection.isConnected`**), the "
+"state updates with details of the connection, the account, and the selected "
+"address using **`setConnection`**, **`setAccount`**, and **`setAddress`**."
+msgstr ""
+"如果连接成功（**`connection && connection.isConnected`**），则使用"
+"**`setConnection`**、**`setAccount`**和**`setAddress`**更新状态，包括连接、账"
+"户和所选地址的详细信息。"
+
+#: src/ch02-07-01-00-counter-ui.md:124
+msgid ""
+"The **`connectToStarknet`** function is executed immediately after its "
+"definition."
+msgstr "**`connectToStarknet`**函数在定义后立即执行。"
+
+#: src/ch02-07-01-00-counter-ui.md:127
+msgid "Important Refresher on Smart Contract Interactions"
+msgstr "智能合约互动的重要复习"
+
+#: src/ch02-07-01-00-counter-ui.md:129
+msgid ""
+"For effective interaction with a smart contract on the network, it's crucial "
+"to understand key components after establishing a connection. Among these are "
+"the `contract address`, `ABI`, `Signer`, and `Provider`."
+msgstr ""
+"要与网络上的智能合约进行有效互动，关键是要了解建立连接后的关键组件。其中包括 "
+"`contract address`, `ABI`, `Signer`, 和 `Provider`.。"
+
+#: src/ch02-07-01-00-counter-ui.md:131
+msgid "ABI (Application Binary Interface)"
+msgstr "ABI（应用程序二进制接口）"
+
+#: src/ch02-07-01-00-counter-ui.md:133
+msgid ""
+"ABI is a standardized bridge between two binary program modules. It is "
+"essential for:"
+msgstr "ABI 是两个二进制程序模块之间的标准化桥梁。它对以下方面至关重要："
+
+#: src/ch02-07-01-00-counter-ui.md:135
+msgid "Interacting with smart contracts on the blockchain."
+msgstr "与区块链上的智能合约互动。"
+
+#: src/ch02-07-01-00-counter-ui.md:136
+msgid ""
+"Specifying the structure of functions, events, and variables for software "
+"applications."
+msgstr "为软件应用程序指定函数、事件和变量的结构。"
+
+#: src/ch02-07-01-00-counter-ui.md:137
+msgid ""
+"Enabling smooth communication with the smart contract, detailing function "
+"signatures, input/output types, event formats, and variable types."
+msgstr ""
+"实现与智能合约的顺畅通信，详细说明函数签名、输入/输出类型、事件格式和变量类"
+"型。"
+
+#: src/ch02-07-01-00-counter-ui.md:138
+msgid ""
+"Facilitating invocation of functions and data retrieval from the contract."
+msgstr "为调用函数和从合约中检索数据提供便利。"
+
+#: src/ch02-07-01-00-counter-ui.md:140
+msgid "Signer"
+msgstr "签名者"
+
+#: src/ch02-07-01-00-counter-ui.md:142
+msgid "The Signer plays a pivotal role in:"
+msgstr "签名者在以下方面发挥着关键作用："
+
+#: src/ch02-07-01-00-counter-ui.md:144
+msgid "Signing transactions."
+msgstr "签署交易。"
+
+#: src/ch02-07-01-00-counter-ui.md:145
+msgid "Authorizing actions on the blockchain."
+msgstr "授权区块链上的行为。"
+
+#: src/ch02-07-01-00-counter-ui.md:146
+msgid "Bearing the fees associated with blockchain operations."
+msgstr "承担与区块链业务相关的费用。"
+
+#: src/ch02-07-01-00-counter-ui.md:148
+msgid ""
+"Signers are especially linked to write operations that change the state of "
+"the blockchain. These operations need cryptographic signing for security and "
+"validity."
+msgstr ""
+"签名者与改变区块链状态的写入操作尤其相关。这些操作需要加密签名来保证安全性和有"
+"效性。"
+
+#: src/ch02-07-01-00-counter-ui.md:152
+msgid "The Provider acts as the medium for:"
+msgstr "提供者充当以下活动的媒介："
+
+#: src/ch02-07-01-00-counter-ui.md:154
+msgid "Communication with the blockchain."
+msgstr "与区块链通信。"
+
+#: src/ch02-07-01-00-counter-ui.md:155
+msgid "Creating transactions."
+msgstr "创建交易。"
+
+#: src/ch02-07-01-00-counter-ui.md:156
+msgid "Fetching data from the blockchain."
+msgstr "从区块链中获取数据。"
+
+#: src/ch02-07-01-00-counter-ui.md:158
+msgid ""
+"To initiate a write transaction, the connected account (signer) must be "
+"provided. This signer then signs the transaction, bearing the necessary fee "
+"for execution."
+msgstr ""
+"要启动写入交易，必须提供连接账户（签名者）。签名者随后签署交易，并承担执行所需"
+"的费用。"
+
+#: src/ch02-07-01-00-counter-ui.md:161
+msgid "Invoking the `increment` Function"
+msgstr "调用 `increment` 函数"
+
+#: src/ch02-07-01-00-counter-ui.md:163
+msgid ""
+"```javascript\n"
+"const increaseCounter = async() => {\n"
+"    try {\n"
+"      const contract = new Contract(contractAbi, contractAddress, account)\n"
+"      await contract.increment()\n"
+"      alert(\"You successfully incremented the counter!\")\n"
+"    }\n"
+"    catch(err) {\n"
+"      alert(err.message)\n"
+"    }\n"
+"  }\n"
+"```"
+msgstr ""
+"```javascript\n"
+"const increaseCounter = async() => {\n"
+"    try {\n"
+"      const contract = new Contract(contractAbi, contractAddress, account)\n"
+"      await contract.increment()\n"
+"      alert(\"You successfully incremented the counter!\")\n"
+"    }\n"
+"    catch(err) {\n"
+"      alert(err.message)\n"
+"    }\n"
+"  }\n"
+"```"
+
+#: src/ch02-07-01-00-counter-ui.md:176
+msgid ""
+"The **`increaseCounter`** function is crafted to interact with a smart "
+"contract and increment a specific counter. Here's a step-by-step breakdown:"
+msgstr ""
+"**`increaseCounter`**函数用于与智能合约交互并递增特定计数器。下面是按照步骤的"
+"分解讲解："
+
+#: src/ch02-07-01-00-counter-ui.md:178
+msgid ""
+"Establishes a new contract instance using the provided contract's ABI, its "
+"address, and the connected account. The account is essential since this write "
+"transaction alters the contract's state."
+msgstr ""
+"使用提供的合约 ABI、合约地址和连接的账户建立一个新的合约实例。账户是必不可少"
+"的，因为这个写入交易会改变合约的状态。"
+
+#: src/ch02-07-01-00-counter-ui.md:179
+msgid ""
+"Executes the contract's **`increment`** method. The **`await`** keyword "
+"ensures the program pauses until this action completes."
+msgstr ""
+"执行合约的 **`increment`** 方法。**`await`**关键字确保程序暂停，直到该操作完"
+"成。"
+
+#: src/ch02-07-01-00-counter-ui.md:180
+msgid ""
+"On successful execution, the user receives a confirmation alert indicating "
+"the counter's increment."
+msgstr "执行成功后，用户会收到计数器增量的确认提示。"
+
+#: src/ch02-07-01-00-counter-ui.md:181
+msgid ""
+"In case of any errors during the process, an alert displays the corresponding "
+"error message to the user."
+msgstr ""
+"如果在运行过程中出现任何错误，系统会向用户发出警报，显示相应的错误信息。"
+
+#: src/ch02-07-01-00-counter-ui.md:184
+msgid "Invoking the `decrement` Function"
+msgstr "调用 `decrement` 函数"
+
+#: src/ch02-07-01-00-counter-ui.md:186
+msgid ""
+"```javascript\n"
+"const decreaseCounter = async() => {\n"
+"    try {\n"
+"      const contract = new Contract(contractAbi, contractAddress, account)\n"
+"      await contract.decrement()\n"
+"      alert(\"You successfully decremented the counter!\")\n"
+"    }\n"
+"    catch(err) {\n"
+"      alert(err.message)\n"
+"    }\n"
+"  }\n"
+"```"
+msgstr ""
+"```javascript\n"
+"const decreaseCounter = async() => {\n"
+"    try {\n"
+"      const contract = new Contract(contractAbi, contractAddress, account)\n"
+"      await contract.decrement()\n"
+"      alert(\"You successfully decremented the counter!\")\n"
+"    }\n"
+"    catch(err) {\n"
+"      alert(err.message)\n"
+"    }\n"
+"  }\n"
+"```"
+
+#: src/ch02-07-01-00-counter-ui.md:199
+msgid ""
+"The **`decreaseCounter`** function is designed to interact with a smart "
+"contract and decrement a specific counter. Here's a succinct breakdown of its "
+"operation:"
+msgstr ""
+"递减计数器（**`decreaseCounter`** ）函数旨在与智能合约交互，让一个特定的计数器"
+"递减。下面是其操作的简要说明："
+
+#: src/ch02-07-01-00-counter-ui.md:201
+msgid ""
+"Creates a new contract instance by utilizing the provided contract's ABI, its "
+"address, and the connected account. The account is vital as this write "
+"transaction modifies the contract's state."
+msgstr ""
+"利用提供的合约 ABI、地址和连接的账户创建新合约实例。账户至关重要，因为该写入事"
+"务会修改合约的状态。"
+
+#: src/ch02-07-01-00-counter-ui.md:202
+msgid ""
+"Initiates the contract's **`decrement`** method. With the use of the "
+"**`await`** keyword, the program ensures it waits for the decrement action to "
+"finalize."
+msgstr ""
+"启动合约的 **`decrement`** 方法。使用**`await`**关键字，程序可确保等待递减操作"
+"最终完成。"
+
+#: src/ch02-07-01-00-counter-ui.md:203
+msgid ""
+"Upon successful execution, the user is notified with an alert indicating the "
+"counter's decrement."
+msgstr "执行成功后，用户会收到计数器递减的提示。"
+
+#: src/ch02-07-01-00-counter-ui.md:204
+msgid ""
+"Should any errors arise during the interaction, the user is promptly alerted "
+"with the pertinent error message."
+msgstr "如果在交互过程中出现任何错误，用户会立即收到相关的错误信息提醒。"
+
+#: src/ch02-07-01-00-counter-ui.md:206
+msgid "Fetching the Current Count with `get_current_count` Function"
+msgstr "使用 `get_current_count` 函数获取当前计数"
+
+#: src/ch02-07-01-00-counter-ui.md:222
+msgid ""
+"The **`getCounter`** function is designed to retrieve the current count from "
+"a smart contract. Here's a breakdown of its operation:"
+msgstr ""
+"**`getCounter`**函数旨在从智能合约中获取当前计数。下面是该函数的具体操作："
+
+#: src/ch02-07-01-00-counter-ui.md:224
+msgid ""
+"Establishes a provider instance, specifying the sequencer network – in this "
+"instance, it's set to the **`mainnet`** through **`constants.NetworkName."
+"SN_MAIN`**."
+msgstr ""
+"建立提供商实例，指定排序器网络--在本例中，通过**`constants.NetworkName."
+"SN_MAIN`**设置为**`mainnet`**。"
+
+#: src/ch02-07-01-00-counter-ui.md:225
+msgid ""
+"With this provider, it then initiates a contract instance using the provided "
+"contract's ABI, its address, and the aforementioned provider."
+msgstr ""
+"有了这个提供商，它就会使用所提供的合同 ABI、其地址和上述提供商启动一个合同实"
+"例。"
+
+#: src/ch02-07-01-00-counter-ui.md:226
+msgid ""
+"The function then invokes the **`get_current_count`** method of the contract "
+"to fetch the current count. This is an asynchronous action, and the program "
+"waits for its completion with the **`await`** keyword."
+msgstr ""
+"然后，函数会调用合约的 **`get_current_count`** 方法来获取当前计数。这是一个异"
+"步操作，程序会使用**`await`**关键字等待其完成。"
+
+#: src/ch02-07-01-00-counter-ui.md:227
+msgid ""
+"Once successfully retrieved, the count, which is presumably a number, is "
+"converted to a string and stored using the **`setRetrievedValue`** function."
+msgstr ""
+"成功检索后，计数（可能是一个数字）将转换为字符串，并使用 "
+"**`setRetrievedValue`** 函数进行存储。"
+
+#: src/ch02-07-01-00-counter-ui.md:228
+msgid ""
+"In the event of any errors during the process, an alert provides the user "
+"with the relevant error message."
+msgstr "如果过程中出现任何错误，系统会发出警报，向用户提供相关的错误信息。"
+
+#: src/ch02-07-01-00-counter-ui.md:230
+msgid ""
+"It's essential to emphasize that while performing read operations, like "
+"fetching data from a blockchain network, the function uses the provider. "
+"Unlike write operations, which typically require a signer (or an account) for "
+"transaction signing, read operations don't mandate such authentication. Thus, "
+"in this function, only the provider is specified, and not the signer."
+msgstr ""
+"必须强调的是，在执行读取操作（如从区块链网络中获取数据）时，该功能使用的是提供"
+"商。与通常需要签名者（或账户）进行交易签名的写入操作不同，读取操作并不强制要求"
+"进行此类身份验证。因此，在该函数中，只指定了提供商，而没有指定签名者。"
+
+#: src/ch02-07-01-00-counter-ui.md:233
+msgid "Wrapping It Up: Integrating a Frontend with a Counter Smart Contract"
+msgstr "包起来：将前端与计数器智能合约整合在一起"
+
+#: src/ch02-07-01-00-counter-ui.md:235
+msgid ""
+"In this tutorial, we review the process of integrating a basic counter smart "
+"contract with a frontend application."
+msgstr "在本教程中，我们将回顾将基本计数器智能合约与前端应用程序集成的过程。"
+
+#: src/ch02-07-01-00-counter-ui.md:237
+msgid "Here's a quick recap:"
+msgstr "下面是简要回顾："
+
+#: src/ch02-07-01-00-counter-ui.md:239
+msgid ""
+"**Establishing Connection**: With the **`connectWallet`** function, we made "
+"seamless connections to the blockchain, paving the way for interactions with "
+"our smart contract."
+msgstr ""
+"**建立连接**：通过**`connectWallet`**函数，我们与区块链建立了无缝连接，为与我"
+"们的智能合约进行交互铺平了道路。"
+
+#: src/ch02-07-01-00-counter-ui.md:240
+msgid ""
+"**Terminating Connection**: The **`disconnectWallet`** function ensures that "
+"users can safely terminate their active connections to the blockchain, "
+"maintaining security and control."
+msgstr ""
+"**终止连接**：**`disconnectWallet`**函数确保用户可以安全地终止与区块链的活动连"
+"接，保持安全和控制。"
+
+#: src/ch02-07-01-00-counter-ui.md:241
+msgid ""
+"**Interacting with the Smart Contract**: Using the **`increaseCounter`**, "
+"**`decreaseCounter`**, and **`getCounter`** functions, we explored how to:"
+msgstr ""
+"**与智能合约交互**：使用**`increaseCounter`**、**`decreaseCounter`**和"
+"**`getCounter`**函数，我们探索了如何："
+
+#: src/ch02-07-01-00-counter-ui.md:242
+msgid "Initiate transactions"
+msgstr "启动交易"
+
+#: src/ch02-07-01-00-counter-ui.md:243
+msgid "Adjust the counter value (increment or decrement)"
+msgstr "调整计数器数值（递增或递减）"
+
+#: src/ch02-07-01-00-counter-ui.md:244
+msgid "Fetch data from the blockchain"
+msgstr "从区块链中获取数据"
+
+#: src/ch02-07-01-01-erc20-ui.md:1
 msgid "ERC-20 UI"
 msgstr "ERC-20 UI"
 
-#: src/ch02-07-01-00-erc20-ui.md:3
+#: src/ch02-07-01-01-erc20-ui.md:3
 msgid ""
 "This guide offers steps to build an ERC20 smart contract using Cairo and to "
 "incorporate it within a React web application with Starknet React. Readers "
@@ -3835,23 +4507,23 @@ msgstr ""
 "本指南提供了使用 Cairo 构建 ERC20 智能合约的步骤，并将其纳入使用 Starknet "
 "React 的 React Web 应用程序中。读者将："
 
-#: src/ch02-07-01-00-erc20-ui.md:5
+#: src/ch02-07-01-01-erc20-ui.md:5
 msgid "Understand how to implement the ERC20 interface"
 msgstr "了解如何实现 ERC20 接口"
 
-#: src/ch02-07-01-00-erc20-ui.md:6
+#: src/ch02-07-01-01-erc20-ui.md:6
 msgid "Learn how to deploy contracts on the Starknet network"
 msgstr "了解如何在Starknet网络上部署合约"
 
-#: src/ch02-07-01-00-erc20-ui.md:7
+#: src/ch02-07-01-01-erc20-ui.md:7
 msgid "Discover ways to engage with contracts within a React application"
 msgstr "探索在 React 应用中使用合约的方法"
 
-#: src/ch02-07-01-00-erc20-ui.md:8
+#: src/ch02-07-01-01-erc20-ui.md:8
 msgid "Design their own ERC20 token and initiate it on Starknet"
 msgstr "设计自己的 ERC20 代币，并在Starknet启动它"
 
-#: src/ch02-07-01-00-erc20-ui.md:10
+#: src/ch02-07-01-01-erc20-ui.md:10
 msgid ""
 "A prerequisite for this guide is a foundational understanding of both the "
 "Cairo programming language and ReactJS. Additionally, ensure Node.js and NPM "
@@ -3860,7 +4532,7 @@ msgstr ""
 "本指南的前提条件是对 Cairo 编程语言和 ReactJS 有基本的了解。此外，确保系统上已"
 "安装 Node.js 和 NPM。"
 
-#: src/ch02-07-01-00-erc20-ui.md:12
+#: src/ch02-07-01-01-erc20-ui.md:12
 msgid ""
 "The example will walk through creating an ERC20 token named MKT and crafting "
 "a web3 interface for functionalities such as balance verification and token "
@@ -3869,53 +4541,53 @@ msgstr ""
 "该示例将介绍如何创建一个名为 MKT 的 ERC20 令牌，并为余额验证和令牌转移等功能创"
 "建一个 web3 界面。"
 
-#: src/ch02-07-01-00-erc20-ui.md:17
+#: src/ch02-07-01-01-erc20-ui.md:17
 msgid ""
 "Throughout this guide, the following tools and libraries will be utilized:"
 msgstr "本指南将使用以下工具和库："
 
-#: src/ch02-07-01-00-erc20-ui.md:19
+#: src/ch02-07-01-01-erc20-ui.md:19
 msgid "Scarb 0.7.0 with Cairo 2.2.0"
 msgstr "Scarb 0.7.0 与 Cairo 2.2.0"
 
-#: src/ch02-07-01-00-erc20-ui.md:20
+#: src/ch02-07-01-01-erc20-ui.md:20
 msgid "Starkli 0.1.9"
 msgstr "Starkli 0.1.9"
 
-#: src/ch02-07-01-00-erc20-ui.md:21
+#: src/ch02-07-01-01-erc20-ui.md:21
 msgid "Oppenzeppelin libraries v0.7.0"
 msgstr "Oppenzeppelin libraries v0.7.0"
 
-#: src/ch02-07-01-00-erc20-ui.md:22
+#: src/ch02-07-01-01-erc20-ui.md:22
 msgid "Starknet React v1.0.4"
 msgstr "Starknet React v1.0.4"
 
-#: src/ch02-07-01-00-erc20-ui.md:23
+#: src/ch02-07-01-01-erc20-ui.md:23
 msgid "NodeJS v19.6.1"
 msgstr "NodeJS v19.6.1"
 
-#: src/ch02-07-01-00-erc20-ui.md:24
+#: src/ch02-07-01-01-erc20-ui.md:24
 msgid "Next.js 13.1.6"
 msgstr "Next.js 13.1.6"
 
-#: src/ch02-07-01-00-erc20-ui.md:25
+#: src/ch02-07-01-01-erc20-ui.md:25
 msgid "Visual Studio Code"
 msgstr "Visual Studio Code"
 
-#: src/ch02-07-01-00-erc20-ui.md:26
+#: src/ch02-07-01-01-erc20-ui.md:26
 msgid "Vercel"
 msgstr "Vercel"
 
-#: src/ch02-07-01-00-erc20-ui.md:28
+#: src/ch02-07-01-01-erc20-ui.md:28
 msgid "Initiating a New Starknet Project"
 msgstr "启动新的Starknet项目"
 
-#: src/ch02-07-01-00-erc20-ui.md:30
+#: src/ch02-07-01-01-erc20-ui.md:30
 msgid ""
 "Begin by establishing a new Starknet project named \"erc20\" using Scarb:"
 msgstr "首先使用 Scarb 建立一个名为 \"erc20 \"的新Starknet项目："
 
-#: src/ch02-07-01-00-erc20-ui.md:38
+#: src/ch02-07-01-01-erc20-ui.md:38
 msgid ""
 "Subsequently, update the Scarb.toml to include the essential OpenZeppelin "
 "libraries. Post edits, the Scarb.toml should appear as:"
@@ -3923,7 +4595,7 @@ msgstr ""
 "随后，更新 Scarb.toml，使其包含 OpenZeppelin 的基本库。编辑完成后，Scarb.toml "
 "应显示为："
 
-#: src/ch02-07-01-00-erc20-ui.md:40
+#: src/ch02-07-01-01-erc20-ui.md:40
 msgid ""
 "```toml\n"
 "[package]\n"
@@ -3957,11 +4629,11 @@ msgstr ""
 "[[target.starknet-contract]]\n"
 "```"
 
-#: src/ch02-07-01-00-erc20-ui.md:54
+#: src/ch02-07-01-01-erc20-ui.md:54
 msgid "Implementing the ERC20 Token"
 msgstr "实现 ERC20 token"
 
-#: src/ch02-07-01-00-erc20-ui.md:56
+#: src/ch02-07-01-01-erc20-ui.md:56
 msgid ""
 "Begin by creating a new file named `src/erc20.cairo`. In this file, the ERC20 "
 "token named MKT, along with its associated functions, will be defined:"
@@ -3969,21 +4641,21 @@ msgstr ""
 "首先创建一个名为`src/erc20.cairo`的新文件。在该文件中，将定义名为 MKT 的 "
 "ERC20 令牌及其相关函数："
 
-#: src/ch02-07-01-00-erc20-ui.md:99
+#: src/ch02-07-01-01-erc20-ui.md:99
 msgid "Upon completing your contract, proceed to compile it using Scarb:"
 msgstr "完成合约后，使用 Scarb 进行编译："
 
-#: src/ch02-07-01-00-erc20-ui.md:105
+#: src/ch02-07-01-01-erc20-ui.md:105
 msgid ""
 "Subsequent to the compilation, declare the smart contract on the Starknet "
 "testnet:"
 msgstr "编译完成后，在Starknet测试网上声明智能合约："
 
-#: src/ch02-07-01-00-erc20-ui.md:112 src/ch02-07-01-00-erc20-ui.md:139
+#: src/ch02-07-01-01-erc20-ui.md:112 src/ch02-07-01-01-erc20-ui.md:139
 msgid "The output should appear similar to:"
 msgstr "输出结果应类似于："
 
-#: src/ch02-07-01-00-erc20-ui.md:121
+#: src/ch02-07-01-01-erc20-ui.md:121
 msgid ""
 "In cases where no modifications have been made to the provided contract, a "
 "notification will indicate that the contract has previously been declared on "
@@ -3992,17 +4664,17 @@ msgstr ""
 "如果你没有对所提供的合约进行修改，则会有一个显示该合约之前已在Starknet声明的通"
 "知出现："
 
-#: src/ch02-07-01-00-erc20-ui.md:128
+#: src/ch02-07-01-01-erc20-ui.md:128
 msgid "Deploying the ERC20 Contract"
 msgstr "部署 ERC20 合约"
 
-#: src/ch02-07-01-00-erc20-ui.md:130
+#: src/ch02-07-01-01-erc20-ui.md:130
 msgid ""
 "Proceed to deploy the MKT Token using Starkli. Provide these arguments for "
 "successful deployment:"
 msgstr "继续使用 Starkli 部署 MKT 令牌。想要成功部署需提供这些参数："
 
-#: src/ch02-07-01-00-erc20-ui.md:132
+#: src/ch02-07-01-01-erc20-ui.md:132
 msgid ""
 "`Initial mint`: Mint 1,000,000 tokens. Given that the MKT token comprises 18 "
 "decimals (a standard of OpenZeppelin), the input required is 1,000,000 * "
@@ -4015,7 +4687,7 @@ msgstr ""
 "0xd3c21bcecceda1000000。由于合约期望的初始铸造数值是一个 u256 类型的值，因此需"
 "要同时提供低值和高值：分别为 0xd3c21bcecceda1000000 和 0。"
 
-#: src/ch02-07-01-00-erc20-ui.md:133
+#: src/ch02-07-01-01-erc20-ui.md:133
 msgid ""
 "`Receiver address`: Use a preferred address. In this example: "
 "0x0334863e3e851de87fb4b6b6113aa2a6b40ea20f22dbec55536e4eac912206fc"
@@ -4023,7 +4695,7 @@ msgstr ""
 "`Receiver address`: 使用首选地址。例如："
 "0x0334863e3e851de87fb4b6b6113aa2a6b40ea20f22dbec55536e4eac912206fc"
 
-#: src/ch02-07-01-00-erc20-ui.md:147
+#: src/ch02-07-01-01-erc20-ui.md:147
 msgid ""
 "NOTE: The deployed address received will differ for every user. Retain this "
 "address, as it will replace instances in subsequent TypeScript files to match "
@@ -4032,42 +4704,42 @@ msgstr ""
 "注意：每个用户收到的部署地址都不同。请保留此地址，因为它将替换后续 TypeScript "
 "文件中的实例，以匹配特定的合约地址。"
 
-#: src/ch02-07-01-00-erc20-ui.md:149
+#: src/ch02-07-01-01-erc20-ui.md:149
 msgid ""
 "Well done! The Cairo ERC20 smart contract has been deployed successfully on "
 "Starknet."
 msgstr "干得漂亮！Cairo ERC20 智能合约已在Starknet成功部署。"
 
-#: src/ch02-07-01-00-erc20-ui.md:151
+#: src/ch02-07-01-01-erc20-ui.md:151
 #, fuzzy
 msgid "Installing the Starknet React Library"
 msgstr "安装 Starknet React 库"
 
-#: src/ch02-07-01-00-erc20-ui.md:153
+#: src/ch02-07-01-01-erc20-ui.md:153
 #, fuzzy
 msgid ""
 "With the contract in place, initiate the development of the web application. "
 "Begin by incorporating the Starknet React library:"
 msgstr "签订合约后，开始开发网络应用程序。首先纳入 Starknet React 库："
 
-#: src/ch02-07-01-00-erc20-ui.md:159
+#: src/ch02-07-01-01-erc20-ui.md:159
 #, fuzzy
 msgid "Post-installation, confirm the version of the Starknet React library:"
 msgstr "安装后，确认 Starknet React 库的版本："
 
-#: src/ch02-07-01-00-erc20-ui.md:165
+#: src/ch02-07-01-01-erc20-ui.md:165
 #, fuzzy
 msgid ""
 "The output should display the installed version, such as `@starknet-react/"
 "core@1.0.4`."
 msgstr "输出结果应显示已安装的版本，如 `@starknet-react/core@1.0.4`。"
 
-#: src/ch02-07-01-00-erc20-ui.md:167
+#: src/ch02-07-01-01-erc20-ui.md:167
 #, fuzzy
 msgid "Setting Up a New React Project"
 msgstr "设置新的 React 项目"
 
-#: src/ch02-07-01-00-erc20-ui.md:169
+#: src/ch02-07-01-01-erc20-ui.md:169
 #, fuzzy
 msgid ""
 "Starknet React library provides the `create-starknet` script that streamlines "
@@ -4076,7 +4748,7 @@ msgstr ""
 "Starknet React 库提供了 \"create-starknet \"脚本，可使用 TypeScript 简化 "
 "Starknet 应用程序的设置："
 
-#: src/ch02-07-01-00-erc20-ui.md:175
+#: src/ch02-07-01-01-erc20-ui.md:175
 #, fuzzy
 msgid ""
 "Once set up, make modifications to `erc20_web/index.tsx` by replacing its "
@@ -4084,7 +4756,7 @@ msgid ""
 msgstr ""
 "设置完成后，用以下代码替换 `erc20_web/index.tsx` 中的内容，对其进行修改："
 
-#: src/ch02-07-01-00-erc20-ui.md:177
+#: src/ch02-07-01-01-erc20-ui.md:177
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -4165,24 +4837,24 @@ msgstr ""
 "}\n"
 "```"
 
-#: src/ch02-07-01-00-erc20-ui.md:214
+#: src/ch02-07-01-01-erc20-ui.md:214
 #, fuzzy
 msgid "To launch the web3 application:"
 msgstr "启动 web3 应用程序："
 
-#: src/ch02-07-01-00-erc20-ui.md:221
+#: src/ch02-07-01-01-erc20-ui.md:221
 #, fuzzy
 msgid ""
 "NOTE: Observe the server port that appears during launch. This will be useful "
 "for subsequent testing."
 msgstr "注意：观察启动过程中出现的服务器端口。这将有助于后续测试。"
 
-#: src/ch02-07-01-00-erc20-ui.md:224
+#: src/ch02-07-01-01-erc20-ui.md:224
 #, fuzzy
 msgid "Enhancing Your React Application with Additional Features"
 msgstr "利用附加功能增强 React 应用程序"
 
-#: src/ch02-07-01-00-erc20-ui.md:226
+#: src/ch02-07-01-01-erc20-ui.md:226
 #, fuzzy
 msgid ""
 "To enhance the app's functionality, create two components for balance and "
@@ -4192,19 +4864,19 @@ msgstr ""
 "为增强应用程序的功能，创建余额和转账两个组件。随后，更新 `Wallet.tsx` 文件以纳"
 "入新功能："
 
-#: src/ch02-07-01-00-erc20-ui.md:231
+#: src/ch02-07-01-01-erc20-ui.md:231
 #, fuzzy
 msgid "Balance Component"
 msgstr "余额部分"
 
-#: src/ch02-07-01-00-erc20-ui.md:232
+#: src/ch02-07-01-01-erc20-ui.md:232
 #, fuzzy
 msgid ""
 "Design a balance component inside `components/Balance.tsx` and integrate the "
 "following code:"
 msgstr "在 `components/Balance.tsx` 中设计一个平衡组件，并整合以下代码："
 
-#: src/ch02-07-01-00-erc20-ui.md:234
+#: src/ch02-07-01-01-erc20-ui.md:234
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -4269,24 +4941,24 @@ msgstr ""
 "export default Balance；\n"
 "```"
 
-#: src/ch02-07-01-00-erc20-ui.md:264
+#: src/ch02-07-01-01-erc20-ui.md:264
 #, fuzzy
 msgid "NOTE: Replace the address with the address of your deployed contract."
 msgstr "注意：请将地址替换为已部署合约的地址。"
 
-#: src/ch02-07-01-00-erc20-ui.md:266
+#: src/ch02-07-01-01-erc20-ui.md:266
 #, fuzzy
 msgid "Transfer Component"
 msgstr "转移部分"
 
-#: src/ch02-07-01-00-erc20-ui.md:268
+#: src/ch02-07-01-01-erc20-ui.md:268
 #, fuzzy
 msgid ""
 "Craft a transfer component in `components/Transfer.tsx` and embed the "
 "subsequent code:"
 msgstr "在 `components/Transfer.tsx` 中制作一个传输组件，并嵌入后续代码："
 
-#: src/ch02-07-01-00-erc20-ui.md:270
+#: src/ch02-07-01-01-erc20-ui.md:270
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -4376,25 +5048,25 @@ msgstr ""
 "export default Transfer；\n"
 "```"
 
-#: src/ch02-07-01-00-erc20-ui.md:311
+#: src/ch02-07-01-01-erc20-ui.md:311
 #, fuzzy
 msgid ""
 "NOTE: Replace contractAddress with the address of your deployed contract."
 msgstr "注意：将 contractAddress 替换为已部署合约的地址。"
 
-#: src/ch02-07-01-00-erc20-ui.md:314
+#: src/ch02-07-01-01-erc20-ui.md:314
 #, fuzzy
 msgid "Updating the Wallet Component"
 msgstr "更新钱包组件"
 
-#: src/ch02-07-01-00-erc20-ui.md:316
+#: src/ch02-07-01-01-erc20-ui.md:316
 #, fuzzy
 msgid ""
 "Proceed to modify the `components/Wallet.tsx` file. Replace any existing "
 "content with the following enhanced code:"
 msgstr "继续修改 `components/Wallet.tsx` 文件。用以下增强代码替换任何现有内容："
 
-#: src/ch02-07-01-00-erc20-ui.md:368
+#: src/ch02-07-01-01-erc20-ui.md:368
 #, fuzzy
 msgid ""
 "This updated code refines the Wallet component to offer a more interactive "
@@ -4402,12 +5074,12 @@ msgid ""
 msgstr ""
 "更新后的代码完善了钱包组件，为打算连接或管理钱包的用户提供了交互性更强的体验。"
 
-#: src/ch02-07-01-00-erc20-ui.md:371
+#: src/ch02-07-01-01-erc20-ui.md:371
 #, fuzzy
 msgid "Finalizing the MKT Token Application"
 msgstr "完成 MKT 令牌申请"
 
-#: src/ch02-07-01-00-erc20-ui.md:373
+#: src/ch02-07-01-01-erc20-ui.md:373
 #, fuzzy
 msgid ""
 "To finalize the application setup, we need the ABI file for the MKT token. "
@@ -4416,18 +5088,18 @@ msgstr ""
 "要完成应用程序设置，我们需要 MKT 令牌的 ABI 文件。请按照以下步骤生成并集成该文"
 "件："
 
-#: src/ch02-07-01-00-erc20-ui.md:375
+#: src/ch02-07-01-01-erc20-ui.md:375
 #, fuzzy
 msgid "At the root of your project, create a new directory named `assets/`."
 msgstr "在项目根目录下新建一个名为 `assets/` 的目录。"
 
-#: src/ch02-07-01-00-erc20-ui.md:376
+#: src/ch02-07-01-01-erc20-ui.md:376
 #, fuzzy
 msgid ""
 "Inside the `assets/` directory, create an empty JSON file named `erc20.json`."
 msgstr "在 `assets/` 目录中，创建一个名为 `erc20.json` 的空 JSON 文件。"
 
-#: src/ch02-07-01-00-erc20-ui.md:377
+#: src/ch02-07-01-01-erc20-ui.md:377
 #, fuzzy
 msgid ""
 "Go back to your ERC20 Cairo project folder and locate the `erc20/target/"
@@ -4436,7 +5108,7 @@ msgstr ""
 "返回 ERC20 Cairo 项目文件夹，找到 `erc20/target/erc20_erc20_sierra.json` 文"
 "件。"
 
-#: src/ch02-07-01-00-erc20-ui.md:381
+#: src/ch02-07-01-01-erc20-ui.md:381
 #, fuzzy
 msgid ""
 "Extract the ABI definition (ensuring you include the square brackets) and "
@@ -4445,7 +5117,7 @@ msgstr ""
 "提取 ABI 定义（确保包含方括号）并将其整合到之前创建的 `assets/erc20.json` 文件"
 "中。"
 
-#: src/ch02-07-01-00-erc20-ui.md:385
+#: src/ch02-07-01-01-erc20-ui.md:385
 #, fuzzy
 msgid ""
 "Well done! The basic MKT token application is now operational locally. Access "
@@ -4457,12 +5129,12 @@ msgstr ""
 "\"或先前服务器设置中指出的端口访问该应用程序。该应用程序允许用户连接自己的钱"
 "包、查看余额和执行令牌转账。"
 
-#: src/ch02-07-01-00-erc20-ui.md:390
+#: src/ch02-07-01-01-erc20-ui.md:390
 #, fuzzy
 msgid "Deploying Your Project Online"
 msgstr "在线部署项目"
 
-#: src/ch02-07-01-00-erc20-ui.md:392
+#: src/ch02-07-01-01-erc20-ui.md:392
 #, fuzzy
 msgid ""
 "To share your application with friends and allow them to check their balances "
@@ -4472,87 +5144,87 @@ msgstr ""
 "要与朋友分享您的应用程序，并允许他们查看余额和转移代币，请在线发布您的应用程"
 "序。Vercel 提供了一种简单易行的方法："
 
-#: src/ch02-07-01-00-erc20-ui.md:394
+#: src/ch02-07-01-01-erc20-ui.md:394
 #, fuzzy
 msgid "Set Up Vercel"
 msgstr "设置 Vercel"
 
-#: src/ch02-07-01-00-erc20-ui.md:396
+#: src/ch02-07-01-01-erc20-ui.md:396
 #, fuzzy
 msgid "Register for an account at [Vercel Signup](https://vercel.com/signup)."
 msgstr "在 [Vercel Signup](https://vercel.com/signup) 上注册账户。"
 
-#: src/ch02-07-01-00-erc20-ui.md:397
+#: src/ch02-07-01-01-erc20-ui.md:397
 #, fuzzy
 msgid "Install Vercel in your web application folder (`erc20_web`):"
 msgstr "在网络应用程序文件夹 (`erc20_web`) 中安装 Vercel："
 
-#: src/ch02-07-01-00-erc20-ui.md:405
+#: src/ch02-07-01-01-erc20-ui.md:405
 #, fuzzy
 msgid "Authenticate your Vercel account:"
 msgstr "验证您的 Vercel 账户："
 
-#: src/ch02-07-01-00-erc20-ui.md:411
+#: src/ch02-07-01-01-erc20-ui.md:411
 #, fuzzy
 msgid ""
 "After entering your email, check your inbox and click on the \"Verify\" "
 "button."
 msgstr "输入电子邮件后，检查收件箱并点击 \"验证 \"按钮。"
 
-#: src/ch02-07-01-00-erc20-ui.md:418
+#: src/ch02-07-01-01-erc20-ui.md:418
 #, fuzzy
 msgid ""
 "On successful verification, you'll receive a confirmation in the console."
 msgstr "验证成功后，您将在控制台中收到确认信息。"
 
-#: src/ch02-07-01-00-erc20-ui.md:420
+#: src/ch02-07-01-01-erc20-ui.md:420
 #, fuzzy
 msgid "Link your project to Vercel:"
 msgstr "将您的项目链接到 Vercel："
 
-#: src/ch02-07-01-00-erc20-ui.md:426
+#: src/ch02-07-01-01-erc20-ui.md:426
 #, fuzzy
 msgid "Upload it:"
 msgstr "上传："
 
-#: src/ch02-07-01-00-erc20-ui.md:432
+#: src/ch02-07-01-01-erc20-ui.md:432
 #, fuzzy
 msgid "Publish your project:"
 msgstr "发布您的项目："
 
-#: src/ch02-07-01-00-erc20-ui.md:438
+#: src/ch02-07-01-01-erc20-ui.md:438
 #, fuzzy
 msgid ""
 "Congratulations! Your MKT token web3 application is now accessible to "
 "everyone."
 msgstr "恭喜您！现在所有人都可以访问您的 MKT 令牌 web3 应用程序了。"
 
-#: src/ch02-07-01-00-erc20-ui.md:442
+#: src/ch02-07-01-01-erc20-ui.md:442
 #, fuzzy
 msgid "Engage with your app by:"
 msgstr "通过以下方式与您的应用程序互动"
 
-#: src/ch02-07-01-00-erc20-ui.md:444
+#: src/ch02-07-01-01-erc20-ui.md:444
 #, fuzzy
 msgid "Connecting your wallet:"
 msgstr "连接您的钱包"
 
-#: src/ch02-07-01-00-erc20-ui.md:448
+#: src/ch02-07-01-01-erc20-ui.md:448
 #, fuzzy
 msgid "Checking your balance:"
 msgstr "查看余额"
 
-#: src/ch02-07-01-00-erc20-ui.md:452
+#: src/ch02-07-01-01-erc20-ui.md:452
 #, fuzzy
 msgid "Transferring tokens:"
 msgstr "转让代币："
 
-#: src/ch02-07-01-00-erc20-ui.md:456
+#: src/ch02-07-01-01-erc20-ui.md:456
 #, fuzzy
 msgid "Wrapping Up"
 msgstr "总结"
 
-#: src/ch02-07-01-00-erc20-ui.md:458
+#: src/ch02-07-01-01-erc20-ui.md:458
 #, fuzzy
 msgid ""
 "Throughout this tutorial, you've walked through the steps to craft a web3 "
@@ -4564,14 +5236,14 @@ msgstr ""
 "个应用程序包含一个 ERC20 智能合约，为用户交互提供了一个现代化的 Web 界面。下面"
 "是您的成果快照："
 
-#: src/ch02-07-01-00-erc20-ui.md:460
+#: src/ch02-07-01-01-erc20-ui.md:460
 #, fuzzy
 msgid ""
 "**Project Initialization**: Set up a Starknet project with Scarb and "
 "incorporated OpenZeppelin libraries."
 msgstr "**项目初始化**：使用 Scarb 和 OpenZeppelin 库建立Starknet项目。"
 
-#: src/ch02-07-01-00-erc20-ui.md:462
+#: src/ch02-07-01-01-erc20-ui.md:462
 #, fuzzy
 msgid ""
 "**Crafting the ERC20 Contract**: Developed an ERC20 token using Cairo, "
@@ -4581,7 +5253,7 @@ msgstr ""
 "**起草 ERC20 合约**：使用Cairo开发了一种 ERC20 代币，并丰富了余额检查和代币转"
 "账等功能。然后对其进行编译，并在Starknet（Starknet）网络上发布。"
 
-#: src/ch02-07-01-00-erc20-ui.md:464
+#: src/ch02-07-01-01-erc20-ui.md:464
 #, fuzzy
 msgid ""
 "**React Application**: Built a React application powered by Starknet React, "
@@ -4590,14 +5262,14 @@ msgstr ""
 "**React 应用程序**：构建了一个由 Starknet React 支持的 React 应用程序，其中包"
 "含专门用于余额查询和代币交易的组件。"
 
-#: src/ch02-07-01-00-erc20-ui.md:466
+#: src/ch02-07-01-01-erc20-ui.md:466
 #, fuzzy
 msgid ""
 "**ABI Creation**: Produced the ABI for the MKT token, a critical component to "
 "liaise with the contract."
 msgstr "**ABI 创建**：为 MKT 令牌制作 ABI，这是联络合约的关键部分。"
 
-#: src/ch02-07-01-00-erc20-ui.md:468
+#: src/ch02-07-01-01-erc20-ui.md:468
 #, fuzzy
 msgid ""
 "**Online Deployment**: Brought your application to a wider audience by "
@@ -4607,7 +5279,7 @@ msgstr ""
 "**在线部署**：通过在 Vercel 上部署，将您的应用程序带给更多用户。这样，用户就可"
 "以连接他们的钱包，仔细检查他们的余额，并执行代币交易。"
 
-#: src/ch02-07-01-00-erc20-ui.md:470
+#: src/ch02-07-01-01-erc20-ui.md:470
 #, fuzzy
 msgid ""
 "The insights you've gathered from this tutorial lay a solid groundwork for "
@@ -4620,12 +5292,12 @@ msgstr ""
 "备了制作更复杂的去中心化应用程序和智能合约的能力。去中心化金融和区块链的广阔天"
 "地正等着你的创新投入。投入其中，快乐编码！"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:1
+#: src/ch02-07-01-02-million-dollar-homepage.md:1
 #, fuzzy
 msgid "Million Dollar Homepage"
 msgstr "百万美元主页"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:3
+#: src/ch02-07-01-02-million-dollar-homepage.md:3
 #, fuzzy
 msgid ""
 "[Starknet Homepage](https://github.com/dbejarano820/starknet_homepage) is a "
@@ -4641,7 +5313,7 @@ msgstr ""
 "像素。用户可以通过铸造不可兑换代币（NFT）获得这些区域，然后用图片和其他内容对"
 "其进行个性化设置。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:5
+#: src/ch02-07-01-02-million-dollar-homepage.md:5
 #, fuzzy
 msgid ""
 "View the live app on testnet [here](https://starknet-homepage-kappa.vercel."
@@ -4650,7 +5322,7 @@ msgstr ""
 "在 testnet [此处](https://starknet-homepage-kappa.vercel.app/) 上查看实时应用"
 "程序。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:9
+#: src/ch02-07-01-02-million-dollar-homepage.md:9
 #, fuzzy
 msgid ""
 "This initiative is an adaptation of the renowned Million Dollar Homepage and "
@@ -4663,22 +5335,22 @@ msgstr ""
 "Hacker House）上构思的。下面的内容将帮助你了解这个项目是如何利用生态系统中的可"
 "用工具开发出来的。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:11
+#: src/ch02-07-01-02-million-dollar-homepage.md:11
 #, fuzzy
 msgid "Tools Utilized:"
 msgstr "使用的工具"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:13
+#: src/ch02-07-01-02-million-dollar-homepage.md:13
 #, fuzzy
 msgid "[Starknet-react](https://github.com/apibara/starknet-react)"
 msgstr "[Starknet反应](https://github.com/apibara/starknet-react)"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:14
+#: src/ch02-07-01-02-million-dollar-homepage.md:14
 #, fuzzy
 msgid "[Starknet.js](https://github.com/0xs34n/starknet.js)"
 msgstr "[Starknet.js](https://github.com/0xs34n/starknet.js)"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:15
+#: src/ch02-07-01-02-million-dollar-homepage.md:15
 #, fuzzy
 msgid ""
 "[OpenZeppelin Cairo Contracts](https://github.com/OpenZeppelin/cairo-"
@@ -4686,16 +5358,16 @@ msgid ""
 msgstr ""
 "[OpenZeppelinCairo合约](https://github.com/OpenZeppelin/cairo-contracts)"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:16
+#: src/ch02-07-01-02-million-dollar-homepage.md:16
 #, fuzzy
 msgid "[MaterialUI](https://mui.com/material-ui/)"
 msgstr "[MaterialUI](https://mui.com/material-ui/)"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:18
+#: src/ch02-07-01-02-million-dollar-homepage.md:18
 msgid "Initial Setup"
 msgstr "初始设置步骤"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:20
+#: src/ch02-07-01-02-million-dollar-homepage.md:20
 #, fuzzy
 msgid ""
 "The `Starknet-react` app offers a command to initialize a Starknet app. This "
@@ -4704,7 +5376,7 @@ msgstr ""
 "Starknet-react \"应用程序提供了一个用于初始化 Starknet 应用程序的命令。该命令"
 "设置了 NextJS 应用程序所需的基础结构。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:26
+#: src/ch02-07-01-02-million-dollar-homepage.md:26
 #, fuzzy
 msgid ""
 "The `StarknetConfig` component accepts a `connectors` prop, which defines "
@@ -4715,7 +5387,7 @@ msgstr ""
 "StarknetConfig \"组件接受一个 \"connectors \"道具，为用户定义钱包连接选项。此"
 "外，它还可以接受一个 `defaultProvider` 来设置应用程序默认应连接的网络。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:28
+#: src/ch02-07-01-02-million-dollar-homepage.md:28
 #, fuzzy
 msgid ""
 "```javascript\n"
@@ -4764,7 +5436,7 @@ msgstr ""
 ");\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:51
+#: src/ch02-07-01-02-million-dollar-homepage.md:51
 #, fuzzy
 msgid ""
 "Both `CacheProvider` and `ThemeProvider` are components that facilitate the "
@@ -4776,12 +5448,12 @@ msgstr ""
 "组件。有关这些组件的全面设置指南，请参阅 [this link](https://blog.logrocket."
 "com/getting-started-with-mui-and-next-js/)。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:53
+#: src/ch02-07-01-02-million-dollar-homepage.md:53
 #, fuzzy
 msgid "Main Functionality"
 msgstr "主要功能"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:55
+#: src/ch02-07-01-02-million-dollar-homepage.md:55
 #, fuzzy
 msgid ""
 "The core functionality of the Starknet Homepage centers around selecting a 4-"
@@ -4796,42 +5468,42 @@ msgstr ""
 "果用户拥有Starknet主页代币，就可以访问下拉菜单来修改代币的内容，包括网格上的相"
 "关图片和链接。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:57
+#: src/ch02-07-01-02-million-dollar-homepage.md:57
 #, fuzzy
 msgid "The app's primary requirements are:"
 msgstr "该应用程序的主要要求是"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:59
+#: src/ch02-07-01-02-million-dollar-homepage.md:59
 #, fuzzy
 msgid "Wallet connectivity"
 msgstr "钱包连接"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:60
+#: src/ch02-07-01-02-million-dollar-homepage.md:60
 #, fuzzy
 msgid "Grid for displaying existing tokens"
 msgstr "用于显示现有代币的网格"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:61
+#: src/ch02-07-01-02-million-dollar-homepage.md:61
 #, fuzzy
 msgid "Cell selection capability"
 msgstr "细胞选择能力"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:62
+#: src/ch02-07-01-02-million-dollar-homepage.md:62
 #, fuzzy
 msgid "Multicall function for token approval and minting"
 msgstr "用于代币审批和铸币的多重呼叫功能"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:63
+#: src/ch02-07-01-02-million-dollar-homepage.md:63
 #, fuzzy
 msgid "Dropdown to view owned tokens"
 msgstr "下拉菜单可查看拥有的代币"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:64
+#: src/ch02-07-01-02-million-dollar-homepage.md:64
 #, fuzzy
 msgid "On-chain representation of the entire 1 million pixel grid"
 msgstr "整个 100 万像素网格的链上表示法"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:66
+#: src/ch02-07-01-02-million-dollar-homepage.md:66
 #, fuzzy
 msgid ""
 "A significant aspect to consider is the string limitation in Cairo contracts. "
@@ -4841,7 +5513,7 @@ msgstr ""
 "需要考虑的一个重要方面是 Cairo 合约中的字符串限制。为了存储不同大小的链接，它"
 "们被存储为 \"felt252 \"数组。为此，合约使用了以下逻辑："
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:68
+#: src/ch02-07-01-02-million-dollar-homepage.md:68
 #, fuzzy
 msgid ""
 "```rust\n"
@@ -4975,12 +5647,12 @@ msgstr ""
 "}\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:126
+#: src/ch02-07-01-02-million-dollar-homepage.md:126
 #, fuzzy
 msgid "The storage method for links in the contract state is structured as:"
 msgstr "合约状态下链接的存储方法结构如下"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:140
+#: src/ch02-07-01-02-million-dollar-homepage.md:140
 #, fuzzy
 msgid ""
 "The OpenZeppelin Cairo Contracts library played a crucial role in speeding up "
@@ -4995,16 +5667,16 @@ msgstr ""
 "starknet_homepage/blob/main/cairo_contracts/src/ERC721.cairo) 找到该合约以供查"
 "阅。安装该库后，您可以参考以下示例了解其典型用法："
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:170
+#: src/ch02-07-01-02-million-dollar-homepage.md:170
 #, fuzzy
 msgid "Component Logic"
 msgstr "组件逻辑"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:172
+#: src/ch02-07-01-02-million-dollar-homepage.md:172
 msgid "Grid"
 msgstr "网格"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:174
+#: src/ch02-07-01-02-million-dollar-homepage.md:174
 #, fuzzy
 msgid ""
 "The Grid component represents a 100x100 matrix, with each cell being 100 "
@@ -5017,7 +5689,7 @@ msgstr ""
 "的数据结构相对应。为了展示主页上已经铸造的代币，该应用程序使用了来自 "
 "`starknet-react` 的 React Hook 来调用合约中的 `getAllTokens` 函数。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:176
+#: src/ch02-07-01-02-million-dollar-homepage.md:176
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -5056,7 +5728,7 @@ msgstr ""
 "}, [data, isLoading])；\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:194
+#: src/ch02-07-01-02-million-dollar-homepage.md:194
 #, fuzzy
 msgid ""
 "Deserialization ensures the data from the Starknet contract is aptly "
@@ -5066,7 +5738,7 @@ msgstr ""
 "反序列化可确保Starknet合约中的数据经过适当转换后供前端使用。这一过程包括将 "
 "`felt252`s 数组解码为大量字符串。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:196
+#: src/ch02-07-01-02-million-dollar-homepage.md:196
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -5099,7 +5771,7 @@ msgstr ""
 "...\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:211
+#: src/ch02-07-01-02-million-dollar-homepage.md:211
 #, fuzzy
 msgid ""
 "Furthermore, the Grid component manages the cell selection process, leading "
@@ -5111,11 +5783,11 @@ msgstr ""
 "域，就会出现一个模态，显示铸币细节和其他必要的呼叫数据输入。多重呼叫的复杂性将"
 "在随后讨论。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:215
+#: src/ch02-07-01-02-million-dollar-homepage.md:215
 msgid "Modals"
 msgstr "模态"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:217
+#: src/ch02-07-01-02-million-dollar-homepage.md:217
 #, fuzzy
 msgid ""
 "Modals offer a convenient means to present varied functionalities within the "
@@ -5124,7 +5796,7 @@ msgstr ""
 "模态提供了一种便捷的方式，可在应用程序中展示各种功能，如钱包连接、代币铸造和代"
 "币编辑。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:221
+#: src/ch02-07-01-02-million-dollar-homepage.md:221
 #, fuzzy
 msgid ""
 "A recognized best practice is to invoke the React hook for shared information "
@@ -5134,7 +5806,7 @@ msgstr ""
 "公认的最佳做法是在顶层调用 React 钩子来共享信息，从而确保 \"WalletBar \"等组件"
 "保持精简和集中。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:233
+#: src/ch02-07-01-02-million-dollar-homepage.md:233
 #, fuzzy
 msgid ""
 "Below, the `WalletConnected` function displays the connected wallet's "
@@ -5145,7 +5817,7 @@ msgstr ""
 "下面，\"WalletConnected \"函数显示连接的钱包地址，而 \"ConnectWallet \"函数允"
 "许用户选择并连接他们的钱包。钱包栏 \"函数会根据连接状态渲染相应的模态。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:235
+#: src/ch02-07-01-02-million-dollar-homepage.md:235
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -5316,12 +5988,12 @@ msgstr ""
 "}\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:317
+#: src/ch02-07-01-02-million-dollar-homepage.md:317
 #, fuzzy
 msgid "Token Dropdown"
 msgstr "令牌下拉菜单"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:319
+#: src/ch02-07-01-02-million-dollar-homepage.md:319
 #, fuzzy
 msgid ""
 "The dropdown component is dedicated to showcasing the tokens associated with "
@@ -5332,7 +6004,7 @@ msgstr ""
 "下拉组件用于显示与当前连接的钱包相关的代币。要检索这些代币，可以执行下图所示的"
 "交易。该功能的唯一参数是目标所有者的合约地址。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:321
+#: src/ch02-07-01-02-million-dollar-homepage.md:321
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -5363,12 +6035,12 @@ msgstr ""
 "const { data, isLoading } = useContractRead(readTx)；\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:335
+#: src/ch02-07-01-02-million-dollar-homepage.md:335
 #, fuzzy
 msgid "Multicall Contract Interaction"
 msgstr "多呼叫合约互动"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:337
+#: src/ch02-07-01-02-million-dollar-homepage.md:337
 #, fuzzy
 msgid ""
 "The provided code offers an illustration of a multicall, specifically to "
@@ -5382,7 +6054,7 @@ msgstr ""
 "用；它将冗长的字符串编码并分割成 \"felt252 \"数组，这是Starknet合约的预期参数"
 "类型。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:339
+#: src/ch02-07-01-02-million-dollar-homepage.md:339
 #, fuzzy
 msgid ""
 "The `useContractWrite` is a Hook dedicated to executing a Starknet multicall, "
@@ -5391,7 +6063,7 @@ msgstr ""
 "useContractWrite\" 是一个专门用于执行Starknet多重调用的钩子，可用于单个或多个"
 "事务。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:341
+#: src/ch02-07-01-02-million-dollar-homepage.md:341
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -5456,7 +6128,7 @@ msgstr ""
 "const { writeAsync: writeMulti }= useContractWrite({ calls })；\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:372
+#: src/ch02-07-01-02-million-dollar-homepage.md:372
 #, fuzzy
 msgid ""
 "Another crucial aspect to point out is the `calldata` of the approve function "
@@ -5468,14 +6140,14 @@ msgstr ""
 "[starknet_homepage_erc721_address,'${price}', \"0\"],`。金额参数被分成两部分，"
 "因为它是一个 `u256`，由两个独立的 `felt252` 值组成。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:374
+#: src/ch02-07-01-02-million-dollar-homepage.md:374
 #, fuzzy
 msgid ""
 "Once the multicall is prepared, the next step is to initiate the function and "
 "sign the transaction using the connected wallet."
 msgstr "准备好多路调用后，下一步就是使用连接的钱包启动功能并签署交易。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:376
+#: src/ch02-07-01-02-million-dollar-homepage.md:376
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -5514,19 +6186,19 @@ msgstr ""
 "};\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:394
+#: src/ch02-07-01-02-million-dollar-homepage.md:394
 #, fuzzy
 msgid "Conditional Multicall for Token Editing"
 msgstr "令牌编辑的条件多呼"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:396
+#: src/ch02-07-01-02-million-dollar-homepage.md:396
 #, fuzzy
 msgid ""
 "Another instructive illustration of a conditional multicall setup is the "
 "modal used to modify the data associated with a token."
 msgstr "条件多呼设置的另一个有启发性的例子是用于修改标记相关数据的模态。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:400
+#: src/ch02-07-01-02-million-dollar-homepage.md:400
 #, fuzzy
 msgid ""
 "There are scenarios where the user may wish to alter just one attribute of "
@@ -5539,7 +6211,7 @@ msgstr ""
 "调用配置就变得很有必要。必须记住，Cairo合约中的令牌 id 被定义为 \"u256\"，这意"
 "味着它由两个 \"felt252 \"值组成。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:402
+#: src/ch02-07-01-02-million-dollar-homepage.md:402
 #, fuzzy
 msgid ""
 "```typescript\n"
@@ -5598,12 +6270,12 @@ msgstr ""
 "}, [nft, newImage, newLink])；\n"
 "```"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:430
+#: src/ch02-07-01-02-million-dollar-homepage.md:430
 #, fuzzy
 msgid "Starknet Homepage Overview"
 msgstr "Starknet主页概述"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:432
+#: src/ch02-07-01-02-million-dollar-homepage.md:432
 #, fuzzy
 msgid ""
 "**Grid Component**: Represents a 100x100 matrix, allowing users to select "
@@ -5613,14 +6285,14 @@ msgstr ""
 "**网格组件**：代表一个 100x100 的矩阵，允许用户选择单元格和相应的代币。它使用 "
 "\"getAllTokens \"函数从合约中获取并显示现有代币。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:433
+#: src/ch02-07-01-02-million-dollar-homepage.md:433
 #, fuzzy
 msgid ""
 "**Modals**: Serve as the user interface for actions like wallet connection, "
 "token minting, and token editing."
 msgstr "**模块**：作为钱包连接、代币铸造和代币编辑等操作的用户界面。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:434
+#: src/ch02-07-01-02-million-dollar-homepage.md:434
 #, fuzzy
 msgid ""
 "**Token Dropdown**: Displays tokens associated with a connected wallet. It "
@@ -5629,7 +6301,7 @@ msgstr ""
 "**令牌下拉**：显示与已连接钱包相关的令牌。它使用 \"getTokensByOwner \"函数检索"
 "这些令牌。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:435
+#: src/ch02-07-01-02-million-dollar-homepage.md:435
 #, fuzzy
 msgid ""
 "**Multicall Contract Interaction**: Enables token minting and editing. This "
@@ -5639,7 +6311,7 @@ msgstr ""
 "**Multicall Contract Interaction**：启用令牌铸造和编辑。该流程根据用户偏好使用"
 "有条件多all，特别是在编辑令牌属性时。"
 
-#: src/ch02-07-01-01-million-dollar-homepage.md:437
+#: src/ch02-07-01-02-million-dollar-homepage.md:437
 #, fuzzy
 msgid ""
 "Throughout the platform, string limitations in Cairo contracts require "
@@ -7056,275 +7728,6 @@ msgid ""
 msgstr ""
 "在我们进一步探索Starknet世界的过程中，下一站将是探索事务生命周期，然后再进入使"
 "用Cairo编码的核心。"
-
-#: src/ch03-01-transactions.md:3
-#, fuzzy
-msgid ""
-"A transaction's journey in Starknet, from its inception to finality, "
-"comprises a series of carefully orchestrated steps. Each stage plays a "
-"crucial role in ensuring data is accurately transmitted, processed, and "
-"stored within the network. In this chapter, we explore the lifecycle of a "
-"Starknet transaction."
-msgstr ""
-"在Starknet，一笔交易从开始到结束，包含一系列精心安排的步骤。每个阶段在确保数据"
-"在网络中准确传输、处理和存储方面都起着至关重要的作用。在本章中，我们将探讨"
-"Starknet交易的生命周期。"
-
-#: src/ch03-01-transactions.md:5
-#, fuzzy
-msgid "Preparing the Groundwork: Transaction Creation"
-msgstr "准备基础工作：创建交易"
-
-#: src/ch03-01-transactions.md:7
-#, fuzzy
-msgid ""
-"Every transaction's journey commences with its preparation. The sender "
-"queries the nonce of their account, serving as a unique identifier for each "
-"transaction, signs the transaction, and dispatches it to their Node. It's "
-"critical to understand the sender must be online during this process to "
-"access real-time data."
-msgstr ""
-"每笔交易都从准备交易开始。发送方查询其账户的 nonce（作为每笔交易的唯一标识"
-"符）、签署交易并将其发送到节点。在此过程中，发送方必须在线才能访问实时数据，这"
-"一点至关重要。"
-
-#: src/ch03-01-transactions.md:17
-#, fuzzy
-msgid ""
-"The Node, analogous to a post office, receives the transaction and broadcasts "
-"it on the Starknet network, primarily to the Sequencer. As the network "
-"evolves, the transaction will be broadcasted to multiple Sequencers."
-msgstr ""
-"节点（类似于邮局）接收交易，并在Starknet网络上广播，主要是向序列器广播。随着网"
-"络的发展，交易将被广播到多个序列器。"
-
-#: src/ch03-01-transactions.md:19
-#, fuzzy
-msgid ""
-"It is worth mentioning that before broadcasting the transaction to the "
-"Sequencer, the gateways perform some validations, such as checking that the "
-"max fee exceeds a minimum fee and the account's balance is greater than the "
-"max fee. The transaction will be saved in the storage if the validation "
-"function passes."
-msgstr ""
-"值得一提的是，在向序列器广播交易之前，网关会进行一些验证，例如检查最大费用是否"
-"超过最低费用，以及账户余额是否大于最大费用。如果验证功能通过，交易将被保存到存"
-"储区。"
-
-#: src/ch03-01-transactions.md:21
-#, fuzzy
-msgid "Reception and Processing: The Sequencer's Role"
-msgstr "接收和处理：编曲人的作用"
-
-#: src/ch03-01-transactions.md:23
-#, fuzzy
-msgid ""
-"On receiving the transaction, the Sequencer acknowledges its receipt but "
-"hasn't processed it yet—similar to Ethereum's mempool state."
-msgstr ""
-"在收到交易时，序列器会确认收到，但尚未处理--类似于以太坊的 mempool 状态。"
-
-#: src/ch03-01-transactions.md:34
-#, fuzzy
-msgid ""
-"It's crucial to remember the sequentiality of transaction processing in "
-"Starknet: the nonce won't update until the Sequencer processes your "
-"transaction. This aspect could become a hurdle when building backend "
-"applications, as sending multiple transactions consecutively may result in "
-"confusion or errors."
-msgstr ""
-"记住 Starknet 中事务处理的顺序性至关重要：在序列器处理您的事务之前，nonce 不会"
-"更新。在构建后端应用程序时，这一点可能会成为一个障碍，因为连续发送多个事务可能"
-"会导致混乱或错误。"
-
-#: src/ch03-01-transactions.md:36
-#, fuzzy
-msgid "Acceptance on Layer-2 (L2)"
-msgstr "第 2 层（L2）上的验收"
-
-#: src/ch03-01-transactions.md:38
-#, fuzzy
-msgid ""
-"When the Sequencer validates and executes a transaction, it immediately "
-"updates the state without waiting for the block emission. The transaction "
-"status changes from 'received' to 'accepted on L2' at this stage."
-msgstr ""
-"当序列器验证并执行一个事务时，它会立即更新状态，而无需等待块发射。在此阶段，事"
-"务状态会从 \"收到 \"变为 \"L2 已接受\"。"
-
-#: src/ch03-01-transactions.md:40
-#, fuzzy
-msgid ""
-"Following the state update, the transaction is included in a block. However, "
-"the block isn't emitted immediately. The Sequencer decides the opportune "
-"moment to emit the block, either when there are enough transactions to form a "
-"block or after a certain time has passed. When the block is emitted, the "
-"block becomes available for other Nodes to query."
-msgstr ""
-"状态更新后，事务将被包含在一个块中。不过，区块不会立即发布。序列器会在有足够多"
-"的事务形成区块时，或在一定时间过去后，决定发出区块的时机。区块发布后，其他节点"
-"就可以查询该区块。"
-
-#: src/ch03-01-transactions.md:48
-#, fuzzy
-msgid ""
-"If a transaction fails during execution, it will be included in the block "
-"with the status 'reverted'."
-msgstr "如果事务在执行过程中失败，它将以 \"已恢复 \"的状态被包含在区块中。"
-
-#: src/ch03-01-transactions.md:50
-#, fuzzy
-msgid ""
-"It's essential to remember that at this stage, no proof has been generated, "
-"and the transaction relies on L2 consensus for security against censorship. "
-"There remains a slim possibility of transaction reversal if all Sequencers "
-"collude. Therefore, these stages should be seen as different layers of "
-"transaction finality."
-msgstr ""
-"必须记住的是，在这个阶段，还没有生成任何证明，交易的安全性依赖于二级共识，以防"
-"止审查。如果所有序列员都串通一气，交易逆转的可能性仍然微乎其微。因此，这些阶段"
-"应被视为交易最终性的不同层次。"
-
-#: src/ch03-01-transactions.md:52
-#, fuzzy
-msgid "Acceptance on Layer-1 (L1)"
-msgstr "第 1 层 (L1) 验收"
-
-#: src/ch03-01-transactions.md:54
-#, fuzzy
-msgid ""
-"The final step in the transaction's lifecycle is its acceptance on Layer-1 "
-"(L1). A Prover receives the block containing the transaction, re-executes the "
-"block, generates a proof, and sends it to Ethereum. Specifically, the proof "
-"is sent to a smart contract on Ethereum called the Verifier smart contract, "
-"which checks the proof's validity. If valid, the transaction's status changes "
-"to 'accepted on L1', signifying the transaction's security by Ethereum "
-"consensus."
-msgstr ""
-"交易生命周期的最后一步是在第一层（L1）接受交易。验证者接收包含交易的区块，重新"
-"执行区块，生成证明，并将其发送给以太坊。具体来说，该证明会被发送到以太坊上一个"
-"名为 \"验证者\"（Verifier）的智能合约，该合约会检查证明的有效性。如果有效，交"
-"易的状态就会变为 \"已接受 L1\"，这表示以太坊共识保证了交易的安全性。"
-
-#: src/ch03-01-transactions.md:62
-#, fuzzy
-msgid "\\[Optional\\] Transaction Finality in Starknet"
-msgstr "Optional\\[Optional\\] Starknet的交易终结性"
-
-#: src/ch03-01-transactions.md:64
-#, fuzzy
-msgid ""
-"Transaction finality refers to the point at which a transaction is considered "
-"irreversible and is no longer susceptible to being reversed or undone. It's "
-"the assurance that once a transaction is committed, it can't be altered or "
-"rolled back, hence securing the integrity of the transaction and the system "
-"as a whole."
-msgstr ""
-"事务终结性是指事务被视为不可逆转、不再可能被逆转或撤销的时间点。它保证了事务一"
-"旦提交，就无法更改或回滚，从而确保了事务和整个系统的完整性。"
-
-#: src/ch03-01-transactions.md:66
-#, fuzzy
-msgid ""
-"Let's dive into the transaction finality in both Starknet and Ethereum, and "
-"how they compare."
-msgstr "让我们深入了解一下Starknet和以太坊的交易终结性，以及它们之间的比较。"
-
-#: src/ch03-01-transactions.md:68
-#, fuzzy
-msgid "Ethereum Transaction Finality"
-msgstr "以太坊交易终结性"
-
-#: src/ch03-01-transactions.md:70
-#, fuzzy
-msgid ""
-"Ethereum operates on a Proof of Stake (PoS) consensus mechanism. A "
-"transaction has the finality status when it is part of a block that can't "
-"change without a significant amount of ETH getting burned. The number of "
-"blocks required to ensure that a transaction won't be rolled back is called "
-"'blocks to finality', and the time to create those blocks is called 'time to "
-"finality'."
-msgstr ""
-"以太坊采用权益证明（PoS）共识机制。当一个交易属于一个区块的一部分时，该交易就"
-"具有终结性。确保交易不会回滚所需的区块数量称为 \"最终区块\"，创建这些区块所需"
-"的时间称为 \"最终时间\"。"
-
-#: src/ch03-01-transactions.md:72
-#, fuzzy
-msgid ""
-"It is considered to be an average of 6 blocks to reach the finality status; "
-"given that a new block is validated each 12 seconds, the average time to "
-"finality for a transaction is 75 seconds."
-msgstr ""
-"平均需要 6 个区块才能达到最终状态；考虑到每 12 秒验证一个新区块，一笔交易达到"
-"最终状态的平均时间为 75 秒。"
-
-#: src/ch03-01-transactions.md:74
-#, fuzzy
-msgid "Starknet Transaction Finality"
-msgstr "Starknet交易终结"
-
-#: src/ch03-01-transactions.md:76
-#, fuzzy
-msgid ""
-"Starknet, a Layer-2 (L2) solution on Ethereum, has a two-step transaction "
-"finality process. The first step is when the transaction gets accepted on "
-"Layer-2 (Starknet), and the second step is when the transaction gets accepted "
-"on Layer-1 (Ethereum)."
-msgstr ""
-"Starknet是以太坊上的第二层（L2）解决方案，其交易终结流程分为两步。第一步是交易"
-"在第二层（Starknet）被接受，第二步是交易在第一层（以太坊）被接受。"
-
-#: src/ch03-01-transactions.md:78
-#, fuzzy
-msgid ""
-"Accepted on L2: When a transaction is processed by the Sequencer and included "
-"in a block on Starknet, it reaches L2 finality. However, this finality relies "
-"on the L2 consensus and comes with a slight risk of collusion among "
-"Sequencers leading to transaction reversal."
-msgstr ""
-"在 L2 上被接受：当一个交易被序列器处理并包含在Starknet的一个区块中时，它就达到"
-"了 L2 最终性。然而，这种最终性依赖于 L2 共识，并伴随着序列器之间串通导致交易逆"
-"转的轻微风险。"
-
-#: src/ch03-01-transactions.md:79
-#, fuzzy
-msgid ""
-"Accepted on L1: The absolute finality comes when the block containing the "
-"transaction gets a proof generated, the proof is validated by the Verifier "
-"contract on Ethereum, and the state is updated on Ethereum. At this point, "
-"the transaction is as secure as the Ethereum's PoW consensus can provide, "
-"meaning it becomes computationally infeasible to alter or reverse."
-msgstr ""
-"在 L1 上被接受：当包含交易的区块生成证明，证明由以太坊上的验证者合约验证，并在"
-"以太坊上更新状态时，交易绝对完成。此时，交易的安全性已达到以太坊 PoW 共识所能"
-"提供的程度，这意味着更改或逆转交易在计算上变得不可行。"
-
-#: src/ch03-01-transactions.md:81
-msgid "Comparison"
-msgstr "比较"
-
-#: src/ch03-01-transactions.md:83
-#, fuzzy
-msgid ""
-"The main difference between Ethereum and Starknet's transaction finality lies "
-"in the stages of finality and their reliance on consensus mechanisms."
-msgstr ""
-"以太坊和Starknet交易最终性的主要区别在于最终性的阶段以及它们对共识机制的依赖。"
-
-#: src/ch03-01-transactions.md:85
-#, fuzzy
-msgid ""
-"Ethereum's transaction finality becomes increasingly unlikely to be reversed "
-"as more blocks are added."
-msgstr "随着区块数量的增加，以太坊的交易终结性越来越不可能被逆转。"
-
-#: src/ch03-01-transactions.md:86
-#, fuzzy
-msgid ""
-"Starknet's finality process is two-fold. The initial finality (L2) is quicker "
-"but relies on L2 consensus"
-msgstr "Starknet的终审程序分为两个阶段。初始终局（L2）更快，但依赖于 L2 共识"
 
 #: src/ch03-02-sequencers.md:3
 #, fuzzy
@@ -12302,3 +12705,246 @@ msgstr ""
 "本章向您介绍了 Starknet 中多标识账户的概念，并说明了如何使用账户合约实施多标识"
 "账户。不过，需要注意的是，这只是一个简化的示例，生产级多重身份验证合约应包含额"
 "外的检查和验证，以确保稳健性和安全性。"
+
+#, fuzzy
+#~ msgid ""
+#~ "A transaction's journey in Starknet, from its inception to finality, "
+#~ "comprises a series of carefully orchestrated steps. Each stage plays a "
+#~ "crucial role in ensuring data is accurately transmitted, processed, and "
+#~ "stored within the network. In this chapter, we explore the lifecycle of a "
+#~ "Starknet transaction."
+#~ msgstr ""
+#~ "在Starknet，一笔交易从开始到结束，包含一系列精心安排的步骤。每个阶段在确保"
+#~ "数据在网络中准确传输、处理和存储方面都起着至关重要的作用。在本章中，我们将"
+#~ "探讨Starknet交易的生命周期。"
+
+#, fuzzy
+#~ msgid "Preparing the Groundwork: Transaction Creation"
+#~ msgstr "准备基础工作：创建交易"
+
+#, fuzzy
+#~ msgid ""
+#~ "Every transaction's journey commences with its preparation. The sender "
+#~ "queries the nonce of their account, serving as a unique identifier for "
+#~ "each transaction, signs the transaction, and dispatches it to their Node. "
+#~ "It's critical to understand the sender must be online during this process "
+#~ "to access real-time data."
+#~ msgstr ""
+#~ "每笔交易都从准备交易开始。发送方查询其账户的 nonce（作为每笔交易的唯一标识"
+#~ "符）、签署交易并将其发送到节点。在此过程中，发送方必须在线才能访问实时数"
+#~ "据，这一点至关重要。"
+
+#, fuzzy
+#~ msgid ""
+#~ "The Node, analogous to a post office, receives the transaction and "
+#~ "broadcasts it on the Starknet network, primarily to the Sequencer. As the "
+#~ "network evolves, the transaction will be broadcasted to multiple "
+#~ "Sequencers."
+#~ msgstr ""
+#~ "节点（类似于邮局）接收交易，并在Starknet网络上广播，主要是向序列器广播。随"
+#~ "着网络的发展，交易将被广播到多个序列器。"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is worth mentioning that before broadcasting the transaction to the "
+#~ "Sequencer, the gateways perform some validations, such as checking that "
+#~ "the max fee exceeds a minimum fee and the account's balance is greater "
+#~ "than the max fee. The transaction will be saved in the storage if the "
+#~ "validation function passes."
+#~ msgstr ""
+#~ "值得一提的是，在向序列器广播交易之前，网关会进行一些验证，例如检查最大费用"
+#~ "是否超过最低费用，以及账户余额是否大于最大费用。如果验证功能通过，交易将被"
+#~ "保存到存储区。"
+
+#, fuzzy
+#~ msgid "Reception and Processing: The Sequencer's Role"
+#~ msgstr "接收和处理：编曲人的作用"
+
+#, fuzzy
+#~ msgid ""
+#~ "On receiving the transaction, the Sequencer acknowledges its receipt but "
+#~ "hasn't processed it yet—similar to Ethereum's mempool state."
+#~ msgstr ""
+#~ "在收到交易时，序列器会确认收到，但尚未处理--类似于以太坊的 mempool 状态。"
+
+#, fuzzy
+#~ msgid ""
+#~ "It's crucial to remember the sequentiality of transaction processing in "
+#~ "Starknet: the nonce won't update until the Sequencer processes your "
+#~ "transaction. This aspect could become a hurdle when building backend "
+#~ "applications, as sending multiple transactions consecutively may result in "
+#~ "confusion or errors."
+#~ msgstr ""
+#~ "记住 Starknet 中事务处理的顺序性至关重要：在序列器处理您的事务之前，nonce "
+#~ "不会更新。在构建后端应用程序时，这一点可能会成为一个障碍，因为连续发送多个"
+#~ "事务可能会导致混乱或错误。"
+
+#, fuzzy
+#~ msgid "Acceptance on Layer-2 (L2)"
+#~ msgstr "第 2 层（L2）上的验收"
+
+#, fuzzy
+#~ msgid ""
+#~ "When the Sequencer validates and executes a transaction, it immediately "
+#~ "updates the state without waiting for the block emission. The transaction "
+#~ "status changes from 'received' to 'accepted on L2' at this stage."
+#~ msgstr ""
+#~ "当序列器验证并执行一个事务时，它会立即更新状态，而无需等待块发射。在此阶"
+#~ "段，事务状态会从 \"收到 \"变为 \"L2 已接受\"。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Following the state update, the transaction is included in a block. "
+#~ "However, the block isn't emitted immediately. The Sequencer decides the "
+#~ "opportune moment to emit the block, either when there are enough "
+#~ "transactions to form a block or after a certain time has passed. When the "
+#~ "block is emitted, the block becomes available for other Nodes to query."
+#~ msgstr ""
+#~ "状态更新后，事务将被包含在一个块中。不过，区块不会立即发布。序列器会在有足"
+#~ "够多的事务形成区块时，或在一定时间过去后，决定发出区块的时机。区块发布后，"
+#~ "其他节点就可以查询该区块。"
+
+#, fuzzy
+#~ msgid ""
+#~ "If a transaction fails during execution, it will be included in the block "
+#~ "with the status 'reverted'."
+#~ msgstr "如果事务在执行过程中失败，它将以 \"已恢复 \"的状态被包含在区块中。"
+
+#, fuzzy
+#~ msgid ""
+#~ "It's essential to remember that at this stage, no proof has been "
+#~ "generated, and the transaction relies on L2 consensus for security against "
+#~ "censorship. There remains a slim possibility of transaction reversal if "
+#~ "all Sequencers collude. Therefore, these stages should be seen as "
+#~ "different layers of transaction finality."
+#~ msgstr ""
+#~ "必须记住的是，在这个阶段，还没有生成任何证明，交易的安全性依赖于二级共识，"
+#~ "以防止审查。如果所有序列员都串通一气，交易逆转的可能性仍然微乎其微。因此，"
+#~ "这些阶段应被视为交易最终性的不同层次。"
+
+#, fuzzy
+#~ msgid "Acceptance on Layer-1 (L1)"
+#~ msgstr "第 1 层 (L1) 验收"
+
+#, fuzzy
+#~ msgid ""
+#~ "The final step in the transaction's lifecycle is its acceptance on Layer-1 "
+#~ "(L1). A Prover receives the block containing the transaction, re-executes "
+#~ "the block, generates a proof, and sends it to Ethereum. Specifically, the "
+#~ "proof is sent to a smart contract on Ethereum called the Verifier smart "
+#~ "contract, which checks the proof's validity. If valid, the transaction's "
+#~ "status changes to 'accepted on L1', signifying the transaction's security "
+#~ "by Ethereum consensus."
+#~ msgstr ""
+#~ "交易生命周期的最后一步是在第一层（L1）接受交易。验证者接收包含交易的区块，"
+#~ "重新执行区块，生成证明，并将其发送给以太坊。具体来说，该证明会被发送到以太"
+#~ "坊上一个名为 \"验证者\"（Verifier）的智能合约，该合约会检查证明的有效性。如"
+#~ "果有效，交易的状态就会变为 \"已接受 L1\"，这表示以太坊共识保证了交易的安全"
+#~ "性。"
+
+#, fuzzy
+#~ msgid "\\[Optional\\] Transaction Finality in Starknet"
+#~ msgstr "Optional\\[Optional\\] Starknet的交易终结性"
+
+#, fuzzy
+#~ msgid ""
+#~ "Transaction finality refers to the point at which a transaction is "
+#~ "considered irreversible and is no longer susceptible to being reversed or "
+#~ "undone. It's the assurance that once a transaction is committed, it can't "
+#~ "be altered or rolled back, hence securing the integrity of the transaction "
+#~ "and the system as a whole."
+#~ msgstr ""
+#~ "事务终结性是指事务被视为不可逆转、不再可能被逆转或撤销的时间点。它保证了事"
+#~ "务一旦提交，就无法更改或回滚，从而确保了事务和整个系统的完整性。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Let's dive into the transaction finality in both Starknet and Ethereum, "
+#~ "and how they compare."
+#~ msgstr "让我们深入了解一下Starknet和以太坊的交易终结性，以及它们之间的比较。"
+
+#, fuzzy
+#~ msgid "Ethereum Transaction Finality"
+#~ msgstr "以太坊交易终结性"
+
+#, fuzzy
+#~ msgid ""
+#~ "Ethereum operates on a Proof of Stake (PoS) consensus mechanism. A "
+#~ "transaction has the finality status when it is part of a block that can't "
+#~ "change without a significant amount of ETH getting burned. The number of "
+#~ "blocks required to ensure that a transaction won't be rolled back is "
+#~ "called 'blocks to finality', and the time to create those blocks is called "
+#~ "'time to finality'."
+#~ msgstr ""
+#~ "以太坊采用权益证明（PoS）共识机制。当一个交易属于一个区块的一部分时，该交易"
+#~ "就具有终结性。确保交易不会回滚所需的区块数量称为 \"最终区块\"，创建这些区块"
+#~ "所需的时间称为 \"最终时间\"。"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is considered to be an average of 6 blocks to reach the finality "
+#~ "status; given that a new block is validated each 12 seconds, the average "
+#~ "time to finality for a transaction is 75 seconds."
+#~ msgstr ""
+#~ "平均需要 6 个区块才能达到最终状态；考虑到每 12 秒验证一个新区块，一笔交易达"
+#~ "到最终状态的平均时间为 75 秒。"
+
+#, fuzzy
+#~ msgid "Starknet Transaction Finality"
+#~ msgstr "Starknet交易终结"
+
+#, fuzzy
+#~ msgid ""
+#~ "Starknet, a Layer-2 (L2) solution on Ethereum, has a two-step transaction "
+#~ "finality process. The first step is when the transaction gets accepted on "
+#~ "Layer-2 (Starknet), and the second step is when the transaction gets "
+#~ "accepted on Layer-1 (Ethereum)."
+#~ msgstr ""
+#~ "Starknet是以太坊上的第二层（L2）解决方案，其交易终结流程分为两步。第一步是"
+#~ "交易在第二层（Starknet）被接受，第二步是交易在第一层（以太坊）被接受。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Accepted on L2: When a transaction is processed by the Sequencer and "
+#~ "included in a block on Starknet, it reaches L2 finality. However, this "
+#~ "finality relies on the L2 consensus and comes with a slight risk of "
+#~ "collusion among Sequencers leading to transaction reversal."
+#~ msgstr ""
+#~ "在 L2 上被接受：当一个交易被序列器处理并包含在Starknet的一个区块中时，它就"
+#~ "达到了 L2 最终性。然而，这种最终性依赖于 L2 共识，并伴随着序列器之间串通导"
+#~ "致交易逆转的轻微风险。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Accepted on L1: The absolute finality comes when the block containing the "
+#~ "transaction gets a proof generated, the proof is validated by the Verifier "
+#~ "contract on Ethereum, and the state is updated on Ethereum. At this point, "
+#~ "the transaction is as secure as the Ethereum's PoW consensus can provide, "
+#~ "meaning it becomes computationally infeasible to alter or reverse."
+#~ msgstr ""
+#~ "在 L1 上被接受：当包含交易的区块生成证明，证明由以太坊上的验证者合约验证，"
+#~ "并在以太坊上更新状态时，交易绝对完成。此时，交易的安全性已达到以太坊 PoW 共"
+#~ "识所能提供的程度，这意味着更改或逆转交易在计算上变得不可行。"
+
+#~ msgid "Comparison"
+#~ msgstr "比较"
+
+#, fuzzy
+#~ msgid ""
+#~ "The main difference between Ethereum and Starknet's transaction finality "
+#~ "lies in the stages of finality and their reliance on consensus mechanisms."
+#~ msgstr ""
+#~ "以太坊和Starknet交易最终性的主要区别在于最终性的阶段以及它们对共识机制的依"
+#~ "赖。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Ethereum's transaction finality becomes increasingly unlikely to be "
+#~ "reversed as more blocks are added."
+#~ msgstr "随着区块数量的增加，以太坊的交易终结性越来越不可能被逆转。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Starknet's finality process is two-fold. The initial finality (L2) is "
+#~ "quicker but relies on L2 consensus"
+#~ msgstr "Starknet的终审程序分为两个阶段。初始终局（L2）更快，但依赖于 L2 共识"
