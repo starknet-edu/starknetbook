@@ -1,73 +1,82 @@
-# Fee Mechanisms 
-Including a fee system is a vital aspect of improving Starknet's performance. Without a small fee, we could end up with too many transactions, which would slow down the system, even with optimizations in place.
+# Fee Mechanism
 
-### Fee Collection
+**NOTE: This section is a work in progress. Contributions are welcome.**
 
-The fee is collected at the same time as the transaction is carried out on Layer 2 (L2). The Starknet operating system ensures that the fee, which matches the payment made, is transferred using ERC-20 tokens. The sender is the individual who submitted the transaction, while the sequencer is designated as the receiver of the fee.
+Implementing a fee system enhances Starknet's performance. Without fees, the system risks becoming overwhelmed by numerous transactions, even with optimizations.
+
+## Fee Collection
+
+When a transaction occurs on Layer 2 (L2), Starknet collects the corresponding fee using ERC-20 tokens. The transaction submitter pays the fee, and the sequencer receives it.
 
 ## Fee Calculation
 
-### Fee measurement
-Currently, the fee is in ETH. Each transaction comes with a gas estimate, and by multiplying this with the gas price, we get the expected fee.
+### Fee Measurement
 
-For example:
+Currently, fees are denominated in ETH. To determine the expected fee, multiply the transaction's gas estimate by the gas price:
+    
 ```
 expected_fee = gas_estimate * gas_price;
-```
+```    
+
 ### Fee Computation
-Let's understand the following terms before understanding how computation is done.
+To grasp fee computation, understand these terms:
 
-1. Built-In: They are pre-defined operations that you can use in your code without having to create them from scratch. Builtins make it easier to perform common tasks or calculations, saving time and effort when writing programs.
+- **Built-In**: These are predefined operations in your code, simplifying common tasks or calculations. The following are built-ins:
 
-    i. Cairo Steps: These are the building blocks of        computation in Cairo, responsible for                carrying out different operations within a          program. These steps are essential for              running smart contracts and applications on          blockchain platforms, and the total number of        steps used in a program can impact its cost          and efficiency.
+    - **Cairo Steps**: These building blocks in Cairo facilitate various program operations. Essential for running smart contracts and apps on blockchain platforms, the steps used influence a program's cost and efficiency.
     
-   ii. Pedersen Hashes: Pedersen hashes are a way to turn data into a unique code, just like a fingerprint for information. They're used to ensure the security and integrity of data on blockchains and other computer systems.
-
-   iii. Range Checks: Range checks are like safety limits in computer programs. They make sure that numbers or values used in a program stay within a specified range, preventing errors or unexpected behavior.
-   
-   iv. Signature Verifications: Signature verifications are akin to confirming that a digital signature on a message or transaction indeed matches the expected signature, ensuring the authenticity of the sender or entity involved.
+    - **Pedersen Hashes**: A method to convert data into a distinct code, similar to a data fingerprint, ensuring data integrity on blockchains.
+    
+    - **Range Checks**: Safety measures in programs, ensuring numbers or values stay within designated limits to avoid errors.
+    
+    - **Signature Verifications**: These confirm that a digital signature matches the anticipated one, verifying the sender's authenticity.
   
-2. Weight: Weight is a measure of how important or costly a specific operation is. It helps determine how much resources, like computation or gas, an operation consumes. Essentially, it tells you how "heavy" or significant an action is within the program.
+- **Weight**: Indicates the significance or cost of an operation, showing how resource-intensive an action is in the program.
+
 
 ### Computation
-In Cairo, the execution trace is organized into separate slots, each dedicated to a specific built-in component. This slot allocation is essential in determining the fee.
 
-Let's illustrate this with an example. Imagine a trace that involves 
+In Cairo, each execution trace is divided into distinct slots dedicated to specific built-in components, influencing fee calculation.
 
+Consider a trace containing the following component limits:
 
-| (up to) | (up to) | (up to) | (up to) |
-| ------- | ------- | ------- | ------- |
-| 200,000,000 Cairo Steps |5,000,000 Pedersen Hashes |1,000,000 Signature Verifications|2,500,000 Range Checks|
+| Component             | Limit          |
+| --------------------- | -------------- |
+| Cairo Steps           | 200,000,000    |
+| Pedersen Hashes       | 5,000,000      |
+| Signature Verifications| 1,000,000     |
+| Range Checks          | 2,500,000      |
 
-When any of these components reaches its limit, the proof is completed and sent to Layer 1. It's crucial to note that the division into built-in components must be decided in advance. We can't change it on the fly; for instance, we can't decide to have 5,000,001 Pedersen hashes and nothing else.
+When a component reaches its maximum, the proof is sent to Layer 1. It's imperative to set these component divisions beforehand as they cannot be adjusted dynamically.
 
-Suppose a transaction uses 10,000 Cairo steps and 500 Pedersen hashes. In this hypothetical trace, we can fit a maximum of 40,000 such transactions (20,000,000/500). Therefore, the gas price is determined by 1/40,000 of the proof submission cost. The number of Cairo steps is not the limiting factor in this case, so we didn't consider it in our performance estimation.
+Assuming a transaction utilizes 10,000 Cairo steps and 500 Pedersen hashes, it could accommodate 40,000 such transactions in this trace (given the calculation 20,000,000/500). The gas price becomes 1/40,000 of the proof submission cost. In this instance, the number of Cairo steps isn't the constraining factor, so it isn't factored into our performance estimate.
 
-In a general scenario, the sequencer calculates a vector called CairoResourceUsage for each transaction. This vector includes:
+Typically, the sequencer determines a vector, `CairoResourceUsage`, for every transaction. This vector accounts for:
 
-1. The number of Cairo steps.
-2. The number of applications of each Cairo built-in (e.g., range checks and Pedersen hashes).
+1. The count of Cairo steps.
+2. The application count of each Cairo built-in (like range checks and Pedersen hashes).
 
-The sequencer then combines this information with the CairoResourceFeeWeights vector. This vector specifies the relative gas cost of each component in the proof.
+The sequencer then pairs this data with the `CairoResourceFeeWeights` vector, dictating the gas cost of each proof component.
 
-For example, 
-> If the cost of submitting a proof with 20,000,000 Pedersen hashes is 5 million gas, the weight for the Pedersen built-in is 0.25 gas per application (5,000,000/20,000,000). The sequencer has predefined weight values in line with the proof parameters.
+For instance:
+> If a proof with 20,000,000 Pedersen hashes costs 5 million gas, then the Pedersen built-in has a weight of 0.25 gas per use (calculated as 5,000,000/20,000,000). Sequencers set these weight values based on proof parameters.
 
-The fee is determined by the limiting factor, calculated as:
+The fee is determined by the most restrictive component and is calculated as:
+
 ```
 maxk[CairoResourceUsagek * CairoResourceFeeWeightsk]
 ```
-Here, "k" represents the Cairo resource components, which include the number of steps and built-ins used. The weights for various components are as follows
 
+Where "k" denotes the Cairo resource elements, encompassing step numbers and built-ins. The weightings for these components are:
 
+| Component    | Gas Cost       | Range           |
+| ------------ | -------------- | --------------- |
+| Cairo Step   | 0.01 gwei/gas  | per step        |
+| Pedersen     | 0.32 gwei/gas  | per application |
+| Poseidon     | 0.32 gwei/gas  | per application |
+| Range Check  | 0.16 gwei/gas  | per application |
+| ECDSA        | 20.48 gwei/gas | per application |
+| Keccak       | 20.48 gwei/gas | per application |
+| Bitwise      | 0.64 gwei/gas  | per application |
+| EC_OP        | 10.24 gwei/gas | per application |
 
-| Steps       | Gas Cost       | Range         |
-| --------    | --------       | --------      |
-| Cairo Step  | 0.01 gwei/gas  |per step       |
-| Pedersen    | 0.32 gwei/gas  |per application|
-| Poseidon    | 0.32 gwei/gas  |per application|
-| Range Check | 0.16 gwei/gas  |per application|
-| ECDSA       | 20.48 gwei/gas |per application|
-| Keccak      | 20.48 gwei/gas |per application|
-| Bitwise     | 0.64 gwei/gas  |per application|
-| EC_OP       | 10.24 gwei/gas |per application|
