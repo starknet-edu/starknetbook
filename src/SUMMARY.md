@@ -25,7 +25,7 @@
   - [Starknet-py: Python SDK 🚧](ch02-09-starknet-py.md)
   - [Starknet-rs: Rust SDK 🚧](ch02-10-starknet-rs.md)
   - [Foundry Forge: Testing 🚧](ch02-11-foundry-forge.md)
-  - [Foundry Cast: Interacting with Starknet 🚧](ch02-12-foundry-cast.md)
+  - [Foundry Cast: Interacting with Starknet](ch02-12-foundry-cast.md)
 
 ## Architecture
 
