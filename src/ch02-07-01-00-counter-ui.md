@@ -39,24 +39,19 @@ In `index.js`, several key functions are provided:
 
 ```javascript
 // Connect to the blockchain via a wallet provider (argentX or Bravoos)
-const connectWallet = async() => {
-}
+const connectWallet = async () => {};
 
 // Terminate the connection
-const disconnectWallet = async() => {
-}
+const disconnectWallet = async () => {};
 
 // Trigger increment
-const increaseCounter = async() => {
-}
+const increaseCounter = async () => {};
 
 // Trigger decrement
-const decreaseCounter = async() => {
-}
+const decreaseCounter = async () => {};
 
 // Retrieve current count
-const getCounter = async() => {
-}
+const getCounter = async () => {};
 ```
 
 ## Managing Connection
@@ -79,7 +74,6 @@ const connectWallet = async() => {
 - Initiates the connection using the **`connect`** method from the **`@argent/get-starknet`** library, targeting Starknet.
 - Upon a successful connection, updates the React component's state with details of the **`connection`**, **`account`**, and **`selectedAddress`**.
 
-
 ### `disconnectWallet`
 
 The `disconnectWallet` function is designed to sever the connection with the web wallet asynchronously. After disconnection, it updates the component's state, resetting connection details.
@@ -95,10 +89,9 @@ const disconnectWallet = async() => {
 
 - It utilizes the **`disconnect`** function, possibly from an external library, and handles the operation asynchronously with **`await`**.
 - Post-disconnection, the state of the React component is updated:
-    - **`setConnection`** is set to **`undefined`**.
-    - **`setAccount`** is set to **`undefined`**.
-    - **`setAddress`** is cleared with an empty string.
-
+  - **`setConnection`** is set to **`undefined`**.
+  - **`setAccount`** is set to **`undefined`**.
+  - **`setAddress`** is cleared with an empty string.
 
 ### `EagerlyConnect`
 
@@ -106,23 +99,25 @@ The `EagerlyConnect` mechanism leverages React's `useEffect` hook to initiate a 
 
 ```javascript
 useEffect(() => {
-    const connectToStarknet = async() => {
-      const connection = await connect({ modalMode: "neverAsk", webWalletUrl: "https://web.argent.xyz" });
+  const connectToStarknet = async () => {
+    const connection = await connect({
+      modalMode: "neverAsk",
+      webWalletUrl: "https://web.argent.xyz",
+    });
 
-      if(connection && connection.isConnected) {
-        setConnection(connection);
-        setAccount(connection.account);
-        setAddress(connection.selectedAddress);
-      }
+    if (connection && connection.isConnected) {
+      setConnection(connection);
+      setAccount(connection.account);
+      setAddress(connection.selectedAddress);
     }
-    connectToStarknet();
-  }, [])
+  };
+  connectToStarknet();
+}, []);
 ```
 
 - Inside the **`useEffect`**, the **`connectToStarknet`** function is defined, aiming to establish an asynchronous connection using the **`connect`** function. Parameters like **`modalMode`** and **`webWalletUrl`** are passed to guide the connection process.
 - If successful in connecting (**`connection && connection.isConnected`**), the state updates with details of the connection, the account, and the selected address using **`setConnection`**, **`setAccount`**, and **`setAddress`**.
 - The **`connectToStarknet`** function is executed immediately after its definition.
-
 
 ## Important Refresher on Smart Contract Interactions
 
@@ -144,7 +139,7 @@ The Signer plays a pivotal role in:
 - Signing transactions.
 - Authorizing actions on the blockchain.
 - Bearing the fees associated with blockchain operations.
-  
+
 Signers are especially linked to write operations that change the state of the blockchain. These operations need cryptographic signing for security and validity.
 
 ### Provider
@@ -157,20 +152,18 @@ The Provider acts as the medium for:
 
 To initiate a write transaction, the connected account (signer) must be provided. This signer then signs the transaction, bearing the necessary fee for execution.
 
-
 ## Invoking the `increment` Function
 
 ```javascript
-const increaseCounter = async() => {
-    try {
-      const contract = new Contract(contractAbi, contractAddress, account)
-      await contract.increment()
-      alert("You successfully incremented the counter!")
-    }
-    catch(err) {
-      alert(err.message)
-    }
+const increaseCounter = async () => {
+  try {
+    const contract = new Contract(contractAbi, contractAddress, account);
+    await contract.increment();
+    alert("You successfully incremented the counter!");
+  } catch (err) {
+    alert(err.message);
   }
+};
 ```
 
 The **`increaseCounter`** function is crafted to interact with a smart contract and increment a specific counter. Here's a step-by-step breakdown:
@@ -180,20 +173,18 @@ The **`increaseCounter`** function is crafted to interact with a smart contract 
 3. On successful execution, the user receives a confirmation alert indicating the counter's increment.
 4. In case of any errors during the process, an alert displays the corresponding error message to the user.
 
-
 ## Invoking the `decrement` Function
 
 ```javascript
-const decreaseCounter = async() => {
-    try {
-      const contract = new Contract(contractAbi, contractAddress, account)
-      await contract.decrement()
-      alert("You successfully decremented the counter!")
-    }
-    catch(err) {
-      alert(err.message)
-    }
+const decreaseCounter = async () => {
+  try {
+    const contract = new Contract(contractAbi, contractAddress, account);
+    await contract.decrement();
+    alert("You successfully decremented the counter!");
+  } catch (err) {
+    alert(err.message);
   }
+};
 ```
 
 The **`decreaseCounter`** function is designed to interact with a smart contract and decrement a specific counter. Here's a succinct breakdown of its operation:
@@ -206,17 +197,18 @@ The **`decreaseCounter`** function is designed to interact with a smart contract
 ## Fetching the Current Count with `get_current_count` Function
 
 ```javascript
-const getCounter = async() => {
-    const provider = new Provider({ sequencer: { network:constants.NetworkName.SN_MAIN } })
-    try {
-      const mycontract = new Contract(contractAbi, contractAddress, provider)
-      const num = await mycontract.get_current_count()
-      setRetrievedValue(num.toString())
-    }
-    catch(err) {
-      alert(err.message)
-    }
+const getCounter = async () => {
+  const provider = new Provider({
+    sequencer: { network: constants.NetworkName.SN_MAIN },
+  });
+  try {
+    const mycontract = new Contract(contractAbi, contractAddress, provider);
+    const num = await mycontract.get_current_count();
+    setRetrievedValue(num.toString());
+  } catch (err) {
+    alert(err.message);
   }
+};
 ```
 
 The **`getCounter`** function is designed to retrieve the current count from a smart contract. Here's a breakdown of its operation:
@@ -229,7 +221,6 @@ The **`getCounter`** function is designed to retrieve the current count from a s
 
 It's essential to emphasize that while performing read operations, like fetching data from a blockchain network, the function uses the provider. Unlike write operations, which typically require a signer (or an account) for transaction signing, read operations don't mandate such authentication. Thus, in this function, only the provider is specified, and not the signer.
 
-
 ## Wrapping It Up: Integrating a Frontend with a Counter Smart Contract
 
 In this tutorial, we review the process of integrating a basic counter smart contract with a frontend application.
@@ -239,8 +230,8 @@ Here's a quick recap:
 1. **Establishing Connection**: With the **`connectWallet`** function, we made seamless connections to the blockchain, paving the way for interactions with our smart contract.
 2. **Terminating Connection**: The **`disconnectWallet`** function ensures that users can safely terminate their active connections to the blockchain, maintaining security and control.
 3. **Interacting with the Smart Contract**: Using the **`increaseCounter`**, **`decreaseCounter`**, and **`getCounter`** functions, we explored how to:
-    - Initiate transactions
-    - Adjust the counter value (increment or decrement)
-    - Fetch data from the blockchain
+   - Initiate transactions
+   - Adjust the counter value (increment or decrement)
+   - Fetch data from the blockchain
 
 For a visual walkthrough, do check out the [Basecamp frontend session](https://drive.google.com/file/d/1Dtb3Ol_BVoNV4w-_MKV8aeyyRra8nRtz/view). This comprehensive session delves deeper into the nuances of the concepts we've touched upon, presenting a mix of theoretical explanations and hands-on demonstrations.

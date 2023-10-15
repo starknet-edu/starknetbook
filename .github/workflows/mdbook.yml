@@ -17,7 +17,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read  # To push a branch 
+      contents: read # To push a branch
       id-token: write # To update the deployment status
     steps:
       - name: Checkout

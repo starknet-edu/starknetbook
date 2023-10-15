@@ -6,7 +6,6 @@ Cast provides the Command Line Interface (CLI) for starknet, while Forge address
 
 In this section, we'll delve into `sncast`.
 
-
 ## Step 1: Sample Smart Contract
 
 The following code sample is sourced from `starknet foundry`. You can find the original [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html).
@@ -91,7 +90,6 @@ snforge
 
 Note: Use `snforge` for testing instead of the `scarb test` command. The tests are set up to utilize functions from `snforge_std`. Running `scarb test` would cause errors.
 
-
 ## Step 2: Setting Up Starknet Devnet
 
 For this guide, the focus is on using `starknet-devnet`. If you've been using `katana`, please be cautious as there might be inconsistencies. If you haven't configured `devnet`, consider following this [guide](https://livesoftwaredeveloper.com/articles/9/how-to-set-up-starknet-devnet-and-frontend-for-smart-contract-development) for a quick setup.
@@ -138,7 +136,6 @@ In the output, you'll notice distinct categories: `commands` and `options`. Each
 
 > Tip: While both option variants are useful, we'll prioritize the long form in this guide. This choice aids clarity, especially when constructing intricate commands.
 
-
 Delving deeper, to understand specific commands such as **`account`**, you can run:
 
 ```sh
@@ -152,7 +149,6 @@ sncast account add --help
 ```
 
 The layered structure of `sncast` provides a wealth of information right at your fingertips. It's like having dynamic documentation. Make it a habit to explore, and you'll always stay informed.
-
 
 ## Step 3: Using `sncast` for Account Management
 
@@ -185,7 +181,6 @@ Points to remember:
 
 Now that we have familiarized ourselves with using a predeployed account, let's proceed to adding a new account.
 
-
 ### Creating and Deploying a New Account to Starknet Devnet
 
 Creating a new account involves a few more steps than using an existing one, but it's straightforward when broken down. Here are the steps:
@@ -201,7 +196,7 @@ sncast --url http://localhost:5050/rpc account create --name new_account --class
 Wondering where the `--class-hash` comes from? It's visible in the output from the `starknet-devnet` command under the Predeclared Starknet CLI account section. For example:
 
 ```sh
-Predeclared Starknet CLI account: 
+Predeclared Starknet CLI account:
 Class hash: 0x195c984a44ae2b8ad5d49f48c0aaa0132c42521dcfc66513530203feca48dd6
 ```
 
@@ -226,19 +221,18 @@ A successful fund addition will return:
 Deploy the account to the **`starknet devnet`** local node to register it with the chain:
 
 ```sh
-sncast --url http://localhost:5050/rpc account deploy --name new_account --max-fee 0x64a7168300 
+sncast --url http://localhost:5050/rpc account deploy --name new_account --max-fee 0x64a7168300
 ```
 
 A successful deployment provides a transaction hash. If it doesn't work, revisit your previous steps.
 
 4. Setting a Default Profile
-    
-You can define a default profile for your **`sncast`** actions. To set one, edit the **`Scarb.toml`** file. To make the **`new_account`** the default profile, find the section **`[tool.sncast.new_account]`** and change it to **`[tool.sncast]`**. This means **`sncast`** will default to using this profile unless instructed otherwise.
 
+You can define a default profile for your **`sncast`** actions. To set one, edit the **`Scarb.toml`** file. To make the **`new_account`** the default profile, find the section **`[tool.sncast.new_account]`** and change it to **`[tool.sncast]`**. This means **`sncast`** will default to using this profile unless instructed otherwise.
 
 ## Step 4: Declaring and Deploying our Contract
 
-By now, we've arrived at the crucial step of using `sncast` to declare and deploy our smart contracts. 
+By now, we've arrived at the crucial step of using `sncast` to declare and deploy our smart contracts.
 
 ### Declaring the Contract
 
@@ -282,7 +276,7 @@ sncast --profile account1 declare --contract-name HelloStarknet
 
 Note that we've omitted the **`--url`** option. Why? When using **`--profile`**, as seen here with **`account1`**, it's not necessary. Remember, earlier in this guide, we discussed adding and creating new accounts. You can use either **`account1`** or **`new_account`** and achieve the desired result.
 
-> Hint: You can define a default profile for sncast actions. Modify the `Scarb.toml` file to set a default. For example, to make `new_account` the default, find `[tool.sncast.new_account]` and change it to `[tool.sncast]`. Then, there's no need to specify the profile for each call, simplifying your command to: 
+> Hint: You can define a default profile for sncast actions. Modify the `Scarb.toml` file to set a default. For example, to make `new_account` the default, find `[tool.sncast.new_account]` and change it to `[tool.sncast]`. Then, there's no need to specify the profile for each call, simplifying your command to:
 
 ```sh
 sncast declare --contract-name HelloStarknet
@@ -296,10 +290,9 @@ class_hash: 0x20fe30f3990ecfb673d723944f28202db5acf107a359bfeef861b578c00f2a0
 transaction_hash: 0x7fbdcca80e7c666f1b5c4522fdad986ad3b731107001f7d8df5f3cb1ce8fd11
 ```
 
-Make sure to note the **`class hash` as it will be essential in the subsequent step.
+Make sure to note the \*\*`class hash` as it will be essential in the subsequent step.
 
 > Note: If you encounter an error stating Class hash already declared, simply move to the next step. Redeclaring an already-declared contract isn't permissible. Use the mentioned class hash for deployment.
-
 
 ### Deploying the Contract
 
@@ -321,11 +314,10 @@ However, you may encounter some issues, such as:
 
 **Error: RPC url not passed nor found in Scarb.toml**. This indicates the absence of a default profile in the **`Scarb.toml`** file. To remedy this:
 
-* Add the **`-profile`** option, followed by the desired profile name, as per the ones you've established.
-* Alternatively, set a default profile as previously discussed in the "Declaring the Contract" section under "Hint" or as detailed in the "Adding, Creating, and Deploying Account" subsection.
+- Add the **`-profile`** option, followed by the desired profile name, as per the ones you've established.
+- Alternatively, set a default profile as previously discussed in the "Declaring the Contract" section under "Hint" or as detailed in the "Adding, Creating, and Deploying Account" subsection.
 
 You've successfully deployed your contract with `sncast`! Now, let's explore how to interact with it.
-
 
 ## Interacting with the Contract
 
@@ -396,7 +388,6 @@ response: [0x4]
 ```
 
 This indicates successful read and write operations on the contract.
-
 
 ### sncast Multicall Guide
 
@@ -508,9 +499,6 @@ response: [0x9]
 
 The expected balance, `0x9`, is confirmed.
 
-
 ## Conclusion
 
 This guide detailed the use of `sncast`, a robust command-line tool tailored for starknet smart contracts. Its purpose is to make interactions with starknet's smart contracts effortless. Key functionalities include contract deployment, function invocation, and function calling.
-
-

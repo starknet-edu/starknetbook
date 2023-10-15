@@ -22,10 +22,12 @@ cargo install mdbook --version 0.4.31 && cargo install mdbook-i18n-helpers --ver
 ```
 
 2. **Machine Packages**:
+
 - For translations, install [gettext](https://www.gnu.org/software/gettext/): `sudo apt install gettext`.
 - On Mac, you can use `brew install gettext` to install.
 
 3. **Repository Operations**:
+
 - Clone the main repository: `git clone https://github.com/starknet-edu/starknetbook && cd starknetbook`.
 - Create and work on a branch in your fork. If you're unfamiliar, use this [guide](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/) for assistance.
 - Once done, submit a PR to merge your edits. Ensure you tag a reviewer for feedback (`l-henri` or `@omarespejel`).
