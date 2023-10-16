@@ -503,13 +503,12 @@ The expected balance, `0x9`, is confirmed.
 
 This guide detailed the use of `sncast`, a robust command-line tool tailored for starknet smart contracts. Its purpose is to make interactions with starknet's smart contracts effortless. Key functionalities include contract deployment, function invocation, and function calling.
 
-
 ## SNCAST SCRIPT
 
 In light of the above documentation, we have also added a script code you can modify and use to your benefit.
 
 1. Create a `script.sh` file in the root folder of your project.
-2. Give proper file permissions to the file 
+2. Give proper file permissions to the file
 
 ```sh
 chmod +x script.sh
@@ -657,7 +656,7 @@ which bash
 
 5. Update the `CONTRACT_NAME` to your contract name
 
-6. Run the file 
+6. Run the file
 
 ```sh
 ./script.sh
