@@ -1,4 +1,4 @@
-# Hello, World!
+# Compile, Deploy and Interact with a Contract
 
 In this chapter, you’ll learn how to compile, deploy, and interact with
 a Starknet smart contract written in Cairo.
