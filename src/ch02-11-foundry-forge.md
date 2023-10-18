@@ -13,8 +13,7 @@ Merely deploying contracts is not the end game. Many tools have offered this cap
 
 To utilize Forge, define test functions and label them with test attributes. Users can either test standalone Cairo functions or integrate contracts, dispatchers, and test contract interactions on-chain.
 
-
-##  Using `snForge` command-line
+## Using `snForge` command-line
 
 This section provides an introduction to the Starknet Foundry `snforge` command-line tool. We will walk you through the process of creating a new project, compiling your code, and running tests.
 
@@ -25,7 +24,9 @@ To initiate a new project using Starknet Foundry, you can use the `--init` comma
 ```shell
 snforge --init project_name
 ```
+
 After creating the project, you can explore its structure as follows:
+
 ```shell
 $ cd project_name
 $ tree . -L 1
@@ -35,10 +36,11 @@ $ tree . -L 1
 ├── src
 └── tests
 ```
+
 - src/ contains the source code for all your contracts.
 - tests/ is where your test files are located.
 - Scarb.toml contains the project and `snforge` configuration.
-Make sure that the casm code generation is enabled in the Scarb.toml file:
+  Make sure that the casm code generation is enabled in the Scarb.toml file:
 
 ```shell
 # ...
@@ -46,7 +48,9 @@ Make sure that the casm code generation is enabled in the Scarb.toml file:
 casm = true
 # ...
 ```
+
 Now, you can run tests with `snforge`:
+
 ```shell
 $ snforge
 Collected 2 test(s) from the `test_name` package
@@ -56,34 +60,46 @@ Running 2 test(s) from `tests/`
 [PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value
 Tests: 2 passed, 0 failed, 0 skipped
 ```
+
 ## Using snforge with Existing Scarb Projects
+
 If you have an existing Scarb project and want to use `snforge`, ensure that you have declared the `snforge_std package` as a dependency in your project. Add the following line under the [dependencies] section in your Scarb.toml file:
+
 ```shell
 # ...
 [dependencies]
 snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.7.1" }
 ```
+
 Make sure that the version in the tag matches the version of snforge. You can check the installed snforge version with the following command:
+
 ```shell
 $ snforge --version
 forge 0.7.1
 ```
+
 Alternatively, you can add this dependency using the `scarb` command:
+
 ```shell
 $ scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git --tag v0.7.1
 ```
+
 Now, you are ready to use `snforge` with your existing Scarb project.
 
-
 ## Running Tests with snforge
+
 To run tests using the Starknet Foundry `snforge` command, follow these instructions. We will cover `test execution`, `test filtering`, `running specific tests`, and `handling test execution failures`.
 
 ### Running Tests
+
 To execute tests, navigate to the package directory and run the following command:
+
 ```shell
 $ snforge
 ```
+
 This command collects and runs tests within the specified package. Here's an example output:
+
 ```shell
 Collected 3 test(s) from `package_name` package
 Running 3 test(s) from `src/`
@@ -92,8 +108,11 @@ Running 3 test(s) from `src/`
 [PASS] package_name::calling_another
 Tests: 3 passed, 0 failed, 0 skipped
 ```
+
 ### Filtering Tests
+
 You can filter the tests to run by passing a filter string after the `snforge` command. By default, tests with an absolute module tree path matching the filter will be executed:
+
 ```shell
 $ snforge calling
 Collected 2 test(s) from `package_name` package
@@ -102,8 +121,11 @@ Running 2 test(s) from `src/`
 [PASS] package_name::calling_another
 Tests: 2 passed, 0 failed, 0 skipped
 ```
+
 ### Running a Specific Test
+
 To run a specific test, you can use the `--exact` flag along with the filter string. Ensure that you use a fully qualified test name, including the module name:
+
 ```shell
 $ snforge package_name::calling --exact
 Collected 1 test(s) from `package_name` package
@@ -112,8 +134,11 @@ Running 1 test(s) from `src/`
 Tests: 1 passed, 0 failed, 0 skipped
 
 ```
+
 ### Stopping Test Execution After First Failed Test
+
 To halt test execution after the first failed test, include the `--exit-first` flag with the `snforge` command:
+
 ```shell
 $ snforge --exit-first
 Collected 6 test(s) from package_name package
@@ -125,7 +150,7 @@ Running 6 test(s) from src/
 
 Failure data:
     original value: [8111420071579136082810415440747], converted to a string: [failing check]
-    
+
 [SKIP] package_name::other_test
 [SKIP] package_name::yet_another_test
 Tests: 3 passed, 1 failed, 2 skipped
@@ -135,7 +160,9 @@ Failures:
 ```
 
 ## Testing Starknet contract with `snforge` (Example)
+
 In this example we'll be using the below starknet contract:
+
 ```shell
 #[starknet::interface]
 trait IHelloStarknet<TContractState> {
@@ -157,16 +184,18 @@ mod HelloStarknet {
             self.balance.write(self.balance.read() + amount);
         }
 
-        // Gets the balance. 
+        // Gets the balance.
         fn get_balance(self: @ContractState) -> felt252 {
             self.balance.read()
         }
     }
 }
-``` 
+```
+
 It should be noted that the name written after `mod` is the contract name which would be referenced later on; in this case, it is `HelloStarknet`.
 
-## Writing the test 
+## Writing the test
+
 let's write the test cases for `HelloStarknet` contract. In this test, we'll deploy `Hellostarknet` and interact with some functions:
 
 ```shell
@@ -177,7 +206,7 @@ fn call_and_invoke() {
     // First declare and deploy a contract
     let contract = declare('HelloStarknet');
     let contract_address = contract.deploy(@ArrayTrait::new()).unwrap();
-    
+
     // Create a Dispatcher object that will allow interacting with the deployed contract
     let dispatcher = IHelloStarknetDispatcher { contract_address };
 
@@ -194,7 +223,9 @@ fn call_and_invoke() {
     assert(balance == 100, 'balance == 100');
 }
 ```
+
 Now we are ready to run `snforge`. once you run the `snforge` command, you should get the below output
+
 ```shell
 $ snforge
 Collected 1 test(s) from using_dispatchers package
@@ -202,13 +233,16 @@ Running 1 test(s) from src/
 [PASS] using_dispatchers::call_and_invoke
 Tests: 1 passed, 0 failed, 0 skipped
 ```
+
 Now you have successfully created and tested your starknet contract using `snforge`.
 
 ## snforge Commands
+
 - Running `snforge` in the Current Directory
-To run the snforge command in the current directory, simply execute the following command:
+  To run the snforge command in the current directory, simply execute the following command:
 
 ### Test Filter Options
+
 - `-e, --exact`: Use the `-e` or `--exact` option to run a test with a name that exactly matches the provided test filter. The test filter should be a fully qualified test name, including the package name. For example, instead of specifying just `my_test`, use `package_name::my_test` as the test filter.
 
 - `--init` <NAME>: The `--init` <NAME> option allows you to create a new directory and forge project with the specified name <NAME>.
@@ -216,28 +250,25 @@ To run the snforge command in the current directory, simply execute the followin
 - `-x`, `--exit-first`: By using the` -x` or `--exit-first` option, you can stop the execution of tests after the first test failure is encountered.
 
 ### Package Selection
-- `-p`, `--package`: The `-p` or `--package` option is used to specify the packages on which to run the `snforge` command. You can either provide a concrete package name (e.g., foobar) or use a prefix glob (e.g., foo*) to match multiple packages.
+
+- `-p`, `--package`: The `-p` or `--package` option is used to specify the packages on which to run the `snforge` command. You can either provide a concrete package name (e.g., foobar) or use a prefix glob (e.g., foo\*) to match multiple packages.
 
 - `-w`, `--workspace`: Use the `-w` or `--workspace` option to run tests for all packages in the workspace.
 
 ### Fuzzer Configuration
+
 - `-r`, `--fuzzer-runs` <FUZZER_RUNS>: Specify the number of fuzzer runs using the `-r` or `--fuzzer-runs` option, followed by the desired number of runs <FUZZER_RUNS>.
 
 - `-s`, `--fuzzer-seed` <FUZZER_SEED>: Set the seed for the fuzzer by using the `-s` or `--fuzzer-seed` option, followed by the desired seed value <FUZZER_SEED>.
 
 ### Cache Management
+
 - `-c`, `--clean-cache`: To clean the `snforge` cache directory, simply use the `-c` or `--clean-cache` option.
 
 ### Help and Version Information
+
 - `-h`,` --help`: Use the `-h` or `--help` option to print the help information, providing guidance on how to use `snforge`.
 
 - `-V`, `--version`: To display the current version of `snforge`, use the `-V` or `--version` option.
 
 Note: Replace <NAME>, <FUZZER_RUNS>, and <FUZZER_SEED> with your specific values when using the `snforge` command.
-
-
-
-
-
-
-

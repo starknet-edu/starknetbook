@@ -1,6 +1,6 @@
 # Deployment Script Example
 
-This tutorial explains how to set up a test and deployment environment for smart contracts. The given script initializes accounts, runs tests, and carries out multicalls. 
+This tutorial explains how to set up a test and deployment environment for smart contracts. The given script initializes accounts, runs tests, and carries out multicalls.
 
 Disclaimer: This is an example. Use it as a foundation for your own work, adjusting as needed.
 
@@ -153,10 +153,10 @@ fi
 
 The line `#!/usr/bin/env bash` indicates the path to the bash interpreter. If you require a different version or location of bash, determine its path using:
 
-```sh 
-which bash    
+```sh
+which bash
 ```
-    
+
 Then replace `#!/usr/bin/env` bash in the script with the resulting path, such as `#!/path/to/your/bash`.
 
 ## Execution
@@ -164,7 +164,7 @@ Then replace `#!/usr/bin/env` bash in the script with the resulting path, such a
 When running the script, you'll need to provide the environment variables `ACCOUNT1_PRIVATE_KEY` and `ACCOUNT2_PRIVATE_KEY`.
 
 Example:
-    
+
 ```sh
 ACCOUNT1_PRIVATE_KEY="0x259f4329e6f4590b" ACCOUNT2_PRIVATE_KEY="0xb4862b21fb97d" ./script.sh
 ```
