@@ -32,6 +32,7 @@ tree . -L 1
 
 The project structure is as follows:
 
+
 ```shell
 .
 ├── README.md
@@ -90,7 +91,6 @@ scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git -
 
 With these steps, your existing Scarb project is now **`snforge`**-ready.
 
-
 ## Testing with `snforge`
 
 Utilize Starknet Foundry's `snforge` command to efficiently run tests.
@@ -118,6 +118,7 @@ Tests: 3 passed, 0 failed, 0 skipped
 
 Run specific tests using a filter string after the `snforge` command. Tests matching the filter based on their absolute module tree path will be executed:
 
+
 ```shell
 $ snforge calling
 ```
@@ -125,6 +126,7 @@ $ snforge calling
 ### Run a Specific Test
 
 Use the `--exact` flag and a fully qualified test name to run a particular test:
+
 
 ```shell
 snforge package_name::calling --exact
@@ -164,6 +166,7 @@ mod HelloStarknet {
         }
 
         // Returns the balance.
+
         fn get_balance(self: @ContractState) -> felt252 {
             self.balance.read()
         }
@@ -185,7 +188,7 @@ fn call_and_invoke() {
     // Declare and deploy the contract
     let contract = declare('HelloStarknet');
     let contract_address = contract.deploy(@ArrayTrait::new()).unwrap();
-    
+
     // Instantiate a Dispatcher object for contract interactions
     let dispatcher = IHelloStarknetDispatcher { contract_address };
 
