@@ -4,12 +4,6 @@ To better understand this chapter, it's important to go over the starknet archit
 
 Let's also discuss the following concepts to have the foundational knowledge of this topic.
 
-* Verifiers:
-* Sequencers:
-* Provers:
-* STARK:
-* SHARP:
-* L1:
-* L2:
+#### Verifiers 
+Smart contracts whichs verifies and checks the validity of a proof. These smart contracts can be L1 verifiers or L2 verifiers.
 
-Solidity verifiers are L1 smart contract written in solidity that verifies STARK proofs from SHARP (Shared Prover).
