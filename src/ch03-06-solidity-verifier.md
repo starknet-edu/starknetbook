@@ -29,3 +29,6 @@ Here is an analogy to understand SHARP:
 
 Imagine taking a bus to work. The bus driver is the prover, and the passengers are the Cairo programs. The bus driver takes all of the passengers to their destinations, but he only needs to check the tickets of the passengers who are getting off at the next stop. This is similar to how SHARP works. The prover generates a single proof for all of the Cairo programs in the batch, but only the proofs of the programs that are being executed on the next block are verified.
 
+
+### Introducing Solidity Verifiers
+Solidity verifiers are L1 smart contract written in solidity that verifies STARK proofs from SHARP (Shared Prover).
