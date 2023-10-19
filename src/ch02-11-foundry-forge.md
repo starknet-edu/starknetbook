@@ -90,7 +90,6 @@ scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git -
 
 With these steps, your existing Scarb project is now **`snforge`**-ready.
 
-
 ## Testing with `snforge`
 
 Utilize Starknet Foundry's `snforge` command to efficiently run tests.
@@ -185,7 +184,7 @@ fn call_and_invoke() {
     // Declare and deploy the contract
     let contract = declare('HelloStarknet');
     let contract_address = contract.deploy(@ArrayTrait::new()).unwrap();
-    
+
     // Instantiate a Dispatcher object for contract interactions
     let dispatcher = IHelloStarknetDispatcher { contract_address };
 
