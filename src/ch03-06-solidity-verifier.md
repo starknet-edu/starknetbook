@@ -1,8 +1,12 @@
 # Solidity Verifier 🚧
 
-To better understand this chapter, it's important to go over the starknet architecture chapter for a fundamental understanding. Also, we should be conversant with the following terms and their uses.
+To better understand this chapter, it's important to go over the starknet architecture chapter for a fundamental understanding and overview of the flow of the architecture. 
+
+Let's also discuss the following concepts to have the foundational knowledge of this topic.
 
 * Verifiers:
+* Sequencers:
+* Provers:
 * STARK:
 * SHARP:
 * L1:
