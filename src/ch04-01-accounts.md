@@ -6,7 +6,6 @@ With a clearer understanding of the AA concept, let's proceed to code it in Star
 
 Account contracts, being a type of smart contracts, are distinguished by specific methods. A smart contract becomes an account contract when it follows the public interface outlined in SNIP-6 ([StarkNet Improvement Proposal-6: Standard Account Interface](https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/SNIPS/snip-6.md)). This standard draws inspiration from SRC-6 and SRC-5, similar to Ethereum's ERCs, which establish application conventions and contract standards.
 
-
 ```rust
 /// @title Represents a call to a target contract
 /// @param to The target contract address
@@ -107,7 +106,7 @@ trait ISRC6 {
 
 trait ISRC5 {
     fn supports_interface(interface_id: felt252) -> bool;
-}  
+}
 ```
 
 The `interface_id` corresponds to the aggregated hash of the trait's selectors, as detailed in Ethereum's ERC165 [3]. Developers can either compute the ID using the `src5-rs` utility [4] or rely on the pre-calculated ID: `1270010605630597976495846281167968799381097569185364931397797212080166453709`.
@@ -141,6 +140,7 @@ For example, integrate the `__validate_declare__` function if the contract decla
 Counterfactual deployment lets developers set up an account contract without depending on another account contract for gas fees. This method is valuable when there's no desire to link a new account contract with its deploying address, ensuring a fresh start.
 
 This approach involves:
+
 1. Locally determining the potential address of our account contract without actual deployment, feasible with the Starkli [5] tool.
 2. Transferring sufficient ETH to the predicted address to cover the deployment costs.
 3. Sending a `deploy_account` transaction to Starknet containing our contract's compiled code. The sequencer then activates the account contract at the estimated address, compensating its gas fees from the transferred ETH. No `declare` action is needed beforehand.
@@ -202,6 +202,7 @@ trait IAccountAddon {
 We've broken down the distinctions between account contracts and basic smart contracts, particularly focusing on the methods laid out in SNIP-6.
 
 - Introduced the `ISRC6` trait, spotlighting essential functions:
+
   - `__validate__`: Validates transactions.
   - `is_valid_signature`: Verifies signatures.
   - `__execute__`: Executes contract calls.
