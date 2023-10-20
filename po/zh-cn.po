@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Starknet Book\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2023-10-19 16:11+0900\n"
+"PO-Revision-Date: 2023-10-20 11:12+0900\n"
 "Last-Translator: StraknetAstro <cryptonerdcn@gmail.com>\n"
 "Language-Team: Language zh-cn\n"
 "Language: zh_CN\n"
@@ -5922,69 +5922,61 @@ msgid "# Foundry Forge: Testing 🚧"
 msgstr "# Foundry Forge: 测试工具 🚧"
 
 #: src/ch02-11-foundry-forge.md:3
-#, fuzzy
 msgid ""
 "[Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) is a tool designed for testing and developing Starknet contracts. It is an adaptation of the Ethereum "
 "Foundry for Starknet, aiming to expedite the development process."
-msgstr "[Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) 是一个用于测试和开发Starknet合约的工具。它是以太坊 Foundry 对 Starknet 的改造，旨在加快开发过程。"
+msgstr ""
+"[Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) 是一个用于测试和开发Starknet合约的工具。它是根据以太坊上的 Foundry 工具进行了一些针对 Starknet 的改造，旨在"
+"加快开发过程。"
 
 #: src/ch02-11-foundry-forge.md:5
-#, fuzzy
 msgid "The project consists of two primary components:"
 msgstr "该项目由两个主要部分组成："
 
 #: src/ch02-11-foundry-forge.md:7
-#, fuzzy
 msgid ""
 "- **Forge**: A testing tool specifically for Cairo contracts. This tool acts as a test runner and boasts features designed to enhance your testing process. Tests are written "
 "directly in Cairo, eliminating the need for other programming languages. Additionally, the Forge implementation uses Rust, mirroring Ethereum Foundry's choice of language.\n"
 "- **Cast**: This serves as a DevOps tool for StarkNet, initially supporting a series of commands to interface with StarkNet. In the future, Cast aims to offer deployment "
 "scripts for contracts and other DevOps functions."
 msgstr ""
-"- **锻造**：专门用于Cairo合约的测试工具。该工具可用作测试运行器，并具有旨在增强测试流程的功能。测试直接用Cairo语言编写，无需使用其他编程语言。此外，Forge 的实现使用 Rust，与"
+"- **Forge**：专门用于Cairo合约的测试工具。该工具可用作测试运行器，并具有旨在增强测试流程的功能。测试直接用Cairo语言编写，无需使用其他编程语言。此外，Forge 的实现使用 Rust，与"
 "以太坊 Foundry 的语言选择如出一辙。\n"
 "- **Cast**：这是 StarkNet 的 DevOps 工具，最初支持一系列与 StarkNet 接口的命令。未来，Cast 的目标是为合约和其他 DevOps 功能提供部署脚本。"
 
 #: src/ch02-11-foundry-forge.md:10
-#, fuzzy
 msgid "## Forge"
 msgstr "## Forge"
 
 #: src/ch02-11-foundry-forge.md:12
-#, fuzzy
 msgid ""
 "Merely deploying contracts is not the end game. Many tools have offered this capability in the past. Forge sets itself apart by hosting a Cairo VM instance, enabling the "
 "sequential execution of tests. It employs Scarb for contract compilation."
 msgstr "仅仅部署合约并不是最终目的。过去，许多工具都提供了这种功能。Forge 通过托管 Cairo 虚拟机实例，实现了测试的顺序执行，从而与众不同。它采用 Scarb 进行合约编译。"
 
 #: src/ch02-11-foundry-forge.md:14
-#, fuzzy
 msgid ""
 "To utilize Forge, define test functions and label them with test attributes. Users can either test standalone Cairo functions or integrate contracts, dispatchers, and test "
 "contract interactions on-chain."
 msgstr "要使用 Forge，只需定义测试功能并标注测试属性即可。用户既可以测试独立的 Cairo 函数，也可以集成合约、调度程序，并测试链上的合约交互。"
 
 #: src/ch02-11-foundry-forge.md:17
-#, fuzzy
 msgid "##  Using `snForge` command-line"
 msgstr "## 使用 `snForge` 命令行"
 
 #: src/ch02-11-foundry-forge.md:19
-#, fuzzy
 msgid ""
 "This section provides an introduction to the Starknet Foundry `snforge` command-line tool. We will walk you through the process of creating a new project, compiling your "
 "code, and running tests."
 msgstr "本节将介绍 Starknet Foundry `snforge` 命令行工具。我们将引导您完成创建新项目、编译代码和运行测试的过程。"
 
 #: src/ch02-11-foundry-forge.md:21
-#, fuzzy
 msgid "## Creating a New Project"
 msgstr "## 创建新项目"
 
 #: src/ch02-11-foundry-forge.md:23
-#, fuzzy
 msgid "To initiate a new project using Starknet Foundry, you can use the `--init` command. Replace `project_name` with the desired name for your project."
-msgstr "要使用 Starknet Foundry 启动一个新项目，可以使用 `--init` 命令。将 `project_name` 替换为所需的项目名称。"
+msgstr "要使用 Starknet Foundry 启动一个新项目，可以使用 `--init` 命令。将 `project_name` 替换为你的项目名称。"
 
 #: src/ch02-11-foundry-forge.md:25
 msgid ""
@@ -5994,9 +5986,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:28
-#, fuzzy
 msgid "After creating the project, you can explore its structure as follows:"
-msgstr "创建项目后，您可以探索其结构如下："
+msgstr "创建项目后，您可以发现其结构如下："
 
 #: src/ch02-11-foundry-forge.md:29
 msgid ""
@@ -6012,7 +6003,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:38
-#, fuzzy
 msgid ""
 "- src/ contains the source code for all your contracts.\n"
 "- tests/ is where your test files are located.\n"
@@ -6035,7 +6025,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:49
-#, fuzzy
 msgid "Now, you can run tests with `snforge`:"
 msgstr "现在，您可以使用 `snforge` 运行测试："
 
@@ -6053,12 +6042,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:59
-#, fuzzy
 msgid "## Using snforge with Existing Scarb Projects"
 msgstr "## 在现有 Scarb 项目中使用 snforge"
 
 #: src/ch02-11-foundry-forge.md:60
-#, fuzzy
 msgid ""
 "If you have an existing Scarb project and want to use `snforge`, ensure that you have declared the `snforge_std package` as a dependency in your project. Add the following "
 "line under the [dependencies] section in your Scarb.toml file:"
@@ -6074,7 +6061,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:66
-#, fuzzy
 msgid "Make sure that the version in the tag matches the version of snforge. You can check the installed snforge version with the following command:"
 msgstr "确保标签中的版本与 snforge 的版本一致。您可以使用以下命令检查已安装的 snforge 版本："
 
@@ -6087,7 +6073,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:71
-#, fuzzy
 msgid "Alternatively, you can add this dependency using the `scarb` command:"
 msgstr "您也可以使用 `scarb` 命令添加该依赖关系："
 
@@ -6099,29 +6084,26 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:75
-#, fuzzy
 msgid "Now, you are ready to use `snforge` with your existing Scarb project."
 msgstr "现在，您可以在现有 Scarb 项目中使用 `snforge` 了。"
 
 #: src/ch02-11-foundry-forge.md:78
-#, fuzzy
 msgid "## Running Tests with snforge"
 msgstr "## 使用 snforge 运行测试"
 
 #: src/ch02-11-foundry-forge.md:79
-#, fuzzy
 msgid ""
 "To run tests using the Starknet Foundry `snforge` command, follow these instructions. We will cover `test execution`, `test filtering`, `running specific tests`, and "
 "`handling test execution failures`."
-msgstr "要使用 Starknet Foundry `snforge` 命令运行测试，请遵循以下说明。我们将介绍 \"测试执行\"、\"测试过滤\"、\"运行特定测试 \"和 \"处理测试执行失败\"。"
+msgstr ""
+"要使用 Starknet Foundry `snforge` 命令运行测试，请遵循以下说明。我们将介绍 `test execution`， `test filtering`， `running specific tests`和 `handling test execution "
+"failures`。"
 
 #: src/ch02-11-foundry-forge.md:81
-#, fuzzy
 msgid "### Running Tests"
-msgstr "## 运行测试"
+msgstr "### 运行测试"
 
 #: src/ch02-11-foundry-forge.md:82
-#, fuzzy
 msgid "To execute tests, navigate to the package directory and run the following command:"
 msgstr "要执行测试，请导航至软件包目录并运行以下命令："
 
@@ -6133,7 +6115,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:86
-#, fuzzy
 msgid "This command collects and runs tests within the specified package. Here's an example output:"
 msgstr "该命令收集并运行指定软件包内的测试。下面是一个输出示例："
 
@@ -6150,12 +6131,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:95
-#, fuzzy
 msgid "### Filtering Tests"
 msgstr "### 过滤测试"
 
 #: src/ch02-11-foundry-forge.md:96
-#, fuzzy
 msgid ""
 "You can filter the tests to run by passing a filter string after the `snforge` command. By default, tests with an absolute module tree path matching the filter will be "
 "executed:"
@@ -6174,12 +6153,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:105
-#, fuzzy
 msgid "### Running a Specific Test"
 msgstr "### 运行特定测试"
 
 #: src/ch02-11-foundry-forge.md:106
-#, fuzzy
 msgid "To run a specific test, you can use the `--exact` flag along with the filter string. Ensure that you use a fully qualified test name, including the module name:"
 msgstr "要运行特定测试，可以使用 `--exact` 标志和过滤器字符串。确保使用完全合格的测试名称，包括模块名称："
 
@@ -6196,12 +6173,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:115
-#, fuzzy
 msgid "### Stopping Test Execution After First Failed Test"
 msgstr "### 在首次测试失败后停止测试执行"
 
 #: src/ch02-11-foundry-forge.md:116
-#, fuzzy
 msgid "To halt test execution after the first failed test, include the `--exit-first` flag with the `snforge` command:"
 msgstr "要在第一次测试失败后停止执行测试，请在 `snforge` 命令中加入 `--exit-first` 标志："
 
@@ -6229,12 +6204,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:137
-#, fuzzy
 msgid "## Testing Starknet contract with `snforge` (Example)"
 msgstr "## 使用 `snforge` 测试Starknet合约（示例）"
 
 #: src/ch02-11-foundry-forge.md:138
-#, fuzzy
 msgid "In this example we'll be using the below starknet contract:"
 msgstr "在本例中，我们将使用以下Starknet合约："
 
@@ -6271,17 +6244,14 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:167
-#, fuzzy
 msgid "It should be noted that the name written after `mod` is the contract name which would be referenced later on; in this case, it is `HelloStarknet`."
 msgstr "应该注意的是，写在 `mod` 后面的名称是稍后将引用的合约名称；在本例中，它是 `HelloStarknet`。"
 
 #: src/ch02-11-foundry-forge.md:169
-#, fuzzy
 msgid "## Writing the test "
-msgstr "## 撰写测试"
+msgstr "## 撰写测试 "
 
 #: src/ch02-11-foundry-forge.md:170
-#, fuzzy
 msgid "let's write the test cases for `HelloStarknet` contract. In this test, we'll deploy `Hellostarknet` and interact with some functions:"
 msgstr "让我们为 `HelloStarknet` 合约编写测试用例。在这个测试中，我们将部署 `Hellostarknet` 并与一些函数交互："
 
@@ -6315,7 +6285,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:197
-#, fuzzy
 msgid "Now we are ready to run `snforge`. once you run the `snforge` command, you should get the below output"
 msgstr "现在，我们准备运行 `snforge`。运行 `snforge` 命令后，会得到以下输出结果"
 
@@ -6331,31 +6300,26 @@ msgid ""
 msgstr ""
 
 #: src/ch02-11-foundry-forge.md:205
-#, fuzzy
 msgid "Now you have successfully created and tested your starknet contract using `snforge`."
 msgstr "现在，您已使用 `snforge` 成功创建并测试了Starknet合约。"
 
 #: src/ch02-11-foundry-forge.md:207
-#, fuzzy
 msgid "## snforge Commands"
 msgstr "## snforge 命令"
 
 #: src/ch02-11-foundry-forge.md:208
-#, fuzzy
 msgid ""
 "- Running `snforge` in the Current Directory\n"
 "To run the snforge command in the current directory, simply execute the following command:"
 msgstr ""
-"- 在当前目录下运行 `snforge\n"
+"- 在当前目录下运行 `snforge`\n"
 "要在当前目录下运行 snforge 命令，只需执行以下命令："
 
 #: src/ch02-11-foundry-forge.md:211
-#, fuzzy
 msgid "### Test Filter Options"
 msgstr "### 测试筛选器选项"
 
 #: src/ch02-11-foundry-forge.md:212
-#, fuzzy
 msgid ""
 "- `-e, --exact`: Use the `-e` or `--exact` option to run a test with a name that exactly matches the provided test filter. The test filter should be a fully qualified test "
 "name, including the package name. For example, instead of specifying just `my_test`, use `package_name::my_test` as the test filter.\n"
@@ -6372,30 +6336,26 @@ msgstr ""
 "- `-x`, `--exit-first`：通过使用 ` -x` 或 `--exit-first` 选项，可以在第一次测试失败后停止执行测试。"
 
 #: src/ch02-11-foundry-forge.md:218
-#, fuzzy
 msgid "### Package Selection"
-msgstr "### 包裹选择"
+msgstr "### 包选择"
 
 #: src/ch02-11-foundry-forge.md:219
-#, fuzzy
 msgid ""
 "- `-p`, `--package`: The `-p` or `--package` option is used to specify the packages on which to run the `snforge` command. You can either provide a concrete package name (e."
 "g., foobar) or use a prefix glob (e.g., foo*) to match multiple packages.\n"
 "\n"
 "- `-w`, `--workspace`: Use the `-w` or `--workspace` option to run tests for all packages in the workspace."
 msgstr ""
-"- `-p`, `--package`：p \"或\"--package \"选项用于指定运行 `snforge` 命令的软件包。你可以提供一个具体的软件包名称（例如，foobar），或者使用前缀 glob（例如，foo*）来匹配多个软"
+"- `-p`, `--package`：`-p`或\"--package \"选项用于指定运行 `snforge` 命令的软件包。你可以提供一个具体的软件包名称（例如，foobar），或者使用前缀 glob（例如，foo*）来匹配多个软"
 "件包。\n"
 "\n"
 "- w\"、\"--workspace\"：使用 `-w` 或 `--workspace` 选项可运行工作区中所有软件包的测试。"
 
 #: src/ch02-11-foundry-forge.md:223
-#, fuzzy
 msgid "### Fuzzer Configuration"
 msgstr "### Fuzzer 配置"
 
 #: src/ch02-11-foundry-forge.md:224
-#, fuzzy
 msgid ""
 "- `-r`, `--fuzzer-runs` <FUZZER_RUNS>: Specify the number of fuzzer runs using the `-r` or `--fuzzer-runs` option, followed by the desired number of runs <FUZZER_RUNS>.\n"
 "\n"
@@ -6406,22 +6366,18 @@ msgstr ""
 "- `-s`, `--fuzzer-seed` <FUZZER_SEED>：使用`-s`或`-fuzzer-seed`选项设置模糊器的种子值，后面跟所需的种子值<FUZZER_SEED>。"
 
 #: src/ch02-11-foundry-forge.md:228
-#, fuzzy
 msgid "### Cache Management"
 msgstr "### 缓存管理"
 
 #: src/ch02-11-foundry-forge.md:229
-#, fuzzy
 msgid "- `-c`, `--clean-cache`: To clean the `snforge` cache directory, simply use the `-c` or `--clean-cache` option."
 msgstr "- `-c`、`--clean-cache`：要清理 `snforge` 缓存目录，只需使用 `-c` 或 `--clean-cache` 选项。"
 
 #: src/ch02-11-foundry-forge.md:231
-#, fuzzy
 msgid "### Help and Version Information"
 msgstr "#### 帮助和版本信息"
 
 #: src/ch02-11-foundry-forge.md:232
-#, fuzzy
 msgid ""
 "- `-h`,` --help`: Use the `-h` or `--help` option to print the help information, providing guidance on how to use `snforge`.\n"
 "\n"
@@ -6432,41 +6388,33 @@ msgstr ""
 "- `-V`, `--version`：要显示 `snforge` 的当前版本，使用 `-V` 或 `--version` 选项。"
 
 #: src/ch02-11-foundry-forge.md:236
-#, fuzzy
 msgid "Note: Replace <NAME>, <FUZZER_RUNS>, and <FUZZER_SEED> with your specific values when using the `snforge` command."
 msgstr "注意：在使用 `snforge` 命令时，请将<NAME> 、<FUZZER_RUNS> 和<FUZZER_SEED> 替换为您的特定值。"
 
 #: src/ch02-12-foundry-cast.md:1
-#, fuzzy
 msgid "# Foundry Cast: Starknet CLI Interaction"
 msgstr "# Foundry Cast：Starknet CLI 交互"
 
 #: src/ch02-12-foundry-cast.md:3
-#, fuzzy
 msgid ""
 "Cast provides the Command Line Interface (CLI) for starknet, while Forge addresses testing. Written in Rust, Cast utilizes starknet Rust and integrates with Scarb. This "
 "integration allows for argument specification in `Scarb.toml`, streamlining the process."
 msgstr ""
-"Cast 为 starknet 提供命令行界面（CLI），而 Forge 则负责测试。Cast 采用 Rust 编写，利用 starknet Rust 并与 Scarb 集成。这种集成允许在 \"Scarb.toml \"中指定参数，从而简化了流"
-"程。"
+"Cast 为 starknet 提供命令行界面（CLI），而 Forge 则负责测试。Cast 采用 Rust 编写，利用 starknet Rust 并与 Scarb 集成。这种集成允许在 `Scarb.toml`中指定参数，从而简化了流程。"
 
 #: src/ch02-12-foundry-cast.md:5
-#, fuzzy
 msgid "`sncast` simplifies interaction with smart contracts, reducing the number of necessary commands compared to using `starkli` alone."
 msgstr "与单独使用 `starkli` 相比，`sncast` 简化了与智能合约的交互，减少了必要命令的数量。"
 
 #: src/ch02-12-foundry-cast.md:7
-#, fuzzy
 msgid "In this section, we'll delve into `sncast`."
 msgstr "在本节中，我们将深入研究 `sncast`。"
 
 #: src/ch02-12-foundry-cast.md:9
-#, fuzzy
 msgid "## Step 1: Sample Smart Contract"
-msgstr "## 步骤 1：智能合约样本"
+msgstr "## 步骤 1：示例智能合约"
 
 #: src/ch02-12-foundry-cast.md:11
-#, fuzzy
 msgid "The following code sample is sourced from `starknet foundry`. You can find the original [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html)."
 msgstr "以下代码示例来自 `starknet foundry`。您可以在 [此处](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html) 找到原文。"
 
@@ -6501,12 +6449,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:40
-#, fuzzy
 msgid "Before interacting with this sample smart contract, it's crucial to test its functionality using **`snforge`** to ensure its integrity."
 msgstr "在与此示例智能合约交互之前，使用 **`snforge`** 测试其功能以确保其完整性至关重要。"
 
 #: src/ch02-12-foundry-cast.md:42
-#, fuzzy
 msgid "Here are the associated tests:"
 msgstr "以下是相关测试："
 
@@ -6544,17 +6490,14 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:74
-#, fuzzy
 msgid "If needed, copy the provided code snippets into the `lib.cairo` file of your new scarb project."
-msgstr "如有需要，将提供的代码片段复制到新 scarb 项目的 \"lib.cairo \"文件中。"
+msgstr "如有需要，将提供的代码片段复制到新 scarb 项目的 `lib.cairo`文件中。"
 
 #: src/ch02-12-foundry-cast.md:76
-#, fuzzy
 msgid "To execute tests, follow the steps below:"
 msgstr "执行测试的步骤如下："
 
 #: src/ch02-12-foundry-cast.md:78
-#, fuzzy
 msgid ""
 "1. Ensure `snforge` is listed as a dependency in your `Scarb.toml` file, positioned beneath the `starknet` dependency. Your dependencies section should appear as (make sure "
 "to use the latest version of `snforge` and `starknet`):"
@@ -6569,7 +6512,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:85
-#, fuzzy
 msgid "2. Run the command:"
 msgstr "2.运行命令："
 
@@ -6581,18 +6523,15 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:91
-#, fuzzy
 msgid ""
 "Note: Use `snforge` for testing instead of the `scarb test` command. The tests are set up to utilize functions from `snforge_std`. Running `scarb test` would cause errors."
 msgstr "注意: 测试时使用 `snforge` 而不是 `scarb test` 命令。测试将使用 `snforge_std` 中的函数。运行 `scarb test` 会导致错误。"
 
 #: src/ch02-12-foundry-cast.md:93
-#, fuzzy
 msgid "## Step 2: Setting Up Starknet Devnet"
 msgstr "## 第 2 步：设置Starknet Devnet"
 
 #: src/ch02-12-foundry-cast.md:95
-#, fuzzy
 msgid ""
 "For this guide, the focus is on using `starknet-devnet`. If you've been using `katana`, please be cautious as there might be inconsistencies. If you haven't configured "
 "`devnet`, consider following this [guide](https://livesoftwaredeveloper.com/articles/9/how-to-set-up-starknet-devnet-and-frontend-for-smart-contract-development) for a quick "
@@ -6602,7 +6541,6 @@ msgstr ""
 "livesoftwaredeveloper.com/articles/9/how-to-set-up-starknet-devnet-and-frontend-for-smart-contract-development)进行快速设置。"
 
 #: src/ch02-12-foundry-cast.md:97
-#, fuzzy
 msgid "To launch `starknet devnet`, use the command:"
 msgstr "要启动 `starknet devnet`，请使用以下命令："
 
@@ -6614,7 +6552,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:103
-#, fuzzy
 msgid "Upon successful startup, you should receive a response similar to:"
 msgstr "启动成功后，您应该会收到类似的回复："
 
@@ -6638,27 +6575,22 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:121
-#, fuzzy
 msgid "(Note: The abbreviated ... is just a placeholder for the detailed response. In your actual output, you'll see the full details.)"
-msgstr "(注意：缩写的...只是详细回复的占位符。在实际输出中，您将看到完整的详细信息）。"
+msgstr "(注意：缩写的...只是详细回复的占位符。在实际输出中，您将看到完整的详细信息。）"
 
 #: src/ch02-12-foundry-cast.md:123
-#, fuzzy
 msgid "Now, you have written a smart contract, tested it, and successfully initiated starknet devnet."
 msgstr "现在，您已经编写了一份智能合约，对其进行了测试，并成功启动了Starknet Devnet。"
 
 #: src/ch02-12-foundry-cast.md:125
-#, fuzzy
 msgid "## Dive into `sncast`"
-msgstr "## 潜入 `sncast` 中"
+msgstr "## 深入 `sncast`"
 
 #: src/ch02-12-foundry-cast.md:127
-#, fuzzy
 msgid "Let's unpack **`sncast`**."
 msgstr "让我们来解读**`sncast`**。"
 
 #: src/ch02-12-foundry-cast.md:129
-#, fuzzy
 msgid "As a multifunctional tool, the quickest way to discover its capabilities is via the command:"
 msgstr "作为一款多功能工具，了解其功能的最快方法就是通过命令："
 
@@ -6670,19 +6602,16 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:135
-#, fuzzy
 msgid "In the output, you'll notice distinct categories: `commands` and `options`. Each option offers both a concise (`short`) and a descriptive (`long`) variant."
-msgstr "在输出中，你会注意到不同的类别：命令 \"和 \"选项\"。每个选项都有简短（\"短\"）和描述性（\"长\"）两种版本。"
+msgstr "在输出中，你会注意到不同的类别：`commands` 和 `options`。每个选项都有简短(`short`) 和描述性(`long`)两种版本。"
 
 #: src/ch02-12-foundry-cast.md:137
-#, fuzzy
 msgid "> Tip: While both option variants are useful, we'll prioritize the long form in this guide. This choice aids clarity, especially when constructing intricate commands."
 msgstr "> 提示：虽然两种选项变体都很有用，但在本指南中我们将优先使用长格式。这种选择有助于提高清晰度，尤其是在编写复杂的命令时。"
 
 #: src/ch02-12-foundry-cast.md:139
-#, fuzzy
 msgid "Delving deeper, to understand specific commands such as **`account`**, you can run:"
-msgstr "要深入了解**`account`**等特定命令，可以运行"
+msgstr "要深入了解**`account`**等特定命令，可以运行："
 
 #: src/ch02-12-foundry-cast.md:141
 msgid ""
@@ -6692,9 +6621,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:145
-#, fuzzy
 msgid "Each account subcommand like `add`, `create`, and `deploy` can be further explored. For instance:"
-msgstr "每个账户子命令，如 \"添加\"、\"创建 \"和 \"部署\"，都可以进一步探索。例如"
+msgstr "每个账户子命令，如 `add`, `create`, 和 `deploy` ，都可以进一步探索。例如："
 
 #: src/ch02-12-foundry-cast.md:147
 msgid ""
@@ -6704,38 +6632,34 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:151
-#, fuzzy
 msgid ""
 "The layered structure of `sncast` provides a wealth of information right at your fingertips. It's like having dynamic documentation. Make it a habit to explore, and you'll "
 "always stay informed."
-msgstr "sncast \"的分层结构为您提供了丰富的信息。这就像拥有动态文档一样。养成探索的习惯，您就能始终掌握最新信息。"
+msgstr "`sncast` 的分层结构为您提供了丰富的信息。这就像拥有动态文档一样。养成探索的习惯，您就能始终掌握最新信息。"
 
 #: src/ch02-12-foundry-cast.md:153
-#, fuzzy
 msgid "## Step 3: Using `sncast` for Account Management"
 msgstr "## 第 3 步：使用 `sncast` 进行账户管理"
 
 #: src/ch02-12-foundry-cast.md:155
-#, fuzzy
 msgid "Let's delve into how to use `sncast` for interacting with the contract."
 msgstr "让我们深入了解如何使用 `sncast` 与合约交互。"
 
 #: src/ch02-12-foundry-cast.md:157
-#, fuzzy
 msgid ""
 "By default, `starknet devnet` offers several `predeployed accounts`. These are accounts already registered with the node, loaded with test tokens (for gas fees and various "
 "transactions). Developers can use them directly with any `contract` on the `local node` (i.e., starknet devnet)."
-msgstr "默认情况下，\"starknet devnet \"提供多个 \"预部署账户\"。这些账户已经在节点上注册，并装载了测试代币（用于燃气费和各种交易）。开发者可以直接在本地节点上使用它们。"
+msgstr ""
+"默认情况下，`starknet devnet`提供多个 `predeployed accounts`（预部署账户）。这些账户已经在节点上注册，并装载了测试代币（用于gas和各种交易）。开发者可以直接在本地节点上使用它"
+"们。"
 
 #: src/ch02-12-foundry-cast.md:159
-#, fuzzy
 msgid "### How to Utilize Predeployed Accounts"
 msgstr "### 如何利用预先部署的账户"
 
 #: src/ch02-12-foundry-cast.md:161
-#, fuzzy
 msgid "To employ a predeployed account with the smart contract, execute the `account add` command as shown below:"
-msgstr "要在智能合约中使用预先部署的账户，请执行 \"账户添加 \"命令，如下所示："
+msgstr "要在智能合约中使用预先部署的账户，请执行`account add`命令，如下所示："
 
 #: src/ch02-12-foundry-cast.md:163
 msgid ""
@@ -6745,7 +6669,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:167
-#, fuzzy
 msgid ""
 "Although several options can accompany the `add` command (e.g., `--name, --address, --class-hash, --deployed, --private-key, --public-key, --salt, --add-profile`), we'll "
 "focus on a select few for this illustration."
@@ -6754,7 +6677,6 @@ msgstr ""
 "选项。"
 
 #: src/ch02-12-foundry-cast.md:169
-#, fuzzy
 msgid "Choose an account from the **`starknet-devnet`**, for demonstration, we'll select account **`#0`**, and execute:"
 msgstr "从**`starknet-devnet`**中选择一个账户，作为演示，我们将选择账户**`#0`**，然后执行："
 
@@ -6766,12 +6688,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:175
-#, fuzzy
 msgid "Points to remember:"
-msgstr "需要记住的要点"
+msgstr "需要记住的要点："
 
 #: src/ch02-12-foundry-cast.md:177
-#, fuzzy
 msgid ""
 "1. **`-name`** - Mandatory field.\n"
 "2. **`-address`** - Necessary account address.\n"
@@ -6786,27 +6706,22 @@ msgstr ""
 "易。"
 
 #: src/ch02-12-foundry-cast.md:182
-#, fuzzy
 msgid "Now that we have familiarized ourselves with using a predeployed account, let's proceed to adding a new account."
 msgstr "现在，我们已经熟悉了如何使用预先部署的账户，让我们继续添加一个新账户。"
 
 #: src/ch02-12-foundry-cast.md:184
-#, fuzzy
 msgid "### Creating and Deploying a New Account to Starknet Devnet"
 msgstr "### 在Starknet Devnet 创建和部署新账户"
 
 #: src/ch02-12-foundry-cast.md:186
-#, fuzzy
 msgid "Creating a new account involves a few more steps than using an existing one, but it's straightforward when broken down. Here are the steps:"
-msgstr "创建新账户要比使用现有账户多几个步骤，但细分起来也很简单。具体步骤如下"
+msgstr "创建新账户要比使用现有账户多几个步骤，但细分起来也很简单。具体步骤如下："
 
 #: src/ch02-12-foundry-cast.md:188
-#, fuzzy
 msgid "1. Account Creation"
 msgstr "1.创建账户"
 
 #: src/ch02-12-foundry-cast.md:190
-#, fuzzy
 msgid "To create a new account, use (you can use `sncast account create --help` to see the available options):"
 msgstr "要创建新账户，请使用（可以使用 `sncast account create --help` 查看可用选项）："
 
@@ -6818,10 +6733,9 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:196
-#, fuzzy
 msgid ""
 "Wondering where the `--class-hash` comes from? It's visible in the output from the `starknet-devnet` command under the Predeclared Starknet CLI account section. For example:"
-msgstr "想知道 `--class-hash` 从何而来？在预设 Starknet CLI 账户部分的 `starknet-devnet` 命令输出中可以看到它。例如"
+msgstr "想知道 `--class-hash` 从何而来？在预设 Starknet CLI 账户部分的 `starknet-devnet` 命令输出中可以看到它。例如："
 
 #: src/ch02-12-foundry-cast.md:198
 msgid ""
@@ -6832,12 +6746,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:203
-#, fuzzy
 msgid "2. Funding the Account"
 msgstr "2.为账户提供资金"
 
 #: src/ch02-12-foundry-cast.md:205
-#, fuzzy
 msgid "To fund the new account, replace the address in the following command with your new one:"
 msgstr "要为新账户注资，请将以下命令中的地址替换为新地址："
 
@@ -6849,12 +6761,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:211
-#, fuzzy
 msgid "Note: The **amount** is specified in the previous command's output."
-msgstr "注意：**金额**已在上一条命令的输出中指定。"
+msgstr "注意：**amount**已在上一条命令的输出中指定。"
 
 #: src/ch02-12-foundry-cast.md:213
-#, fuzzy
 msgid "A successful fund addition will return:"
 msgstr "成功增资后将返回："
 
@@ -6866,12 +6776,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:219
-#, fuzzy
 msgid "3. Account Deployment"
 msgstr "3.账户部署"
 
 #: src/ch02-12-foundry-cast.md:221
-#, fuzzy
 msgid "Deploy the account to the **`starknet devnet`** local node to register it with the chain:"
 msgstr "将账户部署到 **`starknet devnet`** 本地节点，以便在链上注册："
 
@@ -6883,17 +6791,14 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:227
-#, fuzzy
 msgid "A successful deployment provides a transaction hash. If it doesn't work, revisit your previous steps."
 msgstr "成功部署会提供一个事务哈希值。如果不成功，请重新检查之前的步骤。"
 
 #: src/ch02-12-foundry-cast.md:229
-#, fuzzy
 msgid "4. Setting a Default Profile"
 msgstr "4.设置默认配置文件"
 
 #: src/ch02-12-foundry-cast.md:231
-#, fuzzy
 msgid ""
 "You can define a default profile for your **`sncast`** actions. To set one, edit the **`Scarb.toml`** file. To make the **`new_account`** the default profile, find the "
 "section **`[tool.sncast.new_account]`** and change it to **`[tool.sncast]`**. This means **`sncast`** will default to using this profile unless instructed otherwise."
@@ -6902,19 +6807,16 @@ msgstr ""
 "其更改为**`[tool.sncast]`**。这意味着除非另有指示，**`sncast`** 将默认使用此配置文件。"
 
 #: src/ch02-12-foundry-cast.md:233
-#, fuzzy
 msgid "## Step 4: Declaring and Deploying our Contract"
 msgstr "## 第 4 步：声明和部署我们的合约"
 
 #: src/ch02-12-foundry-cast.md:235
-#, fuzzy
 msgid "By now, we've arrived at the crucial step of using `sncast` to declare and deploy our smart contracts."
 msgstr "现在，我们已经到了使用 `sncast` 来声明和部署智能合约的关键步骤。"
 
 #: src/ch02-12-foundry-cast.md:237
-#, fuzzy
 msgid "### Declaring the Contract"
-msgstr "声明您的合约"
+msgstr "### 声明合约"
 
 #: src/ch02-12-foundry-cast.md:239
 #, fuzzy
@@ -6922,14 +6824,12 @@ msgid "Recall that we drafted and tested the contract in **Step 1**. Here, we'll
 msgstr "回顾一下，我们在**步骤 1** 中起草并测试了合约。在这里，我们将重点关注两个操作：构建和声明。"
 
 #: src/ch02-12-foundry-cast.md:241
-#, fuzzy
 msgid "1. **Building the Contract**"
-msgstr "1. **建立合约**"
+msgstr "1. **编译合约**"
 
 #: src/ch02-12-foundry-cast.md:243
-#, fuzzy
 msgid "Execute the following to build the contract:"
-msgstr "执行以下操作以签订合约："
+msgstr "执行以下操作以编译合约："
 
 #: src/ch02-12-foundry-cast.md:245
 msgid ""
@@ -6939,19 +6839,16 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:249
-#, fuzzy
 msgid ""
 "If you've successfully run tests using **`snforge`**, the **`scarb build`** should operate without issues. After the build completes, a new **`target`** folder will appear "
 "at the root of your project."
 msgstr "如果您已成功使用**`snforge`**进行了测试，那么**`scarb build`**应该可以顺利运行。构建完成后，项目根目录下会出现一个新的 **`target`** 文件夹。"
 
 #: src/ch02-12-foundry-cast.md:251
-#, fuzzy
 msgid "Within the **`target`** folder, you'll find a **`dev`** sub-folder containing three files: **`*.casm.json`**, **`*.sierra.json`**, and **`*.starknet_artifacts.json`**."
 msgstr "在**`target`**文件夹中，你会发现一个**`dev`**子文件夹，其中包含三个文件： ***`*.casm.json`**、**`*.sierra.json`**和**`*.starknet_artifacts.json`**。"
 
 #: src/ch02-12-foundry-cast.md:253
-#, fuzzy
 msgid ""
 "If these files aren't present, it's likely due to missing configurations in your **`Scarb.toml`** file. To address this, append the following lines after **`dependencies`**:"
 msgstr "如果没有这些文件，很可能是由于**`Scarb.toml`**文件中缺少配置。要解决这个问题，请在 **`dependencies`** 后添加以下几行："
@@ -6966,19 +6863,16 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:261
-#, fuzzy
 msgid "These lines instruct the compiler to produce both `sierra` and `casm` outputs."
 msgstr "这些行指示编译器同时生成 `sierra` 和 `casm` 输出。"
 
 #: src/ch02-12-foundry-cast.md:263
-#, fuzzy
 msgid "2. Declaring the Contract"
-msgstr "2.宣布合约"
+msgstr "2.声明合约"
 
 #: src/ch02-12-foundry-cast.md:265
-#, fuzzy
 msgid "We will use the `sncast declare` command to declare the contract. Here's the format:"
-msgstr "我们将使用 `sncast declare` 命令来声明合约。格式如下"
+msgstr "我们将使用 `sncast declare` 命令来声明合约。格式如下："
 
 #: src/ch02-12-foundry-cast.md:267
 msgid ""
@@ -6988,23 +6882,17 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:271
-#, fuzzy
 msgid "Given this, the correct command would be:"
-msgstr "因此，正确的指令应该是"
+msgstr "因此，正确的指令应该是："
 
 #: src/ch02-12-foundry-cast.md:273
-#, fuzzy
 msgid ""
 "```\n"
 "sncast --profile account1 declare --contract-name HelloStarknet\n"
 "```"
 msgstr ""
-"```\n"
-"sncast --profile account1 declare --contract-name HelloStarknet\n"
-"```"
 
 #: src/ch02-12-foundry-cast.md:277
-#, fuzzy
 msgid ""
 "Note that we've omitted the **`--url`** option. Why? When using **`--profile`**, as seen here with **`account1`**, it's not necessary. Remember, earlier in this guide, we "
 "discussed adding and creating new accounts. You can use either **`account1`** or **`new_account`** and achieve the desired result."
@@ -7013,7 +6901,6 @@ msgstr ""
 "以使用**`account1`**或**`new_account`**来达到预期效果。"
 
 #: src/ch02-12-foundry-cast.md:279
-#, fuzzy
 msgid ""
 "> Hint: You can define a default profile for sncast actions. Modify the `Scarb.toml` file to set a default. For example, to make `new_account` the default, find `[tool."
 "sncast.new_account]` and change it to `[tool.sncast]`. Then, there's no need to specify the profile for each call, simplifying your command to:"
@@ -7029,9 +6916,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:285
-#, fuzzy
 msgid "The output will resemble:"
-msgstr "输出结果类似于"
+msgstr "输出结果类似于："
 
 #: src/ch02-12-foundry-cast.md:287
 msgid ""
@@ -7043,28 +6929,24 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:293
-#, fuzzy
 msgid "Make sure to note the \\*\\*`class hash` as it will be essential in the subsequent step."
-msgstr "请务必记下 \\*\\`class hash`，因为它在后续步骤中至关重要。"
+msgstr "请务必记下 \\*\\*`class hash`，因为它在后续步骤中至关重要。"
 
 #: src/ch02-12-foundry-cast.md:295
-#, fuzzy
 msgid ""
 "> Note: If you encounter an error stating Class hash already declared, simply move to the next step. Redeclaring an already-declared contract isn't permissible. Use the "
 "mentioned class hash for deployment."
-msgstr "> 注意：如果遇到 \"类 hash 已声明 \"的错误提示，请直接进入下一步。不允许重新声明已声明的合约。请使用上述类散列进行部署。"
+msgstr "> 注意：如果遇到 \"Class hash already declared \"的错误提示，请直接进入下一步。不允许重新声明已声明的合约。请使用上述类散列进行部署。"
 
 #: src/ch02-12-foundry-cast.md:297
-#, fuzzy
 msgid "### Deploying the Contract"
 msgstr "### 部署合约"
 
 #: src/ch02-12-foundry-cast.md:299
-#, fuzzy
 msgid ""
 "With the contract successfully declared and a `class hash` obtained, we're ready to proceed to contract deployment. This step is straightforward. Replace `<class-hash>` in "
 "the command below with your obtained class hash:"
-msgstr "成功声明了合约并获得了 \"类 hash \"后，我们就可以开始部署合约了。这一步很简单。将下面命令中的 `<class-hash>` 替换为获得的类散列："
+msgstr "成功声明了合约并获得了 `class hash`后，我们就可以开始部署合约了。这一步很简单。将下面命令中的 `<class-hash>` 替换为获得的类散列："
 
 #: src/ch02-12-foundry-cast.md:301
 msgid ""
@@ -7074,9 +6956,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:305
-#, fuzzy
 msgid "Executing this will likely yield:"
-msgstr "这样做的结果可能是"
+msgstr "这样做的结果可能是："
 
 #: src/ch02-12-foundry-cast.md:307
 msgid ""
@@ -7088,47 +6969,39 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:313
-#, fuzzy
 msgid "However, you may encounter some issues, such as:"
-msgstr "不过，您可能会遇到一些问题，例如"
+msgstr "不过，您可能会遇到一些问题，例如："
 
 #: src/ch02-12-foundry-cast.md:315
-#, fuzzy
 msgid "**Error: RPC url not passed nor found in Scarb.toml**. This indicates the absence of a default profile in the **`Scarb.toml`** file. To remedy this:"
-msgstr "**错误：在 Scarb.toml 中未传递也未找到 RPC url**。这表明 **`Scarb.toml`** 文件中没有默认配置文件。要解决这个问题"
+msgstr "**Error: RPC url not passed nor found in Scarb.toml**。这表明 **`Scarb.toml`** 文件中没有默认配置文件。要解决这个问题："
 
 #: src/ch02-12-foundry-cast.md:317
-#, fuzzy
 msgid ""
 "- Add the **`-profile`** option, followed by the desired profile name, as per the ones you've established.\n"
 "- Alternatively, set a default profile as previously discussed in the \"Declaring the Contract\" section under \"Hint\" or as detailed in the \"Adding, Creating, and "
 "Deploying Account\" subsection."
 msgstr ""
 "- 添加**`-profile`***选项，之后是所需的配置文件名称，与已建立的配置文件名称一致。\n"
-"- 或者，按照之前在 \"提示 \"下的 \"声明合约 \"一节中讨论的方法或 \"添加、创建和部署账户 \"小节中的详细说明，设置默认配置文件。"
+"- 或者，按照之前在 \"Hint \"下的 \"声明合约 \"一节中讨论的方法或 \"添加、创建和部署账户 \"小节中的详细说明，设置默认配置文件。"
 
 #: src/ch02-12-foundry-cast.md:320
-#, fuzzy
 msgid "You've successfully deployed your contract with `sncast`! Now, let's explore how to interact with it."
 msgstr "您已经成功地用 `sncast` 部署了您的合约！现在，让我们来探讨一下如何与之交互。"
 
 #: src/ch02-12-foundry-cast.md:322
-#, fuzzy
 msgid "## Interacting with the Contract"
 msgstr "## 与合约交互"
 
 #: src/ch02-12-foundry-cast.md:324
-#, fuzzy
 msgid "This section explains how to read and write information to the contract."
 msgstr "本节介绍如何读取和写入合约信息。"
 
 #: src/ch02-12-foundry-cast.md:326
-#, fuzzy
 msgid "### Invoking Contract Functions"
 msgstr "### 调用合约函数"
 
 #: src/ch02-12-foundry-cast.md:328
-#, fuzzy
 msgid "To write to the contract, invoke its functions. Here's a basic overview of the command:"
 msgstr "要写入合约，请调用其函数。下面是该命令的基本概述："
 
@@ -7147,11 +7020,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:341
-#, fuzzy
 msgid ""
 "To demonstrate, let's invoke the `increase_balance` method of our smart contract with a preset default profile. Not every option is always necessary; for instance, "
 "sometimes, including the `--max-fee` might be essential."
-msgstr "为了演示，让我们调用智能合约的 \"increase_balance \"方法，并预设一个默认配置文件。并非每个选项都是必要的；例如，有时可能必须包含\"-max-fee\"。"
+msgstr "为了演示，让我们调用智能合约的 `increase_balance`方法，并预设一个默认配置文件。并非每个选项都是必要的；例如，有时可能必须包含\"-max-fee\"。"
 
 #: src/ch02-12-foundry-cast.md:343
 msgid ""
@@ -7161,7 +7033,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:347
-#, fuzzy
 msgid "If successful, you'll receive a transaction hash like this:"
 msgstr "如果成功，您将收到这样的交易哈希值："
 
@@ -7174,14 +7045,12 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:354
-#, fuzzy
 msgid "### Reading from the Contract"
-msgstr "### 阅读合约"
+msgstr "### 从合约读取数据"
 
 #: src/ch02-12-foundry-cast.md:356
-#, fuzzy
 msgid "To retrieve data from the contract, use the `sncast call` command. Here's how it works:"
-msgstr "要从合约中获取数据，请使用 `sncast call` 命令。具体操作如下"
+msgstr "要从合约中获取数据，请使用 `sncast call` 命令。具体操作如下："
 
 #: src/ch02-12-foundry-cast.md:358
 msgid ""
@@ -7191,9 +7060,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:362
-#, fuzzy
 msgid "Executing the command displays:"
-msgstr "执行命令后会显示"
+msgstr "执行命令后会显示："
 
 #: src/ch02-12-foundry-cast.md:364
 msgid ""
@@ -7222,14 +7090,12 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:381
-#, fuzzy
 msgid "While not all options are used in the example, you might need to include options like `--calldata`, specifying it as a list or array."
 msgstr "虽然示例中并未使用所有选项，但您可能需要包含类似 `--calldata` 这样的选项，并将其指定为列表或数组。"
 
 #: src/ch02-12-foundry-cast.md:383
-#, fuzzy
 msgid "A successful call returns:"
-msgstr "呼叫成功返回："
+msgstr "调用成功返回："
 
 #: src/ch02-12-foundry-cast.md:385
 msgid ""
@@ -7240,22 +7106,18 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:390
-#, fuzzy
 msgid "This indicates successful read and write operations on the contract."
 msgstr "这表示对合约的读写操作成功。"
 
 #: src/ch02-12-foundry-cast.md:392
-#, fuzzy
 msgid "### sncast Multicall Guide"
-msgstr "### sncast 多方通话指南"
+msgstr "### sncast 多重调用指南"
 
 #: src/ch02-12-foundry-cast.md:394
-#, fuzzy
 msgid "Use `sncast multicall` to simultaneously read and write to the contract. Let's explore how to effectively use this feature."
-msgstr "使用 \"sncast multicall \"可同时读写合约。让我们来探讨如何有效使用这一功能。"
+msgstr "使用 `sncast multicall`可同时读写合约。让我们来探讨如何有效使用这一功能。"
 
 #: src/ch02-12-foundry-cast.md:396
-#, fuzzy
 msgid "First, understand its basic usage:"
 msgstr "首先，了解其基本用法："
 
@@ -7267,9 +7129,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:402
-#, fuzzy
 msgid "This command displays:"
-msgstr "该命令将显示"
+msgstr "该命令将显示："
 
 #: src/ch02-12-foundry-cast.md:404
 msgid ""
@@ -7289,7 +7150,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:418
-#, fuzzy
 msgid "To delve deeper, initiate the `new` subcommand:"
 msgstr "要深入研究，请执行 `new` 子命令："
 
@@ -7308,7 +7168,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:431
-#, fuzzy
 msgid "Generate a template called `call1.toml`:"
 msgstr "生成名为 `call1.toml` 的模板："
 
@@ -7320,7 +7179,6 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:437
-#, fuzzy
 msgid "This provides a basic template:"
 msgstr "这提供了一个基本模板："
 
@@ -7343,9 +7201,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:454
-#, fuzzy
 msgid "Modify `call1.toml` to:"
-msgstr "修改 `call1.toml` 为"
+msgstr "修改 `call1.toml` 为："
 
 #: src/ch02-12-foundry-cast.md:456
 msgid ""
@@ -7365,19 +7222,16 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:470
-#, fuzzy
 msgid "In multicalls, only `deploy` and `invoke` actions are allowed. For a detailed guide on these, refer to the earlier section."
-msgstr "在多节点中，只允许执行 \"部署 \"和 \"调用 \"操作。有关这些操作的详细指南，请参阅前面的章节。"
+msgstr "在多重调用中，只允许执行`deploy` 和 `invoke`操作。有关这些操作的详细指南，请参阅前面的章节。"
 
 #: src/ch02-12-foundry-cast.md:472
-#, fuzzy
 msgid "> Note: Ensure inputs are in hexadecimal format. Strings work normally, but numbers require this format for accurate results."
 msgstr "> 注意：确保输入为十六进制格式。字符串可以正常工作，但数字需要这种格式才能获得准确结果。"
 
 #: src/ch02-12-foundry-cast.md:474
-#, fuzzy
 msgid "To execute the multicall, use:"
-msgstr "要执行多路调用，请使用"
+msgstr "要执行多重调用，请使用："
 
 #: src/ch02-12-foundry-cast.md:476
 msgid ""
@@ -7387,9 +7241,8 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:480
-#, fuzzy
 msgid "Upon success:"
-msgstr "成功后"
+msgstr "成功后："
 
 #: src/ch02-12-foundry-cast.md:482
 msgid ""
@@ -7400,14 +7253,12 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:487
-#, fuzzy
 msgid "Check the balance:"
 msgstr "检查余额："
 
 #: src/ch02-12-foundry-cast.md:493
-#, fuzzy
 msgid "The response:"
-msgstr "答复是"
+msgstr "返回是："
 
 #: src/ch02-12-foundry-cast.md:495
 msgid ""
@@ -7418,47 +7269,39 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-foundry-cast.md:500
-#, fuzzy
 msgid "The expected balance, `0x9`, is confirmed."
-msgstr "预期余额 `0x9` 得到确认。"
+msgstr "我们确认了余额 `0x9`是我们所预期的 。"
 
 #: src/ch02-12-foundry-cast.md:504
-#, fuzzy
 msgid ""
 "This guide detailed the use of `sncast`, a robust command-line tool tailored for starknet smart contracts. Its purpose is to make interactions with starknet's smart "
 "contracts effortless. Key functionalities include contract deployment, function invocation, and function calling."
 msgstr ""
-"本指南详细介绍了 \"sncast \"的使用，这是一个专为Starknet智能合约定制的强大的命令行工具。其目的是使与 starknet 智能合约的交互变得毫不费力。主要功能包括合约部署、函数调用和函数"
-"调用。"
+"本指南详细介绍了 `sncast`的使用，这是一个专为Starknet智能合约定制的强大的命令行工具。其目的是让与 starknet 智能合约的交互变得非常轻松。主要功能包括合约部署、写函数调用和读函"
+"数调用。"
 
 #: src/ch02-12-01-deployment-script.md:1
-#, fuzzy
 msgid "# Deployment Script Example"
 msgstr "# 部署脚本示例"
 
 #: src/ch02-12-01-deployment-script.md:3
-#, fuzzy
 msgid ""
 "This tutorial explains how to set up a test and deployment environment for smart contracts. The given script initializes accounts, runs tests, and carries out multicalls. "
-msgstr "本教程介绍如何为智能合约建立测试和部署环境。给出的脚本会初始化账户、运行测试并执行多重合约。"
+msgstr "本教程介绍如何为智能合约建立测试和部署环境。给出的脚本会初始化账户、运行测试并执行多重调用。"
 
 #: src/ch02-12-01-deployment-script.md:5
-#, fuzzy
 msgid "Disclaimer: This is an example. Use it as a foundation for your own work, adjusting as needed."
 msgstr "免责声明：这只是一个示例。请以此为基础，根据需要进行调整。"
 
 #: src/ch02-12-01-deployment-script.md:7 src/ch03-04-nodes.md:68
-#, fuzzy
 msgid "## Setup"
-msgstr "0. 设置"
+msgstr "## 设置"
 
 #: src/ch02-12-01-deployment-script.md:9
-#, fuzzy
 msgid "### 1. Prepare the Script File"
 msgstr "### 1.准备脚本文件"
 
 #: src/ch02-12-01-deployment-script.md:11
-#, fuzzy
 msgid ""
 "- In your project's root folder, create a file named **`script.sh`**. This will house the script.\n"
 "- Adjust permissions to make the file executable:"
@@ -7474,21 +7317,18 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-01-deployment-script.md:18
-#, fuzzy
 msgid "### 2. Insert the Script"
 msgstr "### 2.插入脚本"
 
 #: src/ch02-12-01-deployment-script.md:20
-#, fuzzy
 msgid "Below is the content for `script.sh`. It adheres to best practices for clarity, error management, and long-term support."
-msgstr "以下是 `script.sh` 的内容。它遵循清晰度、错误管理和长期支持方面的最佳实践。"
+msgstr "以下是 `script.sh` 的内容。它遵循代码清晰度、错误管理和长期支持方面的最佳实践。"
 
 #: src/ch02-12-01-deployment-script.md:22
-#, fuzzy
 msgid ""
 "**Security Note**: Using environment variables is safer than hardcoding private keys in your scripts, but they're still accessible to any process on your machine and could "
 "potentially be leaked in logs or error messages."
-msgstr "**安全提示**：使用环境变量比在脚本中硬编码私钥更安全，但机器上的任何进程仍可访问它们，并有可能在日志或错误信息中泄露。"
+msgstr "**安全提示**：虽然使用环境变量比在脚本中硬编码私钥更安全，但你的电脑上的任何进程仍可访问它们，并有可能在日志或错误信息中泄露出来。"
 
 #: src/ch02-12-01-deployment-script.md:24
 msgid ""
@@ -7623,14 +7463,12 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-01-deployment-script.md:152
-#, fuzzy
 msgid "### 3. Adjust the Bash Path"
 msgstr "### 3.调整 Bash 路径"
 
 #: src/ch02-12-01-deployment-script.md:154
-#, fuzzy
 msgid "The line `#!/usr/bin/env bash` indicates the path to the bash interpreter. If you require a different version or location of bash, determine its path using:"
-msgstr "行 `#!/usr/bin/env bash` 表示 bash 解释器的路径。如果需要不同版本或不同位置的 bash，请使用"
+msgstr "行 `#!/usr/bin/env bash` 表示 bash 解释器的路径。如果需要不同版本或不同位置的 bash，请使用："
 
 #: src/ch02-12-01-deployment-script.md:156
 msgid ""
@@ -7640,19 +7478,14 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-01-deployment-script.md:160
-#, fuzzy
 msgid "Then replace `#!/usr/bin/env` bash in the script with the resulting path, such as `#!/path/to/your/bash`."
 msgstr "然后将脚本中的 `#!/usr/bin/env` bash 替换为生成的路径，如 `#!/path/to/your/bash`。"
 
 #: src/ch02-12-01-deployment-script.md:162
-#, fuzzy
 msgid "## Execution"
-msgstr ""
-"为了验证使用`Felt252Dict<T>`的Cairo程序执行所生成的证明是否正确，我们需要检查字典是否被非法篡改。这是通过一个名为`squash_dict`的方法来完成的，这个方法会审查条目列表中的每一个"
-"条目，并检查字典的访问在整个执行过程中是否保持一致。"
+msgstr "## 执行"
 
 #: src/ch02-12-01-deployment-script.md:164
-#, fuzzy
 msgid "When running the script, you'll need to provide the environment variables `ACCOUNT1_PRIVATE_KEY` and `ACCOUNT2_PRIVATE_KEY`."
 msgstr "运行脚本时，需要提供环境变量 `ACCOUNT1_PRIVATE_KEY` 和 `ACCOUNT2_PRIVATE_KEY`。"
 
@@ -7668,12 +7501,10 @@ msgid ""
 msgstr ""
 
 #: src/ch02-12-01-deployment-script.md:172 src/ch04-04-01-multicaller.md:83
-#, fuzzy
 msgid "## Considerations"
-msgstr "安全考量"
+msgstr "## 考量"
 
 #: src/ch02-12-01-deployment-script.md:174
-#, fuzzy
 msgid ""
 "- The **`set -e`** directive in the script ensures it exits if any command fails, enhancing the reliability of the deployment and testing process.\n"
 "- Always secure private keys and sensitive information. Keep them away from logs and visible outputs.\n"
@@ -7684,9 +7515,8 @@ msgstr ""
 "- 为提高灵活性，可考虑将账户或合约名称等硬编码值转移到配置文件中。这种方法可简化更新和整体管理。"
 
 #: src/ch03-00-architecture.md:1
-#, fuzzy
 msgid "# Architecture"
-msgstr "### 架构"
+msgstr "# 架构"
 
 #: src/ch03-00-architecture.md:3
 #, fuzzy
