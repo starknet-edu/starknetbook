@@ -32,7 +32,6 @@ tree . -L 1
 
 The project structure is as follows:
 
-
 ```shell
 .
 ├── README.md
@@ -114,7 +113,6 @@ Running 3 test(s) from `src/`
 Tests: 3 passed, 0 failed, 0 skipped
 ```
 
-
 ## Basic Example
 
 The example provided below demonstrates how to test a Starknet contract using `snforge`.
@@ -191,16 +189,18 @@ Tests: 1 passed, 0 failed, 0 skipped
 
 ## Diving deep into Smart contract testing with `snforge` command line.
 
-Ideally, there are various way to test your smart contract which may include unit and integration test, fuzz, fork, E2E test, and testing with foundry cheatcodes. In this section, we'll be considering an ERC20 example contract from starknet-js examples, And we'll be taking into consideration unit and integration tests, filtering, foundry cheatcodes and fuzz testing using `snforge` cli. 
+Ideally, there are various way to test your smart contract which may include unit and integration test, fuzz, fork, E2E test, and testing with foundry cheatcodes. In this section, we'll be considering an ERC20 example contract from starknet-js examples, And we'll be taking into consideration unit and integration tests, filtering, foundry cheatcodes and fuzz testing using `snforge` cli.
 
 ## An ERC20 example
 
 After initializing your foundry project, include the below in your `Scarb.toml` in your dependencies:
+
 ```shell
     openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.7.0" }
 ```
 
 Now, Take a look at the erc20 smart contract below:
+
 ```rust
     use starknet::ContractAddress;
     #[starknet::interface]
@@ -245,11 +245,13 @@ mod erc20 {
     }
 }
 ```
+
 It's a basic erc20 contract that allows us to `mint` token to recipient at deployment, check the `balance of` addresses and `transfer` tokens. We are relying on openzeppelin ERC20 library.
 
 ## Test setup
 
 Structure the test file as below and bring in necessary imports as below;
+
 ```rust
     #[cfg(test)]
     mod tests {
@@ -265,7 +267,9 @@ Structure the test file as below and bring in necessary imports as below;
         //rest of the code goes here.
     }
 ```
+
 When writing test cases we need an helper function to deploy an instance of the contract. The helper function will take in two arguments i.e the `supply` amount and the `recipient` address as below;
+
 ```rust
     // ...
     use snforge_std::{declare, ContractClassTrait};
@@ -280,11 +284,13 @@ When writing test cases we need an helper function to deploy an instance of the 
 }
     //...rest for the code
 ```
+
 We then import the `declare` and `ContractClassTrait` from `snforge_std`, after which we initialize the arguments(`supply`,`recipient`), declare the contract, compute the calldata and deploy.
 
 ## Writing the Test cases
 
 Firstly, we need to test deployment helper function and the balance of the recipient to confirm mint value as below;
+
 ```rust
     // ...
     use erc20_contract::erc20::Ierc20SafeDispatcher;
@@ -292,7 +298,7 @@ Firstly, we need to test deployment helper function and the balance of the recip
 
     #[test]
     #[available_gas(3000000000000000)]
-    fn test_balance_of() {  
+    fn test_balance_of() {
         let contract_address = deploy_contract('erc20');
         let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
         let recipient = starknet::contract_address_const::<0x01>();
@@ -300,7 +306,9 @@ Firstly, we need to test deployment helper function and the balance of the recip
         assert (balance == 20000000, 'Invalid Balance');
     }
 ```
+
 Run `snforge` you should get this output:
+
 ```shell
     snforge
 
@@ -324,11 +332,11 @@ What are cheat codes? they are basically helper functions exposed by `snforge_st
     fn test_transfer() {
     let contract_address = deploy_contract('erc20');
     let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
-    
+
     let sender = starknet::contract_address_const::<0x01>();
     let receiver = starknet::contract_address_const::<0x02>();
     let amount : felt252 = 10000000;
-    
+
     //sets the caller of the function
     start_prank(contract_address, sender);
     safe_dispatcher.transfer(receiver.into(), amount.into());
@@ -341,7 +349,9 @@ What are cheat codes? they are basically helper functions exposed by `snforge_st
  }
 
 ```
+
 Run `snforge`, on the two test cases above, you should get an output like this:
+
 ```shell
     snforge
 
@@ -352,6 +362,7 @@ Run `snforge`, on the two test cases above, you should get an output like this:
     [PASS] tests::test_erc20::tests::test_transfer
     Tests: 2 passed, 0 failed, 0 skipped
 ```
+
 `start_prank` in the above snippet, sets the caller of the transfer function and the `stop_prank` cancels the `start_prank` at the end of the function call.
 
 <details>
@@ -383,7 +394,7 @@ Run `snforge`, on the two test cases above, you should get an output like this:
 
         #[test]
         #[available_gas(3000000000000000)]
-        fn test_balance_of() {  
+        fn test_balance_of() {
             let contract_address = deploy_contract('erc20');
             let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
             let reciepient = starknet::contract_address_const::<0x01>();
@@ -396,11 +407,11 @@ Run `snforge`, on the two test cases above, you should get an output like this:
         fn test_transfer() {
             let contract_address = deploy_contract('erc20');
             let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
-            
+
             let sender = starknet::contract_address_const::<0x01>();
             let receiver = starknet::contract_address_const::<0x02>();
             let amount : felt252 = 10000000;
-            
+
             start_prank(contract_address, sender);
             safe_dispatcher.transfer(receiver.into(), amount.into());
             let balance_after_transfer = safe_dispatcher.balance_of(receiver).unwrap();
@@ -409,10 +420,10 @@ Run `snforge`, on the two test cases above, you should get an output like this:
         }
 
         }
+
 </details>
 
-
-## Fuzz testing 
+## Fuzz testing
 
 What's fuzz testing? Fuzz testing for involves subjecting the code to random inputs and scenarios to discover vulnerabilities, security flaws, and unexpected behavior. Although you can decide to input these random values yourself, nonetheless, its not ideal most especially when you intend to test a wide range of possible values. Consider the below snippet in a test_fuzz.cairo file:
 
@@ -426,7 +437,9 @@ What's fuzz testing? Fuzz testing for involves subjecting the code to random inp
         assert(mul(x, y) == x * y, 'incorrect');
     }
 ```
+
 The output after running `snforge` should look like this:
+
 ```shell
     snforge
 
@@ -437,7 +450,9 @@ The output after running `snforge` should look like this:
     Tests: 1 passed, 0 failed, 0 skipped
     Fuzzer seed: 6375310854403272271
 ```
+
 At the moment, the fuzzer only supports generating values for the following types :
+
 - u8
 - u16
 - u32
@@ -449,6 +464,7 @@ At the moment, the fuzzer only supports generating values for the following type
 ## Configuring fuzzer
 
 It is possible to configure the number of runs and also specified the seed for a test as below:
+
 ```rust
     #[test]
     #[fuzzer(runs: 100, seed: 38)]
@@ -456,11 +472,15 @@ It is possible to configure the number of runs and also specified the seed for a
         assert(mul(x, y) == x * y, 'incorrect');
     }
 ```
+
 or configure using the command line :
+
 ```shell
     $ snforge --fuzzer-runs 500 --fuzzer-seed 4656
 ```
+
 or in scarb.toml:
+
 ```shell
     # ...
     [tool.snforge]
@@ -471,11 +491,14 @@ or in scarb.toml:
 
 ## Filter tests
 
-Run specific tests using a filter string after the `snforge` command. Tests matching the filter based on their absolute module tree path will be executed:. for example; with reference to the above test cases, if we run this 
+Run specific tests using a filter string after the `snforge` command. Tests matching the filter based on their absolute module tree path will be executed:. for example; with reference to the above test cases, if we run this
+
 ```rust,ignore
     $ snforge test_
 ```
+
 we should get this output:
+
 ```shell
     Collected 3 test(s) from erc20_contract package
     Running 0 test(s) from src/
@@ -486,12 +509,16 @@ we should get this output:
     Tests: 3 passed, 0 failed, 0 skipped
     Fuzzer seed: 10426315620495146768
 ```
-When you look closely, all the tests with the string 'test_' in their test name when through. Now, consider this second example;
+
+When you look closely, all the tests with the string 'test\_' in their test name when through. Now, consider this second example;
 if we run this:
+
 ```shell
     $ snforge fuzz_sum
 ```
+
 The output should look like this:
+
 ```shell
 
     Collected 1 test(s) from erc20_contract package
@@ -501,21 +528,27 @@ The output should look like this:
     Tests: 1 passed, 0 failed, 0 skipped
     Fuzzer seed: 12607758074950729376
 ```
-What do you notice? Yes, that's right, only the `test_fuzz_sum` went through because we filtered which test to run with the string 'fuzz_sum'. 
+
+What do you notice? Yes, that's right, only the `test_fuzz_sum` went through because we filtered which test to run with the string 'fuzz_sum'.
 
 ## Run a Specific Test
 
 Use the `--exact` flag and a fully qualified test name to run a particular test. In order to run a specifc test with the --exact flag, run the following command:
+
 ```shell
     $ snforge package_name::<test_name> --exact
 ```
+
 ## Stop After First Test Failure
 
 To stop test execution after the first failed test, include the `--exit-first` flag with the `snforge` command like this:
+
 ```shell
     $ snforge --exit-first
 ```
+
 Peradventure there's a failing test, the output should look like this:
+
 ```shell
     Collected 3 test(s) from erc20_contract package
     Running 0 test(s) from src/
@@ -532,4 +565,3 @@ Peradventure there's a failing test, the output should look like this:
     Failures:
         tests::test_erc20::tests::test_balance_of
 ```
-
