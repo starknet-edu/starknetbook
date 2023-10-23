@@ -32,6 +32,11 @@ cargo install mdbook --version 0.4.31 && cargo install mdbook-i18n-helpers --ver
 - Create and work on a branch in your fork. If you're unfamiliar, use this [guide](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/) for assistance.
 - Once done, submit a PR to merge your edits. Ensure you tag a reviewer for feedback (`l-henri` or `@omarespejel`).
 
+4. **Formatting**
+
+- Run `npm i`
+- Then after completing your documentation run `npm run format`
+
 ### Understanding the Book's Structure
 
 The Starknet Book is optimized for mdBook:
@@ -68,3 +73,14 @@ For starting translations in a new language:
 - Employ `./translations.sh new xx`, replacing `xx` with your language code. This action generates a language file.
 - For updating the `xx.po` file, use `./translations.sh xx`.
 - Avoid the above command if the `xx.po` file already exists (which means you are not initiating a new translation).
+
+## The Authors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
