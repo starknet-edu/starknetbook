@@ -113,6 +113,31 @@ Running 3 test(s) from `src/`
 Tests: 3 passed, 0 failed, 0 skipped
 ```
 
+
+### Filter Tests
+
+Run specific tests using a filter string after the `snforge` command. Tests matching the filter based on their absolute module tree path will be executed:
+
+```shell
+$ snforge calling
+```
+
+### Run a Specific Test
+
+Use the `--exact` flag and a fully qualified test name to run a particular test:
+
+```shell
+snforge package_name::calling --exact
+```
+
+### Stop After First Test Failure
+
+To stop after the first test failure, add the `--exit-first` flag to the `snforge` command:
+
+```shell
+snforge --exit-first
+```
+
 ## Basic Example
 
 The example provided below demonstrates how to test a Starknet contract using `snforge`.
