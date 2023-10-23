@@ -32,7 +32,6 @@ tree . -L 1
 
 The project structure is as follows:
 
-
 ```shell
 .
 ├── README.md
@@ -118,7 +117,6 @@ Tests: 3 passed, 0 failed, 0 skipped
 
 Run specific tests using a filter string after the `snforge` command. Tests matching the filter based on their absolute module tree path will be executed:
 
-
 ```shell
 $ snforge calling
 ```
@@ -126,7 +124,6 @@ $ snforge calling
 ### Run a Specific Test
 
 Use the `--exact` flag and a fully qualified test name to run a particular test:
-
 
 ```shell
 snforge package_name::calling --exact
