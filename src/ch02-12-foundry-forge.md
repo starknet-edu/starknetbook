@@ -500,7 +500,7 @@ Expected output:
     Fuzzer seed: 10426315620495146768
 ```
 
-All the tests with the string 'test\_' in their test name when through.
+All the tests with the string 'test\_' in their test name went through.
 
 Another example: To filter and run `test_fuzz_sum` we can partially match the test name with the string 'fuzz_sum' like this:
 
