@@ -64,7 +64,7 @@ To install a specific version, such as `0.6.1`, run:
 A smart wallet comprises a Signer and an Account Descriptor. The Signer
 is a smart contract with a private key for signing transactions, while
 the Account Descriptor is a JSON file detailing the wallet’s address and
-public key.
+public key
 
 1.  Use Braavos or Argent X browser extensions to create your smart
     wallet.
