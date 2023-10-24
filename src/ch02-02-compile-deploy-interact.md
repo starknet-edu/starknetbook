@@ -68,23 +68,17 @@ public key.
 
 For an account to be used as a signer it must be deployed to the appropriate network (Starknet Goerli or mainnet) and funded.
 
-Steps for deploying an account: 
+Steps for deploying and funding an account: 
 
 1. Install Braavos or Argent X browser extensions.
 
 2. For Braavos, on the account page click on "set up your account on-chain" to deploy your account. 
   For Argent X, 
 
-3. 
+3. Fund your wallet with ETH. Click on "Deposit" on Braavos or "Add funds" on Argent X, then select 
+    "Starknet token faucet" to get testnet tokens. You can also use [Starknet Goerli
+    Faucet](https://faucet.goerli.starknet.io/).
 
-1.  Use Braavos or Argent X browser extensions to create your smart
-    wallet.
-
-2.  Follow the provided instructions for your chosen wallet (Argent or
-    Braavos).
-
-3.  Fund your wallet with ETH. Use [Starknet Goerli
-    Faucet](https://faucet.goerli.starknet.io/) as needed.
 
 Now you’re ready to interact with Starknet smart contracts.
 
