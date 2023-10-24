@@ -72,7 +72,10 @@ Steps for deploying an account:
 
 1. Install Braavos or Argent X browser extensions.
 
-2. 
+2. For Braavos, on the account page click on "set up your account on-chain" to deploy your account. 
+  For Argent X, 
+
+3. 
 
 1.  Use Braavos or Argent X browser extensions to create your smart
     wallet.
