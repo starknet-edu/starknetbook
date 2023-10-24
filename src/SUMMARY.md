@@ -32,7 +32,7 @@
 
 - [Architecture](ch03-00-architecture.md)
   - [Transactions](ch03-01-transactions.md)
-    - [Fee Mechanism 🚧](ch03-01-01-fee-mechanism.md)
+    - [Fee Mechanism](ch03-01-01-fee-mechanism.md)
   - [Sequencers](ch03-02-sequencers.md)
   - [Provers 🚧](ch03-03-provers.md)
   - [Nodes 🚧](ch03-04-nodes.md)
