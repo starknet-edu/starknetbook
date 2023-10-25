@@ -50,8 +50,35 @@ The monolithic verifier suffered some limitations as follows:
 * The gas needed exceeded block size (8 Mgas...) as the block limit was not big enough to contain one batch of proof.
 * Futuristic limitation was the verifier would not allow proof bundling (corner-stone for Sharp).
 
-To further the discussion, we would look at various smart contracts:
-* Starkware Sharp Verifier: Proxy contract
-* GpsStatementVerifier: Contract that verifies a proof and registers the corresponding facts.
-* CpuFrilessVerifier
-* MemoryPageFactRegistry
+#### Current Verifier Architecture
+ The current verifier is not monolithic but has several verifier smart contracts.
+ 
+ To further the discussion, we would look at various externally facing smart contracts:
+* GpsStatementVerifier: Main contract of Sharp verifier that verifies a proof and registers the corresponding facts using *verifyProofAndRegister*. The GpsStatementVerifier is an umbrella for multiple layouts. Each is a verifier (named CpuFrilessVerifier), with distinct layout, that is specific makeup of built-in, resources, e.t.c. 
+
+![](https://hackmd.io/_uploads/SyqKDqLzT.png)
+
+Each proof is routed to it's appropriate layout.
+* MemoryPageFactRegistry: Fact registry for memory pages. Used for registration of outputs, needed for data availabilty (rollup mode).The Fact Registry is a smart contract that handles the verification and validity of an attestation or a fact. Splitting the verifier function from the main contract. The verifier is splitted so that all parts fits nicely within limits and the main proof part depends on all other parts but all other parts are independent.
+* MerkleStatementContract: The verifier contract that verifies the merkle paths.
+* FriStatementContract: The contract which verifies the FRI layers.
+
+### Sharp Verifier Full Contract Map.
+![](https://hackmd.io/_uploads/r1Re_qUG6.png)
+![](https://hackmd.io/_uploads/HkkOOc8M6.png)
+
+### Construtor Parameters For The Various Contracts.
+The CpuFrilessVerifiers and GpsStatementVerifier are the contracts that takes in constructor parameters and below are the parameters passed into their constructors.
+![](https://hackmd.io/_uploads/rJgPt5UMp.png)
+
+### NEW SHARP FLOW
+
+![](https://hackmd.io/_uploads/ByPO5qUMa.png)
+
+1. Sharp dispatcher sends all transactions that verification depends on:
+    a.    MemoryPages (lots of those).
+    b.    MerkleStatements (typically 3 - 5).
+    c.    FriStatements (typically 5 - 15).
+2. Sharp dispatcher sends the proof (verifyProofAndRegister).
+3. Sharp application - e.g. Starknet monitor proves status, and when  done - sends an updateState transaction.
+
