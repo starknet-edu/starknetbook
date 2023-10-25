@@ -54,14 +54,14 @@ The monolithic verifier suffered some limitations as follows:
  The current verifier is not monolithic but has several verifier smart contracts.
  
  To further the discussion, we would look at various externally facing smart contracts:
-* GpsStatementVerifier: Main contract of Sharp verifier that verifies a proof and registers the corresponding facts using *verifyProofAndRegister*. The GpsStatementVerifier is an umbrella for multiple layouts. Each is a verifier (named CpuFrilessVerifier), with distinct layout, that is specific makeup of built-in, resources, e.t.c. 
+* [GpsStatementVerifier](https://etherscan.io/address/0x47312450b3ac8b5b8e247a6bb6d523e7605bdb60): Main contract of Sharp verifier that verifies a proof and registers the corresponding facts using *verifyProofAndRegister*. The GpsStatementVerifier is an umbrella for multiple layouts. Each is a verifier (named CpuFrilessVerifier), with distinct layout, that is specific makeup of built-in, resources, e.t.c. 
 
 ![](https://hackmd.io/_uploads/SyqKDqLzT.png)
 
 Each proof is routed to it's appropriate layout.
-* MemoryPageFactRegistry: Fact registry for memory pages. Used for registration of outputs, needed for data availabilty (rollup mode).The Fact Registry is a smart contract that handles the verification and validity of an attestation or a fact. Splitting the verifier function from the main contract. The verifier is splitted so that all parts fits nicely within limits and the main proof part depends on all other parts but all other parts are independent.
-* MerkleStatementContract: The verifier contract that verifies the merkle paths.
-* FriStatementContract: The contract which verifies the FRI layers.
+* [MemoryPageFactRegistry](https://etherscan.io/address/0xfd14567eaf9ba941cb8c8a94eec14831ca7fd1b4): Fact registry for memory pages. Used for registration of outputs, needed for data availabilty (rollup mode).The Fact Registry is a smart contract that handles the verification and validity of an attestation or a fact. Splitting the verifier function from the main contract. The verifier is splitted so that all parts fits nicely within limits and the main proof part depends on all other parts but all other parts are independent.
+* [MerkleStatementContract](https://etherscan.io/address/0x5899efea757e0dbd6d114b3375c23d7540f65fa4): The verifier contract that verifies the merkle paths.
+* [FriStatementContract](https://etherscan.io/address/0x3e6118da317f7a433031f03bb71ab870d87dd2dd): The contract which verifies the FRI layers.
 
 ### Sharp Verifier Full Contract Map.
 ![](https://hackmd.io/_uploads/r1Re_qUG6.png)
@@ -81,4 +81,3 @@ The CpuFrilessVerifiers and GpsStatementVerifier are the contracts that takes in
     c.    FriStatements (typically 5 - 15).
 2. Sharp dispatcher sends the proof (verifyProofAndRegister).
 3. Sharp application - e.g. Starknet monitor proves status, and when  done - sends an updateState transaction.
-
