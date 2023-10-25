@@ -66,13 +66,13 @@ is a smart contract with a private key for signing transactions, while
 the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
-For an account to be used as a signer it must be deployed to the appropriate network (Starknet Goerli or mainnet) and funded.
+In order for an account to be used as a signer it must be deployed to the appropriate network, Starknet Goerli or mainnet, and funded.
 
 Steps for deploying and funding an account: 
 
 1. Install Braavos or Argent X browser extensions.
 
-2. Fund your account with ETH. Click on "Deposit" on Braavos or "Add funds" on Argent X, then select 
+2. Fund your account with ETH. Click on **Deposit** on Braavos or **Add funds** on Argent X, then select 
     "Starknet token faucet" to get testnet tokens. You can also use [Starknet Goerli
     Faucet](https://faucet.goerli.starknet.io/).
 
