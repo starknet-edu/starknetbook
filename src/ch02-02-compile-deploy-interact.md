@@ -72,13 +72,14 @@ Steps for deploying and funding an account:
 
 1. Install Braavos or Argent X browser extensions.
 
-2. For Braavos, on the account page click on "set up your account on-chain" to deploy your account. 
-  For Argent X, 
-
-3. Fund your wallet with ETH. Click on "Deposit" on Braavos or "Add funds" on Argent X, then select 
+2. Fund your account with ETH. Click on "Deposit" on Braavos or "Add funds" on Argent X, then select 
     "Starknet token faucet" to get testnet tokens. You can also use [Starknet Goerli
     Faucet](https://faucet.goerli.starknet.io/).
 
+3. For Braavos, on the account page click on "set up your account on-chain" to deploy your account. 
+    For Argent X, fund your account using the faucet (for testnet) or fund using Ether, then make an 
+    outgoing transaction from the account (you can just send some tokens to account2 in your wallet).
+    This will automatically deploy your account.
 
 Now you’re ready to interact with Starknet smart contracts.
 
