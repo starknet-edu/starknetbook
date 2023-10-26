@@ -18,14 +18,8 @@ is a smart contract with a private key for signing transactions, while
 the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
-1.  Use Braavos or Argent X browser extensions to create your smart
-    wallet.
-
-2.  Follow the provided instructions for your chosen wallet (Argent or
-    Braavos).
-
-3.  Fund your wallet with ETH. Use [Starknet Goerli
-    Faucet](https://faucet.goerli.starknet.io/) as needed.
+In order for an account to be used as a signer it must be deployed to the appropriate network,
+Starknet Goerli or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
 
 Now you’re ready to interact with Starknet smart contracts.
 
