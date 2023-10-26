@@ -147,7 +147,7 @@ Having compiled the smart contract, it's time to declare it with Starkli and kat
 source .env
 ```
 
-Next, launch Katana. In a separate terminal, run:
+Next, launch Katana. In a separate terminal, run (more details in the Katan subchapter):
 
 ```bash
 katana

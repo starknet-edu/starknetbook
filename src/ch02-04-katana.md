@@ -1,6 +1,6 @@
 # Katana: A Local Node
 
-`Katana` is an indispensable tool designed to aid in local development.
+`Katana` is designed to aid in local development.
 This creation by the [Dojo
 team](https://github.com/dojoengine/dojo/blob/main/crates/katana/README.md)
 enables you to perform all Starknet-related activities in a local
@@ -8,14 +8,13 @@ environment, thus serving as an efficient platform for development and
 testing.
 
 We suggest employing either `katana` or `starknet-devnet` for testing
-your contracts, with the latter discussed in detail in the following
+your contracts, with the latter discussed in another
 subchapter. The `starknet-devnet` is a public testnet, maintained by the
-[Shard Labs team](https://github.com/Shard-Labs/starknet-devnet). Both
+[Shard Labs team](https://github.com/0xSpaceShard/starknet-devnet-rs). Both
 these tools offer an effective environment for development and testing.
 
 For an example of how to use `katana` to deploy and interact with a
-contract, see [Chapter 2’s Voting contract
-example](https://book.starknet.io/chapter_2/deploy_call_invoke.html).
+contract, see the introduction subchapter of this Chapter or a voting contract example in [The Cairo Book](https://book.cairo-lang.org/ch99-01-04-01-voting-contract.html).
 
 ## Understanding RPC in Starknet
 
@@ -26,9 +25,7 @@ receiving these calls.
 
 RPC can be obtained from various sources: . To support the
 decentralization of the Network, you can use your own local Starknet
-node. Consult [Chapter 4](https://book.starknet.io/chapter_4/node.html)
-for guidelines on setting up your node. . For ease of access, consider
-using a provider such as
+node. For ease of access, consider using a provider such as
 [Infura](https://docs.infura.io/networks/starknet/how-to) or
 [Alchemy](https://www.alchemy.com/starknet) to get an RPC client. . For
 development and testing, a temporary local node such as `katana` can be
@@ -36,29 +33,26 @@ used.
 
 ## Getting Started with Katana
 
-To install `katana` from its source code, run the following commands:
+To install Katana, use the `dojoup` installer from the command line:
 
-    mkdir ~/.dojo && cd ~/.dojo
-    git clone https://github.com/dojoengine/dojo
-    cd dojo
-    cargo install --path ./crates/katana --locked --force
+```bash
+curl -L https://install.dojoengine.org | bash
+dojoup
+```
 
-Once installed, confirm it with the version command:
+After restarting your terminal, verify the installation with:
 
-    katana --version
+```bash
+katana --version
+```
 
-Updating `katana` to its latest version involves going back to the
-`dojo` directory and running the following commands:
-
-    cd ~/.dojo/dojo
-    git pull
-
-    # If you are using a local Starknet node, ensure to stop it first.
-    cargo install --path ./crates/katana --locked --force
+To upgrade Katana, rerun the installation command.
 
 To initialize a local Starknet node, execute the following command:
 
-    katana --accounts 3 --seed 0 --gas-price 250
+```bash
+katana --accounts 3 --seed 0 --gas-price 250
+```
 
 The `--accounts` flag determines the number of accounts to be created,
 while the `--seed` flag sets the seed for the private keys of these
