@@ -53,10 +53,10 @@ previous releases on
 [Scarb](https://github.com/software-mansion/scarb/releases)'s GitHub
 repo.
 
-To install a specific version, such as `0.6.1`, run:
+To install a specific version, such as `2.3.0`, run:
 
 ```bash
-    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.6.1
+    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.3.0
 ```
 
 ## Smart Wallet Setup
@@ -66,14 +66,21 @@ is a smart contract with a private key for signing transactions, while
 the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
-1.  Use Braavos or Argent X browser extensions to create your smart
-    wallet.
+In order for an account to be used as a signer it must be deployed to the appropriate network,
+Starknet Goerli or mainnet, and funded.
 
-2.  Follow the provided instructions for your chosen wallet (Argent or
-    Braavos).
+Steps for deploying and funding an account:
 
-3.  Fund your wallet with ETH. Use [Starknet Goerli
-    Faucet](https://faucet.goerli.starknet.io/) as needed.
+1. Install Braavos or Argent X browser extensions.
+
+2. Fund your account with ETH. Click on **Deposit** on Braavos or **Add funds** on Argent X,
+   then select **Starknet token faucet** to get testnet tokens.
+   You can also use the [Starknet Goerli Faucet](https://faucet.goerli.starknet.io/).
+
+3. For Braavos, on the account page, deploy your account by clicking on **set up your account on-chain**.
+   For Argent X, fund your account using the faucet (for testnet) or fund using Ether,
+   then make an outgoing transaction from the account. For example, you can just send
+   some tokens to account2 from your wallet. This transaction automatically deploys your account.
 
 Now you’re ready to interact with Starknet smart contracts.
 
