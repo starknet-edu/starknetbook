@@ -319,7 +319,7 @@ When testing smart contracts, simulating different conditions is essential. `Fou
 
 These cheat codes consist of helper functions that adjust the smart contract's environment. They allow developers to modify parameters or conditions to examine contract behavior in specific scenarios.
 
-Using `snforge_std`'s cheat codes, you can change elements like block numbers, timestamps, or even the caller of a function. This guide focuses on `start_prank` and `stop_prank`.
+Using `snforge_std`'s cheat codes, you can change elements like block numbers, timestamps, or even the caller of a function. This guide focuses on `start_prank` and `stop_prank`. You can find a reference to available cheat codes [here](https://foundry-rs.github.io/starknet-foundry/appendix/cheatcodes.html)
 
 Below is a transfer test example:
 
@@ -475,6 +475,8 @@ Or in `scarb.toml`:
     # ...
 ```
 
+For more insight on fuzz tests, you can view it [here](https://foundry-rs.github.io/starknet-foundry/testing/fuzz-testing.html#fuzz-testing)
+
 ## Filter Tests
 
 To execute specific tests, use a filter string with the `snforge` command. Tests matching the filter based on their absolute module tree path will be executed.
@@ -498,7 +500,7 @@ Expected output:
     Fuzzer seed: 10426315620495146768
 ```
 
-All the tests with the string 'test\_' in their test name when through.
+All the tests with the string 'test\_' in their test name went through.
 
 Another example: To filter and run `test_fuzz_sum` we can partially match the test name with the string 'fuzz_sum' like this:
 
@@ -536,3 +538,23 @@ If a test fails, the output will resemble:
     Failures:
         tests::test_erc20::tests::test_balance_of
 ```
+
+## Key Takeaways:
+
+- Starknet Foundry is a tool designed for testing and developing Starknet contracts.
+
+- Forge allows you to write and run tests directly in Cairo.
+
+- To set up a new project with Starknet Foundry, you can use the snforge command-line tool with the --init option.
+
+- You can integrate snforge with existing Scarb projects by adding the snforge_std dependency.
+
+- The example demonstrates how to test a Starknet contract using snforge and the expected output format.
+
+- Fuzz testing is used to identify vulnerabilities by introducing random inputs to the code. You can configure the number of runs and the seed for the test.
+
+- You can filter tests using the snforge command, allowing you to execute specific tests based on their names or other criteria.
+
+- The --exit-first flag can be used to stop the test suite upon the first test failure, providing detailed information about the failure.
+
+Overall, Starknet Foundry simplifies the testing and development process for Starknet contracts by providing tools and features for effective contract testing and debugging.
