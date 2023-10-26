@@ -12,8 +12,7 @@ Essential tools to install:
     manager that compiles code to Sierra, a mid-level language between
     Cairo and CASM.
 
-3.	[Katana](https://github.com/dojoengine/dojo) - Katana is a Starknet node, built for local development.
-
+3.  [Katana](https://github.com/dojoengine/dojo) - Katana is a Starknet node, built for local development.
 
 For support or queries, visit our [GitHub
 Issues](https://github.com/starknet-edu/starknetbook/issues) or contact

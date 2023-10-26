@@ -35,7 +35,6 @@ You’ll see a list of possible compiler versions under the
 
 Be aware: Scarb's compiler version may not match Starkli’s. To verify Scarb's version:
 
-
 ```bash
     scarb --version
 ```
@@ -91,14 +90,12 @@ For streamlined Starkli command execution, establish environment variables. Two 
 
 In the `src/` directory, create a `.env` file with the following:
 
-
 ```bash
 export STARKNET_ACCOUNT=katana-0
 export STARKNET_RPC=http://0.0.0.0:5050
 ```
 
 These settings streamline Starkli command operations.
-
 
 ## Declaring Smart Contracts in Starknet
 
@@ -172,7 +169,7 @@ Starknet. For example:
 Class hash declared: 0x00bfb49ff80fd7ef5e84662d6d256d49daf75e0c5bd279b20a786f058ca21418
 ```
 
-Consider this hash as the contract class's *address*.
+Consider this hash as the contract class's _address_.
 
 If you try to declare an already existing contract class, don't fret. Just proceed. You might see:
 
@@ -186,7 +183,7 @@ Not declaring class as its already declared. Class hash:
 To deploy a smart contract on the katana local devnet, use the following command. It primarily requires:
 
 1. Your contract's class hash.
-2. Constructor arguments your contract needs (in our example, a *name* of type `felt252`).
+2. Constructor arguments your contract needs (in our example, a _name_ of type `felt252`).
 
 Here's the command structure:
 
