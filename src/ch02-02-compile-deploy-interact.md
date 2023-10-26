@@ -66,21 +66,21 @@ is a smart contract with a private key for signing transactions, while
 the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
-In order for an account to be used as a signer it must be deployed to the appropriate network, 
+In order for an account to be used as a signer it must be deployed to the appropriate network,
 Starknet Goerli or mainnet, and funded.
 
-Steps for deploying and funding an account: 
+Steps for deploying and funding an account:
 
 1. Install Braavos or Argent X browser extensions.
 
-2. Fund your account with ETH. Click on **Deposit** on Braavos or **Add funds** on Argent X, 
-  then select **Starknet token faucet** to get testnet tokens. 
-  You can also use the [Starknet Goerli Faucet](https://faucet.goerli.starknet.io/).
+2. Fund your account with ETH. Click on **Deposit** on Braavos or **Add funds** on Argent X,
+   then select **Starknet token faucet** to get testnet tokens.
+   You can also use the [Starknet Goerli Faucet](https://faucet.goerli.starknet.io/).
 
-3. For Braavos, on the account page, deploy your account by clicking on **set up your account on-chain**. 
-    For Argent X, fund your account using the faucet (for testnet) or fund using Ether, 
-    then make an outgoing transaction from the account. For example, you can just send 
-    some tokens to account2 from your wallet. This transaction automatically deploys your account.
+3. For Braavos, on the account page, deploy your account by clicking on **set up your account on-chain**.
+   For Argent X, fund your account using the faucet (for testnet) or fund using Ether,
+   then make an outgoing transaction from the account. For example, you can just send
+   some tokens to account2 from your wallet. This transaction automatically deploys your account.
 
 Now you’re ready to interact with Starknet smart contracts.
 
