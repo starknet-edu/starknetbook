@@ -1,4 +1,4 @@
-# Introduction to Scarb, Katana and Scarb
+# Introduction to Starkli, Scarb and Katana
 
 In this chapter, you’ll learn how to compile, deploy, and interact with
 a Starknet smart contract written in Cairo using starkli, scarb and katana.
@@ -133,7 +133,7 @@ mod hello {
 
 This rudimentary smart contract serves as a starting point.
 
-Compile the contract with the Scarb compiler. If Scarb isn't installed, consult the [Setting up your Environment](https://book.starknet.io/chapter_1/environment_setup.html) section.
+Compile the contract with the Scarb compiler. If Scarb isn't installed, consult the [Installation](ch02-01-basic-installation.md) section.
 
 ```bash
 scarb build
@@ -237,7 +237,7 @@ Using Starkli, you can interact with smart contracts through two primary methods
 
 ### Reading Data with `call`
 
-The `call` command lets you query contract functions without transacting. For instance, if you want to determine the current contract owner using the `get_name` function, which
+The `call` command let's you query contract functions without transacting. For instance, if you want to determine the current contract owner using the `get_name` function, which
 requires no arguments:
 
 ```bash

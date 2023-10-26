@@ -181,7 +181,7 @@ With the contract now active on the development network, interaction becomes pos
    - Choose the `get_owner` function. Since this function doesn't require arguments, the calldata field remains blank. (This is a read function, hence calling it is termed as a "call".)
    - Press the "get_owner" button. Your terminal will display the result, revealing the owner's address provided during the contract's deployment as calldata for the constructor:
 
-```bash
+```json
 {
   "response": {
     "result": [
@@ -203,7 +203,7 @@ This call currently doesn't spend gas because the function does not change the s
 
 For these transactions, the terminal logs will exhibit a "status" variable, indicating the transaction's fate. If the status reads "ACCEPTED_ON_L2", the Sequencer has accepted the transaction, pending block inclusion. However, a "REJECTED" status signifies the Sequencer's disapproval, and the transaction won't feature in the upcoming block. More often than not, this transaction gains acceptance, leading to a contract state modification. On calling the **`get_owner`** function again we get this:
 
-```bash
+```json
 {
   "response": {
     "result": [
@@ -234,8 +234,8 @@ Both are reliable Starknet wallets offering enhanced security and accessibility 
 
 1. Install the recommended chrome/brave extension for your chosen wallet.
 2. Follow your wallet provider's instructions to deploy your account.
-   1. Use the [Starknet Faucet](https://faucet.goerli.starknet.io/) to fund your account.
-3. Deploy the account to the network. This usually takes around 10 seconds.
+3. Use the [Starknet Faucet](https://faucet.goerli.starknet.io/) to fund your account.
+4. Deploy the account to the network. This usually takes around 10 seconds.
 
 Once set up, you're ready to deploy your smart contracts to the Starknet Testnet.
 
