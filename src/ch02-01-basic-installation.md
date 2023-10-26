@@ -12,6 +12,8 @@ Essential tools to install:
     manager that compiles code to Sierra, a mid-level language between
     Cairo and CASM.
 
+3.	[Katana](https://github.com/dojoengine/dojo) - katana is a blazingly fast local Starknet node, designed to support local development built by the Dojo team.
+
 For support or queries, visit our [GitHub
 Issues](https://github.com/starknet-edu/starknetbook/issues) or contact
 espejelomar on Telegram.
@@ -41,7 +43,7 @@ We will get deeper into Scarb later in this chapter. For now, we will go over th
 For macOS and Linux:
 
 ```bash
-    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
 ```
 
 For Windows, follow manual setup in the [Scarb
@@ -50,9 +52,25 @@ documentation](https://docs.swmansion.com/scarb/download.html#windows).
 Restart the terminal and run:
 
 ```bash
-    scarb --version
+scarb --version
 ```
 
 To upgrade Scarb, rerun the installation command.
+
+## Katana(dojo) Installation
+
+Easily install katana using dojoup, an installer invoked through the
+command line.
+
+```bash
+curl -L https://install.dojoengine.org | bash
+dojoup
+```
+
+Restart your terminal and confirm installation:
+
+```bash
+katana --version
+```
 
 You are now set to code in Cairo and deploy to Starknet.
