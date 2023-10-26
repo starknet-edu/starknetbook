@@ -1,6 +1,6 @@
 # Examples
 
-In this subchapter, readers will find practical examples demonstrating the usage of `starknet-js`. It provides insight into real-world applications and serves as a guide for developers to understand and implement these tools effectively.
+In this subchapter, readers will find practical examples demonstrating the usage of `starknet-react`. It provides insight into real-world applications and serves as a guide for developers to understand and implement these tools effectively.
 
 We value the contribution of our developer community:
 
