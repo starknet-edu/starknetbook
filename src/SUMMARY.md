@@ -11,7 +11,7 @@
 
 - [Tooling](ch02-00-starknet-tooling.md)
   - [Basic Installation](ch02-01-basic-installation.md)
-  - [Compile, Deploy, Interact](ch02-02-compile-deploy-interact.md)
+  - [Introduction to Starkli, Scarb and Katana](ch02-01-introduction-starkli-scarb-katana.md)
   - [Scarb: The Package Manager](ch02-03-scarb.md)
   - [Starkli: A CLI interface 🚧](ch02-04-starkli.md)
   - [Katana: A Local Node](ch02-05-katana.md)
