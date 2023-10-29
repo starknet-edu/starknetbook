@@ -10,7 +10,9 @@ NOTE: For a more detailed explanation of SHARP and Sharp Jobs, refer to the Prov
 
 SHARP, or Shared Prover, in Starknet, aggregates various Cairo programs from distinct users. These programs, each with unique logic, run together, producing a common proof for all, optimizing cost and efficiency.
 
-![](https://hackmd.io/_uploads/HJ7UiFLfa.png)
+<img alt="Sharp workflow" src="img/ch03-06-shared-prover.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Workflow</span>
 
 Furthermore, SHARP supports combining multiple proofs into one, enhancing its efficiency by allowing parallel proof processing and verification.
 
@@ -28,7 +30,9 @@ A Solidity verifier is an L1 smart contract, crafted in Solidity, designed to va
 
 Historically, the Solidity Verifier was a monolithic contract, both initiated and executed by the same contract. For illustration, the operator would invoke the `update state` function on the main contract, providing the state to be modified and confirming its validity. Subsequently, the main contract would present the proof to both the verifier and the validium committee. Once they validated the proof, the state would be updated in the main contract.
 
-![](https://hackmd.io/_uploads/BJNEAKIzT.png)
+<img alt="Previous Architecture" src="img/ch03-06-prehistoric-architecture.png" class="center" style="width: 50%;" />
+
+<span class="caption">Previous Architecture</span>
 
 However, this architecture faced several constraints:
 
@@ -44,7 +48,7 @@ Here are some key smart contracts associated with the verifier:
 
 - [`GpsStatementVerifier`](https://etherscan.io/address/0x47312450b3ac8b5b8e247a6bb6d523e7605bdb60): This is the primary contract of the Sharp verifier. It verifies a proof and then registers the related facts using `verifyProofAndRegister`. It acts as an umbrella for various layouts, each named `CpuFrilessVerifier`. Every layout has a unique combination of built-in resources.
 
-![](https://hackmd.io/_uploads/SyqKDqLzT.png)
+<img alt="Verifier Layouts" src="img/ch03-06-verifier-layouts.png" class="center" style="width: 50%;" />
 
 The system routes each proof to its relevant layout.
 
@@ -56,18 +60,27 @@ The system routes each proof to its relevant layout.
 
 ### Sharp Verifier Contract Map
 
-![](https://hackmd.io/_uploads/r1Re_qUG6.png)
-![](https://hackmd.io/_uploads/HkkOOc8M6.png)
+<img alt="Sharp Verifier Contract Map " src="img/ch03-06-sharp-contrat-map-1.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Verifier Contract Map </span>
+
+<img alt="Sharp Verifier Contract Map " src="img/ch03-06-sharp-contrat-map-2.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Verifier Contract Map </span>
 
 ### Constructor Parameters of Key Contracts
 
 The `CpuFrilessVerifiers` and `GpsStatementVerifier` are the contracts that accept constructor parameters. Here are the parameters passed to their constructors:
 
-![](https://hackmd.io/_uploads/rJgPt5UMp.png)
+<img alt="Constructor Parameters" src="img/ch03-06-constructor-params.png" class="center" style="width: 50%;" />
+
+<span class="caption">Constructor Parameters</span>
 
 ### Sharp Verification Flow
 
-![](https://hackmd.io/_uploads/ByPO5qUMa.png)
+<img alt="Sharp Verification Flow" src="img/ch03-06-new-sharp-flow.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Verification Flow</span>
 
 1. The Sharp dispatcher transmits all essential transactions for verification, including:
    a. `MemoryPages` (usually many).
