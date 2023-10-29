@@ -24,13 +24,13 @@ apps.
 
 **Chapter Titles**
 
-| Chapter                  | Description                                                                                                                                                                   |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet and acquaint yourself with the deployment of smart contracts.                                                                 |
-| 2: Starknet Tooling      | Familiarize yourself with vital tools, such as Protostar and Hardhat, and explore how languages like Javascript, Python, and Rust can be leveraged for Starknet interactions. |
-| 3: Starknet Architecture | Uncover Starknet’s core structure, gaining insights into the transaction lifecycle and the interplay between the Sequencer, Prover, and Nodes.                                |
-| 4: Account Abstraction   | Delve deep into Starknet’s unique approach to user accounts, and master the art of crafting custom accounts.                                                                  |
-| 5: STARKs                | Dive into the intricacies of STARKs and their pivotal role in shaping Starknet’s landscape.                                                                                   |
+| Chapter                  | Description                                                                                                                                                                                           |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet and acquaint yourself with the deployment of smart contracts.                                                                                         |
+| 2: Starknet Tooling      | Familiarize yourself with vital tools, such as Starkli, Katana, Scarb, Starknet-Foundry and more. Explore how languages like Javascript, Python, and Rust can be leveraged for Starknet interactions. |
+| 3: Starknet Architecture | Uncover Starknet’s core structure, gaining insights into the transaction lifecycle and the interplay between the Sequencer, Prover, and Nodes.                                                        |
+| 4: Account Abstraction   | Delve deep into Starknet’s unique approach to user accounts, and master the art of crafting custom accounts.                                                                                          |
+| 5: STARKs                | Dive into the intricacies of STARKs and their pivotal role in shaping Starknet’s landscape.                                                                                                           |
 
 # Where to Start?
 
@@ -104,26 +104,22 @@ We’ve compiled a list of valuable educational resources that will help
 deepen your understanding and enhance your skills in coding with Cairo
 and staying abreast with Starknet developments:
 
-1.  **Cairo Book**: A comprehensive guide to Cairo, the programming
-    language for Starknet smart contracts. You can access it
-    [here](https://book.cairo-lang.org/).
-
-2.  **Starklings**: A resource specifically designed to guide you
+1.  **Starklings**: A resource specifically designed to guide you
     through learning Cairo programming, ensuring that you reach a
     proficient level. You can access it
     [here](https://github.com/shramee/starklings-cairo1).
 
-3.  **Starknet Community Forum**: An online platform where you can
+2.  **Starknet Community Forum**: An online platform where you can
     engage in discussions about the latest developments in Starknet.
     Join the conversation [here](https://community.starknet.io/).
 
-4.  **Starknet Documentation**: You can browse through the documentation
+3.  **Starknet Documentation**: You can browse through the documentation
     [here](https://docs.starknet.io/).
 
-5.  **Cairo Documentation**: Explore it
+4.  **Cairo Documentation**: Explore it
     [here](https://www.cairo-lang.org/docs).
 
-6.  **Starknet Developer Telegram (English)**: A community for
+5.  **Starknet Developer Telegram (English)**: A community for
     English-speaking Starknet developers. This is a great platform for
     networking, sharing ideas, and troubleshooting together. Join us on
     Telegram [here](https://t.me/starknetna).

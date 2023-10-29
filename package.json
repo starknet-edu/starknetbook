@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "formatCheck": "prettier . --check",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
     "prettier": "3.0.3"
   }
 }
