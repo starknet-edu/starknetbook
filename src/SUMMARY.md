@@ -14,7 +14,7 @@
   - [Introduction: Starkli, Scarb and Katana](ch02-02-starkli-scarb-katana.md)
   - [Scarb: The Package Manager](ch02-03-scarb.md)
   - [Katana: A Local Node](ch02-04-katana.md)
-  - [Using the Testnet 🚧]()
+  - [Testnet Deployment](ch02-05-testnet-deployment.md)
   - [Foundry Cast: Interacting with Starknet](ch02-05-foundry-cast.md)
     - [Example - Deployment Script](ch02-05-01-deployment-script.md)
   - [Starknet Devnet 🚧](ch02-06-starknet-devnet.md)

@@ -1,10 +1,8 @@
-# Compile, Deploy and Interact with a Contract
+# Testnet Deployment
 
-In this chapter, you’ll learn how to compile, deploy, and interact with
-a Starknet smart contract written in Cairo on testnet.
+This chapter guides developers through the process of compiling, deploying, and interacting with a Starknet smart contract written in Cairo on the testnet. Earlier, the focus was on deploying contracts using a local node, Katana. This time, the deployment and interaction target the Starknet testnet.
 
-First, confirm that the following commands work on your system. If they
-don’t, refer to Basic Installation in this chapter.
+Ensure the following commands run successfully on your system. If not, see the 'Basic Installation' section:
 
 ```bash
     scarb --version  # For Cairo code compilation
@@ -69,6 +67,8 @@ Argent X. Does it use an elliptic curve? If yes, which one? This is the
 reason why we need an account descriptor file.
 
 #### [OPTIONAL] The Architecture of the Starknet Signer
+
+This section is optional and is intended for those who want to learn more about the Starknet Signer. If you are not interested in the details, you can skip it.
 
 The Starknet Signer plays an instrumental role in securing your
 transactions. Let’s demystify what goes on under the hood.
