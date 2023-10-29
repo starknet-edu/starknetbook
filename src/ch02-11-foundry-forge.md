@@ -5,7 +5,7 @@
 The project consists of two primary components:
 
 - **Forge**: A testing tool specifically for Cairo contracts. This tool acts as a test runner and boasts features designed to enhance your testing process. Tests are written directly in Cairo, eliminating the need for other programming languages. Additionally, the Forge implementation uses Rust, mirroring Ethereum Foundry's choice of language.
-- **Cast**: This serves as a DevOps tool for StarkNet, initially supporting a series of commands to interface with StarkNet. In the future, Cast aims to offer deployment scripts for contracts and other DevOps functions.
+- **Cast**: This serves as a DevOps tool for Starknet, initially supporting a series of commands to interface with Starknet. In the future, Cast aims to offer deployment scripts for contracts and other DevOps functions.
 
 ## Forge
 

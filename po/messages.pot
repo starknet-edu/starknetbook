@@ -749,7 +749,7 @@ msgstr ""
 
 #: src/ch00-00-introduction.md:79
 msgid ""
-"Paymaster: StarkNet will allow users to choose how to pay for transaction "
+"Paymaster: Starknet will allow users to choose how to pay for transaction "
 "fee, follows the guidelines laid out in EIP 4337 and allows the transaction "
 "to specify a specific contract, a **Paymaster**, to pay for their "
 "transaction. Supports gasless transactions, enhancing user accessibility."
@@ -840,13 +840,13 @@ msgid "To propose an improvement, create a SNIP."
 msgstr ""
 
 #: src/ch00-00-introduction.md:132
-msgid "SNIP: StarkNet Improvement Proposals"
+msgid "SNIP: Starknet Improvement Proposals"
 msgstr ""
 
 #: src/ch00-00-introduction.md:134
 msgid ""
-"SNIP is short for StarkNet Improvement Proposal. It’s essentially a "
-"blueprint that details proposed enhancements or changes to the StarkNet "
+"SNIP is short for Starknet Improvement Proposal. It’s essentially a "
+"blueprint that details proposed enhancements or changes to the Starknet "
 "ecosystem. A well-crafted SNIP includes both the technical specifications of "
 "the change and the reasons behind it. If you’re proposing a SNIP, it’s your "
 "job to rally community support and document any objections (more details "
@@ -871,7 +871,7 @@ msgstr ""
 #: src/ch00-00-introduction.md:152
 msgid ""
 "They document the decision-making process, offering a historical view of how "
-"StarkNet has evolved."
+"Starknet has evolved."
 msgstr ""
 
 #: src/ch00-00-introduction.md:155
@@ -4925,8 +4925,8 @@ msgstr ""
 
 #: src/ch02-11-foundry-forge.md:8
 msgid ""
-"**Cast**: This serves as a DevOps tool for StarkNet, initially supporting a "
-"series of commands to interface with StarkNet. In the future, Cast aims to "
+"**Cast**: This serves as a DevOps tool for Starknet, initially supporting a "
+"series of commands to interface with Starknet. In the future, Cast aims to "
 "offer deployment scripts for contracts and other DevOps functions."
 msgstr ""
 
@@ -4952,8 +4952,8 @@ msgstr ""
 #: src/ch02-12-foundry-cast.md:3
 msgid ""
 "While Forge handles testing, Cast focuses on the Command Line Interface "
-"(CLI) for StarkNet. This straightforward tool, written in Rust, leverages "
-"StarkNet Rust for its operations and is also integrated with Scarb. This "
+"(CLI) for Starknet. This straightforward tool, written in Rust, leverages "
+"Starknet Rust for its operations and is also integrated with Scarb. This "
 "integration permits the specification of arguments in Scarb Toml, "
 "simplifying the overall process."
 msgstr ""
@@ -7445,7 +7445,7 @@ msgid ""
 "Account contracts, while essentially being smart contracts, differentiate "
 "themselves through unique methods. A smart contract gains the status of an "
 "account contract when it implements the interface as described by SNIP-6 "
-"([StarkNet IMprovement Proposa-6: Standar Account "
+"([Starknet IMprovement Proposa-6: Standar Account "
 "Interface](https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/SNIPS/snip-6.md)). "
 "This standard borrows from SRC-6 and SRC-5, which are akin to Ethereum’s "
 "ERCs, setting application-level conventions and contract standards."
