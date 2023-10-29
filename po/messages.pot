@@ -308,7 +308,7 @@ msgstr ""
 
 #: src/title-page.md:30
 msgid ""
-"Familiarize yourself with vital tools, such as Protostar and Hardhat, and "
+"Familiarize yourself with vital tools, such as Starknet-Foundry and Hardhat, and "
 "explore how languages like Javascript, Python, and Rust can be leveraged for "
 "Starknet interactions."
 msgstr ""
@@ -1507,7 +1507,7 @@ msgid "In this chapter, you’ll explore:"
 msgstr ""
 
 #: src/ch02-00-starknet-tooling.md:23
-msgid "Frameworks: Build using Protostar or Hardhat"
+msgid "Frameworks: Build using Starknet-Foundry or Hardhat"
 msgstr ""
 
 #: src/ch02-00-starknet-tooling.md:25
@@ -1521,7 +1521,7 @@ msgid "Front-end Development: Use Starknet.js and React"
 msgstr ""
 
 #: src/ch02-00-starknet-tooling.md:30
-msgid "Testing: Understand testing methods with Protostar and the Devnet"
+msgid "Testing: Understand testing methods with Starknet-Foundry and the Devnet"
 msgstr ""
 
 #: src/ch02-00-starknet-tooling.md:32

@@ -1,4 +1,4 @@
-# Introduction to Scarb, Katana and Scarb
+# Introduction to Starkli, Scarb and Katana
 
 In this chapter, you’ll learn how to compile, deploy, and interact with
 a Starknet smart contract written in Cairo using starkli, scarb and katana.
@@ -49,10 +49,10 @@ The output displays the versions for scarb, cairo, and sierra:
 
 If the versions don't match, consider installing a version of Scarb compatible with Starkli. Browse [Scarb's GitHub](https://github.com/software-mansion/scarb/releases) repo for earlier releases.
 
-To install a specific version, such as `0.6.1`, run:
+To install a specific version, such as `2.3.0`, run:
 
 ```bash
-    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 0.6.1
+    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.3.0
 ```
 
 ## Crafting a Starknet Smart Contract
@@ -133,7 +133,7 @@ mod hello {
 
 This rudimentary smart contract serves as a starting point.
 
-Compile the contract with the Scarb compiler. If Scarb isn't installed, consult the [Setting up your Environment](https://book.starknet.io/chapter_1/environment_setup.html) section.
+Compile the contract with the Scarb compiler. If Scarb isn't installed, consult the [Installation](ch02-01-basic-installation.md) section.
 
 ```bash
 scarb build
@@ -237,7 +237,7 @@ Using Starkli, you can interact with smart contracts through two primary methods
 
 ### Reading Data with `call`
 
-The `call` command lets you query contract functions without transacting. For instance, if you want to determine the current contract owner using the `get_name` function, which
+The `call` command let's you query contract functions without transacting. For instance, if you want to determine the current contract owner using the `get_name` function, which
 requires no arguments:
 
 ```bash
