@@ -1,7 +1,7 @@
 # Compile, Deploy and Interact with a Contract
 
 In this chapter, you’ll learn how to compile, deploy, and interact with
-a Starknet smart contract written in Cairo.
+a Starknet smart contract written in Cairo on testnet.
 
 First, confirm that the following commands work on your system. If they
 don’t, refer to Basic Installation in this chapter.
@@ -9,54 +9,6 @@ don’t, refer to Basic Installation in this chapter.
 ```bash
     scarb --version  # For Cairo code compilation
     starkli --version  # To interact with Starknet
-```
-
-## Find the compiler versions supported
-
-We have to make sure that our Starkli compiler version match Scarb
-compiler version
-
-To find the compiler versions supported by Starkli, execute:
-
-```bash
-    starkli declare --help
-```
-
-You’ll see a list of possible compiler versions under the
-`--compiler-version` flag.
-
-```bash
-    ...
-    --compiler-version <COMPILER_VERSION>
-              Statically-linked Sierra compiler version [possible values: [COMPILER VERSIONS]]]
-    ...
-```
-
-Note that the Scarb compiler version might not align with Starkli’s
-supported versions. To check Scarb’s version:
-
-```bash
-    scarb --version
-```
-
-You’ll see a list that contains scarb, cairo and sierra version.
-
-```bash
-    scarb <SCARB VERSION>
-    cairo: <COMPILER VERSION>
-    sierra: <SIERRA VERSION>
-```
-
-If there’s a mismatch, it is suggested that you install the version of
-Scarb that uses the compiler version that Starkli supports. You can find
-previous releases on
-[Scarb](https://github.com/software-mansion/scarb/releases)'s GitHub
-repo.
-
-To install a specific version, such as `2.3.0`, run:
-
-```bash
-    curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.3.0
 ```
 
 ## Smart Wallet Setup
@@ -67,20 +19,7 @@ the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
 In order for an account to be used as a signer it must be deployed to the appropriate network,
-Starknet Goerli or mainnet, and funded.
-
-Steps for deploying and funding an account:
-
-1. Install Braavos or Argent X browser extensions.
-
-2. Fund your account with ETH. Click on **Deposit** on Braavos or **Add funds** on Argent X,
-   then select **Starknet token faucet** to get testnet tokens.
-   You can also use the [Starknet Goerli Faucet](https://faucet.goerli.starknet.io/).
-
-3. For Braavos, on the account page, deploy your account by clicking on **set up your account on-chain**.
-   For Argent X, fund your account using the faucet (for testnet) or fund using Ether,
-   then make an outgoing transaction from the account. For example, you can just send
-   some tokens to account2 from your wallet. This transaction automatically deploys your account.
+Starknet Goerli or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
 
 Now you’re ready to interact with Starknet smart contracts.
 
@@ -258,7 +197,15 @@ for an Argent wallet.
     Downloaded new account config file: ~/.starkli-wallets/deployer/my_account_1.json
 ```
 
-To see the details of your Account Descriptor, run:
+In case you face an error like this:
+
+```bash
+    Error: code=ContractNotFound, message="Contract with address {SMART_WALLET_ADDRESS} is not deployed."
+```
+
+It means you probably just created a new wallet and it has not been deployed yet. To accomplish this you have to fund your wallet with tokens and transfer tokens to a different wallet address. After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
+
+After the acount descriptor file is generated, you can see the its detalis, run:
 
 ```bash
     cat ~/.starkli-wallets/deployer/my_account_1.json
