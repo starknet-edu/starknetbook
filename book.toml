@@ -11,8 +11,12 @@ extra-watch-dirs = ["po"]
 [preprocessor.gettext]
 after = ["links"]
 
+[preprocessor.catppuccin]
+assets_version = "2.0.1" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+
 [output.html]
 git-repository-url = "https://github.com/starknet-edu/starknetbook"
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
 
 [output.html.fold]
 enable = true

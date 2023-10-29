@@ -1,5 +1,14 @@
 # Foundry Cast: Starknet CLI Interaction
 
+[Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) is a tool designed for testing and developing Starknet contracts. It is an adaptation of the Ethereum Foundry for Starknet, aiming to expedite the development process.
+
+The project consists of two primary components:
+
+- **Forge**: A testing tool specifically for Cairo contracts. This tool acts as a test runner and boasts features designed to enhance your testing process. Tests are written directly in Cairo, eliminating the need for other programming languages. Additionally, the Forge implementation uses Rust, mirroring Ethereum Foundry's choice of language.
+- **Cast**: This serves as a DevOps tool for Starknet, initially supporting a series of commands to interface with Starknet. In the future, Cast aims to offer deployment scripts for contracts and other DevOps functions.
+
+## Cast
+
 Cast provides the Command Line Interface (CLI) for starknet, while Forge addresses testing. Written in Rust, Cast utilizes starknet Rust and integrates with Scarb. This integration allows for argument specification in `Scarb.toml`, streamlining the process.
 
 `sncast` simplifies interaction with smart contracts, reducing the number of necessary commands compared to using `starkli` alone.

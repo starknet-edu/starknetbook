@@ -161,18 +161,6 @@ suggestions—they’re a roadmap. It’s beneficial for implementers to keep
 a list of the SNIPs they’ve executed. This transparency helps users
 gauge the state of a particular implementation or software library.
 
-## Learning Resources
-
-For deeper insights into Starknet and Cairo:
-
-- [The Starknet Book](https://book.starknet.io): For mastering
-  Starknet
-
-- [The Cairo Book](https://cairo-book.github.io/): For mastering Cairo
-
-- [Starklings](https://github.com/shramee/starklings-cairo1):
-  Practical tutorials and examples
-
 ## Conclusion
 
 In decentralized technology, Starknet offers a solution to challenges that previous systems encountered. It's based on established _protocols_ and _registries_, following the initial concepts introduced by figures such as Satoshi. Through a specific mathematical method, Starknet seeks a balance between scalability and consensus. As this technology progresses, Starknet adheres to principles of inclusivity, neutrality, and user empowerment. It's poised for continuous adaptation and improvement in the field.
