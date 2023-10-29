@@ -20,7 +20,7 @@ solutions.
 
 In this chapter, you’ll explore:
 
-- Frameworks: Build using Starknet-Foundry or Hardhat
+- Frameworks: Build using Starknet-Foundry
 
 - SDKs: Discover multi-language support through Starknet.js,
   Starknet-rs, Starknet_py, and Caigo
