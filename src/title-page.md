@@ -24,13 +24,13 @@ apps.
 
 **Chapter Titles**
 
-| Chapter                  | Description                                                                                                                                                                   |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet and acquaint yourself with the deployment of smart contracts.                                                                 |
+| Chapter                  | Description                                                                                                                                                                                           |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1: Starknet Introduction | Delve into the fundamental concepts of Starknet and acquaint yourself with the deployment of smart contracts.                                                                                         |
 | 2: Starknet Tooling      | Familiarize yourself with vital tools, such as Starkli, Katana, Scarb, Starknet-Foundry and more. Explore how languages like Javascript, Python, and Rust can be leveraged for Starknet interactions. |
-| 3: Starknet Architecture | Uncover Starknet’s core structure, gaining insights into the transaction lifecycle and the interplay between the Sequencer, Prover, and Nodes.                                |
-| 4: Account Abstraction   | Delve deep into Starknet’s unique approach to user accounts, and master the art of crafting custom accounts.                                                                  |
-| 5: STARKs                | Dive into the intricacies of STARKs and their pivotal role in shaping Starknet’s landscape.                                                                                   |
+| 3: Starknet Architecture | Uncover Starknet’s core structure, gaining insights into the transaction lifecycle and the interplay between the Sequencer, Prover, and Nodes.                                                        |
+| 4: Account Abstraction   | Delve deep into Starknet’s unique approach to user accounts, and master the art of crafting custom accounts.                                                                                          |
+| 5: STARKs                | Dive into the intricacies of STARKs and their pivotal role in shaping Starknet’s landscape.                                                                                                           |
 
 # Where to Start?
 
@@ -103,7 +103,6 @@ book an invaluable tool.
 We’ve compiled a list of valuable educational resources that will help
 deepen your understanding and enhance your skills in coding with Cairo
 and staying abreast with Starknet developments:
-
 
 1.  **Starklings**: A resource specifically designed to guide you
     through learning Cairo programming, ensuring that you reach a

@@ -50,6 +50,7 @@ The output displays the versions for scarb, cairo, and sierra:
 If the versions don't match, consider installing a version of Scarb compatible with Starkli. Browse [Scarb's GitHub](https://github.com/software-mansion/scarb/releases) repo for earlier releases.
 
 To install a specific version, such as `2.3.0`, run:
+
 ```bash
     curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.3.0
 ```
