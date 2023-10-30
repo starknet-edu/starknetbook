@@ -121,6 +121,11 @@ The `GpsStatementVerifier` takes in as parameters the bootloader (`CairoBootload
 (`simple_bootloader_program_hash`), the hash is needed to validate the fact of the verification with the program that produced the verification.
 
 
+### Interconnection of Contracts
+A High level overview of how these various contracts are connected is as follows:
+The `GpsStatementVerifier` contract is the main sharp verifier contract with minimal logic to contain it's deployment size, for it to be deployed it needs the smaller deployed verifier contracts holding diverse aspects of the verifier logics as constructor parameters as it is dependent on these contracts. The contracts passed in the constructor parameters as arguments are already deployed contracts which held other contracts they are dependent on as constructor parameters. So at the end, all of these diverse contracts are embedded in the `GpsStatementVerifier` contract but splitted into multiple contracts for clarity, smaller deployment size and separation of concerns. The proxy and callproxy contracts are used for upgradability purposes, when the sharp verifier needs a logic upgrade or change these contracts are used to effect the change and update the new state in the `GpsStatementVerifier` contract.
+
+
 ### Sharp Verification Flow
 
 <img alt="Sharp Verification Flow" src="img/ch03-06-new-sharp-flow.png" class="center" style="width: 50%;" />
