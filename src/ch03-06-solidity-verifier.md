@@ -60,21 +60,55 @@ The system routes each proof to its relevant layout.
 
 ### Sharp Verifier Contract Map
 
+The Sharp Verifier Contract Map comprises of all the contracts deployed, about 40(forty) contracts that houses and holds the several aspects of the Solidity verifier. The images below shows the various contracts and their addresses on the Ethereum Mainnet.
+
 <img alt="Sharp Verifier Contract Map " src="img/ch03-06-sharp-contrat-map-1.png" class="center" style="width: 50%;" />
 
 <span class="caption">Sharp Verifier Contract Map </span>
 
 <img alt="Sharp Verifier Contract Map " src="img/ch03-06-sharp-contrat-map-2.png" class="center" style="width: 50%;" />
 
-<span class="caption">Sharp Verifier Contract Map </span>
+<span class="caption">Sharp Verifier Contract Map *cont'd*</span>
+
+Let's discuss these contracts in-depth.
+ - Proxy: The proxy contract is the general purpose upgradability contract, that remains the permanent access address, it uses the `delegate_call` to interact with other contracts, the state is in the  `GpsStatementVerifier` contract and not proxy.
+ - CallProxy:
+ - CairoBootloaderProgram:
+ - PedersenHashPoints (X & Y Column):
+ - EcdsaPoints (X & Y Column):
+ - CpuFrilessVerifier (0 - 7): These are verifier contracts with different layouts as seen in the `GpsStatementVerifier` layout image. 
+ - CpuOods (0 - 7):
+ - CpuConstantPoly (0 - 7):
+ - PoseidonPoseidonFullRoundKey (0 - 2):
+ - PoseidonPoseidonPartialRoundKey (0 - 1):
+
 
 ### Constructor Parameters of Key Contracts
 
-The `CpuFrilessVerifiers` and `GpsStatementVerifier` are the contracts that accept constructor parameters. Here are the parameters passed to their constructors:
+The constructor parameters consists of various sub contracts already deployed. They are used to split up the size of the verifier contract and hold diverse aspects of the logic for the verifier contract, which in turn reduces the size of the verifier contract so it doesn't surpass the 24kb maximum deployment size.
+
+The key contracts are namely the `CpuFrilessVerifiers` and `GpsStatementVerifier` which accepts the  constructor parameters as shown in the image below.
 
 <img alt="Constructor Parameters" src="img/ch03-06-constructor-params.png" class="center" style="width: 50%;" />
 
 <span class="caption">Constructor Parameters</span>
+
+The `CpuFrilessVerifiers` takes in as parameters an array of auxilliary polynomal contracts ( consisting of the `CpuConstraintPoly`, `PedersenHashPointsxColumn`, `PedersenHashPointsYColumn`, `EcdsaPointsXColumn`, `EcdsaPointsYColumn`, `PoseidonPoseidonFullRoundKey0`,
+`PoseidonPoseidonFullRoundKey1`,
+`PoseidonPoseidonFullRoundKey2`,
+`PoseidonPoseidonPartialRoundKey0`,
+`PoseidonPoseidonPartialRoundKey1` ), out of domain sampling and evaluating contracts (`CpuOods`), memory contracts (`MemoryPageFactRegistry`), merkle verification contracts 
+(`MerkleStatementContract`), Fri-contracts 
+(`FriStatementContract`), security bits contracts 
+(`num_security_bits`), and the minimum proof of work contracts 
+(`min_proof_of_work_bits`).
+
+**NOTE:** When deploying the `CpuFrilessVerifier0`, the following contracts with diverse variants will be passed in the constructor `CpuConstraintPoly0`,  `PoseidonPoseidonFullRoundKey0Column0`,
+`PoseidonPoseidonFullRoundKey1Column0`,
+`PoseidonPoseidonFullRoundKey2Column0`,
+`PoseidonPoseidonPartialRoundKey0Column0`,
+`PoseidonPoseidonPartialRoundKey1Column0`, `CpuOods0` and so on.
+
 
 ### Sharp Verification Flow
 
