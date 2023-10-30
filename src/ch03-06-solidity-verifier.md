@@ -93,6 +93,7 @@ The key contracts are namely the `CpuFrilessVerifiers` and `GpsStatementVerifier
 
 <span class="caption">Constructor Parameters</span>
 
+#### CpuFrilessVerifier Constructor Parameters
 The `CpuFrilessVerifiers` takes in as parameters an array of auxilliary polynomal contracts ( consisting of the `CpuConstraintPoly`, `PedersenHashPointsxColumn`, `PedersenHashPointsYColumn`, `EcdsaPointsXColumn`, `EcdsaPointsYColumn`, `PoseidonPoseidonFullRoundKey0`,
 `PoseidonPoseidonFullRoundKey1`,
 `PoseidonPoseidonFullRoundKey2`,
@@ -108,6 +109,19 @@ The `CpuFrilessVerifiers` takes in as parameters an array of auxilliary polynoma
 `PoseidonPoseidonFullRoundKey2Column0`,
 `PoseidonPoseidonPartialRoundKey0Column0`,
 `PoseidonPoseidonPartialRoundKey1Column0`, `CpuOods0` and so on.
+
+#### GpsStatementVerifier Constructor Parameters
+The `GpsStatementVerifier` takes in as parameters the bootloader (`CairoBootloaderProgram`), memory contracts (`MemoryPageFactRegistry`), an array of all sub verifiers for the different layouts 
+(`CpuFrilessVerifier0`,
+`CpuFrilessVerifier1`,
+`CpuFrilessVerifier2`,
+`CpuFrilessVerifier3`,
+`CpuFrilessVerifier4`,
+`CpuFrilessVerifier5`,
+`CpuFrilessVerifier6`,
+`CpuFrilessVerifier7`), the cairo program verifier hash 
+(`hashed_supported_cairo_verifiers`), and the hash of the bootloader 
+(`simple_bootloader_program_hash`), the hash is needed to validate the fact of the verification with the program that produced the verification.
 
 
 ### Sharp Verification Flow
