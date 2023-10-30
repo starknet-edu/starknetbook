@@ -71,16 +71,13 @@ The Sharp Verifier Contract Map comprises of all the contracts deployed, about 4
 <span class="caption">Sharp Verifier Contract Map *cont'd*</span>
 
 Let's discuss these contracts in-depth.
- - Proxy: The proxy contract is the general purpose upgradability contract, that remains the permanent access address, it uses the `delegate_call` to interact with other contracts, the state is in the  `GpsStatementVerifier` contract and not proxy.
- - CallProxy:
- - CairoBootloaderProgram:
- - PedersenHashPoints (X & Y Column):
- - EcdsaPoints (X & Y Column):
- - CpuFrilessVerifier (0 - 7): These are verifier contracts with different layouts as seen in the `GpsStatementVerifier` layout image. 
- - CpuOods (0 - 7):
- - CpuConstantPoly (0 - 7):
- - PoseidonPoseidonFullRoundKey (0 - 2):
- - PoseidonPoseidonPartialRoundKey (0 - 1):
+ - Proxy: The proxy contract is the general purpose upgradability contract, that remains the permanent access address, it uses the `delegate_call` method to interact with the implementation contract which is the `GpsStatementVerifier` contract. In the context of SHARP the state is found in the  `GpsStatementVerifier` contract and not in the proxy contract.
+ - CallProxy: The `callProxy` is an additional contract that was introduced between the `Proxy` contract and the `GpsStatementVerifier` contract, it works exactly as a proxy contract should except it doesn't use the `delegate_call` method but simply calls the function in the implementation contract directly.
+ - CairoBootloaderProgram: These are cairo programs consisting of a bunch of numbers, that is used to validate the cairo program of an actual statement. The bootloader holds the logic that executes the cairo programs to generate the proof and the hash of the program.
+ - PedersenHashPoints (X & Y Column): These are lookup tables holding an almost infinite amount of data that is queried by the validation functions throughout the code, to calculate it's pedersen hash
+ - EcdsaPoints (X & Y Column): Similar to the pedersen hash, but this time it queries the validation functions to calculate the elliptic curve.
+ - CpuFrilessVerifier/CpuOods/CpuConstantPoly (0 - 7): These are verifier contracts with different layouts as seen in the `GpsStatementVerifier` layout image. The layouts consists of resources, builtins, constraints e.t.c., to run a specific task. Each layout has it's set of parameters that are been used in it's constructor.
+ - PoseidonPoseidon: These are contracts that supports the new poseidon builtin and consists of poseidon related lookup tables.
 
 
 ### Constructor Parameters of Key Contracts
