@@ -4,7 +4,7 @@ With a clearer understanding of the AA concept, let's proceed to code it in Star
 
 ## Account Contract Interface
 
-Account contracts, being a type of smart contracts, are distinguished by specific methods. A smart contract becomes an account contract when it follows the public interface outlined in SNIP-6 ([StarkNet Improvement Proposal-6: Standard Account Interface](https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/SNIPS/snip-6.md)). This standard draws inspiration from SRC-6 and SRC-5, similar to Ethereum's ERCs, which establish application conventions and contract standards.
+Account contracts, being a type of smart contracts, are distinguished by specific methods. A smart contract becomes an account contract when it follows the public interface outlined in SNIP-6 ([Starknet Improvement Proposal-6: Standard Account Interface](https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/SNIPS/snip-6.md)). This standard draws inspiration from SRC-6 and SRC-5, similar to Ethereum's ERCs, which establish application conventions and contract standards.
 
 ```rust
 /// @title Represents a call to a target contract
