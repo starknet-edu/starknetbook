@@ -162,7 +162,7 @@ href="https://github.com/lambdaclass/cairo_native">Cairo Native</a> or
 For more details on the Decentralization of Starknet, refer to the
 dedicated subchapter in this Chapter.
 
-Proving transactions doesn’t required to be decentralized (although in
+Proving transactions doesn’t require to be decentralized (although in
 the near future Starknet will operate with decentralized provers). Once
 the order is set, anyone can submit a proof; it’s either correct or not.
 However, the process that determines this order should be decentralized
