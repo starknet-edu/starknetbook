@@ -1,4 +1,4 @@
-# Transaction Versions  
+# Transaction Versions
 
 Understanding Starknet's transaction types is essential to master its architecture and capabilities. Each transaction type serves a unique purpose, and getting a grip on their differences is crucial for proficient Starknet usage.
 
@@ -11,7 +11,6 @@ Central to Starknet's functionality is the Starknet Operating System (OS), a Cai
 - Facilitating L1<>L2 message exchanges
 
 In Starknet terminology, "protocol level" alludes to modifications in the foundational Starknet OS Cairo program, ensuring its steadfastness.
-
 
 ## Transaction Types
 
@@ -26,6 +25,7 @@ Declare transactions are the sole mechanism for introducing new smart contracts 
 Recall programming in C++. Before employing a variable or function, it's first 'declared', signaling to the compiler its existence and type. Only then can you 'define' or use it. Declare transactions in Starknet operate on similar principles: they announce a new operation, prepping it for future use.
 
 Versions:
+
 - V0 - Suited for Cairo 0 contracts before nonces.
 - V1 - Tailored for Cairo 0 with nonces.
 - V2 (current) - Optimized for the modern Cairo contracts.
@@ -42,7 +42,6 @@ Examining the parameters of a V2 transaction reveals measures that ensure the cl
 
 In essence, using the most recent Cairo version implies the utilization of the latest Declare transaction version.
 
-
 ## Invoke Transactions
 
 Unlike Declare transactions, Invoke transactions don't add new functions. They ask the network to carry out actions, such as executing or deploying contracts. This method contrasts with Ethereum, where a contract can either be deployed by sending a distinct transaction or by having another smart contract factory to deploy it. Starknet uses only the second method.
@@ -51,7 +50,7 @@ The Universal Deployer Contract (UDC) in Starknet illustrates this idea. UDC, a 
 
 In computer science terms, think of how functions operate in C++. After declaring a function or object, you invoke it to take action. Starknet's Invoke transaction works similarly, activating pre-declared contracts or functions.
 
-Every Invoke transaction in Starknet undergoes `__validate__` and `__execute__` stages. The `__validate__` step checks the transaction's correctness, similar to a syntax or logic check. After validation, the `__execute__` phase processes the transaction. 
+Every Invoke transaction in Starknet undergoes `__validate__` and `__execute__` stages. The `__validate__` step checks the transaction's correctness, similar to a syntax or logic check. After validation, the `__execute__` phase processes the transaction.
 
 This two-step process, focusing on utilizing existing functionalities, highlights Starknet's distinct transaction strategy.
 

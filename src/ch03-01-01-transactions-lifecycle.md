@@ -28,7 +28,6 @@ Each transaction has two primary status types:
 
 To obtain this information, query the transaction receipt returned by the Nodes. Refer to the Tooling chapter in the Starknet Book for methods like the `transaction_receipt` command in starkli or the `fetch_transaction_receipt` method in the starknet-py library. We will use these tools throughout this chapter.
 
-
 ## Nonces in Starknet
 
 Initially, Starknet did not incorporate nonces. This omission meant that the same transaction could be sent multiple times with an identical nonce, leading to duplicate hashes—a problem. In Ethereum, nonces not only sequence transactions but also ensure each has a unique hash. Similarly, Starknet employs nonces to assign a distinct hash to every transaction.
@@ -36,7 +35,6 @@ Initially, Starknet did not incorporate nonces. This omission meant that the sam
 Starknet's current stance on nonces mandates that they be sequential. In other words, when you transmit a transaction from your account, its nonce must precisely follow the previous transaction's nonce.
 
 Although nonce abstraction would allow developers to manage this logic at the smart contract level, Starknet is reviewing this feature. However, its implementation is not deemed a priority.
-
 
 ## Transaction Creation
 
