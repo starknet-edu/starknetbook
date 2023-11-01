@@ -10,7 +10,9 @@ NOTE: For a more detailed explanation of SHARP and Sharp Jobs, refer to the Prov
 
 SHARP, or Shared Prover, in Starknet, aggregates various Cairo programs from distinct users. These programs, each with unique logic, run together, producing a common proof for all, optimizing cost and efficiency.
 
-![](https://hackmd.io/_uploads/HJ7UiFLfa.png)
+<img alt="Sharp workflow" src="img/ch03-06-shared-prover.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Workflow</span>
 
 Furthermore, SHARP supports combining multiple proofs into one, enhancing its efficiency by allowing parallel proof processing and verification.
 
@@ -28,7 +30,9 @@ A Solidity verifier is an L1 smart contract, crafted in Solidity, designed to va
 
 Historically, the Solidity Verifier was a monolithic contract, both initiated and executed by the same contract. For illustration, the operator would invoke the `update state` function on the main contract, providing the state to be modified and confirming its validity. Subsequently, the main contract would present the proof to both the verifier and the validium committee. Once they validated the proof, the state would be updated in the main contract.
 
-![](https://hackmd.io/_uploads/BJNEAKIzT.png)
+<img alt="Previous Architecture" src="img/ch03-06-prehistoric-architecture.png" class="center" style="width: 50%;" />
+
+<span class="caption">Previous Architecture</span>
 
 However, this architecture faced several constraints:
 
@@ -44,7 +48,7 @@ Here are some key smart contracts associated with the verifier:
 
 - [`GpsStatementVerifier`](https://etherscan.io/address/0x47312450b3ac8b5b8e247a6bb6d523e7605bdb60): This is the primary contract of the Sharp verifier. It verifies a proof and then registers the related facts using `verifyProofAndRegister`. It acts as an umbrella for various layouts, each named `CpuFrilessVerifier`. Every layout has a unique combination of built-in resources.
 
-![](https://hackmd.io/_uploads/SyqKDqLzT.png)
+<img alt="Verifier Layouts" src="img/ch03-06-verifier-layouts.png" class="center" style="width: 50%;" />
 
 The system routes each proof to its relevant layout.
 
@@ -56,18 +60,77 @@ The system routes each proof to its relevant layout.
 
 ### Sharp Verifier Contract Map
 
-![](https://hackmd.io/_uploads/r1Re_qUG6.png)
-![](https://hackmd.io/_uploads/HkkOOc8M6.png)
+The Sharp Verifier Contract Map comprises of all the contracts deployed, about 40(forty) contracts that houses and holds the several aspects of the Solidity verifier. The images below shows the various contracts and their addresses on the Ethereum Mainnet.
+
+<img alt="Sharp Verifier Contract Map " src="img/ch03-06-sharp-contrat-map-1.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Verifier Contract Map </span>
+
+<img alt="Sharp Verifier Contract Map " src="img/ch03-06-sharp-contrat-map-2.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Verifier Contract Map *cont'd*</span>
+
+Let's discuss these contracts in-depth.
+ - Proxy: The proxy contract is the general purpose upgradability contract, that remains the permanent access address, it uses the `delegate_call` method to interact with the implementation contract which is the `GpsStatementVerifier` contract. In the context of SHARP the state is found in the  `GpsStatementVerifier` contract and not in the proxy contract.
+ - CallProxy: The `callProxy` is an additional contract that was introduced between the `Proxy` contract and the `GpsStatementVerifier` contract, it works exactly as a proxy contract should except it doesn't use the `delegate_call` method but simply calls the function in the implementation contract directly.
+ - CairoBootloaderProgram: These are cairo programs consisting of a bunch of numbers, that is used to validate the cairo program of an actual statement. The bootloader holds the logic that executes the cairo programs to generate the proof and the hash of the program.
+ - PedersenHashPoints (X & Y Column): These are lookup tables holding an almost infinite amount of data that is queried by the validation functions throughout the code, to calculate it's pedersen hash
+ - EcdsaPoints (X & Y Column): Similar to the pedersen hash, but this time it queries the validation functions to calculate the elliptic curve.
+ - CpuFrilessVerifier/CpuOods/CpuConstantPoly (0 - 7): These are verifier contracts with different layouts as seen in the `GpsStatementVerifier` layout image. The layouts consists of resources, builtins, constraints e.t.c., to run a specific task. Each layout has it's set of parameters that are been used in it's constructor.
+ - PoseidonPoseidon: These are contracts that supports the new poseidon builtin and consists of poseidon related lookup tables.
+
 
 ### Constructor Parameters of Key Contracts
 
-The `CpuFrilessVerifiers` and `GpsStatementVerifier` are the contracts that accept constructor parameters. Here are the parameters passed to their constructors:
+The constructor parameters consists of various sub contracts already deployed. They are used to split up the size of the verifier contract and hold diverse aspects of the logic for the verifier contract, which in turn reduces the size of the verifier contract so it doesn't surpass the 24kb maximum deployment size.
 
-![](https://hackmd.io/_uploads/rJgPt5UMp.png)
+The key contracts are namely the `CpuFrilessVerifiers` and `GpsStatementVerifier` which accepts the  constructor parameters as shown in the image below.
+
+<img alt="Constructor Parameters" src="img/ch03-06-constructor-params.png" class="center" style="width: 50%;" />
+
+<span class="caption">Constructor Parameters</span>
+
+#### CpuFrilessVerifier Constructor Parameters
+The `CpuFrilessVerifiers` takes in as parameters an array of auxilliary polynomal contracts ( consisting of the `CpuConstraintPoly`, `PedersenHashPointsxColumn`, `PedersenHashPointsYColumn`, `EcdsaPointsXColumn`, `EcdsaPointsYColumn`, `PoseidonPoseidonFullRoundKey0`,
+`PoseidonPoseidonFullRoundKey1`,
+`PoseidonPoseidonFullRoundKey2`,
+`PoseidonPoseidonPartialRoundKey0`,
+`PoseidonPoseidonPartialRoundKey1` ), out of domain sampling and evaluating contracts (`CpuOods`), memory contracts (`MemoryPageFactRegistry`), merkle verification contracts 
+(`MerkleStatementContract`), Fri-contracts 
+(`FriStatementContract`), security bits contracts 
+(`num_security_bits`), and the minimum proof of work contracts 
+(`min_proof_of_work_bits`).
+
+**NOTE:** When deploying the `CpuFrilessVerifier0`, the following contracts with diverse variants will be passed in the constructor `CpuConstraintPoly0`,  `PoseidonPoseidonFullRoundKey0Column0`,
+`PoseidonPoseidonFullRoundKey1Column0`,
+`PoseidonPoseidonFullRoundKey2Column0`,
+`PoseidonPoseidonPartialRoundKey0Column0`,
+`PoseidonPoseidonPartialRoundKey1Column0`, `CpuOods0` and so on.
+
+#### GpsStatementVerifier Constructor Parameters
+The `GpsStatementVerifier` takes in as parameters the bootloader (`CairoBootloaderProgram`), memory contracts (`MemoryPageFactRegistry`), an array of all sub verifiers for the different layouts 
+(`CpuFrilessVerifier0`,
+`CpuFrilessVerifier1`,
+`CpuFrilessVerifier2`,
+`CpuFrilessVerifier3`,
+`CpuFrilessVerifier4`,
+`CpuFrilessVerifier5`,
+`CpuFrilessVerifier6`,
+`CpuFrilessVerifier7`), the cairo program verifier hash 
+(`hashed_supported_cairo_verifiers`), and the hash of the bootloader 
+(`simple_bootloader_program_hash`), the hash is needed to validate the fact of the verification with the program that produced the verification.
+
+
+### Interconnection of Contracts
+A High level overview of how these various contracts are connected is as follows:
+The `GpsStatementVerifier` contract is the main sharp verifier contract with minimal logic to contain it's deployment size, for it to be deployed it needs the smaller deployed verifier contracts holding diverse aspects of the verifier logics as constructor parameters as it is dependent on these contracts. The contracts passed in the constructor parameters as arguments are already deployed contracts which held other contracts they are dependent on as constructor parameters. So at the end, all of these diverse contracts are embedded in the `GpsStatementVerifier` contract but splitted into multiple contracts for clarity, smaller deployment size and separation of concerns. The proxy and callproxy contracts are used for upgradability purposes, when the sharp verifier needs a logic upgrade or change these contracts are used to effect the change and update the new state in the `GpsStatementVerifier` contract.
+
 
 ### Sharp Verification Flow
 
-![](https://hackmd.io/_uploads/ByPO5qUMa.png)
+<img alt="Sharp Verification Flow" src="img/ch03-06-new-sharp-flow.png" class="center" style="width: 50%;" />
+
+<span class="caption">Sharp Verification Flow</span>
 
 1. The Sharp dispatcher transmits all essential transactions for verification, including:
    a. `MemoryPages` (usually many).
