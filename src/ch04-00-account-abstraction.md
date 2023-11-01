@@ -228,7 +228,7 @@ However, the emergence of Layer 2 (L2) solutions provides a new pathway
 for the implementation of AA. With their focus on scalability and
 performance enhancements, these new virtual machines can better
 accommodate AA. Starknet and ZKSync are examples of platforms that have
-native AA inspired by EIP4337 – a proposal deemed superior by industry
+native AA inspired by [EIP4337](#https://eips.ethereum.org/EIPS/eip-4337) – a proposal deemed superior by industry
 experts like Argent’s Julien Niset.
 
 The repeated postponements and challenges in implementing AA on
