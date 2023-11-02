@@ -2,7 +2,7 @@
 
 This chapter guides developers through the process of compiling, deploying, and interacting with a Starknet smart contract written in Cairo on the testnet. Earlier, the focus was on deploying contracts using a local node, Katana. This time, the deployment and interaction target the Starknet testnet.
 
-Ensure the following commands run successfully on your system. If not, see the 'Basic Installation' section:
+Ensure the following commands run successfully on your system. If not, see the [Basic Installation](ch02-01-basic-installation.md) section:
 
 ```bash
     scarb --version  # For Cairo code compilation
