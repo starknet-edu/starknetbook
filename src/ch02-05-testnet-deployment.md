@@ -17,8 +17,7 @@ the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
 In order for an account to be used as a signer it must be deployed to the appropriate network,
-Starknet Goerli or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
-
+Starknet Goerli or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Smart Wallet Setup](https://book.starknet.io/ch01-00-getting-started.html#smart-wallet-setup).
 Now you’re ready to interact with Starknet smart contracts.
 
 ### Creating a Signer
@@ -203,7 +202,7 @@ In case you face an error like this:
     Error: code=ContractNotFound, message="Contract with address {SMART_WALLET_ADDRESS} is not deployed."
 ```
 
-It means you probably just created a new wallet and it has not been deployed yet. To accomplish this you have to fund your wallet with tokens and transfer tokens to a different wallet address. After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
+It means you probably just created a new wallet and it has not been deployed yet. To accomplish this you have to fund your wallet with tokens and transfer tokens to a different wallet address. After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Smart Wallet Setup](https://book.starknet.io/ch01-00-getting-started.html#smart-wallet-setup).
 
 After the acount descriptor file is generated, you can see the its detalis, run:
 
@@ -259,7 +258,6 @@ efficient.
 Deploying a smart contract on Starknet involves two steps:
 
 - Declare your contract’s code.
-
 - Deploy an instance of the declared code.
 
 To get started, navigate to the `contracts/` directory in the [first
@@ -317,7 +315,7 @@ Run this command to declare your contract using the default Starknet
 Sequencer’s Gateway:
 
 ```bash
-    starkli declare target/dev/contracts_Ownable.sierra.json
+    starkli declare target/dev/contracts_Ownable.contract_class.json
 ```
 
 According to the `STARKNET_RPC` url, starkli can recognize the target
@@ -366,8 +364,8 @@ main components:
 2.  Any constructor arguments that the contract expects.
 
 In our example, the constructor expects an _owner_ address. You can
-learn more about constructors in \[Chapter 12 of The Cairo
-Book\](<https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors>).
+learn more about constructors in [Chapter 12 of The Cairo
+Book](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors).
 
 The command would look like this:
 
