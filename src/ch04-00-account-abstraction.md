@@ -257,7 +257,7 @@ iii. also, the “signature” field usage is not defined by the protocol, but b
 | `initCode`             |  `bytes`  |                                         The initCode of the account (needed if and only if the account is not yet on-chain and needs to be created) |
 | `callData`             |  `bytes`  |                                                                                       The data to pass to the sender during the main execution call |
 | `callGasLimit`         | `uint256` |                                                                                               The amount of gas to allocate the main execution call |
-| `verificationGasLimit` | `uint256` |                                                                                            The amount of gas to allocate the main execution call $1 |
+| `verificationGasLimit` | `uint256` |                                                                                               The amount of gas to allocate the main execution call |
 | `preVerificationGas`   | `uint256` | The amount of gas to pay for to compensate the bundler for pre-verification execution, calldata and any gas overhead that can’t be tracked on-chain |
 | `maxFeePerGas`         | `uint256` |                                                                                           Maximum fee per gas (similar to EIP-1559 max_fee_per_gas) |
 | `maxPriorityFeePerGas` | `uint256` |                                                                         Maximum priority fee per gas (similar to EIP-1559 max_priority_fee_per_gas) |
