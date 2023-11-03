@@ -239,32 +239,30 @@ through L2 solutions like Starknet. This strategy could bring the
 benefits of AA to users sooner and help the Ethereum network remain
 competitive in the rapidly evolving crypto landscape.
 
-## Components  of the ERC - 4337 
+## Components of the ERC - 4337
 
 These are the components of the ERC-4337: `UserOperation`, `Bundler`, `Paymaster`, `wallet`
 
 - **UserOperation:**
-UserOperation is a structure that describes a transaction to be sent on behalf of a user. To avoid confusion, it is not named “transaction”.
+  UserOperation is a structure that describes a transaction to be sent on behalf of a user. To avoid confusion, it is not named “transaction”.
 
-i.  Like a transaction, it contains “sender”, “to”, “calldata”, “maxFeePerGas”, “maxPriorityFee”, “signature”, “nonce”
-ii.  unlike a transaction, it contains several other fields, described below
+i. Like a transaction, it contains “sender”, “to”, “calldata”, “maxFeePerGas”, “maxPriorityFee”, “signature”, “nonce”
+ii. unlike a transaction, it contains several other fields, described below
 iii. also, the “signature” field usage is not defined by the protocol, but by each account implementation
 
-
-| Field         | Type          | Description  |
-| ------------- |:-------------:| -----:|
-| `sender`      | `address`     | The account making the operation|
-| `nonce`       | `uint256`      |   Anti-replay parameter (see “Semi-abstracted Nonce Support” )|
-| `initCode`    | `bytes`     |    The initCode of the account (needed if and only if the account is not yet on-chain and needs to be created) |
-| `callData`    | `bytes` | The data to pass to the sender during the main execution call|
-| `callGasLimit`| `uint256`     |   The amount of gas to allocate the main execution call |
-| `verificationGasLimit`| `uint256`      |   The amount of gas to allocate the main execution call $1 |
-| `preVerificationGas`      | `uint256` | The amount of gas to pay for to compensate the bundler for pre-verification execution, calldata and any gas overhead that can’t be tracked on-chain |
-| `maxFeePerGas`       |`uint256`    |  Maximum fee per gas (similar to EIP-1559 max_fee_per_gas) |
-| `maxPriorityFeePerGas`    |`uint256`      |   Maximum priority fee per gas (similar to EIP-1559 max_priority_fee_per_gas)|
-| `paymasterAndData`       | `bytes`     |   Address of paymaster sponsoring the transaction, followed by extra data to send to the paymaster (empty for self-sponsored transaction) |
-| `signature`    | `bytes`         |  Data passed into the account along with the nonce during the verification step|
-
+| Field                  |   Type    |                                                                                                                                         Description |
+| ---------------------- | :-------: | --------------------------------------------------------------------------------------------------------------------------------------------------: |
+| `sender`               | `address` |                                                                                                                    The account making the operation |
+| `nonce`                | `uint256` |                                                                                        Anti-replay parameter (see “Semi-abstracted Nonce Support” ) |
+| `initCode`             |  `bytes`  |                                         The initCode of the account (needed if and only if the account is not yet on-chain and needs to be created) |
+| `callData`             |  `bytes`  |                                                                                       The data to pass to the sender during the main execution call |
+| `callGasLimit`         | `uint256` |                                                                                               The amount of gas to allocate the main execution call |
+| `verificationGasLimit` | `uint256` |                                                                                            The amount of gas to allocate the main execution call $1 |
+| `preVerificationGas`   | `uint256` | The amount of gas to pay for to compensate the bundler for pre-verification execution, calldata and any gas overhead that can’t be tracked on-chain |
+| `maxFeePerGas`         | `uint256` |                                                                                           Maximum fee per gas (similar to EIP-1559 max_fee_per_gas) |
+| `maxPriorityFeePerGas` | `uint256` |                                                                         Maximum priority fee per gas (similar to EIP-1559 max_priority_fee_per_gas) |
+| `paymasterAndData`     |  `bytes`  |             Address of paymaster sponsoring the transaction, followed by extra data to send to the paymaster (empty for self-sponsored transaction) |
+| `signature`            |  `bytes`  |                                                                      Data passed into the account along with the nonce during the verification step |
 
 Instead of modifying the logic of the consensus layer itself, we replicate the functionality of the transaction mempool in a higher-level system. Users send `UserOperation` objects that package up the user’s intent along with signatures and other data for verification. Either miners or bundlers using services such as Flashbots can package up a set of UserOperation objects into a single “bundle transaction”, which then gets included into an Ethereum block.
 Figure 1:
@@ -272,8 +270,8 @@ Figure 1:
 <img width="837" alt="image" src="https://github.com/starknet-edu/starknetbook/assets/125284347/037cdd3a-ec80-41a1-84d4-f71bce5bda0e">
 
 - **Bundler:**
-A bundler is the core infrastructure component that allows account abstraction to work on any EVM network without requiring any without consensus-layer protocol adjustment. Its purpose is to work with a new mempool of `UserOperation`s and get the transaction added on-chain.
-The bundler pays the fee for the bundle transaction in ETH, and gets compensated though fees paid as part of all the individual UserOperation executions. Bundlers would choose which UserOperation objects to include based on similar fee-prioritization logic to how miners operate in the existing transaction mempool. A UserOperation looks like a transaction; it’s an ABI-encoded struct that includes fields such as:
+  A bundler is the core infrastructure component that allows account abstraction to work on any EVM network without requiring any without consensus-layer protocol adjustment. Its purpose is to work with a new mempool of `UserOperation`s and get the transaction added on-chain.
+  The bundler pays the fee for the bundle transaction in ETH, and gets compensated though fees paid as part of all the individual UserOperation executions. Bundlers would choose which UserOperation objects to include based on similar fee-prioritization logic to how miners operate in the existing transaction mempool. A UserOperation looks like a transaction; it’s an ABI-encoded struct that includes fields such as:
 
 - `sender`: the wallet making the operation
 - `nonce` and `signature`: parameters passed into the wallet’s verification function so the wallet can verify an operation
@@ -283,16 +281,15 @@ The bundler pays the fee for the bundle transaction in ETH, and gets compensated
 The remaining fields have to do with gas and fee management; a complete list of fields can be found in the [ERC 4337](#https://eips.ethereum.org/EIPS/eip-4337) spec.
 
 - **Wallet:**
-The wallet serves as an entry point of the smart point contract functionality. There are 2 separate entry point methods: handleOps and handleAggregatedOps.
+  The wallet serves as an entry point of the smart point contract functionality. There are 2 separate entry point methods: handleOps and handleAggregatedOps.
 - `validateUserOp:` which takes a UserOperation as input. This function is supposed to verify the signature and nonce on the UserOperation, pay the fee and increment the nonce if verification succeeds, and throw an exception if verification fails.
 - An op execution function, that interprets calldata as an instruction for the wallet to take actions. How this function interprets the calldata and what it does as a result is completely open-ended; but we expect most common behavior would be to parse the calldata as an instruction for the wallet to make one or more calls.
 
 To simplify the wallet’s logic, much of the complicated smart contract trickery needed to ensure safety is done not in the wallet itself, but in a global contract called the entry point. The `validateUserOp` and execution functions are expected to be gated with `require(msg.sender == ENTRY_POINT)`, so only the trusted entry point can cause a wallet to perform any actions or pay fees. The entry point only makes an arbitrary call to a wallet after `validateUserOp` with a `UserOperation` carrying that `calldata` has already succeeded, so this is sufficient to protect wallets from attacks. The entry point is also responsible for creating a wallet using the provided `initCode` if the wallet does not exist already.
 
-
 <img width="647" alt="image2" src="https://github.com/starknet-edu/starknetbook/assets/125284347/02fb5b75-2169-4bc2-bf96-47ae8be9d190">
 
-Figure 2:  *Entry point control flow when running `handleOps`*
+Figure 2: _Entry point control flow when running `handleOps`_
 
 There are some restrictions that mempool nodes and bundlers need to enforce on what `validateUserOp` can do: particularly, the `validateUserOp` execution cannot read or write storage of other contracts, it cannot use environment opcodes such as `TIMESTAMP`, and it cannot call other contracts unless those contracts are provably not capable of self-destructing. This is needed to ensure that a simulated execution of `validateUserOp`, used by bundlers and `UserOperation` mempool nodes to verify that a given `UserOperation` is okay to include or forward, will have the same effect if it is actually included into a future block.
 
@@ -302,10 +299,9 @@ If a `UserOperation`'s verification has been simulated successfully, the `UserOp
 
 One of the main reasons why the user experience of using EOAs is so difficult is because the wallet owner needs to find a way to get some ETH before they can perform any actions on-chain. With paymasters, ERC-4337 allows abstracting gas payments altogether, meaning ​​someone other than the wallet owner can pay for the gas instead.
 
-
 <img width="676" alt="image3" src="https://github.com/starknet-edu/starknetbook/assets/125284347/b7deae91-56a8-4361-9697-ca4793546b1e">
 
-Figure 3: *Paymaster flow*
+Figure 3: _Paymaster flow_
 
 Sponsored transactions have a number of key use cases. The most commonly cited desired use cases are:
 
@@ -326,25 +322,24 @@ Note particularly that in the second case, the paymaster can be purely passive, 
 **Maintained properties:**
 
 - No centralized actors; everything is done through a peer-to-peer mempool
-  DoS safety (a UserOperation that passes simulation checks is guaranteed to be includable until the sender has another state change, which would require the        attacker to pay 7500+ gas per sender)
-- No user-side wallet setup complexity: users do not have to care about whether or not their wallet contract has been “already published”; wallets exist at          deterministic CREATE2 addresses, and if a wallet does not yet exist the first UserOperation creates it automatically
+  DoS safety (a UserOperation that passes simulation checks is guaranteed to be includable until the sender has another state change, which would require the attacker to pay 7500+ gas per sender)
+- No user-side wallet setup complexity: users do not have to care about whether or not their wallet contract has been “already published”; wallets exist at deterministic CREATE2 addresses, and if a wallet does not yet exist the first UserOperation creates it automatically
 - Full EIP 1559 support, including fee-setting simplicity (users can set a fixed fee premium and a high max total fee, and expect to be included quickly and charged fairly)
--  Ability to replace-by-fee, sending a new UserOperation with a significantly higher premium than the old one to replace the operation or get it included faster
+- Ability to replace-by-fee, sending a new UserOperation with a significantly higher premium than the old one to replace the operation or get it included faster
 
 **Benefits of the Design:**
 
 - Verification logic flexibility: the validateUserOp function can add arbitrary signature and nonce verification logic (new signature schemes, multisig…)
 - Sufficient to make the execution layer quantum-safe: if this proposal gets universally adopted, no further work on the execution layer needs to be done for quantum-safety. Users can individually upgrade their wallets to quantum-safe ones. Even the wrapper transaction is safe, as the miner can use a new freshly created and hence hash-protected EOA for each bundle transaction and not publish the transaction before it is added in a block.
--  Wallet upgradeability: wallet verification logic can be stateful, so wallets can change their public keys or (if published with DELEGATECALL) upgrade their code entirely.
+- Wallet upgradeability: wallet verification logic can be stateful, so wallets can change their public keys or (if published with DELEGATECALL) upgrade their code entirely.
 - Execution logic flexibility: wallets can add custom logic for the execution step, eg. making atomic multi-operations (a key goal of EIP 3074)
 
 **Limitations:**
 This proposal is not without its own limitations;
 
-- Slightly increased DoS vulnerability despite the protocol’s best effort, simply because verification logic is allowed to be somewhat more complex than the         status quo of a single ECDSA verification.
+- Slightly increased DoS vulnerability despite the protocol’s best effort, simply because verification logic is allowed to be somewhat more complex than the status quo of a single ECDSA verification.
 - Gas overhead: somewhat more gas overhead than regular transactions (though made up for in some use cases by multi-operation support).
 - One transaction at a time: accounts cannot queue up and send multiple transactions into the mempool. However, the ability to do atomic multi-operations makes this feature much less necessary.
-
 
 ## Conclusion
 
