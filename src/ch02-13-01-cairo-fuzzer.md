@@ -1,7 +1,9 @@
 # Cairo-fuzzer
+
 [Cairo-fuzzer](https://github.com/FuzzingLabs/cairo-fuzzer) is a tool designed for smart contract developers to test the security. It can be used as an independent tool or as a library.
 
 ## Features:
+
 <img alt="cairo-fuzzer" src="img/ch02-13-cairo-fuzzer.png" class="center" style="width: 75%;" />
 
 - Run Cairo contract

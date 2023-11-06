@@ -16,7 +16,7 @@
 - Sierra files analysis : Thoth can analyze Sierra files
 - Sierra files symbolic execution : Thoth allows symbolic execution on sierra files
 - Symbolic bounded model checker : Thoth can be used as a Symbolic bounded model checker
-<img alt="thoth" src="img/ch02-13-thoth.png" class="center" style="width: 75%;" />
+  <img alt="thoth" src="img/ch02-13-thoth.png" class="center" style="width: 75%;" />
 
 ## Installation
 

@@ -2,12 +2,11 @@
 
 When working with any blockchain programming language, it's crucial to be aware of potential vulnerabilities in smart contracts in order to protect your projects from threats that could compromise the trust users place in your systems. Cairo is no exception.
 
-This section will explain some common security issues and vulnerabilities specific to Starknet and Cairo, and provide recommendations on how to prevent them from affecting your contracts. 
+This section will explain some common security issues and vulnerabilities specific to Starknet and Cairo, and provide recommendations on how to prevent them from affecting your contracts.
 
 Contributions to this chapter are welcome. If you have any suggestions, please submit a pull request to the [Book repo](https://github.com/starknet-edu/starknetbook).
 
 > Please note that some of the code examples provided in this chapter are written in pseudo-code for the sake of simplicity and clarity when explaining the concepts. They are not meant to be used in production.
-
 
 ## 1. Access Control
 
@@ -240,9 +239,9 @@ When using the `felt252` data type, adding or subtracting a value outside the va
     fn underflow_felt252() -> felt252 {
         let min: felt252 = 0;
         // Assign max felt252 value = 2^251 + 17 * 2^192
-        let substract = (3618502788666131106986593281521497120414687020801267626233049500247285301248 + 17 * 6277101735386680763835789423207666416102355444464034512896); 
+        let substract = (3618502788666131106986593281521497120414687020801267626233049500247285301248 + 17 * 6277101735386680763835789423207666416102355444464034512896);
         min - substract
-    }  
+    }
 ```
 
 We will get wrong values:
@@ -251,7 +250,7 @@ We will get wrong values:
 
 ### Recommendation:
 
-To avoid incorrect results, *use protected data types*: Utilize data types like `u128` or `u256` that are designed to handle overflows and underflows.
+To avoid incorrect results, _use protected data types_: Utilize data types like `u128` or `u256` that are designed to handle overflows and underflows.
 
 Here's an example of how to use the `u256` data type to handle overflow and underflow:
 
@@ -275,7 +274,7 @@ Executing these functions will revert the transaction if an overflow is detected
 <img alt="u256" src="img/ch02-13-sec_over_u256.png" class="center" style="width: 75%;" />
 <img alt="u256" src="img/ch02-13-sec_over_u256.png" class="center" style="width: 75%;" />
 
-* *Failure reasons for u256*:
+- _Failure reasons for u256_:
   - `0x753235365f616464204f766572666c6f77=u256_add Overflow`
   - `0x753235365f737562204f766572666c6f77=u256_sub Overflow`
 
@@ -298,7 +297,7 @@ If an overflow or underflow occurs, the transaction will be reverted with a corr
 <img alt="u128" src="img/ch02-13-sec_over_u128.png" class="center" style="width: 75%;" />
 <img alt="u128" src="img/ch02-13-sec_under_u128.png" class="center" style="width: 75%;" />
 
-* *Failure reasons for u128*:
+- _Failure reasons for u128_:
   - `0x753132385f616464204f766572666c6f77=u128_add Overflow`
   - `0x753132385f737562204f766572666c6f77=u128_sub Overflow`
 
@@ -310,7 +309,7 @@ example, our smart contract will use a contructor parameter to set a password (1
 
 ```rust
 #[starknet::contract]
-mod StoreSecretPassword {   
+mod StoreSecretPassword {
     struct Storage {
         password: felt252,
     }
@@ -327,16 +326,23 @@ mod StoreSecretPassword {
 Then, understanding how <a href="https://book.cairo-lang.org/ch99-01-03-01-contract-storage.html?highlight=kecc#storage-addresses" target="_blank">storage layout</a> works in Cairo, let's build a script to read stored smart contract variables:
 
 ```javascript
-import {Provider, hash} from 'starknet';
+import { Provider, hash } from "starknet";
 
 const provider = new Provider({
   sequencer: {
-    network: 'goerli-alpha' // or 'goerli-alpha'
-  }
-})
+    network: "goerli-alpha", // or 'goerli-alpha'
+  },
+});
 
 var passHash = hash.starknetKeccak("password");
-console.log("getStor=",await provider.getStorageAt('0x032d0392eae7440063ea0f3f50a75dbe664aaa1df76b4662223430851a113369',passHash,812512))
+console.log(
+  "getStor=",
+  await provider.getStorageAt(
+    "0x032d0392eae7440063ea0f3f50a75dbe664aaa1df76b4662223430851a113369",
+    passHash,
+    812512,
+  ),
+);
 ```
 
 And we will get the stored value (hex value of 12345678):
@@ -349,7 +355,7 @@ Also, in a block explorer we can go to the deploy transaction and watch deployed
 
 ### Recommendation:
 
-If your smart contract needs to store private data on chain, then you must use off chain encryption before to send data to the blockchain 
+If your smart contract needs to store private data on chain, then you must use off chain encryption before to send data to the blockchain
 or may explore some alternatives like using hashes, merkle trees or commit-reveal patterns.
 
 ## Call for Contributions: Additional Vulnerabilities

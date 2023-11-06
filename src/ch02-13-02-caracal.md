@@ -11,6 +11,7 @@
 - Easy to run in Scarb projects
 
 ## Installation
+
 Precompiled binaries
 
 Precompiled binaries are available on our releases page. If you are using Cairo compiler 1.x.x uses the binary v0.1.x otherwise if you are using the Cairo compiler 2.x.x uses v0.2.x.
