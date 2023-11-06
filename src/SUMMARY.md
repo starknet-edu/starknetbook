@@ -30,6 +30,11 @@
   - [Starknet-rs: Rust SDK 🚧](ch02-10-starknet-rs.md)
   - [Starkli: Querying the Blockchain 🚧](ch02-11-starkli.md)
   - [Foundry Forge: Testing](ch02-12-foundry-forge.md)
+  - [Security Tools](ch02-13-security-tools.md)
+    - [Cairo-fuzzer](ch02-13-01-cairo-fuzzer.md)
+    - [Caracal](ch02-13-02-caracal.md)
+    - [Thoth](ch02-13-03-thoth.md)
+    - [Security Considerations](ch02-13-04-security-considerations.md)
 
 ## Architecture
 
