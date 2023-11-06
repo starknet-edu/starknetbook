@@ -34,7 +34,7 @@ generally stored in the default Starkli directory.
 First, create the default directory:
 
 ```bash
-    mkdir ~/.starkli-wallets/deployer -p
+    mkdir -p ~/.starkli-wallets/deployer
 ```
 
 Then generate the keystore file. The signer command contains subcommands
