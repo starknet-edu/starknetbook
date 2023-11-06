@@ -47,7 +47,8 @@
 
 - [Account Abstraction](ch04-00-account-abstraction.md)
   - [Accounts](ch04-01-accounts.md)
-  - [Hello, Account! 🚧](ch04-02-hello-account.md)
+  - [Hello, Account!](ch04-02-01-hello-account.md)
+  - [Account Deployment](ch04-02-02-deploy-hello-account.md)
   - [Standard AccounT 🚧](ch04-03-standard-account.md)
   - [Examples](ch04-04-examples.md)
     - [Multicaller 🚧](ch04-04-01-multicaller.md)
