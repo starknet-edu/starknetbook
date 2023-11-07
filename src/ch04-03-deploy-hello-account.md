@@ -1,4 +1,4 @@
-## Deploying Account Contracts with Starkli
+# Deploying Account Contracts
 
 After building our account contract, we'll now deploy it using Starkli on the testnet and interact with other contracts.
 
