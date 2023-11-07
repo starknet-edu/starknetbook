@@ -1,40 +1,27 @@
-## Deployment of Account Contracts using Starkli
+## Deploying Account Contracts with Starkli
 
-In the previous chapter we went through the process of creating an
-account contract from scratch. We will now walk through deployment
-of the account contract using Starkli to the testnet, and interaction
-with other smart contracts.
+After building our account contract, we'll now deploy it using Starkli on the testnet and interact with other contracts.
 
-To follow along, make sure you have [starkli](https://github.com/xJonathanLEI/starkli)
-and [scarb](https://docs.swmansion.com/scarb/download.html) installed.
+Ensure you've installed [starkli](https://github.com/xJonathanLEI/starkli) and [scarb](https://docs.swmansion.com/scarb/download.html). Review the Basic Installation subchapter in Chapter 2 if you haven't.
 
-## Configuration files for Account Contracts
+## Account Contract Configuration Files
 
-For effective management of account contracts, Starkli mandates the use of two
-essential configuration files:
+Starkli requires two key configuration files:
 
-- `keystore.json`: An encrypted file responsible for securely storing the
-  associated private key.
+- `keystore.json`: A secure file that holds the private key.
+- `account.json`: An open file with the account's public details like public key, class hash, and address.
 
-- `account.json`: An unencrypted file detailing the public attributes of the account
-  contract, such as the public key, class hash and address.
+Optionally, Starkli can use:
 
-Additionally, Starkli supports an optional configuration file:
+- `envars.sh`: A script to set environment variables for Starkli commands.
 
-- `envars.sh`: This shell file is used to source the environment variables expected
-  by Starkli, streamlining its command operations.
+For multiple wallets, keep a clean directory structure. Each wallet should have its own folder with the three files inside. Group these under a `~/.starkli-wallets` directory.
 
-For users managing multiple wallets with Starkli, it is recommended to maintain an
-organized directory structure. Each wallet should have its dedicated folder
-containing the three configuration files. All these individual wallet folders
-can be grouped under a centralized hidden directory, typically named `starkli-wallets`,
-located in user's home directory.
-
-The suggested directory structure is illustrated below:
+Here's a suggested structure:
 
 ```bash
-~ $ tree ~/.starkli-wallets
->>>
+tree ~/.starkli-wallets
+
 .starkli-wallets
 ├── wallet-a
 │   ├── account.json
@@ -46,100 +33,58 @@ The suggested directory structure is illustrated below:
     └── keystore.json
 ```
 
-This structure ensures easy accessibility and organization, especially when dealing with
-multiple wallets.
+This setup promotes better organization.
 
-For the purpose of this guide, we will establish a new directory called `custom` within
-the `.starkli-wallets` directory to represent our smart contract wallet.
-
-Execute the following command to create the directory:
+We'll make a custom folder in `.starkli-wallets` for our contract wallet:
 
 ```bash
-~ $ mkdir ~/.starkli-wallets/custom
+mkdir ~/.starkli-wallets/custom
 ```
 
-Subsequently, Starkli will be employed to generate `keystore.json` and `account.json`.
-`envars.sh` file will be crafted manually.
+Next, we use Starkli to create `keystore.json` and `account.json`, then write `envars.sh` by hand.
 
-## Generating the Keystore File
+## Creating the Keystore File with Starkli
 
-Starkli provides a streamlined process to automatically generate a private key, save it
-in a `keystore.json` file within the `custom` directory, and secure the file using
-encryption. This can be achieved through a single command, which requires the destination
-path for the configuration file as its argument.
-
-Execute the following command:
+Starkli simplifies creating a `keystore.json` file. This encrypted file holds your private key and sits in the `custom` directory. You can create this with one command:
 
 ```bash
-~ $ starkli signer keystore new ~/.starkli-wallets/custom/keystore.json
->>>
-
-Enter password:
-Created new encrypted keystore file: /Users/david/.starkli-wallets/custom/keystore.json
-Public key: 0x01445385497364c73fabf223c55b7b323586b61c42942c99715d842c6f0a781c
+starkli signer keystore new ~/.starkli-wallets/custom/keystore.json
 ```
 
-Upon execution, you will be prompted to input an encryption password. Once provided, the
-`keystore.json` file will be generated. The path to this file will serve as the primary
-environment variable in our `envars.sh` file.
+When you run this, you'll enter a password to secure the file. The resulting `keystore.json` is essential for setting up the `envars.sh` file, which stores environment variables.
 
-To create the `envars.sh` file, use:
+Create `envars.sh` like this:
 
 ```bash
-~ $ touch ~/.starkli-wallets/custom/envars.sh
+touch ~/.starkli-wallets/custom/envars.sh
 ```
 
-Then, add the following content to the file:
+Open the file and insert:
 
 ```bash
 #!/bin/bash
 export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
 ```
 
-To ensure the environment variable is active in your terminal session, source the file:
+Activate the variable by sourcing the file:
 
 ```bash
-~ $ source ~/.starkli-wallets/custom/envars.sh
+source ~/.starkli-wallets/custom/envars.sh
 ```
 
-With the environment set up, we can proceed to generate the second essential configuration
-file for our account contract: `account.json`.
+Now, your environment is ready for the next step: creating the `account.json` file.
 
-## Generating the Account Configuration file
+## Generating the Account Configuration File
 
-The signature validation process in our account contract aligns with the methodology used in
-[Open Zeppelin's default account contract.](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.7.0-rc.0/src/account/account.cairo)
-Both these account contracts anticipate a singular signer and employ the STARK-compatible
-elliptic curve. Given this similarity, we will utilize a Starkli command typically designed for
-an Open Zeppelin account, even though our account contract has been independently developed from the
-ground up.
-
-Execute the following command:
+Our account contract's signature validation mirrors that in [Open Zeppelin's default account contract](https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.7.0-rc.0/src/account/account.cairo), using a single signer and a STARK-compatible elliptic curve. Despite building our contract independently, we'll use Starkli's command for Open Zeppelin accounts to create our configuration:
 
 ```bash
-$ starkli account oz init ~/.starkli-wallets/custom/account.json
->>>
-
-Enter keystore password:
-Created new account config file: /Users/david/.starkli-wallets/custom/account.json
-
-Once deployed, this account will be available at:
-    0x020746ecae88e0eea0da05770eddee1165515180acb35efeb27d1daad0aed418
-
-Deploy this account by running:
-    starkli account deploy /Users/david/.starkli-wallets/custom/account.json
+starkli account oz init ~/.starkli-wallets/custom/account.json
 ```
 
-You will be prompted to enter the keystore password. Upon successful verification, an `account.json`
-file will be generated.
+After entering your keystore password, `account.json` is created. This file includes a class hash for OpenZeppelin's contract, not ours. Since the class hash influences the deployment address, the shown address won't match our contract.
 
-However, its crucial to note that while our account contract shares similarities with OpenZeppelin's,
-they are distinct entities. As a result, our account contract will have a different class hash
-compared to OpenZeppelin's version. Since the hash class plays a pivotal role in determining the
-deployment address, the address ` 0x020746ecae88e0eea0da05770eddee1165515180acb35efeb27d1daad0aed418` is
-not accurate.
-
-Let's take a look at the generated `account.json` file:
+Here's what account.json looks like:
 
 ```json
 {
@@ -158,48 +103,36 @@ Let's take a look at the generated `account.json` file:
 }
 ```
 
-The class hash defined in this configuration is OpenZeppelin's. To find our account contract's
-class hash we'll compile our project and use Starkli to derive the class hash.
+To deploy our unique contract, we must compile our project to obtain the correct class hash and update `account.json` accordingly.
 
-## Determining the Class Hash
+## Finding the Class Hash
 
-In the previous subchapter, we had created a directory called `aa` (abbreviation for account abstraction)
-containing the Cairo code defining our account contract. If this directory is absent, you can clone
-the repository to proceed:
+Previously, we set up a `aa` directory for our account contract's Cairo code. If you don't have it, clone the repository:
 
 ```bash
-~ $ git clone git@github.com:starknet-edu/aa-workshop.git aa
+git clone git@github.com:starknet-edu/aa-workshop.git aa
 ```
 
-To compile our account contract to Sierra, navigate to the project directory and use Scarb:
+To compile the contract with Scarb, enter the project directory:
 
 ```bash
-~ $ cd aa
-aa $ scarb build
->>>
-
-Compiling aa v0.1.0 (/Users/david/aa/Scarb.toml)
-Finished release target(s) in 2 seconds
+cd aa
+scarb build
 ```
 
-Upon successful compilation, the resultant version of our account contract will be located within
-the `target/dev` directory of our project.
-
-To derive the class hash of our account contract, utilize Starkli:
+The compiled contract lies in `target/dev`. Use Starkli to get the class hash:
 
 ```bash
-aa $ starkli class-hash target/dev/aa_Account.sierra.json
->>>
-0x03480253c19b447b1d7e7a6422acf80b73866522de03126fa55796a712d9f092
+starkli class-hash target/dev/aa_Account.sierra.json
 ```
 
-We'll update the `account.json` file of our account contract with the accurate class hash:
+Next, edit `account.json` to insert the correct class hash:
 
 ```bash
-aa $ code ~/.starkli-wallets/custom/account.json
+code ~/.starkli-wallets/custom/account.json
 ```
 
-The updated content should resemble:
+Ensure the `class_hash` is updated:
 
 ```json
 {
@@ -218,73 +151,63 @@ The updated content should resemble:
 }
 ```
 
-With `account.json` file now containing the correct details, we can establish a new environment variable
-pointing to its path:
+To point to the updated `account.json`, modify `envars.sh`:
 
 ```bash
-aa $ code ~/.starkli-wallets/custom/envars.sh
+code ~/.starkli-wallets/custom/envars.sh
 ```
 
-Add the following lines:
-
-```bash
-#!/bin/bash
-export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
-export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
-
-```
-
-To activate this new environment variable, source the file:
-
-```bash
-aa $ source ~/.starkli-wallets/custom/envars.sh
-```
-
-Next step is to declare the account contract on testnet.
-
-## Setting up an RPC provider
-
-To declare an account contract, a transaction must be sent to Starknet through an RPC
-provider. While this guide utilizes [Alchemy](https://www.alchemy.com/), alternatives
-such as [Infura](https://www.infura.io/) or even a personal Starknet node can be employed.
-
-For those opting on Alchemy or Infura:
-
-- Register an account with the chosen provider
-
-- Initiate a project specifically for Starknet Goerli
-
-- Retrieve the generated RPC's URL
-
-- Incorporate this URL into the `envars.sh` file as an environment variable
-
-```bash
-aa $ code ~/.starkli-wallets/custom/envars.sh
-```
-
-The file should contain:
+Add the account path:
 
 ```bash
 #!/bin/bash
 export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
 export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
-export STARKNET_RPC=https://starknet-goerli.g.alchemy.com/v2/V0WI...
 ```
 
-Note: The full RPC endpoint URL is abbreviated here to protect the API key.
+Source `envars.sh` to apply the changes:
+
+```bash
+source ~/.starkli-wallets/custom/envars.sh
+```
+
+Now, we're ready to declare the contract on the testnet.
+
+## Establishing an RPC Provider
+
+For transactions on Starknet, an RPC provider is essential. This guide uses [Alchemy](https://www.alchemy.com/), but [Infura](https://www.infura.io/) or a personal node are viable alternatives.
+
+Steps for Alchemy or Infura:
+
+- Create an account.
+- Start a new project for Starknet Goerli.
+- Obtain the RPC URL.
+- Add this URL to `envars.sh`:
+
+```bash
+aa $ code ~/.starkli-wallets/custom/envars.sh
+```
+
+The file should now include:
+
+```bash
+#!/bin/bash
+export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
+export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
+export STARKNET_RPC=https://starknet-goerli.g.alchemy.com/v2/your-api-key
+```
+
+Replace `your-api-key` with the actual API key provided by Alchemy.
 
 ## Declaring the Account Contract
 
-To declare the account contract, a pre-existing, funded account contract is essential
-to cover the gas fees. The steps needed to configure Starkli to use either [Braavos](https://braavos.app/)
-or [Argent X](https://www.argent.xyz/argent-x/) wallet as `deployer`
-are outlined [here.](https://medium.com/starknet-edu/starkli-the-new-starknet-cli-86ea914a2933)
+You'll need a funded account to pay gas fees. Configure Starkli with a [Braavos](https://braavos.app/) or [Argent X](https://www.argent.xyz/argent-x/) wallet as the deployer. Instructions are available [here](https://medium.com/starknet-edu/starkli-the-new-starknet-cli-86ea914a2933).
 
-After configuring either Braavos or Argent X's smart wallet address in Starkli as the deployer,
-Starkli's wallet structure is as follows:
+After setting up, your Starkli wallet structure will be:
 
 ```bash
-~/.starkli-wallets$ tree .
+tree .
+
 .
 ├── custom
 │   ├── account.json
@@ -296,153 +219,109 @@ Starkli's wallet structure is as follows:
     └── keystore.json
 ```
 
-To use the smart wallet with Starkli for our account declaration, source its `envars.sh` file within
-the `aa` directory:
+Source the deployer's environment file in the `aa` directory to use it:
 
 ```bash
-aa $ source ~/.starkli-wallets/deployer/envars.sh
+source ~/.starkli-wallets/deployer/envars.sh
 ```
 
-Subsequently, declare the account contract, with the deployer account covering the gas fees:
+Declare the contract with the deployer covering gas:
 
 ```bash
-aa $ starkli declare target/dev/aa_Account.sierra.json
->>>
-
-Enter keystore password:
-Sierra compiler version not specified. Attempting to automatically decide version to use...
-Network detected: goerli-1. Using the default compiler version for this network: 2.2.0. Use the --compiler-version flag to choose a different version.
-Declaring Cairo 1 class: 0x03480...
-Compiling Sierra class to CASM with compiler version 2.1.0...
-CASM class hash: 0x05f587...
-Contract declaration transaction: 0x0699f...
-Class hash declared: 0x0348025...
+starkli declare target/dev/aa_Account.sierra.json
 ```
 
-After the declaration transaction reaches the "Accepted on L2" status, reactivate the environment
-variables of the account contract, still within the `aa` directory, to initiate the counterfactual deployment:
+After reaching "Accepted on L2," status (less than a minute) switch back to the account's environment:
 
 ```bash
-aa $ source ~/.starkli-wallets/custom/envars.sh
+source ~/.starkli-wallets/custom/envars.sh
 ```
+
+Deploy the account with Starkli:
 
 ```bash
-aa $ starkli account deploy ~/.starkli-wallets/custom/account.json
->>>
-
-Enter keystore password:
-The estimated account deployment fee is 0.000004330000051960 ETH. However, to avoid failure, fund at least:
-    0.000006495000077940 ETH
-to the following address:
-    0x71d8...
-Press [ENTER] once you've funded the address.
-
+starkli account deploy ~/.starkli-wallets/custom/account.json
 ```
 
-Starkli will pause, awaiting the transfer of sufficient funds to the designated address `0x71d8..` where the
-account contract will be deployed. This is a pre-requisite for transmitting the `deploy_account` transaction.
-Starknet's [faucet](https://faucet.goerli.starknet.io/) facilitates this transfer.
+Starkli will wait for you to fund the address displayed with at least the estimated fee from Starknet's [faucet](https://faucet.goerli.starknet.io/).
 
-Once the funds arrive at your specified address, press `ENTER` to proceed with deployment:
+Once funded, press **`ENTER`** to deploy:
 
 ```bash
 ...
-Account deployment transaction: 0x00b9...
-Waiting for transaction 0x00b9... to confirm. If this process is interrupted, you will need to run `starkli account fetch` to update the account file.
-Transaction 0x04b7... confirmed
+Deployment transaction confirmed
 ```
 
-The account contract is now successfully deployed to Starknet's testnet.
+Your account contract is now live on the Starknet testnet.
 
-## Interacting with the Account Contract
+## Using the Account Contract
 
-To validate the functionality of our account contract, one can initiate a transaction to transfer 100 gwei to
-another wallet, e.g address `0x070a0122733c00716cb9f4ab5a77b8bcfc04b707756bbc27dc90973844a752d1`.
-This is achieved by invoking the `transfer` function on the WETH smart contract within
-[Starknet's testnet](https://starkscan.co/contract/0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7)
+To test our account contract, we can send 100 gwei to the wallet `0x070a...52d1` by calling the `transfer` function of the WETH smart contract on Starknet's testnet.
 
-Starkli offers concise commands for common operations, such as interacting with the WETH smart contract:
+Invoke the transfer with Starkli (more details on Starkli's in Chapter 2):
 
 ```bash
-aa $ starkli invoke eth transfer 0x070a012... u256:100
->>>
-
-Enter keystore password:
-Invoke transaction: 0x0321...
+starkli invoke eth transfer 0x070a012... u256:100
 ```
 
-A successful transaction indicates that the account contract has verified the transaction signature, executed
-the transfer action, and managed the associated gas fees.
+A successful invoke confirms that our account contract has authenticated the signature, executed the transfer, and managed the gas fees.
 
-Below is a cheatsheet showing all the steps to declare, deploy and interact with the custom account contract created:
+Here's a summary of all the steps from declaration to interaction:
 
 ```bash
-# Cheatsheet: Steps to declare, deploy and use a custom account contract
+# Quick Guide: Declare, Deploy, and Interact with a Custom Account Contract
 
-# [1] Set environment variables in envars.sh
+# [1] Set up environment variables in envars.sh
 export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
 export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
-export STARKNET_RPC=https://starknet-goerli.g.alchemy.com/v2/V0WI...
+export STARKNET_RPC=https://starknet-goerli.g.alchemy.com/v2/your-api-key
 
-# [2] Create keystore.json file
+# [2] Generate keystore.json
 starkli signer keystore new ~/.starkli-wallets/custom/keystore.json
 
-# [3] Create account.json file
+# [3] Initialize account.json
 starkli account oz init ~/.starkli-wallets/custom/account.json
 
-# [4] Compile account contract
+# [4] Build the contract with Scarb
 scarb build
 
-# [5] Derive class hash
+# [5] Get the class hash
 starkli class-hash target/dev/aa_Account.sierra.json
 
-# [6] Update account.json file
-{
-  "version": 1,
-  ...
-  "deployment": {
-    ...
-    "class_hash": "<REAL_CLASS_HASH>",
-    ...
-  },
-  "variant": {
-    ...
-    "legacy": false
-  }
-}
+# [6] Update account.json with the real class hash
+code ~/.starkli-wallets/custom/account.json
 
-# [7] Activate deployer wallet
+# [7] Set deployer wallet environment
 source ~/.starkli-wallets/deployer/envars.sh
 
-# [8] Declare account contract with deployer
+# [8] Declare the contract using the deployer
 starkli declare target/dev/aa_Account.sierra.json
 
-# [9] Activate custom wallet
+# [9] Switch to the custom wallet
 source ~/.starkli-wallets/custom/envars.sh
 
-# [10] Deploy account contract
+# [10] Deploy the contract
 starkli account deploy ~/.starkli-wallets/custom/account.json
 
-# [11] Send ETH to given address
+# [11] Test the contract by transferring ETH
+starkli invoke eth transfer 0x070a012... u256:100
 
-# [12] Use account contract for testing
-starkli invoke eth transfer 0x1234 u256:100
-
-# [bonus] Suggested folder structure
+# [bonus] Recommended directory structure
 .
 ├── account.json
 ├── envars.sh
 └── keystore.json
 ```
 
-## Recap
+## Summary
 
-We have successfully deployed and interacted with the custom account contract using Starkli! We first setup the
-environment variables using the `envars.sh` shell file, generated the `keystore.json` file used to store the
-private key, initialized the account descriptor file `account.json` , activated the deployer wallet environment
-using Braavos smart wallet, declared our account contract before deploying it to the Starknet testnet, and initiated
-a transfer operation with another wallet address.
+We've successfully deployed and used our custom account contract on Starknet with Starkli. Here's what we accomplished:
 
-It's important to note that we utilized Starkli for the account contract using the Open Zeppelin setting because we
-utilized the same signature for the `constructor` and `__declare_deploy__` functions as Open Zeppelin uses.
-Modifying either of the signatures requires you to use the [Starknet JS](https://www.starknetjs.com/) SDK.
+- Set environment variables in `envars.sh`.
+- Created `keystore.json` to securely store the private key.
+- Initialized `account.json` as the account descriptor file.
+- Used Braavos smart wallet to set up the deployer environment.
+- Declared and deployed our account contract to the Starknet testnet.
+- Conducted a transfer to another wallet.
+
+We matched the Open Zeppelin's contract in terms of signature methods for the `constructor` and `__declare_deploy__` functions, which allowed us to use Starkli's Open Zeppelin preset. Should there be a need for signature modification, Starknet JS SDK would be the tool of choice.
