@@ -767,7 +767,7 @@ mod Account {
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
       self.execute_multiple_calls(calls)
     }
-    
+
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
       self.only_protocol();
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
@@ -800,7 +800,7 @@ mod Account {
       if !is_valid_length {
         return false;
       }
-      
+
       check_ecdsa_signature(
         hash, self.public_key.read(), *signature.at(0_u32), *signature.at(1_u32)
       )
@@ -810,7 +810,7 @@ mod Account {
       let tx_info = get_tx_info().unbox();
       let tx_hash = tx_info.transaction_hash;
       let signature = tx_info.signature;
-      
+
       let is_valid = self.is_valid_signature_bool(tx_hash, signature);
       assert(is_valid, 'Account: Incorrect tx signature');
       VALIDATED
