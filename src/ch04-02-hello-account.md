@@ -81,10 +81,9 @@ Compile your project to ensure the setup is correct:
 scarb build
 ```
 
-## Implementing SNIP-6
+## Implementing SNIP-6 Standard
 
-As explained in the previous subchapter, to classify a smart contract as an  
-account contract, it must adhere to the `ISRC6` trait:
+To define an account contract, implement the `ISRC6` trait:
 
 ```rust
 trait ISRC6 {
@@ -94,17 +93,9 @@ trait ISRC6 {
 }
 ```
 
-Functions within the account contract annotated with `#[external(v0)]` attribute
-possess unique selectors, facilitating interactions with the contract by external entities.
+The `#[external(v0)]` attribute marks functions with unique selectors for external interaction. The Starknet protocol exclusively uses `__execute__` and `__validate__`, whereas `is_valid_signature` is available for web3 applications to validate signatures.
 
-However, while these functions are publicly accessible via their selectors, it is essential
-to distinguish their intended users. Specifically, the `__execute__` and `__validate__`
-functions are reserved exclusively for the Starknet protocol. In contrast, `is_valid_signature`
-is publicly available, catering to web3 applications for signature validation.
-
-The `trait IAccount<T>` trait, marked with the `#[starknet::interface]` attribute,
-encapsulates functions intended for public interaction,such as `is_valid_signature`.
-The `__execute__` and `__validate__` functions, though public, are indirectly accessed.
+The `trait IAccount<T>`\*\* with `#[starknet::interface]` attribute groups publicly accessible functions, like `is_valid_signature`. Functions `__execute__` and `__validate__`, though public, are accessible only indirectly.
 
 ```rust
 use starknet::account::Call;
@@ -124,174 +115,198 @@ mod Account {
   }
 
   #[external(v0)]
-  impl AccountImpl of super::IAccount<ContractState> {
+  impl AccountImpl for super::IAccount<ContractState> {
     fn is_valid_signature(self: @ContractState, hash: felt252, signature: Array<felt252>) -> felt252 { ... }
   }
 
+  // These functions are protocol-specific and not intended for direct external use.
   #[external(v0)]
   #[generate_trait]
-  impl ProtocolImpl of ProtocolTrait {
+  impl ProtocolImpl for ProtocolTrait {
     fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> { ... }
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 { ... }
   }
 }
 ```
 
-## Protocol-Only Function Protection
+## Restricted Function Access for Security
 
-For enhanced account security,`__execute__` and `__validate__` functions are exclusively
-callable by the Starknet protocol, even though they are publicly accessible.
-The Starknet protocol uses the zero address when invoking a function.
-The private function `only_protocol` ensures that only Starknet protocol can access these functions
+The `__execute__` and `__validate__` functions are designed for exclusive use by the Starknet protocol to enhance account security. Despite their public accessibility, only the Starknet protocol can invoke these functions, identified by using the zero address.
 
 ```rust
-...
-
-//Starknet uses zero address as caller when calling function
 #[starknet::contract]
 mod Account {
   use starknet::get_caller_address;
   use zeroable::Zeroable;
-  ...
 
-  //protection of protocol-only functions using only_protocol()
+  // Enforces Starknet protocol-only access to specific functions
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
+    // Executes protocol-specific operations
     fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> {
-      self.only_protocol();
-      ...
+      self.only_protocol(); // Verifies protocol-level caller
+      // ... (implementation details)
     }
+
+    // Validates protocol-specific operations
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
-      self.only_protocol();
-      ...
+      self.only_protocol(); // Verifies protocol-level caller
+      // ... (implementation details)
     }
   }
 
-  //creation of private function only_protocol()
+  // Defines a private function to check for protocol-level access
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
-    fn only_protocol(self: @ContractState) {...}
+    fn only_protocol(self: @ContractState) {
+      // ... (access validation logic)
+    }
   }
 }
-
 ```
 
-Note that the function `is_valid_signature` is not protected by the `only_protocol` function
-as its to be used freely.
+## Enhanced Security Through Protocol-Exclusive Functions
 
-## Signature Validation
-
-The public key associated with the account contract's signer is stored for transaction signature validation.
-The `constructor` method is defined to capture the public key's value during deployment.
-.
+Starknet enhances the security of accounts by restricting the callability of certain functions. The `__execute__` and `__validate__` functions, though publicly visible, are callable solely by the Starknet protocol. This protocol asserts its unique calling rights by using a designated zero address—a special value that signifies protocol-level operations.
 
 ```rust
-...
-
 #[starknet::contract]
 mod Account {
-  ...
+  use starknet::get_caller_address;
+  use zeroable::Zeroable;
 
+  // Implements function access control for Starknet protocol
+  #[external(v0)]
+  #[generate_trait]
+  impl ProtocolImpl of ProtocolTrait {
+    // The __execute__ function is a protocol-exclusive operation
+    fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> {
+      self.only_protocol(); // Validates the caller as the Starknet protocol
+      // ... (execution logic)
+    }
+
+    // The __validate__ function ensures the integrity of protocol-level calls
+    fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
+      self.only_protocol(); // Ensures the caller is the Starknet protocol
+      // ... (validation logic)
+    }
+  }
+
+  // A private function, only_protocol, to enforce protocol-level access
+  #[generate_trait]
+  impl PrivateImpl of PrivateTrait {
+    // only_protocol checks the caller's address against the zero address
+    fn only_protocol(self: @ContractState) {
+      // If the caller is not the zero address, access is denied
+      // This guarantees that only the Starknet protocol can call the function
+      // ... (access control logic)
+    }
+  }
+}
+```
+
+The `is_valid_signature` function, by contrast, is not bounded by `only_protocol`, maintaining its availability for broader use.
+
+## Transaction Signature Validation
+
+To verify transaction signatures, the account contract stores the public key of the signer. The `constructor` method initializes this public key during the contract's deployment.
+
+```rust
+#[starknet::contract]
+mod Account {
+  // Persistent storage for account-related data
   #[storage]
   struct Storage {
-    public_key: felt252
+    public_key: felt252  // Stores the public key for signature validation
   }
 
+  // Sets the public key during contract deployment
   #[constructor]
   fn constructor(ref self: ContractState, public_key: felt252) {
-    self.public_key.write(public_key);
+    self.public_key.write(public_key);  // Records the signer's public key
   }
-  ...
+  // ... Additional implementation details
 }
 ```
 
-The `is_valid_signature` function returns `VALID` for a valid signature and `0` otherwise.
-An internal function, `is_valid_signature_bool`, provides a boolean result for signature validation.
+The `is_valid_signature` function outputs `VALID` for an authentic signature and `0` for an invalid one. Additionally, the `is_valid_signature_bool` internal function provides a Boolean result for the signature's validity.
 
 ```rust
-...
-
 #[starknet::contract]
 mod Account {
-  ...
+  // Import relevant cryptographic and data handling modules
   use array::ArrayTrait;
   use ecdsa::check_ecdsa_signature;
-  use array::SpanTrait;  //Implements span() method
+  use array::SpanTrait;  // Facilitates the use of the span() method
 
-  ...
-
-  //Implementation of is_valid_signature method
+  // External function to validate the transaction signature
   #[external(v0)]
   impl AccountImpl of super::IAccount<ContractState> {
     fn is_valid_signature(self: @ContractState, hash: felt252, signature: Array<felt252>) -> felt252 {
-      //Derive Span from signature passed as Array to be used in is_valid_signature_bool()
+      // Converts the signature array into a span for processing
       let is_valid = self.is_valid_signature_bool(hash, signature.span());
-      if is_valid { 'VALID' } else { 0 }
+      if is_valid { 'VALID' } else { 0 }  // Returns 'VALID' or '0' based on signature validity
     }
   }
 
-  ...
-
-  //Implementation of is_valid_signature_bool to return bool
+  // Private function to check the signature validity and return a Boolean
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
-    ...
-
-    //function signature expects a Span instead of an Array
+    // Validates the signature using a span of elements
     fn is_valid_signature_bool(self: @ContractState, hash: felt252, signature: Span<felt252>) -> bool {
+      // Checks if the signature has the correct length
       let is_valid_length = signature.len() == 2_u32;
 
+      // If the signature length is incorrect, returns false
       if !is_valid_length {
         return false;
       }
 
+      // Verifies the signature using the stored public key
       check_ecdsa_signature(
         hash, self.public_key.read(), *signature.at(0_u32), *signature.at(1_u32)
       )
     }
   }
+  // ... Additional implementation details
 }
 
 ```
 
-The `__validate__` function uses `is_valid_signature_bool` to ensure transaction signature validity.
+In the `__validate__` function, the `is_valid_signature_bool` method is utilized to confirm the integrity of transaction signatures.
 
 ```rust
-...
-
 #[starknet::contract]
 mod Account {
-  ...
+  // Import modules for transaction information retrieval
   use box::BoxTrait;
   use starknet::get_tx_info;
 
-  ...
-
+  // Protocol implementation for transaction validation
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
-    ...
-
+    // Validates the signature of a transaction
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
-      self.only_protocol();
+      self.only_protocol();  // Ensures protocol-only access
 
+      // Retrieves transaction information and unpacks it
       let tx_info = get_tx_info().unbox();
       let tx_hash = tx_info.transaction_hash;
       let signature = tx_info.signature;
 
+      // Validates the signature and asserts its correctness
       let is_valid = self.is_valid_signature_bool(tx_hash, signature);
-      assert(is_valid, 'Account: Incorrect tx signature');  //assert stops transaction execution if signature invalid
-      'VALID'
+      assert(is_valid, 'Account: Incorrect tx signature');  // Stops execution if the signature is invalid
+      'VALID'  // Indicates a valid signature
     }
   }
-
-  ...
+  // ... Additional implementation details
 }
-
 ```
 
-## Validation for Declare and Deploy Functions
+## Unified Signature Validation for Contract Operations
 
 The `__validate_declare__` function is responsible for validating the signature
 of the `declare` function. On the other hand, `__validate_deploy__` facilitates
@@ -304,46 +319,46 @@ The core logic from `__validate__` is abstracted to `validate_transaction` priva
 function, which is then invoked by the other two validation functions.
 
 ```rust
-...
-
 #[starknet::contract]
 mod Account {
-  ...
-
+  // Protocol implementation for the account contract
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
 
-    //The three validation signatures pooled to function similarly
+    // Validates general contract function calls
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
-      self.only_protocol();
-      self.validate_transaction()
+      self.only_protocol();  // Ensures only the Starknet protocol can call
+      self.validate_transaction()  // Centralized validation logic
     }
 
+    // Validates the 'declare' function signature
     fn __validate_declare__(self: @ContractState, class_hash: felt252) -> felt252 {
-      self.only_protocol();
-      self.validate_transaction()
+      self.only_protocol();  // Ensures only the Starknet protocol can call
+      self.validate_transaction()  // Reuses the validation logic
     }
 
+    // Validates counterfactual contract deployment
     fn __validate_deploy__(self: @ContractState, class_hash: felt252, salt: felt252, public_key: felt252) -> felt252 {
-      self.only_protocol();
-      self.validate_transaction()
+      self.only_protocol();  // Ensures only the Starknet protocol can call
+      // Even though public_key is provided, it uses the one stored from the constructor
+      self.validate_transaction()  // Applies the same validation logic
     }
   }
 
+  // Private trait implementation that contains shared validation logic
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
-    ...
-
-    //Logic extraction from __validate__ to validate_transaction
+    // Abstracted core logic for validating transactions
     fn validate_transaction(self: @ContractState) -> felt252 {
-      let tx_info = get_tx_info().unbox();
+      let tx_info = get_tx_info().unbox();  // Extracts transaction information
       let tx_hash = tx_info.transaction_hash;
       let signature = tx_info.signature;
 
+      // Validates the transaction signature using an internal boolean function
       let is_valid = self.is_valid_signature_bool(tx_hash, signature);
-      assert(is_valid, 'Account: Incorrect tx signature');
-      'VALID'
+      assert(is_valid, 'Account: Incorrect tx signature');  // Ensures signature correctness
+      'VALID'  // Returns 'VALID' if the signature checks out
     }
   }
 }
@@ -355,117 +370,119 @@ is invoked, it remains crucial to provide it when initiating the transaction.
 Alternatively, the public key can be directly utilized within the `__validate_deploy__` function,
 bypassing the constructor.
 
-## Transaction Execution
+## Efficient Multicall Transaction Execution
 
-The `__execute__` function in the `Account` module accepts an array of `Call` structures,
-allowing for multicall functionality. This feature bundles multiple user operations
-into one transaction, enhancing user experience.
+The `__execute__` function within the `Account` module of a Starknet contract is designed to process an array of `Call` structures. This multicall feature consolidates several user operations into a single transaction, significantly improving the user experience by enabling batched operations.
 
+````rust
 ```rust
-...
 #[starknet::contract]
 mod Account {
-  ...
+  // Protocol implementation to handle execution of calls
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
-    fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> { ... }
-    ...
+    // The __execute__ function processes an array of calls
+    fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> {
+      self.only_protocol(); // Ensures Starknet protocol level access
+      self.execute_multiple_calls(calls) // Invokes batch processing of calls
+    }
+    // ... Additional implementation details
   }
 }
-```
+````
 
-The `Call` data structure contains the necessary information for a single user operation.
+Each `Call` represents the details required for executing a single operation by the smart contract:
 
 ```rust
+// Data structure encapsulating a contract call
 #[derive(Drop, Serde)]
 struct Call {
-  to: ContractAddress,
-  selector: felt252,
-  calldata: Array<felt252>
+  to: ContractAddress,       // The target contract address
+  selector: felt252,         // The function selector
+  calldata: Array<felt252>   // The parameters for the function call
 }
 ```
 
-To manage individual calls, a private function `execute_single_call` is defined. It uses the low-level
-`call_contract_syscall` syscall to invoke another smart contract function directly.
+The contract defines a private function `execute_single_call` to handle individual calls. It utilizes the `call_contract_syscall` to directly invoke a function on another contract:
 
 ```rust
-...
 #[starknet::contract]
 mod Account {
-  ...
+  // Import syscall for contract function invocation
   use starknet::call_contract_syscall;
 
+  // Private trait implementation for individual call execution
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
-    ...
+    // Executes a single call to another contract
     fn execute_single_call(self: @ContractState, call: Call) -> Span<felt252> {
-      let Call{to, selector, calldata} = call;
-      call_contract_syscall(to, selector, calldata.span()).unwrap_syscall()
+      let Call{to, selector, calldata} = call; // Destructures the Call struct
+      call_contract_syscall(to, selector, calldata.span()).unwrap_syscall() // Performs the contract call
     }
   }
+  // ... Additional implementation details
 }
 ```
 
-For handling multiple calls, the `execute_multiple_calls` function iterates over the
-`Call` array and returns an array of responses.
+For the execution of multiple calls, `execute_multiple_calls` iterates over the array of Call structures, invoking `execute_single_call` for each and collecting the responses:
 
 ```rust
-...
 #[starknet::contract]
 mod Account {
-  ...
+  // Private trait implementation for batch call execution
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
-    ...
+    // Handles an array of calls and accumulates the results
     fn execute_multiple_calls(self: @ContractState, mut calls: Array<Call>) -> Array<Span<felt252>> {
-      let mut res = ArrayTrait::new();
+      let mut res = ArrayTrait::new(); // Initializes the result array
       loop {
         match calls.pop_front() {
           Option::Some(call) => {
-            let _res = self.execute_single_call(call);
-            res.append(_res);
+            let response = self.execute_single_call(call); // Executes each call individually
+            res.append(response); // Appends the result of the call to the result array
           },
           Option::None(_) => {
-            break ();
+            break (); // Exits the loop when no more calls are left
           },
         };
       };
-      res
+      res // Returns the array of results
     }
   }
+  // ... Additional implementation details
 }
 ```
 
-Finally, the main `__execute__` function utilizes these helper functions to process the array
-of `Call` structures:
+In summary, the `__execute__` function orchestrates the execution of multiple calls within a single transaction. It leverages these internal functions to handle each call efficiently and return the collective results:
 
 ```rust
-...
 #[starknet::contract]
 mod Account {
-  ...
+  // External function definition within the protocol implementation
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
+    // The __execute__ function takes an array of Call structures and processes them
     fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> {
-      self.only_protocol();
-      self.execute_multiple_calls(calls)
+      self.only_protocol(); // Verifies that the function caller is the Starknet protocol
+      self.execute_multiple_calls(calls) // Delegates to a function for processing multiple calls
     }
-    ...
+    // ... Additional implementation details may follow
   }
-  ...
+  // ... Further module code may be present
 }
 ```
 
-## Transaction Version Support
+The `__execute__` function first ensures that it is being called by the Starknet protocol itself, a security measure to prevent unauthorized access. It then calls the `execute_multiple_calls` function to handle the actual execution of the calls.
+
+## Ensuring Compatibility with Transaction Versioning
+
+Starknet incorporates a versioning system for transactions to maintain backward compatibility while introducing new functionalities. The account contract tutorial showcases support for the latest transaction versions through a specific module, ensuring smooth operation of both legacy and updated transaction structures.
 
 To accommodate the evolution of Starknet and its enhanced functionalities,
 a versioning system was introduced for transactions. This ensures backward compatibility,
 allowing both old and new transaction structures to operate concurrently.
-
-For simplicity in this tutorial, the account contract is designed to support
-only the latest versions of each transaction type:
 
 - Version 1 for `invoke` transactions
 - Version 1 for `deploy_account` transactions
@@ -474,45 +491,43 @@ only the latest versions of each transaction type:
 These supported versions are logically grouped in a module called `SUPPORTED_TX_VERSION`:
 
 ```rust
-...
-
+// Module defining supported transaction versions
 mod SUPPORTED_TX_VERSION {
-  const DEPLOY_ACCOUNT: felt252 = 1;
-  const DECLARE: felt252 = 2;
-  const INVOKE: felt252 = 1;
+  // Constants representing the supported versions
+  const DEPLOY_ACCOUNT: felt252 = 1;  // Supported version for deploy_account transactions
+  const DECLARE: felt252 = 2;         // Supported version for declare transactions
+  const INVOKE: felt252 = 1;          // Supported version for invoke transactions
 }
 
 #[starknet::contract]
-mod Account { ... }
+mod Account {
+  // The rest of the account contract module code
+  ...
+}
 ```
 
-To ensure that only the latest transaction versions are processed,
-a private function `only_supported_tx_version` is introduced.
-This function checks the version of the incoming transaction against the supported versions.
-If there's a mismatch, the transaction execution is halted with an assertion error.
+To handle the version checking, the account contract includes a private function `only_supported_tx_version`. This function compares the version of an incoming transaction against the specified supported versions, halting execution with an error if a discrepancy is found.
 
-The main functions `__execute__`, `__validate__`, `__validate_declare__` and `__validate_deploy__`
-utilize this version check to ensure only the supported transaction versions are processed.
+The critical contract functions such as `__execute__`, `__validate__`, `__validate_declare__`, and `__validate_deploy__` implement this version check to confirm transaction compatibility.
 
 ```rust
-...
-
 #[starknet::contract]
 mod Account {
-  ...
+  // Importing constants from the SUPPORTED_TX_VERSION module
   use super::SUPPORTED_TX_VERSION;
 
-  ...
-
+  // Protocol implementation for Starknet functions
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
+    // Function to execute multiple calls with version check
     fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> {
-      self.only_protocol();
-      self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
-      self.execute_multiple_calls(calls)
+      self.only_protocol(); // Checks if the function caller is the Starknet protocol
+      self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE); // Ensures the transaction is the supported version
+      self.execute_multiple_calls(calls) // Processes the calls if version check passes
     }
 
+    // Each of the following functions also includes the version check to ensure compatibility
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
       self.only_protocol();
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
@@ -532,106 +547,136 @@ mod Account {
     }
   }
 
+  // Private implementation for checking supported transaction versions
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
-    ...
-
+    // Function to assert the transaction version is supported
     fn only_supported_tx_version(self: @ContractState, supported_tx_version: felt252) {
-      let tx_info = get_tx_info().unbox();
-      let version = tx_info.version;
+      let tx_info = get_tx_info().unbox(); // Retrieves transaction details
+      let version = tx_info.version; // Extracts the version from the transaction
       assert(
         version == supported_tx_version,
-        'Account: Unsupported tx version'
+        'Account: Unsupported tx version' // Error message for unsupported versions
       );
     }
+    // ... Additional private functions
   }
 }
 ```
+
+By integrating transaction version control, the contract ensures it operates consistently with the network's current standards, providing a clear path for upgrading and maintaining compatibility with Starknet's evolving ecosystem.
 
 ## Handling Simulated Transactions
 
-In Starknet, transactions can be simulated to estimate gas without actual execution.
-Tools like Starkli offer an `estimate-only` flag for this purpose, signaling the Sequencer
-to simulate the transaction and return the estimated cost.
+Starknet's simulation feature allows developers to estimate the gas cost of transactions without actually committing them to the network. This is particularly useful during development and testing phases. The `estimate-only` flag available in tools like Starkli triggers the simulation process. To differentiate between actual transaction execution and simulation, Starknet uses a version offset strategy.
 
-To differentiate between real and simulated transactions, the version of a simulated transaction is offset
-by 2^128 from its actual counterpart. For instance, a simulated `declare` transaction has a version of 2^128 + 2
-if the regular `declare` transaction's latest version is 2.
+Simulated transactions are assigned a version number that is the sum of \(2^{128}\) and the version number of the actual transaction type. For example, if the latest version of a `declare` transaction is 2, then a simulated `declare` transaction would have a version number of \(2^{128} + 2\). The same logic applies to other transaction types like `invoke` and `deploy_account`.
 
-The `only_supported_tx_version` function is adjusted to recognize both actual and simulated versions,
-ensuring accurate processing for both types.
+Here's how the `only_supported_tx_version` function is adjusted to accommodate both actual and simulated transaction versions:
 
 ```rust
-...
-
 #[starknet::contract]
 mod Account {
-  ...
-  //Represents simulated transactions
-  const SIMULATE_TX_VERSION_OFFSET: felt252 = 340282366920938463463374607431768211456; // 2**128
+  // Constant representing the version offset for simulated transactions
+  const SIMULATE_TX_VERSION_OFFSET: felt252 = 340282366920938463463374607431768211456; // This is 2^128
 
-  ...
-
+  // Private trait implementation updated to validate transaction versions
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
-    ...
+    // Function to check for supported transaction versions, accounting for simulations
     fn only_supported_tx_version(self: @ContractState, supported_tx_version: felt252) {
-      let tx_info = get_tx_info().unbox();
-      let version = tx_info.version;
+      let tx_info = get_tx_info().unbox(); // Retrieves the transaction metadata
+      let version = tx_info.version; // Extracts the version for comparison
+
+      // Validates whether the transaction version matches either the supported actual version or the simulated version
       assert(
         version == supported_tx_version ||
         version == SIMULATE_TX_VERSION_OFFSET + supported_tx_version,
-        'Account: Unsupported tx version'
+        'Account: Unsupported tx version' // Assertion message for version mismatch
       );
     }
+    // Additional private functions may follow
   }
+  // Remaining contract code may continue here
 }
-
 ```
 
-## Introspection
+The code snippet showcases the account contract's capability to recognize and process both actual and simulated versions of transactions by incorporating the large numerical offset. This ensures that the system can seamlessly operate with and adjust to the estimation process without affecting the actual transaction processing logic.
 
-Introspection allows an account contract to self-identify using the SRC-5 standard.
+## SRC-5 Standard and Contract Introspection
+
+Contract introspection is a feature that allows Starknet contracts to self-report the interfaces they support, in compliance with the SRC-5 standard. The `supports_interface` function is a fundamental part of this introspection process, enabling contracts to communicate their capabilities to others.
+
+For a contract to be SRC-5 compliant, it must return `true` when the `supports_interface` function is called with a specific `interface_id`. This unique identifier is chosen to represent the SRC-6 standard's interface, which the contract claims to support. The identifier is a large integer specifically chosen to minimize the chance of accidental collisions with other identifiers.
+
+In the account contract, the `supports_interface` function is part of the public interface, allowing other contracts to query its support for the SRC-6 standard:
 
 ```rust
+// SRC-5 trait defining the introspection method
 trait ISRC5 {
+  // Function to check interface support
   fn supports_interface(interface_id: felt252) -> bool;
 }
-```
 
-An account contract should return `true` for the `supports_interface` function when provided with the
-specific `interface_id` of `1270010605630597976495846281167968799381097569185364931397797212080166453709`.
-The reason for using this specific identifier is explained in the previous subchapter.
-
-The `supports_interface` function has been added to the public interface of the account
-contract to facilitate external queries by other smart contracts.
-
-```rust
-...
-
+// Extension of the account contract's interface for SRC-5 compliance
 #[starknet::interface]
 trait IAccount<T> {
-  ...
+  // ... Additional methods
+  // Method to validate interface support
   fn supports_interface(self: @T, interface_id: felt252) -> bool;
 }
 
 #[starknet::contract]
 mod Account {
-  ...
+  // Constant identifier for the SRC-6 trait
   const SRC6_TRAIT_ID: felt252 = 1270010605630597976495846281167968799381097569185364931397797212080166453709;
 
-  ...
-
+  // Public interface implementation for the account contract
   #[external(v0)]
   impl AccountImpl of super::IAccount<ContractState> {
-    ...
+    // ... Other function implementations
+    // Implementation of the interface support check
     fn supports_interface(self: @ContractState, interface_id: felt252) -> bool {
+      // Compares the provided interface ID with the SRC-6 trait ID
       interface_id == SRC6_TRAIT_ID
     }
   }
-  ...
+  // ... Additional account contract code
+}
+// SRC-5 trait defining the introspection method
+trait ISRC5 {
+  // Function to check interface support
+  fn supports_interface(interface_id: felt252) -> bool;
+}
+
+// Extension of the account contract's interface for SRC-5 compliance
+#[starknet::interface]
+trait IAccount<T> {
+  // ... Additional methods
+  // Method to validate interface support
+  fn supports_interface(self: @T, interface_id: felt252) -> bool;
+}
+
+#[starknet::contract]
+mod Account {
+  // Constant identifier for the SRC-6 trait
+  const SRC6_TRAIT_ID: felt252 = 1270010605630597976495846281167968799381097569185364931397797212080166453709;
+
+  // Public interface implementation for the account contract
+  #[external(v0)]
+  impl AccountImpl of super::IAccount<ContractState> {
+    // ... Other function implementations
+    // Implementation of the interface support check
+    fn supports_interface(self: @ContractState, interface_id: felt252) -> bool {
+      // Compares the provided interface ID with the SRC-6 trait ID
+      interface_id == SRC6_TRAIT_ID
+    }
+  }
+  // ... Additional account contract code
 }
 ```
+
+By implementing this function, the account contract declares its ability to interact with other contracts expecting SRC-6 features, thus adhering to the standards of the Starknet protocol and enhancing interoperability within the network.
 
 ## Public Key Accessibility
 
@@ -661,80 +706,104 @@ mod Account {
 We now have a fully functional account contract. Here's the final implementation;
 
 ```rust
+// A StarkNet account contract implementation with basic functionalities.
 use starknet::account::Call;
 
+// Supported transaction versions.
 mod SUPPORTED_TX_VERSION {
   const DEPLOY_ACCOUNT: felt252 = 1;
   const DECLARE: felt252 = 2;
   const INVOKE: felt252 = 1;
 }
 
+// Account interface defining essential functions.
 #[starknet::interface]
 trait IAccount<T> {
+  // Checks if the signature is valid for the given hash.
   fn is_valid_signature(self: @T, hash: felt252, signature: Array<felt252>) -> felt252;
+
+  // Verifies if a specific interface is supported.
   fn supports_interface(self: @T, interface_id: felt252) -> bool;
+
+  // Retrieves the public key of the account.
   fn public_key(self: @T) -> felt252;
 }
 
+// The Account contract encapsulating state and behavior.
 #[starknet::contract]
 mod Account {
   use super::{Call, IAccount, SUPPORTED_TX_VERSION};
-  use starknet::{get_caller_address, call_contract_syscall, get_tx_info, VALIDATED};
+  use starknet::{
+    get_caller_address, call_contract_syscall, get_tx_info, VALIDATED
+  };
   use zeroable::Zeroable;
   use array::{ArrayTrait, SpanTrait};
   use ecdsa::check_ecdsa_signature;
-  use box::BoxTrait;
 
-  const SIMULATE_TX_VERSION_OFFSET: felt252 = 340282366920938463463374607431768211456; // 2**128
-  const SRC6_TRAIT_ID: felt252 = 1270010605630597976495846281167968799381097569185364931397797212080166453709; // hash of SNIP-6 trait
+  // Constant representing a shift in transaction version for simulation purposes.
+  const SIMULATE_TX_VERSION_OFFSET: felt252 = 2**128;
 
+  // Unique identifier for the SNIP-6 interface.
+  const SRC6_TRAIT_ID: felt252 = hash("SNIP-6 trait");
+
+  // Account storage maintaining the public key.
   #[storage]
   struct Storage {
     public_key: felt252
   }
 
+  // Constructor sets the account's public key.
   #[constructor]
   fn constructor(ref self: ContractState, public_key: felt252) {
     self.public_key.write(public_key);
   }
 
+  // Implementation of the account interface.
   #[external(v0)]
   impl AccountImpl of IAccount<ContractState> {
+    // Wrapper for signature validation returning StarkNet validation status.
     fn is_valid_signature(self: @ContractState, hash: felt252, signature: Array<felt252>) -> felt252 {
       let is_valid = self.is_valid_signature_bool(hash, signature.span());
       if is_valid { VALIDATED } else { 0 }
     }
 
+    // Checks if the contract supports SNIP-6 interface.
     fn supports_interface(self: @ContractState, interface_id: felt252) -> bool {
       interface_id == SRC6_TRAIT_ID
     }
 
+    // Reads the public key from storage.
     fn public_key(self: @ContractState) -> felt252 {
       self.public_key.read()
     }
   }
 
+  // Protocol implementation handling transaction execution and validation.
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
+    // Executes a batch of calls within a transaction.
     fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> {
       self.only_protocol();
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
       self.execute_multiple_calls(calls)
     }
 
+    // Validates a standard transaction.
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
       self.only_protocol();
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
       self.validate_transaction()
     }
 
+    // Validates a declaration transaction.
     fn __validate_declare__(self: @ContractState, class_hash: felt252) -> felt252 {
       self.only_protocol();
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::DECLARE);
       self.validate_transaction()
     }
 
+    // Validates an account deployment transaction.
     fn __validate_deploy__(self: @ContractState, class_hash: felt252, salt: felt252, public_key: felt252) -> felt252 {
       self.only_protocol();
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::DEPLOY_ACCOUNT);
@@ -742,25 +811,28 @@ mod Account {
     }
   }
 
+  // Private implementation with helper functions for internal contract logic.
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
+    // Ensures that only the protocol can call certain functions.
     fn only_protocol(self: @ContractState) {
       let sender = get_caller_address();
       assert(sender.is_zero(), 'Account: invalid caller');
     }
 
+    // Returns a boolean indicating the validity of a signature.
     fn is_valid_signature_bool(self: @ContractState, hash: felt252, signature: Span<felt252>) -> bool {
       let is_valid_length = signature.len() == 2_u32;
-
       if !is_valid_length {
         return false;
       }
-
+      // Validates the ECDSA signature against the stored public key.
       check_ecdsa_signature(
         hash, self.public_key.read(), *signature.at(0_u32), *signature.at(1_u32)
       )
     }
 
+    // Validates the transaction signature and returns a validation status.
     fn validate_transaction(self: @ContractState) -> felt252 {
       let tx_info = get_tx_info().unbox();
       let tx_hash = tx_info.transaction_hash;
@@ -771,27 +843,23 @@ mod Account {
       VALIDATED
     }
 
+    // Executes a single call to another contract.
     fn execute_single_call(self: @ContractState, call: Call) -> Span<felt252> {
       let Call{to, selector, calldata} = call;
       call_contract_syscall(to, selector, calldata.span()).unwrap()
     }
 
+    // Iterates through and executes multiple calls.
     fn execute_multiple_calls(self: @ContractState, mut calls: Array<Call>) -> Array<Span<felt252>> {
       let mut res = ArrayTrait::new();
-      loop {
-        match calls.pop_front() {
-          Option::Some(call) => {
-            let _res = self.execute_single_call(call);
-            res.append(_res);
-          },
-          Option::None(_) => {
-            break ();
-          },
-        };
+      while let Option::Some(call) = calls.pop_front() {
+        let _res = self.execute_single_call(call);
+        res.append(_res);
       };
       res
     }
 
+    // Checks if the transaction version is supported by the contract.
     fn only_supported_tx_version(self: @ContractState, supported_tx_version: felt252) {
       let tx_info = get_tx_info().unbox();
       let version = tx_info.version;
@@ -803,72 +871,58 @@ mod Account {
     }
   }
 }
+
 ```
 
-## Recap
+## Account Contract Creation Summary
 
-Account Contract Creation Recap:
+- **SNIP-6 Implementation**
 
-- SNIP-6 Implementation
+  - Implements the `ISRC6` trait, defining the account contract's structure.
 
-  - The account contract is designed to adhere to the `ISRC6` trait, which dictates the structure of an account contract.
+- **Protocol-Only Function Access**
 
-- Protecting Protocol-Only Functions
+  - Restricts `__validate__` and `__execute__` to StarkNet protocol access.
+  - Makes `is_valid_signature` available for external calls.
+  - Adds a `only_protocol` private function to enforce access rules.
 
-  - `__validate__` and `__execute__` functions were restricted to be accessed only by the Starknet protocol.
+- **Signature Validation Process**
 
-  - `is_valid_signature` was exposed for external interactions.
+  - Stores a public key to verify the signer's transactions.
+  - Initializes with a `constructor` to set the public key.
+  - Validates signatures with `is_valid_signature`, returning `VALID` or `0`.
+  - Uses `is_valid_signature_bool` to return a true or false validation result.
 
-  - Private function `only_protocol` was introduced to enforce this restriction.
+- **Declare and Deploy Function Validation**
 
-- Signature Validation
+  - Sets up `__validate_declare__` to check the `declare` function's signature.
+  - Designs `__validate_deploy__` for counterfactual deployments.
+  - Abstracts core validation to `validate_transaction`.
 
-  - Public key associated with signer of account contract was stored to facilitate transaction signature validation.
+- **Transaction Execution Logic**
 
-  - `constructor` method was defined to capture the public key's value during deployment.
+  - Enables multicall capability with `__execute__`.
+  - Handles calls individually with `execute_single_call` and in batches with `execute_multiple_calls`.
 
-  - The `is_valid_signature` function was implemented to validate signatures, returning `VALID` or `0`.
+- **Transaction Version Compatibility**
 
-  - The helper function `is_valid_signature_bool` was introduced to return a boolean result.
+  - Ensures compatibility with StarkNet updates using a versioning system.
+  - Defines supported transaction types in `SUPPORTED_TX_VERSION`.
+  - Checks transaction versions with `only_supported_tx_version`.
 
-- Validation of Declare and Deploy Functions
+- **Simulated Transaction Handling**
 
-  - The `__validate_declare__` function was setup to validate signature of `declare` function.
+  - Adapts `only_supported_tx_version` to recognize both actual and simulated versions.
 
-  - The `__validate_deploy__` function was designed for counterfactual deployment.
+- **Contract Self-Identification**
 
-  - The core validation logic was abstracted to a private function named `validate_transaction`.
+  - Allows self-identification with the SRC-5 standard via `supports_interface`.
 
-- Transaction Execution
+- **Public Key Visibility**
 
-  - Introduced multicall functionality via the `__execute__` function.
+  - Provides public key access for transparency.
 
-  - Implemented `execute_single_call` and `execute_multiple_calls` to manage individual and multiple calls respectively.
+- **Complete Implementation**
+  - Presents the final account contract code.
 
-- Transaction Version Support
-
-  - Implemented a versioning system to ensure backward compatibility with evolving Starknet functionalities.
-
-  - Created `SUPPORTED_TX_VERSION` module to define supported versions for various transaction types.
-
-  - Introduced `only_supported_tx_version` to validate transaction versions.
-
-- Handling Simulated Transactions
-
-  - Adjusted the `only_supported_tx_version` function to recognize both actual and simulated transaction versions.
-
-- Introspection
-
-  - Enabled the account contract to self-identify using the SRC-5 standard.
-
-  - The `supports_interface` function was added to the public interface for external queries about the contract's capabilities.
-
-- Public Key Accessibility
-
-  - Enhanced transparency by making the public key of the account contract's signer accessible.
-
-- Final Implementation
-
-  - Final Implementation of the account contract.
-
-Coming up, we'll use Starkli to deploy to testnet the account created, and use it to interact with other smart contracts.
+Next, we will deploy the account using Starkli to the testnet and interact with other smart contracts.
