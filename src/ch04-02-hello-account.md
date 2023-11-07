@@ -1,38 +1,32 @@
-# Hello World Account Contract
+# Hello World! Account Contract
 
-In this subchapter we will create an account contract
-from scratch following the SNIP-6 and SRC-5 standards.
+This section guides you through the creation of an account contract, adhering to the SNIP-6 and SRC-5 standards.
 
-## Project Setup
+## Setting Up Your Project
 
-To deploy an account contract to Starknet's testnet or mainnet,
-ensure you're using a version of Scarb that supports the Sierra 1.3.0 target,
-as both Starknet's testnet and mainnet currently support this version.
-Refer to [Starknet Release Notes](https://docs.starknet.io/documentation/starknet_versions/version_notes/)
-for more details.
-As of November 2023, the recommended Scarb version is 2.3.1.
+For deploying an account contract to Starknet's testnet or mainnet, use Scarb version 2.3.1, which is compatible with the Sierra 1.3.0 target supported by both networks. For the latest information, review the [Starknet Release Notes](https://docs.starknet.io/documentation/starknet_versions/version_notes/). As of November 2023, Scarb version 2.3.1 is the recommended choice.
+
+To check your current Scarb version, run:
 
 ```bash
-$ scarb --version
-scarb 2.3.1 (0c8def3aa 2023-10-31)
-cairo: 2.3.1 (https://crates.io/crates/cairo-lang-compiler/2.3.1)
-sierra: 1.3.0
-
+scarb --version
 ```
 
-To install or Update Scarb follow the instructions [here.](https://docs.swmansion.com/scarb/)
-
-## Setting up a new Scarb project
-
-Initialize a new project:
+To install or update Scarb, refer to the Basic Installation instructions in Chapter 2, covering macOS and Linux environments:
 
 ```bash
-$ scarb new aa
-Created `aa` package.
-
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
 ```
 
-Inspect the default project structure:
+## Starting a New Scarb Project
+
+Begin by creating a new project (more details in the Scarb subchapter in Chapter 2):
+
+```bash
+scarb new aa
+```
+
+Check the generated project structure:
 
 ```bash
 $ tree .
@@ -41,11 +35,9 @@ $ tree .
     ├── Scarb.toml
     └── src
         └── lib.cairo
-
 ```
 
-By default, Scarb sets up for vanilla Cairo. To target Starknet,
-modify `Scarb.toml` to activate the Starknet plugin.
+By default, Scarb sets up for vanilla Cairo. Add Starknet capacities by editing `Scarb.toml` to include the `starknet` dependency:
 
 ```bash
 [package]
@@ -59,20 +51,9 @@ starknet = ">=2.3.0"
 [[target.starknet-contract]]
 sierra = true
 casm = true
-
 ```
 
-In the `src/lib.cairo` file,replace the Cairo code with the scaffold for your account contract:
-
-```rust
-#[starknet::contract]
-mod Account {
-
-}
-
-```
-
-To validate signatures, store the public key associated with the signer's private key.
+Replace the code in `src/lib.cairo` with an account contract scaffold:
 
 ```rust
 #[starknet::contract]
@@ -80,20 +61,24 @@ mod Account {
 
     #[storage]
     struct Storage {
-
         public_key: felt252
     }
 }
-
 ```
 
-Finally, compile the project to verify the setup:
+To validate signatures, store the public key associated with the signer's private key.
+
+```rust
+#[storage]
+struct Storage {
+    public_key: felt252
+}
+```
+
+Compile your project to ensure the setup is correct:
 
 ```bash
-aa/src$ scarb build
-   Compiling aa v0.1.0 (/home/Cyndie/account_abstraction__starknet/aa/Scarb.toml)
-    Finished release target(s) in 1 second
-
+scarb build
 ```
 
 ## Implementing SNIP-6
