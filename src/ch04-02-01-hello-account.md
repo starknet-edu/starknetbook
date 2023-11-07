@@ -10,12 +10,12 @@ ensure you're using a version of Scarb that supports the Sierra 1.3.0 target,
 as both Starknet's testnet and mainnet currently support this version.
 Refer to [Starknet Release Notes](https://docs.starknet.io/documentation/starknet_versions/version_notes/)
 for more details.
-As of October 2023, the recommended Scarb version is 0.7.0.
+As of November 2023, the recommended Scarb version is 2.3.1.
 
 ```bash
 $ scarb --version
-scarb 0.7.0 (58cc88efb 2023-08-23)
-cairo: 2.2.0 (https://crates.io/crates/cairo-lang-compiler/2.2.0)
+scarb 2.3.1 (0c8def3aa 2023-10-31)
+cairo: 2.3.1 (https://crates.io/crates/cairo-lang-compiler/2.3.1)
 sierra: 1.3.0
 
 ```
@@ -51,11 +51,14 @@ modify `Scarb.toml` to activate the Starknet plugin.
 [package]
 name = "aa"
 version = "0.1.0"
+cairo-version = "2.3.0"
 
 [dependencies]
-starknet = "2.2.0"
+starknet = ">=2.3.0"
 
 [[target.starknet-contract]]
+sierra = true
+casm = true
 
 ```
 
