@@ -175,9 +175,9 @@ Now, we're ready to declare the contract on the testnet.
 
 ## Establishing an RPC Provider
 
-For transactions on Starknet, an RPC provider is essential. This guide uses [Alchemy](https://www.alchemy.com/), but [Infura](https://www.infura.io/) or a personal node are viable alternatives.
+For transactions on Starknet, an RPC provider is essential. This guide uses [Infura](https://www.infura.io/) but a personal node is a viable alternative.
 
-Steps for Alchemy or Infura:
+Steps for Infura:
 
 - Create an account.
 - Start a new project for Starknet Goerli.
@@ -194,10 +194,10 @@ The file should now include:
 #!/bin/bash
 export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
 export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
-export STARKNET_RPC=https://starknet-goerli.g.alchemy.com/v2/your-api-key
+export STARKNET_RPC=https://starknet-goerli.infura.io/v3/your-api-key
 ```
 
-Replace `your-api-key` with the actual API key provided by Alchemy.
+Replace `your-api-key` with the actual API key provided by Infura.
 
 ## Declaring the Account Contract
 
@@ -274,7 +274,7 @@ Here's a summary of all the steps from declaration to interaction:
 # [1] Set up environment variables in envars.sh
 export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
 export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
-export STARKNET_RPC=https://starknet-goerli.g.alchemy.com/v2/your-api-key
+export STARKNET_RPC=https://starknet-goerli.infura.io/v3/your-api-key
 
 # [2] Generate keystore.json
 starkli signer keystore new ~/.starkli-wallets/custom/keystore.json
