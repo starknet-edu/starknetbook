@@ -80,7 +80,7 @@ EOF
 
 # Step 3: Run contract tests
 echo -e "\nTesting the contract..."
-testing_result=$(snforge 2>&1)
+testing_result=$(snforge test 2>&1)
 if echo "$testing_result" | grep -q "Failure"; then
     echo -e "Tests failed!\n"
     snforge
