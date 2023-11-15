@@ -31,6 +31,8 @@ Below is the content for `script.sh`. It adheres to best practices for clarity, 
 
 **Security Note**: Using environment variables is safer than hardcoding private keys in your scripts, but they're still accessible to any process on your machine and could potentially be leaked in logs or error messages.
 
+On step 5 _declaring_, Uncomment according to local devnet you are using either the rust node or python node for declaration to work as expected.
+
 ```sh
 #!/usr/bin/env bash
 
@@ -115,7 +117,8 @@ if [ "$FAILED_TESTS" != "true" ]; then
 
     if echo "$declaration_output" | grep -q "error: Class with hash"; then
         echo "Class hash already declared."
-        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p')
+        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p') ## Uncomment this for devnet python
+        # CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p') ## Uncomment this for devnet rust
     else
         echo "New class hash declaration."
         CLASS_HASH=$(echo "$declaration_output" | grep -o 'class_hash: 0x[^ ]*' | sed 's/class_hash: //')
