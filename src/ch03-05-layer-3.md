@@ -85,7 +85,7 @@ a starting point for building Layer 3 Starknet appchains. This expands
 the possibilities for innovation within the Starknet ecosystem.
 
 Madara’s flexibility allows for the creation of Layer 3 appchains
-optimized for various needs, foe example:
+optimized for various needs, for example:
 
 - Cost-Efficiency: Create an appchain for running a decentralized
   exchange (DEX) with lower fees compared to the public Starknet.
