@@ -60,6 +60,8 @@ Seed to replicate this account sequence: 912753742
 
 ### Running Options
 
+Before you add any options, you have to add two extra dashes on the start of the first option ie if you want to add `--seed` option and it is the first one in your options do `cargo run -- --seed SEED_VALUE`
+
 1. Using a seed
 
 When you run starknet devnet it gives you a `Seed to replicate this account sequence` meaning you can use the given seed to get the accounts you have used previously making your work easier when using other tools like [`sncast`](https://book.starknet.io/ch02-12-foundry-cast.html) or `starkli` to interact with your contract because you are not going to change the accounts.
@@ -98,7 +100,48 @@ On loading, have both the directory and the file existing, the file was automati
 cargo run -- --dump-path ./dumps/contract_1 --seed 912753742
 ```
 
-> > For more options check [here](https://0xspaceshard.github.io/starknet-devnet/docs/guide/run) though this is the `pythonic devnet`. Only difference is before the first flag have two extra dashes ie `cargo run -- --port 5006` or `cargo run -- -- dump-on exit ...`. The rest of the flags can be passed in normally.
+### More options
+
+To get more options that you can use run;
+
+```sh
+cargo run -- --help
+```
+
+Output
+
+```sh
+Options:
+      --accounts <ACCOUNTS>
+          Specify the number of accounts to be predeployed; [default: 10]
+      --account-class <ACCOUNT_CLASS>
+          Specify the class used by predeployed accounts; [default: cairo0] [possible values: cairo0, cairo1]
+      --account-class-custom <PATH>
+          Specify the path to a Cairo Sierra artifact to be used by predeployed accounts;
+  -e, --initial-balance <DECIMAL_VALUE>
+          Specify the initial balance in WEI of accounts to be predeployed; [default: 1000000000000000000000]
+      --seed <SEED>
+          Specify the seed for randomness of accounts to be predeployed; if not provided, it is randomly generated
+      --host <HOST>
+          Specify the address to listen at; [default: 127.0.0.1]
+      --port <PORT>
+          Specify the port to listen at; [default: 5050]
+      --timeout <TIMEOUT>
+          Specify the server timeout in seconds; [default: 120]
+      --gas-price <GAS_PRICE>
+          Specify the gas price in wei per gas unit; [default: 100000000000]
+      --chain-id <CHAIN_ID>
+          Specify the chain ID; [default: TESTNET] [possible values: MAINNET, TESTNET]
+      --dump-on <WHEN>
+          Specify when to dump the state of Devnet; [possible values: exit, transaction]
+      --dump-path <DUMP_PATH>
+          Specify the path to dump to;
+  -h, --help
+          Print help
+  -V, --version
+          Print version
+
+```
 
 #### Cross-version disclaimer
 
