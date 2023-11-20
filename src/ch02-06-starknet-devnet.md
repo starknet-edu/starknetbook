@@ -1,26 +1,25 @@
-# Starknet Devnet Rust
+# Starknet Devnet
 
-Starknet Devnet Rust is devnet in rust similar to the [`pythonic devnet`](https://0xspaceshard.github.io/starknet-devnet/docs/intro).
+Starknet Devnet is a development network (devnet) implemented in Rust, similar to the Python-based [`starknet-devnet`](https://0xspaceshard.github.io/starknet-devnet/docs/intro).
 
 ## Installation
 
-There are two ways to install `starknet devnet rs`. You can either use `docker` or clone the repository and `cargo run`.
+`starknet devnet rs` can be installed in two ways: using Docker or manually by cloning the repository and running it with Cargo.
 
-### Using docker
+### Using Docker
 
-To use docker, use the procedures highlighted [here](https://github.com/0xSpaceShard/starknet-devnet-rs#readme)
+To install using Docker, follow the instructions provided [here](https://github.com/0xSpaceShard/starknet-devnet-rs#readme).
 
-### Using manual procedure (Cloning the repo)
+### Manual Installation (Cloning the Repo)
 
 Prerequisites:
 
-- [Rust](https://www.rust-lang.org/tools/install)
+- Rust installation ([Rust Install Guide](https://www.rust-lang.org/tools/install))
 
-Procedure
+Procedure:
 
-1. Create a folder where you want to place it.
-
-2. Then run this command
+1. Create a new folder for the project.
+2. Clone the repository:
 
 ```shell
 git clone git@github.com:0xSpaceShard/starknet-devnet-rs.git
@@ -28,13 +27,13 @@ git clone git@github.com:0xSpaceShard/starknet-devnet-rs.git
 
 ## Running
 
-To run starknet devnet rs after installation run
+After installation, run Starknet Devnet with the following command:
 
-```rust
+```shell
 cargo run
 ```
 
-Successfull Result
+On successful execution, you'll see outputs like predeployed contract addresses, account information, and seed details.
 
 ```shell
 Predeployed FeeToken
@@ -58,62 +57,60 @@ Initial balance of each account: 1000000000000000000000 WEI
 Seed to replicate this account sequence: 912753742
 ```
 
-### Running Options
+## Running Options
 
-1. Using a seed
+### Using a Seed
 
-When you run starknet devnet it gives you a `Seed to replicate this account sequence` meaning you can use the given seed to get the accounts you have used previously making your work easier when using other tools like [`sncast`](https://book.starknet.io/ch02-12-foundry-cast.html) or `starkli` to interact with your contract because you are not going to change the accounts.
+The Starknet devnet provides a `Seed to replicate this account sequence` feature. This allows you to use a specific seed to access previously used accounts. This functionality is particularly useful when employing tools like [`sncast`](https://book.starknet.io/ch02-12-foundry-cast.html) or `starkli` for contract interactions, as it eliminates the need to change account information.
 
-To load the old accounts based on a given `seed` run
+To load old accounts using a specific seed, execute the following command:
 
 ```shell
 cargo run -- --seed <SEED>
 ```
 
-Example
+Example (add any number you prefer):
 
 ```shell
 cargo run -- --seed 912753742
 ```
 
-2. Dumping and loading data
+### Dumping and Loading Data
 
-Dumping and loading data will help you to continue working from where you left off.
+The process of dumping and loading data facilitates resuming work from where you left off.
 
-- To `dump` use the following command
+- **Dumping Data**:
 
-Dumping can be done on `exit` or `transaction`. For our case we have done it on exit.
-
-I have done the dumping into a given `directory` remember to have the directory but not the file.
+* Data can be dumped either on `exit` or after a `transaction`.
+* In this example, dumping is done on exit into a specified directory. Ensure the directory exists, but not the file.
 
 ```shell
 cargo run -- --dump-on exit --dump-path ./dumps/contract_1
 ```
 
-- To `load` use the following command and pass in the seed otherwise you will get an error `low account balance`.
-
-On loading, have both the directory and the file existing, the file was automatically created by the `dump` command.
+- **Loading Data**:
+- To load data, use the command below. Note that both the directory and the file created by the `dump` command must exist. Also, pass in the seed to avoid issues like 'low account balance'.
 
 ```shell
 cargo run -- --dump-path ./dumps/contract_1 --seed 912753742
 ```
 
-> > For more options check [here](https://0xspaceshard.github.io/starknet-devnet/docs/guide/run) though this is the `pythonic devnet`. Only difference is before the first flag have two extra dashes ie `cargo run -- --port 5006` or `cargo run -- -- dump-on exit ...`. The rest of the flags can be passed in normally.
+> For additional options and configurations, refer to the [Starknet Devnet documentation](https://0xspaceshard.github.io/starknet-devnet/docs/guide/run). This guide primarily covers the Python-based devnet. However, the main difference for the Rust version is the syntax for flags. For example, use `cargo run -- --port 5006` or `cargo run -- --dump-on exit ...` for the Rust Devnet. Other flags can be used in the standard format.
 
-#### Cross-version disclaimer
+#### Cross-Version Disclaimer
 
-Dumping and loading is not guaranteed to work cross-version. I.e. if you dumped one version of Devnet, do not expect it to be loadable with a different version.
+Be aware that the dumping and loading functionality might not be compatible across different versions of the Devnet. In other words, data dumped from one version of Devnet may not be loadable with another version.
 
-### Minting
+### Minting Tokens
 
-You can mint tokens to an address or a new address using the command below
+To mint tokens, either to an existing address or a new one, use the following command:
 
 ```shell
 curl -d '{"amount":8646000000000, "address":"0x6e...eadf"}' -H "Content-Type: application/json" -X POST http://localhost:5050/mint
 ```
 
-> All commands that work in the [`sncast section`](https://book.starknet.io/ch02-12-foundry-cast.html) and `starkli` work here as well.
+> Commands compatible with the `sncast` and `starkli` subchapters are also applicable in the Rust Devnet.
 
-## Conclusion
+## Next
 
-Rust Devnet is faster starting from powering on to handling transactions as compared to pythonic devnet making testing locally much smoother.
+In the next subchapter we will use the `sncast` tool to interact with the Starknet Devnet in a real world example.
