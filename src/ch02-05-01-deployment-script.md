@@ -6,6 +6,16 @@ Disclaimer: This is an example. Use it as a foundation for your own work, adjust
 
 ## Setup
 
+#### This script supports the following versions or above
+
+```txt
+scarb 2.3.0 (f306f9a91 2023-10-23)
+cairo: 2.3.0 (https://crates.io/crates/cairo-lang-compiler/2.3.0)
+sierra: 1.3.0
+snforge 0.10.1
+sncast 0.10.1
+```
+
 ### 1. Prepare the Script File
 
 - In your project's root folder, create a file named **`script.sh`**. This will house the script.
@@ -20,6 +30,8 @@ chmod +x script.sh
 Below is the content for `script.sh`. It adheres to best practices for clarity, error management, and long-term support.
 
 **Security Note**: Using environment variables is safer than hardcoding private keys in your scripts, but they're still accessible to any process on your machine and could potentially be leaked in logs or error messages.
+
+On step 5 _declaring_, Uncomment according to local devnet you are using either the rust node or python node for declaration to work as expected.
 
 ```sh
 #!/usr/bin/env bash
@@ -70,7 +82,7 @@ EOF
 
 # Step 3: Run contract tests
 echo -e "\nTesting the contract..."
-testing_result=$(snforge 2>&1)
+testing_result=$(snforge test 2>&1)
 if echo "$testing_result" | grep -q "Failure"; then
     echo -e "Tests failed!\n"
     snforge
@@ -105,7 +117,8 @@ if [ "$FAILED_TESTS" != "true" ]; then
 
     if echo "$declaration_output" | grep -q "error: Class with hash"; then
         echo "Class hash already declared."
-        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p')
+        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p') ## Uncomment this for devnet python
+        # CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p') ## Uncomment this for devnet rust
     else
         echo "New class hash declaration."
         CLASS_HASH=$(echo "$declaration_output" | grep -o 'class_hash: 0x[^ ]*' | sed 's/class_hash: //')
