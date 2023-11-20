@@ -260,14 +260,12 @@ Deploying a smart contract on Starknet involves two steps:
 - Declare your contract’s code.
 - Deploy an instance of the declared code.
 
-To get started, navigate to the `contracts/` directory in the [first
-chapter](https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages/contracts)
+To get started, navigate to the `src/` directory in the [Ownable-Starknet](https://github.com/starknet-edu/starknetbook/Ownable-Starknet) directory
 of the Starknet Book repo. The `src/lib.cairo` file contains a basic
 contract to practice with.
 
 First, compile the contract using the Scarb compiler. If you haven’t
-installed Scarb, follow the installation guide in the [Setting up your
-Environment](https://book.starknet.io/chapter_1/environment_setup.html)
+installed Scarb, follow the installation guide in the [basic instalation](./ch02-01-basic-installation)
 section.
 
 ```bash
