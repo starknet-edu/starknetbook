@@ -66,7 +66,7 @@ These are some key features of Starknet:
   (CVM), that allow us to innovate beyond the Ethereum Virtual Machine
   (EVM) and create a new paradigm for decentralized applications.
 
-Here some of them:
+Here are some of them:
 
 - Account Abstraction: Implemented at the protocol level, this
   facilitates diverse signing schemes while ensuring user security and

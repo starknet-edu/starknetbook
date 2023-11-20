@@ -205,7 +205,7 @@ In case you face an error like this:
 
 It means you probably just created a new wallet and it has not been deployed yet. To accomplish this you have to fund your wallet with tokens and transfer tokens to a different wallet address. After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
 
-After the acount descriptor file is generated, you can see the its detalis, run:
+After the acount descriptor file is generated, you can see its details, run:
 
 ```bash
     cat ~/.starkli-wallets/deployer/my_account_1.json

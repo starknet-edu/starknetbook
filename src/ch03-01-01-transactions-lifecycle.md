@@ -5,7 +5,7 @@ This chapter outlines the path of a Starknet transaction from its initiation to 
 Starknet processes transactions in distinct steps:
 
 - A transaction starts by being sent to a gateway, a node, which acts as the Mempool.
-- The Sequencer, currently a single service, first validates and the executes the transactions in order.
+- The Sequencer, currently a single service, first validates and then executes the transactions in order.
   - If validated successfully, the status becomes RECEIVED.
   - If not, the status is REJECTED.
   - Successfully executed transactions are applied to the state and marked as ACCEPTED_ON_L2.
