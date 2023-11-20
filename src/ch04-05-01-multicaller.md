@@ -53,6 +53,7 @@ Create a new project with Scarb using the new command.
 ```dotnetcli
 ~ $ scarb new aa
 ```
+
 The command creates a folder with the same name that includes a configuration file for Scarb.
 
 ```dotnetcli
@@ -77,6 +78,7 @@ version = "0.1.0"
 [dependencies]
 # foo = { path = "vendor/foo" }
 ```
+
 There is a need to make some changes to the configuration file to activate the Starknet plugin in the compiler so we can work with smart contracts.
 
 ```dotnetcli
@@ -98,6 +100,7 @@ Let's now replace the content of the sample Cairo code that comes with a new pro
 #[starknet::contract]
 mod Account {}
 ```
+
 Given that one of the most important features of our account contract is to validate signatures, there is a need to store the public key associated with the private key of the signer.
 
 ```dotnetcli
@@ -119,6 +122,7 @@ aa $ scarb build
 Compiling aa v0.1.0 (/Users/david/apps/sandbox/aa/Scarb.toml)
 Finished release target(s) in 2 seconds
 ```
+
 Welldone, It works, time to move to the interesting part of our tutorial.
 
 ## SNIP-6
@@ -132,6 +136,7 @@ trait ISRC6 {
   fn is_valid_signature(hash: felt252, signature: Array<felt252>) -> felt252;
 }
 ```
+
 There is a need to eventually annotate the implementation of this trait with the `external` attribute, the contract state will be the first argument provided to each method. We can define the type of the contract state with the generic `T`.
 
 ```dotnetcli
@@ -142,7 +147,7 @@ trait ISRC6<T> {
 }
 ```
 
-The __execute__ function is the only one that receives a reference to the contract state because it’s the only one likely to either modify its internal state or to modify the state of another smart contract and thus to require the payment of gas fees for its execution. The other two functions, __validate__ and **is_valid_signature**, are read-only and shouldn’t require the payment of gas fees. For this reason they are both receiving a snapshot of the contract state instead.
+The **execute** function is the only one that receives a reference to the contract state because it’s the only one likely to either modify its internal state or to modify the state of another smart contract and thus to require the payment of gas fees for its execution. The other two functions, **validate** and **is_valid_signature**, are read-only and shouldn’t require the payment of gas fees. For this reason they are both receiving a snapshot of the contract state instead.
 
 The question now becomes, how should we use this trait in our account contract. Should we annotate the trait with the **interface** attribute and then create an implementation like the code shown below?
 
@@ -161,6 +166,7 @@ mod Account {
   impl ISRC6Impl of super::ISRC6<ContractState> {...}
 }
 ```
+
 Or should we use it instead `without` the interface attribute?
 
 ```dotnetcli
@@ -189,13 +195,14 @@ mod Account {
   impl ISRC6Impl of ISRC6Trait {...}
 }
 ```
+
 From a technical view, both are all valid alternatives but they all fail to capture the right intention.
 
 Every function inside an implementation annotated with the external attribute will have its own selector that other people and smart contracts can use to interact with my account contract. But the thing is, even though they can use the derived selectors to call those functions, but one will be recommended for users to use and for the Starknet protocol.
 
-The functions __execute__ and __validate__ are meant to be used only by the Starknet protocol even if the functions are publicly accessible via its selectors. The only function that is made public for web3 apps to use for signature validation is **is_valid_signature**.
+The functions **execute** and **validate** are meant to be used only by the Starknet protocol even if the functions are publicly accessible via its selectors. The only function that is made public for web3 apps to use for signature validation is **is_valid_signature**.
 
-Furthermore,  a separate trait annotated with the interface attribute will be created and group all the functions in an account contract that users are expected to interact with. On the other hand, the trait will be auto generated, for all those functions that users are not expected to use directly even though they are public.
+Furthermore, a separate trait annotated with the interface attribute will be created and group all the functions in an account contract that users are expected to interact with. On the other hand, the trait will be auto generated, for all those functions that users are not expected to use directly even though they are public.
 
 ```dotnetcli
 use starknet::account::Call;
@@ -230,30 +237,30 @@ mod Account {
 
 # Protecting Protocol-Only Functions
 
-Although there might be legitimate use cases for other smart contracts to directly interact with the functions __execute__ and __validate__ of an account contract, these will rather be  restricted to be callable only by the Starknet protocol in case there’s an attack vector that has not been foresee.
+Although there might be legitimate use cases for other smart contracts to directly interact with the functions **execute** and **validate** of an account contract, these will rather be restricted to be callable only by the Starknet protocol in case there’s an attack vector that has not been foresee.
 
- To create private functions, this simply create a new implementation that is not annotated with the external attribute so no public selectors are created.
+To create private functions, this simply create a new implementation that is not annotated with the external attribute so no public selectors are created.
 
- ```dotnetcli
- #[starknet::contract]
+```dotnetcli
+#[starknet::contract]
 mod Account {
-  use starknet::get_caller_address;
-  use zeroable::Zeroable;
-  ...
+ use starknet::get_caller_address;
+ use zeroable::Zeroable;
+ ...
 
-  #[generate_trait]
-  impl PrivateImpl of PrivateTrait {
-    fn only_protocol(self: @ContractState) {
-      let sender = get_caller_address();
-      assert(sender.is_zero(), 'Account: invalid caller');
-    }
-  }
+ #[generate_trait]
+ impl PrivateImpl of PrivateTrait {
+   fn only_protocol(self: @ContractState) {
+     let sender = get_caller_address();
+     assert(sender.is_zero(), 'Account: invalid caller');
+   }
+ }
 }
- ```
+```
 
 # Validate Declare and Deploy
 
-__validate_declare__ is used to validate the signature of a declare transaction while __validate_deploy__ is used for the same purpose but for the deploy_account transaction. The latter is often referred to as “counterfactual deployment”.
+**validate_declare** is used to validate the signature of a declare transaction while **validate_deploy** is used for the same purpose but for the deploy_account transaction. The latter is often referred to as “counterfactual deployment”.
 
 ```dotnetcli
 #[starknet::contract]
@@ -263,7 +270,7 @@ mod Account {
   #[external(v0)]
   #[generate_trait]
   impl ProtocolImpl of ProtocolTrait {
-    
+
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
       self.only_protocol();
       self.validate_transaction()
@@ -288,7 +295,7 @@ mod Account {
       let tx_info = get_tx_info().unbox();
       let tx_hash = tx_info.transaction_hash;
       let signature = tx_info.signature;
-      
+
       let is_valid = self.is_valid_signature_bool(tx_hash, signature);
       assert(is_valid, 'Account: Incorrect tx signature');
       'VALID'
@@ -296,9 +303,10 @@ mod Account {
   }
 }
 ```
+
 # Execute Transactions
 
-Looking at the signature of the __execute__ function it is noticed that an array of calls are being passed instead of a single element.
+Looking at the signature of the **execute** function it is noticed that an array of calls are being passed instead of a single element.
 
 ```dotnetcli
 #[starknet::contract]
@@ -325,6 +333,7 @@ struct Call {
   calldata: Array<felt252>
 }
 ```
+
 Instead of trying to face the multicall head on, let’s first create a private function that deals with a single call that we can then reuse by iterating over the array of calls.
 
 ```
@@ -346,7 +355,7 @@ mod Account {
 
 Destructure the `Call` struct and then we use the low level syscall `call_contract_syscall` to invoke a function on another smart contract without the help of a dispatcher.
 
-However, with the single `call` function,  multi call function can be built by iterating over a `Call` array and returning the responses as an array as well.
+However, with the single `call` function, multi call function can be built by iterating over a `Call` array and returning the responses as an array as well.
 
 ```dotnetcli
 ...
@@ -375,7 +384,7 @@ mod Account {
 }
 ```
 
-Finally, let's go back to the __execute__ function and make use of the functions that was just created.
+Finally, let's go back to the **execute** function and make use of the functions that was just created.
 
 ```dotnetcli
 ...
@@ -388,7 +397,7 @@ mod Account {
     fn __execute__(ref self: ContractState, calls: Array<Call>) -> Array<Span<felt252>> {
       self.only_protocol();
       self.execute_multiple_calls(calls)
-    }  
+    }
     ...
   }
   ...
@@ -422,7 +431,6 @@ mod Account { ... }
 
 Now create a private function that will check if the executed transaction is of the latest version and hence supported by your account contract. If not, you should abort the transaction execution with an **assert**.
 
-
 ```
 ...
 
@@ -441,7 +449,7 @@ mod Account {
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
       self.execute_multiple_calls(calls)
     }
-    
+
     fn __validate__(self: @ContractState, calls: Array<Call>) -> felt252 {
       self.only_protocol();
       self.only_supported_tx_version(SUPPORTED_TX_VERSION::INVOKE);
@@ -485,7 +493,6 @@ To differentiate a regular transaction from a transaction simulation while prote
 
 With that in mind, we can modify the function only_supported_tx_version to account for simulated transactions.
 
-
 ```dotnetcli
 ...
 
@@ -493,9 +500,9 @@ With that in mind, we can modify the function only_supported_tx_version to accou
 mod Account {
   ...
   const SIMULATE_TX_VERSION_OFFSET: felt252 = 340282366920938463463374607431768211456; // 2**128
-  
+
   ...
-  
+
   #[generate_trait]
   impl PrivateImpl of PrivateTrait {
     ...
@@ -512,6 +519,7 @@ mod Account {
 }
 
 ```
+
 ## Introspection
 
 Previously mentioned the standard SRC-5 is for introspection.
@@ -522,6 +530,7 @@ trait ISRC5 {
 }
 
 ```
+
 For an account contract to self identify as such, it must return true when passed the interface_id 1270010605630597976495846281167968799381097569185364931397797212080166453709. The reason why that particular number is used is explained in the previous article so go check it out for more details.
 
 Because this is a public function that I do expect people and other smart contracts to call on my account contract, will add this function to its public interface.
@@ -563,7 +572,7 @@ Although not required, it is a good idea to expose the public key associated wit
 #[starknet::contract]
 mod Account {
   ...
-  
+
   #[external(v0)]
   impl AccountImpl of IAccount<ContractState> {
     ...
@@ -575,15 +584,13 @@ mod Account {
 
 ```
 
-
 Finally, we have a fully functional account contract.
-
 
 ## Conclusion
 
 The account contract created now might look complex but it’s actually one of the simplests that can be created. The account contracts created by Braavos and Argent X are much more complex as they support features like social recovery, multisig, hardware signer, email/password signer, etc.
 
-Both Braavos and Argent have open sourced their Cairo 0 version of their account contracts but Argent is the first one to also open source their Cairo version. OpenZeppelin (OZ) is also developing their own implementation of a Cairo account contract but it’s still a work in progress. This inspiration was deduced  from OZ’s implementation when creating this tutorial.
+Both Braavos and Argent have open sourced their Cairo 0 version of their account contracts but Argent is the first one to also open source their Cairo version. OpenZeppelin (OZ) is also developing their own implementation of a Cairo account contract but it’s still a work in progress. This inspiration was deduced from OZ’s implementation when creating this tutorial.
 
 SNIP-6 is referenced multiple times as a standard to follow for an account contract but so far it’s only a proposal under discussion that could change. This will not only affect the interface of your account contract but also the ID used for introspection.
 
@@ -605,8 +612,7 @@ The Book is a community-driven effort created for the community.
   hesitate to open an [issue on our GitHub
   repository](https://github.com/starknet-edu/starknetbook/issues).
 
-
   ## Reference
+
 - [1] OpenZeppelin, 2023: https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.7.0-rc.0/src/account/account.cairo
 - [2] David Barreto, 2023: https://medium.com/starknet-edu/account-abstraction-on-starknet-part-ii-24d52874e0bd
-

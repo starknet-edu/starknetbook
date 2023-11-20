@@ -239,7 +239,6 @@ With Account Abstraction, and in contrast to Externally Owned Accounts (EOA), th
 
 Note: Using an Elliptic Curve Digital Signature Algorithtm (ECDSA) is not the only way to authenticate a signer, other mechanisms are possible but they come with tradeoffs of performance, cost and ecosystem support. ECDSA remains the most widely used algorithm on Starknet and different curves are supported.
 
-
 ## SNIP-6
 
 For a smart contract to be considered an account (aka account contract) it must adhere to a specific public interface defined by the Starknet Improvement Proposal number 6 (SNIP-6)
@@ -282,17 +281,18 @@ trait ISRC5 {
     fn supports_interface(interface_id: felt252) -> bool;
 }
 ```
-As you can see in the proposal, an account contract must implement at least the methods __execute__, __validate__ and is_valid_signature.
 
-The methods __execute__ and __validate__ are meant to be called by the Starknet protocol during different stages of the lifecycle of a transaction. This doesn’t mean that only the Starknet protocol can use those methods, as a matter of fact, anyone can call those methods even if the contract account doesn’t belong to them. Something to keep an eye on when securing our account.
+As you can see in the proposal, an account contract must implement at least the methods **execute**, **validate** and is_valid_signature.
 
-When a user sends an invoke transaction, the first thing that the protocol does is to call the __validate__ method to check the signature of the transaction. In other words, to authenticate the signer associated with the account. There are restrictions on what you can do inside the __validate__ method to protect the Sequencer against Denial of Service (DoS) attacks.
+The methods **execute** and **validate** are meant to be called by the Starknet protocol during different stages of the lifecycle of a transaction. This doesn’t mean that only the Starknet protocol can use those methods, as a matter of fact, anyone can call those methods even if the contract account doesn’t belong to them. Something to keep an eye on when securing our account.
 
-Notice that if the signature verification is successful, the __validate__ method should return the short string VALID as opposed to a boolean. In Cairo, a short string is simply the ASCII representation of a single felt and not a real string. This is why the return type of the method is felt252. If the signature verification fails, you can stop execution with an assert or return literally any other felt that is not the aforementioned short string.
+When a user sends an invoke transaction, the first thing that the protocol does is to call the **validate** method to check the signature of the transaction. In other words, to authenticate the signer associated with the account. There are restrictions on what you can do inside the **validate** method to protect the Sequencer against Denial of Service (DoS) attacks.
 
-If the protocol is able to authenticate the signer, it will then call the function __execute__ passing as an argument an array of all the operations or “calls” the user wants to perform as a multicall. Each one of these calls define a target smart contract, a method to call (the “selector”) and the arguments expected by the method.
+Notice that if the signature verification is successful, the **validate** method should return the short string VALID as opposed to a boolean. In Cairo, a short string is simply the ASCII representation of a single felt and not a real string. This is why the return type of the method is felt252. If the signature verification fails, you can stop execution with an assert or return literally any other felt that is not the aforementioned short string.
 
-The execution of each Call might result in a value being returned from the target smart contract. This value could be a simple scalar like a felt252 or a boolean, or a complex data structure like a struct or an array. In any case, the Starknet protocol serializes the response using a Span of felt252 elements. Remember that Span represents a snapshot of an Array. This is why the return type of the __execute__ method is an Array of Spans which represents a serialized response from each call in the multicall.
+If the protocol is able to authenticate the signer, it will then call the function **execute** passing as an argument an array of all the operations or “calls” the user wants to perform as a multicall. Each one of these calls define a target smart contract, a method to call (the “selector”) and the arguments expected by the method.
+
+The execution of each Call might result in a value being returned from the target smart contract. This value could be a simple scalar like a felt252 or a boolean, or a complex data structure like a struct or an array. In any case, the Starknet protocol serializes the response using a Span of felt252 elements. Remember that Span represents a snapshot of an Array. This is why the return type of the **execute** method is an Array of Spans which represents a serialized response from each call in the multicall.
 
 The method is_valid_signature is not defined or used by the Starknet protocol. It was instead an agreement between builders in the Starknet community as a way to allow web3 apps to perform user authentication. Think of a user trying to authenticate to an NFT marketplace using their wallet. The web app will ask the user to sign a message and then it will call the function is_valid_signature to verify that the connected wallet address belongs to the user.
 
@@ -300,14 +300,13 @@ To allow other smart contracts to know if your account contract adheres to the S
 
 ## Additional Interface
 
-Although the interface defined by the SNIP-6 is enough to guarantee that a smart contract is in fact an account contract, it is the minimum requirement and not the whole story. For an account to be able to declare other smart contracts and pay for the associated gas fees it will need to also implement the method __validate_declare__. If we also want to be able to deploy our account contract using the counterfactual deployment method then it also needs to implement the __validate_deploy__ method.
+Although the interface defined by the SNIP-6 is enough to guarantee that a smart contract is in fact an account contract, it is the minimum requirement and not the whole story. For an account to be able to declare other smart contracts and pay for the associated gas fees it will need to also implement the method **validate_declare**. If we also want to be able to deploy our account contract using the counterfactual deployment method then it also needs to implement the **validate_deploy** method.
 
 Counterfactual deployment is a mechanism to deploy an account contract without relying on another account contract to pay for the related gas fees. This is important if we don’t want to associate a new account contract with its deployer address and instead have a “pristine” beginning.
 
 This deployment process starts by calculating locally the would-be-address of our account contract without actually deploying it yet. This is possible to do with tools like Starkli. Once we know the address, we then send enough ETH to that address to cover the costs of deploying our account contract. Once the address is funded we can finally send a deploy_account transaction to Starknet with the compiled code of our account contract. The Sequencer will deploy the account contract to the precalculated address and pay itself gas fees with the ETH we sent there. There’s no need to declare an account contract before deploying it.
 
 To allow tools like Starkli to easily integrate with our smart contract in the future, it is recommended to expose the public_key of the signer as a view function as part of the public interface. With all this in mind, the extended interface of an account contract is shown below.
-
 
 ```dotnetcli
 /// @title IAccount Additional account contract interface
@@ -332,8 +331,6 @@ trait IAccountAddon {
 ```
 
 In summary, a fully fledged account contract should implement the SNIP-5, SNIP-6 and the Addon interface.
-
-
 
 ## Why Isn’t Account Abstraction Implemented in Ethereum’s Layer 1 Yet?
 
@@ -472,8 +469,6 @@ The design also introduces certain trade-offs:
 - Gas Usage: The gas costs are slightly higher, offset by the efficiency of multi-operation transactions.
 - Single Transaction Queueing: Multiple transactions cannot be queued simultaneously, but the design's support for atomic multi-operations compensates for this limitation.
 
-
-
 ## Conclusion
 
 Account Abstraction is a win for usability in web3 and on Starknet it has been supported from the beginning at the protocol level. For a smart contract to be considered an account contract it must at least implement the interface defined by SNIP-6. Additional methods might be required for advanced account functionality.
@@ -512,8 +507,6 @@ taking.
 After all, the Swiss Army knife was once just a knife. Imagine what it
 could become next.
 
-
-
 # References:
 
 - \[1\] Martin Triay, Devcon 6:
@@ -536,7 +529,6 @@ could become next.
   <https://www.youtube.com/watch?v=FrxAdJYhSY8>
 
 - David Barreto,2023: https://medium.com/starknet-edu/account-abstraction-on-starknet-part-i-2ff84c6a3c30
-  
 
 The Book is a community-driven effort created for the community.
 
