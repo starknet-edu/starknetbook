@@ -125,3 +125,81 @@ Starkli makes this process a lot easier, you have to input the following command
 
 Make sure the `0x1234` address this different than your account in the `my_account_1.json` file
 
+### Execute your own bash file
+
+In this section, we are going to execute a bash file in order to connect with the blockchain
+
+#### Katana
+
+Make sure katana is running. We are going to show a simple way to retrieve information from katana using starkli.
+
+In terminal 1
+```bash
+    katana
+```
+
+Now create a file called `script_devnet`, using touch command
+
+In terminal 2
+```bash
+    touch script_devnet
+```
+
+Edit the file with the program of your choice. Within the file, paste the following content
+
+```bash
+#!/bin/bash
+chain="$(starkli chain-id --rpc http://0.0.0.0:5050)"
+echo "Where are connected to the starknet local devnet with chain id: $chain"
+
+block="$(starkli block-number --rpc http://0.0.0.0:5050)"
+echo "The latest block number on Katana is: $block"
+
+account1="0x517ececd29116499f4a1b64b094da79ba08dfd54a3edaa316134c41f8160973"
+balance="$(starkli balance $account1 --rpc http://0.0.0.0:5050)"
+echo "The balance of account $account1 is: $balance eth"
+```
+
+Now from the command line, run the script using the bash interpreter:
+
+```bash
+    bash script_devnet
+```
+
+Awesome, you get your output from devnet.
+
+#### Goerli
+
+In this example we are going to connect with Goerli testnet, read the latest block number of the network and search for the transaction receipt of and specific transaction hash.
+
+Create a file called `script_testnet`, using touch command
+
+In a new terminal
+```bash
+    touch script_devnet
+```
+
+Edit the file. Within the file, paste the following content
+
+```bash
+echo "input your testnet API URL: " 
+read url
+chain="$(starkli chain-id --rpc $url)"
+echo "Where are connected to the starknet testnet with chain id: $chain"
+
+block="$(starkli block-number --rpc $url)"
+echo "The latest block number on Goerli is: $block"
+
+echo "input your transaction hash: " 
+read hash
+receipt="$(starkli receipt $hash --rpc $url)"
+echo "The receipt of transaction $hash is: $receipt"
+```
+Now from the command line, run the script using the bash interpreter:
+
+```bash
+    bash script_testnet
+```
+This time you have to input first a `testnet API URL`, and then you have to provide a `transaction hash`. You can use this transaction hash: 0x2dd73eb1802aef84e8d73334ce0e5856b18df6626fe1a67bb247fcaaccaac8c
+
+Great, now you can create your own bash file according to your interest.
