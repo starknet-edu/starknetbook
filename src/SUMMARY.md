@@ -37,6 +37,7 @@
     - [Transactions Lifecycle](ch03-01-01-transactions-lifecycle.md)
     - [Fee Mechanism](ch03-01-02-fee-mechanism.md)
   - [Sequencers](ch03-02-sequencers.md)
+    - [Madara 🚧](ch03-02-01-madara.md)
   - [Provers 🚧](ch03-03-provers.md)
   - [Nodes 🚧](ch03-04-nodes.md)
   - [Layer 3 and App Chains 🚧 ](ch03-05-layer-3.md)
