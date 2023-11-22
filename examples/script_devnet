@@ -1,0 +1,10 @@
+#!/bin/bash
+chain="$(starkli chain-id --rpc http://0.0.0.0:5050)"
+echo "Where are connected to the starknet local devnet with chain id: $chain"
+
+block="$(starkli block-number --rpc http://0.0.0.0:5050)"
+echo "The latest block number on Katana is: $block"
+
+account1="0x517ececd29116499f4a1b64b094da79ba08dfd54a3edaa316134c41f8160973"
+balance="$(starkli balance $account1 --rpc http://0.0.0.0:5050)"
+echo "The balance of account $account1 is: $balance eth"

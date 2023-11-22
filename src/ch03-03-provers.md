@@ -230,16 +230,6 @@ instead of relying on predefined layouts with fixed resources. This
 approach can provide tailored solutions for each job, improving overall
 efficiency.
 
-The Book is a community-driven effort created for the community.
-
-- If you’ve learned something, or not, please take a moment to provide
-  feedback through [this 3-question
-  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
-
-- If you discover any errors or have additional suggestions, don’t
-  hesitate to open an [issue on our GitHub
-  repository](https://github.com/starknet-edu/starknetbook/issues).
-
 ## Conclusion
 
 In conclusion, SHARP is a critical component of Starknet’s architecture,
