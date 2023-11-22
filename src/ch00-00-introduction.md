@@ -66,7 +66,7 @@ These are some key features of Starknet:
   (CVM), that allow us to innovate beyond the Ethereum Virtual Machine
   (EVM) and create a new paradigm for decentralized applications.
 
-Here some of them:
+Here are some of them:
 
 - Account Abstraction: Implemented at the protocol level, this
   facilitates diverse signing schemes while ensuring user security and
@@ -92,18 +92,6 @@ Book](https://cairo-book.github.io/) and
 
 Inspired by Rust, Cairo lets you write contracts safely and
 conveniently.
-
-### Why Choose Cairo?
-
-Cairo is designed for _Provable Computation,_ a new paradigm that lets
-programs prove their correctness without re-running them. Here’s why it
-stands out:
-
-- Purpose-Built: Designed specifically for smart contracts.
-
-- No EVM Limits: Goes beyond what the Ethereum Virtual Machine can do.
-
-- Flexibility: Uses traits for more flexibility than inheritance.
 
 ## Governance
 
@@ -160,7 +148,3 @@ For those who are building on Starknet, SNIPs aren’t just
 suggestions—they’re a roadmap. It’s beneficial for implementers to keep
 a list of the SNIPs they’ve executed. This transparency helps users
 gauge the state of a particular implementation or software library.
-
-## Conclusion
-
-In decentralized technology, Starknet offers a solution to challenges that previous systems encountered. It's based on established _protocols_ and _registries_, following the initial concepts introduced by figures such as Satoshi. Through a specific mathematical method, Starknet seeks a balance between scalability and consensus. As this technology progresses, Starknet adheres to principles of inclusivity, neutrality, and user empowerment. It's poised for continuous adaptation and improvement in the field.

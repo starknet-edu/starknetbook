@@ -27,7 +27,7 @@ RPC can be obtained from various sources: . To support the
 decentralization of the Network, you can use your own local Starknet
 node. For ease of access, consider using a provider such as
 [Infura](https://docs.infura.io/networks/starknet/how-to) or
-[Alchemy](https://www.alchemy.com/starknet) to get an RPC client. . For
+[Alchemy](https://www.alchemy.com/starknet) to get an RPC client. For
 development and testing, a temporary local node such as `katana` can be
 used.
 

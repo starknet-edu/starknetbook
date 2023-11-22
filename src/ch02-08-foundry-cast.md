@@ -188,7 +188,7 @@ Points to remember:
 3. **`-private-key`** - Private key of the account.
 4. **`-add-profile`** - Though optional, it's pivotal. By enabling **`sncast`** to include the account in your **`Scarb.toml`** file, you can manage multiple accounts, facilitating transactions among them when working with your smart contract using sncast.
 
-Now that we have familiarized ourselves with using a predeployed account, let's proceed to adding a new account.
+Now that we have familiarized ourselves with using a predeployed account, let's proceed to add a new account.
 
 ### Creating and Deploying a New Account to Starknet Devnet
 
