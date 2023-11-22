@@ -43,6 +43,9 @@
   - [Layer 3 and App Chains 🚧 ](ch03-05-layer-3.md)
   - [Solidity Verifier](ch03-06-solidity-verifier.md)
   - [Decentralization 🚧](ch03-07-decentralization.md)
+  - [Smart Contracts](ch03-08-smart-contracts.md)
+    - [Deployment and Interaction](ch03-08-01-deploymet-and-interaction.md)
+    - [Important Methods](ch03-08-02-important-methods.md)
 
 ## Account Abstraction
 
