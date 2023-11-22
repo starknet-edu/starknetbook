@@ -1,8 +1,6 @@
 # Architecture
 
-This is an introduction to Starknet’s Layer 2 architecture, designed for
-both beginners and experienced users. It focuses on the key components:
-Sequencers, Provers, and nodes.
+This is an introduction to Starknet’s Layer 2 architecture,
 
 Starknet is a coordinated system, with each component—Sequencers,
 Provers, and nodes—playing a specific yet interconnected role. Although
@@ -260,13 +258,3 @@ will provide valuable insight into the inner workings of this network.
 As we venture further into the Starknet universe, our next stop will be
 an exploration of the transaction lifecycle before we dive into the
 heart of coding with Cairo.
-
-The Book is a community-driven effort created for the community.
-
-- If you’ve learned something, or not, please take a moment to provide
-  feedback through [this 3-question
-  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
-
-- If you discover any errors or have additional suggestions, don’t
-  hesitate to open an [issue on our GitHub
-  repository](https://github.com/starknet-edu/starknetbook/issues).
