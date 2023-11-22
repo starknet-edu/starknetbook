@@ -29,11 +29,11 @@
   - [Starknet-py: Python SDK 🚧](ch02-11-starknet-py.md)
   - [Starknet-rs: Rust SDK 🚧](ch02-12-starknet-rs.md)
   - [Foundry Forge: Testing](ch02-13-foundry-forge.md)
-  - [Security Tools](ch02-13-security-tools.md)
-    - [Cairo-fuzzer](ch02-13-01-cairo-fuzzer.md)
-    - [Caracal](ch02-13-02-caracal.md)
-    - [Thoth](ch02-13-03-thoth.md)
-    - [Security Considerations](ch02-13-04-security-considerations.md)
+  - [Security Considerations](ch02-14-security-considerations.md)
+  - [Security Tools](ch02-15-security-tools.md)
+    - [Cairo-fuzzer](ch02-15-01-cairo-fuzzer.md)
+    - [Caracal](ch02-15-02-caracal.md)
+    - [Thoth](ch02-15-03-thoth.md)
 
 ## Architecture
 

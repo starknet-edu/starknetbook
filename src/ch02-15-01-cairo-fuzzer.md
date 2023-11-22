@@ -1,26 +1,32 @@
 # Cairo-fuzzer
 
-[Cairo-fuzzer](https://github.com/FuzzingLabs/cairo-fuzzer) is a tool designed for smart contract developers to test the security. It can be used as an independent tool or as a library.
+[Cairo-fuzzer](https://github.com/FuzzingLabs/cairo-fuzzer) is a tool designed for smart contract developers to assess security. It operates both independently and as a library.
 
-## Features:
+## Features
 
-<img alt="cairo-fuzzer" src="img/ch02-13-cairo-fuzzer.png" class="center" style="width: 75%;" />
+<img alt="cairo-fuzzer" src="img/ch02-cairo-fuzzer.png" class="center" style="width: 75%;" />
 
-- Run Cairo contract
-- Run Starknet contract
-- Replayer of fuzzing corpus
-- Minimizer of fuzzing corpus
-- Load old corpus
-- Handle multiple arguments
-- Workspace architecture
-- Import dictionnary
-- Use Cairo-fuzzer as a library
+- Execute Cairo contracts.
+- Execute Starknet contracts.
+- Replay fuzzing corpus.
+- Minimize fuzzing corpus.
+- Load previous corpus.
+- Manage multiple arguments.
+- Utilize workspace architecture.
+- Import dictionaries.
+- Integrate Cairo-fuzzer as a library.
 
-## Usage:
+## Usage
+
+To use Cairo-fuzzer, run the following command:
 
 ```bash
 cargo run --release -- --cores 3 --contract tests/fuzzinglabs.json --function "Fuzz_symbolic_execution"
+```
 
+This outputs:
+
+```bash
 For more usage information, follow our tutorial
 CMDLINE (--help):
 
