@@ -124,6 +124,7 @@ fn on_receive_sword(ref self: ContractState) {
     }
 }
 ```
+
 Reentrancy protections are critical in many ERC standards with `safeTransfer` functions (like ERC721, ERC777, ERC1155, ERC223) and in flash loans, where borrower contracts need to safely use and return funds.
 
 ### Recommendation:
@@ -285,8 +286,8 @@ When these functions encounter overflows or underflows, the transaction will rev
 
 Failure reasons for `u256`:
 
-* Overflow: `0x753235365f616464204f766572666c6f77=u256_add Overflow`
-* Underflow: `0x753235365f737562204f766572666c6f77=u256_sub Overflow`
+- Overflow: `0x753235365f616464204f766572666c6f77=u256_add Overflow`
+- Underflow: `0x753235365f737562204f766572666c6f77=u256_sub Overflow`
 
 Similarly, the `u128` data type can be used to handle overflow and underflow:
 
@@ -308,8 +309,9 @@ Overflow or underflow in u128 will similarly revert the transaction, with corres
 <img alt="u128" src="img/ch02-sec_under_u128.png" class="center" style="width: 75%;" />
 
 Failure reasons for u128:
-  - Overflow: `0x753132385f616464204f766572666c6f77=u128_add Overflow`
-  - Underflow: `0x753132385f737562204f766572666c6f77=u128_sub Overflow`
+
+- Overflow: `0x753132385f616464204f766572666c6f77=u128_add Overflow`
+- Underflow: `0x753132385f737562204f766572666c6f77=u128_sub Overflow`
 
 Using these data types, you can ensure safer arithmetic operations in your smart contracts, avoiding unintended consequences of overflows and underflows.
 
