@@ -159,24 +159,3 @@ provided by Starknet.js.
 We now have a solid foundation to build a Starknet dapp. However, there
 are framework specific tools that help us build Starknet dapps, which
 are covered in chaper 5.
-
-## Additional Resources
-
-- Starknet.js GitHub Repository:
-  <https://github.com/0xs34n/starknet.js>
-
-- Official Starknet.js Website and documentation:
-  <https://www.starknetjs.com/>
-
-Stay tuned for more updates on Starknet.js, including detailed guides,
-examples, and comprehensive documentation.
-
-The Book is a community-driven effort created for the community.
-
-- If you’ve learned something, or not, please take a moment to provide
-  feedback through [this 3-question
-  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
-
-- If you discover any errors or have additional suggestions, don’t
-  hesitate to open an [issue on our GitHub
-  repository](https://github.com/starknet-edu/starknetbook/issues).

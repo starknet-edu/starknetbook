@@ -280,6 +280,60 @@ msgid "**Chapter Titles**"
 msgstr ""
 
 #: src/title-page.md:27
+msgid "Chapter"
+msgstr ""
+
+#: src/title-page.md:27
+msgid "Description"
+msgstr ""
+
+#: src/title-page.md:29
+msgid "1: Starknet Introduction"
+msgstr ""
+
+#: src/title-page.md:29
+msgid ""
+"Delve into the fundamental concepts of Starknet and acquaint yourself with "
+"the deployment of smart contracts."
+msgstr ""
+
+#: src/title-page.md:30
+msgid "2: Starknet Tooling"
+msgstr ""
+
+#: src/title-page.md:30
+msgid ""
+"Familiarize yourself with vital tools, such as Starknet-Foundry and Hardhat, and "
+"explore how languages like Javascript, Python, and Rust can be leveraged for "
+"Starknet interactions."
+msgstr ""
+
+#: src/title-page.md:31
+msgid "3: Starknet Architecture"
+msgstr ""
+
+#: src/title-page.md:31
+msgid ""
+"Uncover Starknet’s core structure, gaining insights into the transaction "
+"lifecycle and the interplay between the Sequencer, Prover, and Nodes."
+msgstr ""
+
+#: src/title-page.md:32
+msgid "4: Account Abstraction"
+msgstr ""
+
+#: src/title-page.md:32
+msgid ""
+"Delve deep into Starknet’s unique approach to user accounts, and master the "
+"art of crafting custom accounts."
+msgstr ""
+
+#: src/title-page.md:33
+msgid "5: STARKs"
+msgstr ""
+
+#: src/title-page.md:33
+
 msgid ""
 "| Chapter                  | Description                                     "
 "                                                                             "
@@ -725,6 +779,7 @@ msgid ""
 "[here](https://community.starknet.io/t/draft-simp-1-simp-purpose-and-guidelines/1197#what-is-a-snip-2)).\n"
 "Once a SNIP is approved, it becomes a part of the Starknet protocol. All\n"
 "the SNIPs can be found in [this\n"
+
 "repository](https://github.com/starknet-io/SNIPs)."
 msgstr ""
 

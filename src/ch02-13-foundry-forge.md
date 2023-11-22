@@ -1,14 +1,5 @@
 # Foundry Forge: Testing
 
-[Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) is a tool designed for testing and developing Starknet contracts. It is an adaptation of the Ethereum Foundry for Starknet, aiming to expedite the development process.
-
-The project consists of two primary components:
-
-- **Forge**: A testing tool specifically for Cairo contracts. This tool acts as a test runner and boasts features designed to enhance your testing process. Tests are written directly in Cairo, eliminating the need for other programming languages. Additionally, the Forge implementation uses Rust, mirroring Ethereum Foundry's choice of language.
-- **Cast**: This serves as a DevOps tool for StarkNet, initially supporting a series of commands to interface with StarkNet. In the future, Cast aims to offer deployment scripts for contracts and other DevOps functions.
-
-## Forge
-
 Merely deploying contracts is not the end game. Many tools have offered this capability in the past. Forge sets itself apart by hosting a Cairo VM instance, enabling the sequential execution of tests. It employs Scarb for contract compilation.
 
 To utilize Forge, define test functions and label them with test attributes. Users can either test standalone Cairo functions or integrate contracts, dispatchers, and test contract interactions on-chain.
@@ -315,11 +306,11 @@ Collected 1 test from erc20_contract package
 
 #### Utilizing Foundry Cheat Codes
 
-When testing smart contracts, simulating different conditions is essential. `Foundry Cheat Codes` from the `snforge_std` library offer these simulation capabilities for StarkNet smart contracts.
+When testing smart contracts, simulating different conditions is essential. `Foundry Cheat Codes` from the `snforge_std` library offer these simulation capabilities for Starknet smart contracts.
 
 These cheat codes consist of helper functions that adjust the smart contract's environment. They allow developers to modify parameters or conditions to examine contract behavior in specific scenarios.
 
-Using `snforge_std`'s cheat codes, you can change elements like block numbers, timestamps, or even the caller of a function. This guide focuses on `start_prank` and `stop_prank`.
+Using `snforge_std`'s cheat codes, you can change elements like block numbers, timestamps, or even the caller of a function. This guide focuses on `start_prank` and `stop_prank`. You can find a reference to available cheat codes [here](https://foundry-rs.github.io/starknet-foundry/appendix/cheatcodes.html)
 
 Below is a transfer test example:
 
@@ -475,6 +466,8 @@ Or in `scarb.toml`:
     # ...
 ```
 
+For more insight on fuzz tests, you can view it [here](https://foundry-rs.github.io/starknet-foundry/testing/fuzz-testing.html#fuzz-testing)
+
 ## Filter Tests
 
 To execute specific tests, use a filter string with the `snforge` command. Tests matching the filter based on their absolute module tree path will be executed.
@@ -498,7 +491,7 @@ Expected output:
     Fuzzer seed: 10426315620495146768
 ```
 
-All the tests with the string 'test\_' in their test name when through.
+All the tests with the string 'test\_' in their test name went through.
 
 Another example: To filter and run `test_fuzz_sum` we can partially match the test name with the string 'fuzz_sum' like this:
 
@@ -536,3 +529,11 @@ If a test fails, the output will resemble:
     Failures:
         tests::test_erc20::tests::test_balance_of
 ```
+
+### Conclusion
+
+Starknet Foundry offers a notable step forward in Starknet contract development and testing. This toolset sharpens the process of creating, deploying, and testing Cairo contracts. Its main components, Forge and Cast, provide developers with robust tools for Cairo contract work.
+
+Forge shines with its dual functionality: deploying and thoroughly testing Cairo contracts. It directly supports test writing in Cairo, removing the need for other languages and simplifying the task. Moreover, Forge seamlessly integrates with Scarb, emphasizing its adaptability, especially with existing Scarb projects.
+
+The `snforge` command-line tool makes initializing, setting up, and testing Starknet contracts straightforward.
