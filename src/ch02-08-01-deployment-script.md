@@ -16,6 +16,7 @@ cairo: 2.3.0 (https://crates.io/crates/cairo-lang-compiler/2.3.0)
 sierra: 1.3.0
 snforge 0.10.1
 sncast 0.10.1
+The Rust Devnet
 ```
 
 ### 1. Prepare the Script File
@@ -119,8 +120,8 @@ if [ "$FAILED_TESTS" != "true" ]; then
 
     if echo "$declaration_output" | grep -q "error: Class with hash"; then
         echo "Class hash already declared."
-        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p') ## Uncomment this for devnet python
-        # CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p') ## Uncomment this for devnet rust
+        # CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p') ## Uncomment this for pythonic devnet
+        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p') ## Uncomment this for rust devnet
     else
         echo "New class hash declaration."
         CLASS_HASH=$(echo "$declaration_output" | grep -o 'class_hash: 0x[^ ]*' | sed 's/class_hash: //')
