@@ -4,7 +4,7 @@ Several tools exist in the starknet ecosystem to build the front-end for
 your application. The most popular ones are:
 
 - [starknet-react](https://github.com/apibara/starknet-react)
-  ([documentation](https://starknet-react.com/docs/getting-started)):
+  ([documentation](https://apibara.github.io/starknet-react)):
   Collection of React hooks for Starknet. It is inspired by
   [wagmi](https://github.com/tmm/wagmi), powered by
   [starknet.js](https://github.com/0xs34n/starknet.js).
@@ -26,26 +26,15 @@ collection of React providers and hooks meticulously designed for
 Starknet.
 
 To immerse in the real-world application of Starknet React, we recommend
-exploring the comprehensive example dApp project at [Starknet React Demos](https://starknet-react.com/demos/).
+exploring the comprehensive example dApp project at
+[starknet-demo-dapp](https://github.com/finiam/starknet-demo-dapp/).
 
 ## Integrating Starknet React
 
-The fastest way to get started using Starknet React is by using the create-starknet Command Line Interface (CLI). The tool will guide you through setting up your Starknet application:
-
-```bash
-$ npm init starknet
-Need to install the following packages:
-  create-starknet@2.0.1
-Ok to proceed? (y) y
-✔ What is your project named? … my-starknet-app
-✔ What framework would you like to use? › Next.js
-Installing dependencies...
-Success! Created my-starknet-app at /my-starknet-app
-```
-Or, if you want to manually start your Starknet React journey you will need the incorporation
+Embarking on your Starknet React journey necessitates the incorporation
 of vital dependencies. Let’s start by adding them to your project.
 
-    npm install @starknet-react/chains @starknet-react/core starknet get-starknet-core
+    yarn add @starknet-react/core starknet get-starknet
 
 [Starknet.js](https://www.starknetjs.com/) is an essential SDK
 facilitating interactions with Starknet. In contrast,
@@ -59,31 +48,19 @@ utilize shared data and hooks. The `StarknetConfig` component accepts a
 connectors prop, allowing the definition of wallet connection options
 available to the user.
 
-        export default function App({ children }) {
-            const chains = [goerli, mainnet];
-            const provider = publicProvider();
-            const { connectors } = useInjectedConnectors({
-                // Show these connectors if the user has no connector installed.
-                recommended: [
-                    argent(),
-                    braavos(),
-                ],
-                // Hide recommended connectors if the user has any connector installed.
-                includeRecommended: "onlyIfNoConnectors",
-                // Randomize the order of the connectors.
-                order: "random"
-            });
+    const connectors = [
+      new InjectedConnector({ options: { id: "braavos" } }),
+      new InjectedConnector({ options: { id: "argentX" } }),
+    ];
 
-            return (
-                <StarknetConfig
-                    chains={chains}
-                    provider={provider}
-                    connectors={connectors}
-                >
-                    {children}
-                </StarknetConfig>
-            );
-        }
+    return (
+        <StarknetConfig
+          connectors={connectors}
+          autoConnect
+        >
+          <App />
+        </StarknetConfig>
+    )
 
 ## Establishing Connection and Managing Account
 
@@ -91,18 +68,21 @@ Once the connectors are defined in the config, the stage is set to use a
 hook to access these connectors, enabling users to connect their
 wallets:
 
-    export default function Component() {
-      const { connect, connectors } = useConnect();
+    export default function Connect() {
+      const { connect, connectors, disconnect } = useConnectors();
+
       return (
-        <ul>
+        <div>
           {connectors.map((connector) => (
-            <li key={connector.id}>
-              <button onClick={() => connect({ connector })}>
-                {connector.name}
-              </button>
-            </li>
+            <button
+              key={connector.id}
+              onClick={() => connect(connector)}
+              disabled={!connector.available()}
+            >
+              Connect with {connector.id}
+            </button>
           ))}
-        </ul>
+        </div>
       );
     }
 
@@ -132,17 +112,16 @@ Having established a connection, signing messages becomes a breeze using
 the account value returned from the `useAccount` hook. For a more
 streamlined experience, the `useSignTypedData` hook is at your disposal.
 
-    const { data, isPending, signTypedData } = useSignTypedData(exampleData);
+    const { data, signTypedData } = useSignTypedData(typedMessage)
 
     return (
-      <button
-        className="w-full"
-        onClick={() => signTypedData(exampleData)}
-        disabled={!account}
-      >
-        {isPending ? <p>Waiting for wallet...</p> : <p>Sign Message</p>}
-      </button>
-    );
+      <>
+        <p>
+          <button onClick={signTypedData}>Sign</button>
+        </p>
+        {data && <p>Signed: {JSON.stringify(data)}</p>}
+      </>
+    )
 
 Starknet React supports signing an array of `BigNumberish` values or an
 object. While signing an object, it is crucial to ensure that the data
@@ -157,11 +136,11 @@ to retrieve the StarkName of this connected account. Related to
 [Starknet.id](https://www.starknet.id/) it permits to display the user
 address in a more user friendly way.
 
-    const { data, isLoading, isError } = useStarkName({ address });
+    const { data, isError, isLoading, status } = useStarkName({ address });
+    // You can track the status of the request with the status variable ('idle' | 'error' | 'loading' | 'success')
 
-    if (isLoading) return <span>Loading...</span>;
-    if (isError) return <span>Error fetching name...</span>;
-    return <span>StarkName: {data}</span>;
+    if (isLoading) return <p>Loading...</p>
+    return <p>Account: {isError ? address : data}</p>
 
 You also have additional information you can get from this hook →
 **error**, **isIdle**, **isFetching**, **isSuccess**, **isFetched**,
@@ -173,13 +152,11 @@ you more precise information on what is happening.
 You could also want to retrieve an address corresponding to a StarkName.
 For this purpose, you can use the `useAddressFromStarkName` hook.
 
-    const { data, isLoading, isError } = useAddressFromStarkName({
-      name: "vitalik.stark",
-    });
+    const { data, isLoading, isError } = useAddressFromStarkName({ name: 'vitalik.stark' })
 
-    if (isLoading) return <span>Loading...</span>;
-    if (isError) return <span>Error fetching address...</span>;
-    return <span>address: {data}</span>;
+    if (isLoading) return <p>Loading...</p>
+    if (isError) return <p>Something went wrong</p>
+    return <p>Address: {data}</p>
 
 If the provided name does not have an associated address, it will return
 **"0x0"**
@@ -190,14 +167,20 @@ In addition to wallet and account management, Starknet React equips
 developers with hooks for network interactions. For instance, useBlock
 enables the retrieval of the latest block:
 
-    const { data, isLoading, isError } = useBlock({
-      refetchInterval: false,
-      blockIdentifier: 'latest' as BlockNumber
-    })
+    const { data, isError, isFetching } = useBlock({
+        refetchInterval: 10_000,
+        blockIdentifier: "latest",
+    });
 
-    if (isLoading) return <span>Loading...</span>
-    if (isError || !data) return <span>Error...</span>
-    return <span>Hash: {data.block_hash}</span>
+    if (isError) {
+      return (
+        <p>Something went wrong</p>
+      )
+    }
+
+    return (
+        <p>Current block: {isFetching ? "Loading..." : data?.block_number}<p>
+    )
 
 In the aforementioned code, refetchInterval controls the frequency of
 data refetching. Behind the scenes, Starknet React harnesses
@@ -208,7 +191,7 @@ update at regular intervals.
 
 The useStarknet hook provides direct access to the ProviderInterface:
 
-    const { provider } = useProvider()
+    const { library } = useStarknet();
 
     // library.getClassByHash(...)
     // library.getTransaction(...)
@@ -282,14 +265,15 @@ For ERC20 operations, Starknet React offers a convenient useBalance
 hook. This hook exempts you from passing an ABI and returns a suitably
 formatted balance value.
 
-    const { isLoading, isError, error, data } = useBalance({
+      const { data, isLoading } = useBalance({
         address,
-        watch: true
-    })
+        token: CONTRACT_ADDRESS, // <- defaults to the ETH token
+        // watch: true <- refresh at every block
+      });
 
-    if (isLoading) return <div>Loading ...</div>;
-    if (isError || !data) return <div>{error?.message}</div>;
-    return <div>{data.value.toString()}{data.symbol}</div>
+      return (
+        <p>Balance: {data?.formatted} {data?.symbol}</p>
+      )
 
 ### Write Functions
 
@@ -302,27 +286,37 @@ React capitalizes on this functionality through the useContractWrite
 hook. Below is a demonstration of its usage:
 
     const calls = useMemo(() => {
-      if (!address || !contract) return [];
-      // return a single object for single transaction,
-      // or an array of objects for multicall**
-      return contract.populateTransaction["transfer"]!(address, { low: 1, high: 0 });
-    }, [contract, address]);
+        // compile the calldata to send
+        const calldata = stark.compileCalldata({
+          argName: argValue,
+        });
 
-    const {
-      writeAsync,
-      data,
-      isPending,
-    } = useContractWrite({
-      calls,
+        // return a single object for single transaction,
+        // or an array of objects for multicall**
+        return {
+          contractAddress: CONTRACT_ADDRESS,
+          entrypoint: functionName,
+          calldata,
+        };
+    }, [argValue]);
+
+
+    // Returns a function to trigger the transaction
+    // and state of tx after being sent
+    const { write, isLoading, data } = useContractWrite({
+        calls,
     });
 
+    function execute() {
+      // trigger the transaction
+      write();
+    }
+
     return (
-      <>
-        <button onClick={() => writeAsync()}>Transfer</button>
-        <p>status: {isPending && <div>Submitting...</div>}</p>
-        <p>hash: {data?.transaction_hash}</p>
-      </>
-    );
+      <button type="button" onClick={execute}>
+        Make a transaction
+      </button>
+    )
 
 The code snippet begins by compiling the calldata using the
 compileCalldata utility provided by Starknet.js. This calldata, along
@@ -352,15 +346,17 @@ The useTransaction hook allows for the tracking of transaction states
 given a transaction hash. This hook maintains a cache of all
 transactions, thereby minimizing redundant network requests.
 
-    const { isLoading, isError, error, data } = useWaitForTransaction({hash: transaction, watch: true})
+    const { data, isLoading, error } = useTransaction({ hash: txHash });
 
-    if (isLoading) return <div>Loading ...</div>;
-    if (isError || !data) return <div>{error?.message}</div>;
-    return <div>{data.status?.length}</div>
+    return (
+      <pre>
+        {JSON.stringify(data?.calldata)}
+      </pre>
+    )
 
 The full array of available hooks can be discovered in the Starknet
 React documentation, accessible here:
-<https://starknet-react.com/hooks/>.
+<https://apibara.github.io/starknet-react/>.
 
 ## Conclusion
 
