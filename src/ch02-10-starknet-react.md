@@ -42,6 +42,7 @@ Ok to proceed? (y) y
 Installing dependencies...
 Success! Created my-starknet-app at /my-starknet-app
 ```
+
 Or, if you want to manually start your Starknet React journey you will need the incorporation
 of vital dependencies. Let’s start by adding them to your project.
 
@@ -106,8 +107,13 @@ wallets:
       );
     }
 
-Observe the `disconnect` function that terminates the connection when
-invoked. Post connection, access to the connected account is provided
+Now, observe the `disconnect` function that terminates the connection when
+invoked:
+
+    const { disconnect } = useDisconnect();
+    return <button onClick={() => disconnect()}>Disconnect</button>
+
+And, post connection, access to the connected account is provided
 through the `useAccount` hook, offering insight into the current state
 of connection:
 
@@ -136,7 +142,6 @@ streamlined experience, the `useSignTypedData` hook is at your disposal.
 
     return (
       <button
-        className="w-full"
         onClick={() => signTypedData(exampleData)}
         disabled={!account}
       >
@@ -159,13 +164,16 @@ address in a more user friendly way.
 
     const { data, isLoading, isError } = useStarkName({ address });
 
-    if (isLoading) return <span>Loading...</span>;
-    if (isError) return <span>Error fetching name...</span>;
+    if (isLoading)
+        return <span>Loading...</span>;
+    if (isError)
+        return <span>Error fetching name...</span>;
+
     return <span>StarkName: {data}</span>;
 
 You also have additional information you can get from this hook →
-**error**, **isIdle**, **isFetching**, **isSuccess**, **isFetched**,
-**isFetchedAfterMount**, **isRefetching**, **refetch** which can give
+**error**, **status**, **fetchStatus**, **isSuccess**, **isError**,
+**isPending**, **isFetching**, **isLoading** which can give
 you more precise information on what is happening.
 
 ## Fetching address from StarkName
@@ -177,8 +185,11 @@ For this purpose, you can use the `useAddressFromStarkName` hook.
       name: "vitalik.stark",
     });
 
-    if (isLoading) return <span>Loading...</span>;
-    if (isError) return <span>Error fetching address...</span>;
+    if (isLoading)
+        return <span>Loading...</span>;
+    if (isError)
+        return <span>Error fetching address...</span>;
+
     return <span>address: {data}</span>;
 
 If the provided name does not have an associated address, it will return
@@ -191,12 +202,15 @@ developers with hooks for network interactions. For instance, useBlock
 enables the retrieval of the latest block:
 
     const { data, isLoading, isError } = useBlock({
-      refetchInterval: false,
+      refetchInterval: 10_000,
       blockIdentifier: 'latest' as BlockNumber
     })
 
-    if (isLoading) return <span>Loading...</span>
-    if (isError || !data) return <span>Error...</span>
+    if (isLoading)
+        return <span>Loading...</span>
+    if (isError || !data)
+        return <span>Error...</span>
+
     return <span>Hash: {data.block_hash}</span>
 
 In the aforementioned code, refetchInterval controls the frequency of
@@ -270,13 +284,20 @@ read functions on contracts, akin to wagmi. This hook functions
 independently of the user’s connection status, as read operations do not
 necessitate a signer.
 
-    const { data: balance, isLoading, isError, isSuccess } = useContractRead({
-        abi: abi_erc20,
-        address: CONTRACT_ADDRESS,
-        functionName: "allowance",
-        args: [owner, spender],
-        // watch: true <- refresh at every block
+    const { data, isError, isLoading, error } = useContractRead({
+        functionName: "balanceOf",
+        args: [address as string],
+        abi,
+        address: testAddress,
+        watch: true,
     });
+
+    if (isLoading)
+        return <div>Loading ...</div>;
+    if (isError || !data)
+        return <div>{error?.message}</div>;
+
+    return <div>{parseFloat(data.balance.low)}n</div>;
 
 For ERC20 operations, Starknet React offers a convenient useBalance
 hook. This hook exempts you from passing an ABI and returns a suitably
@@ -287,8 +308,11 @@ formatted balance value.
         watch: true
     })
 
-    if (isLoading) return <div>Loading ...</div>;
-    if (isError || !data) return <div>{error?.message}</div>;
+    if (isLoading)
+        return <div>Loading ...</div>;
+    if (isError || !data)
+        return <div>{error?.message}</div>;
+
     return <div>{data.value.toString()}{data.symbol}</div>
 
 ### Write Functions
@@ -325,9 +349,9 @@ hook. Below is a demonstration of its usage:
     );
 
 The code snippet begins by compiling the calldata using the
-compileCalldata utility provided by Starknet.js. This calldata, along
+populateTransaction utility provided by Starknet.js. This calldata, along
 with the contract address and entry point, are passed to the
-useContractWrite hook. The hook returns a write function that is
+useContractWrite hook. The hook returns a writeAsync function that is
 subsequently used to execute the transaction. The hook also provides the
 transaction’s hash and state.
 
@@ -348,14 +372,19 @@ Starknet React accommodates this requirement with the useContract hook:
 
 ## Tracking Transactions
 
-The useTransaction hook allows for the tracking of transaction states
+The useWaitForTransaction hook allows for the tracking of transaction states
 given a transaction hash. This hook maintains a cache of all
 transactions, thereby minimizing redundant network requests.
 
-    const { isLoading, isError, error, data } = useWaitForTransaction({hash: transaction, watch: true})
+    const { isLoading, isError, error, data } = useWaitForTransaction({
+                                                    hash: transaction,
+                                                    watch: true})
 
-    if (isLoading) return <div>Loading ...</div>;
-    if (isError || !data) return <div>{error?.message}</div>;
+    if (isLoading)
+        return <div>Loading ...</div>;
+    if (isError || !data)
+        return <div>{error?.message}</div>;
+
     return <div>{data.status?.length}</div>
 
 The full array of available hooks can be discovered in the Starknet
