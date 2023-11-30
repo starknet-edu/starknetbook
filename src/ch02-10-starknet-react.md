@@ -40,7 +40,7 @@ Ok to proceed? (y) y
 ✔ What is your project named? … my-starknet-app
 ✔ What framework would you like to use? › Next.js
 Installing dependencies...
-Success! Created my-starknet-app at /my-starknet-app
+Success! Created my-starknet-app at ~/my-starknet-app
 ```
 
 Or, if you want to manually start your Starknet React journey you will need the incorporation
