@@ -34,8 +34,7 @@ streamlined.
 # Installation
 
 Scarb is cross-platform, supporting macOS, Linux, and Windows. For
-installation, refer to the [Chapter 1 setup
-guide](https://book.starknet.io/chapter_1/environment_setup.html#the_scarb_package_manager_installation).
+installation, refer to the [Basic installation guide](./ch02-01-basic-installation).
 
 # Cairo Project Structure
 
@@ -131,8 +130,8 @@ following:
 In this instance, the `lib.cairo` file contains a module declaration
 referencing _hello_scarb_, which includes the _hello_scarb.cairo_
 file’s implementation. For more on modules, imports, and the `lib.cairo`
-file, please refer to the subchapter on [imports in Chapter
-2](https://book.starknet.io/chapter_2/imports.html).
+file, please refer to the cairo-book on [Managing Cairo Projects in Chapter
+7](https://book.cairo-lang.org/ch07-00-managing-cairo-projects-with-packages-crates-and-modules.html).
 
 Scarb mandates that your source files be located within the `src`
 directory.
@@ -143,7 +142,7 @@ the following command:
     scarb build
 
 This command compiles your project and produces the Sierra code in the
-`target/dev/hello_scarb.sierra` file. Sierra serves as an intermediate
+`target/dev/hello_scarb.sierra.json` file. Sierra serves as an intermediate
 layer between high-level Cairo and compilation targets such as Cairo
 Assembly (CASM). To understand more about Sierra, check out this
 [article](https://medium.com/nethermind-eth/under-the-hood-of-cairo-1-0-exploring-sierra-7f32808421f5/).

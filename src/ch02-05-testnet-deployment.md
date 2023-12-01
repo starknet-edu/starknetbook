@@ -265,7 +265,7 @@ of the Starknet Book repo. The `src/lib.cairo` file contains a basic
 contract to practice with.
 
 First, compile the contract using the Scarb compiler. If you haven’t
-installed Scarb, follow the installation guide in the [basic instalation](./ch02-01-basic-installation)
+installed Scarb, follow the installation guide in the [basic installation](./ch02-01-basic-installation)
 section.
 
 ```bash
