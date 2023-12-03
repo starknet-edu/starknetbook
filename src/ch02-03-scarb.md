@@ -225,6 +225,135 @@ commands:
 - `scarb run <script>`: Run a custom script defined in your
   `Scarb.toml` file.
 
+# Whats is new since version 2.3.0
+
+- JSON containing Sierra code of Starknet contract class becomes: `contract.contract_class.json`.
+- JSON containing CASM code of Starknet contract class becomes: `contract.compiled_contract_class.json`.
+- Now cairo supports `Components`. They are modular add-ons encapsulating reusable logic, storage, and events that can be incorporated into multiple contracts. They can be used to extend a contract's functionality, without having to reimplement the same logic over and over again.
+
+## Project using Components
+
+One of the most important features since `scarb 2.3.0` version is `Components`. Think of components as Lego blocks. They allow you to enrich your contracts by plugging in a module that you or someone else wrote. 
+
+Lets see and example. Recover our project from [Testnet Deployment](./ch02-05-testnet-deployment.md) section. We used the `Ownable-Starknet` example to interact with the blockchain, now we are going to use the same project, but we will refactor the code in order to use `components`
+
+This is how our smart contract looks now
+
+```rust
+// ...rest of the code
+
+#[starknet::component]
+mod ownable_component {
+    use super::{ContractAddress, IOwnable};
+    use starknet::get_caller_address;
+
+    #[storage]
+    struct Storage {
+        owner: ContractAddress
+    }
+
+    #[event]
+    #[derive(Drop, starknet::Event)]
+    enum Event {
+        OwnershipTransferred: OwnershipTransferred
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct OwnershipTransferred {
+        previous_owner: ContractAddress,
+        new_owner: ContractAddress,
+    }
+
+    #[embeddable_as(Ownable)]
+    impl OwnableImpl<
+        TContractState, +HasComponent<TContractState>
+    > of IOwnable<ComponentState<TContractState>> {
+        fn transfer_ownership(
+            ref self: ComponentState<TContractState>, new_owner: ContractAddress
+        ) {
+            self.only_owner();
+            self._transfer_ownership(new_owner);
+        }
+        fn owner(self: @ComponentState<TContractState>) -> ContractAddress {
+            self.owner.read()
+        }
+    }
+
+    #[generate_trait]
+    impl InternalImpl<
+        TContractState, +HasComponent<TContractState>
+    > of InternalTrait<TContractState> {
+        fn only_owner(self: @ComponentState<TContractState>) {
+            let owner: ContractAddress = self.owner.read();
+            let caller: ContractAddress = get_caller_address();
+            assert(!caller.is_zero(), 'ZERO_ADDRESS_CALLER');
+            assert(caller == owner, 'NOT_OWNER');
+        }
+
+        fn _transfer_ownership(
+            ref self: ComponentState<TContractState>, new_owner: ContractAddress
+        ) {
+            let previous_owner: ContractAddress = self.owner.read();
+            self.owner.write(new_owner);
+            self
+                .emit(
+                    OwnershipTransferred { previous_owner: previous_owner, new_owner: new_owner }
+                );
+        }
+    }
+}
+
+#[starknet::contract]
+mod ownable_contract {
+    use ownable_project::ownable_component;
+    use super::{ContractAddress, IData};
+
+    component!(path: ownable_component, storage: ownable, event: OwnableEvent);
+
+    #[abi(embed_v0)]
+    impl OwnableImpl = ownable_component::Ownable<ContractState>;
+
+    impl OwnableInternalImpl = ownable_component::InternalImpl<ContractState>;
+
+    #[storage]
+    struct Storage {
+        data: felt252,
+        #[substorage(v0)]
+        ownable: ownable_component::Storage
+    }
+
+    #[event]
+    #[derive(Drop, starknet::Event)]
+    enum Event {
+        OwnableEvent: ownable_component::Event
+    }
+
+    #[constructor]
+    fn constructor(ref self: ContractState, initial_owner: ContractAddress) {
+        self.ownable.owner.write(initial_owner);
+        self.data.write(1);
+    }
+    #[external(v0)]
+    impl OwnableDataImpl of IData<ContractState> {
+        fn get_data(self: @ContractState) -> felt252 {
+            self.data.read()
+        }
+        fn set_data(ref self: ContractState, new_value: felt252) {
+            self.ownable.only_owner();
+            self.data.write(new_value);
+        }
+    }
+}
+```
+
+Basically we decided to apply `components` on the section related to `ownership` and created a separeted module `ownable_component`. Then we kept the `data` section in our main module `ownable_contract`.
+
+To get the full implementation of this project, navigate to the `src/` directory in the [examples/Ownable-Components](https://github.com/starknet-edu/starknetbook/tree/main/examples/Ownable-Components) directory of the Starknet Book repo. The `src/lib.cairo` file contains the contract to practice with.
+
+After you get the full code on your machine, open your terminal, input `scarb build` to compile it, deploy your contract and call functions.
+
+You can learn more about components in [Chapter 12 of The Cairo Book](https://book.cairo-lang.org/ch99-01-05-00-components.html).
+
 Scarb is a versatile tool, and this is just the beginning of what you
 can achieve with it. As you gain more experience in the Cairo language
 and the Starknet platform, you’ll discover how much more you can do with
