@@ -260,7 +260,7 @@ Deploying a smart contract on Starknet involves two steps:
 - Declare your contract’s code.
 - Deploy an instance of the declared code.
 
-To get started, navigate to the `src/` directory in the [Ownable-Starknet](https://github.com/starknet-edu/starknetbook/Ownable-Starknet) directory
+To get started, navigate to the `src/` directory in the [examples/Ownable-Starknet](https://github.com/starknet-edu/starknetbook/tree/main/examples/Ownable-Starknet) directory
 of the Starknet Book repo. The `src/lib.cairo` file contains a basic
 contract to practice with.
 
