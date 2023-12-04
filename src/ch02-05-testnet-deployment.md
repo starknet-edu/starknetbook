@@ -173,6 +173,29 @@ Inside **`crypto`**:
   private key in this case). It is generated using a hash of both the
   ciphertext and a portion of the derived key.
 
+Before to continue, we have to choose a rpc provider
+
+### Choosing an RPC Provider
+
+There are three main options for RPC providers, sorted by ease of use:
+
+1.  **Starknet Sequencer’s Gateway**: The quickest option and it’s the
+    default for Starkli for now. The sequencer gateway is deprecated and
+    will be disabled by StarkWare soon. You’re strongly recommended to
+    use a third-party JSON-RPC API provider like Infura, Alchemy, or
+    Chainstack.
+
+2.  **Infura or Alchemy**: A step up in complexity. You’ll need to set
+    up an API key and choose an endpoint. For Infura, it would look like
+    `https://starknet-goerli.infura.io/v3/<API_KEY>`. Learn more in the
+    [Infura
+    documentation](https://docs.infura.io/networks/starknet/how-to/choose-a-network).
+
+3.  **Your Own Node**: For those who want full control. It’s the most
+    complex but offers the most freedom. Check out [Chapter 4 of the
+    Starknet Book](https://book.starknet.io/chapter_4/node.html) or
+    [Kasar](https://www.kasar.io/) for setup guides.
+
 ### Creating an Account Descriptor
 
 An Account Descriptor informs Starkli about your smart wallet’s unique
@@ -180,10 +203,10 @@ features, such as its signing mechanism. You can generate this
 descriptor using Starkli’s `fetch` subcommand under the `account`
 command. The `fetch` subcommand takes your on-chain wallet address as
 input and generates the account descriptor file. The account descriptor
-file is a JSON file that contains the details of your smart wallet.
+file is a JSON file that contains the details of your smart wallet. We also have to pass the rpc provider here.
 
 ```bash
-    starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/my_account_1.json
+    starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/my_account_1.json --rpc https://starknet-goerli.g.alchemy.com/v2/<API_KEY>
 ```
 
 After running the command, you’ll see a message like the one below.
@@ -277,31 +300,7 @@ This creates a compiled contract in `target/dev/` as
 more details about Scarb).
 
 With the smart contract compiled, we’re ready to declare it using
-Starkli. Before declaring your contract, decide on an RPC provider.
-
-### Choosing an RPC Provider
-
-There are three main options for RPC providers, sorted by ease of use:
-
-1.  **Starknet Sequencer’s Gateway**: The quickest option and it’s the
-    default for Starkli for now. The sequencer gateway is deprecated and
-    will be disabled by StarkWare soon. You’re strongly recommended to
-    use a third-party JSON-RPC API provider like Infura, Alchemy, or
-    Chainstack.
-
-2.  **Infura or Alchemy**: A step up in complexity. You’ll need to set
-    up an API key and choose an endpoint. For Infura, it would look like
-    `https://starknet-goerli.infura.io/v3/<API_KEY>`. Learn more in the
-    [Infura
-    documentation](https://docs.infura.io/networks/starknet/how-to/choose-a-network).
-
-3.  **Your Own Node**: For those who want full control. It’s the most
-    complex but offers the most freedom. Check out [Chapter 4 of the
-    Starknet Book](https://book.starknet.io/chapter_4/node.html) or
-    [Kasar](https://www.kasar.io/) for setup guides.
-
-In this tutorial, we will use Alchemy. We can set the STARKNET_RPC
-environment variable to make command invocations easier:
+Starkli. Then we can set the STARKNET_RPC environment variable to make command invocations easier:
 
 ```bash
     export STARKNET_RPC="https://starknet-goerli.g.alchemy.com/v2/<API_KEY>"

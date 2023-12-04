@@ -348,7 +348,7 @@ mod ownable_contract {
 
 Basically we decided to apply `components` on the section related to `ownership` and created a separeted module `ownable_component`. Then we kept the `data` section in our main module `ownable_contract`.
 
-To get the full implementation of this project, navigate to the `src/` directory in the [examples/Ownable-Components](https://github.com/starknet-edu/starknetbook/tree/main/examples/Ownable-Components) directory of the Starknet Book repo. The `src/lib.cairo` file contains the contract to practice with.
+To get the full implementation of this project, navigate to the `src/` directory in the [examples/Ownable-Components](https://github.com/starknet-edu/starknetbook/examples/Ownable-Components) directory of the Starknet Book repo. The `src/lib.cairo` file contains the contract to practice with.
 
 After you get the full code on your machine, open your terminal, input `scarb build` to compile it, deploy your contract and call functions.
 
