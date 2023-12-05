@@ -2,7 +2,7 @@
 
 This chapter guides developers through the process of compiling, deploying, and interacting with a Starknet smart contract written in Cairo on the testnet. Earlier, the focus was on deploying contracts using a local node, Katana. This time, the deployment and interaction target the Starknet testnet.
 
-Ensure the following commands run successfully on your system. If not, see the 'Basic Installation' section:
+Ensure the following commands run successfully on your system. If not, see the [Basic Installation](ch02-01-basic-installation.md) section:
 
 ```bash
     scarb --version  # For Cairo code compilation
@@ -17,8 +17,7 @@ the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
 In order for an account to be used as a signer it must be deployed to the appropriate network,
-Starknet Goerli or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
-
+Starknet Goerli or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Smart Wallet Setup](https://book.starknet.io/ch01-00-getting-started.html#smart-wallet-setup).
 Now you’re ready to interact with Starknet smart contracts.
 
 ### Creating a Signer
@@ -203,9 +202,9 @@ In case you face an error like this:
     Error: code=ContractNotFound, message="Contract with address {SMART_WALLET_ADDRESS} is not deployed."
 ```
 
-It means you probably just created a new wallet and it has not been deployed yet. To accomplish this you have to fund your wallet with tokens and transfer tokens to a different wallet address. After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Getting Started](ch01-00-getting-started.md) and find the `Smart Wallet Setup` section.
+It means you probably just created a new wallet and it has not been deployed yet. To accomplish this you have to fund your wallet with tokens and transfer tokens to a different wallet address. After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Smart Wallet Setup](https://book.starknet.io/ch01-00-getting-started.html#smart-wallet-setup).
 
-After the acount descriptor file is generated, you can see the its detalis, run:
+After the acount descriptor file is generated, you can see its details, run:
 
 ```bash
     cat ~/.starkli-wallets/deployer/my_account_1.json
@@ -259,17 +258,14 @@ efficient.
 Deploying a smart contract on Starknet involves two steps:
 
 - Declare your contract’s code.
-
 - Deploy an instance of the declared code.
 
-To get started, navigate to the `contracts/` directory in the [first
-chapter](https://github.com/starknet-edu/starknetbook/tree/main/chapters/book/modules/chapter_1/pages/contracts)
+To get started, navigate to the `src/` directory in the [Ownable-Starknet](https://github.com/starknet-edu/starknetbook/Ownable-Starknet) directory
 of the Starknet Book repo. The `src/lib.cairo` file contains a basic
 contract to practice with.
 
 First, compile the contract using the Scarb compiler. If you haven’t
-installed Scarb, follow the installation guide in the [Setting up your
-Environment](https://book.starknet.io/chapter_1/environment_setup.html)
+installed Scarb, follow the installation guide in the [basic instalation](./ch02-01-basic-installation)
 section.
 
 ```bash
@@ -317,7 +313,7 @@ Run this command to declare your contract using the default Starknet
 Sequencer’s Gateway:
 
 ```bash
-    starkli declare target/dev/contracts_Ownable.sierra.json
+    starkli declare target/dev/contracts_Ownable.contract_class.json
 ```
 
 According to the `STARKNET_RPC` url, starkli can recognize the target
@@ -366,8 +362,8 @@ main components:
 2.  Any constructor arguments that the contract expects.
 
 In our example, the constructor expects an _owner_ address. You can
-learn more about constructors in \[Chapter 12 of The Cairo
-Book\](<https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors>).
+learn more about constructors in [Chapter 12 of The Cairo
+Book](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors).
 
 The command would look like this:
 

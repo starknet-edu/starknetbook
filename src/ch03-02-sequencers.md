@@ -3,7 +3,7 @@
 Before diving in, make sure to check out the ["Understanding Starknet:
 Sequencers, Provers, and
 Nodes"](https://book.starknet.io/chapter_3/topology.html) chapter for a
-quick rundown of Starknet’s architecture.
+quick exploration of Starknet’s architecture.
 
 Three main layers exist in blockchain: data availability, ordering, and
 execution. Sequencers have evolved within this evolving modular
@@ -250,13 +250,3 @@ As blockchain technology continues to mature, it’s worth keeping an eye
 on how the role of Sequencers evolves. They hold the potential to either
 strengthen or weaken the unique advantages that make blockchain
 technology so revolutionary.
-
-The Book is a community-driven effort created for the community.
-
-- If you’ve learned something, or not, please take a moment to provide
-  feedback through [this 3-question
-  survey](https://a.sprig.com/WTRtdlh2VUlja09lfnNpZDo4MTQyYTlmMy03NzdkLTQ0NDEtOTBiZC01ZjAyNDU0ZDgxMzU=).
-
-- If you discover any errors or have additional suggestions, don’t
-  hesitate to open an [issue on our GitHub
-  repository](https://github.com/starknet-edu/starknetbook/issues).

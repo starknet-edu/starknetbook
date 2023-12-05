@@ -26,7 +26,7 @@ To illustrate SHARP: Think of commuting by bus. The bus driver, the prover, tran
 
 A Solidity verifier is an L1 smart contract, crafted in Solidity, designed to validate STARK proofs from SHARP (Shared Prover).
 
-### Previous Architecture: Monolothic Verifier
+### Previous Architecture: Monolithic Verifier
 
 Historically, the Solidity Verifier was a monolithic contract, both initiated and executed by the same contract. For illustration, the operator would invoke the `update state` function on the main contract, providing the state to be modified and confirming its validity. Subsequently, the main contract would present the proof to both the verifier and the validium committee. Once they validated the proof, the state would be updated in the main contract.
 
