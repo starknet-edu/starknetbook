@@ -37,7 +37,7 @@ cargo install mdbook --version 0.4.31 && cargo install mdbook-i18n-helpers --ver
 - Run `npm i`
 - Then after completing your documentation run `npm run format`
 
-### Understanding the Book's Structure
+#### Understanding the Book's Structure
 
 The Starknet Book is optimized for mdBook:
 
@@ -45,7 +45,7 @@ The Starknet Book is optimized for mdBook:
 - `src/`: This directory holds individual chapters. Each is a markdown file, like `ch35.md`. Use subdirectories for added resources.
 - `book.toml`: The primary configuration file (regular contributors might not need to adjust this).
 
-### Editing Guidelines
+#### Editing Guidelines
 
 #### Work Locally in English
 
