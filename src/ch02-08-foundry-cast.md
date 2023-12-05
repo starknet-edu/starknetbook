@@ -15,6 +15,17 @@ Cast provides the Command Line Interface (CLI) for starknet, while Forge address
 
 In this section, we'll delve into `sncast`.
 
+## Requirements
+
+```txt
+scarb 2.3.0 (f306f9a91 2023-10-23)
+cairo: 2.3.0 (https://crates.io/crates/cairo-lang-compiler/2.3.0)
+sierra: 1.3.0
+snforge 0.10.1
+sncast 0.10.1
+The Rust Devnet
+```
+
 ## Step 1: Sample Smart Contract
 
 The following code sample is sourced from `starknet foundry`. You can find the original [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html).
@@ -36,9 +47,10 @@ mod HelloStarknet {
     #[external(v0)]
     impl HelloStarknetImpl of super::IHelloStarknet<ContractState> {
         fn increase_balance(ref self: ContractState, amount: felt252) {
-            assert(amount != 0, 'amount cannot be 0');
+            assert(amount != 0, 'Amount cannot be 0');
             self.balance.write(self.balance.read() + amount);
         }
+
         fn get_balance(self: @ContractState) -> felt252 {
             self.balance.read()
         }
@@ -50,12 +62,19 @@ Before interacting with this sample smart contract, it's crucial to test its fun
 
 Here are the associated tests:
 
+Take a keen look onto the imports ie
+
+```rust
+use casttest::{IHelloStarknetDispatcherTrait, IHelloStarknetDispatcher}
+```
+
+`casttest` from the above line is the name of the project as given in the `scarb.toml` file
+
 ```rust
 #[cfg(test)]
 mod tests {
-    use learnsncast::IHelloStarknetDispatcherTrait;
+    use casttest::{IHelloStarknetDispatcherTrait, IHelloStarknetDispatcher};
     use snforge_std::{declare, ContractClassTrait};
-    use super::{IHelloStarknetDispatcher};
 
     #[test]
     fn call_and_invoke() {
@@ -87,44 +106,49 @@ To execute tests, follow the steps below:
 1. Ensure `snforge` is listed as a dependency in your `Scarb.toml` file, positioned beneath the `starknet` dependency. Your dependencies section should appear as (make sure to use the latest version of `snforge` and `starknet`):
 
 ```txt
-starknet = "2.1.0-rc2"
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.7.1" }
+starknet = "2.3.0"
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.10.1" }
 ```
 
 2. Run the command:
 
 ```sh
-snforge
+snforge test
 ```
 
 Note: Use `snforge` for testing instead of the `scarb test` command. The tests are set up to utilize functions from `snforge_std`. Running `scarb test` would cause errors.
 
 ## Step 2: Setting Up Starknet Devnet
 
-For this guide, the focus is on using `starknet-devnet`. If you've been using `katana`, please be cautious as there might be inconsistencies. If you haven't configured `devnet`, consider following this [guide](https://livesoftwaredeveloper.com/articles/9/how-to-set-up-starknet-devnet-and-frontend-for-smart-contract-development) for a quick setup.
+For this guide, the focus is on using `Rust starknet devnet`. If you've been using `katana` or `pythonic devnet`, please be cautious as there might be inconsistencies. If you haven't configured `devnet`, consider following the guide from Starknet devnet for a quick setup.
 
 To launch `starknet devnet`, use the command:
 
 ```sh
-starknet-devnet
+cargo run
 ```
 
 Upon successful startup, you should receive a response similar to:
 
 ```sh
+Finished dev [unoptimized + debuginfo] target(s) in 0.21s
+     Running `target/debug/starknet-devnet`
 Predeployed FeeToken
-Address: 0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
-Class Hash: 0x6a22bf63c7bc07effa39a25dfbd21523d211db0100a0afd054d172b81840eaf
-Symbol: ETH
+Address: 0x49D36570D4E46F48E99674BD3FCC84644DDD6B96F7C741B1562B82F9E004DC7
+Class Hash: 0x6A22BF63C7BC07EFFA39A25DFBD21523D211DB0100A0AFD054D172B81840EAF
 
-Account #0:
-Address: 0x5fd5ef7f4b0e23a44a3670bd84f802f6cc37983c7766d562a8d4d72bb8360ba
-Public key: 0x6bd5d1d46a7f603f1106824a3b276fdb52168f55b595ba7ff6b2ded390161cd
-Private key: 0xc12927df61303656b3c066e65eda0acc
+Predeployed UDC
+Address: 0x41A78E741E5AF2FEC34B695679BC6891742439F7AFB8484ECD7766661AD02BF
+Class Hash: 0x7B3E05F48F0C69E4A65CE5E076A66271A527AFF2C34CE1083EC6E1526997A69
+
+| Account address |  0x243a10223fa0a8276cb9bb48cbb2da26dd945d0d09162610d32365b1f8580e1
+| Private key     |  0x41f7d13cf9a928319d39c06b328f76af
+| Public key      |  0x21952db4ec4ca2f0ce5ea3bfe545ad853043b80c06ef44335908e883e5a8988
+
 ...
 ...
 ...
- * Listening on http://127.0.0.1:5050/ (Press CTRL+C to quit)
+2023-11-23T17:06:48.221449Z  INFO starknet_devnet: Starknet Devnet listening on 127.0.0.1:5050
 ```
 
 (Note: The abbreviated ... is just a placeholder for the detailed response. In your actual output, you'll see the full details.)
@@ -323,7 +347,7 @@ However, you may encounter some issues, such as:
 
 **Error: RPC url not passed nor found in Scarb.toml**. This indicates the absence of a default profile in the **`Scarb.toml`** file. To remedy this:
 
-- Add the **`-profile`** option, followed by the desired profile name, as per the ones you've established.
+- Add the **`--profile`** option, followed by the desired profile name, as per the ones you've established.
 - Alternatively, set a default profile as previously discussed in the "Declaring the Contract" section under "Hint" or as detailed in the "Adding, Creating, and Deploying Account" subsection.
 
 You've successfully deployed your contract with `sncast`! Now, let's explore how to interact with it.
