@@ -61,7 +61,7 @@
     - [Multisig 🚧](ch04-05-02-multisig.md)
     - [Auto-Payments 🚧](ch04-05-03-auto-payments.md)
     - [Alternative Signature Schemes 🚧](ch04-05-04-alternative-signature-schemes.md)
-    - [Argent's Web Wallet](ch04-05-05-web-wallet-introduction.md)
+  - [Web Wallet: seedless, multi-device wallet](ch04-05-06-web-wallet.md)
 
 ## STARKs
 
