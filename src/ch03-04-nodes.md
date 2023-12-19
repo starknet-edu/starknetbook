@@ -1,439 +1,562 @@
 # Nodes
 
-This chapter will guide you through setting up and running a Starknet
-node, illustrating the layered tech stack concept, and explaining how to
-operate these protocols locally. Starknet, as a Layer 2 Validity Rollup,
-operates on top of Ethereum Layer 1, creating a protocol stack that each
-addresses different functionalities, similar to the OSI model for
-internet connections. This chapter is an edit of
-[drspacemn](https://medium.com/starknet-edu/the-starknet-stack-7b0d70a7e1d4)'s
-blog.
+This chapter will guide you through functionality of nodes, their 
+relationship with sequencers and their significance within the Starknet 
+ecosystem. Upon completion of this chapter, you would have been equipped 
+with the skills and knowledge of what nodes are in the Starknet network 
+and why they are crucial. Why are nodes and sequencers relevant to each 
+other in Starknet, how do the nodes relate to the Clients and how do 
+the nodes relate to the mempool. Lastly Importance of having a variety 
+of node implementations and Implementation guides.
 
-CONTRIBUTE: This guide shows how to run a Starknet node locally with a
-particular setup. You can contribute to this guide by adding more
-options for hardware and software, as well as other ways to run a
-Starknet nod (for example using
-[Beerus](https://github.com/keep-starknet-strange/beerus)). You can also
-contribute by adding more information about the Starknet stack and the
-different layers. Feel free to [open a
+CONTRIBUTE:  This guide shows how to run a Starknet node. You can 
+contribute to this guide by adding more options for hardware, 
+as well as other ways to run a Starknet node. Feel free to [open a 
 PR](https://github.com/starknet-edu/starknetbook).
 
-## What is a Node in the Context of Ethereum and Blockchain?
+## What is a Node in the Context of Starknet Ecosystem?
+
+In the context of Starknet, a node is a computer that runs the Starknet
+software and participates in the Starknet network. Nodes are responsible
+for validating transactions, maintaining the Starknet state, and 
+communicating with other nodes. There are two main types of nodes in the
+Starknet network:
+
+- **Full nodes**: Full nodes download a copy of the entire Starknet state 
+and are responsible for validating all transactions.
+
+- **Light nodes**: Light nodes do not download a copy of the entire 
+Starknet state. Instead, they rely on full nodes to provide them with
+information about the Starknet state. Light nodes are faster and more
+efficient than full nodes, but they are also less secure. Nodes are 
+an essential part of the Starknet ecosystems. They are responsible 
+for maintaining the security and integrity of the networks. Without 
+nodes, the Starknet networks would not be able to function.
+
+## Node Functionality in the Starknet Network and why they are Crucial
+
+Nodes play a critical role in maintaining the functionality and 
+security of the Starknet network. They are responsible for a variety
+of tasks, including:
+
+- **Transaction validation**: Nodes validate transactions to ensure 
+they comply with the rules of the Starknet network. This helps to 
+prevent fraud and malicious activity. 
+
+- **Block creation and propagation**: Nodes create blocks and propagate 
+them to other nodes in the network. This helps to ensure that all nodes 
+have a consistent view of the blockchain.
+
+- **State maintenance**: Nodes maintain the current state of the Starknet
+network, including user balances and smart contract code. This 
+information is used to process transactions and execute smart contracts.
+
+- **Provide API endpoints for developers**: Nodes can provide API 
+endpoints that allow developers to interact with the Starknet network. 
+This can be used to build applications, wallets, and other tools.
+
+- **Relay transactions**: Nodes can relay transactions from users 
+to other nodes in the network. This can help to improve the performance
+of the network and reduce congestion.
+
+## Relevance of Nodes and Sequencers in the Starknet Network
+
+The relevance of nodes and sequencers to each other lies in 
+their interdependent roles in the Starknet ecosystem:
+
+Nodes rely on sequencers to produce blocks and update the network 
+state. The transactions validated by nodes are incorporated into 
+blocks by sequencers, ensuring that the Starknet state remains 
+consistent and up-to-date.
+
+Sequencers rely on nodes to validate transactions and maintain 
+network consensus. Before executing transactions, sequencers 
+consult with nodes to ensure the validity of transactions 
+and prevent fraudulent activities. Nodes also participate 
+in the consensus mechanism to ensure that all nodes agree 
+on the state of the blockchain.
+
+Together, nodes and sequencers ensure the efficient, 
+secure, and decentralized operation of the Starknet network. 
+Nodes provide the secure foundation for the network, while 
+sequencers enable the timely processing of transactions. This 
+collaboration fosters a robust and scalable ecosystem for 
+decentralized applications.
+
+## Relation of Nodes to the Clients in Starknet Ecosystem
+
+The relationship between nodes and clients in the Starknet 
+ecosystem is characterized by a client-server model:
+
+Clients initiate interactions with nodes by sending requests,
+such as transaction submissions or state queries.
+
+Nodes process these requests, validating transactions, 
+updating the network state, and providing the requested 
+information to clients.
+
+Clients receive responses from nodes, updating their local 
+state with the latest network information and providing 
+feedback to users.
+
+This interaction loop allows users to seamlessly interact 
+with Starknet DApps without needing to understand the 
+underlying technical complexities of the network. 
+Nodes handle the heavy lifting of maintaining the network's 
+integrity and security, while clients provide a user-friendly 
+interface for interacting with the network and its applications.
+
+In essence, nodes and clients form a complementary duo, 
+each playing a critical role in the Starknet ecosystem's 
+operation and success. Nodes provide the secure foundation 
+upon which the network operates, while clients facilitate 
+user interaction and drive adoption of Starknet DApps. Together, 
+they create a powerful and versatile environment for 
+decentralized applications to thrive.
+
+## Relation of Nodes to the Mempool in the Starknet Network
+
+The mempool is a temporary storage area for transactions that have
+been submitted to the network but have not yet been processed. 
+When a node receives a transaction, it first checks to make sure 
+that it is valid. If the transaction is valid, the node adds it 
+to the mempool. The mempool is then broadcast to other nodes 
+in the network.
+
+Nodes periodically select transactions from the mempool 
+to be processed. These transactions are then included in blocks, 
+which are added to the blockchain.
+The mempool plays an important role in the Starknet network 
+by ensuring that transactions are processed in a timely manner. 
+It also helps to prevent congestion on the network.
+
+## Importance of Having a Variety of Node Implementations in the Starknet Ecosystem
+
+Having a variety of node implementations in the StarkNet 
+ecosystem, is important for several reasons:
+
+- **Decentralization and Security**: Different implementations 
+reduce the risk of systemic vulnerabilities. If all nodes run 
+the same software and a critical bug or security flaw is 
+discovered, it could potentially affect the entire network. 
+Having diverse implementations mitigates this risk, as a bug 
+in one implementation is less likely to be present in others.
+
+- **Innovation and Evolution**: Different implementations can 
+experiment with new features, optimizations, and upgrades. 
+This diversity fosters innovation and allows the ecosystem 
+to evolve more rapidly. If one implementation introduces a 
+successful improvement, others can adopt similar strategies, 
+leading to continuous improvement across the network.
+
+- **Avoiding Centralization**: Depending on a single 
+implementation can lead to centralization risks. 
+If there's a dominant implementation, it could become 
+a central point of control, potentially compromising 
+the decentralization principles of blockchain technology. 
+Multiple implementations contribute to a more distributed 
+and resilient network.
+
+- **Community Engagement and Governance**: Multiple implementations
+encourage a healthy and engaged developer community. Different 
+teams working on various implementations bring diverse 
+perspectives and ideas to the table. This diversity is 
+beneficial for governance processes, as decisions are less 
+likely to be dominated by a single group or entity.
+
+In summary, a variety of node implementations in the StarkNet 
+ecosystem promotes decentralization, enhances security, 
+fosters innovation, and ensures the long-term health and 
+resilience of the network. It creates an environment where 
+the community can adapt to challenges, iterate on improvements, 
+and provide users with a diverse set of choices.
+
+## Node Implementation in Starknet
+
+Node implementations play a critical role in the Starknet ecosystem, 
+providing the foundation for validating transactions, maintaining 
+the network state, and ensuring the overall security and integrity 
+of the network. Currently, there are several active node 
+implementations in the Starknet ecosystem, each with its own strengths
+and characteristics:
+
+- **Pathfinder**: Developed by Equilibrium, Pathfinder is a 
+full node implementation written in Rust. It is known for 
+its high performance, scalability, and adherence to the 
+Starknet Cairo specification.
+
+- **Juno**: Developed by Nethermind, Juno is another full 
+node implementation written in Golang. It is known for its 
+user-friendliness, ease of deployment, and compatibility 
+with existing Ethereum tools and infrastructure.
+
+- **Papyrus**: Developed by StarkWare, Papyrus is a 
+Rust-based full node implementation that emphasizes 
+security and robustness. It is designed to be the 
+foundation for the new Starknet Sequencer, which 
+will significantly enhance the network's throughput.
+
+These node implementations are constantly being improved 
+and evolved, with new features and enhancements being 
+added regularly. The choice of node implementation often 
+depends on the specific requirements and preferences of 
+the user or developer.
+
+Here's a table summarizing the key characteristics of 
+each node implementation:
+
+| Node Implementation | Language | Strengths | GitHub Repository |
+|:----------------------|:-----------------|:--------------|:--------------------|
+| Pathfinder      | Rust        | High performance, scalability, adherence to Cairo specification | [Pathfinder GitHub](https://github.com/eqlabs/pathfinder) |
+| Papyrus              | Rust   | Security, robustness, foundation for new Starknet Sequencer | [Papyrus GitHub](https://github.com/starkware-libs/papyrus) |
+| Juno                 | Golang | User-friendliness, ease of deployment, Ethereum compatibility | [Juno GitHub](https://github.com/NethermindEth/juno) |
+
+
+## Implementing/Creating Pathfinder Node
+
+### Recommended Hardware
+
+The recommended hardware for running a 
+Pathfinder node is as follows:
+
+- **CPU**: Intel Core i7-9700 or AMD Ryzen 7 3700X
+- **Memory**: 32GB
+- **Storage**: 1TB SSD
+- **Network**: Gigabit Ethernet
+  
+This hardware will provide enough resources to run 
+a Pathfinder node with a high level of
+performance and reliability.
+
+### Approximate Prices of Recommended Hardware
+
+The approximate prices of the recommended hardware
+for running a Pathfinder node are as follows:
+
+- **CPU**: $300
+- **Memory**: $100
+- **Storage**: $100
+- **Network**: $50
+
+The total cost of the recommended hardware is 
+approximately $550.
+
+## Running with Docker
+
+The `pathfinder` node can be run in the provided Docker image.
+Using the Docker image is the easiest way to start `pathfinder`. If for any reason you're interested in how to set up all the
+dependencies yourself please check the [Installation from source](doc/install-from-source.md) guide.
+
+The following assumes you have [Docker installed](https://docs.docker.com/get-docker/) and ready to go.
+(In case of Ubuntu installing docker is as easy as running `sudo snap install docker`.)
+
+The example below uses `$HOME/pathfinder` as the data directory where persistent files used by `pathfinder` will be stored.
+It is easiest to create the volume directory as the user who is running the docker command.
+If the directory gets created by docker upon startup, it might be unusable for creating files.
+
+The following commands start the node in the background, also making sure that it starts automatically after reboot:
+
+```bash
+# Ensure the directory has been created before invoking docker
+mkdir -p $HOME/pathfinder
+# Start the pathfinder container instance running in the background
+sudo docker run \
+  --name pathfinder \
+  --restart unless-stopped \
+  --detach \
+  -p 9545:9545 \
+  --user "$(id -u):$(id -g)" \
+  -e RUST_LOG=info \
+  -e PATHFINDER_ETHEREUM_API_URL="https://goerli.infura.io/v3/<project-id>" \
+  -v $HOME/pathfinder:/usr/share/pathfinder/data \
+  eqlabs/pathfinder
+```
+
+To check logs you can use:
+
+```bash
+sudo docker logs -f pathfinder
+```
 
-In the context of Ethereum and blockchain, a node is an integral part of
-the network that validates and relays transactions. Nodes download a
-copy of the entire blockchain and are interconnected with other nodes to
-maintain and update the blockchain state. There are different types of
-nodes, such as full nodes, light nodes, and mining nodes, each having
-different roles and responsibilities within the network.
+The node can be stopped using
+
+```bash
+sudo docker stop pathfinder
+```
 
-## Overview of Starknet Technology
 
-Starknet is a permissionless, zk-STARK-based Layer-2 network, aiming for
-full decentralization. It enables developers to build scalable
-decentralized applications (dApps) and utilizes Ethereum’s Layer 1 for
-proof verification and data availability. Key aspects of Starknet
-include:
+### Updating the Docker image
 
-- **Cairo execution environment**: Cairo, the execution environment of
-  Starknet, facilitates writing and execution of complex smart
-  contracts.
+When pathfinder detects there has been a new release, it will log a message similar to:
 
-- **Scalability**: Starknet achieves scalability through zk-STARK
-  proofs, minimizing the data needed to be posted on-chain.
+```
+WARN New pathfinder release available! Please consider updating your node! release=0.4.5
+```
 
-- **Node network**: The Starknet network comprises nodes that
-  synchronize and process transactions, contributing to the network’s
-  overall security and decentralization.
+You can try pulling the latest docker image to update it:
 
-## Starknet Stack
+```bash
+sudo docker pull eqlabs/pathfinder
+```
 
-The Starknet stack can be divided into various layers, similar to OSI or
-TCP/IP models. The most appropriate model depends on your understanding
-and requirements. A simplified version of the modular blockchain stack
-might look like this:
+After pulling the updated image you should stop and remove the `pathfinder` container then re-create it with the exact same command
+that was used above to start the node:
 
-- Layer 1: Data Layer
+```bash
+# This stops the running instance
+sudo docker stop pathfinder
+# This removes the current instance (using the old version of pathfinder)
+sudo docker rm pathfinder
+# This command re-creates the container instance with the latest version
+sudo docker run \
+  --name pathfinder \
+  --restart unless-stopped \
+  --detach \
+  -p 9545:9545 \
+  --user "$(id -u):$(id -g)" \
+  -e RUST_LOG=info \
+  -e PATHFINDER_ETHEREUM_API_URL="https://goerli.infura.io/v3/<project-id>" \
+  -v $HOME/pathfinder:/usr/share/pathfinder/data \
+  eqlabs/pathfinder
+```
 
-- Layer 2: Execution Layer
+### Available images
 
-- Layer 3: Application Layer
+Our images are updated on every `pathfinder` release. This means that the `:latest` docker image does not track our `main` branch here, but instead matches the latest `pathfinder` [release](https://github.com/eqlabs/pathfinder/releases).
 
-- Layer 4: Transport Layer
+### Docker compose
 
-<img alt="Modular blockchain layers" src="img/ch03-modular-blockcahain-layers.png" class="center" style="width: 50%;" />
+You can also use `docker-compose` if you prefer that to just using Docker.
 
-<span class="caption">Modular blockchain layers</span>
+Create the folder `pathfinder` where your `docker-compose.yaml` is
 
-## Setup
+```bash
+mkdir -p pathfinder
 
-There are various hardware specifications, including packaged options,
-that will enable you to run an Ethereum node from home. The goal here is
-to build the most cost-efficient Starknet stack possible ([see here more
-options](https://github.com/rocket-pool/docs.rocketpool.net/blob/main/src/guides/node/local/hardware.md)).
+# replace the value by of PATHFINDER_ETHEREUM_API_URL by the HTTP(s) URL pointing to your Ethereum node's endpoint
+cp example.pathfinder-var.env pathfinder-var.env
 
-**Minimum Requirements:**
+docker-compose up -d
+```
 
-- CPU: 2+ cores
+To check if it's running well use `docker-compose logs -f`.
 
-- RAM: 4 GB
+## Database Snapshots
 
-- Disk: 600 GB
+Re-syncing the whole history for either the mainnet or testnet networks might take a long time. To speed up the process you can use database snapshot files that contain the full state and history of the network up to a specific block.
 
-- Connection Speed: 8 mbps/sec
+The database files are hosted on Cloudflare R2. There are two ways to download the files:
 
-**Recommended Specifications:**
+* Using the [Rclone](https://rclone.org/) tool
+* Via the HTTPS URL: we've found this to be less reliable in general
 
-- CPU: 4+ cores
+### Rclone setup
 
-- RAM: 16 GB+
+We recommend using RClone. Add the following to your RClone configuration file (`$HOME/.config/rclone/rclone.conf`):
 
-- Disk 2 TB
+```ini
+[pathfinder-snapshots]
+type = s3
+provider = Cloudflare
+env_auth = false
+access_key_id = 7635ce5752c94f802d97a28186e0c96d
+secret_access_key = 529f8db483aae4df4e2a781b9db0c8a3a7c75c82ff70787ba2620310791c7821
+endpoint = https://cbf011119e7864a873158d83f3304e27.r2.cloudflarestorage.com
+acl = private
+```
 
-- Connection Speed: 25+ mbps/sec
+You can then download a compressed database using the command:
 
-**You can refer to these links for the hardware:**
+```shell
+rclone copy -P pathfinder-snapshots:pathfinder-snapshots/testnet_0.9.0_880310.sqlite.zst .
+```
 
-- [CPU](https://a.co/d/iAWpTzQ) — $193
+### Uncompressing database snapshots
 
-- [Board](https://a.co/d/cTUk9Kd) (can attempt w/ Raspberry Pi) — $110
+**To avoid issues please check that the SHA2-256 checksum of the compressed file you've downloaded matches the value we've published.**
 
-- [Disk](https://a.co/d/0US61Y5) — $100
+We're storing database snapshots as SQLite database files compressed with [zstd](https://github.com/facebook/zstd). You can uncompress the files you've downloaded using the following command:
 
-- [RAM](https://a.co/d/br867sk) — $60
+```shell
+zstd -T0 -d testnet_0.9.0_880310.sqlite.zst -o goerli.sqlite
+```
 
-- [PSU](https://a.co/d/2k3Gn40) — $40
+This produces uncompressed database file `goerli.sqlite` that can then be used by pathfinder.
 
-- [Case](https://a.co/d/apCBGwF) — $50
+### Available database snapshots
 
-Total — $553
+| Network     | Block  | Pathfinder version required | Filename                              | Download URL                                                                                        | Compressed size | SHA2-256 checksum of compressed file                               |
+| ----------- | ------ | --------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------ |
+| testnet     | 880310 | >= 0.9.0                    | `testnet_0.9.0_880310.sqlite.zst`     | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/testnet_0.9.0_880310.sqlite.zst)     | 102.36 GB       | `55f7e30e4cc3ba3fb0cd610487e5eb4a69428af1aacc340ba60cf1018b58b51c` |
+| mainnet     | 309113 | >= 0.9.0                    | `mainnet_0.9.0_309113.sqlite.zst`     | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/mainnet_0.9.0_309113.sqlite.zst)     | 279.85 GB       | `0430900a18cd6ae26465280bbe922ed5d37cfcc305babfc164e21d927b4644ce` |
+| integration | 315152 | >= 0.9.1                    | `integration_0.9.1_315152.sqlite.zst` | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/integration_0.9.1_315152.sqlite.zst) | 8.45 GB         | `2ad5ab46163624bd6d9aaa0dff3cdd5c7406e69ace78f1585f9d8f011b8b9526` |
 
-Recommended operating system and software: Ubuntu LTS,
-[Docker](https://docs.docker.com/engine/install/ubuntu), and [Docker
-Compose](https://docs.docker.com/compose/install/linux). Ensure you have
-the necessary tools installed with:
+## Configuration
 
-    sudo apt install -y jq curl net-tools
+The `pathfinder` node options can be configured via the command line as well as environment variables.
 
-## Layer 1: Data Layer
+The command line options are passed in after the `docker run` options, as follows:
 
-The bottom-most layer of the stack is the data layer. Here, Starknet’s
-L2 leverages Ethereum’s L1 for proof verification and data availability.
-Starknet utilizes Ethereum as its L1, so the first step is setting up an
-Ethereum Full Node. As this is the data layer, the hardware bottleneck
-is usually the disk storage. It’s crucial to have a high capacity I/O
-SSD over an HDD because Ethereum Nodes require both an Execution Client
-and a Consensus Client for communication.
-
-Ethereum provides several options for Execution and Consensus clients.
-Execution clients include Geth, Erigon, Besu (used here), Nethermind,
-and Akula. Consensus clients include Prysm, Lighthouse (used here),
-Lodestar, Nimbus, and Teku.
-
-Your Besu/Lighthouse node will take approximately 600 GB of disk space.
-Navigate to a partition on your machine with sufficient capacity and run
-the following commands:
-
-    git clone https://github.com/starknet-edu/starknet-stack.git
-    cd starknet-stack
-    docker-compose -f dc-l1.yaml up -d
-
-This will begin the fairly long process of spinning up our Consensus
-Client, Execution Client, and syncing them to the current state of the
-Goerli Testnet. If you would like to see the logs from either process
-you can run:
-
-    # tail besu logs
-    docker container logs -f $(docker ps | grep besu | awk '{print $1}')
-
-    # tail lighthouse logs
-    docker container logs -f $(docker ps | grep lighthouse | awk '{print $1}')
-
-Lets make sure that everything that should be listening is listening:
-
-    # should see all ports in command output
-
-    # besu ports
-    sudo netstat -lpnut | grep -E '30303|8551|8545'
-
-    # lighthouse ports
-    sudo netstat -lpnut | grep -E '5054|9000'
-
-We’ve used docker to abstract a lot of the nuance of running an Eth L1
-node, but the important things to note are how the two processes EL/CL
-point to each other and communicate via JSON-RPC:
-
-    services:
-      lighthouse:
-          image: sigp/lighthouse:latest
-          container_name: lighthouse
-          volumes:
-            - ./l1_consensus/data:/root/.lighthouse
-            - ./secret:/root/secret
-          network_mode: "host"
-          command:
-            - lighthouse
-            - beacon
-            - --network=goerli
-            - --metrics
-            - --checkpoint-sync-url=https://goerli.beaconstate.info
-            - --execution-endpoint=http://127.0.0.1:8551
-            - --execution-jwt=/root/secret/jwt.hex
-
-      besu:
-        image: hyperledger/besu:latest
-        container_name: besu
-        volumes:
-          - ./l1_execution/data:/var/lib/besu
-          - ./secret:/var/lib/besu/secret
-        network_mode: "host"
-        command:
-          - --network=goerli
-          - --rpc-http-enabled=true
-          - --data-path=/var/lib/besu
-          - --data-storage-format=BONSAI
-          - --sync-mode=X_SNAP
-          - --engine-rpc-enabled=true
-          - --engine-jwt-enabled=true
-          - --engine-jwt-secret=/var/lib/besu/secret/jwt.hex
-
-Once this is done, your Ethereum node should be up and running, and it
-will start syncing with the Ethereum network.
-
-## Layer 2: Execution Layer
-
-The next layer in our Starknet stack is the Execution Layer. This layer
-is responsible for running the Cairo VM, which executes Starknet smart
-contracts. The Cairo VM is a deterministic virtual machine that allows
-developers to write complex smart contracts in the Cairo language.
-Starknet uses a similar [JSON-RPC
-spec](https://github.com/starkware-libs/starknet-specs) as
-[Ethereum](https://ethereum.org/en/developers/docs/apis/json-rpc) in
-order to interact with the execution layer.
-
-In order to stay current with the propagation of the Starknet blockchain
-we need a client similar to Besu that we are using for L1. The efforts
-to provide full nodes for the Starknet ecosystem are:
-[Pathfinder](https://github.com/eqlabs/pathfinder) (used here),
-[Papyrus](https://github.com/starkware-libs/papyrus), and
-[Juno](https://github.com/NethermindEth/juno). However, different
-implementations are still in development and not yet ready for
-production.
-
-Check that your L1 has completed its sync:
-
-    # check goerli etherscan to make sure you have the latest block https://goerli.etherscan.io
-
-    curl --location --request POST 'http://localhost:8545' \
-    --header 'Content-Type: application/json' \
-    --data-raw '{
-        "jsonrpc":"2.0",
-        "method":"eth_blockNumber",
-        "params":[],
-        "id":83
-    }'
-
-    # Convert the result, which is hex (remove 0x) to decimal. Example:
-    echo $(( 16#246918 ))
-
-Start your L2 Execution Client and note that we are syncing Starknet’s
-state from our LOCAL ETH L1 NODE!
-
-PATHFINDER_ETHEREUM_API_URL=http://127.0.0.1:8545
-
-    # from starknet-stack project root
-    docker-compose -f dc-l2.yaml up -d
-
-To follow the sync:
-
-    docker container logs -f $(docker ps | grep pathfinder | awk '{print $1}')
-
-Starknet [Testnet_1](https://testnet.starkscan.co) currently comprises
-800,000+ blocks so this will take some time (days) to sync fully. To
-check L2 sync:
-
-    # compare `current_block_num` with `highest_block_num`
-
-    curl --location --request POST 'http://localhost:9545' \
-    --header 'Content-Type: application/json' \
-    --data-raw '{
-     "jsonrpc":"2.0",
-     "method":"starknet_syncing",
-     "params":[],
-     "id":1
-    }'
-
-To check data sizes:
-
-    sudo du -sh ./* | sort -rh
-
-## Layer 3: Application Layer
-
-We see the same need for data refinement as we did in the OSI model. On
-L1 packets come over the wire in a raw stream of bytes and are then
-processed and filtered by higher-level protocols. When designing a
-decentralized application Bob will need to be cognizant of interactions
-with his contract on chain, but doesn’t need to be aware of all the
-information occurring on Starknet.
-
-This is the role of an indexer. To process and filter useful information
-for an application. Information that an application MUST be opinionated
-about and the underlying layer MUST NOT be opinionated about.
-
-Indexers provide applications flexibility as they can be written in any
-programming language and have any data layout that suits the
-application.
-
-To start our toy
-[indexer](https://github.com/starknet-edu/starknet-stack/blob/main/indexer/indexer.sh)
-run:
-
-    ./indexer/indexer.sh
-
-Again notice that we don’t need to leave our local setup for these
-interactions (<http://localhost:9545>).
-
-## Layer 4: Transport Layer
-
-The transport layer comes into play when the application has parsed and
-indexed critical information, often leading to some state change based
-on this information. This is where the application communicates the
-desired state change to the Layer 2 sequencer to get that change into a
-block. This is achieved using the same full-node/RPC spec
-implementation, in our case, Pathfinder.
-
-When working with our local Starknet stack, invoking a transaction
-locally might look like this:
-
-    curl --location --request POST 'http://localhost:9545' \
-    --header 'Content-Type: application/json' \
-    --data-raw '{
-        "jsonrpc": "2.0",
-        "method": "starknet_addInvokeTransaction",
-        "params": {
-            "invoke_transaction": {
-                "type": "INVOKE",
-                "max_fee": "0x4f388496839",
-                "version": "0x0",
-                "signature": [
-                    "0x7dd3a55d94a0de6f3d6c104d7e6c88ec719a82f4e2bbc12587c8c187584d3d5",
-                    "0x71456dded17015d1234779889d78f3e7c763ddcfd2662b19e7843c7542614f8"
-                ],
-                "contract_address": "0x23371b227eaecd8e8920cd429d2cd0f3fee6abaacca08d3ab82a7cdd",
-                "calldata": [
-                    "0x1",
-                    "0x677bb1cdc050e8d63855e8743ab6e09179138def390676cc03c484daf112ba1",
-                    "0x362398bec32bc0ebb411203221a35a0301193a96f317ebe5e40be9f60d15320",
-                    "0x0",
-                    "0x1",
-                    "0x1",
-                    "0x2b",
-                    "0x0"
-                ],
-                "entry_point_selector": "0x15d40a3d6ca2ac30f4031e42be28da9b056fef9bb7357ac5e85627ee876e5ad"
-            }
-        },
-        "id": 0
-    }'
-
-However, this process involves setting up a local wallet and signing the
-transaction. For simplicity, we will use a browser wallet and StarkScan.
-
-Steps:
-
-1.  Navigate to the contract on StarkScan and connect to your wallet.
-
-2.  Enter a new value and write the transaction:
-
-<img alt="Starkscan block explorer" src="img/ch03-starkscan-block-explorer.png" class="center" style="width: 50%;" />
-
-<span class="caption">Starkscan block explorer</span>
-
-Once the transaction is accepted on the Layer 2 execution layer, the
-event data should come through our application layer indexer.
-
-Example Indexer Output:
-
-    Pulled Block #: 638703
-    Found transaction: 0x2053ae75adfb4a28bf3a01009f36c38396c904012c5fc38419f4a7f3b7d75a5
-    Events to Index:
-    [
-      {
-        "from_address": "0x806778f9b06746fffd6ca567e0cfea9b3515432d9ba39928201d18c8dc9fdf",
-        "keys": [
-          "0x1fee98324df9b8703ae8de6de3068b8a8dce40c18752c3b550c933d6ac06765"
-        ],
-        "data": [
-          "0xa"
-        ]
-      },
-      {
-        "from_address": "0x126dd900b82c7fc95e8851f9c64d0600992e82657388a48d3c466553d4d9246",
-        "keys": [
-          "0x5ad857f66a5b55f1301ff1ed7e098ac6d4433148f0b72ebc4a2945ab85ad53"
-        ],
-        "data": [
-          "0x2053ae75adfb4a28bf3a01009f36c38396c904012c5fc38419f4a7f3b7d75a5",
-          "0x0"
-        ]
-      },
-      {
-        "from_address": "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-        "keys": [
-          "0x99cd8bde557814842a3121e8ddfd433a539b8c9f14bf31ebf108d12e6196e9"
-        ],
-        "data": [
-          "0x126dd900b82c7fc95e8851f9c64d0600992e82657388a48d3c466553d4d9246",
-          "0x46a89ae102987331d369645031b49c27738ed096f2789c24449966da4c6de6b",
-          "0x17c1e31c270",
-          "0x0"
-        ]
-      }
-    ]
-
-Once the transaction is accepted on Layer 1, we can query the Starknet
-Core Contracts from our Layer 1 node to see the storage keys that have
-been updated on our data layer!
-
-You have successfully navigated through the entire Starknet stack, from
-setting up your node, through executing and monitoring a transaction, to
-inspecting its effects on the data layer. This journey has equipped you
-with the understanding and the skills to interact with Starknet on a
-deeper level.
-
-## Conclusion: Understanding the Modular Nature of Starknet
-
-Conceptual models, such as the ones used in this guide, are incredibly
-useful in helping us understand complex systems. They can be refactored,
-reformed, and nested to provide a clear and comprehensive view of how a
-platform like Starknet operates. For instance, the OSI Model, a
-foundational model for understanding network interactions, underpins our
-modular stack.
-
-A key concept to grasp is _Fractal Scaling._ This concept allows us to
-extend our model to include additional layers beyond Layer 2, such as
-Layer 3. In this extended model, the entire stack recurs above our
-existing stack, as shown in the following diagram:
-
-<img alt="Fractal scaling in a modular blockchain environment" src="img/ch03-fractal-scaling.png" class="center" style="width: 50%;" />
-
-<span class="caption">Fractal scaling in a modular blockchain environment</span>
-
-Just as Layer 2 compresses its transaction throughput into a proof and
-state change that is written to Layer 1, we can apply the same
-compression principle at Layer 3, proving and writing to Layer 2. This
-not only gives us more control over the protocol rules but also allows
-us to achieve higher compression ratios, enhancing the scalability of
-our applications.
-
-In essence, Starknet’s modular and layered design, combined with the
-power of Fractal Scaling, offers a robust and scalable framework for
-building decentralized applications. Understanding this structure is
-fundamental to effectively leveraging Starknet’s capabilities and
-contributing to its ecosystem.
+```bash
+sudo docker run --name pathfinder [...] eqlabs/pathfinder:latest <pathfinder options>
+```
+
+Using `--help` will display the `pathfinder` options, including their environment variable names:
+
+```bash
+sudo docker run --rm eqlabs/pathfinder:latest --help
+```
+
+### Pending Support
+
+Block times on `mainnet` can be prohibitively long for certain applications. As a workaround, Starknet added the concept of a `pending` block which is the block currently under construction. This is supported by pathfinder, and usage is documented in the [JSON-RPC API](#json-rpc-api) with various methods accepting `"block_id"="pending"`.
+
+Note that `pending` support is disabled by default and must be enabled by setting `poll-pending=true` in the configuration options.
+
+### Logging
+
+Logging can be configured using the `RUST_LOG` environment variable.
+We recommend setting it when you start the container:
+
+```bash
+sudo docker run --name pathfinder [...] -e RUST_LOG=<log level> eqlabs/pathfinder:latest
+```
+
+The following log levels are supported, from most to least verbose:
+
+```bash
+trace
+debug
+info  # default
+warn
+error
+```
+
+### Network Selection
+
+The Starknet network can be selected with the `--network` configuration option.
+
+If `--network` is not specified, network selection will default to match your Ethereum endpoint:
+
+- Starknet mainnet for Ethereum mainnet,
+- Starknet testnet for Ethereum Goerli
+
+#### Custom networks & gateway proxies
+
+You can specify a custom network with `--network custom` and specifying the `--gateway-url`, `feeder-gateway-url` and `chain-id` options. 
+Note that `chain-id` should be specified as text e.g. `SN_GOERLI`.
+
+This can be used to interact with a custom Starknet gateway, or to use a gateway proxy.
+
+## JSON-RPC API
+
+You can interact with Starknet using the JSON-RPC API. Pathfinder supports the official Starknet RPC API and in addition supplements this with its own pathfinder specific extensions such as `pathfinder_getProof`.
+
+Currently pathfinder supports `v0.3`, `v0.4`, and `v0.5` versions of the Starknet JSON-RPC specification.
+The `path` of the URL used to access the JSON-RPC server determines which version of the API is served:
+
+- the `v0.3.0` API is exposed on the `/rpc/v0.3` and `/rpc/v0_3` path
+- the `v0.4.0` API is exposed on the `/`, `/rpc/v0.4` and `/rpc/v0_4` path
+- the `v0.5.1` API is exposed on the `/rpc/v0.5` and `/rpc/v0_5` path
+- the pathfinder extension API is exposed on `/rpc/pathfinder/v0.1`
+
+Note that the pathfinder extension is versioned separately from the Starknet specification itself.
+
+### pathfinder extension API
+
+You can find the API specification [here](doc/rpc/pathfinder_rpc_api.json).
+
+## Monitoring API
+
+Pathfinder has a monitoring API which can be enabled with the `--monitor-address` configuration option.
+
+### Health
+
+`/health` provides a method to check the health status of your `pathfinder` node, and is commonly useful in Kubernetes docker setups. It returns a `200 OK` status if the node is healthy.
+
+### Readiness
+
+`pathfinder` does several things before it is ready to respond to RPC queries. In most cases this startup time is less than a second, however there are certain scenarios where this can be considerably longer. For example, applying an expensive database migration after an upgrade could take several minutes (or even longer) on testnet. Or perhaps our startup network checks fail many times due to connection issues.
+
+`/ready` provides a way of checking whether the node's JSON-RPC API is ready to be queried. It returns a `503 Service Unavailable` status until all startup tasks complete, and then `200 OK` from then on.
+
+### Metrics
+
+`/metrics` provides a [Prometheus](https://prometheus.io/) metrics scrape endpoint. Currently the following metrics are available:
+
+#### RPC related counters
+
+- `rpc_method_calls_total`,
+- `rpc_method_calls_failed_total`,
+
+You __must__ use the label key `method` to retrieve a counter for a particular RPC method, for example:
+```
+rpc_method_calls_total{method="starknet_getStateUpdate"}
+rpc_method_calls_failed_total{method="starknet_chainId"}
+```
+You may also use the label key `version` to specify a particular version of the RPC API, for example:
+```
+rpc_method_calls_total{method="starknet_getEvents", version="v0.3"}
+```
+
+#### Feeder Gateway and Gateway related counters
+
+- `gateway_requests_total`
+- `gateway_requests_failed_total`
+
+Labels:
+- `method`, to retrieve a counter for a particular sequencer request type
+- `tag`
+    - works with: `get_block`, `get_state_update`
+    - valid values:
+        - `pending`
+        - `latest`
+- `reason`
+    - works with: `gateway_requests_failed_total`
+    - valid values:
+        - `decode`
+        - `starknet`
+        - `rate_limiting`
+
+Valid examples:
+```
+gateway_requests_total{method="get_block"}
+gateway_requests_total{method="get_block", tag="latest"}
+gateway_requests_failed_total{method="get_state_update"}
+gateway_requests_failed_total{method="get_state_update", tag="pending"}
+gateway_requests_failed_total{method="get_state_update", tag="pending", reason="starknet"}
+gateway_requests_failed_total{method="get_state_update", reason="rate_limiting"}
+```
+
+These __will not work__:
+- `gateway_requests_total{method="get_transaction", tag="latest"}`, `tag` is not supported for that `method`
+- `gateway_requests_total{method="get_transaction", reason="decode"}`, `reason` is only supported for failures.
+
+### Sync related metrics
+
+- `current_block` currently sync'd block height of the node
+- `highest_block` height of the block chain
+- `block_time` timestamp difference between the current block and its parent
+- `block_latency` delay between current block being published and sync'd locally
+- `block_download` time taken to download current block's data excluding classes
+- `block_processing` time taken to process and store the current block
+
+### Build info metrics
+
+- `pathfinder_build_info` reports curent version as a `version` property
+
+## Build from source
+
+See the [guide](https://github.com/eqlabs/pathfinder/blob/main/doc/install-from-source.md).
+
+The above guide is inspired by [Pathfinder](https://github.com/eqlabs/pathfinder)
+
+
+
+## Conclusion: 
 
 This concludes our journey into running a Starknet node and traversing
-its layered architecture. We hope that you now feel equipped to explore,
+its architecture. We hope that you now feel equipped to explore,
 experiment with, and innovate within the Starknet ecosystem.
 
 The Book is a community-driven effort created for the community.
