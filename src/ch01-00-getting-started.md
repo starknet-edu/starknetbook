@@ -227,8 +227,8 @@ First you need to create a Starknet account.
 
 Before deploying your smart contract to Starknet, you must handle the transaction cost. While deploying to the Starknet Goerli Testnet is free, a smart wallet account is essential. You can set up a smart wallet using either:
 
-- [Braavos](https://braavos.app/)
 - [Argent](https://www.argent.xyz/argent-x/)
+- [Braavos](https://braavos.app/)
 
 Both are reliable Starknet wallets offering enhanced security and accessibility features thanks to the possibilities that the Cairo VM brings, such as Account Abstraction (keep reading the Book for more on this).
 
