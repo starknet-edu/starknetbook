@@ -57,7 +57,7 @@
   - [Standard Account Contract](ch04-03-standard-account.md)
     - [Deploy Standard Account](ch04-03-01-deploy-standard-account.md)
   - [Examples](ch04-05-examples.md)
-    - [Multicaller 🚧](ch04-05-01-multicaller.md)
+    - [Multicaller](ch04-05-01-multicaller.md)
     - [Multisig 🚧](ch04-05-02-multisig.md)
     - [Auto-Payments 🚧](ch04-05-03-auto-payments.md)
     - [Alternative Signature Schemes 🚧](ch04-05-04-alternative-signature-schemes.md)
