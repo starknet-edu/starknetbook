@@ -249,6 +249,8 @@ You can monitor transaction hashes and addresses using any Starknet block explor
 
 - [Starkscan](https://testnet.starkscan.co/)
 - [Voyager](https://goerli.voyager.online/)
+- [oklink](https://www.oklink.com/starknet/)
+- [ViewBlock](https://viewblock.io/starknet/)
 
 These tools provide a visual representation of transactions and contract state alterations. Notably, when you alter the contract ownership using the `transfer_ownership` function, the event emitted by the contract appears in the block explorer. It's an effective method to track contract events.
 
