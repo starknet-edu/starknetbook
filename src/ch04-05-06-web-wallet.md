@@ -1,13 +1,12 @@
- # Web Wallet: Web2 Simplicity with self-custody
+# Web Wallet: Web2 Simplicity with self-custody
 
 Web Wallet, developed by Argent ([documentation](https://docs.argent.xyz/starknet/web-wallet-sdk)), is a tool that uses the full power and capacity of Account Abstraction. It's a self-custodial, browser-based wallet that simplifies blockchain interactions. Unlike traditional wallets that often involve seed phrases and wallet downloads, Web Wallet utilizes a simple email and password setup. This approach blends the ease of web2 interfaces with the advanced capabilities of web3, making Starknet more accessible and user-friendly.
 
-
 Key Features:
+
 - **Simplified Seed Phrases**: Web Wallet eliminates the need for seed phrases. Access your wallet easily using your email and password. Accounts are easily recoverable if lost.
 - **No Downloads Needed**: Access Starknet directly from your browser using your email. No need to download an application or extension to create a wallet.
 - **Multi-Device Support**: Web Wallet can be used across various devices seamlessly, like any standard web2 application.
-
 
 ## dApps Integration Guide
 
@@ -20,7 +19,7 @@ yarn add starknetkit
 Import necessary methods such as **`connect`** and **`disconnect`**:
 
 ```js
-import { connect, disconnect } from 'starknetkit'
+import { connect, disconnect } from "starknetkit";
 ```
 
 Create a wallet connection using the `connect` method:
@@ -32,15 +31,15 @@ const connection = await connect({ webWalletUrl: "https://web.argent.xyz" });
 Below is an example function that establishes a connection, then sets the connection, provider, and address states:
 
 ```js
-const connectWallet = async() => {
-  const connection = await connect({webWalletUrl: "https://web.argent.xyz"});
+const connectWallet = async () => {
+  const connection = await connect({ webWalletUrl: "https://web.argent.xyz" });
 
   if (connection && connection.isConnected) {
     setConnection(connection);
     setProvider(connection.account);
     setAddress(connection.selectedAddress);
   }
-}
+};
 ```
 
 > NOTE: Web Wallet is currently available only on the mainnet. For testnet access, contact the Argent team.
@@ -51,14 +50,14 @@ Signing transactions with Web Wallet follows a process akin to the Argent X brow
 
 ```js
 const tx = await connection.account.execute({
-   //let's assume this is an erc20 contract
-   contractAddress: "0x...",
-   selector: "transfer",
-   calldata: [
-	"0x...",
-	// ...
-   ]
-})
+  //let's assume this is an erc20 contract
+  contractAddress: "0x...",
+  selector: "transfer",
+  calldata: [
+    "0x...",
+    // ...
+  ],
+});
 ```
 
 Users will see a transaction confirmation request. Upon approval, the dApp receives a transaction hash:
