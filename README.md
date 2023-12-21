@@ -1,9 +1,7 @@
 # The Starknet Book
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 This repository contains the source for [The Starknet Book](book.starknet.io).
@@ -80,7 +78,9 @@ For starting translations in a new language:
 - For updating the `xx.po` file, use `./translations.sh xx`.
 - Avoid the above command if the `xx.po` file already exists (which means you are not initiating a new translation).
 
-## The Authors
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -91,6 +91,7 @@ For starting translations in a new language:
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/omarespejel"><img src="https://avatars.githubusercontent.com/u/4755430?v=4?s=100" width="100px;" alt="Omar U. Espejel"/><br /><sub><b>Omar U. Espejel</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=omarespejel" title="Code">💻</a> <a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=omarespejel" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/JameStark"><img src="https://avatars.githubusercontent.com/u/113911244?v=4?s=100" width="100px;" alt="JameStark"/><br /><sub><b>JameStark</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=JameStark" title="Code">💻</a> <a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=JameStark" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gianalarcon"><img src="https://avatars.githubusercontent.com/u/22782504?v=4?s=100" width="100px;" alt="GianMarco"/><br /><sub><b>GianMarco</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=gianalarcon" title="Code">💻</a> <a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=gianalarcon" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/drspacemn"><img src="https://avatars.githubusercontent.com/u/16685321?v=4?s=100" width="100px;" alt="drspacemn"/><br /><sub><b>drspacemn</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=drspacemn" title="Code">💻</a> <a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=drspacemn" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
@@ -98,17 +99,6 @@ For starting translations in a new language:
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

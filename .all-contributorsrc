@@ -28,8 +28,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/22782504?v=4",
       "profile": "https://github.com/gianalarcon",
       "contributions": ["code", "doc"]
+    },
+    {
+      "login": "drspacemn",
+      "name": "drspacemn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16685321?v=4",
+      "profile": "https://github.com/drspacemn",
+      "contributions": ["code", "doc"]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": false
 }
+
