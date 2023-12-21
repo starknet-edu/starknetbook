@@ -44,7 +44,8 @@
   - [Sequencers](ch03-02-sequencers.md)
     - [Madara 🚧](ch03-02-01-madara.md)
   - [Provers 🚧](ch03-03-provers.md)
-  - [Nodes 🚧](ch03-04-nodes.md)
+  - [Nodes](ch03-04-nodes.md)
+    - [Example: Pathfinder Node](ch03-04-01-pathfinder-node.md)
   - [Layer 3 and App Chains 🚧 ](ch03-05-layer-3.md)
   - [Solidity Verifier](ch03-06-solidity-verifier.md)
   - [Decentralization 🚧](ch03-07-decentralization.md)
@@ -57,10 +58,11 @@
   - [Standard Account Contract](ch04-03-standard-account.md)
     - [Deploy Standard Account](ch04-03-01-deploy-standard-account.md)
   - [Examples](ch04-05-examples.md)
-    - [Multicaller 🚧](ch04-05-01-multicaller.md)
+    - [Multicaller](ch04-05-01-multicaller.md)
     - [Multisig 🚧](ch04-05-02-multisig.md)
     - [Auto-Payments 🚧](ch04-05-03-auto-payments.md)
     - [Alternative Signature Schemes 🚧](ch04-05-04-alternative-signature-schemes.md)
+  - [Web Wallet: seedless, multi-device wallet](ch04-05-06-web-wallet.md)
 
 ## STARKs
 
