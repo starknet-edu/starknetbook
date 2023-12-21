@@ -233,7 +233,7 @@ commands:
 
 ## Project using Components
 
-One of the most important features since `scarb 2.3.0` version is `Components`. Think of components as Lego blocks. They allow you to enrich your contracts by plugging in a module that you or someone else wrote. 
+One of the most important features since `scarb 2.3.0` version is `Components`. Think of components as Lego blocks. They allow you to enrich your contracts by plugging in a module that you or someone else wrote.
 
 Lets see and example. Recover our project from [Testnet Deployment](./ch02-05-testnet-deployment.md) section. We used the `Ownable-Starknet` example to interact with the blockchain, now we are going to use the same project, but we will refactor the code in order to use `components`
 
