@@ -2,7 +2,6 @@
 
 The table below contains important methods used while building starknet smart contracts. It contains the name of the method, a keyword to import such a method, and finally a simple single line usage of each method. Also note that multiple method imports can be chained to make the codebase simpler and also avoid repetition, e.g., `use starknet::{get_contract_address, ContractAddress}.
 
-
 ### Table 1.0
 
 <table>

@@ -12,12 +12,13 @@ To declare and deploy the piggy bank contract, it’s required that you have the
 
 3. Deployer Account: To interact with the starknet network via Starkli, you need a cli account/ wallet. You can easily set that up by going through [this page](ch04-03-deploy-hello-account.md).
 
-4. Sufficient gas fees to cover the declaration and deployment steps: you can get starknet Goerli Eth either by bridging your  Goerli Eth on Ethereum to Starknet [here](https://goerli.starkgate.starknet.io/), or by using the starknet faucet to get goerli Eth [here](https://faucet.goerli.starknet.io/).
+4. Sufficient gas fees to cover the declaration and deployment steps: you can get starknet Goerli Eth either by bridging your Goerli Eth on Ethereum to Starknet [here](https://goerli.starkgate.starknet.io/), or by using the starknet faucet to get goerli Eth [here](https://faucet.goerli.starknet.io/).
 
 Once you’ve been able to sort all that out, let's proceed with declaring and deploying the piggy bank contract.
 
 ## Contract Declaration:
-The first step in deploying a starknet smart contract is to build the contract. To do this, we cd into the root directory of the piggy bank project, and then in our terminal, we run the'scarb build` command. This command creates a new folder in our root directory folder, then generates two json files for each contract; the first is the compiled_contract_class.json file, while the second is the contract_clas.json file. 
+
+The first step in deploying a starknet smart contract is to build the contract. To do this, we cd into the root directory of the piggy bank project, and then in our terminal, we run the'scarb build` command. This command creates a new folder in our root directory folder, then generates two json files for each contract; the first is the compiled_contract_class.json file, while the second is the contract_clas.json file.
 
 <img alt="Building the piggy bank repo" src="img/ch03-08-01-scarb-build.png" class="center" style="width: 100%;" />
 
@@ -35,20 +36,21 @@ To declare the piggy bank child contract, we use the above command (remember to 
 
 From the above snippet, our class hash is: `0x07f625374ef7d1af86876577c814e652c4e614f4fd3bba88b909cc5dc7d132bd`. With this class hash, other contracts would be deployed. Next would be to declare our factory contract.
 
-
 ```shell
 starkli declare target/dev/piggy_bank_piggyFactory.contract_class.json --rpc <RPC FROM INFURA> --account ~/.starkli-wallets/deployer/account0_account.json --keystore ~/.starkli-wallets/deployer/account0_keystore.json
 ```
 
-This time, we get a response similar to the previous declaration containing a class hash: `0x019058a892382ddc5effc23f9b22358f5363998175d7b104780bbb035efc2a4f` 
+This time, we get a response similar to the previous declaration containing a class hash: `0x019058a892382ddc5effc23f9b22358f5363998175d7b104780bbb035efc2a4f`
 These two class hashes could be found on any explorer. By pasting the clash hash on the search bar, we get details regarding the contract declaration.
 
 ## Contract Deployment:
-Since we’ve deployed the two contracts and also now have the class hash for the two contracts, our next step would be to deploy our factory contract and also pass in the class hash of the child contract to it so it can customize and create new instances of the class hash for users. To deploy the factory contract, we use a sample command as shown below: 
+
+Since we’ve deployed the two contracts and also now have the class hash for the two contracts, our next step would be to deploy our factory contract and also pass in the class hash of the child contract to it so it can customize and create new instances of the class hash for users. To deploy the factory contract, we use a sample command as shown below:
 
 ```shell
 starkli deploy 0x019058a892382ddc5effc23f9b22358f5363998175d7b104780bbb035efc2a4f 0x07f625374ef7d1af86876577c814e652c4e614f4fd3bba88b909cc5dc7d132bd 0x049D36570D4e46f48e99674bd3fcc84644DdD6b96F7C741B1562B82f9e004dC7 0x055b1ffF983ef22E0A1962691e8E3462eEeBdDf56e34411b829a6A7eab002923 --rpc <RPC FROM INFURA> --account ~/.starkli-wallets/deployer/account0_account.json --keystore ~/.starkli-wallets/deployer/account0_keystore.json
 ```
+
 I understand this might look confusing, so let's use a simpler command structure to describe it:
 
 ```shell
@@ -59,9 +61,10 @@ From the above snippet, we first state the method we intend to use (deploy), the
 
 <img alt="Deploying the piggy bank factory" src="img/ch03-08-01-starkli-deploy.png" class="center" style="width: 100%;" />
 
-From the above snippet, our newly deployed contract address is `0x04f4c7a6a7de241e138f1c20b81d939a6e5807fdf8ea8845a86a61493e8de4ff` 
+From the above snippet, our newly deployed contract address is `0x04f4c7a6a7de241e138f1c20b81d939a6e5807fdf8ea8845a86a61493e8de4ff`
 
 ## Creating a Personalized Piggy Bank
+
 To create a personal piggy bank, we interact with the factory contract. We'll be calling the `createPiggyBank` function and passing in the following arguments; a savings target type; we pass in 1 if we want to save towards a target amount; or we pass in 0 if we’ll be saving towards a target time. Finally, we pass in a target amount or a target time (epoch time). In this demo, we’ll be saving towards a target amount, so we’ll be passing in 1 and a target amount (0.0001 eth).
 To interact with our piggy factory onchan, we use an invoke method as shown in the below command;
 
@@ -85,15 +88,15 @@ After calling this function using the command above, we get a response on our te
 
 ## Interacting With Our Personalized Pigy Bank:
 
-At this point, we have been able to create a piggy bank contract customized specifically to our savings target, and we have the address for that contract. We are now left with interacting with our contract by depositing Eth into it and also withdrawing from it. 
+At this point, we have been able to create a piggy bank contract customized specifically to our savings target, and we have the address for that contract. We are now left with interacting with our contract by depositing Eth into it and also withdrawing from it.
 
-But before we jump into depositing Eth into our contract, its important to note that Ether on starknet is actually a regular ERC20 token, so we’ll need to grant approval to our Piggy contract to be able to spend our Eth. We can achieve this by using the below command to call the approve function on the Eth contract address. 
+But before we jump into depositing Eth into our contract, its important to note that Ether on starknet is actually a regular ERC20 token, so we’ll need to grant approval to our Piggy contract to be able to spend our Eth. We can achieve this by using the below command to call the approve function on the Eth contract address.
 
 ```shell
 starkli invoke 0x049D36570D4e46f48e99674bd3fcc84644DdD6b96F7C741B1562B82f9e004dC7 approve 0x07bfb2b587d536eead481f3e3dde6f904ff7c9205a0e4ebe943adead03c5fbed u256:100000000000000000 --rpc <RPC FROM INFURA> --account ~/.starkli-wallets/deployer/account0_account.json --keystore ~/.starkli-wallets/deployer/account0_keystore.json
 ```
 
-After running the above code, we get a transaction hash containing details about our approval transaction: 
+After running the above code, we get a transaction hash containing details about our approval transaction:
 
 <img alt="Approving the child contract" src="img/ch03-08-01-starkli-approve.png" class="center" style="width: 100%;" />
 
@@ -111,6 +114,6 @@ starkli invoke 0x07bfb2b587d536eead481f3e3dde6f904ff7c9205a0e4ebe943adead03c5fbe
 
 Finally, we get a transaction hash containing details regarding our withdrawal `0x03443c0703ee1f69d0fd972a78a7d60e6d7af59b61d0f1a68e165a8103adaf40`.
 
-<img alt="AVoyager scan of withdrawal function" src="img/ch03-08-01-voyager-scan.png" class="center" style="width: 100%;" />
+<img alt="Voyager scan of withdrawal function" src="img/ch03-08-01-voyager-scan.png" class="center" style="width: 100%;" />
 
-Scanning the above transaction hash on Voyager gives us the details contained in the image above; among other things, it contains a breakdown of how our withdrawal was distributed. Since we didn't deposit up to our target amount before withdrawing, 10% of our withdrawal amount was sent to the factory contract, while the remaining 90% was sent to our address. 
+Scanning the above transaction hash on Voyager gives us the details contained in the image above; among other things, it contains a breakdown of how our withdrawal was distributed. Since we didn't deposit up to our target amount before withdrawing, 10% of our withdrawal amount was sent to the factory contract, while the remaining 90% was sent to our address.

@@ -1,21 +1,20 @@
 # Smart Contracts
 
-Starknet contracts, are programs written in cairo and can run on the starknet virtual machine, they have access to the starknet state, and can interact with other contracts. 
+Starknet contracts, are programs written in cairo and can run on the starknet virtual machine, they have access to the starknet state, and can interact with other contracts.
 
-This Chapter will introduce you to starknet smart contracts, their components, smart contract declaration, deployment and interaction using starkli. 
-
+This Chapter will introduce you to starknet smart contracts, their components, smart contract declaration, deployment and interaction using starkli.
 
 ## Smart Contract Example
 
 Having explained what starknet smart contracts are, we'll be writing a moderately simple contract called a Piggy Bank contract, this example will demonstrate how to write a smart contract using the factory pattern and also how to integrate the starknet component system into your smart contracts.
 
-The piggy bank contract is a factory contract model that allows users to create their own personalized savings contract. At the point of creation, users are to specify their savings target, which could be towards a specific time or a specific amount, and a child contract is created and personalized to their savings target. 
+The piggy bank contract is a factory contract model that allows users to create their own personalized savings contract. At the point of creation, users are to specify their savings target, which could be towards a specific time or a specific amount, and a child contract is created and personalized to their savings target.
 
-The factory contract keeps tabs on all the child contracts created and also maps a user to his personalized contract. The user, after creating a personalized savings contract, can then deposit and save towards his target. But if, for any reason, the user has to withdraw from his savings contract before meeting the savings target, then a fine worth 10% of the withdrawal amount would be paid by the user. 
+The factory contract keeps tabs on all the child contracts created and also maps a user to his personalized contract. The user, after creating a personalized savings contract, can then deposit and save towards his target. But if, for any reason, the user has to withdraw from his savings contract before meeting the savings target, then a fine worth 10% of the withdrawal amount would be paid by the user.
 
-The contract uses a combination of functions and an ownership component to track and maintain the above explained functionality. Event’s are also emitted on each function call that modifies the contract's state. So a good understanding of the logic and implementation of this contract example would give you mastery of the components system in Cairo, the factory standard model, emitting events, and a whole lot of other methods useful in writing smart contracts on starknet. 
+The contract uses a combination of functions and an ownership component to track and maintain the above explained functionality. Event’s are also emitted on each function call that modifies the contract's state. So a good understanding of the logic and implementation of this contract example would give you mastery of the components system in Cairo, the factory standard model, emitting events, and a whole lot of other methods useful in writing smart contracts on starknet.
 
-Please note that during the course of this journey, I’ll be using interchangeably the terms child contract and personalized contract. Please note that the term child contract in this case refers to  a personalized piggy bank contract created from the factory contract.
+Please note that during the course of this journey, I’ll be using interchangeably the terms child contract and personalized contract. Please note that the term child contract in this case refers to a personalized piggy bank contract created from the factory contract.
 
 ### Piggy Bank Child Contract:
 
@@ -43,7 +42,7 @@ trait IERC20<TContractState> {
     fn approve(ref self: TContractState, spender: ContractAddress, amount: u256) -> bool;
 }
 
-#[starknet::interface] 
+#[starknet::interface]
 trait piggyBankTrait<TContractState> {
     fn deposit(ref self: TContractState, _amount: u128);
     fn withdraw(ref self: TContractState, _amount: u128);
@@ -130,7 +129,7 @@ mod piggyBank {
     fn constructor(ref self: ContractState, _owner: ContractAddress, _token: ContractAddress, _manager: ContractAddress, target: targetOption, targetDetails: u128) {
         assert(!_owner.is_zero(), Errors::Address_Zero_Owner);
         assert(!_token.is_zero(), Errors::Address_Zero_Token);
-        self.ownable.owner.write(_owner);    
+        self.ownable.owner.write(_owner);
         self.token.write(super::IERC20Dispatcher{contract_address: _token});
         self.manager.write(_manager);
         match target {
@@ -175,7 +174,7 @@ mod piggyBank {
             let condition = self.withdrawalCondition.read();
             match condition {
                 target::blockTime(x) => {return (x, targetOption::targetTime);},
-                target::amount(x) => {return (x, targetOption::targetAmount);},                
+                target::amount(x) => {return (x, targetOption::targetAmount);},
             }
         }
 
@@ -354,7 +353,7 @@ use piggy_bank::ownership_component::IOwnable;
         fn get_owner(self: @ContractState) -> ContractAddress {
             self.ownable.owner()
         }
-        
+
         fn get_childClassHash(self: @ContractState) -> ClassHash {
             self.piggyBankHash.read()
         }
@@ -363,4 +362,3 @@ use piggy_bank::ownership_component::IOwnable;
 
 }
 ```
-
