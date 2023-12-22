@@ -67,9 +67,9 @@ Starknet's node implementations bring unique strengths:
 
 - **[Pathfinder](https://github.com/eqlabs/pathfinder)**: By Equilibrium, Pathfinder is a Rust-written full node. It excels in high performance, scalability, and aligns with the Starknet Cairo specification.
 
-- **[Juno](https://github.com/starkware-libs/papyrus)**: Nethermind's Juno, another full node in Golang, is known for user-friendliness, ease of deployment, and Ethereum tool compatibility.
+- **[Juno](https://github.com/NethermindEth/juno)**: Nethermind's Juno, another full node in Golang, is known for user-friendliness, ease of deployment, and Ethereum tool compatibility.
 
-- **[Papyrus](https://github.com/NethermindEth/juno)**: StarkWare's Papyrus, a Rust-based full node, focuses on security and robustness. It's integral to the upcoming Starknet Sequencer, expected to boost network throughput.
+- **[Papyrus](https://github.com/starkware-libs/papyrus)**: StarkWare's Papyrus, a Rust-based full node, focuses on security and robustness. It's integral to the upcoming Starknet Sequencer, expected to boost network throughput.
 
 These implementations are under continuous improvement, with new features and enhancements. The choice of implementation depends on user or developer preferences and requirements.
 
