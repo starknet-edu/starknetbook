@@ -6,7 +6,7 @@ Starknet's Solidity Verifier plays a pivotal role in the rollup landscape, ensur
 
 ## Quick Overview: SHARP and Sharp Jobs
 
-NOTE: For a more detailed explanation of SHARP and Sharp Jobs, refer to the Provers subchapter in the Starknet Architecture chapter. This is a brief review.
+> **NOTE:** For a more detailed explanation of SHARP and Sharp Jobs, refer to the Provers subchapter in the Starknet Architecture chapter. This is a brief review.
 
 SHARP, or Shared Prover, in Starknet, aggregates various Cairo programs from distinct users. These programs, each with unique logic, run together, producing a common proof for all, optimizing cost and efficiency.
 
