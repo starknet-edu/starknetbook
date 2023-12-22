@@ -224,6 +224,27 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/2940022?v=4",
       "profile": "https://github.com/DavideSilva",
       "contributions": ["doc"]
+    },
+    {
+      "login": "0xAsten",
+      "name": "Asten",
+      "avatar_url": "https://avatars.githubusercontent.com/u/114395459?v=4",
+      "profile": "https://github.com/0xAsten",
+      "contributions": ["doc"]
+    },
+    {
+      "login": "Darlington02",
+      "name": "Darlington Nnam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75126961?v=4",
+      "profile": "https://github.com/Darlington02",
+      "contributions": ["doc"]
+    },
+    {
+      "login": "Nonnyjoe",
+      "name": "Idogwu Emmanuel Chinonso",
+      "avatar_url": "https://avatars.githubusercontent.com/u/104998136?v=4",
+      "profile": "https://nonnyjoe.github.io/my-portfolio/",
+      "contributions": ["doc"]
     }
   ],
   "contributorsPerLine": 7,

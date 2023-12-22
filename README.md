@@ -2,7 +2,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-31-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-34-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -129,6 +129,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/dbejarano820"><img src="https://avatars.githubusercontent.com/u/58019353?v=4?s=100" width="100px;" alt="Daniel Bejarano"/><br /><sub><b>Daniel Bejarano</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=dbejarano820" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/dpinones"><img src="https://avatars.githubusercontent.com/u/30808181?v=4?s=100" width="100px;" alt="Damián Piñones"/><br /><sub><b>Damián Piñones</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=dpinones" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/DavideSilva"><img src="https://avatars.githubusercontent.com/u/2940022?v=4?s=100" width="100px;" alt="Davide Silva"/><br /><sub><b>Davide Silva</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=DavideSilva" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/0xAsten"><img src="https://avatars.githubusercontent.com/u/114395459?v=4?s=100" width="100px;" alt="Asten"/><br /><sub><b>Asten</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=0xAsten" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Darlington02"><img src="https://avatars.githubusercontent.com/u/75126961?v=4?s=100" width="100px;" alt="Darlington Nnam"/><br /><sub><b>Darlington Nnam</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=Darlington02" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://nonnyjoe.github.io/my-portfolio/"><img src="https://avatars.githubusercontent.com/u/104998136?v=4?s=100" width="100px;" alt="Idogwu Emmanuel Chinonso"/><br /><sub><b>Idogwu Emmanuel Chinonso</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=Nonnyjoe" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
