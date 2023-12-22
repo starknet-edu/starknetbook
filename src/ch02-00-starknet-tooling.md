@@ -20,14 +20,14 @@ solutions.
 
 In this chapter, you’ll explore:
 
-- Frameworks: Build using Protostar or Hardhat
+- Frameworks: Build using Starknet-Foundry
 
 - SDKs: Discover multi-language support through Starknet.js,
   Starknet-rs, Starknet_py, and Caigo
 
 - Front-end Development: Use Starknet.js and React
 
-- Testing: Understand testing methods with Protostar and the Devnet
+- Testing: Understand testing methods with Starknet-Foundry and the Devnet
 
 By chapter’s end, you’ll have a complete grasp of Starknet’s toolset,
 enabling efficient dApp development.
@@ -39,7 +39,7 @@ development and that we’ll cover in this chapter:
 
 2.  Starkli: A CLI tool for interacting with the Starknet network.
 
-3.  Foundry: For contract testing.
+3.  Starknet Foundry: For contract testing.
 
 4.  Katana: Creates a local test node.
 

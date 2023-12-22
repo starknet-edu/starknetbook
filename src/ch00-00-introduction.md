@@ -66,7 +66,7 @@ These are some key features of Starknet:
   (CVM), that allow us to innovate beyond the Ethereum Virtual Machine
   (EVM) and create a new paradigm for decentralized applications.
 
-Here some of them:
+Here are some of them:
 
 - Account Abstraction: Implemented at the protocol level, this
   facilitates diverse signing schemes while ensuring user security and
@@ -76,7 +76,7 @@ Here some of them:
   developers to regulate data availability on Ethereum (L1) or on
   Starknet (L2). Reducing L1 onchain data can radically reduce costs.
 
-- Paymaster: StarkNet will allow users to choose how to pay for
+- Paymaster: Starknet will allow users to choose how to pay for
   transaction fee, follows the guidelines laid out in EIP 4337 and
   allows the transaction to specify a specific contract, a
   **Paymaster**, to pay for their transaction. Supports gasless
@@ -92,18 +92,6 @@ Book](https://cairo-book.github.io/) and
 
 Inspired by Rust, Cairo lets you write contracts safely and
 conveniently.
-
-### Why Choose Cairo?
-
-Cairo is designed for _Provable Computation,_ a new paradigm that lets
-programs prove their correctness without re-running them. Here’s why it
-stands out:
-
-- Purpose-Built: Designed specifically for smart contracts.
-
-- No EVM Limits: Goes beyond what the Ethereum Virtual Machine can do.
-
-- Flexibility: Uses traits for more flexibility than inheritance.
 
 ## Governance
 
@@ -129,10 +117,10 @@ In short, governance is key to Starknet’s evolution.
 
 To propose an improvement, create a SNIP.
 
-### SNIP: StarkNet Improvement Proposals
+### SNIP: Starknet Improvement Proposals
 
-SNIP is short for StarkNet Improvement Proposal. It’s essentially a
-blueprint that details proposed enhancements or changes to the StarkNet
+SNIP is short for Starknet Improvement Proposal. It’s essentially a
+blueprint that details proposed enhancements or changes to the Starknet
 ecosystem. A well-crafted SNIP includes both the technical
 specifications of the change and the reasons behind it. If you’re
 proposing a SNIP, it’s your job to rally community support and document
@@ -150,7 +138,7 @@ SNIPs serve three crucial roles:
     community.
 
 3.  They document the decision-making process, offering a historical
-    view of how StarkNet has evolved.
+    view of how Starknet has evolved.
 
 Because SNIPs are stored as text files in a [version-controlled
 repository](https://github.com/starknet-io/SNIPs), you can easily track
@@ -160,19 +148,3 @@ For those who are building on Starknet, SNIPs aren’t just
 suggestions—they’re a roadmap. It’s beneficial for implementers to keep
 a list of the SNIPs they’ve executed. This transparency helps users
 gauge the state of a particular implementation or software library.
-
-## Learning Resources
-
-For deeper insights into Starknet and Cairo:
-
-- [The Starknet Book](https://book.starknet.io): For mastering
-  Starknet
-
-- [The Cairo Book](https://cairo-book.github.io/): For mastering Cairo
-
-- [Starklings](https://github.com/shramee/starklings-cairo1):
-  Practical tutorials and examples
-
-## Conclusion
-
-In decentralized technology, Starknet offers a solution to challenges that previous systems encountered. It's based on established _protocols_ and _registries_, following the initial concepts introduced by figures such as Satoshi. Through a specific mathematical method, Starknet seeks a balance between scalability and consensus. As this technology progresses, Starknet adheres to principles of inclusivity, neutrality, and user empowerment. It's poised for continuous adaptation and improvement in the field.

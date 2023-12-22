@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "input your testnet API URL: " 
+read url
+chain="$(starkli chain-id --rpc $url)"
+echo "Where are connected to the starknet testnet with chain id: $chain"
+
+block="$(starkli block-number --rpc $url)"
+echo "The latest block number on Goerli is: $block"
+
+echo "input your transaction hash: " 
+read hash
+receipt="$(starkli receipt $hash --rpc $url)"
+echo "The receipt of transaction $hash is: $receipt"
+
