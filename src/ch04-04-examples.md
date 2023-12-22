@@ -1,6 +1,6 @@
 # Examples
 
-Here, we will explore numerous examples, elucidating the principles and
+> Here, we will explore numerous examples, elucidating the principles and
 techniques to effectively design and implement Account contracts.
 
 Before delving into the examples, we would like to issue a disclaimer:
