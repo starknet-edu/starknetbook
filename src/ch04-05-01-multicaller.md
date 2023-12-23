@@ -432,7 +432,6 @@ mod Account { ... }
 Now create a private function that will check if the executed transaction is of the latest version and hence supported by your account contract. If not, you should abort the transaction execution with an **assert**.
 
 ```
-...
 
 #[starknet::contract]
 mod Account {
