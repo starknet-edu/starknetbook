@@ -46,4 +46,4 @@ development and that we’ll cover in this chapter:
 5.  **SDKs:** starknet.js, Starknet.py, and starknet.rs interface with
     Starknet using common programming languages.
 
-6.  **Starknet-react:**  Builds front-end apps using React.
+6.  **Starknet-react:** Builds front-end apps using React.
