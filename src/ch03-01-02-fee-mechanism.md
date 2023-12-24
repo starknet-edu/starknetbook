@@ -1,6 +1,6 @@
 # Fee Mechanism
 
-**NOTE: This section is a work in progress. Contributions are welcome.**
+> **NOTE:** This section is a work in progress. Contributions are welcome.
 
 Implementing a fee system enhances Starknet's performance. Without fees, the system risks becoming overwhelmed by numerous transactions, even with optimizations.
 
