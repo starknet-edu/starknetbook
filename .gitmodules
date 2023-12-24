@@ -1,0 +1,3 @@
+[submodule "examples/Ownable-Components"]
+	path = examples/Ownable-Components
+	url = https://github.com/gianalarcon/ownable-components
