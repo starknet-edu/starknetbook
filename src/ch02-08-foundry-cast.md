@@ -116,7 +116,7 @@ snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag 
 snforge test
 ```
 
-Note: Use `snforge` for testing instead of the `scarb test` command. The tests are set up to utilize functions from `snforge_std`. Running `scarb test` would cause errors.
+> **Note:** Use `snforge` for testing instead of the `scarb test` command. The tests are set up to utilize functions from `snforge_std`. Running `scarb test` would cause errors.
 
 ## Step 2: Setting Up Starknet Devnet
 
@@ -167,7 +167,7 @@ sncast --help
 
 In the output, you'll notice distinct categories: `commands` and `options`. Each option offers both a concise (`short`) and a descriptive (`long`) variant.
 
-> Tip: While both option variants are useful, we'll prioritize the long form in this guide. This choice aids clarity, especially when constructing intricate commands.
+> **Tip:** While both option variants are useful, we'll prioritize the long form in this guide. This choice aids clarity, especially when constructing intricate commands.
 
 Delving deeper, to understand specific commands such as **`account`**, you can run:
 
@@ -293,7 +293,7 @@ casm = true
 
 These lines instruct the compiler to produce both `sierra` and `casm` outputs.
 
-2. Declaring the Contract
+2. **Declaring the Contract**
 
 We will use the `sncast declare` command to declare the contract. Here's the format:
 
@@ -307,9 +307,9 @@ Given this, the correct command would be:
 sncast --profile account1 declare --contract-name HelloStarknet
 ```
 
-Note that we've omitted the **`--url`** option. Why? When using **`--profile`**, as seen here with **`account1`**, it's not necessary. Remember, earlier in this guide, we discussed adding and creating new accounts. You can use either **`account1`** or **`new_account`** and achieve the desired result.
+> **Note:-** that we've omitted the **`--url`** option. Why? When using **`--profile`**, as seen here with **`account1`**, it's not necessary. Remember, earlier in this guide, we discussed adding and creating new accounts. You can use either **`account1`** or **`new_account`** and achieve the desired result.
 
-> Hint: You can define a default profile for sncast actions. Modify the `Scarb.toml` file to set a default. For example, to make `new_account` the default, find `[tool.sncast.new_account]` and change it to `[tool.sncast]`. Then, there's no need to specify the profile for each call, simplifying your command to:
+> **Hint:** You can define a default profile for sncast actions. Modify the `Scarb.toml` file to set a default. For example, to make `new_account` the default, find `[tool.sncast.new_account]` and change it to `[tool.sncast]`. Then, there's no need to specify the profile for each call, simplifying your command to:
 
 ```sh
 sncast declare --contract-name HelloStarknet
@@ -325,7 +325,7 @@ transaction_hash: 0x7fbdcca80e7c666f1b5c4522fdad986ad3b731107001f7d8df5f3cb1ce8f
 
 Make sure to note the \*\*`class hash` as it will be essential in the subsequent step.
 
-> Note: If you encounter an error stating Class hash already declared, simply move to the next step. Redeclaring an already-declared contract isn't permissible. Use the mentioned class hash for deployment.
+> **Note:** If you encounter an error stating Class hash already declared, simply move to the next step. Redeclaring an already-declared contract isn't permissible. Use the mentioned class hash for deployment.
 
 ### Deploying the Contract
 
@@ -502,7 +502,7 @@ inputs = ['0x1']
 
 In multicalls, only `deploy` and `invoke` actions are allowed. For a detailed guide on these, refer to the earlier section.
 
-> Note: Ensure inputs are in hexadecimal format. Strings work normally, but numbers require this format for accurate results.
+> **Note:** Ensure inputs are in hexadecimal format. Strings work normally, but numbers require this format for accurate results.
 
 To execute the multicall, use:
 

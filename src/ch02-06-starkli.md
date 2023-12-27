@@ -2,7 +2,7 @@
 
 [Starkli](https://book.starkli.rs/) is a Command Line Interface (CLI) tool designed for Starknet interaction, utilizing the capabilities of [starknet-rs](https://github.com/xJonathanLEI/starknet-rs). This tool simplifies querying and executing transactions on Starknet.
 
-> NOTE: Before continuing with this chapter, make sure you have completed the Basic Installation subchapter of Chapter 2. This includes the installation of Starkli.
+> **NOTE:** Before continuing with this chapter, make sure you have completed the Basic Installation subchapter of Chapter 2. This includes the installation of Starkli.
 
 In the next subchapter we will create a short Bash script using Starkli to query Starknet. It's just an example, however, creating your own Bash scripts to interact with Starknet would be very useful in practice.
 
