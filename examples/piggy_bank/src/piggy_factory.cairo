@@ -1,6 +1,6 @@
 use starknet::{ContractAddress, ClassHash};
 use piggy_bank::piggy_bank::piggyBank::targetOption;
-use array::ArrayTrait;
+
 
 #[starknet::interface]
 trait IPiggyBankFactory<TContractState> {
@@ -20,7 +20,6 @@ use piggy_bank::ownership_component::IOwnable;
     use core::serde::Serde;
     use starknet::{ContractAddress, ClassHash, get_caller_address, Zeroable};
     use starknet::syscalls::deploy_syscall;
-    use dict::Felt252DictTrait;
     use super::targetOption;
     use piggy_bank::ownership_component::ownable_component;
     component!(path: ownable_component, storage: ownable, event: OwnableEvent);

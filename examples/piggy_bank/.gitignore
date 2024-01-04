@@ -1,4 +1,2 @@
 target
-.snfoundry_cache
-.env
-env
+.snfoundry_cache/

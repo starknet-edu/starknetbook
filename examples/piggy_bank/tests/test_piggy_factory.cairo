@@ -7,7 +7,7 @@ use starknet::{ContractAddress, get_contract_address, ClassHash};
 use starknet::Felt252TryIntoContractAddress;
 use piggy_bank::piggy_bank::{piggyBankTraitDispatcher, piggyBankTraitDispatcherTrait, IERC20Dispatcher, IERC20DispatcherTrait, };
 use piggy_bank::piggy_bank::piggyBank::targetOption;
-use snforge_std::{declare, ContractClassTrait, start_prank, stop_prank, start_warp, stop_warp, env::var};
+use snforge_std::{declare, ContractClassTrait, start_prank, stop_prank, start_warp, stop_warp, env::var, CheatTarget};
 use piggy_bank::piggy_factory::{IPiggyBankFactoryDispatcher, IPiggyBankFactoryDispatcherTrait};
 use snforge_std::cheatcodes::contract_class::get_class_hash;
 
@@ -26,9 +26,9 @@ fn deploy_contract(name: felt252, owner: ContractAddress) -> ContractAddress {
     let contract_address = contract.precalculate_address(@calldata);
 
     // Change the caller address to 123 before the call to contract.deploy
-    start_prank(contract_address, owner.try_into().unwrap());
+    start_prank(CheatTarget::One(contract_address), owner.try_into().unwrap());
     let deployedContract = contract.deploy(@calldata).unwrap();
-    stop_prank(contract_address);
+    stop_prank(CheatTarget::One(contract_address));
 
     deployedContract
 }
@@ -56,11 +56,11 @@ fn test_create_piggy_bank() {
     let factory_dispatcher = IPiggyBankFactoryDispatcher{contract_address};
     let targetAmount = 10_000000000000000000;
 
-    start_prank(contract_address, caller);
+    start_prank(CheatTarget::One(contract_address), caller);
     let user_piggy_1 = factory_dispatcher.createPiggyBank(targetOption::targetAmount, targetAmount);
     let piggy_dispatcher = piggyBankTraitDispatcher{contract_address:user_piggy_1};
     let piggyOwner = piggy_dispatcher.get_owner();
-    stop_prank(contract_address);
+    stop_prank(CheatTarget::One(contract_address));
 
     assert(piggyOwner == caller, 'INCORECT PIGGYBANK OWNER');
 }
@@ -72,11 +72,11 @@ fn test_getAllPiggyBank() {
     let factory_dispatcher = IPiggyBankFactoryDispatcher{contract_address};
     let targetAmount = 10_000000000000000000;
 
-    start_prank(contract_address, caller);
+    start_prank(CheatTarget::One(contract_address), caller);
     let user_piggy_1 = factory_dispatcher.createPiggyBank(targetOption::targetAmount, targetAmount);
     let piggy_dispatcher = piggyBankTraitDispatcher{contract_address:user_piggy_1};
     let piggyOwner = piggy_dispatcher.get_owner();
-    stop_prank(contract_address);
+    stop_prank(CheatTarget::One(contract_address));
 
     let piggy_bank_number = factory_dispatcher.getPiggyBanksNumber();
     let piggyAddr: ContractAddress = *factory_dispatcher.getAllPiggyBank().at(0);
@@ -95,11 +95,11 @@ fn test_track_user_piggy_bank() {
     let factory_dispatcher = IPiggyBankFactoryDispatcher{contract_address};
     let targetAmount = 10_000000000000000000;
 
-    start_prank(contract_address, caller);
+    start_prank(CheatTarget::One(contract_address), caller);
     let user_piggy_1 = factory_dispatcher.createPiggyBank(targetOption::targetAmount, targetAmount);
     let piggy_dispatcher = piggyBankTraitDispatcher{contract_address:user_piggy_1};
     let piggyOwner = piggy_dispatcher.get_owner();
-    stop_prank(contract_address);
+    stop_prank(CheatTarget::One(contract_address));
 
     let piggyAddr: ContractAddress = *factory_dispatcher.getAllPiggyBank().at(0);
     let usersBank: ContractAddress = factory_dispatcher.getPiggyBankAddr(caller);

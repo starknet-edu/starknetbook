@@ -1,20 +1,25 @@
 [package]
 name = "piggy_bank"
 version = "0.1.0"
+edition = "2023_10"
 
 # See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
 
 [dependencies]
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.10.1" }
-starknet = "2.3.1"
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.13.1" }
+starknet = "2.4.1"
 
 [[target.starknet-contract]]
 casm = true
 
 [[tool.snforge.fork]]
 name = "GoerliFork"
-url = "https://starknet-goerli.infura.io/v3/571aaed99608415397cb4eb46ca740c4"
+url = "https://starknet-testnet.public.blastapi.io/rpc/v0_6"
+block_id.tag = "Latest"
+
+[[tool.snforge.fork]]
+name = "SepoliaFork"
+url = "https://starknet-sepolia.public.blastapi.io/rpc/v0_6"
 block_id.tag = "Latest"
 
 RUST_BACKTRACE=1
-
