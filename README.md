@@ -42,6 +42,7 @@ cargo install mdbook --version 0.4.31 && cargo install mdbook-i18n-helpers --ver
 
 - Run `npm i`
 - Then after completing your documentation run `npm run format`
+- Finally run `prettier --write .`
 
 ### Understanding the Book's Structure
 
