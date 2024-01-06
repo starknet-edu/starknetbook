@@ -78,7 +78,7 @@ than sharing expertise—you’re shaping the future of decentralized tech.
 Let’s build a guide that helps developers unlock Starknet’s potential.
 
 For detailed contribution guidelines, visit the [Contributors
-Guide](https://github.com/starknet-edu/starknetbook/blob/main/CONTRIBUTING.adoc).
+Guide](https://github.com/starknet-edu/starknetbook/blob/main/README.md#contribution).
 Every contribution counts. Your skills and passion will help make this
 book an invaluable tool.
 
