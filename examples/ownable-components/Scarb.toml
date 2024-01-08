@@ -1,0 +1,12 @@
+[package]
+name = "ownable_project"
+version = "0.1.0"
+
+# See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
+
+[dependencies]
+starknet = ">=2.3.1"
+
+[[target.starknet-contract]]
+sierra = true
+casm = true
