@@ -1,6 +1,5 @@
 # Multi-Signature Accounts
 
-
 Multisignature (multisig) technology is an integral part of the modern
 blockchain landscape. It enhances security by requiring multiple
 signatures to confirm a transaction, hence reducing the risk of
@@ -9,7 +8,7 @@ fraudulent transactions and increasing control over asset management.
 In Starknet, the concept of multisig accounts is abstracted at the
 protocol level, allowing developers to implement custom account
 contracts that embody this concept. In this chapter, we’ll delve into
-the workings of a multisig account and see how it’s created in Starknet
+the workings of a multisig account and see how it’s c reated in Starknet
 using an account contract.
 
 ## What is a Multisig Account?
