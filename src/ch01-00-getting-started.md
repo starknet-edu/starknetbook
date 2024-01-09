@@ -61,7 +61,7 @@ mod Ownable {
         self.owner.write(init_owner);
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl OwnableImpl of super::OwnableTrait<ContractState> {
         fn transfer_ownership(ref self: ContractState, new_owner: ContractAddress) {
             self.only_owner();
