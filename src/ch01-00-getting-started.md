@@ -4,15 +4,22 @@ Starknet is a scalable Layer-2 solution on Ethereum. This guide will walk you th
 
 We will use the Starknet Remix Plugin to compile, deploy and interact with our smart contract. It is a great tool to get started with Starknet development.
 
-1. Visit [The Remix Project](https://remix.ethereum.org/).
-2. Navigate to the ‘Plugins’ section in the bottom left corner.
-3. Enable the “Starknet” plugin.
+1. Visit the [Remix IDE](https://remix.ethereum.org/) website.
+2. Navigate to the ‘Plugin Manager’ section in the bottom left corner.
+
+<img alt="Plugin Manager" src="img/ch01-remix-plugin-manager.png" class="center" style="width: 50%;" />
+
+3. Activate the “Starknet” plugin.
 
 <img alt="Activate the Starknet Plugin" src="img/ch01-starknet-plugin.png" class="center" style="width: 100%;" />
 
-<span class="caption">Activate the Starknet Plugin</span>
+4. Accept the permissions. Click "Remeber my choice" to avoid this step in the future.
 
-4. After enabling, the Starknet logo appears on the left sidebar. Click it to interact with opened Cairo files.
+<img alt="Accept Permissions" src="img/ch01-remix-permission-box.png" class="center" style="width: 100%;" />
+
+5. After enabling, the Starknet logo appears on the left sidebar. Click it to interact with opened Cairo files.
+
+<img alt="Starknet Plugin" src="img/ch01-remix-starknet-plugin-icon.png" class="center" style="width: 100%; max-width: 300px;" />
 
 ## Introduction to Starknet Smart Contracts
 
