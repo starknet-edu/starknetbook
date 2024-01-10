@@ -58,6 +58,7 @@ To install a specific version, such as `2.3.0`, run:
 ## Crafting a Starknet Smart Contract
 
 Before we proceed with the example, please ensure that the versions of both `scarb` and `starkli` match the specified versions provided below.
+
 ```console
     scarb --version  # scarb 2.3.1 (0c8def3aa 2023-10-31)
     starkli --version  # 0.1.20 (e4d2307)
