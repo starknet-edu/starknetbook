@@ -13,7 +13,7 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 <img alt="Activate the Starknet Plugin" src="img/ch01-starknet-plugin.png" class="center" style="width: 100%;" />
 
-4. Accept the permissions. Click "Remeber my choice" to avoid this step in the future.
+4. Accept the permissions. Click "Remember my choice" to avoid this step in the future.
 
 <img alt="Accept Permissions" src="img/ch01-remix-permission-box.png" class="center" style="width: 100%;" />
 
