@@ -15,6 +15,7 @@
   - [Scarb: The Package Manager](ch02-03-scarb.md)
   - [Katana: A Local Node](ch02-04-katana.md)
   - [Testnet Deployment](ch02-05-testnet-deployment.md)
+    - [How to get SEPOLIA tokens](ch02-05-01-start-with-sepolia.md)
   - [Starkli: Querying Starknet](ch02-06-starkli.md)
     - [Example - Beginner: Connection Script](ch02-06-01-connection-script.md)
   - [Starknet Devnet](ch02-07-starknet-devnet.md)

@@ -217,7 +217,7 @@ Note: If you don't specify the rpc provider, Starkli will use Goerli, which will
 >
 > #### 🟩 Solution:
 >
-> It means you probably just created a new wallet and it has **not been deployed yet**. To accomplish this you have to fund your wallet with tokens and **transfer tokens** to a **different** wallet address.
+> It means you probably just created a new wallet and it has **not been deployed yet**. To accomplish this you have to fund your wallet with tokens and **transfer tokens** to a **different** wallet address. Detailed intructons can be found in the [Get Seplia Tokens](./ch02-05-01-start-with-sepolia.md) section.
 >
 > **Still doesn't work?**
 >
