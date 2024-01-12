@@ -1,4 +1,4 @@
-# Acquiring SEPOLIA Tokens
+# Get started with Sepolia - Get ETH and deploy your wallet
 
 ## Overview
 
