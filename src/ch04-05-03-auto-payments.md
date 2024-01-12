@@ -1,4 +1,5 @@
 # Auto-Payments 🚧
+
 As blockchain adoption increases, there will be a greater need for products with a superior user experience and core functionality that support real use cases. In a few simple steps, we can set up automatic recurring payments today directly on our mobile banking applications. In fact, online bill pay is growing rapidly, and customers especially younger ones have come to expect the ability to set up recurring payments and take advantage of other conveniences associated with using auto-payments. About 3 in 10 surveyed users have changed the way they pay their bills in the past two years and finding a more convenient way to pay was the most frequently cited reason. However, this is not a trivial task on a blockchain like Ethereum, the largest blockchain network by on-chain payment volumes. For certain types of digital wallets, such as a self-custodial wallet where the user has sole control over the wallet and private keys, automated programmable payments that can pull payments automatically from a user’s account at recurring intervals requires engineering work.
 
 The concept and one of the leading Ethereum developer proposals known as Account Abstraction to explore how smart contracts can be implemented to enable automated programmable payments. We propose a new solution towards a real-world application of auto payments to demonstrate how to write a smart contract for a self-custodial wallet that can pull funds automatically, instead of requiring the user's active participation each time to instruct and push payments on a blockchain.
@@ -24,6 +25,7 @@ With a self-custodial wallet, one where the user has total control over her wall
 Another way to understand this is through the terminology of pull and push payments. A pull payment is a payment transaction that is triggered by the payee, while a push payment on the other hand is a payment transaction that is triggered by the payer. Ethereum supports push payments but doesn’t natively support pull payments – auto payments are an example of pull payments.
 
 ![Alt text](image.png)
+
 ## Account Abstraction
 
 Account abstraction (AA) is a proposal that attempts to combine user accounts and smart contracts into just one Ethereum account type by making user accounts function like smart contracts. As we will see ahead, AA allows us to design a neat solution for auto payments. But more generally, the motivating rationale behind AA is quite simple but fundamental: Ethereum transactions today have several rigid requirements hardcoded into the Ethereum protocol. For instance, transactions on the Ethereum blockchain today are valid only if they have a valid ECDSA signature, a valid nonce and sufficient account balance to cover the cost of computation.
