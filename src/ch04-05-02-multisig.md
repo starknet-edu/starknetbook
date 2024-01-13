@@ -390,7 +390,7 @@ of the account owners. However, each change should be a transaction
 requiring the threshold number of signatures.
 
 ```rust
-    //PRIVTE FUNCTION
+    //PRIVATE FUNCTION
     //Function to add the public keys of the multisig in permanent storage
      fn add_signers(ref self: ContractState, mut signers: Span<felt252>, last: felt252) {
             match signers.pop_front() {
