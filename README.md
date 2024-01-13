@@ -2,7 +2,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-34-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -120,7 +120,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/LucasLvy"><img src="https://avatars.githubusercontent.com/u/70894690?v=4?s=100" width="100px;" alt="Lucas @ StarkWare"/><br /><sub><b>Lucas @ StarkWare</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=LucasLvy" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/OkoliEvans"><img src="https://avatars.githubusercontent.com/u/95226065?v=4?s=100" width="100px;" alt="Okoli Evans"/><br /><sub><b>Okoli Evans</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=OkoliEvans" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/estheroche"><img src="https://avatars.githubusercontent.com/u/125284347?v=4?s=100" width="100px;" alt="Esther Aladi Oche"/><br /><sub><b>Esther Aladi Oche</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=estheroche" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/estheroche"><img src="https://avatars.githubusercontent.com/u/125284347?v=4?s=100" width="100px;" alt="Esther Aladi Oche"/><br /><sub><b>Esther Aladi Oche</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=estheroche" title="Documentation">📖</a> <a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=estheroche" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/faytey"><img src="https://avatars.githubusercontent.com/u/40033608?v=4?s=100" width="100px;" alt="faytey"/><br /><sub><b>faytey</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=faytey" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ccolorado"><img src="https://avatars.githubusercontent.com/u/876976?v=4?s=100" width="100px;" alt="ccolorado"/><br /><sub><b>ccolorado</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=ccolorado" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Akinbola247"><img src="https://avatars.githubusercontent.com/u/112096641?v=4?s=100" width="100px;" alt="Akinbola Kehinde"/><br /><sub><b>Akinbola Kehinde</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=Akinbola247" title="Documentation">📖</a></td>
@@ -133,6 +133,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/0xAsten"><img src="https://avatars.githubusercontent.com/u/114395459?v=4?s=100" width="100px;" alt="Asten"/><br /><sub><b>Asten</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=0xAsten" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Darlington02"><img src="https://avatars.githubusercontent.com/u/75126961?v=4?s=100" width="100px;" alt="Darlington Nnam"/><br /><sub><b>Darlington Nnam</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=Darlington02" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://nonnyjoe.github.io/my-portfolio/"><img src="https://avatars.githubusercontent.com/u/104998136?v=4?s=100" width="100px;" alt="Idogwu Emmanuel Chinonso"/><br /><sub><b>Idogwu Emmanuel Chinonso</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=Nonnyjoe" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/machuwey"><img src="https://avatars.githubusercontent.com/u/56169780?v=4?s=100" width="100px;" alt="machuwey"/><br /><sub><b>machuwey</b></sub></a><br /><a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=machuwey" title="Code">💻</a> <a href="https://github.com/The Starknet Community/The Starknet Book/commits?author=machuwey" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
