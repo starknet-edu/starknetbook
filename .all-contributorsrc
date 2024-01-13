@@ -174,7 +174,7 @@
       "name": "Esther Aladi Oche",
       "avatar_url": "https://avatars.githubusercontent.com/u/125284347?v=4",
       "profile": "https://github.com/estheroche",
-      "contributions": ["doc"]
+      "contributions": ["doc", "code"]
     },
     {
       "login": "faytey",
@@ -245,6 +245,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/104998136?v=4",
       "profile": "https://nonnyjoe.github.io/my-portfolio/",
       "contributions": ["doc"]
+    },
+    {
+      "login": "machuwey",
+      "name": "machuwey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56169780?v=4",
+      "profile": "https://github.com/machuwey",
+      "contributions": ["code", "doc"]
     }
   ],
   "contributorsPerLine": 7,

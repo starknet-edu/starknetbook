@@ -109,7 +109,7 @@ starkli invoke 0x07bfb2b587d536eead481f3e3dde6f904ff7c9205a0e4ebe943adead03c5fbe
 As with other invoke function calls we’ve made, we also get a transaction hash for this transaction. Finally, after repeated calls to deposit ether into our contract, once we have saved up an amount of our choice, we can call the withdraw function to withdraw from our account.
 
 ```shell
-starkli invoke 0x07bfb2b587d536eead481f3e3dde6f904ff7c9205a0e4ebe943adead03c5fbed deposit 1000000000000000 --rpc <RPC FROM INFURA> --account ~/.starkli-wallets/deployer/account0_account.json --keystore ~/.starkli-wallets/deployer/account0_keystore.json
+starkli invoke 0x07bfb2b587d536eead481f3e3dde6f904ff7c9205a0e4ebe943adead03c5fbed withdraw 1000000000000000 --rpc <RPC FROM INFURA> --account ~/.starkli-wallets/deployer/account0_account.json --keystore ~/.starkli-wallets/deployer/account0_keystore.json
 ```
 
 Finally, we get a transaction hash containing details regarding our withdrawal `0x03443c0703ee1f69d0fd972a78a7d60e6d7af59b61d0f1a68e165a8103adaf40`.
