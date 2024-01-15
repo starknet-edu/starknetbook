@@ -36,7 +36,7 @@ cargo install mdbook --version 0.4.31 && cargo install mdbook-i18n-helpers --ver
 
 - Clone the main repository: `git clone https://github.com/starknet-edu/starknetbook && cd starknetbook`.
 - Create and work on a branch in your fork. If you're unfamiliar, use this [guide](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/) for assistance.
-- Once done, submit a PR to merge your edits. Ensure you tag a reviewer for feedback (`l-henri` or `@omarespejel`).
+- Once done, submit a PR to merge your edits. Ensure you tag a reviewer for feedback (`@gianalarcon` or `@omarespejel`).
 
 4. **Formatting**
 
