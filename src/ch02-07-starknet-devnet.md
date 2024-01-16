@@ -22,7 +22,7 @@ Procedure:
 2. Clone the repository:
 
 ```shell
-git clone git@github.com:0xSpaceShard/starknet-devnet-rs.git
+git clone https://github.com/0xSpaceShard/starknet-devnet-rs.git
 ```
 
 ## Running

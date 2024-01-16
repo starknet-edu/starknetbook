@@ -10,6 +10,7 @@ To acquire $ETH on the Ethereum Sepolia testnet, you can use:
 
 1. [Alchemy's Sepolia Faucet](https://sepoliafaucet.com/).
 2. [Infura's Sepolia Faucet](https://www.infura.io/faucet/sepolia).
+3. [LearnWeb3's Sepolia Faucet](https://learnweb3.io/faucets/sepolia).
 
 The process is simple: log in, paste your Ethereum Sepolia testnet address, and click the "Send me $ETH" button.
 
