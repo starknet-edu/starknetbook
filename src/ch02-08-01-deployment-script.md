@@ -1,32 +1,45 @@
 # Deployment Script Example
 
-> **RECOMMENDED:** Before starting this chapter, make sure you have completed the Starknet Devnet subchapter.
+> **IMPORTANT:** Ensure you have completed the Starknet Devnet subchapter before proceeding with this guide.
 
-This tutorial explains how to set up a test and deployment environment for smart contracts. The given script initializes accounts, runs tests, and carries out multicalls.
+This guide provides a step-by-step process to set up a testing and deployment environment for Starknet smart contracts. The script provided here will initialize accounts, execute tests, and perform multicalls.
 
-Disclaimer: This is an example. Use it as a foundation for your own work, adjusting as needed.
+Please note that this is a basic example. You should adapt it to suit your specific needs and requirements.
 
-## Setup
+## Requirements
 
-#### This script supports the following versions or above
+#### The script is compatible with the following versions or higher
 
-```txt
-scarb 2.3.0 (f306f9a91 2023-10-23)
-cairo: 2.3.0 (https://crates.io/crates/cairo-lang-compiler/2.3.0)
-sierra: 1.3.0
-snforge 0.10.1
-sncast 0.10.1
+```bash
+# scarb --version
+scarb 2.4.3
+cairo: 2.4.3
+sierra: 1.4.0
+
+# snforge --version
+snforge 0.14.0
+
+# sncast --version
+sncast 0.14.0
 The Rust Devnet
 ```
 
-### 1. Prepare the Script File
+#### Additional Tools
 
-- In your project's root folder, create a file named **`script.sh`**. This will house the script.
-- Adjust permissions to make the file executable:
+The script requires `jq` to run. You can install it with `sudo apt install jq` on Ubuntu or `brew install jq` on macOS. For more information, refer to the [JQ Docs](https://jqlang.github.io/jq/).
+
+## Script Preparation
+
+### 1. Create the Script File
+
+- In the root directory of your project, create a file named **`script.sh`**. This file will contain the deployment script.
+- Modify the file permissions to make it executable:
 
 ```sh
 chmod +x script.sh
 ```
+
+> ⚠️ **NOTE:** The script file must be executable to run. The `chmod +x` command changes the file permissions to allow execution.
 
 ### 2. Insert the Script
 
@@ -121,7 +134,7 @@ if [ "$FAILED_TESTS" != "true" ]; then
     if echo "$declaration_output" | grep -q "error: Class with hash"; then
         echo "Class hash already declared."
         # CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*Class with hash \([^ ]*\).*/\1/p') ## Uncomment this for pythonic devnet
-        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*StarkFelt("\(.*\)").*/\1/p') ## Uncomment this for rust devnet
+        CLASS_HASH=$(echo "$declaration_output" | sed -n 's/.*\(0x[0-9a-fA-F]*\).*/\1/p') ## Uncomment this for rust devnet
     else
         echo "New class hash declaration."
         CLASS_HASH=$(echo "$declaration_output" | grep -o 'class_hash: 0x[^ ]*' | sed 's/class_hash: //')
@@ -165,7 +178,7 @@ EOM
 fi
 ```
 
-### 3. Adjust the Bash Path
+### 3. [Optional]Adjust the Bash Path
 
 The line `#!/usr/bin/env bash` indicates the path to the bash interpreter. If you require a different version or location of bash, determine its path using:
 
