@@ -13,7 +13,7 @@ Please note that this is a basic example. You should adapt it to suit your speci
 ```bash
 # scarb --version
 scarb 2.4.3
-cairo: 2.3.0
+cairo: 2.4.3
 sierra: 1.4.0
 
 # snforge --version

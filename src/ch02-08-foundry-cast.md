@@ -20,7 +20,7 @@ In this section, we'll delve into `sncast`.
 ```bash
 # scarb --version
 scarb 2.4.3
-cairo: 2.3.0
+cairo: 2.4.3
 sierra: 1.4.0
 
 # snforge --version
