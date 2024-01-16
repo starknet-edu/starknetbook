@@ -12,7 +12,7 @@ To declare and deploy the piggy bank contract, it’s required that you have the
 
 3. Deployer Account: To interact with the starknet network via Starkli, you need a cli account/ wallet. You can easily set that up by going through [this page](ch04-03-deploy-hello-account.md).
 
-4. Sufficient gas fees to cover the declaration and deployment steps: you can get starknet Sepolia Eth either by bridging your Sepolia Eth on Ethereum to Starknet [here](https://www.yetanotherswap.com/bridge). 
+4. Sufficient gas fees to cover the declaration and deployment steps: you can get starknet Sepolia Eth either by bridging your Sepolia Eth on Ethereum to Starknet [here](https://www.yetanotherswap.com/bridge).
 
 Once you’ve been able to sort all that out, let's proceed with declaring and deploying the piggy bank contract.
 
