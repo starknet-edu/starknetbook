@@ -17,18 +17,24 @@ In this section, we'll delve into `sncast`.
 
 ## Requirements
 
-```txt
-scarb 2.3.0 (f306f9a91 2023-10-23)
-cairo: 2.3.0 (https://crates.io/crates/cairo-lang-compiler/2.3.0)
-sierra: 1.3.0
-snforge 0.10.1
-sncast 0.10.1
+```bash
+# scarb --version
+scarb 2.4.3
+cairo: 2.3.0
+sierra: 1.4.0
+
+# snforge --version
+snforge 0.14.0
+
+# sncast --version
+sncast 0.14.0
 The Rust Devnet
 ```
 
 ## Step 1: Sample Smart Contract
 
-The following code sample is sourced from `starknet foundry`. You can find the original [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html).
+The following code sample is sourced from `starknet foundry`(You can find the original [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html)).
+Also if yo desire to directly clone you can do it from this [Github REPO](https://github.com/machuwey/foundry_example.git)
 
 ```rust
 #[starknet::interface]
@@ -44,13 +50,14 @@ mod HelloStarknet {
         balance: felt252,
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl HelloStarknetImpl of super::IHelloStarknet<ContractState> {
+        // Increases the balance by the given amount.
         fn increase_balance(ref self: ContractState, amount: felt252) {
-            assert(amount != 0, 'Amount cannot be 0');
             self.balance.write(self.balance.read() + amount);
         }
 
+        // Gets the balance.
         fn get_balance(self: @ContractState) -> felt252 {
             self.balance.read()
         }
@@ -106,8 +113,8 @@ To execute tests, follow the steps below:
 1. Ensure `snforge` is listed as a dependency in your `Scarb.toml` file, positioned beneath the `starknet` dependency. Your dependencies section should appear as (make sure to use the latest version of `snforge` and `starknet`):
 
 ```txt
-starknet = "2.3.0"
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.10.1" }
+starknet = "2.4.1"
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.14.0" }
 ```
 
 2. Run the command:
