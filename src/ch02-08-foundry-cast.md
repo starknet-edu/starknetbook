@@ -127,7 +127,7 @@ snforge test
 
 ## Step 2: Setting Up Starknet Devnet
 
-For this guide, the focus is on using `Rust starknet devnet`. If you've been using `katana` or `pythonic devnet`, please be cautious as there might be inconsistencies. If you haven't configured `devnet`, consider following the guide from Starknet devnet for a quick setup.
+For this guide, the focus is on using `Rust starknet devnet`. If you've been using `katana` or `pythonic devnet`, please be cautious as there might be inconsistencies. If you haven't configured `devnet`, consider following the [guide](ch02-07-starknet-devnet.md) from Starknet devnet for a quick setup.
 
 To launch `starknet devnet`, use the command:
 
@@ -239,6 +239,8 @@ Wondering where the `--class-hash` comes from? It's visible in the output from t
 Predeclared Starknet CLI account:
 Class hash: 0x195c984a44ae2b8ad5d49f48c0aaa0132c42521dcfc66513530203feca48dd6
 ```
+
+<img src="img/ch02-08-foundry-devnet-hash.png" class="center" style="width: 100%;" />
 
 2. Funding the Account
 
