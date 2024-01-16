@@ -17,18 +17,24 @@ In this section, we'll delve into `sncast`.
 
 ## Requirements
 
-```txt
-scarb 2.3.0 (f306f9a91 2023-10-23)
-cairo: 2.3.0 (https://crates.io/crates/cairo-lang-compiler/2.3.0)
-sierra: 1.3.0
-snforge 0.10.1
-sncast 0.10.1
+```bash
+# scarb --version
+scarb 2.4.3
+cairo: 2.4.3
+sierra: 1.4.0
+
+# snforge --version
+snforge 0.14.0
+
+# sncast --version
+sncast 0.14.0
 The Rust Devnet
 ```
 
 ## Step 1: Sample Smart Contract
 
-The following code sample is sourced from `starknet foundry`. You can find the original [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html).
+The following code sample is sourced from `starknet foundry`(You can find the source of the example [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html)).
+If yo desire to get the files you can do it from [Foundry Example Code](https://github.com/starknet-edu/starknetbook/tree/main/examples/foundry-example)
 
 ```rust
 #[starknet::interface]
@@ -44,13 +50,14 @@ mod HelloStarknet {
         balance: felt252,
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl HelloStarknetImpl of super::IHelloStarknet<ContractState> {
+        // Increases the balance by the given amount.
         fn increase_balance(ref self: ContractState, amount: felt252) {
-            assert(amount != 0, 'Amount cannot be 0');
             self.balance.write(self.balance.read() + amount);
         }
 
+        // Gets the balance.
         fn get_balance(self: @ContractState) -> felt252 {
             self.balance.read()
         }
@@ -106,8 +113,8 @@ To execute tests, follow the steps below:
 1. Ensure `snforge` is listed as a dependency in your `Scarb.toml` file, positioned beneath the `starknet` dependency. Your dependencies section should appear as (make sure to use the latest version of `snforge` and `starknet`):
 
 ```txt
-starknet = "2.3.0"
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.10.1" }
+starknet = "2.4.1"
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.14.0" }
 ```
 
 2. Run the command:
@@ -120,7 +127,7 @@ snforge test
 
 ## Step 2: Setting Up Starknet Devnet
 
-For this guide, the focus is on using `Rust starknet devnet`. If you've been using `katana` or `pythonic devnet`, please be cautious as there might be inconsistencies. If you haven't configured `devnet`, consider following the guide from Starknet devnet for a quick setup.
+For this guide, the focus is on using `Rust starknet devnet`. If you've been using `katana` or `pythonic devnet`, please be cautious as there might be inconsistencies. If you haven't configured `devnet`, consider following the [guide](ch02-07-starknet-devnet.md) from Starknet devnet for a quick setup.
 
 To launch `starknet devnet`, use the command:
 
@@ -232,6 +239,8 @@ Wondering where the `--class-hash` comes from? It's visible in the output from t
 Predeclared Starknet CLI account:
 Class hash: 0x195c984a44ae2b8ad5d49f48c0aaa0132c42521dcfc66513530203feca48dd6
 ```
+
+<img src="img/ch02-08-foundry-devnet-hash.png" class="center" style="width: 100%;" />
 
 2. Funding the Account
 
