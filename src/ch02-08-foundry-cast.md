@@ -33,8 +33,8 @@ The Rust Devnet
 
 ## Step 1: Sample Smart Contract
 
-The following code sample is sourced from `starknet foundry`(You can find the original [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html)).
-Also if yo desire to directly clone you can do it from this [Github REPO](https://github.com/machuwey/foundry_example.git)
+The following code sample is sourced from `starknet foundry`(You can find the source of the example [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html)).
+If yo desire to get the files you can do it from [Foundry Example Code](https://github.com/starknet-edu/starknetbook/tree/main/examples/foundry-example)
 
 ```rust
 #[starknet::interface]
