@@ -17,23 +17,21 @@ using an account contract.
 
 There are several reasons why someone might choose to use a multisig wallet:
 
-### Enhanced security: 
+### Enhanced security:
 
 Multisig contract account are much more secure than traditional single-signature contract accounts. With a single-signature contract account, if your private key is lost or stolen, your funds are gone. With a multisig contract account, even if one private key is compromised, the funds are still safe. This is because at least two (or more) private keys are required to authorize a transaction.
 
-### Disaster recovery: 
+### Disaster recovery:
 
 Multisig contract account can be used to protect against the loss of a private key. If one private key is lost, the other keys can still be used to recover the funds. This can be helpful in the event of a natural disaster, hardware failure, or other unforeseen event.
 
 ### Transparency and accountability:
 
- Multisig contract account can be used to increase transparency and accountability in organizations. For example, a company might use a multisig wallet to store its funds, and require the signatures of two or more executives to authorize any spending. This can help to prevent fraud and ensure that everyone is aware of how the company's money is being spent.
+Multisig contract account can be used to increase transparency and accountability in organizations. For example, a company might use a multisig wallet to store its funds, and require the signatures of two or more executives to authorize any spending. This can help to prevent fraud and ensure that everyone is aware of how the company's money is being spent.
 
 The benefits of Multisig contract account can be realized more in the context of account abstraction.
 
-###  Multisig Account Abstraction Creation.
-
-
+### Multisig Account Abstraction Creation.
 
 Account abstraction enables built-in multisig functionality within accounts.
 Each account can be programmed to demand multiple signatures before transaction execution.
@@ -46,17 +44,19 @@ A multisig account must have different traits that a smart contract must impleme
 In order to be able to compile an account contract to Sierra, a prerequisite to deploy it to testnet or mainnet, you’ll need to make sure to have a version of [Scarb](https://docs.swmansion.com/scarb/download.html) that includes a Cairo compiler that targets Sierra 1.3 as it’s the latest version supported by Starknet’s testnet. At this point in time is Scarb 2.4.4 is used.
 
 ```cairo
-mac@Macs-MacBook-Pro-2 Desktop % scarb --version 
+mac@Macs-MacBook-Pro-2 Desktop % scarb --version
 scarb 2.4.4 (0c8def3aa 2023-10-31)
 cairo: 2.4.4 (https://crates.io/crates/cairo-lang-compiler/2.4.4)
 sierra: 1.3.0
 
 ```
+
 With Scarb we can create a new project using the new command.
 
 ```cairo
 ~ $ scarb new multisign
 ```
+
 The command creates a folder with the same name that includes a configuration file for Scarb.
 
 ```cairo
@@ -104,6 +104,7 @@ casm = true
 
 
 ```
+
 We can now replace the content of the sample Cairo code that comes with a new project with the scaffold of our account contract.
 
 ```cairo
@@ -126,6 +127,7 @@ mod Multisign {
 }
 
 ```
+
 To make sure everything is wired up correctly, let’s compile our project.
 
 ```cairo
@@ -151,6 +153,7 @@ trait ISRC6 {
 }
 
 ```
+
 Because we will eventually annotate the implementation of this trait with the external attribute, the contract state will be the first argument provided to each method. We can define the type of the contract state with the generic T.
 
 ```cairo
@@ -162,7 +165,8 @@ trait ISRC6<T> {
 }
 
 ```
-The __execute__ function is the only one that receives a reference to the contract state because it’s the only one likely to either modify its internal state or to modify the state of another smart contract and thus to require the payment of gas fees for its execution. The other two functions, __validate__ and is_valid_signature, are read-only and shouldn’t require the payment of gas fees. For this reason they are both receiving a snapshot of the contract state instead.
+
+The **execute** function is the only one that receives a reference to the contract state because it’s the only one likely to either modify its internal state or to modify the state of another smart contract and thus to require the payment of gas fees for its execution. The other two functions, **validate** and is_valid_signature, are read-only and shouldn’t require the payment of gas fees. For this reason they are both receiving a snapshot of the contract state instead.
 
 Let's now define the trait for our multisig account explicitly.
 
@@ -178,9 +182,10 @@ trait TestMultisign<T> {
 }
 
 ```
-Each function inside an implementation annotated with the external attribute will have its own selector that other people and smart contracts can use to interact with my account contract. 
 
-The functions __execute__ and __validate__ are meant to be used only by the Starknet protocol even if the functions are publicly accessible via its selectors. The only function that I want to make public for web3 apps to use for signature validation is is_valid_signature.
+Each function inside an implementation annotated with the external attribute will have its own selector that other people and smart contracts can use to interact with my account contract.
+
+The functions **execute** and **validate** are meant to be used only by the Starknet protocol even if the functions are publicly accessible via its selectors. The only function that I want to make public for web3 apps to use for signature validation is is_valid_signature.
 
 In addition, we will create a separate trait annotated with the interface attribute that will group all the functions in the account contract that is expected to interact with. On the other hand, we will auto generate the trait for all those functions that users will not see to use directly even though they are public.
 
@@ -517,6 +522,7 @@ mod Multisign {
 ```
 
 ## Exploring Multisig Functions
+
 Let’s take a closer look at the various functions associated with
 multisig functionality in the provided contract.
 
@@ -527,6 +533,7 @@ account owners to a permanent storage. Ideally, a multisig account
 structure should permit adding and deleting owners as per the agreement
 of the account owners. However, each change should be a transaction
 requiring the threshold number of signatures.
+
 ```cairo
 
 
@@ -620,7 +627,6 @@ Similarly, the **_`is_valid_signer_signature`_** function provides a way to reco
 confirmations for each signer. An account owner, who did not submit
 the transaction, can confirm it, increasing its confirmation count.
 
-
 ```cairo
 
 fn is_valid_signer_signature(
@@ -647,6 +653,7 @@ fn is_valid_signer_signature(
 
 
 ```
+
 ### _`execute_multi_call`_ Function
 
 The _execute_multi_call_ function serves as the final step in the transaction
@@ -701,10 +708,9 @@ reached. The transaction is executed if all the checks pass.
 
 ```
 
-
 ## Protecting Protocol-Only Functions
 
-There maybe other use cases for other smart contracts to directly interact with the functions __execute__ and __validate__ of my account contract, I would rather restrict them to be callable only by the Starknet protocol in case there’s an attack vector that I’m failing to foresee.
+There maybe other use cases for other smart contracts to directly interact with the functions **execute** and **validate** of my account contract, I would rather restrict them to be callable only by the Starknet protocol in case there’s an attack vector that I’m failing to foresee.
 
 When the Starknet protocol calls a function it uses the zero address as the caller. We can use this fact to create a private function named only_protocol. To create private functions we simply create a new implementation that is not annotated with the external attribute so no public selectors are created.
 
@@ -773,6 +779,7 @@ fn assert_only_protocol() {
 	}
 }
 ```
+
 Notice that the function is_valid_signature is not protected by the **only_protocol** function because we do want to allow anyone to use it.
 
 ## Signature Validation
@@ -865,8 +872,9 @@ fn is_valid_signer_signature(
 
 
 ```
-Private function can be used to validate a transaction signature as required by the __validate__ function. In contrast to the function is_valid_signature we will use an assert to stop the transaction execution in case the signature is found to be invalid.
-Here’s a little casting problem. The function is_valid_signature_bool expects the signature to be passed as an Array but the signature variable inside the __validate__ function is a Span. Because it is easier (and cheaper) to derive a Span from an Array than the opposite, I’ll change the function signature of is_valid_signature_bool to expect a Span instead of an Array.
+
+Private function can be used to validate a transaction signature as required by the **validate** function. In contrast to the function is_valid_signature we will use an assert to stop the transaction execution in case the signature is found to be invalid.
+Here’s a little casting problem. The function is_valid_signature_bool expects the signature to be passed as an Array but the signature variable inside the **validate** function is a Span. Because it is easier (and cheaper) to derive a Span from an Array than the opposite, I’ll change the function signature of is_valid_signature_bool to expect a Span instead of an Array.
 
 This little change will require deriving a Span from the signature variable inside the function is_valid_signature before calling is_valid_signature_bool which we can easily do with the span() method available on the ArrayTrait.
 
