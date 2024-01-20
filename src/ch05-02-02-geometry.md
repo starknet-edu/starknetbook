@@ -73,7 +73,7 @@ Addition:
 <img src="poly3.png" alt="poly3" />
 </figure>
 
-Substraction:
+Subtraction:
 
 <figure>
 <img src="poly4.png" alt="poly4" />
