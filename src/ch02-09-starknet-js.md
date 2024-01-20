@@ -158,7 +158,7 @@ provided by Starknet.js.
 
 We now have a solid foundation to build a Starknet dapp. However, there
 are framework specific tools that help us build Starknet dapps, which
-are covered in chaper 5.
+are covered in chapter 5.
 
 With Starknet.js, you can also automate the process of deploying a smart contract to Starknet testnet / mainnet.
 
@@ -212,7 +212,7 @@ DEPLOYER_PRIVATE_KEY=<YOUR_WALLET_ADDRESS_PRIVATE_KEY>
 RPC_ENDPOINT="<INFURA_STARKNET_GOERLI_API_KEY>"
 ```
 
-Your environment is sucessfully set up.
+Your environment is successfully set up.
 
 ## Preparation of Deployment Scripts
 
