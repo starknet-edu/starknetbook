@@ -8,7 +8,7 @@ Consider a hypothetical scenario: today is the 25th of February. Alex is going a
 
 All Alex needs to do is set up recurring payments to automatically pay for her recurring bills. However, this is not as straightforward to execute on a blockchain. To see why this is the case, let us consider the Ethereum network. We will begin by setting up some terminology that will help us better understand the issue at hand.
 
-## Accouts on Ethereum
+## Accounts on Ethereum
 
 Ethereum has two types of accounts:
 Externally Owned Accounts (EOA) and Contract Accounts. EOAs have a private and public key pairing which helps them initiate transactions. On the other hand, Contract Accounts are smart contracts that rely on predefined codes to trigger particular transactions.
@@ -48,7 +48,7 @@ First, a merchant deploys an auto payment smart contract. When a user with a del
 
 If the user agrees to approve auto payments, the wallet will add the auto payment contract’s address to the list of allowed contracts on the user’s delegable account.
 
-## Implimenting Auto-payment on Starknet
+## Implementing Auto-payment on Starknet
 
 For a smart contract to be considered an account contract it must at least implement the interface defined by SNIP-6. Additional methods might be required for advanced account functionality.
 
