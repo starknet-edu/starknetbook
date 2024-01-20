@@ -225,7 +225,7 @@ commands:
 - `scarb run <script>`: Run a custom script defined in your
   `Scarb.toml` file.
 
-# Whats is new since version 2.3.0
+# What is new since version 2.3.0
 
 - JSON containing Sierra code of Starknet contract class becomes: `contract.contract_class.json`.
 - JSON containing CASM code of Starknet contract class becomes: `contract.compiled_contract_class.json`.
@@ -346,7 +346,7 @@ mod ownable_contract {
 }
 ```
 
-Basically we decided to apply `components` on the section related to `ownership` and created a separeted module `ownable_component`. Then we kept the `data` section in our main module `ownable_contract`.
+Basically we decided to apply `components` on the section related to `ownership` and created a separated module `ownable_component`. Then we kept the `data` section in our main module `ownable_contract`.
 
 To get the full implementation of this project, navigate to the `src/` directory in the [examples/Ownable-Components](https://github.com/starknet-edu/starknetbook/examples/Ownable-Components) directory of the Starknet Book repo. The `src/lib.cairo` file contains the contract to practice with.
 
