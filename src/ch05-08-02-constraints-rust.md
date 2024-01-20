@@ -87,7 +87,7 @@ Each of the constraints above is represented by a polynomial that
 supposedly evaluates to on certain elements of the group . That is, for
 some , we claim that
 
-(note that for the first two constaints, because they only refer to one
+(note that for the first two constraints, because they only refer to one
 point and for the third ).
 
 This is equivalent to saying that is divisible, as a polynomial, by all
