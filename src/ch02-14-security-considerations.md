@@ -372,10 +372,10 @@ If your smart contract requires storing private data on-chain, consider off-chai
 
 ## 5. Denial of Service.
 
-Denial of Service (DoS), also called griefing attack, entails a situation where the atacker causes grief for other users of the protocol. A DoS attacker cripples the functionality of a Smart Contract even if they gain no economic value from doing so. A major attack vector when it comes to Denial of Service is the gas exhaustion attack. In this attack, a malicious user can call a function that needs an excessive amount of gas for execution. The consequent exhaustion of gas can cause the smart contract to stop, thus denying services to legitimate users. 
+Denial of Service (DoS), also called griefing attack, entails a situation where the atacker causes grief for other users of the protocol. A DoS attacker cripples the functionality of a Smart Contract even if they gain no economic value from doing so. A major attack vector when it comes to Denial of Service is the gas exhaustion attack. In this attack, a malicious user can call a function that needs an excessive amount of gas for execution. The consequent exhaustion of gas can cause the smart contract to stop, thus denying services to legitimate users.
 
 ```rust
-    use starknet::ContractAddress; 
+    use starknet::ContractAddress;
     mod DoS {
         #[storage]
         struct Storage{
@@ -386,12 +386,13 @@ Denial of Service (DoS), also called griefing attack, entails a situation where 
         #[external(v0)]
         impl ITransactionImpl of ITransaction{
              fn transaction(ref self:ContractState, ) {
-                   
+
                    loop {
                     // very expensive computation
                    }
     }
 ```
+
 The minimalist contract above shows a transaction that would need intensive computation. The occurrence could result from an attacker calling the `transaction` function many times, leading to gas exhaustion.
 
 ### Recommendation:

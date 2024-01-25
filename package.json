@@ -7,6 +7,6 @@
   "devDependencies": {
     "all-contributors-cli": "^6.26.1",
     "husky": "^8.0.3",
-    "prettier": "3.0.3"
+    "prettier": "^3.2.4"
   }
 }
