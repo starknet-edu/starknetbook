@@ -5,8 +5,7 @@ version = "0.1.0"
 # See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest
 
 [dependencies]
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.7.1" } #v0.7.0
-starknet = ">=2.2.0"
+starknet = ">=2.5.0"
 
 [[target.starknet-contract]]
 sierra = true

@@ -89,7 +89,6 @@ mod hello {
         }
     #[external(v0)]
         fn set_name(ref self: ContractState, name: felt252) {
-            let previous = self.name.read();
             self.name.write(name);
         }
 }

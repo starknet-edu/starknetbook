@@ -40,14 +40,14 @@ mod ownable {
     }
 
     #[constructor]
-    fn constructor(ref self: ContractState, initial_owner: ContractAddress,) {
+    fn constructor(ref self: ContractState, initial_owner: ContractAddress) {
         self.owner.write(initial_owner);
         self.data.write(1);
     // Any variable of the storage that is not initialized
     // will have default value -> data = 0.
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl OwnableDataImpl of IData<ContractState> {
         fn other_func(self: @ContractState, other_contract: ContractAddress) -> felt252 {
             IDataDispatcher { contract_address: other_contract }.get_data()
@@ -63,14 +63,14 @@ mod ownable {
         }
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl OwnableTraitImpl of OwnableTrait<ContractState> {
         fn transfer_ownership(ref self: ContractState, new_owner: ContractAddress) {
             self.only_owner();
             let prev_owner = self.owner.read();
             self.owner.write(new_owner);
 
-            self.emit(OwnershipTransferred { prev_owner, new_owner, });
+            self.emit(OwnershipTransferred { prev_owner, new_owner });
         }
 
         fn owner(self: @ContractState) -> ContractAddress {
@@ -84,6 +84,30 @@ mod ownable {
             let caller = get_caller_address();
             assert(caller == self.owner.read(), 'Caller is not the owner');
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use ownable_starknet::ownable;
+    use ownable_starknet::{OwnableTraitDispatcher, OwnableTraitDispatcherTrait};
+    use starknet::{ContractAddress, Into, TryInto, OptionTrait};
+    use starknet::syscalls::deploy_syscall;
+    use result::ResultTrait;
+    use array::{ArrayTrait, SpanTrait};
+
+    #[test]
+    #[available_gas(10_000_000)]
+    fn unit_test() {
+        let admin_address: ContractAddress = 'admin'.try_into().unwrap();
+        let mut calldata = array![admin_address.into()];
+        let (address0, _) = deploy_syscall(
+            ownable::TEST_CLASS_HASH.try_into().unwrap(), 0, calldata.span(), false
+        )
+            .unwrap();
+        let mut contract0 = OwnableTraitDispatcher { contract_address: address0 };
+
+        assert(contract0.owner() == admin_address, 'Wrong owner');
     }
 }
 
