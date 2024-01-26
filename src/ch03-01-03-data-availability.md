@@ -10,7 +10,6 @@ Base layer blockchains such as Ethereum are evolving towards becoming Data Avail
 
 In parallel, Ethereum is undergoing a significant transition. Historically an execution-focused blockchain, Ethereum is now incorporating new Ethereum Improvement Proposals (EIPs) to shift its focus towards DA.
 
-
 ## Data Availability in Starknet
 
 1. **State Transition Process**: In Starknet, as in most blockchain networks, the system transitions from a state $n$ to state $(n+1)$ by executing a series of transactions within a block. In Starknet's case, this is done through the Cairo language.
@@ -25,7 +24,6 @@ If for some reason, both the sequencer and the Layer 2 full nodes stop respondin
 
 Although this situation is highly unlikely, its potential impact is significant. It would halt the progress of the network, preventing any state transitions and effectively freezing operations.
 
-
 ## State Diffs
 
 Starknet addresses the liveness problem through the transmission of validity proofs and state differences to Layer 1. This process is critical for ensuring that the network remains operational and its state can be verified independently of the sequencer and Layer 2 full nodes.
@@ -38,16 +36,16 @@ Starknet addresses the liveness problem through the transmission of validity pro
 
 The state diff involves a substantial amount of data. To manage this, the data is sent as 'cold data' to Layer 1. It implies that the data isn't directly stored but is made available in a way that requires significant transactional capacity to transfer to Layer 1.
 
-
 ## Data Availability and State Changes in Transactions
 
 **Transmitting Changes, Not Balances**: What Starknet sends to Layer 1 for data availability are the changes in state, not the new balances. This involves capturing how each transaction within a validity proof alters the state.
 
 1. **Example 1**: Consider a simple scenario with three participants: Jimmy, Rose, and Nick.
+
    - **Transaction Sequence**: Jimmy sends one ETH to Rose, then Rose sends half an ETH to Nick.
    - **State Changes Sent to Layer 1**: The data sent to Layer 1 would reflect that Jimmy has one ETH less, Rose has half an ETH more, and Nick also gains half an ETH.
 
-2. **Example 2**: The net changes are what matter. For instance, if Jimmy and Rose send ETH back and forth, but the end result is Jimmy having half an ETH more and Rose half an ETH less, only these net changes are sent to Layer 1.  
+2. **Example 2**: The net changes are what matter. For instance, if Jimmy and Rose send ETH back and forth, but the end result is Jimmy having half an ETH more and Rose half an ETH less, only these net changes are sent to Layer 1.
 
 <img alt="" src="img/ch03-state-diff-transactions.png" class="center" style="width: 70%;" />
 
@@ -56,7 +54,6 @@ This approach means that even with multiple transactions, the actual data sent f
 In cases where transactions between parties nullify each other (e.g., Rose sends one ETH to Nick, and then Nick sends it back), no change in the state occurs. Consequently, nothing is sent to Layer 1 for data availability, making it the cheapest form of transaction.
 
 Since the cost of sending data to Ethereum as cold data constitutes about 90% of a Layer 2 transaction's cost, reducing the amount of data sent can significantly impact overall transaction costs. Projects on Starknet often use strategies to minimize state changes in their transactions, thereby reducing the data sent to Layer 1 and lowering transaction costs.
-
 
 ## Reducing Data Availability Costs in Starknet
 
@@ -72,10 +69,9 @@ Starknet's adoption of this feature depends on its implementation on the Ethereu
 
 Volition introduces the concept of choosing where to store data for transaction liveness. Users can opt to post data either to Ethereum or off-chain alternatives such as a data availability committee, systems like Celestia, or EigenDA. The cost of using Volition varies based on the chosen storage option. Off-chain options are expected to be cheaper than using EIP 4844.
 
-The timeline for enabling Volition on Starknet is not yet determined, but it's certain to follow the support of EIP 4844. 
+The timeline for enabling Volition on Starknet is not yet determined, but it's certain to follow the support of EIP 4844.
 
-While EIP 4844's blob data approach will be beneficial for multiple rollups, Volition offers a unique advantage for Starknet by providing more flexibility in data storage and potentially lowering costs further. The implementation of Volition requires having a virtual machine that is not limited by the adherence to emulate the EVM, so a custom virtual machine like Cairo is required. 
-
+While EIP 4844's blob data approach will be beneficial for multiple rollups, Volition offers a unique advantage for Starknet by providing more flexibility in data storage and potentially lowering costs further. The implementation of Volition requires having a virtual machine that is not limited by the adherence to emulate the EVM, so a custom virtual machine like Cairo is required.
 
 ## Recreating Starknet's State
 
@@ -94,29 +90,29 @@ This process is a contingency plan for extreme scenarios where the sequencer and
 <img alt="" src="img/ch03-recreate-state.png" class="center" style="width: 70%;" />
 
 This process ensures that the network's state is never lost and can always be recovered from Layer 1 data.
- 
- 
+
 ## The StarknetOS
 
 The StarknetOS, the last step inside the Sequencer, plays a crucial role in determining why the state diff is the output of the SHARP and how it interacts with the network's state. The StarknetOS is based on Cairo Zero, an older version of the Cairo programming language.
 
-<img alt="" src="img/ch03-starknetos-sequencer.png" class="center" style="width: 20%;" />  
+<img alt="" src="img/ch03-starknetos-sequencer.png" class="center" style="width: 20%;" />
 
 The StarknetOS receives four main inputs:
-   - The current state of the network.
-   - New blocks created since the last validity proof was sent to Layer 1. These include declare_account and invoke transactions.
-   - Class hashes resulting from declared transactions.
-   - Compiled class hashes resulting from declared transactions.
+
+- The current state of the network.
+- New blocks created since the last validity proof was sent to Layer 1. These include declare_account and invoke transactions.
+- Class hashes resulting from declared transactions.
+- Compiled class hashes resulting from declared transactions.
 
 The StarknetOS takes the current state and processes the new transactions and blocks. It evaluates what changes occur in the state as a result of these transactions. The output from this process includes:
-   - The state diff: Changes in the state.
-   - Class hashes of newly declared smart contracts.
-   - Compiled class hashes of newly declared smart contracts.
 
-<img alt="" src="img/ch03-starknetos.png" class="center" style="width: 70%;" />  
+- The state diff: Changes in the state.
+- Class hashes of newly declared smart contracts.
+- Compiled class hashes of newly declared smart contracts.
+
+<img alt="" src="img/ch03-starknetos.png" class="center" style="width: 70%;" />
 
 The sequencer executes numerous transactions and creates blocks. When enough blocks accumulate, they trigger the creation of a validity proof. These blocks are passed to the StarknetOS to calculate the state diff, class hashes, and compiled class hashes. This is the information that the Prover is tasked with proving. The output from the [Blockchain Writer](https://etherscan.io/address/0x16d5783a96ab20c9157d7933ac236646b29589a4), therefore, includes these three elements: state diff, class hashes, and compiled class hashes. This output is what gets sent to the memory pages smart contract on Ethereum.
-
 
 ## The Blockchain Writer Module
 
@@ -130,14 +126,13 @@ Internally, SHARP utilizes an Externally Owned Account (EOA) specifically for in
 
 3. **Final Step in Data Transmission**: The Blockchain Writer represents the final step in the process where the proven data from Starknet's internal operations is transmitted to Ethereum for storage and verification.
 
-<img alt="" src="img/ch03-blockchain-writer.png" class="center" style="width: 70%;" />  
+<img alt="" src="img/ch03-blockchain-writer.png" class="center" style="width: 70%;" />
 
 This is Ethereum address of the Blockchain Writer, which is by itself an EOA holding resources: [0x16d5783a96ab20c9157d7933ac236646b29589a4](https://etherscan.io/address/0x16d5783a96ab20c9157d7933ac236646b29589a4).
 
 The cost for data availability in Starknet, as handled by SHARP, is a direct expense. There isn't any form of subsidy for these costs. SHARP bears the full financial responsibility for the block space required on Ethereum. The lack of subsidy in DA costs directly influences the fees users pay for transactions on Starknet.
 
 A closer look at the transactions emanating from the [Blockchain Writer](https://etherscan.io/address/0x16d5783a96ab20c9157d7933ac236646b29589a4), which are responsible for DA, reveals substantial costs. SHARP incurs millions of dollars in expenses for block space on Ethereum each month.
-
 
 ## Data Availability Modes
 
@@ -165,8 +160,8 @@ Currently, there are three primary modes, with two already in use and a third on
 
 The following table summarizes the key characteristics of each mode:
 
-| Mode     | Definition                                    | Advantages                                 | Cost           | Example   |
-|----------|-----------------------------------------------|--------------------------------------------|----------------|-----------|
-| Rollup   | Data posted on Ethereum; a Layer 2 solution.  | Reliable, robust data availability.        | Higher cost.   | Starknet   |
-| Validium | Data stored off-chain, not on Ethereum.       | Lower transaction costs.                   | Lower cost.    | StarkEx   |
-| Volition | Hybrid mode, choice of on-chain or off-chain. | Balance between cost and data availability. | -              | -         |
+| Mode     | Definition                                    | Advantages                                  | Cost         | Example  |
+| -------- | --------------------------------------------- | ------------------------------------------- | ------------ | -------- |
+| Rollup   | Data posted on Ethereum; a Layer 2 solution.  | Reliable, robust data availability.         | Higher cost. | Starknet |
+| Validium | Data stored off-chain, not on Ethereum.       | Lower transaction costs.                    | Lower cost.  | StarkEx  |
+| Volition | Hybrid mode, choice of on-chain or off-chain. | Balance between cost and data availability. | -            | -        |
