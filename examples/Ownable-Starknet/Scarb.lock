@@ -4,11 +4,3 @@ version = 1
 [[package]]
 name = "ownable_starknet"
 version = "0.1.0"
-dependencies = [
- "snforge_std",
-]
-
-[[package]]
-name = "snforge_std"
-version = "0.1.0"
-source = "git+https://github.com/foundry-rs/starknet-foundry?tag=v0.7.1#d1bd8b9a361d437e8eaeb4ebffac291a48b4c920"

@@ -42,6 +42,7 @@
   - [Transactions](ch03-01-transactions.md)
     - [Transactions Lifecycle](ch03-01-01-transactions-lifecycle.md)
     - [Fee Mechanism](ch03-01-02-fee-mechanism.md)
+  - [Data Availability](ch03-01-03-data-availability.md)
   - [Sequencers](ch03-02-sequencers.md)
     - [Madara 🚧](ch03-02-01-madara.md)
   - [Provers 🚧](ch03-03-provers.md)
