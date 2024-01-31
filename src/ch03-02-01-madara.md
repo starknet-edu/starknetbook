@@ -6,6 +6,6 @@ Madara is a Starknet sequencer that operates on the Substrate framework, executi
 
 ## Get Started with Madara
 
-Visit the [GitHub repository](https://github.com/madara) for detailed instructions on installing and configuring Madara, including practical examples.
+Visit the [GitHub repository](https://github.com/keep-starknet-strange/madara) for detailed instructions on installing and configuring Madara, including practical examples.
 
 ## TODO: ADD EXAMPLES OF HOW TO SET UP AND USE MADARA
