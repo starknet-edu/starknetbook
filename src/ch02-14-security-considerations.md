@@ -370,6 +370,37 @@ Moreover, using a block explorer, we can view the deployed parameters in the tra
 
 If your smart contract requires storing private data on-chain, consider off-chain encryption before sending data to the blockchain. Alternatively, explore options like hashes, merkle trees, or commit-reveal patterns to maintain data privacy.
 
+## 6. Denial of Service.
+
+Denial of Service (DoS), also called griefing attack, entails a situation where the atacker causes grief for other users of the protocol. A DoS attacker cripples the functionality of a Smart Contract even if they gain no economic value from doing so. A major attack vector when it comes to Denial of Service is the gas exhaustion attack. In this attack, a malicious user can call a function that needs an excessive amount of gas for execution. The consequent exhaustion of gas can cause the smart contract to stop, thus denying services to legitimate users.
+
+```rust
+    use starknet::ContractAddress;
+    mod DoS {
+        #[storage]
+        struct Storage{
+            // Stored variables
+        }
+
+
+        #[external(v0)]
+        impl ITransactionImpl of ITransaction{
+             fn transaction(ref self:ContractState, ) {
+
+                   loop {
+                    // very expensive computation
+                   }
+            }
+        }
+    }
+```
+
+The minimalist contract above shows a transaction that would need intensive computation. The occurrence could result from an attacker calling the `transaction` function many times, leading to gas exhaustion.
+
+### Recommendation:
+
+The smart contract has to be minimized as much as possible to reduce gas consumption. Gas limits could also be incorporated when designing functions. The developer should also try to estimate gas usage every step, to ensure that all aspects are carefully accounted for.
+
 ## Call for Contributions: Additional Vulnerabilities
 
 We've discussed several common vulnerabilities in Cairo smart contracts, but many other security risks need attention. We invite community contributions to expand this chapter with more vulnerabilities:
@@ -378,7 +409,6 @@ We've discussed several common vulnerabilities in Cairo smart contracts, but man
 - Flash Loan Attacks
 - Oracle Manipulation
 - Bad Randomness
-- Denial of Service
 - Untrusted Delegate Calls
 - Public Burn
 
