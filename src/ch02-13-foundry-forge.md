@@ -47,7 +47,7 @@ sierra = true
 
 ### Requirements for snforge
 
-Before you run `snforge test` there a need :
+Before you run `snforge test` certain prerequisites must be addressed:
 
 1. Install the lastest [scarb version](#https://docs.swmansion.com/scarb/docs.html).
 2. Install [starknet-foundry](#https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html) by running this command:
@@ -58,9 +58,9 @@ Before you run `snforge test` there a need :
 Follow the instructions and then run:
 `snfoundryup`
 
-3.  Check your `snforge` version, run :
+3. Check your `snforge` version, run :
+   `snforge version`
 
-`snforge version`
 As athe time of this tutorial, we used `snforge` version `snforge 0.16.0` which is the lastest at this time.
 
 ### Test
@@ -212,8 +212,6 @@ fn test_cannot_increase_balance_with_zero_value() {
             assert(*panic_data.at(0) == 'Amount cannot be 0', *panic_data.at(0));
         }
     };
-}
-
 }
 ```
 
@@ -485,8 +483,6 @@ Constructor
             }
         }
     }
-}
-
 ```
 
 This contract allows minting tokens to a recipient during deployment, checking balances, and transferring tokens, relying on the openzeppelin ERC20 library.
@@ -813,7 +809,7 @@ The fuzzer supports these types by February 2024:
 It is possible to configure the number of runs of the random fuzzer as well as its seed for a specific test case:
 
 ```
-   #[test]
+#[test]
 #[fuzzer(runs: 22, seed: 38)]
 fn test_sum(x: felt252, y: felt252) {
     assert(sum(x, y) == x + y, 'sum incorrect');
@@ -823,14 +819,13 @@ fn test_sum(x: felt252, y: felt252) {
 It can also be configured globally, via command line arguments:
 
 ```shell
-   $ snforge test --fuzzer-runs 1234 --fuzzer-seed 1111
-
+$ snforge test --fuzzer-runs 1234 --fuzzer-seed 1111
 ```
 
 Or in `scarb.toml`:
 
 ```shell
-   # ...
+# ...
 [tool.snforge]
 fuzzer_runs = 1234
 fuzzer_seed = 1111
