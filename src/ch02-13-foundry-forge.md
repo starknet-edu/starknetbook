@@ -50,23 +50,22 @@ sierra = true
 Before you run `snforge test` there a need :
 
 1. Install the lastest [scarb version](#https://docs.swmansion.com/scarb/docs.html).
-2. Install [starknet-foundry](#https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html) by running this command: 
-   
-   
+2. Install [starknet-foundry](#https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html) by running this command:
+
 `curl -L https://raw.githubusercontent.com/foundry-rs/starknet-foundry/master/scripts/install.sh | sh
 `
 
- Follow the instructions and then run:
- `snfoundryup`  
+Follow the instructions and then run:
+`snfoundryup`
 
- 3. Check your `snforge` version, run :
-   
-   `snforge version`
+3.  Check your `snforge` version, run :
+
+`snforge version`
 As athe time of this tutorial, we used `snforge` version `snforge 0.16.0` which is the lastest at this time.
 
 ### Test
 
- Run tests using `snforge test`:
+Run tests using `snforge test`:
 
 ```shell
 snforge
@@ -118,7 +117,7 @@ snforge
 Sample output might resemble:
 
 ```shell
- 
+
 Collected 2 test(s) from tesingg package
 Running 0 test(s) from src/
 Running 2 test(s) from tests/
@@ -142,7 +141,7 @@ trait IHelloStarknet<TContractState> {
 mod HelloStarknet {
     #[storage]
     struct Storage {
-        balance: felt252, 
+        balance: felt252,
     }
 
     #[abi(embed_v0)]
@@ -274,8 +273,8 @@ Importing necessary libraries
 
     use starknet::ContractAddress;
     use starknet::get_caller_address;
-    use starknet::contract_address_const; 
-    
+    use starknet::contract_address_const;
+
 Similar to address(0) in Solidity
 
     use core::zeroable::Zeroable;
@@ -321,11 +320,11 @@ Constructor
 
     #[constructor]
     fn constructor(ref self: ContractState, // _name: felt252,
-    
+
     recipient: ContractAddress) {
         // The .is_zero() method here is used to determine whether the address type recipient is a 0 address, similar to recipient == address(0) in Solidity.
         assert(!recipient.is_zero(), 'transfer to zero address');
-        
+
         self.name.write('ERC20Token');
         self.symbol.write('ECT');
         self.decimals.write(18);
@@ -376,7 +375,7 @@ Constructor
             assert(self.balances.read(recipient) >= amount, Errors::INSUFFICIENT_FUND);
             self.balances.write(recipient, self.balances.read(recipient) + amount);
             self.total_supply.write(self.total_supply.read() - amount);
-            // call tranfer 
+            // call tranfer
             // Transfer(Zeroable::zero(), recipient, amount);
 
             true
@@ -513,15 +512,13 @@ mod test {
 
 For testing, you'll need a helper function to deploy the contract instance.
 
- This function requires a `supply` amount and `recipient` address:
+This function requires a `supply` amount and `recipient` address:
 
 Before deploying a starknet contract, we need a contract_class.
 
- Get it using the declare function from [starknet Foundry](#https://foundry-rs.github.io/starknet-foundry/)
+Get it using the declare function from [starknet Foundry](#https://foundry-rs.github.io/starknet-foundry/)
 
- Supply values the constructor arguements when deploying
-
-
+Supply values the constructor arguements when deploying
 
 ```
 
@@ -536,7 +533,7 @@ Before deploying a starknet contract, we need a contract_class.
 
 ```
 
- Generate an address
+Generate an address
 
 ```
 
@@ -558,7 +555,6 @@ Before deploying a starknet contract, we need a contract_class.
 
 ```
 
-
 Use `declare` and `ContractClassTrait` from `snforge_std`. Then, initialize the `supply` and `recipient`, declare the contract, compute the calldata, and deploy.
 
 ### Writing the Test Cases
@@ -566,7 +562,6 @@ Use `declare` and `ContractClassTrait` from `snforge_std`. Then, initialize the 
 ### Verifying the contract details After Deployment using Fuzz testing
 
 To begin, test the deployment helper function to confirm the details provided:
-
 
 ```
 #[test]
@@ -746,7 +741,6 @@ To begin, test the deployment helper function to confirm the details provided:
     }
 ```
 
-
 Running `snforge test` produces:
 
 ```shell
@@ -766,16 +760,17 @@ Running 12 test(s) from src/
 [PASS] testing::ERC20Token::test::test_increase_allowance(gas: ~3125)
 Tests: 12 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 ```
+
 # Fuzz Testing
 
-Fuzz testing introduces random inputs to the code to identify vulnerabilities, security issues, and unforeseen behaviors. While you can manually provide these inputs, automation is preferable when testing a broad set of values. 
+Fuzz testing introduces random inputs to the code to identify vulnerabilities, security issues, and unforeseen behaviors. While you can manually provide these inputs, automation is preferable when testing a broad set of values.
 
 Let discuss Random Fuzz Testing as a type of Fuzz testing:
 
 ## Random Fuzz testing
 
 To convert a test to a random fuzz test, simply add arguments to the test function. These arguments can then be used in the test body. The test will be run many times against different randomly generated values.
- See the example below in `test_fuzz.cairo`:
+See the example below in `test_fuzz.cairo`:
 
 ```
 fn sum(a: felt252, b: felt252) -> felt252 {
@@ -787,7 +782,8 @@ fn test_sum(x: felt252, y: felt252) {
     assert(sum(x, y) == x + y, 'sum incorrect');
 }
 ```
-Then run `snforge test` 
+
+Then run `snforge test`
 
 ```
 Running 0 test(s) from tests/
@@ -799,7 +795,7 @@ Tests: 0 passed, 1 failed, 0 skipped, 0 ignored, 0 filtered out
     [PASS] tests::test_fuzz::test_fuzz_sum (fuzzer runs = 256)
     Tests: 1 passed, 0 failed, 0 skipped
 Fuzzer seed: 214510115079707873
-    
+
 ```
 
 The fuzzer supports these types by February 2024:
