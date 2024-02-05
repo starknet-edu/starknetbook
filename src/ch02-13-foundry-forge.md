@@ -8,10 +8,10 @@ To utilize Forge, define test functions and label them with test attributes. Use
 
 This section guides you through the Starknet Foundry `snforge` command-line tool. Learn how to set up a new project, compile the code, and execute tests.
 
-To start a new project with Starknet Foundry, use the `--init` command and replace `project_name` with your project's name.
+To start a new project with Starknet Foundry, use the `snforge init` command and replace `project_name` with your project's name.
 
 ```shell
-snforge --init project_name
+snforge init project_name
 ```
 
 Once you've set up the project, inspect its layout:
@@ -35,26 +35,47 @@ The project structure is as follows:
 - `tests/` is the location of your test files.
 - `Scarb.toml` is for project and **`snforge`** configurations.
 
-Ensure the CASM code generation is active in the `Scarb.toml` file:
+Ensure the CASM and SIERRA code generation is active in the `Scarb.toml` file:
 
 ```shell
 # ...
 [[target.starknet-contract]]
 casm = true
+sierra = true
 # ...
 ```
 
-To run tests using `snforge`:
+### Requirements for snforge
+
+Before you run `snforge test` certain prerequisites must be addressed:
+
+1. Install the lastest [scarb version](#https://docs.swmansion.com/scarb/docs.html).
+2. Install [starknet-foundry](#https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html) by running this command:
+
+`curl -L https://raw.githubusercontent.com/foundry-rs/starknet-foundry/master/scripts/install.sh | sh
+`
+
+Follow the instructions and then run:
+`snfoundryup`
+
+3. Check your `snforge` version, run :
+   `snforge version`
+
+As athe time of this tutorial, we used `snforge` version `snforge 0.16.0` which is the lastest at this time.
+
+### Test
+
+Run tests using `snforge test`:
 
 ```shell
 snforge
 
-Collected 2 test(s) from the `test_name` package
-Running 0 test(s) from `src/`
-Running 2 test(s) from `tests/`
-[PASS] tests::test_contract::test_increase_balance
-[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value
-Tests: 2 passed, 0 failed, 0 skipped
+Collected 2 test(s) from tesing package
+Running 0 test(s) from src/
+Running 2 test(s) from tests/
+[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
+[PASS] tests::test_contract::test_increase_balance (gas: ~3065)
+Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 ```
 
 ## Integrating `snforge` with Existing Scarb Projects
@@ -64,7 +85,7 @@ For those with an established Scarb project who wish to incorporate `snforge`, e
 ```shell
 # ...
 [dependencies]
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "[VERSION]" }
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.16.0" }
 ```
 
 Ensure the tag version corresponds with your `snforge` version. To verify your `snforge` version:
@@ -76,14 +97,14 @@ snforge --version
 Or, add this dependency using the `scarb` command:
 
 ```shell
-scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git --tag VERSION
+scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git --tag v0.16.0
 ```
 
 With these steps, your existing Scarb project is now **`snforge`**-ready.
 
 ## Testing with `snforge`
 
-Utilize Starknet Foundry's `snforge` command to efficiently run tests.
+Utilize Starknet Foundry's `snforge test` command to efficiently run tests.
 
 ### Executing Tests
 
@@ -96,19 +117,20 @@ snforge
 Sample output might resemble:
 
 ```shell
-Collected 3 test(s) from `package_name` package
-Running 3 test(s) from `src/`
-[PASS] package_name::executing
-[PASS] package_name::calling
-[PASS] package_name::calling_another
-Tests: 3 passed, 0 failed, 0 skipped
+
+Collected 2 test(s) from tesingg package
+Running 0 test(s) from src/
+Running 2 test(s) from tests/
+[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
+[PASS] tests::test_contract::test_increase_balance (gas: ~3065)
+Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 ```
 
 ## Example: Testing a Simple Contract
 
 The example provided below demonstrates how to test a Starknet contract using `snforge`.
 
-```rust
+```
 #[starknet::interface]
 trait IHelloStarknet<TContractState> {
     fn increase_balance(ref self: TContractState, amount: felt252);
@@ -122,20 +144,19 @@ mod HelloStarknet {
         balance: felt252,
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl HelloStarknetImpl of super::IHelloStarknet<ContractState> {
-        // Increases the balance by the specified amount.
         fn increase_balance(ref self: ContractState, amount: felt252) {
+            assert(amount != 0, 'Amount cannot be 0');
             self.balance.write(self.balance.read() + amount);
         }
-
-        // Returns the balance.
 
         fn get_balance(self: @ContractState) -> felt252 {
             self.balance.read()
         }
     }
 }
+
 ```
 
 Remember, the identifier following `mod` signifies the contract name. Here, the contract name is `HelloStarknet`.
@@ -144,38 +165,65 @@ Remember, the identifier following `mod` signifies the contract name. Here, the 
 
 Below is a test for the **`HelloStarknet`** contract. This test deploys **`HelloStarknet`** and interacts with its functions:
 
-```rust
-use snforge_std::{ declare, ContractClassTrait };
+```
+use starknet::ContractAddress;
+
+use snforge_std::{declare, ContractClassTrait};
+
+use tesingg::IHelloStarknetSafeDispatcher;
+use tesingg::IHelloStarknetSafeDispatcherTrait;
+use tesingg::IHelloStarknetDispatcher;
+use tesingg::IHelloStarknetDispatcherTrait;
+
+fn deploy_contract(name: felt252) -> ContractAddress {
+    let contract = declare(name);
+    contract.deploy(@ArrayTrait::new()).unwrap()
+}
 
 #[test]
-fn call_and_invoke() {
-    // Declare and deploy the contract
-    let contract = declare('HelloStarknet');
-    let contract_address = contract.deploy(@ArrayTrait::new()).unwrap();
+fn test_increase_balance() {
+    let contract_address = deploy_contract('HelloStarknet');
 
-    // Instantiate a Dispatcher object for contract interactions
     let dispatcher = IHelloStarknetDispatcher { contract_address };
 
-    // Invoke a contract's view function
-    let balance = dispatcher.get_balance();
-    assert(balance == 0, 'balance == 0');
+    let balance_before = dispatcher.get_balance();
+    assert(balance_before == 0, 'Invalid balance');
 
-    // Invoke another function to modify the storage state
-    dispatcher.increase_balance(100);
+    dispatcher.increase_balance(42);
 
-    // Validate the transaction's effect
-    let balance = dispatcher.get_balance();
-    assert(balance == 100, 'balance == 100');
+    let balance_after = dispatcher.get_balance();
+    assert(balance_after == 42, 'Invalid balance');
+}
+
+#[test]
+fn test_cannot_increase_balance_with_zero_value() {
+    let contract_address = deploy_contract('HelloStarknet');
+
+    let safe_dispatcher = IHelloStarknetSafeDispatcher { contract_address };
+
+    #[feature("safe_dispatcher")]
+    let balance_before = safe_dispatcher.get_balance().unwrap();
+    assert(balance_before == 0, 'Invalid balance');
+
+    #[feature("safe_dispatcher")]
+    match safe_dispatcher.increase_balance(0) {
+        Result::Ok(_) => panic_with_felt252('Should have panicked'),
+        Result::Err(panic_data) => {
+            assert(*panic_data.at(0) == 'Amount cannot be 0', *panic_data.at(0));
+        }
+    };
 }
 ```
 
 To run the test, execute the `snforge` command. The expected output is:
 
 ```shell
-Collected 1 test(s) from using_dispatchers package
-Running 1 test(s) from src/
-[PASS] using_dispatchers::call_and_invoke
-Tests: 1 passed, 0 failed, 0 skipped
+Collected 2 test(s) from tesing package
+Running 0 test(s) from src/
+Running 2 test(s) from tests/
+[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
+[PASS] tests::test_contract::test_increase_balance (gas: ~3065)
+Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 ```
 
 ## Example: Testing ERC20 Contract
@@ -184,58 +232,257 @@ There are several methods to test smart contracts, such as unit tests, integrati
 
 ## ERC20 Contract Example
 
-After setting up your foundry project, add the following dependency to your `Scarb.toml` (in this case we are using version 0.7.0 of the OpenZeppelin Cairo contracts, but you can use any version you want):
+After setting up your foundry project, add the following dependency to your `Scarb.toml` (in this case we are using version 0.8.0 of the OpenZeppelin Cairo contracts, due to the fact that it uses components):
 
 ```shell
-openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.7.0" }
+openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.8.1" }
 ```
 
 Here's a basic ERC20 contract:
 
-```rust
+```
 use starknet::ContractAddress;
-
 #[starknet::interface]
-trait Ierc20<TContractState> {
+trait IERC20<TContractState> {
+    fn get_name(self: @TContractState) -> felt252;
+    fn get_symbol(self: @TContractState) -> felt252;
+    fn get_decimals(self: @TContractState) -> u8;
+    fn get_total_supply(self: @TContractState) -> u256;
     fn balance_of(self: @TContractState, account: ContractAddress) -> u256;
-    fn transfer(ref self: TContractState, recipient: ContractAddress, amount: u256) -> bool;
+    fn allowance(self: @TContractState, owner: ContractAddress, spender: ContractAddress) -> u256;
+    fn transfer(ref self: TContractState, recipient: ContractAddress, amount: u256);
+    fn transfer_from(
+        ref self: TContractState, sender: ContractAddress, recipient: ContractAddress, amount: u256
+    );
+    fn approve(ref self: TContractState, spender: ContractAddress, amount: u256);
+    fn increase_allowance(ref self: TContractState, spender: ContractAddress, added_value: u256);
+    fn decrease_allowance(
+        ref self: TContractState, spender: ContractAddress, subtracted_value: u256
+    );
+
+
+    fn mint(ref self: TContractState, recipient: ContractAddress, amount: u256) -> bool;
 }
 
 #[starknet::contract]
-mod erc20 {
-    use starknet::ContractAddress;
-    use openzeppelin::token::erc20::ERC20;
+mod ERC20Token {
 
+Importing necessary libraries
+
+    use starknet::ContractAddress;
+    use starknet::get_caller_address;
+    use starknet::contract_address_const;
+
+Similar to address(0) in Solidity
+
+    use core::zeroable::Zeroable;
+    use super::IERC20;
+
+    //Stroge Variables
     #[storage]
-    struct Storage {}
+    struct Storage {
+        name: felt252,
+        symbol: felt252,
+        decimals: u8,
+        total_supply: u256,
+        balances: LegacyMap<ContractAddress, u256>,
+        allowances: LegacyMap<
+            (ContractAddress, ContractAddress), u256
+        >, //similar to mapping(address => mapping(address => uint256))
+    }
+    //  Event
+    #[event]
+    #[derive(Drop, starknet::Event)]
+    enum Event {
+        Approval: Approval,
+        Transfer: Transfer
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct Transfer {
+        from: ContractAddress,
+        to: ContractAddress,
+        value: u256
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct Approval {
+        owner: ContractAddress,
+        spender: ContractAddress,
+        value: u256,
+    }
+
+The contract constructor is not part of the interface. Nor are internal functions part of the interface.
+
+Constructor
 
     #[constructor]
-    fn constructor(
-        ref self: ContractState,
-        initial_supply: felt252,
-        recipient: ContractAddress
-    ) {
-        let name = 'MyToken';
-        let symbol = 'MTK';
+    fn constructor(ref self: ContractState, // _name: felt252,
 
-        let mut unsafe_state = ERC20::unsafe_new_contract_state();
-        ERC20::InternalImpl::initializer(ref unsafe_state, name, symbol);
-        ERC20::InternalImpl::_mint(ref unsafe_state, recipient, initial_supply.into());
+    recipient: ContractAddress) {
+        // The .is_zero() method here is used to determine whether the address type recipient is a 0 address, similar to recipient == address(0) in Solidity.
+        assert(!recipient.is_zero(), 'transfer to zero address');
+
+        self.name.write('ERC20Token');
+        self.symbol.write('ECT');
+        self.decimals.write(18);
+        self.total_supply.write(1000000);
+        self.balances.write(recipient, 1000000);
+
+        self
+            .emit(
+                Transfer { //Here, `contract_address_const::<0>()` is similar to address(0) in Solidity
+                    from: contract_address_const::<0>(), to: recipient, value: 1000000
+                }
+            );
     }
 
-    #[external(v0)]
-    impl Ierc20Impl of super::Ierc20<ContractState> {
+    #[abi(embed_v0)]
+    impl IERC20Impl of IERC20<ContractState> {
+        fn get_name(self: @ContractState) -> felt252 {
+            self.name.read()
+        }
+        fn get_symbol(self: @ContractState) -> felt252 {
+            self.symbol.read()
+        }
+
+        fn get_decimals(self: @ContractState) -> u8 {
+            self.decimals.read()
+        }
+
+        fn get_total_supply(self: @ContractState) -> u256 {
+            self.total_supply.read()
+        }
+
+
         fn balance_of(self: @ContractState, account: ContractAddress) -> u256 {
-            let unsafe_state = ERC20::unsafe_new_contract_state();
-            ERC20::ERC20Impl::balance_of(@unsafe_state, account)
+            self.balances.read(account)
         }
 
-        fn transfer(ref self: ContractState, recipient: ContractAddress, amount: u256) -> bool {
-            let mut unsafe_state = ERC20::unsafe_new_contract_state();
-            ERC20::ERC20Impl::transfer(ref unsafe_state, recipient, amount)
+        fn allowance(
+            self: @ContractState, owner: ContractAddress, spender: ContractAddress
+        ) -> u256 {
+            self.allowances.read((owner, spender))
+        }
+
+     fn mint(ref self: ContractState, recipient: ContractAddress, amount: u256) -> bool {
+            let owner = self.owner.read();
+            let caller = get_caller_address();
+            assert(owner == caller, Errors::CALLER_NOT_OWNER);
+            assert(!recipient.is_zero(), Errors::ADDRESS_ZERO);
+            assert(self.balances.read(recipient) >= amount, Errors::INSUFFICIENT_FUND);
+            self.balances.write(recipient, self.balances.read(recipient) + amount);
+            self.total_supply.write(self.total_supply.read() - amount);
+            // call tranfer
+            // Transfer(Zeroable::zero(), recipient, amount);
+
+            true
+        }
+
+
+        fn transfer(ref self: ContractState, recipient: ContractAddress, amount: u256) {
+            let caller = get_caller_address();
+            self.transfer_helper(caller, recipient, amount);
+        }
+
+        fn transfer_from(
+            ref self: ContractState,
+            sender: ContractAddress,
+            recipient: ContractAddress,
+            amount: u256
+        ) {
+            let caller = get_caller_address();
+            let my_allowance = self.allowances.read((sender, caller));
+
+            assert(my_allowance > 0, 'You have no token approved');
+            assert(amount <= my_allowance, 'Amount Not Allowed');
+            // assert(my_allowance <= amount, 'Amount Not Allowed');
+
+            self
+                .spend_allowance(
+                    sender, caller, amount
+                ); //responsible for deduction of the amount allowed to spend
+            self.transfer_helper(sender, recipient, amount);
+        }
+
+        fn approve(ref self: ContractState, spender: ContractAddress, amount: u256) {
+            let caller = get_caller_address();
+            self.approve_helper(caller, spender, amount);
+        }
+
+        fn increase_allowance(
+            ref self: ContractState, spender: ContractAddress, added_value: u256
+        ) {
+            let caller = get_caller_address();
+            self
+                .approve_helper(
+                    caller, spender, self.allowances.read((caller, spender)) + added_value
+                );
+        }
+
+        fn decrease_allowance(
+            ref self: ContractState, spender: ContractAddress, subtracted_value: u256
+        ) {
+            let caller = get_caller_address();
+            self
+                .approve_helper(
+                    caller, spender, self.allowances.read((caller, spender)) - subtracted_value
+                );
         }
     }
-}
+
+    #[generate_trait]
+    impl HelperImpl of HelperTrait {
+        fn transfer_helper(
+            ref self: ContractState,
+            sender: ContractAddress,
+            recipient: ContractAddress,
+            amount: u256
+        ) {
+            let sender_balance = self.balance_of(sender);
+
+            assert(!sender.is_zero(), 'transfer from 0');
+            assert(!recipient.is_zero(), 'transfer to 0');
+            assert(sender_balance >= amount, 'Insufficient fund');
+            self.balances.write(sender, self.balances.read(sender) - amount);
+            self.balances.write(recipient, self.balances.read(recipient) + amount);
+            true;
+
+            self.emit(Transfer { from: sender, to: recipient, value: amount, });
+        }
+
+        fn approve_helper(
+            ref self: ContractState, owner: ContractAddress, spender: ContractAddress, amount: u256
+        ) {
+            assert(!owner.is_zero(), 'approve from 0');
+            assert(!spender.is_zero(), 'approve to 0');
+
+            self.allowances.write((owner, spender), amount);
+
+            self.emit(Approval { owner, spender, value: amount, })
+        }
+
+        fn spend_allowance(
+            ref self: ContractState, owner: ContractAddress, spender: ContractAddress, amount: u256
+        ) {
+            // First, read the amount authorized by owner to spender
+            let current_allowance = self.allowances.read((owner, spender));
+
+            // define a variable ONES_MASK of type u128
+            let ONES_MASK = 0xfffffffffffffffffffffffffffffff_u128;
+
+            // to determine whether the authorization is unlimited,
+
+            let is_unlimited_allowance = current_allowance.low == ONES_MASK
+                && current_allowance
+                    .high == ONES_MASK; //equivalent to type(uint256).max in Solidity.
+
+            // This is also a way to save gas, because if the authorized amount is the maximum value of u256, theoretically, this amount cannot be spent.
+            if !is_unlimited_allowance {
+                self.approve_helper(owner, spender, current_allowance - amount);
+            }
+        }
+    }
 ```
 
 This contract allows minting tokens to a recipient during deployment, checking balances, and transferring tokens, relying on the openzeppelin ERC20 library.
@@ -244,191 +491,310 @@ This contract allows minting tokens to a recipient during deployment, checking b
 
 Organize your test file and include the required imports:
 
-```rust
+```
 #[cfg(test)]
-mod tests {
-    use array::ArrayTrait;
-    use result::ResultTrait;
-    use option::OptionTrait;
-    use traits::TryInto;
+mod test {
+    use core::serde::Serde;
+    use super::{IERC20, ERC20Token, IERC20Dispatcher, IERC20DispatcherTrait};
     use starknet::ContractAddress;
-    use starknet::Felt252TryIntoContractAddress;
-    use snforge_std::{declare, ContractClassTrait};
-    // Additional code here.
+    use starknet::contract_address::contract_address_const;
+    use core::array::ArrayTrait;
+    use snforge_std::{declare, ContractClassTrait, fs::{FileTrait, read_txt}};
+    use snforge_std::{start_prank, stop_prank, CheatTarget};
+    use snforge_std::PrintTrait;
+    use core::traits::{Into, TryInto};
 }
 ```
 
-For testing, you'll need a helper function to deploy the contract instance. This function requires a `supply` amount and `recipient` address:
+For testing, you'll need a helper function to deploy the contract instance.
 
-```rust
-use snforge_std::{declare, ContractClassTrait};
+This function requires a `supply` amount and `recipient` address:
 
-fn deploy_contract(name: felt252) -> ContractAddress {
-    let recipient = starknet::contract_address_const::<0x01>();
-    let supply: felt252 = 20000000;
-    let contract = declare(name);
-    let mut calldata = array![supply, recipient.into()];
-    contract.deploy(@calldata).unwrap()
-}
-// Additional code here.
+Before deploying a starknet contract, we need a contract_class.
+
+Get it using the declare function from [starknet Foundry](#https://foundry-rs.github.io/starknet-foundry/)
+
+Supply values the constructor arguements when deploying
+
+```
+
+    fn deploy_contract() -> ContractAddress {
+        let erc20contract_class = declare('
+        ERC20Token');
+        let file = FileTrait::new('data/constructor_args.txt');
+        let constructor_args = read_txt(@file);
+        let contract_address = erc20contract_class.deploy(@constructor_args).unwrap();
+        contract_address
+    }
+
+```
+
+Generate an address
+
+```
+
+    mod Account {
+        use starknet::ContractAddress;
+        use core::traits::TryInto;
+
+        fn User1() -> ContractAddress {
+            'user1'.try_into().unwrap()
+        }
+        fn User2() -> ContractAddress {
+            'user2'.try_into().unwrap()
+        }
+
+        fn admin() -> ContractAddress {
+            'admin'.try_into().unwrap()
+        }
+    }
+
 ```
 
 Use `declare` and `ContractClassTrait` from `snforge_std`. Then, initialize the `supply` and `recipient`, declare the contract, compute the calldata, and deploy.
 
 ### Writing the Test Cases
 
-#### Verifying the Balance After Deployment
+### Verifying the contract details After Deployment using Fuzz testing
 
-To begin, test the deployment helper function to confirm the recipient's balance:
+To begin, test the deployment helper function to confirm the details provided:
 
-```rust
-    // ...
-    use erc20_contract::erc20::Ierc20SafeDispatcher;
-    use erc20_contract::erc20::Ierc20SafeDispatcherTrait;
+```
+#[test]
+    fn test_constructor() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+        // let name = dispatcher.get_name();
+        let name = dispatcher.get_name();
 
-    #[test]
-    #[available_gas(3000000000000000)]
-    fn test_balance_of() {
-        let contract_address = deploy_contract('erc20');
-        let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
-        let recipient = starknet::contract_address_const::<0x01>();
-        let balance = safe_dispatcher.balance_of(recipient).unwrap();
-        assert(balance == 20000000, 'Invalid Balance');
+        assert(name == 'ERC20Token', 'name is not correct');
     }
-```
-
-Execute `snforge` to verify:
-
-```shell
-Collected 1 test from erc20_contract package
-[PASS] tests::test_erc20::test_balance_of
-```
-
-#### Utilizing Foundry Cheat Codes
-
-When testing smart contracts, simulating different conditions is essential. `Foundry Cheat Codes` from the `snforge_std` library offer these simulation capabilities for Starknet smart contracts.
-
-These cheat codes consist of helper functions that adjust the smart contract's environment. They allow developers to modify parameters or conditions to examine contract behavior in specific scenarios.
-
-Using `snforge_std`'s cheat codes, you can change elements like block numbers, timestamps, or even the caller of a function. This guide focuses on `start_prank` and `stop_prank`. You can find a reference to available cheat codes [here](https://foundry-rs.github.io/starknet-foundry/appendix/cheatcodes.html)
-
-Below is a transfer test example:
-
-```rust
-    use snforge_std::{declare, ContractClassTrait, start_prank, stop_prank};
 
     #[test]
-    #[available_gas(3000000000000000)]
+    fn test_decimal_is_correct() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+        let decimal = dispatcher.get_decimals();
+
+        assert(decimal == 18, 'Decimal is not correct');
+    }
+
+    #[test]
+    fn test_total_supply() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+        let total_supply = dispatcher.get_total_supply();
+
+        assert(total_supply == 1000000, 'Total supply is wrong');
+    }
+
+    #[test]
+    fn test_address_balance() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+        let balance = dispatcher.get_total_supply();
+        let admin_balance = dispatcher.balance_of(Account::admin());
+        assert(admin_balance == balance, Errors::INVALID_BALANCE);
+
+        start_prank(CheatTarget::One(contract_address), Account::admin());
+
+        dispatcher.transfer(Account::user1(), 10);
+        let new_admin_balance = dispatcher.balance_of(Account::admin());
+        assert(new_admin_balance == balance - 10, Errors::INVALID_BALANCE);
+        stop_prank(CheatTarget::One(contract_address));
+
+        let user1_balance = dispatcher.balance_of(Account::user1());
+        assert(user1_balance == 10, Errors::INVALID_BALANCE);
+    }
+
+    #[test]
+    #[fuzzer(runs: 22, seed: 38)]
+    fn test_allowance(amount: u256) {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+
+        start_prank(CheatTarget::One(contract_address), Account::admin());
+        dispatcher.approve(contract_address, 20);
+
+        let currentAllowance = dispatcher.allowance(Account::admin(), contract_address);
+
+        assert(currentAllowance == 20, Errors::NOT_ALLOWED);
+        stop_prank(CheatTarget::One(contract_address));
+    }
+
+    #[test]
     fn test_transfer() {
-        let contract_address = deploy_contract('erc20');
-        let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
 
-        let sender = starknet::contract_address_const::<0x01>();
-        let receiver = starknet::contract_address_const::<0x02>();
-        let amount : felt252 = 10000000;
+        // Get original balances
+        let original_sender_balance = dispatcher.balance_of(Account::admin());
+        let original_recipient_balance = dispatcher.balance_of(Account::user1());
 
-        // Set the function's caller
-        start_prank(contract_address, sender);
-        safe_dispatcher.transfer(receiver.into(), amount.into());
+        start_prank(CheatTarget::One(contract_address), Account::admin());
 
-        let balance_after_transfer = safe_dispatcher.balance_of(receiver).unwrap();
-        assert(balance_after_transfer == 10000000, 'Incorrect Amount');
+        dispatcher.transfer(Account::user1(), 50);
 
-        // End the prank
-        stop_prank(contract_address);
+        // Confirm that the funds have been sent!
+        assert(
+            dispatcher.balance_of(Account::admin()) == original_sender_balance - 50,
+            Errors::FUNDS_NOT_SENT
+        );
+
+        // Confirm that the funds have been recieved!
+        assert(
+            dispatcher.balance_of(Account::user1()) == original_recipient_balance + 50,
+            Errors::FUNDS_NOT_RECIEVED
+        );
+
+        stop_prank(CheatTarget::One(contract_address));
     }
-```
 
-Executing `snforge` for the tests displays:
 
-```shell
-Collected 2 tests from erc20_contract package
-[PASS] tests::test_erc20::test_balance_of
-[PASS] tests::test_erc20::test_transfer
-```
+    #[test]
+    fn test_transfer_from() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
 
-In this example, `start_prank` determines the transfer function's caller, while `stop_prank` concludes the prank.
+        start_prank(CheatTarget::One(contract_address), Account::admin());
+        dispatcher.approve(Account::user1(), 20);
+        stop_prank(CheatTarget::One(contract_address));
 
-<details>
-<summary>Full `ERC20 test example` file</summary>
-        #[cfg(test)]
-        mod tests {
-        use array::ArrayTrait;
-        use result::ResultTrait;
-        use option::OptionTrait;
-        use traits::TryInto;
-        use starknet::ContractAddress;
-        use starknet::Felt252TryIntoContractAddress;
+        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 20, Errors::NOT_ALLOWED);
 
-        use snforge_std::{declare, ContractClassTrait, start_prank, stop_prank};
-        use erc20_contract::erc20::Ierc20SafeDispatcher;
-        use erc20_contract::erc20::Ierc20SafeDispatcherTrait;
-
-        fn deploy_contract(name: felt252) -> ContractAddress {
-            let recipient = starknet::contract_address_const::<0x01>();
-            let supply : felt252 = 20000000;
-            let contract = declare(name);
-            let mut calldata = array![supply, recipient.into()];
-            contract.deploy(@calldata).unwrap()
-        }
-
-        #[test]
-        #[available_gas(3000000000000000)]
-        fn test_balance_of() {
-            let contract_address = deploy_contract('erc20');
-            let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
-            let recipient = starknet::contract_address_const::<0x01>();
-            let balance = safe_dispatcher.balance_of(recipient).unwrap();
-            assert(balance == 20000000, 'Invalid Balance');
-        }
-
-        #[test]
-        #[available_gas(3000000000000000)]
-        fn test_transfer() {
-            let contract_address = deploy_contract('erc20');
-            let safe_dispatcher = Ierc20SafeDispatcher { contract_address };
-
-            let sender = starknet::contract_address_const::<0x01>();
-            let receiver = starknet::contract_address_const::<0x02>();
-            let amount : felt252 = 10000000;
-
-            start_prank(contract_address, sender);
-            safe_dispatcher.transfer(receiver.into(), amount.into());
-            let balance_after_transfer = safe_dispatcher.balance_of(receiver).unwrap();
-            assert(balance_after_transfer == 10000000, 'Incorrect Amount');
-            stop_prank(contract_address);
-        }
-        }
-
-</details>
-
-## Fuzz Testing
-
-Fuzz testing introduces random inputs to the code to identify vulnerabilities, security issues, and unforeseen behaviors. While you can manually provide these inputs, automation is preferable when testing a broad set of values. See the example below in `test_fuzz.cairo`:
-
-```rust
-    fn mul(a: felt252, b: felt252) -> felt252 {
-        return a * b;
+        start_prank(CheatTarget::One(contract_address), Account::user1());
+        dispatcher.transfer_from(Account::admin(), Account::user2(), 10);
+        assert(
+            dispatcher.allowance(Account::admin(), Account::user1()) == 10, Errors::FUNDS_NOT_SENT
+        );
+        stop_prank(CheatTarget::One(contract_address));
     }
 
     #[test]
-    fn test_fuzz_sum(x: felt252, y: felt252) {
-        assert(mul(x, y) == x * y, 'incorrect');
+    #[should_panic(expected: ('Amount Not Allowed',))]
+    fn test_transfer_from_should_fail() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+        start_prank(CheatTarget::One(contract_address), Account::admin());
+        dispatcher.approve(Account::user1(), 20);
+        stop_prank(CheatTarget::One(contract_address));
+
+        start_prank(CheatTarget::One(contract_address), Account::user1());
+        dispatcher.transfer_from(Account::admin(), Account::user2(), 40);
+    }
+
+    #[test]
+    #[should_panic(expected: ('You have no token approved',))]
+    fn test_transfer_from_failed_when_not_approved() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+        start_prank(CheatTarget::One(contract_address), Account::user1());
+        dispatcher.transfer_from(Account::admin(), Account::user2(), 5);
+    }
+
+    #[test]
+    fn test_approve() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+
+        start_prank(CheatTarget::One(contract_address), Account::admin());
+        dispatcher.approve(Account::user1(), 50);
+        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 50, Errors::NOT_ALLOWED);
+    }
+
+    #[test]
+    fn test_increase_allowance() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+
+        start_prank(CheatTarget::One(contract_address), Account::admin());
+        dispatcher.approve(Account::user1(), 30);
+        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 30, Errors::NOT_ALLOWED);
+
+        dispatcher.increase_allowance(Account::user1(), 20);
+
+        assert(
+            dispatcher.allowance(Account::admin(), Account::user1()) == 50,
+            Errors::ERROR_INCREASING_ALLOWANCE
+        );
+    }
+
+    #[test]
+    fn test_decrease_allowance() {
+        let contract_address = deploy_contract();
+        let dispatcher = IERC20Dispatcher { contract_address };
+
+        start_prank(CheatTarget::One(contract_address), Account::admin());
+        dispatcher.approve(Account::user1(), 30);
+        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 30, Errors::NOT_ALLOWED);
+
+        dispatcher.decrease_allowance(Account::user1(), 5);
+
+        assert(
+            dispatcher.allowance(Account::admin(), Account::user1()) == 25,
+            Errors::ERROR_DECREASING_ALLOWANCE
+        );
     }
 ```
 
-Running `snforge` produces:
+Running `snforge test` produces:
 
 ```shell
-    Collected 1 test(s) from erc20_contract package
+   Collected 12 test(s) from te package
+Running 12 test(s) from src/
+[PASS] testing::ERC20Token::test::test_total_supply (gas: ~1839)
+[PASS] testing::ERC20Token::test::test_decimal_is_correct (gas: ~3065)
+[PASS] testing::ERC20Token::test::test_approve (gas: ~3165)
+[PASS] testing::ERC20Token::test::test_decrease_allowance (gas: ~1015)
+[PASS] testing::ERC20Token::test::test_constructor (gas: ~3067)
+[PASS] testing::ERC20Token::test::test_transfer_from (gas: ~6130)
+[PASS] testing::ERC20Token::test::test_transfer_from_should_fail (gas: ~3145)
+[PASS] testing::ERC20Token::test::test_allowance (gas: ~5123)
+[PASS] testing::ERC20Token::test::test_transfer (gas: ~3065)
+[PASS] testing::ERC20Token::test::test_transfer_from_failed_when_not_approved (gas: ~3165)
+[PASS] testing::ERC20Token::test::test_address_balance (gas: ~7335)
+[PASS] testing::ERC20Token::test::test_increase_allowance(gas: ~3125)
+Tests: 12 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
+```
+
+# Fuzz Testing
+
+Fuzz testing introduces random inputs to the code to identify vulnerabilities, security issues, and unforeseen behaviors. While you can manually provide these inputs, automation is preferable when testing a broad set of values.
+
+Let discuss Random Fuzz Testing as a type of Fuzz testing:
+
+## Random Fuzz testing
+
+To convert a test to a random fuzz test, simply add arguments to the test function. These arguments can then be used in the test body. The test will be run many times against different randomly generated values.
+See the example below in `test_fuzz.cairo`:
+
+```
+fn sum(a: felt252, b: felt252) -> felt252 {
+    return a + b;
+}
+
+#[test]
+fn test_sum(x: felt252, y: felt252) {
+    assert(sum(x, y) == x + y, 'sum incorrect');
+}
+```
+
+Then run `snforge test`
+
+```
+Running 0 test(s) from tests/
+Tests: 0 passed, 1 failed, 0 skipped, 0 ignored, 0 filtered out
+
+
     Running 0 test(s) from src/
     Running 1 test(s) from tests/
     [PASS] tests::test_fuzz::test_fuzz_sum (fuzzer runs = 256)
     Tests: 1 passed, 0 failed, 0 skipped
-    Fuzzer seed: 6375310854403272271
+Fuzzer seed: 214510115079707873
+
 ```
 
-The fuzzer supports these types by November 2023:
+The fuzzer supports these types by February 2024:
 
 - u8
 - u16
@@ -438,35 +804,36 @@ The fuzzer supports these types by November 2023:
 - u256
 - felt252
 
-`Fuzzer Configuration`
+# Fuzzer Configuration
 
-You can set the number of runs and the seed for a test:
+It is possible to configure the number of runs of the random fuzzer as well as its seed for a specific test case:
 
-```rust
-    #[test]
-    #[fuzzer(runs: 100, seed: 38)]
-    fn test_fuzz_sum(x: felt252, y: felt252) {
-        assert(mul(x, y) == x * y, 'incorrect');
-    }
+```
+#[test]
+#[fuzzer(runs: 22, seed: 38)]
+fn test_sum(x: felt252, y: felt252) {
+    assert(sum(x, y) == x + y, 'sum incorrect');
+}
 ```
 
-Or, use the command line:
+It can also be configured globally, via command line arguments:
 
 ```shell
-    $ snforge --fuzzer-runs 500 --fuzzer-seed 4656
+$ snforge test --fuzzer-runs 1234 --fuzzer-seed 1111
 ```
 
 Or in `scarb.toml`:
 
 ```shell
-    # ...
-    [tool.snforge]
-    fuzzer_runs = 500
-    fuzzer_seed = 4656
-    # ...
+# ...
+[tool.snforge]
+fuzzer_runs = 1234
+fuzzer_seed = 1111
+# ...
+
 ```
 
-For more insight on fuzz tests, you can view it [here](https://foundry-rs.github.io/starknet-foundry/testing/fuzz-testing.html#fuzz-testing)
+For more insight on fuzz tests, you can view it [here](https://foundry-rs.github.io/starknet-foundry/testing/fuzz-testing.html)
 
 ## Filter Tests
 
