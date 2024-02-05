@@ -21,6 +21,13 @@ don’t, refer to Basic Installation in this chapter.
     starkli --version  # 0.1.20 (e4d2307)
 ```
 
+If this is not your case, you have to install them like this:
+
+```sh
+    dojoup -v 0.4.4
+    starkliup -v 0.1.20
+```
+
 Now begin by initiating a Scarb project:
 
 ```bash
