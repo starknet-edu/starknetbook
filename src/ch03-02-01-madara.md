@@ -183,6 +183,49 @@ Madara rpc [examples](https://github.com/keep-starknet-strange/madara/tree/main/
 
 Ooook, now your chain is finally running. It's time to deploy your own account!
 
+Example of curl commad
+
+``` bash
+curl -X POST http://localhost:9944 \
+     -H 'Content-Type: application/json' \
+     -d '{
+    "jsonrpc": "2.0",
+    "method": "starknet_addDeployAccountTransaction",
+    "params": {
+        "deploy_account_transaction": {
+            "type": "DEPLOY_ACCOUNT",
+            "max_fee": "0x0",
+            "version": "0x1",
+            "signature": [
+                "0xd96bc7affb5648b601ddb49e9fd23f6ebfe59375e2ce5dd06b7db638d21b71",
+                "0x6582c1512c8515254a52deb5fef1320d4f5dd0cb8352b260a4e7a90c61510ba",
+                "0x5dec330eebf36c8672b60db4a718d44762d3ae6d1333e553197acb47ee5a062",
+                "0x0",
+                "0x0",
+                "0x0",
+                "0x0",
+                "0x0",
+                "0x0",
+                "0x0"
+            ],
+            "nonce": "0x0",
+            "contract_address_salt": "0x61fcdc5594c726dc437ddc763265853d4dce51a57e25ff1d97b3e31401c7f4c",
+            "constructor_calldata": [
+                "0x5aa23d5bb71ddaa783da7ea79d405315bafa7cf0387a74f4593578c3e9e6570",
+                "0x2dd76e7ad84dbed81c314ffe5e7a7cacfb8f4836f01af4e913f275f89a3de1a",
+                "0x1",
+                "0x61fcdc5594c726dc437ddc763265853d4dce51a57e25ff1d97b3e31401c7f4c"
+            ],
+            "class_hash": "0x3131fa018d520a037686ce3efddeab8f28895662f019ca3ca18a626650f7d1e"
+        }
+    },
+    "id": 1
+}'
+```
+expected json result 
+![account deployment result](./img/ch03-02-01-madara-4.png)
+
+
 ### Make some transactions
 
 <br></br>
