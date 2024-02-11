@@ -185,7 +185,7 @@ Ooook, now your chain is finally running. It's time to deploy your own account!
 
 Example of curl commad
 
-``` bash
+```bash
 curl -X POST http://localhost:9944 \
      -H 'Content-Type: application/json' \
      -d '{
@@ -222,9 +222,9 @@ curl -X POST http://localhost:9944 \
     "id": 1
 }'
 ```
-expected json result 
-![account deployment result](./img/ch03-02-01-madara-4.png)
 
+expected json result
+![account deployment result](./img/ch03-02-01-madara-4.png)
 
 ### Make some transactions
 
