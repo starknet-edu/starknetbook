@@ -416,4 +416,12 @@ To get all the correct dependencies, activate direnv `direnv allow` and lorri `l
 
 ### Docker
 
+##### building madara docker Image
+
 Please use the [Madara Dockerfile](https://github.com/keep-starknet-strange/madara/blob/main/Dockerfile) as a reference to build the Docker container with your App Chain node as a binary.
+
+predeployed madara docker image
+
+```docker
+docker pull ghcr.io/keep-starknet-strange/madara:main
+```
