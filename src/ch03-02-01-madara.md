@@ -57,19 +57,20 @@ cargo build --release
 **Single-Node Development Chain**
 
 This command will start the single-node development chain with non-persistent
-run madara setup:
+
+run madara setup configuration:
 
 ```bash
 ./target/release/madara setup --chain dev --from-local ./configs
 ```
 
-state:
+run madara node:
 
 ```bash
 ./target/release/madara --dev
 ```
 
-Purge the development chain's state:
+Purge the development chain's state (only if you you want to keep the persist state of the node ):
 
 ```bash
 ./target/release/madara purge-chain --dev
