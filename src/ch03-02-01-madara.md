@@ -57,6 +57,12 @@ cargo build --release
 **Single-Node Development Chain**
 
 This command will start the single-node development chain with non-persistent
+run madara setup:
+
+```bash
+./target/release/madara setup --chain dev --from-local ./configs
+```
+
 state:
 
 ```bash
@@ -80,13 +86,6 @@ RUST_BACKTRACE=1 ./target/release/madara -ldebug --dev
 ![running madara node example](./img/ch03-02-01-madara-1.png)
 If everything works correctly, we can go to the next step and create our own genesis state!
 
-### Create your chain specification
-
-First, run this command to create a plain chain spec
-
-```bash
-./target/release/madara build-spec > ./infra/chain-sepcs/chain-spec-plain.json
-```
 
 By default, the chain will run with the following config :
 
