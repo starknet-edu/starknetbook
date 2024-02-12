@@ -86,7 +86,6 @@ RUST_BACKTRACE=1 ./target/release/madara -ldebug --dev
 ![running madara node example](./img/ch03-02-01-madara-1.png)
 If everything works correctly, we can go to the next step and create our own genesis state!
 
-
 By default, the chain will run with the following config :
 
 - [GRANDPA & AURA](https://docs.substrate.io/learn/consensus/#default-consensus-models)
