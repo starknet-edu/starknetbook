@@ -220,7 +220,7 @@ To facilitate the deployment of the account contract, three key files are necess
 
 - `utils.ts`: This file will contain the functions and logic for deployment.
 - `deploy.ts`: This is the main deployment script.
-- `l2-eth-abi.json`: his file will hold the ABI (Application Binary Interface) for the account contract.
+- `l2-eth-abi.json`: This file will hold the ABI (Application Binary Interface) for the account contract.
 
 ## STEP 2: Import Required Modules and Functions
 
