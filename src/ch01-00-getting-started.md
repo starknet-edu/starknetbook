@@ -1,6 +1,6 @@
 # Getting Started
 
-Starknet is a scalable Layer-2 solution on Ethereum. This guide will walk you through the process of deploying and interacting with your first Starknet smart contract using the Cairo programming language, a language tailored for creating validity proofs and that Starknet uses. For seasoned developers looking to understand the core concepts and get hands-on experience, this guide offers step-by-step instructions and essential details.
+Starknet is a scalable Layer-2 solution on Ethereum. This guide will walk you through the process of deploying and interacting with your first Starknet smart contract using the Cairo programming language, a language tailored for creating validity proofs that Starknet uses. For seasoned developers looking to understand the core concepts and get hands-on experience, this guide offers step-by-step instructions and essential details.
 
 We will use the Starknet Remix Plugin to compile, deploy and interact with our smart contract. It is a great tool to get started with Starknet development.
 
@@ -186,7 +186,7 @@ Post-deployment, Remix's terminal will send various logs. These logs provide cru
 }
 ```
 
-By following the above process, you successfully deploy your smart contract on the development network.
+By following the above process, you will successfully deploy your smart contract on the development network.
 
 ## Interaction with the Contract
 
@@ -227,7 +227,7 @@ This call currently doesn't spend gas because the function does not change the s
 
 - In this case **`transfer_ownership`** function, which requires the new owner's address as input.
 - Enter this address into the calldata field. (For this, use any address from the "Devnet account selection" listed in the Environment tab.)
-- Click the **"Call"** button. The terminal then showcases the transaction hash indicating the contract's state alteration. Since we are altering the contract's state this typo of interaction is called an "invoke" and needs to be signed by the account that is calling the function.
+- Click the **"Call"** button. The terminal then showcases the transaction hash indicating the contract's state alteration. Since we are altering the contract's state this type of interaction is called an "invoke" and needs to be signed by the account that is calling the function.
 
 For these transactions, the terminal logs will exhibit a "status" variable, indicating the transaction's fate. If the status reads "ACCEPTED_ON_L2", the Sequencer has accepted the transaction, pending block inclusion. However, a "REJECTED" status signifies the Sequencer's disapproval, and the transaction won't feature in the upcoming block. More often than not, this transaction gains acceptance, leading to a contract state modification. On calling the **`get_owner`** function again we get this:
 
@@ -249,7 +249,7 @@ You've now adeptly compiled, deployed, and interacted with your inaugural Starkn
 
 After testing your smart contract on a development network, it's time to deploy it to the Starknet Testnet. Starknet Testnet is a public platform available for everyone, ideal for testing smart contracts and collaborating with fellow developers.
 
-First you need to create a Starknet account.
+First, you need to create a Starknet account.
 
 ### Smart Wallet Setup
 
