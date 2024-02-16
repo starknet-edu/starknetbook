@@ -9,7 +9,7 @@ Essential tools to install:
     interacting with Starknet. More tools are discussed in Chapter 2.
 
 2.  [Scarb](https://github.com/software-mansion/scarb) - Cairo’s package
-    manager that compiles code to Sierra, a mid-level language between
+    manager that compiles code to [Sierra](https://docs.starknet.io/documentation/architecture_and_concepts/Smart_Contracts/cairo-and-sierra), a mid-level language between
     Cairo and CASM.
 
 3.  [Katana](https://github.com/dojoengine/dojo) - Katana is a Starknet node, built for local development.
