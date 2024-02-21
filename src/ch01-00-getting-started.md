@@ -5,11 +5,11 @@ Starknet is a scalable Layer-2 solution on Ethereum. This guide will walk you th
 We will use the Starknet Remix Plugin to compile, deploy and interact with our smart contract. It is a great tool to get started with Starknet development.
 
 1. Visit the [Remix IDE](https://remix.ethereum.org/) website.
-2. Navigate to the ‘Plugin Manager’ section in the bottom left corner.
+2. Navigate to the `Plugin Manager` section in the bottom left corner.
 
 <img alt="Plugin Manager" src="img/ch01-remix-plugin-manager.png" class="center" style="width: 50%;" />
 
-3. Activate the “Starknet” plugin.
+3. Activate the `Starknet` plugin.
 
 <img alt="Activate the Starknet Plugin" src="img/ch01-starknet-plugin.png" class="center" style="width: 100%;" />
 
@@ -17,9 +17,33 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 <img alt="Accept Permissions" src="img/ch01-remix-permission-box.png" class="center" style="width: 100%;" />
 
-5. After enabling, the Starknet logo appears on the left sidebar. Click it to interact with opened Cairo files.
+5. After enabling, the Starknet logo appears on the left sidebar.
 
 <img alt="Starknet Plugin" src="img/ch01-remix-starknet-plugin-icon.png" class="center" style="width: 100%; max-width: 300px;" />
+
+6. Then go to **settings** option and choose your cairo version. You can see, for now, the latest version that Remix supports is v2.4.0.
+
+<img alt="Starknet Plugin settings" src="img/ch01-remix-starknet-plugin-settings.png" class="center" style="width: 100%; max-width: 300px;" />
+
+7. Now click on the `file explorer` tab to check the sample project details. On the `Scarb.toml` file you can find the version of this sample project.
+
+<img alt="File explorer" src="img/ch01-remix-starknet-file-explorer.png" class="center" style="width: 100%;" />
+
+8. Since Remix supports cairo v2.4.0, we have to update our `Scarb.toml` file to the same version.
+
+<img alt="Scarb file" src="img/ch01-remix-starknet-file-scarb.png" class="center" style="width: 100%;" />
+
+## Clean your sample project
+
+By default we got a sample project, however on this tutorial, we plan to show the `Ownable contract` example. To acomplish this we have to edit and delete some files and directories.
+
+1. Rename the root directory to `ownable`. Go to your `Scarb.toml`, on [package] section, set `name` to `ownable`.
+2. Delete `balance.cairo` and `forty_two.cairo` files.
+3. Go to `lib.cairo` and remove all the content there. It should be empty.
+
+At the end, your new project should look something like this.
+
+<img alt="Scarb file" src="img/ch01-remix-starknet-project-structure.png" class="center" style="width: 100%;" />
 
 ## Introduction to Starknet Smart Contracts
 
@@ -49,11 +73,11 @@ mod Ownable {
     #[event]
     #[derive(Drop, starknet::Event)]
     enum Event {
-      OwnershipTransferred1: OwnershipTransferred1,
+      OwnershipTransferred: OwnershipTransferred,
     }
 
     #[derive(Drop, starknet::Event)]
-    struct OwnershipTransferred1 {
+    struct OwnershipTransferred {
         #[key]
         prev_owner: ContractAddress,
         #[key]
@@ -76,7 +100,7 @@ mod Ownable {
             self.only_owner();
             let prev_owner = self.owner.read();
             self.owner.write(new_owner);
-            self.emit(Event::OwnershipTransferred1(OwnershipTransferred1 {
+            self.emit(Event::OwnershipTransferred(OwnershipTransferred {
                 prev_owner: prev_owner,
                 new_owner: new_owner,
             }));
@@ -105,7 +129,7 @@ The following is a brief description of the components in the contract. We will 
    - **`starknet::ContractAddress`**: Represents a Starknet contract address.
    - **`OwnableTrait`**: Specifies functions for transferring and getting ownership.
 2. **Events**:
-   - **`OwnershipTransferred1`**: Indicates ownership change with previous and new owner details.
+   - **`OwnershipTransferred`**: Indicates ownership change with previous and new owner details.
 3. **Storage**:
    - **`Storage`**: Holds the contract's state with the current owner's address.
 4. **Constructor**:
@@ -122,12 +146,13 @@ To compile using Remix:
 1. **File Creation**
 
    - Navigate to the "File Explorer" tab in Remix.
-   - Create a new file named `Ownable.cairo` and paste the previous [code](#cairo-example-contract) into it.
+   - Go to file named `lib.cairo` and paste the previous [code](#cairo-example-contract) into it.
 
 2. **Compilation**
 
-   - Choose the `Ownable.cairo` file.
-   - In the "Starknet" tab, select "Compile Ownable.cairo".
+   - Navigate to the "Starknet" tab in Remix and click on `Home`.
+   - In the `1 Compile` section choose `compile a single file`.
+   - Click on `Compile lib.cairo`.
 
 <img  alt="Compilation Process" src="img/ch01-compile-contract.png" class="center"
 style="width: 100%;" />
@@ -146,11 +171,9 @@ Here's a step-by-step guide to deploying your smart contract on the development 
 
 1. **Select the Appropriate Network**
 
-   - In the Starknet tab, click on the top button.
+   - In the Starknet tab, click on the top button `Remote Devnet`.
 
    <img alt="Environment selection" src="img/ch01-remix-choose-devnet.png" class="center" style="width: 100%; max-width: 300px;" />
-
-   - Choose "Remote Devnet" for deploying your inaugural contract on a development network.
 
 2. **Choose a Devnet Account**
 
@@ -172,16 +195,19 @@ Post-deployment, Remix's terminal will send various logs. These logs provide cru
 
 - `transaction_hash`: The unique hash of the transaction. This hash can be used to track the transaction's status.
 - `contract_address`: The address of the deployed contract. Use this address to interact with your contract.
-- `calldata`: Contains the `init_owner` address fed to the constructor.
+- `data`: Contains the `init_owner` address fed to the constructor.
 
 ```bash
 {
-  "transaction_hash": "0x275e6d2caf9bc98b47ba09fa9034668c6697160a74de89c4655e2a70be84247",
-  "contract_address": "0x5eb239955ad4c4333b8ab83406a3cf5970554b60a0d8e78a531df18c59a0db9",
+  "transaction_hash": "0x624f5b9f57e53f6b5b62e588f0f949442172b3ad5d04f0827928b4d12c2fa58",
+  "contract_address": [
+    "0x699952dc736661d0ed573cd2b0956c80a1602169e034fdaa3515bfbc36d6410"
+  ]
     ...
-  "calldata": [
-    "0x1398224729985f8e76571285c6d936b5af4a88206a1dc54c0658b4e15045292"
-  ],
+  "data": [
+        "0x6b0ee6f418e47408cf56c6f98261c1c5693276943be12db9597b933d363df",
+         ...
+      ]
     ...
 }
 ```
@@ -207,12 +233,12 @@ With the contract now active on the development network, interaction becomes pos
 
 ```json
 {
-  "response": {
+  "resp": {
     "result": [
-      "0x1398224729985f8e76571285c6d936b5af4a88206a1dc54c0658b4e15045292"
+      "0x6b0ee6f418e47408cf56c6f98261c1c5693276943be12db9597b933d363df"
     ]
   },
-  "contract": "ownable.cairo",
+  "contract": "lib.cairo",
   "function": "get_owner"
 }
 ```
@@ -233,12 +259,12 @@ For these transactions, the terminal logs will exhibit a "status" variable, indi
 
 ```json
 {
-  "response": {
+  "resp": {
     "result": [
-      "0x20884fd341e11a00b9d31600c332f126f5c3f9ffd2aa93cb43dee9f90176d4f"
+      "0x5495d56633745aa3b97bdb89c255d522e98fd2cb481974efe898560839aa472"
     ]
   },
-  "contract": "ownable.cairo",
+  "contract": "lib.cairo",
   "function": "get_owner"
 }
 ```
