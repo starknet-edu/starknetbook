@@ -183,7 +183,27 @@ Here's a step-by-step guide to deploying your smart contract on the development 
 
    - Pick any account and copy its address.
 
-3. **Initiating Deployment**
+3. **Declare**
+
+   - Click on "Declare"
+
+    <img alt="Environment selection" src="img/ch01-remix-deploy-contract.png" class="center" style="width: 100%; max-width: 300px;" />
+
+   - Post-declared, Remix's terminal will send various logs. These logs provide crucial details, including:
+   - `transaction_hash`: The unique hash of the transaction. This hash can be used to track the transaction's status.
+   - `class_hash`: The class hash is like the id of the definition of the smart contract.
+
+```bash
+------------------------ Declaring contract: ownable_Ownable ------------------------
+{
+  "transaction_hash": "0x36dabf43f4962c97cf67ba132fb520091f268e7e33477d77d01747eeb0d7b43",
+  "class_hash": "0x540779cd109ad20f46cb36d8de1ce30c75469862b4dc75f2f29d1b4d1454f60"
+}
+---------------------- End Declaring contract: ownable_Ownable ----------------------
+...
+```
+
+4. **Initiating Deployment**
 
    - Input the copied address into the `init_owner` variable.
 
