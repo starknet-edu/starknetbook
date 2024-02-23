@@ -182,58 +182,28 @@ Here's a step-by-step guide to deploying your smart contract on the development 
    <img alt="Environment selection" src="img/ch01-remix-remote-devnet.png" class="center" style="width: 100%; max-width: 300px;" />
 
    - Pick any account and copy its address.
-3. **Declared**
-   - Click on "Declared"
+
+3. **Declare**
+
+   - Click on "Declare"
+
     <img alt="Environment selection" src="img/ch01-remix-deploy-contract.png" class="center" style="width: 100%; max-width: 300px;" />
-Post-declared, Remix's terminal will send various logs. These logs provide crucial details, including:
-- `transaction_hash`: The unique hash of the transaction. This hash can be used to track the transaction's status.
-- `class_hash`: The class hash is a hash chain of the definition of the class.
-- ```bash
+
+   - Post-declared, Remix's terminal will send various logs. These logs provide crucial details, including:
+   - `transaction_hash`: The unique hash of the transaction. This hash can be used to track the transaction's status.
+   - `class_hash`: The class hash is like the id of the definition of the smart contract.
+
+```bash
 ------------------------ Declaring contract: ownable_Ownable ------------------------
 {
   "transaction_hash": "0x36dabf43f4962c97cf67ba132fb520091f268e7e33477d77d01747eeb0d7b43",
   "class_hash": "0x540779cd109ad20f46cb36d8de1ce30c75469862b4dc75f2f29d1b4d1454f60"
 }
 ---------------------- End Declaring contract: ownable_Ownable ----------------------
---------------------- Getting declare contract: ownable_Ownable tx receipt --------------------
-{
-  "type": "DECLARE",
-  "transaction_hash": "0x36dabf43f4962c97cf67ba132fb520091f268e7e33477d77d01747eeb0d7b43",
-  "actual_fee": "0x1509a9f080800",
-  "messages_sent": [],
-  "events": [
-    {
-      "from_address": "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-      "keys": [
-        "0x99cd8bde557814842a3121e8ddfd433a539b8c9f14bf31ebf108d12e6196e9"
-      ],
-      "data": [
-        "0x6b0ee6f418e47408cf56c6f98261c1c5693276943be12db9597b933d363df",
-        "0x1000",
-        "0x1509a9f080800",
-        "0x0"
-      ]
-    }
-  ],
-  "execution_status": "SUCCEEDED",
-  "finality_status": "ACCEPTED_ON_L2",
-  "block_hash": "0x6c49bc976c6a08ad0cb381c5cd2115e5698763c5259c6da7040d52516e482f3",
-  "block_number": 42,
-  "execution_resources": {
-    "steps": "0xb2e",
-    "memory_holes": "0x28",
-    "range_check_builtin_applications": "0x3f",
-    "pedersen_builtin_applications": "0xf",
-    "poseidon_builtin_applications": "0x0",
-    "ec_op_builtin_applications": "0x0",
-    "ecdsa_builtin_applications": "0x1",
-    "bitwise_builtin_applications": "0x0",
-    "keccak_builtin_applications": "0x0"
-  }
-}
---------------------- End getting declare contract: ownable_Ownable tx receipt ------------------
+...
 ```
-5. **Initiating Deployment**
+
+4. **Initiating Deployment**
 
    - Input the copied address into the `init_owner` variable.
 
