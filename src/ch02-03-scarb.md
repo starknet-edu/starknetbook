@@ -34,7 +34,7 @@ streamlined.
 # Installation
 
 Scarb is cross-platform, supporting macOS, Linux, and Windows. For
-installation, refer to the [Basic installation guide](./ch02-01-basic-installation).
+installation, refer to the [Basic installation guide](./ch02-01-basic-installation.html).
 
 # Cairo Project Structure
 
