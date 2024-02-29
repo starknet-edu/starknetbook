@@ -5,7 +5,7 @@ language is advised. We suggest reading chapters 1-6 of the [Cairo
 Book](https://book.cairo-lang.org/title-page.html), covering topics from
 _Getting Started_ to _Enums and Pattern Matching._ Follow this by
 studying the [Starknet Smart Contracts
-chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)
+chapter](https://book.cairo-lang.org/ch12-00-introduction-to-starknet-smart-contracts.html)
 in the same book. With this background, you’ll be well-equipped to
 understand the examples presented here.
 
