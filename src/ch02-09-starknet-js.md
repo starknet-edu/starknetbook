@@ -164,7 +164,7 @@ With Starknet.js, you can also automate the process of deploying a smart contrac
 
 # Deployment of Smart Contracts using Starknet.js
 
-Starknet.js offers capabilities for deploying smart contracts. In this tutorial, we demonstrate this by deploying an account contract, which we previously developed in [Chapter 4](https://book.starknet.io/ch04-03-standard-account.html), through a scripted approach.
+Starknet.js offers capabilities for deploying smart contracts. In this tutorial, we demonstrate this by deploying an account contract, which we previously developed in [Chapter 4](./ch04-03-standard-account.html), through a scripted approach.
 
 ## STEP 1: Initial Setup and Dependency Installation
 

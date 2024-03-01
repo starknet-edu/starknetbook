@@ -12,7 +12,7 @@ For a visual walkthrough, do check out the [Basecamp frontend session](https://d
 
 - [Reactjs](https://react.dev/learn/start-a-new-react-project): A frontend building framework.
 - [@argent/get-starknet](https://www.npmjs.com/package/@argent/get-starknet): A wrapper for **[starknet.js](https://github.com/0xs34n/starknet.js)**, aiding interaction with wallet extensions.
-- [starknet](https://www.npmjs.com/package/starknet): A JavaScript library for Starknet.
+- [Starknet](https://www.npmjs.com/package/starknet): A JavaScript library for Starknet.
 
 ## Setting Up the Environment
 
@@ -234,4 +234,4 @@ Here's a quick recap:
    - Adjust the counter value (increment or decrement)
    - Fetch data from the blockchain
 
-For a visual walkthrough, do check out the [Basecamp frontend session](https://drive.google.com/file/d/1Dtb3Ol_BVoNV4w-_MKV8aeyyRra8nRtz/view). This comprehensive session delves deeper into the nuances of the concepts we've touched upon, presenting a mix of theoretical explanations and hands-on demonstrations.
+For a visual walkthrough, do check out the [Basecamp VII: S5 Frontend](https://drive.google.com/file/d/1Dtb3Ol_BVoNV4w-_MKV8aeyyRra8nRtz/view). This comprehensive session delves deeper into the nuances of the concepts we've touched upon, presenting a mix of theoretical explanations and hands-on demonstrations.

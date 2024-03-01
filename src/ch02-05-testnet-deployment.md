@@ -2,7 +2,7 @@
 
 This chapter guides developers through the process of compiling, deploying, and interacting with a Starknet smart contract written in Cairo on the testnet. Earlier, the focus was on deploying contracts using a local node, Katana. This time, the deployment and interaction target the Starknet testnet.
 
-Ensure the following commands run successfully on your system. If not, see the [Basic Installation](ch02-01-basic-installation.md) section:
+Ensure the following commands run successfully on your system. If not, see the [Basic Installation](./ch02-01-basic-installation.md) section:
 
 ```bash
     scarb --version  # For Cairo code compilation
@@ -17,7 +17,7 @@ the Account Descriptor is a JSON file detailing the wallet’s address and
 public key.
 
 In order for an account to be used as a signer it must be deployed to the appropriate network,
-Starknet Goerli, Sepolia or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Smart Wallet Setup](https://book.starknet.io/ch01-00-getting-started.html#smart-wallet-setup).
+Starknet Goerli, Sepolia or mainnet, and funded. For this example we are going to use Goerli Testnet. To deploy your wallet, visit [Smart Wallet Setup](./ch01-00-getting-started.html#smart-wallet-setup).
 Now you’re ready to interact with Starknet smart contracts.
 
 ### Creating a Signer
@@ -188,8 +188,8 @@ There are three main options for RPC providers, sorted by ease of use:
     documentation](https://docs.infura.io/networks/starknet/how-to/choose-a-network).
 
 2.  **Your Own Node**: For those who want full control. It’s the most
-    complex but offers the most freedom. Check out [Chapter 4 of the
-    Starknet Book](https://book.starknet.io/chapter_4/node.html) or
+    complex but offers the most freedom. Check out [Chapter 3 of the
+    Starknet Book](./ch03-00-architecture.html#nodes) or
     [Kasar](https://www.kasar.io/) for setup guides.
 
 3.  **Free RPC vendor**: These 3 networks are eligible for free RPC vendors: mainet, goerli, sepolia.
@@ -232,7 +232,7 @@ Note: Here we used the Public RPC Endpoint v0.6 Starknet (Goerli) Testnet from *
 >
 > ⚠️ And if you use Goerli, make sure you use it in subsequent commands as well.
 
-After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Smart Wallet Setup](https://book.starknet.io/ch01-00-getting-started.html#smart-wallet-setup).
+After this process, search your wallet address on the Starknet explorer. To see the details, go back to [Smart Wallet Setup](./ch01-00-getting-started.html#smart-wallet-setup).
 
 After running the command, you’ll see a message like the one below.
 We’re using a Braavos wallet as an example, but the steps are the same
@@ -306,7 +306,7 @@ of the Starknet Book repo. The `src/lib.cairo` file contains a basic
 contract to practice with.
 
 First, compile the contract using the Scarb compiler. If you haven’t
-installed Scarb, follow the installation guide in the [basic installation](./ch02-01-basic-installation)
+installed Scarb, follow the installation guide in the [basic installation](./ch02-01-basic-installation.html#scarb-package-manager-installation)
 section.
 
 ```bash
@@ -372,8 +372,8 @@ main components:
 2.  Any constructor arguments that the contract expects.
 
 In our example, the constructor expects an _owner_ address. You can
-learn more about constructors in [Chapter 12 of The Cairo
-Book](https://book.cairo-lang.org/ch99-01-03-02-contract-functions.html?highlight=constructor#1-constructors).
+learn more about constructors in [Chapter 13 of The Cairo
+Book](https://book.cairo-lang.org/ch13-02-contract-functions.html).
 
 The command would look like this:
 

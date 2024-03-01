@@ -2,7 +2,7 @@
 
 After building our account contract, we'll now deploy it using Starkli on the testnet and interact with other contracts.
 
-Ensure you've installed [starkli](https://github.com/xJonathanLEI/starkli) and [scarb](https://docs.swmansion.com/scarb/download.html). Review the Basic Installation subchapter in Chapter 2 if you haven't.
+Ensure you've installed [starkli](https://github.com/xJonathanLEI/starkli) and [scarb](https://docs.swmansion.com/scarb/download.html). Review the Basic Installation subchapter in [Chapter 2](./ch02-01-basic-installation.html#scarb-package-manager-installation) if you haven't.
 
 ## Account Contract Configuration Files
 
