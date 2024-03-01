@@ -50,7 +50,7 @@ Scarb requires a Git executable to be available in the `PATH` environment variab
 
 ### Installation
 
-To install Scarb, please refer to the [installation instructions](https://docs.swmansion.com/scarb/download). 
+To install Scarb, please refer to the [installation instructions](https://docs.swmansion.com/scarb/download).
 We strongly recommend that you install
 Scarb [via asdf](https://docs.swmansion.com/scarb/download.html#install-via-asdf), a CLI tool that can manage
 multiple language runtime versions on a per-project basis.
@@ -85,8 +85,7 @@ will install the latest stable release of Scarb.
 curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
 ```
 
-- In both cases, you can verify installation by running the following command in a new terminal session, it
-hould print both Scarb and Cairo language versions, e.g:
+- In both cases, you can verify installation by running the following command in a new terminal session, it should print both Scarb and Cairo language versions, e.g:
 
 ```bash
 scarb --version
@@ -97,7 +96,6 @@ sierra: 1.4.0
 
 For Windows, follow manual setup in the [Scarb
 documentation](https://docs.swmansion.com/scarb/download.html#windows).
-
 
 ## Katana Node Installation
 
