@@ -8,7 +8,7 @@ In the next subchapter we will create a short Bash script using Starkli to query
 
 ## Basic Setup
 
-To ensure a smooth start with Starkli, execute the following command on your system. If you encounter any issues, refer to the [Basic Installation](ch02-01-basic-installation.md) guide for assistance:
+To ensure a smooth start with Starkli, execute the following command on your system. If you encounter any issues, refer to the [Basic Installation](./ch02-01-basic-installation.md) guide for assistance:
 
 ```bash
 starkli --version  # Verifies Starkli installation and interacts with Starknet
@@ -54,7 +54,7 @@ The output will be:
     0
 ```
 
-Since katana is a temporary local node and its state is ephemeral, the block number is initially 0. Refer to [Introduction to Starkli, Scarb and Katana](ch02-02-starkli-scarb-katana.md) for further details on changing the state of Katana and observing the block number after commands like starkli declare and starkli deploy.
+Since katana is a temporary local node and its state is ephemeral, the block number is initially 0. Refer to [Introduction to Starkli, Scarb and Katana](./ch02-02-starkli-scarb-katana.md) for further details on changing the state of Katana and observing the block number after commands like starkli declare and starkli deploy.
 
 To declare a contract, execute:
 

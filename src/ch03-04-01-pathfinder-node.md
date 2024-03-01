@@ -22,7 +22,7 @@ Total estimated cost: Approximately $550.
 
 ## Running Pathfinder Node Using Docker
 
-For those who prefer a self-managed setup of all dependencies, refer to the comprehensive [Installation from Source](doc/install-from-source.md) guide.
+For those who prefer a self-managed setup of all dependencies, refer to the comprehensive [Installation from Source](https://github.com/eqlabs/pathfinder/blob/main/doc/install-from-source.md) guide.
 
 ### Prerequisites
 
@@ -259,9 +259,9 @@ The `path` of the URL used to access the JSON-RPC server determines which versio
 
 Note that the pathfinder extension is versioned separately from the Starknet specification itself.
 
-### pathfinder extension API
+### Pathfinder extension API
 
-You can find the API specification [here](doc/rpc/pathfinder_rpc_api.json).
+You can find the API specification [here](https://github.com/eqlabs/pathfinder/blob/main/doc/rpc/pathfinder_rpc_api.json).
 
 ## Monitoring API
 

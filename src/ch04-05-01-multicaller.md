@@ -612,7 +612,7 @@ The Book is a community-driven effort created for the community.
   hesitate to open an [issue on our GitHub
   repository](https://github.com/starknet-edu/starknetbook/issues).
 
-  ## Reference
+## Reference
 
-- [1] OpenZeppelin, 2023: https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.7.0-rc.0/src/account/account.cairo
-- [2] David Barreto, 2023: https://medium.com/starknet-edu/account-abstraction-on-starknet-part-ii-24d52874e0bd
+- [1] OpenZeppelin, 2023: <https://github.com/OpenZeppelin/cairo-contracts/blob/release-v0.7.0-rc.0/src/account/account.cairo>
+- [2] David Barreto, 2023: <https://medium.com/starknet-edu/account-abstraction-on-starknet-part-ii-24d52874e0bd>

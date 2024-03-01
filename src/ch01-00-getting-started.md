@@ -325,7 +325,7 @@ You can monitor transaction hashes and addresses using any Starknet block explor
 
 - [Starkscan](https://testnet.starkscan.co/)
 - [Voyager](https://goerli.voyager.online/)
-- [ViewBlock](https://viewblock.io.starknet/)
+- [ViewBlock](https://viewblock.io/starknet)
 - [oklink](https://www.oklink.com/starknet)
 
 These tools provide a visual representation of transactions and contract state alterations. Notably, when you alter the contract ownership using the `transfer_ownership` function, the event emitted by the contract appears in the block explorer. It's an effective method to track contract events.
@@ -336,4 +336,4 @@ Decide your direction from the following choices:
 
 1. **Deepen Your Starknet Knowledge**: For an extensive grasp of Starknet's inner workings and potential use cases, delve into Chapter 3 of the Starknet Book. This chapter details Starknet’s architectural nuances. Then go ahead from there.
 
-2. **Dive into Cairo**: If you're more attuned to coding and wish to craft Starknet contracts, then Cairo is essential. It stands as Starknet's core contract language. Begin with Chapters 1-6 of the [Cairo Book](https://book.cairo-lang.org/title-page.html), ranging from basics in _Getting Started_ to more advanced aspects such as _Enums and Pattern Matching_. Conclude by navigating to the [Starknet Smart Contracts chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html), ensuring you have a well-rounded understanding.
+2. **Dive into Cairo**: If you're more attuned to coding and wish to craft Starknet contracts, then Cairo is essential. It stands as Starknet's core contract language. Begin with Chapters 1-6 of the [Cairo Book](https://book.cairo-lang.org/title-page.html), ranging from basics in _Getting Started_ to more advanced aspects such as _Enums and Pattern Matching_. Conclude by navigating to the [Starknet Smart Contracts chapter](https://book.cairo-lang.org/ch12-00-introduction-to-starknet-smart-contracts.html), ensuring you have a well-rounded understanding.

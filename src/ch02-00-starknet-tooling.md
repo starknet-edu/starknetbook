@@ -23,7 +23,7 @@ In this chapter, you’ll explore:
 - **Frameworks:** Build using Starknet-Foundry
 
 - **SDKs:** Discover multi-language support through Starknet.js,
-  Starknet-rs, Starknet_py, and Caigo
+  Starknet-rs, Starknet_py, and Cairo
 
 - **Front-end Development:** Use Starknet.js and React
 

@@ -18,7 +18,7 @@ To check your current Scarb version, run:
 scarb --version
 ```
 
-To install or update Scarb, refer to the Basic Installation instructions in Chapter 2, covering macOS and Linux environments:
+To install or update Scarb, refer to the Basic Installation instructions in [Chapter 2](./ch02-01-basic-installation.html#scarb-package-manager-installation), covering macOS and Linux environments:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh
