@@ -26,6 +26,7 @@
   - [Starknet-React: React Integration](ch02-10-starknet-react.md)
     - [Example - Beginner: ERC-20 UI](ch02-10-01-erc20-ui.md)
     - [Example - Intermediate: Million Dollar Homepage](ch02-10-02-million-dollar-homepage.md)
+    - [Example - Intermediate: ERC-20 UI with Apibara](ch02-10-03-erc20-apibara.md)
   - [Starknet-py: Python SDK 🚧](ch02-11-starknet-py.md)
   - [Starknet-rs: Rust SDK 🚧](ch02-12-starknet-rs.md)
   - [Foundry Forge: Testing](ch02-13-foundry-forge.md)
