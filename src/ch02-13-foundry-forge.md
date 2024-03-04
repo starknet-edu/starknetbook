@@ -49,7 +49,7 @@ sierra = true
 
 Before you run `snforge test` certain prerequisites must be addressed:
 
-1. Install the lastest [scarb version](#https://docs.swmansion.com/scarb/docs.html).
+1. Install the latest [scarb version](#https://docs.swmansion.com/scarb/docs.html).
 2. Install [starknet-foundry](#https://foundry-rs.github.io/starknet-foundry/getting-started/installation.html) by running this command:
 
 `curl -L https://raw.githubusercontent.com/foundry-rs/starknet-foundry/master/scripts/install.sh | sh
@@ -61,7 +61,7 @@ Follow the instructions and then run:
 3. Check your `snforge` version, run :
    `snforge version`
 
-As athe time of this tutorial, we used `snforge` version `snforge 0.16.0` which is the lastest at this time.
+As athe time of this tutorial, we used `snforge` version `snforge 0.16.0` which is the latest at this time.
 
 ### Test
 
@@ -373,7 +373,7 @@ Constructor
             assert(self.balances.read(recipient) >= amount, Errors::INSUFFICIENT_FUND);
             self.balances.write(recipient, self.balances.read(recipient) + amount);
             self.total_supply.write(self.total_supply.read() - amount);
-            // call tranfer
+            // call transfer
             // Transfer(Zeroable::zero(), recipient, amount);
 
             true
@@ -514,7 +514,7 @@ Before deploying a starknet contract, we need a contract_class.
 
 Get it using the declare function from [starknet Foundry](#https://foundry-rs.github.io/starknet-foundry/)
 
-Supply values the constructor arguements when deploying
+Supply values the constructor arguments when deploying
 
 ```
 

@@ -45,7 +45,7 @@ various objectives:
 - If you’re an **experienced developer** looking to quickly dive into
   writing scalable and decentralized smart contracts, focus on the
   Cairo Book, particularly **chapter 12: Starknet Smart Contracts**
-  ([link](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)).
+  ([link](https://book.cairo-lang.org/ch12-00-introduction-to-starknet-smart-contracts.html)).
 
 - If you’re a **frontend developer** wanting to integrate Starknet
   with a React frontend using Javascript, prioritize the

@@ -5,7 +5,7 @@ language is advised. We suggest reading chapters 1-6 of the [Cairo
 Book](https://book.cairo-lang.org/title-page.html), covering topics from
 _Getting Started_ to _Enums and Pattern Matching._ Follow this by
 studying the [Starknet Smart Contracts
-chapter](https://book.cairo-lang.org/ch99-00-starknet-smart-contracts.html)
+chapter](https://book.cairo-lang.org/ch12-00-introduction-to-starknet-smart-contracts.html)
 in the same book. With this background, you’ll be well-equipped to
 understand the examples presented here.
 
@@ -34,7 +34,7 @@ streamlined.
 # Installation
 
 Scarb is cross-platform, supporting macOS, Linux, and Windows. For
-installation, refer to the [Basic installation guide](./ch02-01-basic-installation).
+installation, refer to the [Basic installation guide](./ch02-01-basic-installation.html#scarb-package-manager-installation).
 
 # Cairo Project Structure
 
@@ -348,11 +348,11 @@ mod ownable_contract {
 
 Basically we decided to apply `components` on the section related to `ownership` and created a separated module `ownable_component`. Then we kept the `data` section in our main module `ownable_contract`.
 
-To get the full implementation of this project, navigate to the `src/` directory in the [examples/Ownable-Components](https://github.com/starknet-edu/starknetbook/examples/Ownable-Components) directory of the Starknet Book repo. The `src/lib.cairo` file contains the contract to practice with.
+To get the full implementation of this project, navigate to the `src/` directory in the [examples/Ownable-Components](https://github.com/starknet-edu/starknetbook/tree/main/examples/Ownable-Starknet) directory of the Starknet Book repo. The `src/lib.cairo` file contains the contract to practice with.
 
 After you get the full code on your machine, open your terminal, input `scarb build` to compile it, deploy your contract and call functions.
 
-You can learn more about components in [Chapter 12 of The Cairo Book](https://book.cairo-lang.org/ch99-01-05-00-components.html).
+You can learn more about components in [Chapter 16 of The Cairo Book](https://book.cairo-lang.org/ch15-02-composability-and-components.html?highlight=ownable%20componen#example-an-ownable-component).
 
 Scarb is a versatile tool, and this is just the beginning of what you
 can achieve with it. As you gain more experience in the Cairo language

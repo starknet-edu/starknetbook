@@ -87,7 +87,7 @@ Here are some of them:
 Cairo is tailor-made for creating STARK-based smart contracts. As
 Starknet’s native language, it’s central to building scalable and secure
 decentralized apps. To start learning now, check out the [Cairo
-Book](https://cairo-book.github.io/) and
+Book](https://book.cairo-lang.org/) and
 [Starklings](https://github.com/shramee/starklings-cairo1).
 
 Inspired by Rust, Cairo lets you write contracts safely and
@@ -141,7 +141,7 @@ SNIPs serve three crucial roles:
     view of how Starknet has evolved.
 
 Because SNIPs are stored as text files in a [version-controlled
-repository](https://github.com/starknet-io/SNIPs), you can easily track
+repository](https://github.com/starknet-io/SNIPs/tree/main/SNIPS), you can easily track
 changes and understand the history of proposals.
 
 For those who are building on Starknet, SNIPs aren’t just
