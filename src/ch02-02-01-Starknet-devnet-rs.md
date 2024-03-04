@@ -104,8 +104,6 @@ Predeployed accounts using class with hash: 0x61dac032f228abef9c6626f99501523309
 Initial balance of each account: 1000000000000000000000 WEI and FRI
 Seed to replicate this account sequence: 534956567
 
-
-
 ## Crafting a Starknet Smart Contract
 
 **Important:** Before we proceed with this example, please ensure that the versions of both `Scarb` and `starkli` match the specified versions provided below.
@@ -122,6 +120,7 @@ For a more optimized and faster performance (though with a longer compilation ti
 ```
 $ cargo run --release
 ```
+
 Now begin by initiating a Scarb project:
 
 ```bash
