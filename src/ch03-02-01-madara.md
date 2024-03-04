@@ -325,6 +325,316 @@ If you want to see the multi-node consensus algorithm in action, see [Simulate a
 
 The app chain template gives you complete flexibility to modify exiting features of Madara and add new features as well.
 
+# Configuring appChain ID
+
+## Fetching your Chain ID:
+
+The default chain ID on Madara is `SN_GOERLI`, to verify your chain ID, a POST call can be made to the RPC endpoint.<br></br>
+
+### Initiate RPC Request:
+
+- Execute the following POST request via curl to query the chain ID from your Madara node.
+- Endpoint: http://localhost:9944 (replace with the appropriate remote URL).
+
+```bash
+    curl --location 'http://localhost:9944' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "id": 0,
+        "jsonrpc": "2.0",
+        "method": "starknet_chainId",
+        "params": {}
+    }'
+```
+
+### Parse Response:
+
+Extract the chain ID in hex format from the "result" field within the JSON response.
+
+```bash
+    {
+        "jsonrpc": "2.0",
+        "result": "0x534e5f474f45524c49",
+        "id": 0
+    }
+```
+
+### Translate Hex:
+
+Use a hex converter tool (e.g., https://stark-utils.vercel.app/converter) to obtain the readable string representation of the chain ID.
+
+## Setting a custom Chain ID:
+
+The Chain ID for your Madara app chain is configured in `crates/runtime/src/pallets.rs`.
+In Madara your chain ID is represented as the montgomery representation for a string.
+To update this follow the below steps;
+
+### Define your Chain ID:
+
+Choose a string to represent your app chain.
+
+### Convert Chain ID to felt
+
+Navigate to `https://stark-utils.vercel.app/converter` and input your chosen string. The generated felt value is your hexadecimal representation for the string.
+![stack](./img/ch03-02-01-madara-5-stark-utils.png)
+
+### Generate montgomery representation:
+
+Use Starkli to convert the felt value to a montgomery representation compatible with Madara.
+
+```bash
+starkli mont 85046245544016
+[
+    18444022593852143105,
+    18446744073709551615,
+    18446744073709551615,
+    530195594727478800,
+]
+```
+
+### Update the Chain ID:
+
+Open crates/primitives/chain-id/src/lib.rs and add your Chain ID alongside existing definitions:
+
+```rust
+pub const MY_APP_CHAIN_ID: Felt252Wrapper = Felt252Wrapper(starknet_ff::FieldElement::from_mont([
+    18444025906882525153,
+    18446744073709551615,
+    18446744073709551615,
+    530251916243973616,
+]));
+```
+
+### Update `pallets.rs`:
+
+- Modify the import statement in `crates/runtime/src/pallets.rs` to include your new Chain ID definition (refer to https://github.com/keep-starknet-strange/madara/blob/main/crates/runtime/src/pallets.rs#L13 for reference).
+- Update the usage of the Chain ID within the code itself (refer to https://github.com/keep-starknet-strange/madara/blob/main/crates/runtime/src/pallets.rs#L164 for reference).
+
+Rebuild your Madara app chain with the updated pallets.rs file. Your app chain will now operate with your custom Chain ID.
+
+### appchain tooling
+
+Madara is made to be **100%** Starknet compatible out of the box.
+This means that you can leverage all existing Starknet tools (detailed list [here](https://www.starknet.io/en/developers/tools-and-resources)).
+In these docs, we cover some famous tools for you
+
+# Argent X Overview
+
+[Argent X](https://www.argent.xyz/argent-x/) is an open-source Starknet wallet.
+
+## Installing Argent X
+
+Follow the official Argent X installation [instructions](https://www.argent.xyz/learn/how-to-create-an-argent-x-wallet/`).
+
+## Use Argent X with Madara
+
+Argent X includes the Mainnet, Sepolia, and Goerli networks by default, but connecting with your local Madara chain requires manual configuration. This involves adding a custom network within Argent X's settings.
+
+### Configuring Argent X for Madara appchain
+
+### Open the Argent X wallet and navigate to Settings.
+
+![stack](../img/argentX/step1.png)
+
+### Select "Developer settings" and then "Manage networks".
+
+![stack](../img/argentX/step2.png)
+
+### Click the plus button on the top right to add a network.
+
+![stack](../img/argentX/step3.png) #
+
+## Fill in the following fields:
+
+1. **Network Name**: A friendly name for the Madara network.
+
+2. **Chain ID**: The default chain ID on Madara is `SN_GOERLI`, to retrieve your chain ID or to set
+   a custom chain ID, refer to the [Chain ID](../tools/chain-id.mdx) section of Madara
+   documentation.
+
+3. RPC URL: `http://localhost:9944`
+
+4. Sequencer URL: `http://localhost:9944`
+
+![stack](../img/argentX/step4.png)
+
+### Save the new network configuration.
+
+Once you have added Madara as a network, you can now connect to it.
+
+### Deploying your Starknet wallet
+
+Upon creation, an Argent X wallet generates a Starknet address. However, this address exists in an "undeployed" state until you initiate your first transaction.
+
+Argent X manages the activation process under the hood; your first outgoing transaction acts as the trigger.
+This transaction initiates the deployment of your smart contract on the Madara chain. This deployment incurs a one-time fee.
+
+## Resources
+
+- [Website](https://www.argent.xyz/argent-x/)
+- [FAQ](https://www.argent.xyz/faq/)
+- [Twitter](https://twitter.com/argentHQ)
+
+# Braavos Overview
+
+[Braavos](https://www.braavos.app) is a Starknet wallet.
+
+## Installing Braavos
+
+Follow the official Braavos installation [instructions](https://braavos.app/faq/setting-up-your-braavos-wallet-easy-starknet-guide/`).
+
+## Use Braavos with Madara appchain
+
+Braavos includes the Mainnet, Sepolia, and Goerli networks by default, but connecting with your local Madara chain requires manual configuration. This involves adding a custom network within Braavos's settings.
+
+### Configuring Braavos for Madara
+
+### Access Network Tab
+
+Open the Braavos wallet and navigate to the "Network" tab.
+
+![stack](../img/braavos/step1.png)
+
+### Enable Developer Mode
+
+Locate the "Developer" option and select it. If prompted, choose "Add Account" to proceed.
+
+![stack](../img/braavos/step2.png)
+
+### Access General Configuration:
+
+Click on the account icon, on the top left side<br></br>
+Navigate to the "General" tab
+![stack](../img/braavos/step3.png)
+
+### Switch to the Developer Tab
+
+Within the "General" section, switch to the "Developer" tab.
+![stack](../img/braavos/step4.png)
+
+### Configure RPC Connection
+
+1. Enable the "Use RPC provider" checkbox.
+2. Set the "Node host" field to localhost.
+3. Set the "Node port" field to 9944, assuming you're using the default Madara port.
+
+![stack](../img/braavos/step6.png)
+
+Once you have added Madara as a network, you can now connect to it.
+
+# Starkli Overview
+
+Starkli is a command-line interface (CLI) tool designed to streamline interaction with your Madara chain. It simplifies managing accounts, deploying and interacting with smart contracts, and accessing network data.
+
+## Installing Starkli
+
+<Steps>
+### Installing starkliup
+Install Starkliup, the installer for the Starkli environment
+```bash
+curl https://get.starkli.sh | sh
+```
+Starkliup should now be installed.
+Restart the terminal
+
+### Install starkli v0.1.20
+
+Madara currently is only compatible with starkli v0.1.20. Active development is underway to ensure the latest version is supported.
+Run starkliup to install starkli v0.1.20
+
+```bash
+starkliup -v 0.1.20
+```
+
+Starkli should now be installed.
+Restart the terminal
+
+### Verify Starkli installation
+
+```bash
+starkli --version
+```
+
+The output should display
+
+```bash
+0.1.20 (e4d2307)
+```
+
+</Steps>
+
+Starkli allows you to perform all operations on your chain without leaving the command line.
+
+## Use Starkli in Madara
+
+Before starting with configuring Starkli, add your Madara RPC URL to the env. By default, this would be `http://localhost:9944`
+
+```bash
+export STARKNET_RPC="http://localhost:9944/"
+```
+
+### Configuring Starkli for Madara
+
+The Starkli tutorial [here](https://book.starkli.rs/tutorials/starkli-101) should work with Madara. If you face issues
+when deploying your smart contract, ensure you're Scarb `0.6.1`. You can use asdf for the same as explained [here](https://docs.swmansion.com/scarb/download.html#install-via-asdf).
+
+Also, make sure you've added the following lines in your Scarb.toml
+
+```bash
+[dependencies]
+starknet = ">=2.1.0"
+
+[[target.starknet-contract]]
+```
+
+## Resources
+
+- [Docs](https://book.starkli.rs/)
+
+### Deploying your Starknet wallet
+
+Upon creation, a Braavos wallet generates a Starknet address. However, this address exists in an "undeployed" state until you initiate your first transaction.
+
+Braavos manages the activation process under the hood; your first outgoing transaction acts as the trigger.
+This transaction initiates the creation and deployment of your personal smart contract on the Madara chain. This deployment incurs a one-time fee.
+
+## Resources
+
+- [Website](https://braavos.app/)
+- [FAQ](https://braavos.app/faq/)
+- [Twitter](https://twitter.com/Braavos)
+
+# Starknet.js Overview
+
+[Starknet.js](https://www.starknetjs.com/) is a lightweight JavaScript/TypeScript library enabling interaction between your DApp and Starknet. Starknet.js allows you to interact with Starknet accounts, providers, and contracts.
+
+## Installing Starknet.js
+
+Follow the official Starknet.js installation instructions: https://www.starknetjs.com/docs/guides/intro
+
+## Configuring Starknet.js for Madara
+
+Connecting to your running Madara node requires you to point your provider to the Madara RPC URL.
+
+```javascript
+const provider = new starknet.RpcProvider({
+  nodeUrl: "http://localhost:9944",
+});
+```
+
+You can now use this provider to interact with the chain as explained in the Starknet.js [docs](https://www.starknetjs.com/docs/guides/intro).
+
+[Karnot](https://karnot.xyz) has also developed ready-to-use scripts using Starknet.js to fund wallets, declare and deploy contracts and some other
+useful tasks. You can refer to them [here](https://github.com/karnotxyz/madara-get-started).
+
+## Resources
+
+- [Website](hhttps://www.starknetjs.com)
+- [Docs](https://www.starknetjs.com/docs/API/)
+
+Moreover, Madara is built upon Substrate so you can actually _also_ leverage some popular substrate tooling like [polkadot.js](https://polkadot.js.org/apps/),
+[telemetry](https://telemetry.polkadot.io/), [polkadot-api](https://www.npmjs.com/package/@polkadot/api) and others.
+
 ### Existing Pallets
 
 Madara comes with only one pallet - `pallet_starknet`. This pallet allows app chains to execute Cairo contracts and have 100% RPC compatabiltiy with Starknet mainnet. This means all Cairo tooling should work out of the box with the app chain. At the same time, the pallet also allows the app chain to fine tune specific parameters to meet their own needs.
@@ -337,13 +647,6 @@ Madara comes with only one pallet - `pallet_starknet`. This pallet allows app ch
 - `ChainId`: The chain id of the app chain
 
 All these options can be configured inside `crates/runtime/src/pallets.rs`
-
-### Genesis
-
-The genesis state of the app chain is defined via a JSON file. It lives inside the `config` folder but can also be fetch from a url. You can read in more detail about how to setup the config from these two docs in the Madara repo.
-
-- [Genesis](https://github.com/keep-starknet-strange/madara/blob/main/docs/genesis.md)
-- [Configs](https://github.com/d-roak/madara/blob/feat/configs-index/docs/configs.md)
 
 ### How to add New Pallets
 
@@ -416,12 +719,21 @@ To get all the correct dependencies, activate direnv `direnv allow` and lorri `l
 
 ### Docker
 
-##### building madara docker Image
+##### building madara in docker
 
-Please use the [Madara Dockerfile](https://github.com/keep-starknet-strange/madara/blob/main/Dockerfile) as a reference to build the Docker container with your App Chain node as a binary.
+First, install [Docker](https://docs.docker.com/get-docker/) and
+[Docker Compose](https://docs.docker.com/compose/install/).
 
-predeployed madara docker image
+pulling predeployed madara docker image
 
-```docker
+```bash
 docker pull ghcr.io/keep-starknet-strange/madara:main
 ```
+
+runining docker container
+
+```bash
+docker run --rm main --dev
+```
+
+Please use the [Madara Dockerfile](https://github.com/keep-starknet-strange/madara/blob/main/Dockerfile) as a reference to build the Docker container with your App Chain node as a binary.
