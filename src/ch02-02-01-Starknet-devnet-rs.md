@@ -3,7 +3,7 @@
 In this chapter, you’ll learn how to compile, deploy, and interact with
 a Starknet smart contract written in Cairo using starkli, scarb and [Starknet-Devnet-rs](#https://github.com/0xSpaceShard/starknet-devnet-rs).
 
-Starknet-devnet-rs is an alternative to Katana, Starknet-devnet-rs is a Rust-based Devnet, presenting it as an alternative to Katana. Devnet is a local node that will help you deploy and test your contract in real time which is more faster for development.
+Starknet-devnet-rs is a Rust-based Devnet, presenting it as an alternative to Katana. Devnet is a local node that will help you deploy and test your contract in real time which is more faster for development.
 
 First, confirm that the following commands work on your system. If they
 don’t, refer to Basic Installation in this chapter.
@@ -46,6 +46,7 @@ Installing and running as a binary is achievable via `cargo install`. The projec
 
 You should have the result below in your terminal. It generates accounts locally for testing and contract interaction locally, just like `katana`
 
+```
 Compiling starknet-devnet v0.0.2 (/Users/mac/Desktop/devnet/starknet-devnet-rs/crates/starknet-devnet)
 Finished dev [unoptimized + debuginfo] target(s) in 3m 15s
 Running `target/debug/starknet-devnet`
@@ -103,6 +104,7 @@ Chain ID: SN_GOERLI (0x534e5f474f45524c49)
 Predeployed accounts using class with hash: 0x61dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f
 Initial balance of each account: 1000000000000000000000 WEI and FRI
 Seed to replicate this account sequence: 534956567
+```
 
 ## Crafting a Starknet Smart Contract
 
