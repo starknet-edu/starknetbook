@@ -175,7 +175,6 @@ Deploying a Starknet smart contract requires two primary steps:
 
 Begin with the `src/lib.cairo` file, which provides a foundational template. Remove its contents and insert the following:
 
-
 ```rust
 #[starknet::contract]
 mod hello {
@@ -187,7 +186,7 @@ mod hello {
 fn constructor(ref self: ContractState, name: felt252) {
  self.name.write(name);
  }
- #[abi(embed_v0)] 
+ #[abi(embed_v0)]
 ```
 
 This rudimentary smart contract serves as a starting point.
