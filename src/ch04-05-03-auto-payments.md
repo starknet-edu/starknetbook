@@ -171,14 +171,14 @@ In summary, a fully fledged account contract should implement the SNIP-5, SNIP-6
 
 [1] Auto Payments for Self-Custodial Wallets
 
-[2] SNIP-6 Standard Account Interface
+[2] SNIP-6 Standard Account Interface: <https://github.com/ericnordelo/SNIPs/blob/feat/standard-account/SNIPS/snip-6.md>
 
-[3] Starknet Docs: Limitations on the validate function
+[3] Starknet Docs: Limitations on the validate function: <https://docs.starknet.io/documentation/architecture_and_concepts/Accounts/validate_and_execute/#validate_limitations>
 
-[4] Cairo Book: The Span data type
+[4] Cairo Book: The Span data type: <https://book.cairo-lang.org/ch02-02-data-types.html>
 
-[5] ERC-165: Standard Interface Detection
+[5] ERC-165: Standard Interface Detection: <https://eips.ethereum.org/EIPS/eip-165>
 
-[6] Github: src5-rs
+[6] Github: src5-rs: <https://github.com/starknet-io/SNIPs/blob/main/SNIPS/snip-5.md>
 
-[7] Github: starkli
+[7] Github: starkli: <https://github.com/xJonathanLEI/starkli>

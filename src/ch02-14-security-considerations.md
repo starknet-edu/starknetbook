@@ -336,7 +336,7 @@ mod StoreSecretPassword {
 
 <img alt="deploy" src="img/ch02-sec_priv01.png" class="center" style="width: 75%;" />
 
-However, understanding Cairo's [storage layout](https://book.cairo-lang.org/ch99-01-03-01-contract-storage.html?highlight=kecc#storage-addresses), we can create a script to read the stored variable:
+However, understanding Cairo's [storage layout](https://book.cairo-lang.org/ch13-01-contract-storage.html), we can create a script to read the stored variable:
 
 ```javascript
 import { Provider, hash } from "starknet";
