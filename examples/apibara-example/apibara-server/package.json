@@ -1,0 +1,21 @@
+{
+  "name": "apibara-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apibara/protocol": "^0.4.9",
+    "@apibara/starknet": "^0.4.0",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.11.1",
+    "mongodb": "^6.3.0",
+    "starknet": "^5.24.3",
+    "ts-node": "^10.9.2"
+  }
+}
