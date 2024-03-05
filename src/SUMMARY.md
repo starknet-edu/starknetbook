@@ -35,6 +35,7 @@
     - [Cairo-fuzzer](ch02-15-01-cairo-fuzzer.md)
     - [Caracal](ch02-15-02-caracal.md)
     - [Thoth](ch02-15-03-thoth.md)
+  - [Apibara](ch02-16-apibara.md)
 
 ## Architecture
 
