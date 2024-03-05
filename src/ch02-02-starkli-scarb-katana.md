@@ -49,7 +49,7 @@ Amend the `Scarb.toml` file to integrate the `starknet` dependency and introduce
 
 ```toml
     [dependencies]
-    starknet = ">=2.3.0"
+    starknet = ">=2.5.4"
 
     [[target.starknet-contract]]
 ```
@@ -90,11 +90,11 @@ mod hello {
         self.name.write(name);
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
         fn get_name(self: @ContractState) -> felt252 {
             self.name.read()
         }
-    #[external(v0)]
+    #[abi(embed_v0)]
         fn set_name(ref self: ContractState, name: felt252) {
             self.name.write(name);
         }

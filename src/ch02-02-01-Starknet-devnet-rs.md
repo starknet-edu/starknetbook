@@ -113,8 +113,9 @@ You can install the latest [scarb](#https://docs.swmansion.com/scarb/download.ht
 
 ```console
     rustc --version  #1.73.0 (cc66ad468)
-    Scarb --version  #  2.5.0 (c531a6e50)
-    starkli --version  # 0.1.20 (e4d2307)
+    scarb 2.6.0 (850b9386a 2024-03-04)
+     cairo: 2.6.0 (https://crates.io/crates/cairo-lang-compiler/2.6.0)
+     sierra: 1.5.0
 ```
 
 For a more optimized and faster performance (though with a longer compilation time), run with:
@@ -144,7 +145,7 @@ Amend the `Scarb.toml` file to integrate the `starknet` dependency and introduce
 
 ```toml
     [dependencies]
-    starknet = ">=2.3.0"
+    starknet = ">=2.5.4"
 
     [[target.starknet-contract]]
      casm = true
@@ -174,28 +175,19 @@ Deploying a Starknet smart contract requires two primary steps:
 
 Begin with the `src/lib.cairo` file, which provides a foundational template. Remove its contents and insert the following:
 
+
 ```rust
 #[starknet::contract]
 mod hello {
-    #[storage]
-    struct Storage {
-        name: felt252,
-    }
-
-    #[constructor]
-    fn constructor(ref self: ContractState, name: felt252) {
-        self.name.write(name);
-    }
-
-    #[external(v0)]
-        fn get_name(self: @ContractState) -> felt252 {
-            self.name.read()
-        }
-    #[external(v0)]
-        fn set_name(ref self: ContractState, name: felt252) {
-            self.name.write(name);
-        }
-}
+  #[storage]
+ struct Storage {
+     name: felt252,
+ }
+#[constructor]
+fn constructor(ref self: ContractState, name: felt252) {
+ self.name.write(name);
+ }
+ #[abi(embed_v0)] 
 ```
 
 This rudimentary smart contract serves as a starting point.
