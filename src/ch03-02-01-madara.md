@@ -650,8 +650,7 @@ All these options can be configured inside `crates/runtime/src/pallets.rs`
 
 ### How to add New Pallets
 
-<!-- Adding a new pallet is the same as adding a pallet in any substrate based chain. An an example, `pallet-template` has been added on this madara appchain template.
-Add the Nicks pallet dependencies -->
+
 
 Before you can use a new pallet, you must add some information about it to the configuration file that the compiler uses to build the runtime binary.
 
