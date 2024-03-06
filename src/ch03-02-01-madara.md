@@ -434,15 +434,15 @@ Argent X includes the Mainnet, Sepolia, and Goerli networks by default, but conn
 
 ### Open the Argent X wallet and navigate to Settings.
 
-![stack](../img/argentX/step1.png)
+![stack](./img/ch03-02-01-madara-6-argent-step1.png)
 
 ### Select "Developer settings" and then "Manage networks".
 
-![stack](../img/argentX/step2.png)
+![stack](./img/ch03-02-01-madara-6-argent-step2.png)
 
 ### Click the plus button on the top right to add a network.
 
-![stack](../img/argentX/step3.png) #
+![stack](./img/ch03-02-01-madara-6-argent-step3.png) #
 
 ## Fill in the following fields:
 
@@ -456,7 +456,7 @@ Argent X includes the Mainnet, Sepolia, and Goerli networks by default, but conn
 
 4. Sequencer URL: `http://localhost:9944`
 
-![stack](../img/argentX/step4.png)
+![stack](./img/ch03-02-01-madara-6-argent-step4.png)
 
 ### Save the new network configuration.
 
@@ -493,24 +493,24 @@ Braavos includes the Mainnet, Sepolia, and Goerli networks by default, but conne
 
 Open the Braavos wallet and navigate to the "Network" tab.
 
-![stack](../img/braavos/step1.png)
+![stack](./img/ch03-02-01-madara-6-braavos-step1.png)
 
 ### Enable Developer Mode
 
 Locate the "Developer" option and select it. If prompted, choose "Add Account" to proceed.
 
-![stack](../img/braavos/step2.png)
+![stack](./img/ch03-02-01-madara-6-braavos-step2.png)
 
 ### Access General Configuration:
 
 Click on the account icon, on the top left side<br></br>
 Navigate to the "General" tab
-![stack](../img/braavos/step3.png)
+![stack](./img/ch03-02-01-madara-6-braavos-step3.png)
 
 ### Switch to the Developer Tab
 
 Within the "General" section, switch to the "Developer" tab.
-![stack](../img/braavos/step4.png)
+![stack](./img/ch03-02-01-madara-6-braavos-step4.png)
 
 ### Configure RPC Connection
 
@@ -518,7 +518,7 @@ Within the "General" section, switch to the "Developer" tab.
 2. Set the "Node host" field to localhost.
 3. Set the "Node port" field to 9944, assuming you're using the default Madara port.
 
-![stack](../img/braavos/step6.png)
+![stack](./img/ch03-02-01-madara-6-braavos-step5.png)
 
 Once you have added Madara as a network, you can now connect to it.
 
