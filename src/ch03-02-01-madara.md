@@ -650,8 +650,6 @@ All these options can be configured inside `crates/runtime/src/pallets.rs`
 
 ### How to add New Pallets
 
-
-
 Before you can use a new pallet, you must add some information about it to the configuration file that the compiler uses to build the runtime binary.
 
 For Rust programs, you use the Cargo.toml file to define the configuration settings and dependencies that determine what gets compiled in the resulting binary. Because the Substrate runtime compiles to both a native platform binary that includes standard library Rust functions and a WebAssembly (Wasm) binary that does not include the standard Rust library, the Cargo.toml file controls two important pieces of information:
