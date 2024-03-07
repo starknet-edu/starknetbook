@@ -90,15 +90,16 @@ mod hello {
         self.name.write(name);
     }
 
-    #[external(v0)]
-        fn get_name(self: @ContractState) -> felt252 {
-            self.name.read()
-        }
-    #[external(v0)]
-        fn set_name(ref self: ContractState, name: felt252) {
-            self.name.write(name);
-        }
+    #[abi(embed_v0)]
+    fn get_name(self: @ContractState) -> felt252 {
+        self.name.read()
+    }
+    #[abi(embed_v0)]
+    fn set_name(ref self: ContractState, name: felt252) {
+        self.name.write(name);
+    }
 }
+
 ```
 
 This rudimentary smart contract serves as a starting point.
