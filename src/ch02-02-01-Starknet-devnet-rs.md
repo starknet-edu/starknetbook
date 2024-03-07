@@ -25,7 +25,6 @@ don’t, refer to Basic Installation in this chapter.
 - The required Rust version is specified in [rust-toolchain.toml](#https://github.com/0xSpaceShard/starknet-devnet-rs/blob/main/rust-toolchain.toml) and handled automatically by cargo.
 - Run `rustc --version  ` to comfirm the rust version.
 
-
 ## Run as a binary
 
 ### Installing from crates.io
@@ -42,17 +41,15 @@ Installing and running as a binary is achievable via `cargo install`. The projec
 - Clone
   `https://github.com/0xSpaceShard/starknet-devnet-rs.git`
 - Navigate into the folder ` cd starknet-devnet-rs`
--  Install starknet devnet, run this command:
-  
-  ```bash
-  cargo install starknet-devnet
+- Install starknet devnet, run this command:
+
+```bash
+cargo install starknet-devnet
 
 ```
 
 - Run Devnet
   `cargo run`
-
-
 
 You should have the result below in your terminal. It generates accounts locally for testing and contract interaction locally, just like `katana`
 
