@@ -107,7 +107,7 @@ Apps** front-end to interact with your chain. use
 [polkadat frontend](https://polkadot.js.org/apps/#/explorer?rpc=ws://localhost:9944) or [madara zone frontend](https://explorer.madara.zone/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/accounts)
 connecting the Apps to your local node template.
 
-### ui connection
+### UI connection
 
 ![running madara node example](./img/ch03-02-01-madara-2.png)
 
@@ -171,7 +171,7 @@ curl -X POST http://localhost:9944 \
 
 Madara rpc [examples](https://github.com/keep-starknet-strange/madara/tree/main/examples/rpc/starknet)
 
-#### output example
+#### Output example
 
 ![running madara node example](./img/ch03-02-01-madara-3.png)
 
@@ -225,11 +225,7 @@ curl -X POST http://localhost:9944 \
 expected json result
 ![account deployment result](./img/ch03-02-01-madara-4.png)
 
-### Make some transactions
-
-<br></br>
-
-# building Madara App Chain Your Using madara appchain Template
+# Building Madara App Chain Your Using madara appchain Template
 
 clone the Madara appchain Template
 
@@ -442,9 +438,9 @@ Argent X includes the Mainnet, Sepolia, and Goerli networks by default, but conn
 
 ### Click the plus button on the top right to add a network.
 
-![stack](./img/ch03-02-01-madara-6-argent-step3.png) #
+![stack](./img/ch03-02-01-madara-6-argent-step3.png)
 
-## Fill in the following fields:
+### Fill in the following fields:
 
 1. **Network Name**: A friendly name for the Madara network.
 
@@ -487,7 +483,7 @@ Follow the official Braavos installation [instructions](https://braavos.app/faq/
 
 Braavos includes the Mainnet, Sepolia, and Goerli networks by default, but connecting with your local Madara chain requires manual configuration. This involves adding a custom network within Braavos's settings.
 
-### Configuring Braavos for Madara
+## Configuring Braavos for Madara
 
 ### Access Network Tab
 
@@ -503,8 +499,8 @@ Locate the "Developer" option and select it. If prompted, choose "Add Account" t
 
 ### Access General Configuration:
 
-Click on the account icon, on the top left side<br></br>
-Navigate to the "General" tab
+Click on the account icon, on the top left side and navigate to the `General` tab.
+
 ![stack](./img/ch03-02-01-madara-6-braavos-step3.png)
 
 ### Switch to the Developer Tab
