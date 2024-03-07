@@ -11,7 +11,7 @@ don’t, refer to Basic Installation in this chapter.
 ```bash
     scarb --version  # For Cairo code compilation
     starkli --version  # To interact with Starknet
-    rustc --version
+
     Devnet # To declare, deploy and test on local
     development
 
@@ -24,6 +24,7 @@ don’t, refer to Basic Installation in this chapter.
 - Install [rust](#https://www.rust-lang.org/tools/install)
 - The required Rust version is specified in [rust-toolchain.toml](#https://github.com/0xSpaceShard/starknet-devnet-rs/blob/main/rust-toolchain.toml) and handled automatically by cargo.
 - Run `rustc --version  ` to comfirm the rust version.
+
 
 ## Run as a binary
 
@@ -41,8 +42,17 @@ Installing and running as a binary is achievable via `cargo install`. The projec
 - Clone
   `https://github.com/0xSpaceShard/starknet-devnet-rs.git`
 - Navigate into the folder ` cd starknet-devnet-rs`
+-  Install starknet devnet, run this command:
+  
+  ```bash
+  cargo install starknet-devnet
+
+```
+
 - Run Devnet
   `cargo run`
+
+
 
 You should have the result below in your terminal. It generates accounts locally for testing and contract interaction locally, just like `katana`
 
@@ -110,7 +120,7 @@ Seed to replicate this account sequence: 534956567
 You can install the latest [scarb](#https://docs.swmansion.com/scarb/download.html) version.
 
 ```console
-    rustc --version  #1.73.0 (cc66ad468)
+    starknet-devnet v0.0.3
     scarb 2.6.0 (850b9386a 2024-03-04)
      cairo: 2.6.0 (https://crates.io/crates/cairo-lang-compiler/2.6.0)
      sierra: 1.5.0
