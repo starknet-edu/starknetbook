@@ -21,7 +21,7 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 <img alt="Starknet Plugin" src="img/ch01-remix-starknet-plugin-icon.png" class="center" style="width: 100%; max-width: 300px;" />
 
-6. Then go to **settings** option and choose your cairo version. You can see, for now, the latest version that Remix supports is v2.4.0.
+6. Then go to **settings** option and choose your cairo version. Remix no longer supports v2.4.0 shown in the picture below and you could slelect v2.5.4 for this project.
 
 <img alt="Starknet Plugin settings" src="img/ch01-remix-starknet-plugin-settings.png" class="center" style="width: 100%; max-width: 300px;" />
 
@@ -29,7 +29,7 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 <img alt="File explorer" src="img/ch01-remix-starknet-file-explorer.png" class="center" style="width: 100%;" />
 
-8. Since Remix supports cairo v2.4.0, we have to update our `Scarb.toml` file to the same version.
+8. Since we want to use v2.5.4 for this project, we need to update our `Scarb.toml`: modify the highlighted line to the correct version, ``starknet = "2.5.4"`` for v2.5.4.
 
 <img alt="Scarb file" src="img/ch01-remix-starknet-file-scarb.png" class="center" style="width: 100%;" />
 
