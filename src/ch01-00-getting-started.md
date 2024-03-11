@@ -29,7 +29,7 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 <img alt="File explorer" src="img/ch01-remix-starknet-file-explorer.png" class="center" style="width: 100%;" />
 
-8. Since we want to use v2.5.4 for this project, we need to update our `Scarb.toml`: modify the highlighted line to the correct version, ``starknet = "2.5.4"`` for v2.5.4.
+8. Since we want to use v2.5.4 for this project, we need to update our `Scarb.toml`: modify the highlighted line to the correct version, `starknet = "2.5.4"` for v2.5.4.
 
 <img alt="Scarb file" src="img/ch01-remix-starknet-file-scarb.png" class="center" style="width: 100%;" />
 
