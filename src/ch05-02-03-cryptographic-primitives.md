@@ -128,7 +128,7 @@ and if elliptic curves break or when quantum computers come around
 2017](https://vitalik.ca/general/2017/11/09/starks_part_1.html)).
 
 "With the T standing for "transparent", ZK-STARKs resolve one of the
-primary weaknesses of ZK-SNARKs, its reliance on a 'trusted setup´."
+primary weaknesses of ZK-SNARKs, its reliance on a 'trusted setup'."
 [(Vitalik 2017)](https://vitalik.ca/general/2017/11/09/starks_part_1.html).
 
 # Commitment Schemes
