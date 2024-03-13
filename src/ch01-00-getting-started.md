@@ -21,7 +21,7 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 <img alt="Starknet Plugin" src="img/ch01-remix-starknet-plugin-icon.png" class="center" style="width: 100%; max-width: 300px;" />
 
-6. Then go to **settings** option and choose your cairo version. You can see, for now, the latest version that Remix supports is v2.4.0.
+6. Then go to **settings** option and choose your cairo version. Remix no longer supports v2.4.0 shown in the picture below and you could slelect v2.5.4 for this project.
 
 <img alt="Starknet Plugin settings" src="img/ch01-remix-starknet-plugin-settings.png" class="center" style="width: 100%; max-width: 300px;" />
 
@@ -29,7 +29,7 @@ We will use the Starknet Remix Plugin to compile, deploy and interact with our s
 
 <img alt="File explorer" src="img/ch01-remix-starknet-file-explorer.png" class="center" style="width: 100%;" />
 
-8. Since Remix supports cairo v2.4.0, we have to update our `Scarb.toml` file to the same version.
+8. Since we want to use v2.5.4 for this project, we need to update our `Scarb.toml`: modify the highlighted line to the correct version, `starknet = "2.5.4"` for v2.5.4.
 
 <img alt="Scarb file" src="img/ch01-remix-starknet-file-scarb.png" class="center" style="width: 100%;" />
 
@@ -275,7 +275,7 @@ This call currently doesn't spend gas because the function does not change the s
 - Enter this address into the calldata field. (For this, use any address from the "Devnet account selection" listed in the Environment tab.)
 - Click the **"Call"** button. The terminal then showcases the transaction hash indicating the contract's state alteration. Since we are altering the contract's state this type of interaction is called an "invoke" and needs to be signed by the account that is calling the function.
 
-For these transactions, the terminal logs will exhibit a "status" variable, indicating the transaction's fate. If the status reads "ACCEPTED_ON_L2", the Sequencer has accepted the transaction, pending block inclusion. However, a "REJECTED" status signifies the Sequencer's disapproval, and the transaction won't feature in the upcoming block. More often than not, this transaction gains acceptance, leading to a contract state modification. On calling the **`get_owner`** function again we get this:
+For these transactions, the terminal logs will exhibit a "status" variable, indicating the transaction's fate. If the status is "ACCEPTED_ON_L2", it means the Sequencer, the component that receives and processes transactions, has accepted the transaction, which is now awaiting inclusion in an upcoming block. However, a "REJECTED" status signifies the Sequencer's disapproval, and the transaction won't feature in the upcoming block. More often than not, this transaction gains acceptance, leading to a contract state modification. See [this chapter](https://book.starknet.io/ch03-00-architecture.html) for more on Starknet's architecture and the Sequencer. On calling the **`get_owner`** function again we get this:
 
 ```json
 {
