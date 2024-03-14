@@ -1,6 +1,7 @@
 # Apibara
 
-Apibara is the fastest platform to build production-grade indexers that connect onchain data to web2 services.
+Apibara is the fastest platform to build production-grade indexers that connect onchain data to web2 services, like
+for example Postrgres, MongoDB, or any other database of your choice.
 More [here](https://apibara.com/).
 
 ## What is an indexer?
@@ -9,6 +10,8 @@ An indexer is a service that listens to the blockchain and indexes the data you 
 It makes it easy to query the blockchain data and build applications on top of it.
 
 ## What can you build with Apibara?
+
+Some examples of what you can build with Apibara are:
 
 - Real-time NFT collections dashboard
 - Real-time swaps dashboard
@@ -420,7 +423,7 @@ async function handleEventAvnuSwap(
 }
 ```
 
-If you want to get the full code, you can find it [here](https://github.com/starknet-edu/starknetbook/tree/0919a1974f2474c00690233a1c50d30386aca300/examples).
+If you want to get the full code, you can find it [here](https://github.com/starknet-edu/starknetbook/tree/main/examples/apibara-example/apibara-server).
 
 ## Run the server
 
@@ -440,7 +443,7 @@ npm run start
 ## Lets see it in action
 
 No that we have apibara streaming the swap objects into our MongoDB, we can build a frontend to display the swaps in real-time.
-Please see the example in [here](https://github.com/starknet-edu/starknetbook/tree/0919a1974f2474c00690233a1c50d30386aca300/examples).
+Please see the example in [here](https://github.com/starknet-edu/starknetbook/tree/main/examples/apibara-example/apibara-frontend)
 
 Since, this go out of the scope of this book, we will not cover the frontend part.
 
