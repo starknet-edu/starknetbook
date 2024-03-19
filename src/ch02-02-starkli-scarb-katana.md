@@ -78,6 +78,12 @@ Deploying a Starknet smart contract requires two primary steps:
 Begin with the `src/lib.cairo` file, which provides a foundational template. Remove its contents and insert the following:
 
 ```rust
+#[starknet::interface]
+trait IHello<T> {
+    fn get_name(self: @T) -> felt252;
+    fn set_name(ref self: T, name: felt252);
+}
+
 #[starknet::contract]
 mod hello {
     #[storage]
@@ -91,12 +97,14 @@ mod hello {
     }
 
     #[abi(embed_v0)]
-    fn get_name(self: @ContractState) -> felt252 {
-        self.name.read()
-    }
-    #[abi(embed_v0)]
-    fn set_name(ref self: ContractState, name: felt252) {
-        self.name.write(name);
+    impl HelloImpl of super::IHello<ContractState> {                                                                           
+        fn get_name(self: @ContractState) -> felt252 {
+            self.name.read()
+        }
+
+        fn set_name(ref self: ContractState, name: felt252) {
+            self.name.write(name);
+        }
     }
 }
 
