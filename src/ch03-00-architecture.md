@@ -19,7 +19,7 @@ tags it as "ACCEPTED_ON_L2." The final step involves the Prover, which
 executes the operating system on the new block, calculates its proof,
 and submits it to the Layer 1 (L1) for verification.
 
-<img alt="Starknet Architecture" src="img/ch03-architecture.png" class="center" style="width: 50%;" />
+<img alt="Starknet Architecture" src="img/ch03-architecture.png" class="center" style="width: 100%;" />
 
 <span class="caption">Starknet architecture</span>
 
