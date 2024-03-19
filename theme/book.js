@@ -99,6 +99,11 @@ function playground_text(playground, hidden = true) {
         }
     }
 
+    function copy_to_clipboard(pre_block) {
+        var text = playground_text(pre_block);
+        navigator.clipboard.writeText(text)
+    }
+
     function run_rust_code(code_block) {
         var result_block = code_block.querySelector(".result");
         if (!result_block) {
@@ -231,6 +236,9 @@ function playground_text(playground, hidden = true) {
                 clipButton.innerHTML = '<i class=\"tooltiptext\"></i>';
 
                 buttons.insertBefore(clipButton, buttons.firstChild);
+                clipButton.addEventListener('click', function (e) {
+                    copy_to_clipboard(pre_block);
+                })
             }
         });
     }
@@ -264,6 +272,10 @@ function playground_text(playground, hidden = true) {
             copyCodeClipboardButton.setAttribute('aria-label', copyCodeClipboardButton.title);
 
             buttons.insertBefore(copyCodeClipboardButton, buttons.firstChild);
+
+            copyCodeClipboardButton.addEventListener('click', function (e) {
+                copy_to_clipboard(pre_block);
+            });
         }
 
         let code_block = pre_block.querySelector("code");
