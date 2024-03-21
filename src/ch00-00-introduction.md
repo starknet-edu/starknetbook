@@ -62,7 +62,7 @@ These are some key features of Starknet:
 - Speed and Efficiency: Upcoming releases aim to make transactions
   even faster and cheaper.
 
-- CVM: Thanks to Cairo, Starknet runs on it´s own VM, called Cairo VM
+- CVM: Thanks to Cairo, Starknet runs on it's own VM, called Cairo VM
   (CVM), that allow us to innovate beyond the Ethereum Virtual Machine
   (EVM) and create a new paradigm for decentralized applications.
 

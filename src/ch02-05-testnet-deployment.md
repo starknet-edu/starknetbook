@@ -42,7 +42,7 @@ new one. In this tutorial, we’ll use the private key option which is the
 most common use case. You need to provide the path to the keystore file
 you want to create. You can give any name to the keystore file, you will
 likely have several wallets. In this tutorial, we will use the name
-`my_keystore_ 1.json`.
+`my_keystore_1.json`.
 
 ```bash
     starkli signer keystore from-key ~/.starkli-wallets/deployer/my_keystore_1.json
