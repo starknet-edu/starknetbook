@@ -97,7 +97,7 @@ mod hello {
     }
 
     #[abi(embed_v0)]
-    impl HelloImpl of super::IHello<ContractState> {                                                                           
+    impl HelloImpl of super::IHello<ContractState> {
         fn get_name(self: @ContractState) -> felt252 {
             self.name.read()
         }
