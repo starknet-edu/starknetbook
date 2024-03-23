@@ -17,15 +17,15 @@ don’t, refer to Basic Installation in this chapter.
 **Important:** Before we proceed with this example, please ensure that the versions of both `katana` and `starkli` match the specified versions provided below.
 
 ```console
-    katana --version  # 0.4.4
-    starkli --version  # 0.1.20 (e4d2307)
+    katana --version  # 0.6.0-alpha.7
+    starkli --version  # 0.2.8 (f59724e)
 ```
 
 If this is not your case, you have to install them like this:
 
 ```sh
-    dojoup -v 0.4.4
-    starkliup -v 0.1.20
+    dojoup -v 0.6.0-alpha.7
+    starkliup -v 0.2.8
 ```
 
 Now begin by initiating a Scarb project:
@@ -49,7 +49,7 @@ Amend the `Scarb.toml` file to integrate the `starknet` dependency and introduce
 
 ```toml
     [dependencies]
-    starknet = ">=2.3.0"
+    starknet = ">=2.5.4"
 
     [[target.starknet-contract]]
 ```
@@ -107,7 +107,6 @@ mod hello {
         }
     }
 }
-
 ```
 
 This rudimentary smart contract serves as a starting point.
