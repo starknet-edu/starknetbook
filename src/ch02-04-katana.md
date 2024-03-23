@@ -51,14 +51,13 @@ To upgrade Katana, rerun the installation command.
 To initialize a local Starknet node, execute the following command:
 
 ```bash
-katana --accounts 3 --seed 0 --gas-price 250
+katana --accounts 3 --seed 0
 ```
 
 The `--accounts` flag determines the number of accounts to be created,
 while the `--seed` flag sets the seed for the private keys of these
 accounts. This ensures that initializing the node with the same seed
-will always yield the same accounts. Lastly, the `--gas-price` flag
-specifies the transaction gas price.
+will always yield the same accounts.
 
 Running the command produces output similar to this:
 
@@ -69,27 +68,38 @@ Running the command produces output similar to this:
     ██║  ██╗██║  ██║   ██║   ██║  ██║██║ ╚████║██║  ██║
     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝
 
+    PREDEPLOYED CONTRACTS
+    ==================
+
+    | Contract        | Fee Token
+    | Address         | 0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7
+    | Class Hash      | 0x02a8846878b6ad1f54f6ba46f5f40e11cee755c677f130b2c4b60566c9003f1f
+
+    | Contract        | Universal Deployer
+    | Address         | 0x41a78e741e5af2fec34b695679bc6891742439f7afb8484ecd7766661ad02bf
+    | Class Hash      | 0x07b3e05f48f0c69e4a65ce5e076a66271a527aff2c34ce1083ec6e1526997a69
+
+    | Contract        | Account Contract
+    | Class Hash      | 0x05400e90f7e0ae78bd02c77cd75527280470e2fe19c54970dd79dc37a9d3645c
 
     PREFUNDED ACCOUNTS
     ==================
 
-    | Account address |  0x03ee9e18edc71a6df30ac3aca2e0b02a198fbce19b7480a63a0d71cbd76652e0
-    | Private key     |  0x0300001800000000300000180000000000030000000000003006001800006600
-    | Public key      |  0x01b7b37a580d91bc3ad4f9933ed61f3a395e0e51c9dd5553323b8ca3942bb44e
+    | Account address |  0x2d71e9c974539bb3ffb4b115e66a23d0f62a641ea66c4016e903454c8753bbc
+    | Private key     |  0x33003003001800009900180300d206308b0070db00121318d17b5e6262150b
+    | Public key      |  0x4c0f884b8e5b4f00d97a3aad26b2e5de0c0c76a555060c837da2e287403c01d
 
-    | Account address |  0x033c627a3e5213790e246a917770ce23d7e562baa5b4d2917c23b1be6d91961c
-    | Private key     |  0x0333803103001800039980190300d206608b0070db0012135bd1fb5f6282170b
-    | Public key      |  0x04486e2308ef3513531042acb8ead377b887af16bd4cdd8149812dfef1ba924d
+    | Account address |  0x6162896d1d7ab204c7ccac6dd5f8e9e7c25ecd5ae4fcb4ad32e57786bb46e03
+    | Private key     |  0x1800000000300000180000000000030000000000003006001800006600
+    | Public key      |  0x2b191c2f3ecf685a91af7cf72a43e7b90e2e41220175de5c4f7498981b10053
 
-    | Account address |  0x01d98d835e43b032254ffbef0f150c5606fa9c5c9310b1fae370ab956a7919f5
-    | Private key     |  0x07ca856005bee0329def368d34a6711b2d95b09ef9740ebf2c7c7e3b16c1ca9c
-    | Public key      |  0x07006c42b1cfc8bd45710646a0bb3534b182e83c313c7bc88ecf33b53ba4bcbc
-
+    | Account address |  0x6b86e40118f29ebe393a75469b4d926c7a44c2e2681b6d319520b7c1156d114
+    | Private key     |  0x1c9053c053edf324aec366a34c6901b1095b07af69495bffec7d7fe21effb1b
+    | Public key      |  0x4c339f18b9d1b95b64a6d378abd1480b2e0d5d5bd33cd0828cbce4d65c27284
 
     ACCOUNTS SEED
     =============
     0
-
 
     🚀 JSON-RPC server started: http://0.0.0.0:5050
 
@@ -106,5 +116,4 @@ The local Starknet node does not persist data. Hence, once it’s stopped,
 all data will be erased.
 
 For a practical demonstration of `katana` to deploy and interact with a
-contract, see [Chapter 2’s Voting contract
-example](https://book.starknet.io/chapter_2/deploy_call_invoke.html).
+contract, see [Introduction: Starkli, Scarb and Katana](ch02-02-starkli-scarb-katana.md).
