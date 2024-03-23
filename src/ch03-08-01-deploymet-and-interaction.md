@@ -6,7 +6,7 @@ In this section we will be focussing on declaring, deploying and interacting wit
 
 To declare and deploy the piggy bank contract, it’s required that you have the following available; don't worry, we’ll point you to resources or links to get them sorted out.
 
-1. Starkli: Starkli is a CLI tool that connects us to the Starknet blockchain. Installation steps can be found [here](./ch02-02-starkli-scarb-katana.md).
+1. Starkli: Starkli is a CLI tool that connects us to the Starknet blockchain. Installation steps can be found [here](./ch02-01-basic-installation.md).
 
 2. Starknet testnet RPC: You need your personalized gateway to access the starknet network. Starkli utilizes this API gateway to communicate with the starknet network: you can get one from Blast [here](https://blastapi.io/public-api/starknet).
 
