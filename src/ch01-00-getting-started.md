@@ -1,49 +1,32 @@
 # Getting Started
 
-Starknet is a scalable Layer-2 solution on Ethereum. This guide will walk you through the process of deploying and interacting with your first Starknet smart contract using the Cairo programming language, a language tailored for creating validity proofs that Starknet uses. For seasoned developers looking to understand the core concepts and get hands-on experience, this guide offers step-by-step instructions and essential details.
+Starknet is a scalable layer 2 solution on Ethereum. This guide will walk you through the process of deploying and interacting with your first Starknet smart contract using the Cairo programming language, a general-purpose programming language for creating proofs of validity using Starknet. For experienced developers looking to understand the basics and gain hands-on experience, this guide provides step-by-step instructions and essential details.
 
-We will use the Starknet Remix Plugin to compile, deploy and interact with our smart contract. It is a great tool to get started with Starknet development.
+We will use the [Starknet Remix Plugin](https://github.com/NethermindEth/starknet-remix-plugin?tab=readme-ov-file) to compile, deploy, and interact with our smart contract. It's a great tool for getting started with Starknet development because you don't need to install anything on your computer.
 
-1. Visit the [Remix IDE](https://remix.ethereum.org/) website.
-2. Navigate to the `Plugin Manager` section in the bottom left corner.
+1. Visit the [Remix IDE](https://remix.ethereum.org/#activate=Starknet&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.24+commit.e11b9ed9.js) website with the Starknet plugin enabled.
 
-<img alt="Plugin Manager" src="img/ch01-remix-plugin-manager.png" class="center" style="width: 50%;" />
+<img alt="Start" src="img/ch01-remix-start.png" class="center" style="width: 100%;" />
 
-3. Activate the `Starknet` plugin.
+2. Then go to **settings** option and choose the Cairo version as shown in the image below. The latest version available in Remix is `v2.5.4`.
 
-<img alt="Activate the Starknet Plugin" src="img/ch01-starknet-plugin.png" class="center" style="width: 100%;" />
+<img alt="Settings" src="img/ch01-remix-settings.png" class="center" style="width: 100%" />
 
-4. Accept the permissions. Click "Remember my choice" to avoid this step in the future.
+3. Now click on the `file explorer` tab to check the sample project details. On the `Scarb.toml` file you can find the version of this sample project. Since we want to use version 2.5.4 for this project, we have to verify that it matches in our `Scarb.toml`, otherwise modify to the correct version, `starknet = "2.5.4"`.
 
-<img alt="Accept Permissions" src="img/ch01-remix-permission-box.png" class="center" style="width: 100%;" />
-
-5. After enabling, the Starknet logo appears on the left sidebar.
-
-<img alt="Starknet Plugin" src="img/ch01-remix-starknet-plugin-icon.png" class="center" style="width: 100%; max-width: 300px;" />
-
-6. Then go to **settings** option and choose the Cairo version as shown in the image below. The latest version available in Remix at the moment of this writing is `v2.5.4`.
-
-<img alt="Starknet Plugin settings" src="img/ch01-remix-starknet-plugin-settings.png" class="center" style="width: 100%; max-width: 300px;" />
-
-7. Now click on the `file explorer` tab to check the sample project details. On the `Scarb.toml` file you can find the version of this sample project.
-
-<img alt="File explorer" src="img/ch01-remix-starknet-file-explorer.png" class="center" style="width: 100%;" />
-
-8. Since we want to use v2.5.4 for this project, we need to update our `Scarb.toml`: modify the highlighted line to the correct version, `starknet = "2.5.4"` for v2.5.4.
-
-<img alt="Scarb file" src="img/ch01-remix-starknet-file-scarb.png" class="center" style="width: 100%;" />
+<img alt="File default" src="img/ch01-remix-file-default.png" class="center" style="width: 100%;" />
 
 ## Clean your sample project
 
 By default we got a sample project, however on this tutorial, we plan to show the `Ownable contract` example. To acomplish this we have to edit and delete some files and directories.
 
 1. Rename the root directory to `ownable`. Go to your `Scarb.toml`, on [package] section, set `name` to `ownable`.
-2. Delete `balance.cairo` and `forty_two.cairo` files.
+2. Delete `balance.cairo` and `forty_two.cairo` files, if present.
 3. Go to `lib.cairo` and remove all the content there. It should be empty.
 
 At the end, your new project should look something like this.
 
-<img alt="Scarb file" src="img/ch01-remix-starknet-project-structure.png" class="center" style="width: 100%;" />
+<img alt="Scarb File" src="img/ch01-remix-file-scarb.png" class="center" style="width: 100%;" />
 
 ## Introduction to Starknet Smart Contracts
 
@@ -152,10 +135,16 @@ To compile using Remix:
 
    - Navigate to the "Starknet" tab in Remix and click on `Home`.
    - In the `1 Compile` section choose `compile a single file`.
+
+<img  alt="Compilation simple" src="img/ch01-remix-precompilation.png" class="center" style="width: 100%;" />
+
+- Accept the permissions. Click `Remember my choice` to avoid this step in the future.
+
+<img  alt="Permissions" src="img/ch01-remix-permissions.png" class="center" style="width: 100%;" />
+   
    - Click on `Compile lib.cairo`.
 
-<img  alt="Compilation Process" src="img/ch01-compile-contract.png" class="center"
-style="width: 100%;" />
+<img  alt="Compilation simple" src="img/ch01-remix-compilation.png" class="center" style="width: 100%;" />
 
 - Post-compilation, an "artifacts" folder emerges containing the compiled contract in two distinct formats: Sierra (JSON file) and CASM. For Starknet deployment, Remix will use the Sierra file. Do not worry about this process for now; we will cover it in detail in a later chapter. For now, Remix will handle the compilation and deployment for us.
 
