@@ -447,6 +447,10 @@ Please see the example in [here](https://github.com/starknet-edu/starknetbook/tr
 
 Since, this go out of the scope of this book, we will not cover the frontend part.
 
+## Deployed real-time swaps dashboard
+
+This example is deployed [here](https://miniswapscan.vercel.app/).
+
 ## Conclusion
 
 This is a simple example of how to use apibara to listen to swaps happening on AVNU in real-time.
