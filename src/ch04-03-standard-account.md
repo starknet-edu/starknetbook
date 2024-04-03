@@ -643,37 +643,6 @@ mod Account {
   }
   // ... Additional account contract code
 }
-// SRC-5 trait defining the introspection method
-trait ISRC5 {
-  // Function to check interface support
-  fn supports_interface(interface_id: felt252) -> bool;
-}
-
-// Extension of the account contract's interface for SRC-5 compliance
-#[starknet::interface]
-trait IAccount<T> {
-  // ... Additional methods
-  // Method to validate interface support
-  fn supports_interface(self: @T, interface_id: felt252) -> bool;
-}
-
-#[starknet::contract]
-mod Account {
-  // Constant identifier for the SRC-6 trait
-  const SRC6_TRAIT_ID: felt252 = 1270010605630597976495846281167968799381097569185364931397797212080166453709;
-
-  // Public interface implementation for the account contract
-  #[external(v0)]
-  impl AccountImpl of super::IAccount<ContractState> {
-    // ... Other function implementations
-    // Implementation of the interface support check
-    fn supports_interface(self: @ContractState, interface_id: felt252) -> bool {
-      // Compares the provided interface ID with the SRC-6 trait ID
-      interface_id == SRC6_TRAIT_ID
-    }
-  }
-  // ... Additional account contract code
-}
 ```
 
 By implementing this function, the account contract declares its ability to interact with other contracts expecting SRC-6 features, thus adhering to the standards of the Starknet protocol and enhancing interoperability within the network.
