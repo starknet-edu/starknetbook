@@ -119,7 +119,11 @@ and staying abreast with Starknet developments:
 4.  **Cairo Documentation**: Explore it
     [here](https://www.cairo-lang.org/docs).
 
-5.  **Starknet Developer Telegram (English)**: A community for
+5.  **Starknet Discord (English)**: A community for Starknet developers and users around the world. This is a great platform for
+    networking, sharing ideas, learning, and troubleshooting together. Join us on
+    Discord [here](https://discord.gg/gWyfeCF4)
+
+6.  **Starknet Developer Telegram (English)**: A community for
     English-speaking Starknet developers. This is a great platform for
     networking, sharing ideas, and troubleshooting together. Join us on
     Telegram [here](https://t.me/starknetna).
