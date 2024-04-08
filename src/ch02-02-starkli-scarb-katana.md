@@ -77,7 +77,7 @@ Deploying a Starknet smart contract requires two primary steps:
 
 Begin with the `src/lib.cairo` file, which provides a foundational template. Remove its contents and insert the following:
 
-```rust
+```rust, ignore
 #[starknet::interface]
 trait IHello<T> {
     fn get_name(self: @T) -> felt252;
