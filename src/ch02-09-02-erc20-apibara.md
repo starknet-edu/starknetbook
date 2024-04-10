@@ -1,8 +1,8 @@
 <img alt="ERC20 Apibara Main" src="img/ch02-apibara-erc20-main.png" class="center" style="width: 100%;" />
 
-# ERC-20 UI with Apibara-react and StarknetKit
+# ERC-20 UI with Starknet-react and StarknetKit
 
-In this section, we will be exploring how to build a web3 application with [Apibara](https://github.com/apibara/starknet-react) react library, [StarknetKit](https://www.starknetkit.com/docs/getting-started), and an ERC-20 smart contract written in the [Cairo](https://book.cairo-lang.org/title-page.html) language. This tutorial is similar to [ERC-20 UI](ch02-10-01-erc20-ui.md) tutorial but with the addition of utilizing Apibara-react, StarknetKit and up to date versions of the tools and libraries.
+In this section, we will be exploring how to build a web3 application with [Starknet-react](https://github.com/Starknet/starknet-react) react library, [StarknetKit](https://www.starknetkit.com/docs/getting-started), and an ERC-20 smart contract written in the [Cairo](https://book.cairo-lang.org/title-page.html) language. This tutorial is similar to [ERC-20 UI](ch02-10-01-erc20-ui.md) tutorial but with the addition of utilizing Starknet-react, StarknetKit and up to date versions of the tools and libraries.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Before we start, this guide assumes the reader is familiar in the following:
 
 We will first start with building the contract.
 
-**[IMPORTANT]** _Before we start building the contract, make sure that you have your environment setup by clicking [here](https://docs.starknet.io/documentation/quick_start/environment_setup/) and navigate to this github [**repo**](https://github.com/FriendlyLifeguard/starknet_erc20_example), clone it and follow the instruction on the README to setup the project._
+**[IMPORTANT]** _Before we start building the contract, make sure that you have your environment setup by clicking [here](https://docs.starknet.io/documentation/quick_start/environment_setup/) and navigate to this github [**repo**](https://github.com/FriendlyLifeguard/starknet_erc20_example), clone it and follow the instruction on the README to setup the project. You also can fin this repo on our local [examples](https://github.com/starknet-edu/starknetbook/tree/main/examples/apibara-starknetkit)._
 
 ## Building/Deploying the Contract
 
@@ -124,7 +124,7 @@ Next, we will be constructing our frontend so that users can interact with the c
 
 # Building the Frontend
 
-For our frontend, we will be using NextJ, [Apibara-react](https://starknet-react.com/docs/getting-started), and [StarknetKit](https://www.starknetkit.com/docs/getting-started).
+For our frontend, we will be using NextJ, [Starknet-react](https://starknet-react.com/docs/getting-started), and [StarknetKit](https://www.starknetkit.com/docs/getting-started).
 
 ## Configuring the repo for your contract
 
@@ -513,5 +513,5 @@ In this tutorial, we were able to accomplish the following tasks!
 
 - **Initializing environment**: Setting up an environment for starknet and cairo development
 - **Declaring and deploying the contract**: Declaring and deploying our ERC20 cairo contract on the sepolia testnet
-- **Initializing the frontend**: Setting up the frontend with NextJS, Apibara-react, and Starknetkit to connect your Cairo contract with your wallet
+- **Initializing the frontend**: Setting up the frontend with NextJS, Starknet-react, and Starknetkit to connect your Cairo contract with your wallet
 - **Interacting with the frontend**: Connecting/disconnecting your wallet, viewing your deployed token balance, and transferring tokens to another wallet by sending transactions on the sepolia network
