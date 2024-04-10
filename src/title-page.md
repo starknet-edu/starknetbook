@@ -117,7 +117,7 @@ and staying abreast with Starknet developments:
     [here](https://docs.starknet.io/).
 
 4.  **Cairo Documentation**: Explore it
-    [here](https://www.cairo-lang.org/docs).
+    [here](https://www.cairo-lang.org/).
 
 5.  **Starknet Discord (English)**: A community for Starknet developers and users around the world. This is a great platform for
     networking, sharing ideas, learning, and troubleshooting together. Join us on
