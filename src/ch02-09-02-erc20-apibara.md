@@ -2,7 +2,7 @@
 
 # ERC-20 UI with Starknet-react and StarknetKit
 
-In this section, we will be exploring how to build a web3 application with [Starknet-react](https://github.com/Starknet/starknet-react) react library, [StarknetKit](https://www.starknetkit.com/docs/getting-started), and an ERC-20 smart contract written in the [Cairo](https://book.cairo-lang.org/title-page.html) language. This tutorial is similar to [ERC-20 UI](ch02-10-01-erc20-ui.md) tutorial but with the addition of utilizing Starknet-react, StarknetKit and up to date versions of the tools and libraries.
+In this section, we will be exploring how to build a web3 application with [Starknet-react](https://github.com/Apibara/starknet-react) react library, [StarknetKit](https://www.starknetkit.com/docs/getting-started), and an ERC-20 smart contract written in the [Cairo](https://book.cairo-lang.org/title-page.html) language. This tutorial is similar to [ERC-20 UI](ch02-10-01-erc20-ui.md) tutorial but with the addition of utilizing Starknet-react, StarknetKit and up to date versions of the tools and libraries.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Before we start, this guide assumes the reader is familiar in the following:
 
 We will first start with building the contract.
 
-**[IMPORTANT]** _Before we start building the contract, make sure that you have your environment setup by clicking [here](https://docs.starknet.io/documentation/quick_start/environment_setup/) and navigate to this github [**repo**](https://github.com/FriendlyLifeguard/starknet_erc20_example), clone it and follow the instruction on the README to setup the project. You also can fin this repo on our local [examples](https://github.com/starknet-edu/starknetbook/tree/main/examples/apibara-starknetkit)._
+**[IMPORTANT]** _Before we start building the contract, make sure that you have your environment setup by clicking [here](https://docs.starknet.io/documentation/quick_start/environment_setup/) and navigate to this github [**repo**](https://github.com/FriendlyLifeguard/starknet_erc20_example), clone it and follow the instruction on the README to setup the project. You also can find this repo on our local [examples](https://github.com/starknet-edu/starknetbook/tree/main/examples/apibara-starknetkit)._
 
 ## Building/Deploying the Contract
 
