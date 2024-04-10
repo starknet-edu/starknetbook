@@ -2,6 +2,8 @@ book
 target
 output
 node_modules
+.DS_Store
+
 
 # Editors tmp files.
 *~

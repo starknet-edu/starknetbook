@@ -24,6 +24,7 @@
   - [Starknet-js: Javascript SDK](ch02-09-starknet-js.md)
     - [Example - Beginner: Counter UI](ch02-09-01-counter-ui.md)
     - [Example - Beginner: ERC-20 UI](ch02-09-02-erc20-ui.md)
+    - [Example - Beginner: ERC-20 UI with Apibara-react and StarknetKit](ch02-09-03-erc20-apibara.md)
   - [Starknet-React: React Integration](ch02-10-starknet-react.md)
     - [Example - Beginner: ERC-20 UI](ch02-10-01-erc20-ui.md)
     - [Example - Intermediate: Million Dollar Homepage](ch02-10-02-million-dollar-homepage.md)
