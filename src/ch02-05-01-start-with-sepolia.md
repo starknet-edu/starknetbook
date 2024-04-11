@@ -2,7 +2,11 @@
 
 ## Overview
 
-Currently, there are no active Sepolia faucets in Starknet. Therefore, the process of acquiring SEPOLIA tokens involves obtaining them on the **Ethereum** Sepolia testnet and then transferring them to the Starknet Sepolia testnet.
+**The easiest way yo get L2 Sepolia ETH on starknet is to use [Starknet Faucet](https://starknet-faucet.vercel.app/). This faucet is a simple web application that allows you to request $ETH for the Starknet testnet.**
+
+There is another way of acquiring SEPOLIA tokens, it involves obtaining them on the **Ethereum** Sepolia testnet and then transferring them to the Starknet Sepolia testnet. This process is more complex and requires the use of a bridge contract. We suggest using the [Starknet Faucet](https://starknet-faucet.vercel.app/).
+
+# Bridge Contract Method
 
 ## Step 1: Obtain SEPOLIA Tokens on the Ethereum Sepolia Testnet
 
