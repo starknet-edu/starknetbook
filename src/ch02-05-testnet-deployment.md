@@ -192,7 +192,7 @@ There are three main options for RPC providers, sorted by ease of use:
     Starknet Book](./ch03-00-architecture.html#nodes) or
     [Kasar](https://www.kasar.io/) for setup guides.
 
-3.  **Free RPC vendor**: These 2 networks are eligible for free RPC vendors: mainet and sepolia.
+3.  **Free RPC vendor**: These 2 networks are eligible for free RPC vendors: mainnet and sepolia.
     You can choose [Blast](https://blastapi.io/public-api/starknet) or [Nethermind](https://data.voyager.online/)
 
 ### Creating an Account Descriptor
@@ -208,7 +208,7 @@ file is a JSON file that contains the details of your smart wallet. We also have
     starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/my_account_1.json --rpc https://starknet-sepolia.public.blastapi.io/rpc/v0_7
 ```
 
-Note: Here we used the Public RPC Endpoint v0.7 Starknet (Sepolia) Testnet from **Blast**. If you don't specify the rpc provider, Starkli will use blast Sepolia endpoint anyway.
+Note: Here we used the Public RPC Endpoint v0.7 Starknet (Sepolia) Testnet from **Blast**. If you don't specify the rpc provider, Starkli will use Blast Sepolia endpoint anyway.
 
 > ⚠️ **Contract not found?**
 >
@@ -220,7 +220,7 @@ Note: Here we used the Public RPC Endpoint v0.7 Starknet (Sepolia) Testnet from 
 >
 > #### 🟩 Solution:
 >
-> It means you probably just created a new wallet and it has **not been deployed yet**. To accomplish this you have to fund your wallet with tokens and **transfer tokens** to a **different** wallet address. For Sepolia tokens you can check this [faucet](https://starknet-faucet.vercel.app/). For more ways to get Sepolia tokens, a detailed intructons can be found in the [Get Sepolia Tokens](./ch02-05-01-start-with-sepolia.md) section.
+> It means you probably just created a new wallet and it has **not been deployed yet**. To accomplish this you have to fund your wallet with tokens and **transfer tokens** to a **different** wallet address. For Sepolia tokens you can check this [faucet](https://starknet-faucet.vercel.app/). For more ways to get Sepolia tokens, a detailed instructions can be found in the [Get Sepolia Tokens](./ch02-05-01-start-with-sepolia.md) section.
 >
 > **Still doesn't work?**
 >
