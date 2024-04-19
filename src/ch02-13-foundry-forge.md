@@ -6,7 +6,7 @@ To utilize Forge, define test functions and label them with test attributes. Use
 
 ## `snForge` Command-Line Usage
 
-This section guides you through the Starknet Foundry `snforge` command-line tool. Learn how to set up a new project, compile the code, and execute tests.
+This section guides you through the [Starknet Foundry](https://github.com/foundry-rs/starknet-foundry) `snforge` command-line tool. Learn how to set up a new project, compile the code, and execute tests.
 
 To start a new project with Starknet Foundry, use the `snforge init` command and replace `project_name` with your project's name.
 
