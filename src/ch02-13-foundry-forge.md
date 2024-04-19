@@ -59,18 +59,18 @@ Follow the instructions and then run:
 `snfoundryup`
 
 3. Check your `snforge` version, run :
-   `snforge version`
+   `snforge --version`
 
-As athe time of this tutorial, we used `snforge` version `snforge 0.16.0` which is the latest at this time.
+At the time of this tutorial, we used `snforge` version `snforge 0.21.0` which is the latest at this time.
 
 ### Test
 
 Run tests using `snforge test`:
 
 ```shell
-snforge
+snforge test
 
-Collected 2 test(s) from tesing package
+Collected 2 test(s) from testing package
 Running 0 test(s) from src/
 Running 2 test(s) from tests/
 [PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
@@ -80,12 +80,12 @@ Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 
 ## Integrating `snforge` with Existing Scarb Projects
 
-For those with an established Scarb project who wish to incorporate `snforge`, ensure the `snforge_std package` is declared as a dependency. Insert the line below in the [dependencies] section of your `Scarb.toml`:
+For those with an established Scarb project who wish to incorporate `snforge`, ensure the `snforge_std` package is declared as a dependency. Insert the line below in the [dependencies] section of your `Scarb.toml`:
 
 ```shell
 # ...
 [dependencies]
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.16.0" }
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.21.0" }
 ```
 
 Ensure the tag version corresponds with your `snforge` version. To verify your `snforge` version:
@@ -97,7 +97,7 @@ snforge --version
 Or, add this dependency using the `scarb` command:
 
 ```shell
-scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git --tag v0.16.0
+scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git --tag v0.21.0
 ```
 
 With these steps, your existing Scarb project is now **`snforge`**-ready.
@@ -111,14 +111,14 @@ Utilize Starknet Foundry's `snforge test` command to efficiently run tests.
 Navigate to the package directory and issue this command to run tests:
 
 ```shell
-snforge
+snforge test
 ```
 
 Sample output might resemble:
 
 ```shell
 
-Collected 2 test(s) from tesingg package
+Collected 2 test(s) from testing package
 Running 0 test(s) from src/
 Running 2 test(s) from tests/
 [PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
@@ -170,10 +170,10 @@ use starknet::ContractAddress;
 
 use snforge_std::{declare, ContractClassTrait};
 
-use tesingg::IHelloStarknetSafeDispatcher;
-use tesingg::IHelloStarknetSafeDispatcherTrait;
-use tesingg::IHelloStarknetDispatcher;
-use tesingg::IHelloStarknetDispatcherTrait;
+use testing::IHelloStarknetSafeDispatcher;
+use testing::IHelloStarknetSafeDispatcherTrait;
+use testing::IHelloStarknetDispatcher;
+use testing::IHelloStarknetDispatcherTrait;
 
 fn deploy_contract(name: felt252) -> ContractAddress {
     let contract = declare(name);
@@ -215,10 +215,10 @@ fn test_cannot_increase_balance_with_zero_value() {
 }
 ```
 
-To run the test, execute the `snforge` command. The expected output is:
+To run the test, execute the `snforge test` command. The expected output is:
 
 ```shell
-Collected 2 test(s) from tesing package
+Collected 2 test(s) from testing package
 Running 0 test(s) from src/
 Running 2 test(s) from tests/
 [PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
@@ -232,7 +232,7 @@ There are several methods to test smart contracts, such as unit tests, integrati
 
 ## ERC20 Contract Example
 
-After setting up your foundry project, add the following dependency to your `Scarb.toml` (in this case we are using version 0.8.0 of the OpenZeppelin Cairo contracts, due to the fact that it uses components):
+After setting up your foundry project, add the following dependency to your `Scarb.toml` (in this case we are using version 0.8.1 of the OpenZeppelin Cairo contracts, due to the fact that it uses components):
 
 ```shell
 openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.8.1" }
@@ -267,13 +267,13 @@ trait IERC20<TContractState> {
 #[starknet::contract]
 mod ERC20Token {
 
-Importing necessary libraries
+    // Importing necessary libraries
 
     use starknet::ContractAddress;
     use starknet::get_caller_address;
     use starknet::contract_address_const;
 
-Similar to address(0) in Solidity
+    // Similar to address(0) in Solidity
 
     use core::zeroable::Zeroable;
     use super::IERC20;
@@ -312,9 +312,9 @@ Similar to address(0) in Solidity
         value: u256,
     }
 
-The contract constructor is not part of the interface. Nor are internal functions part of the interface.
+    // The contract constructor is not part of the interface. Nor are internal functions part of the interface.
 
-Constructor
+    // Constructor
 
     #[constructor]
     fn constructor(ref self: ContractState, // _name: felt252,
@@ -483,9 +483,10 @@ Constructor
             }
         }
     }
+}
 ```
 
-This contract allows minting tokens to a recipient during deployment, checking balances, and transferring tokens, relying on the openzeppelin ERC20 library.
+This contract allows minting tokens to a recipient during deployment, checking balances, and transferring tokens, relying on the OpenZeppelin ERC20 library.
 
 ### Test Preparation
 
@@ -512,9 +513,9 @@ This function requires a `supply` amount and `recipient` address:
 
 Before deploying a starknet contract, we need a contract_class.
 
-Get it using the declare function from [starknet Foundry](#https://foundry-rs.github.io/starknet-foundry/)
+Get it using the declare function from [Starknet Foundry](#https://foundry-rs.github.io/starknet-foundry/)
 
-Supply values the constructor arguments when deploying
+Supply values for the constructor arguments when deploying
 
 ```
 
@@ -740,7 +741,7 @@ To begin, test the deployment helper function to confirm the details provided:
 Running `snforge test` produces:
 
 ```shell
-   Collected 12 test(s) from te package
+   Collected 12 test(s) from testing package
 Running 12 test(s) from src/
 [PASS] testing::ERC20Token::test::test_total_supply (gas: ~1839)
 [PASS] testing::ERC20Token::test::test_decimal_is_correct (gas: ~3065)
@@ -842,7 +843,7 @@ To execute specific tests, use a filter string with the `snforge` command. Tests
 For instance, to run all tests with the string 'test\_' in their name:
 
 ```shell
-snforge test_
+snforge test test_
 ```
 
 Expected output:
@@ -863,19 +864,19 @@ All the tests with the string 'test\_' in their test name went through.
 Another example: To filter and run `test_fuzz_sum` we can partially match the test name with the string 'fuzz_sum' like this:
 
 ```shell
-snforge test_fuzz_sum
+snforge test test_fuzz_sum
 ```
 
 To execute an exact test, combine the `--exact` flag with a fully qualified test name:
 
 ```shell
-snforge package_name::test_name --exact
+snforge test package_name::test_name --exact
 ```
 
 To halt the test suite upon the first test failure, use the `--exit-first` flag:
 
 ```shell
-snforge --exit-first
+snforge test --exit-first
 ```
 
 If a test fails, the output will resemble:
