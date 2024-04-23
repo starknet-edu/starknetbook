@@ -1,6 +1,6 @@
 # Starknet Devnet
 
-Starknet Devnet is a development network (devnet) implemented in Rust, similar to the Python-based [`starknet-devnet`](https://0xspaceshard.github.io/starknet-devnet/docs/intro).
+Starknet Devnet is a development network (devnet) implemented in Rust, similar to the Python-based [`starknet-devnet-rs`](https://0xspaceshard.github.io/starknet-devnet/docs/intro).
 
 ## Installation
 
