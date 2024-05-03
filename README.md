@@ -23,7 +23,7 @@ Every contribution, regardless of its size, plays a pivotal role in refining thi
    - Install the `cargo` toolchain via [rustup](https://rustup.rs/).
    - Install [mdBook](https://rust-lang.github.io/mdBook/guide/installation.html) and its translation extension:
 
-```shell
+```bash
 cargo install mdbook --version 0.4.31 && cargo install mdbook-i18n-helpers --version 0.1.0
 ```
 
