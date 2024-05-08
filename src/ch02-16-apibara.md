@@ -16,7 +16,7 @@ Some examples of what you can build with Apibara are:
 - Real-time NFT collections dashboard
 - Real-time swaps dashboard
 
-## Building an exmaple
+## Building an example
 
 In this example, we will build a small app similar to the concept [Starkscan](https://starkscan.io/) but that will solely listen to swaps happening on AVNU in real-time.
 For the fronted we will use react.
@@ -63,7 +63,7 @@ npm init -y
 Install apibara's dependencies and some other dependencies we will use:
 
 ```bash
-npm install @apibara/protocol @apibara/startknet starknet ethers dotenv
+npm install @apibara/protocol @apibara/starknet starknet ethers dotenv
 ```
 
 Create a file called `index.ts` and add the following code:
@@ -442,7 +442,7 @@ npm run start
 
 ## Lets see it in action
 
-No that we have apibara streaming the swap objects into our MongoDB, we can build a frontend to display the swaps in real-time.
+Now that we have apibara streaming the swap objects into our MongoDB, we can build a frontend to display the swaps in real-time.
 Please see the example in [here](https://github.com/starknet-edu/starknetbook/tree/main/examples/apibara-example/apibara-frontend)
 
 Since, this go out of the scope of this book, we will not cover the frontend part.
