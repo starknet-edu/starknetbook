@@ -65,15 +65,4 @@ The fee is determined by the most restrictive component and is calculated as:
 maxk[CairoResourceUsagek * CairoResourceFeeWeightsk]
 ```
 
-Where "k" denotes the Cairo resource elements, encompassing step numbers and built-ins. The weightings for these components are:
-
-| Component   | Gas Cost       | Range           |
-| ----------- | -------------- | --------------- |
-| Cairo Step  | 0.01 gwei/gas  | per step        |
-| Pedersen    | 0.32 gwei/gas  | per application |
-| Poseidon    | 0.32 gwei/gas  | per application |
-| Range Check | 0.16 gwei/gas  | per application |
-| ECDSA       | 20.48 gwei/gas | per application |
-| Keccak      | 20.48 gwei/gas | per application |
-| Bitwise     | 0.64 gwei/gas  | per application |
-| EC_OP       | 10.24 gwei/gas | per application |
+Where "k" denotes the Cairo resource elements, encompassing step numbers and built-ins. The weightings for these components can be found [here.](https://docs.starknet.io/documentation/architecture_and_concepts/Network_Architecture/fee-mechanism/#gas_cost_per_cairo_step_or_builtin_step)
