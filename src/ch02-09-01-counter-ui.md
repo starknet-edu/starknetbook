@@ -198,8 +198,8 @@ The **`decreaseCounter`** function is designed to interact with a smart contract
 
 ```javascript
 const getCounter = async () => {
-  const provider = new Provider({
-    sequencer: { network: constants.NetworkName.SN_MAIN },
+  const provider = new RpcProvider({
+    nodeUrl: 'https://starknet-mainnet.public.blastapi.io/rpc/v0_7',
   });
   try {
     const mycontract = new Contract(contractAbi, contractAddress, provider);
@@ -213,7 +213,7 @@ const getCounter = async () => {
 
 The **`getCounter`** function is designed to retrieve the current count from a smart contract. Here's a breakdown of its operation:
 
-1. Establishes a provider instance, specifying the sequencer network – in this instance, it's set to the **`mainnet`** through **`constants.NetworkName.SN_MAIN`**.
+1. Establishes a provider instance, specifying the RPC network – in this instance, it's set to the **`mainnet`** through **`nodeUrl`** provided by Blast.
 2. With this provider, it then initiates a contract instance using the provided contract's ABI, its address, and the aforementioned provider.
 3. The function then invokes the **`get_current_count`** method of the contract to fetch the current count. This is an asynchronous action, and the program waits for its completion with the **`await`** keyword.
 4. Once successfully retrieved, the count, which is presumably a number, is converted to a string and stored using the **`setRetrievedValue`** function.

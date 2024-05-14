@@ -2,7 +2,7 @@
 
 Starknet.js is a JavaScript/TypeScript library designed to connect your
 website or decentralized application (D-App) to Starknet. It aims to
-mimic the architecture of [ethers.js](https://docs.ethers.org/v5/), so
+mimic the architecture of [ethers.js](https://docs.ethers.org/v6/), so
 if you are familiar with ethers, you should find Starknet.js easy to
 work with.
 
@@ -30,7 +30,7 @@ To install Starknet.js, follow these steps:
 
 To build an app that users are able to connect to and interact with
 Starknet, we recommend adding the
-[get-starknet](https://github.com/starknet-io/get-starknet) library,
+[apibara-react](https://github.com/apibara/starknet-react) library,
 which allows you to manage wallet connections.
 
 With these tools ready, there are basically 3 main concepts to know on
@@ -49,19 +49,26 @@ and messages.
 Unlike Ethereum, where user accounts are Externally Owned Accounts,
 Starknet **accounts are contracts**. This might not necessarily impact
 your dapp’s frontend, but you should definitely be aware of this
-difference.
+difference. The contract accounts are generated from a class hash which have to be declared beforehand. This hash is what we use to create an instance of our contract account. 
+
+
 
 ```ts
-async function connectWallet() {
-    const starknet = await connect();
-    console.log(starknet.account);
+const OZaccountClassHash = '0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f';
 
-    const nonce = await starknet.account.getNonce();
-    const message = await starknet.account.signMessage(...)
-}
+const OZaccountConstructorCallData = CallData.compile({ publicKey: YOUR_PUBLIC_KEY });
+
+const OZcontractAddress = hash.calculateContractAddressFromHash(
+  YOUR_PUBLIC_KEY,
+  OZaccountClassHash,
+  OZaccountConstructorCallData,
+  0
+);
 ```
 
-The snippet above uses the `connect` function provided by `get-starknet` to establish a connection to the user wallet. Once connected, we are able to access account methods, such as `signMessage` or `execute`.
+The snippet above gives you an example on how to deploy an OpenZeppelin account using Starknet.js. 
+
+Openzeppelin has already declared an instance of the account hash that we will be using to create our own unique account. This hash provides `AccountComponent` from OpenZeppelin which you can learn more about [here](https://docs.openzeppelin.com/contracts-cairo/0.8.1/api/account#AccountComponent). We use this class hash along with other arguments to generate our unique contract acccount by calling `calculateContractAddressFromHash` method. 
 
 ### Provider
 
@@ -71,19 +78,15 @@ as it doesn’t allow signing transactions or messages. Just like in
 Ethereum, you can use a default provider, or use services such as Infura
 or Alchemy, both of which support Starknet, to create an RPC provider.
 
-By default, the Provider is a sequencer provider.
+Our code example utilizes blast's public provider to fetch latest block number on Starknet mainnet. 
 
 ```ts
-export const provider = new Provider({
-  sequencer: {
-    network: "goerli-alpha",
-  },
-  // rpc: {
-  //   nodeUrl: INFURA_ENDPOINT
-  // }
-});
 
-const block = await provider.getBlock("latest"); // <- Get latest block
+const providerBlastMainnet = new RpcProvider({
+  nodeUrl: 'https://starknet-mainnet.public.blastapi.io/rpc/v0_7',
+}); 
+
+const block = await providerBlastMainnet.getBlockLatestAccepted();
 console.log(block.block_number);
 ```
 
@@ -95,29 +98,37 @@ frontend. To create these instances, you will need the contract’s
 address and ABI, and either a provider or signer.
 
 ```ts
-const contract = new Contract(abi_erc20, contractAddress, starknet.account);
 
-const balance = await contract.balanceOf(starknet.account.address);
-const transfer = await contract.transfer(recipientAddress, amountFormatted);
-//or: const transfer = await contract.invoke("transfer", [to, amountFormatted]);
+const providerBlastMainnet = new RpcProvider({
+  nodeUrl: 'https://starknet-mainnet.public.blastapi.io/rpc/v0_7',
+}); 
 
-console.log(`Tx hash: ${transfer.transaction_hash}`);
+const contract = new Contract(abi_erc20, contractAddress, providerBlastMainnet);
+
 ```
 
 If you create a contract instance with a provider, you’ll be limited to
 calling read functions on the contract - only with a signer can you
-change the state of the blockchain. However, you are able to connect a
-previously created `Contract` instance with a new account:
-
+change the state of the blockchain. You can do this by connecting the contract to a starknet account. 
 ```ts
+const account = new Account(provider, accountAddress, privateKey0);
+
 const contract = new Contract(abi_erc20, contractAddress, provider);
 
-contract.connect(starknet.account);
+contract.connect(account);
+
+const myCall = contract.populate('increase_balance', [100]);
+
+const result = await contract.increase_balance(myCall.calldata);
+await provider.waitForTransaction(result.transanction_hash); 
+
+const balance = await contract.balanceOf(account.address);
+
+console.log('New Balance=' balance);
 ```
 
 In the snippet above, after
-calling the `connect` method, it would be possible to call read
-functions on the contract, but not before.
+calling the `connect` method to connect the contract with an `account` instance, we can call `increase_balance` to update the balance of our `account`.
 
 ### Units
 
@@ -181,7 +192,7 @@ This command generates a package.json file. Next, update this file to include th
 "axios": "^1.6.0",
 "chalk": "^5.3.0",
 "dotenv": "^16.3.1",
-"starknet": "^5.19.5",
+"starknet": "^5.24.3",
 "ts-node": "^10.9.1",
 "typescript": "^5.2.2"
 ```
