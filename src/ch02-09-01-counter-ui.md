@@ -199,7 +199,7 @@ The **`decreaseCounter`** function is designed to interact with a smart contract
 ```javascript
 const getCounter = async () => {
   const provider = new RpcProvider({
-    nodeUrl: 'https://starknet-mainnet.public.blastapi.io/rpc/v0_7',
+    nodeUrl: "https://starknet-mainnet.public.blastapi.io/rpc/v0_7",
   });
   try {
     const mycontract = new Contract(contractAbi, contractAddress, provider);

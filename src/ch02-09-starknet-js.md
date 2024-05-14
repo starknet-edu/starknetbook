@@ -49,26 +49,27 @@ and messages.
 Unlike Ethereum, where user accounts are Externally Owned Accounts,
 Starknet **accounts are contracts**. This might not necessarily impact
 your dapp’s frontend, but you should definitely be aware of this
-difference. The contract accounts are generated from a class hash which have to be declared beforehand. This hash is what we use to create an instance of our contract account. 
-
-
+difference. The contract accounts are generated from a class hash which have to be declared beforehand. This hash is what we use to create an instance of our contract account.
 
 ```ts
-const OZaccountClassHash = '0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f';
+const OZaccountClassHash =
+  "0x061dac032f228abef9c6626f995015233097ae253a7f72d68552db02f2971b8f";
 
-const OZaccountConstructorCallData = CallData.compile({ publicKey: YOUR_PUBLIC_KEY });
+const OZaccountConstructorCallData = CallData.compile({
+  publicKey: YOUR_PUBLIC_KEY,
+});
 
 const OZcontractAddress = hash.calculateContractAddressFromHash(
   YOUR_PUBLIC_KEY,
   OZaccountClassHash,
   OZaccountConstructorCallData,
-  0
+  0,
 );
 ```
 
-The snippet above gives you an example on how to deploy an OpenZeppelin account using Starknet.js. 
+The snippet above gives you an example on how to deploy an OpenZeppelin account using Starknet.js.
 
-Openzeppelin has already declared an instance of the account hash that we will be using to create our own unique account. This hash provides `AccountComponent` from OpenZeppelin which you can learn more about [here](https://docs.openzeppelin.com/contracts-cairo/0.8.1/api/account#AccountComponent). We use this class hash along with other arguments to generate our unique contract acccount by calling `calculateContractAddressFromHash` method. 
+Openzeppelin has already declared an instance of the account hash that we will be using to create our own unique account. This hash provides `AccountComponent` from OpenZeppelin which you can learn more about [here](https://docs.openzeppelin.com/contracts-cairo/0.8.1/api/account#AccountComponent). We use this class hash along with other arguments to generate our unique contract acccount by calling `calculateContractAddressFromHash` method.
 
 ### Provider
 
@@ -78,13 +79,12 @@ as it doesn’t allow signing transactions or messages. Just like in
 Ethereum, you can use a default provider, or use services such as Infura
 or Alchemy, both of which support Starknet, to create an RPC provider.
 
-Our code example utilizes blast's public provider to fetch latest block number on Starknet mainnet. 
+Our code example utilizes blast's public provider to fetch latest block number on Starknet mainnet.
 
 ```ts
-
 const providerBlastMainnet = new RpcProvider({
-  nodeUrl: 'https://starknet-mainnet.public.blastapi.io/rpc/v0_7',
-}); 
+  nodeUrl: "https://starknet-mainnet.public.blastapi.io/rpc/v0_7",
+});
 
 const block = await providerBlastMainnet.getBlockLatestAccepted();
 console.log(block.block_number);
@@ -98,18 +98,17 @@ frontend. To create these instances, you will need the contract’s
 address and ABI, and either a provider or signer.
 
 ```ts
-
 const providerBlastMainnet = new RpcProvider({
-  nodeUrl: 'https://starknet-mainnet.public.blastapi.io/rpc/v0_7',
-}); 
+  nodeUrl: "https://starknet-mainnet.public.blastapi.io/rpc/v0_7",
+});
 
 const contract = new Contract(abi_erc20, contractAddress, providerBlastMainnet);
-
 ```
 
 If you create a contract instance with a provider, you’ll be limited to
 calling read functions on the contract - only with a signer can you
-change the state of the blockchain. You can do this by connecting the contract to a starknet account. 
+change the state of the blockchain. You can do this by connecting the contract to a starknet account.
+
 ```ts
 const account = new Account(provider, accountAddress, privateKey0);
 
@@ -120,7 +119,7 @@ contract.connect(account);
 const myCall = contract.populate('increase_balance', [100]);
 
 const result = await contract.increase_balance(myCall.calldata);
-await provider.waitForTransaction(result.transanction_hash); 
+await provider.waitForTransaction(result.transanction_hash);
 
 const balance = await contract.balanceOf(account.address);
 
