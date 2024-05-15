@@ -52,9 +52,8 @@ steps.
 ## Sequencers in Starknet
 
 Let’s delve into Sequencers by focusing on
-[Madara](https://github.com/keep-starknet-strange/madara) and
-[Kraken](https://github.com/lambdaclass/starknet_stack/tree/main/sequencer),
-two high-performance Starknet Sequencers. A Sequencer must, at least, do
+[Madara](https://github.com/keep-starknet-strange/madara), [Kraken](https://github.com/lambdaclass/starknet_stack/tree/main/sequencer), and [Itachi](https://github.com/reddio-com/itachi)
+three high-performance Starknet Sequencers. A Sequencer must, at least, do
 two things: order and execute transactions.
 
 - **Ordering**: Madara handles the sequencing process, supporting
@@ -82,9 +81,16 @@ We also have the Kraken Sequencer as another option.
   Native](https://github.com/lambdaclass/cairo_native) or [Cairo
   VM](https://github.com/lambdaclass/cairo-vm).
 
+Then there is also the Itachi Sequencer option.
+
+- **Ordering**: Itachi
+
+- **Execution**: 
+
 <table style="width:100%;">
 <colgroup>
 <col style="width: 42%" />
+<col style="width: 28%" />
 <col style="width: 28%" />
 <col style="width: 28%" />
 </colgroup>
@@ -95,6 +101,8 @@ We also have the Kraken Sequencer as another option.
 href="https://github.com/keep-starknet-strange/madara">Madara</a></th>
 <th style="text-align: left;"><a
 href="https://github.com/lambdaclass/starknet_stack/tree/main/sequencer">Kraken</a></th>
+<th style="text-align: left;"><a
+href="https://github.com/reddio-com/itachi">Itachi</a></th>
 </tr>
 </thead>
 <tbody>
@@ -104,6 +112,7 @@ Method</strong></p></td>
 <td style="text-align: left;"><p>FCFS, PGA, Narwhall &amp;
 Bullshark</p></td>
 <td style="text-align: left;"><p>Narwhall &amp; Bullshark</p></td>
+<td style="text-align: left;"><p>                        </p></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><p><strong>Mempool
@@ -111,6 +120,7 @@ Management</strong></p></td>
 <td style="text-align: left;"><p>Managed by Madara</p></td>
 <td style="text-align: left;"><p>Managed using Narwhall &amp;
 Bullshark</p></td>
+<td style="text-align: left;"><p>                 </p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Consensus
@@ -119,6 +129,7 @@ Options</strong></p></td>
 Substrate</p></td>
 <td style="text-align: left;"><p>Bullshark, Tendermint or
 Hotstuff</p></td>
+<td style="text-align: left;"><p>                 </p></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><p><strong>Execution
@@ -127,6 +138,7 @@ Crates</strong></p></td>
 href="https://github.com/starkware-libs/blockifier/tree/main">Blockifier</a>,
 Starknet_in_rust</p></td>
 <td style="text-align: left;"><p>Starknet_in_rust</p></td>
+<td style="text-align: left;"><p>                </p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Execution
@@ -136,6 +148,8 @@ href="https://github.com/lambdaclass/cairo-vm">Cairo VM</a></p></td>
 <td style="text-align: left;"><p><a
 href="https://github.com/lambdaclass/cairo_native">Cairo Native</a> or
 <a href="https://github.com/lambdaclass/cairo-vm">Cairo VM</a></p></td>
+<td style="text-align: left;"><p><a
+href="https://github.com/lambdaclass/cairo-vm">Cairo VM</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -226,10 +240,10 @@ execution—Sequencers provide a crucial link. Their role gains more
 significance in the context of Layer 2 solutions, where achieving
 scalability without sacrificing decentralization is a pressing concern.
 
-In Starknet, Sequencers like Madara and Kraken demonstrate the potential
-of high-performance, customizable solutions. These Sequencers allow for
-a range of ordering methods and execution frameworks, proving that
-there’s room for innovation even within seemingly rigid structures.
+In Starknet, Sequencers like Madara, Kraken, and Itachi demonstrate the potential
+of high-performance, customizable solutions. In the case of Itachi, it is already a decentralized 
+modular sequencer. These Sequencers allow for a range of ordering methods and execution frameworks, 
+proving that there’s room for innovation even within seemingly rigid structures.
 
 The discussion on "Proposer-Builder Separation" (PBS) highlights the
 need for role specialization to maintain a system’s integrity and thwart
