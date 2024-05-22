@@ -346,7 +346,7 @@ These **will not work**:
 
 ### Build info metrics
 
-- `pathfinder_build_info` reports curent version as a `version` property
+- `pathfinder_build_info` reports current version as a `version` property
 
 ## Build from source
 

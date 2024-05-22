@@ -18,7 +18,7 @@ Once you’ve been able to sort all that out, let's proceed with declaring and d
 
 ## Contract Declaration:
 
-The first step in deploying a starknet smart contract is to build the contract. To do this, we cd into the root directory of the piggy bank project, and then in our terminal, we run the'scarb build` command. This command creates a new folder in our root directory folder, then generates two json files for each contract; the first is the compiled_contract_class.json file, while the second is the contract_clas.json file.
+The first step in deploying a starknet smart contract is to build the contract. To do this, we cd into the root directory of the piggy bank project, and then in our terminal, we run the'scarb build` command. This command creates a new folder in our root directory folder, then generates two json files for each contract; the first is the compiled_contract_class.json file, while the second is the contract_class.json file.
 
 <img alt="Building the piggy bank repo" src="img/ch03-08-01-scarb-build.png" class="center" style="width: 100%;" />
 

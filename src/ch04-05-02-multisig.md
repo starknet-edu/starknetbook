@@ -246,7 +246,7 @@ mod Multisign {
 		outside_nonce: LegacyMap<felt252, felt252>
 	}
 
-	// @notice Contructor of the account
+	// @notice Constructor of the account
 	// @dev Asserts threshold in relation with signers-len
 	// @param threshold Initial threshold
 	// @param signers Array of inital signers' public-keys
@@ -805,7 +805,7 @@ mod Multisign {
 		outside_nonce: LegacyMap<felt252, felt252>
 	}
 
-	// @notice Contructor of the account
+	// @notice Constructor of the account
 	// @dev Asserts threshold in relation with signers-len
 	// @param threshold Initial threshold
 	// @param signers Array of inital signers' public-keys

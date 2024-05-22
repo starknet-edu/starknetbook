@@ -106,7 +106,7 @@ ex.
 After, we will be deploying the contract. (First constructor argument is the initial supply of the token and the second constructor argument is the recipient of the token supply)
 
 ```shell
-starkli deploy --account $STARKNET_ACCCOUNT --keystore $STARKNET_KEYSTORE
+starkli deploy --account $STARKNET_ACCOUNT --keystore $STARKNET_KEYSTORE
 CONTRACT_CLASS_HASH constructor argument #1 constructor argument #2 --rpc YOUR_RPC_URL
 ```
 

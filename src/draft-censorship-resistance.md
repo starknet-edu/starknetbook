@@ -49,7 +49,7 @@ Looking ahead to 2024, StarkNet's focus is on making the system operation as bro
 
     * Forced Trade
 
-    The flow of the escape hatch is the following although they vary depending on the specific application StarkEx serves. However, in general, there are two possible flows, based on how you, the aplication, respond to the forced request:
+    The flow of the escape hatch is the following although they vary depending on the specific application StarkEx serves. However, in general, there are two possible flows, based on how you, the application, respond to the forced request:
 
     * Option 1: The application serves the forced operation.
     * Option 2: They do not serve the forced operation.
@@ -82,9 +82,9 @@ Looking ahead to 2024, StarkNet's focus is on making the system operation as bro
 
 
     Lets see the different cases:
-    A user wants to make a forced transaction (only two types: forced withdrawal or forced trade) to the transaction queue. They send the transaction trough the layer 1 so theoritically it can not be censored. The forced transaction queue stores the transaction and sends it as a L1 to L2 message.
+    A user wants to make a forced transaction (only two types: forced withdrawal or forced trade) to the transaction queue. They send the transaction trough the layer 1 so theoretically it can not be censored. The forced transaction queue stores the transaction and sends it as a L1 to L2 message.
     Then if the message is not consumed within for example 7 days the user uses the forced transaction queue to start a freeze to the Starknet Core contract. which means the L1 will not receiving any state updates from L2 anymore. So you have effectively frozen the application. This is a big penalty not serving the transaction in teh transaction queue from the appchain.
-    Then the user suses an offchain tool taht is using madara sequcener and Stone prover. The Madara sequencer will sync up from the L1 from the last state update and then use the balance calculator contract which says how you calculate your remaining balance from the last state update. You can calulate your balance then create a proof using stone of funds whatever your balance is, gives it to the verifier whichverifies it, theen submit that proof to the verufier which will create a fact and then you can withdraw your money from the bridge. This only happens if the appchain is frozen. If the appchain is not frozen then you can not withdraw your money. This is the escape hatch for the appchain. Everyone can escape their funds from the frozen app.
+    Then the user suses an offchain tool taht is using madara sequcener and Stone prover. The Madara sequencer will sync up from the L1 from the last state update and then use the balance calculator contract which says how you calculate your remaining balance from the last state update. You can calculate your balance then create a proof using stone of funds whatever your balance is, gives it to the verifier whichverifies it, theen submit that proof to the verufier which will create a fact and then you can withdraw your money from the bridge. This only happens if the appchain is frozen. If the appchain is not frozen then you can not withdraw your money. This is the escape hatch for the appchain. Everyone can escape their funds from the frozen app.
 
 # Handling Forced Transactions in Appchain
 

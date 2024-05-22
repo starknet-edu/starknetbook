@@ -200,13 +200,13 @@ Monitor user interactions with account and network using the `useEffect` hook:
             // Like reloading the balances
         }else{
             // Do some work when the user disconnects the wallet
-            // Like reseting the state of your dApp
+            // Like resetting the state of your dApp
         }
     }, [address]);
 
     useEffect(() => {
         // Do some work when the user changes the network on the wallet
-        // Like reseting the state of your dApp
+        // Like resetting the state of your dApp
     }, [chain]);
 ```
 

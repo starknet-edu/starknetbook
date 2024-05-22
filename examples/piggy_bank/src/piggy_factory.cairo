@@ -77,7 +77,7 @@ use piggy_bank::ownership_component::IOwnable;
     #[external(v0)]
     impl piggyFactoryImpl of super::IPiggyBankFactory<ContractState> {
         fn createPiggyBank(ref self: ContractState, savingsTarget: targetOption, targetDetails: u128) -> ContractAddress {
-            // Contructor arguments
+            // Constructor arguments
             let mut constructor_calldata = ArrayTrait::new();
             get_caller_address().serialize(ref constructor_calldata);
             self.TokenAddr.read().serialize(ref constructor_calldata);
