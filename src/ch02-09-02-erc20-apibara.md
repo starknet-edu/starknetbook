@@ -319,7 +319,7 @@ This component makes use of both `starknet-react` and `starknetkit` libraries.
 
 The connectors are provided by `starknetkit` and we imported to support two wallets: ArgentX and Braavos.
 
-The `Card` from `radix-ui` displays the wallet connection status and the balance of the connected wallet is provied by `readBalance` component.
+The `Card` from `radix-ui` displays the wallet connection status and the balance of the connected wallet is provided by `readBalance` component.
 
 ---
 

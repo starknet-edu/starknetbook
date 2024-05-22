@@ -235,7 +235,7 @@ git clone https://github.com/keep-starknet-strange/madara-app-chain-template.git
 
 ## Getting Started
 
-Ensure you have[ Required dependancies ](#dependencies)To run madara AppChain
+Ensure you have[ Required dependencies ](#dependencies)To run madara AppChain
 <br></br>
 Depending on your operating system and Rust version, there might be additional packages required to compile this template.
 Check the [Install](https://docs.substrate.io/install/) instructions for your platform for the most common dependencies.

@@ -249,7 +249,7 @@ mod Multisign {
 	// @notice Constructor of the account
 	// @dev Asserts threshold in relation with signers-len
 	// @param threshold Initial threshold
-	// @param signers Array of inital signers' public-keys
+	// @param signers Array of initial signers' public-keys
 	#[constructor]
 	fn constructor(
 		ref self: ContractState,
@@ -808,7 +808,7 @@ mod Multisign {
 	// @notice Constructor of the account
 	// @dev Asserts threshold in relation with signers-len
 	// @param threshold Initial threshold
-	// @param signers Array of inital signers' public-keys
+	// @param signers Array of initial signers' public-keys
 	#[constructor]
 	fn constructor(
 		ref self: ContractState,
