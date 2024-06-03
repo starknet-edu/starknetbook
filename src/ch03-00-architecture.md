@@ -67,7 +67,7 @@ known as "Sequencers."
 Instead of providing security, as miners do, Sequencers provide
 transaction capacity. They order (sequence) multiple transactions into a
 single batch, executes them, and produce a block that will later be
-proved by the Prover and submmited to the Layer 1 network as a single,
+proved by the Prover and submitted to the Layer 1 network as a single,
 compact proof, known as a "rollup." In other words, just as validators
 in Ethereum and miners in Bitcoin are specialized actors securing the
 network, Sequencers in Validity rollup-based networks are specialized
