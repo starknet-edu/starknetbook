@@ -83,9 +83,11 @@ We also have the Kraken Sequencer as another option.
 
 Then there is also the Itachi Sequencer option.
 
-- **Ordering**: Itachi
+- **Ordering**: It employs MEVless for txpool management. You can also
+  choose from multiple consensus methods, like
+  Bullshark, Tendermint, or Hotstuff. And you can implement any consensus you want.
 
-- **Execution**: 
+- **Execution**: Runs on Blockifier.
 
 <table style="width:100%;">
 <colgroup>
@@ -112,7 +114,7 @@ Method</strong></p></td>
 <td style="text-align: left;"><p>FCFS, PGA, Narwhall &amp;
 Bullshark</p></td>
 <td style="text-align: left;"><p>Narwhall &amp; Bullshark</p></td>
-<td style="text-align: left;"><p>                        </p></td>
+<td style="text-align: left;"><p>        MEVless         </p></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><p><strong>Mempool
@@ -120,7 +122,7 @@ Management</strong></p></td>
 <td style="text-align: left;"><p>Managed by Madara</p></td>
 <td style="text-align: left;"><p>Managed using Narwhall &amp;
 Bullshark</p></td>
-<td style="text-align: left;"><p>                 </p></td>
+<td style="text-align: left;"><p>    Managed by Itachi     </p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Consensus
@@ -129,7 +131,8 @@ Options</strong></p></td>
 Substrate</p></td>
 <td style="text-align: left;"><p>Bullshark, Tendermint or
 Hotstuff</p></td>
-<td style="text-align: left;"><p>                 </p></td>
+<td style="text-align: left;"><p>     Developer’s custom or choice through
+Itachi </p></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><p><strong>Execution
@@ -138,7 +141,7 @@ Crates</strong></p></td>
 href="https://github.com/starkware-libs/blockifier/tree/main">Blockifier</a>,
 Starknet_in_rust</p></td>
 <td style="text-align: left;"><p>Starknet_in_rust</p></td>
-<td style="text-align: left;"><p>                </p></td>
+<td style="text-align: left;"><p>Blockifier</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><p><strong>Execution
