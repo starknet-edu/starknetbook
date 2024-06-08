@@ -4,15 +4,15 @@ Starknet is a scalable layer 2 solution on Ethereum. This guide will walk you th
 
 We will use the [Starknet Remix Plugin](https://github.com/NethermindEth/starknet-remix-plugin?tab=readme-ov-file) to compile, deploy, and interact with our smart contract. It's a great tool for getting started with Starknet development because you don't need to install anything on your computer.
 
-1. Visit the [Remix IDE](https://remix.ethereum.org/#activate=Starknet&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.24+commit.e11b9ed9.js) website with the Starknet plugin enabled.
+1. Visit the [Remix IDE](https://remix.ethereum.org/#activate=Starknet&lang=en&optimize=false&runs=200) website with the Starknet plugin enabled.
 
 <img alt="Start" src="img/ch01-remix-start.png" class="center" style="width: 100%;" />
 
-2. Then go to **settings** option and choose the Cairo version as shown in the image below. The latest version available in Remix is `v2.5.4`.
+2. Then go to **settings** option and choose the Cairo version as shown in the image below. The latest version available in Remix is `v2.6.3`.
 
 <img alt="Settings" src="img/ch01-remix-settings.png" class="center" style="width: 100%" />
 
-3. Now click on the `file explorer` tab to check the sample project details. On the `Scarb.toml` file you can find the version of this sample project. Since we want to use version 2.5.4 for this project, we have to verify that it matches in our `Scarb.toml`, otherwise modify to the correct version, `starknet = "2.5.4"`.
+3. Now click on the `file explorer` tab to check the sample project details. On the `Scarb.toml` file you can find the version of this sample project. Since we want to use version 2.6.3 for this project, we have to verify that it matches in our `Scarb.toml`, otherwise modify to the correct version, `starknet = "2.6.3"`.
 
 <img alt="File default" src="img/ch01-remix-file-default.png" class="center" style="width: 100%;" />
 
@@ -148,7 +148,7 @@ To compile using Remix:
 
 - Post-compilation, an "artifacts" folder emerges containing the compiled contract in two distinct formats: Sierra (JSON file) and CASM. For Starknet deployment, Remix will use the Sierra file. Do not worry about this process for now; we will cover it in detail in a later chapter. For now, Remix will handle the compilation and deployment for us.
 
-<img alt="Artifacts folder after compilation" src="img/ch01-remix-file.png" class="center" style="width: 100%;" />
+<img alt="Artifacts folder after compilation" src="img/ch01-remix-artifacts.png" class="center" style="width: 100%;" />
 
 <span class="caption">Artifacts folder after compilation</span>
 
@@ -212,12 +212,23 @@ Post-deployment, Remix's terminal will send various logs. These logs provide cru
   "contract_address": [
     "0x699952dc736661d0ed573cd2b0956c80a1602169e034fdaa3515bfbc36d6410"
   ]
-    ...
-  "data": [
+}
+
+{
+  "type": "DEPLOY",
+  ...
+  "events": [
+    {
+      ...,
+      "data": [
+        ...,
         "0x6b0ee6f418e47408cf56c6f98261c1c5693276943be12db9597b933d363df",
-         ...
+        ...
       ]
+    },
     ...
+  ],
+  ...
 }
 ```
 
@@ -242,11 +253,9 @@ With the contract now active on the development network, interaction becomes pos
 
 ```json
 {
-  "resp": {
-    "result": [
+  "resp": [
       "0x6b0ee6f418e47408cf56c6f98261c1c5693276943be12db9597b933d363df"
-    ]
-  },
+  ],
   "contract": "lib.cairo",
   "function": "get_owner"
 }
@@ -264,15 +273,13 @@ This call currently doesn't spend gas because the function does not change the s
 - Enter this address into the `new_owner` field. (For this, use any address from the "Devnet account selection" listed in the Environment tab.)
 - Click the **"Call"** button. The terminal then showcases the transaction hash indicating the contract's state alteration. Since we are altering the contract's state this type of interaction is called an "invoke" and needs to be signed by the account that is calling the function.
 
-For these transactions, the terminal logs will exhibit a "status" variable, indicating the transaction's fate. If the status is "ACCEPTED_ON_L2", it means the Sequencer, the component that receives and processes transactions, has accepted the transaction, which is now awaiting inclusion in an upcoming block. However, a "REJECTED" status signifies the Sequencer's disapproval, and the transaction won't feature in the upcoming block. More often than not, this transaction gains acceptance, leading to a contract state modification. See [this chapter](https://book.starknet.io/ch03-00-architecture.html) for more on Starknet's architecture and the Sequencer. On calling the **`get_owner`** function again we get this:
+For these transactions, the terminal logs will exhibit a `finality_status` variable, indicating the transaction's fate. If the status is "ACCEPTED_ON_L2", it means the Sequencer, the component that receives and processes transactions, has accepted the transaction, which is now awaiting inclusion in an upcoming block. However, a "REJECTED" status signifies the Sequencer's disapproval, and the transaction won't feature in the upcoming block. More often than not, this transaction gains acceptance, leading to a contract state modification. See [this chapter](https://book.starknet.io/ch03-00-architecture.html) for more on Starknet's architecture and the Sequencer. On calling the **`get_owner`** function again we get this:
 
 ```json
 {
-  "resp": {
-    "result": [
+  "resp": [
       "0x5495d56633745aa3b97bdb89c255d522e98fd2cb481974efe898560839aa472"
-    ]
-  },
+  ],
   "contract": "lib.cairo",
   "function": "get_owner"
 }
@@ -297,7 +304,7 @@ Both are reliable Starknet wallets offering enhanced security and accessibility 
 
 1. Install the recommended chrome/brave extension for your chosen wallet.
 2. Follow your wallet provider's instructions to deploy your account.
-3. Use the [Starknet Faucet](https://faucet.goerli.starknet.io/) to fund your account.
+3. Use the [Starknet Faucet](https://starknet-faucet.vercel.app/) to fund your account with ETH.
 4. Deploy the account to the network. This usually takes around 10 seconds.
 
 Once set up, you're ready to deploy your smart contracts to the Starknet Testnet.
@@ -310,10 +317,10 @@ Once set up, you're ready to deploy your smart contracts to the Starknet Testnet
 
 <img alt="Environment selection" src="img/ch01-remix-wallet.png" class="center" style="width: 100%; max-width: 300px;" />
 
-You can monitor transaction hashes and addresses using any Starknet block explorers like:
+You can monitor transaction hashes and addresses using any Starknet block explorers like (pay attention to the selected network - either Mainnet or Sepolia):
 
-- [Starkscan](https://testnet.starkscan.co/)
-- [Voyager](https://goerli.voyager.online/)
+- [Starkscan](https://sepolia.starkscan.co/)
+- [Voyager](https://sepolia.voyager.online/)
 - [ViewBlock](https://viewblock.io/starknet)
 - [oklink](https://www.oklink.com/starknet)
 
