@@ -14,7 +14,7 @@ subchapter. The `starknet-devnet` is a public testnet, maintained by the
 these tools offer an effective environment for development and testing.
 
 For an example of how to use `katana` to deploy and interact with a
-contract, see the introduction subchapter of this Chapter or a voting contract example in [The Cairo Book](https://book.cairo-lang.org/ch99-01-04-01-voting-contract.html).
+contract, see the introduction subchapter of this Chapter or a voting contract example in [The Cairo Book](https://book.cairo-lang.org/ch16-06-01-deploying-and-interacting-with-a-voting-contract.html).
 
 ## Understanding RPC in Starknet
 
@@ -33,20 +33,7 @@ used.
 
 ## Getting Started with Katana
 
-To install Katana, use the `dojoup` installer from the command line:
-
-```bash
-curl -L https://install.dojoengine.org | bash
-dojoup
-```
-
-After restarting your terminal, verify the installation with:
-
-```bash
-katana --version
-```
-
-To upgrade Katana, rerun the installation command.
+To install Katana refer to [this chapter](/ch02-01-basic-installation.html#katana-node-installation).
 
 To initialize a local Starknet node, execute the following command:
 

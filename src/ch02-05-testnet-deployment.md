@@ -207,8 +207,13 @@ file is a JSON file that contains the details of your smart wallet. We also have
 ```bash
     starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/my_account_1.json --rpc https://starknet-sepolia.public.blastapi.io/rpc/v0_7
 ```
+or
 
-Note: Here we used the Public RPC Endpoint v0.7 Starknet (Sepolia) Testnet from **Blast**. If you don't specify the rpc provider, Starkli will use Blast Sepolia endpoint anyway.
+```bash
+    starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/my_account_1.json --rpc https://free-rpc.nethermind.io/sepolia-juno/rpc/v0_7
+```
+
+Note: Here we used the Public RPC Endpoint v0.7 Starknet (Sepolia) Testnet from **Blast** and **Nethermind**. If you don't specify the rpc provider, Starkli will use Blast Sepolia endpoint anyway.
 
 > ⚠️ **Contract not found?**
 >
@@ -312,8 +317,8 @@ section.
 ```
 
 This creates a compiled contract in `target/dev/` as
-`ownable_starknet_ownable.compiled_contract_class.json` (in Chapter 2 of the book we will learn
-more details about Scarb).
+`ownable_starknet_ownable.compiled_contract_class.json` ([this section](/ch02-03-scarb.html)
+contains more details about Scarb).
 
 ### Declaring Your Contract
 
@@ -343,20 +348,20 @@ unique hash serves as the identifier for your contract class within
 Starknet. For example:
 
 ```bash
-    Class hash declared: 0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8
+    Class hash declared: 0x05f5a609d87c3e6d8846e5b33ecd0cb999aca9462c166cc8f59bd600d6668a7c
 ```
 
 You can think of this hash as the contract class’s _address._ Use a
 block explorer like
-[StarkScan](https://testnet.starkscan.co/class/0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8)
-to verify this hash on the blockchain.
+[StarkScan](https://sepolia.starkscan.co/class/0x05f5a609d87c3e6d8846e5b33ecd0cb999aca9462c166cc8f59bd600d6668a7c)
+to verify this hash on the blockchain (*Note:* it may take around 5 minutes to see the declared class in a block explorer).
 
 If the contract class you’re attempting to declare already exists, it is
 ok we can continue. You’ll receive a message like:
 
 ```bash
     Not declaring class as its already declared. Class hash:
-    0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8
+    0x05f5a609d87c3e6d8846e5b33ecd0cb999aca9462c166cc8f59bd600d6668a7c
 ```
 
 ## Deploying Smart Contracts on Starknet
@@ -387,7 +392,7 @@ can invoke the transfer_ownership function later):
 
 ```bash
     starkli deploy \
-        0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 \
+        0x05f5a609d87c3e6d8846e5b33ecd0cb999aca9462c166cc8f59bd600d6668a7c \
         0x02cdAb749380950e7a7c0deFf5ea8eDD716fEb3a2952aDd4E5659655077B8510
 ```
 
@@ -395,16 +400,17 @@ After executing the command and entering your password, you should see
 output like the following:
 
 ```bash
-    Deploying class 0x04c70a75f0246e572aa2e1e1ec4fffbe95fa196c60db8d5677a5c3a3b5b6a1a8 with salt 0x065034b27a199cbb2a5b97b78a8a6a6c6edd027c7e398b18e5c0e5c0c65246b7...
-    The contract will be deployed at address 0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012
-    Contract deployment transaction: 0x0743de1e233d38c4f3e9fb13f1794276f7d4bf44af9eac66e22944ad1fa85f14
+    Deploying class 0x05f5a609d87c3e6d8846e5b33ecd0cb999aca9462c166cc8f59bd600d6668a7c with salt 0x029331d11dc5c9f045071465ce6a0c0a5ff0119bafd6720ad64364df88d6706c...
+    The contract will be deployed at address 0x065e9ffa67bf5e0cc3ccadeccf84393c3c42892f241065402683f1b1c7bea076
+    Contract deployment transaction: 0x04cfddad24431373ad29352140e5733cca5137106a541ab59cbe75444b550736
     Contract deployed:
-    0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012
+    0x065e9ffa67bf5e0cc3ccadeccf84393c3c42892f241065402683f1b1c7bea076
 ```
 
 The contract is now live on the Starknet testnet. You can verify its
 status using a block explorer like
-[StarkScan](https://testnet.starkscan.co/contract/0x02a83c32d4b417d3c22f665acbc10e9a1062033b9ab5b2c3358952541bc6c012).
+[StarkScan](https://sepolia.starkscan.co/contract/0x065e9ffa67bf5e0cc3ccadeccf84393c3c42892f241065402683f1b1c7bea076) 
+(*Note:* it may take around 5 minutes to see the deployed contract in a block explorer).
 On the "Read/Write Contract" tab, you’ll see the contract’s external
 functions.
 
@@ -459,7 +465,7 @@ the contract:
     Execution was reverted; failure reason: [0x43616c6c6572206973206e6f7420746865206f776e6572].
 ```
 
-The failure reason is encoded as a felt. o decode it, use the starkli’s
+The failure reason is encoded as a felt. To decode it, use the starkli’s
 `parse-cairo-string` command.
 
 ```bash

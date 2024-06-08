@@ -39,7 +39,7 @@ The script below is a simple `Ownable` contract pattern written in Cairo for Sta
 
 ### Cairo Example Contract
 
-```rust
+```rust,noplayground
 use starknet::ContractAddress;
 
 #[starknet::interface]

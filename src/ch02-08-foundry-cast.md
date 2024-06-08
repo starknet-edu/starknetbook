@@ -19,24 +19,23 @@ In this section, we'll delve into `sncast`.
 
 ```bash
 # scarb --version
-scarb 2.4.3
-cairo: 2.4.3
-sierra: 1.4.0
+scarb 2.6.4
+cairo: 2.6.3
+sierra: 1.5.0
 
 # snforge --version
-snforge 0.14.0
+snforge 0.24.0
 
 # sncast --version
-sncast 0.14.0
-The Rust Devnet
+sncast 0.24.0
 ```
 
 ## Step 1: Sample Smart Contract
 
 The following code sample is sourced from `starknet foundry`(You can find the source of the example [here](https://foundry-rs.github.io/starknet-foundry/testing/contracts.html)).
-If yo desire to get the files you can do it from [Foundry Example Code](https://github.com/starknet-edu/starknetbook/tree/main/examples/foundry-example)
+If you desire to get the files you can do it from [Foundry Example Code](https://github.com/starknet-edu/starknetbook/tree/main/examples/foundry-example)
 
-```rust
+```rust,noplayground
 #[starknet::interface]
 trait IHelloStarknet<TContractState> {
     fn increase_balance(ref self: TContractState, amount: felt252);
@@ -71,13 +70,13 @@ Here are the associated tests:
 
 Take a keen look onto the imports ie
 
-```rust
+```rust,noplayground
 use casttest::{IHelloStarknetDispatcherTrait, IHelloStarknetDispatcher}
 ```
 
 `casttest` from the above line is the name of the project as given in the `scarb.toml` file
 
-```rust
+```rust,noplayground
 #[cfg(test)]
 mod tests {
     use casttest::{IHelloStarknetDispatcherTrait, IHelloStarknetDispatcher};
@@ -112,9 +111,12 @@ To execute tests, follow the steps below:
 
 1. Ensure `snforge` is listed as a dependency in your `Scarb.toml` file, positioned beneath the `starknet` dependency. Your dependencies section should appear as (make sure to use the latest version of `snforge` and `starknet`):
 
-```txt
-starknet = "2.4.1"
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.14.0" }
+```toml
+[dependencies]
+starknet = ">=2.6.3"
+
+[dev-dependencies]
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.24.0" }
 ```
 
 2. Run the command:
@@ -209,7 +211,7 @@ Although several options can accompany the `add` command (e.g., `--name, --addre
 Choose an account from the **`starknet-devnet`**, for demonstration, we'll select account **`#0`**, and execute:
 
 ```sh
-sncast --url http://localhost:5050/rpc account add  --name account1 --address 0x5f...60ba --private-key 0xc...0acc --add-profile
+sncast --url http://localhost:5050/rpc account add  --name account1 --address 0x5f...60ba --private-key 0xc...0acc --add-profile account1
 ```
 
 Points to remember:
@@ -230,7 +232,7 @@ Creating a new account involves a few more steps than using an existing one, but
 To create a new account, use (you can use `sncast account create --help` to see the available options):
 
 ```sh
-sncast --url http://localhost:5050/rpc account create --name new_account --class-hash  0x19...8dd6 --add-profile
+sncast --url http://localhost:5050/rpc account create --name new_account --class-hash  0x19...8dd6 --add-profile new_account
 ```
 
 Wondering where the `--class-hash` comes from? It's visible in the output from the `starknet-devnet` command under the Predeclared Starknet CLI account section. For example:
@@ -247,7 +249,7 @@ Class hash: 0x195c984a44ae2b8ad5d49f48c0aaa0132c42521dcfc66513530203feca48dd6
 To fund the new account, replace the address in the following command with your new one:
 
 ```sh
-curl -d '{"amount":8646000000000, "address":"0x6e...eadf"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5050/mint
+curl -d '{"amount":864600000000000000000000000, "address":"0x6e...eadf"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5050/mint
 ```
 
 Note: The **amount** is specified in the previous command's output.
@@ -263,14 +265,14 @@ A successful fund addition will return:
 Deploy the account to the **`starknet devnet`** local node to register it with the chain:
 
 ```sh
-sncast --url http://localhost:5050/rpc account deploy --name new_account --max-fee 0x64a7168300
+sncast --url http://localhost:5050/rpc account deploy --name new_account --max-fee 0x64a71683000000
 ```
 
 A successful deployment provides a transaction hash. If it doesn't work, revisit your previous steps.
 
 4. Setting a Default Profile
 
-You can define a default profile for your **`sncast`** actions. To set one, edit the **`Scarb.toml`** file. To make the **`new_account`** the default profile, find the section **`[tool.sncast.new_account]`** and change it to **`[tool.sncast]`**. This means **`sncast`** will default to using this profile unless instructed otherwise.
+You can define a default profile for your **`sncast`** actions. To set one, edit the **`snfoundry.toml`** file. To make the **`new_account`** the default profile, find the section **`[sncast.account1]`** and change it to **`[sncast.default]`**. This means **`sncast`** will default to using this profile unless instructed otherwise.
 
 ## Step 4: Declaring and Deploying our Contract
 
@@ -318,7 +320,7 @@ sncast --profile account1 declare --contract-name HelloStarknet
 
 > **Note:-** that we've omitted the **`--url`** option. Why? When using **`--profile`**, as seen here with **`account1`**, it's not necessary. Remember, earlier in this guide, we discussed adding and creating new accounts. You can use either **`account1`** or **`new_account`** and achieve the desired result.
 
-> **Hint:** You can define a default profile for sncast actions. Modify the `Scarb.toml` file to set a default. For example, to make `new_account` the default, find `[tool.sncast.new_account]` and change it to `[tool.sncast]`. Then, there's no need to specify the profile for each call, simplifying your command to:
+> **Hint:** You can define a default profile for sncast actions. Modify the `snfoundry.toml` file to set a default. For example, to make `new_account` the default, find `[sncast.new_account]` and change it to `[sncast.default]`. Then, there's no need to specify the profile for each call, simplifying your command to:
 
 ```sh
 sncast declare --contract-name HelloStarknet
@@ -354,7 +356,7 @@ transaction_hash: 0x6bdf6cfc8080336d9315f9b4df7bca5fb90135817aba4412ade6f942e9db
 
 However, you may encounter some issues, such as:
 
-**Error: RPC url not passed nor found in Scarb.toml**. This indicates the absence of a default profile in the **`Scarb.toml`** file. To remedy this:
+**Error: RPC url not passed nor found in snfoundry.toml**. This indicates the absence of a default profile in the **`snfoundry.toml`** file. To remedy this:
 
 - Add the **`--profile`** option, followed by the desired profile name, as per the ones you've established.
 - Alternatively, set a default profile as previously discussed in the "Declaring the Contract" section under "Hint" or as detailed in the "Adding, Creating, and Deploying Account" subsection.
@@ -449,12 +451,12 @@ Execute multiple calls
 Usage: sncast multicall <COMMAND>
 
 Commands:
-  run   Execute multicall using a .toml file
-  new   Create a template for the multicall .toml file
-  help  Display help for subcommand(s)
+  run   Execute a multicall from a .toml file
+  new   Generate a template for the multicall .toml file
+  help  Print this message or the help of the given subcommand(s)
 
 Options:
-  -h, --help  Show help
+  -h, --help  Print help
 ```
 
 To delve deeper, initiate the `new` subcommand:

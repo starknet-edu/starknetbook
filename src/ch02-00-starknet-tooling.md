@@ -22,8 +22,8 @@ In this chapter, you’ll explore:
 
 - **Frameworks:** Build using Starknet-Foundry
 
-- **SDKs:** Discover multi-language support through Starknet.js,
-  Starknet-rs, Starknet_py, and Cairo
+- **SDKs:** Discover multi-language support through [Starknet.js](https://github.com/starknet-io/starknet.js),
+  [Starknet.rs](https://github.com/xJonathanLEI/starknet-rs), [Starknet.py](https://github.com/software-mansion/starknet.py), and [Cairo](https://github.com/starkware-libs/cairo)
 
 - **Front-end Development:** Use Starknet.js and React
 
