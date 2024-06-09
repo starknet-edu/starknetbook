@@ -71,13 +71,15 @@ we can use, and a `Scarb.toml` file in the top-level directory.
 
 Within the `Scarb.toml` file, you might have:
 
+```toml
     [package]
     name = "my_package"
     version = "0.1.0"
 
     [dependencies]
-    starknet = ">=2.0.1"
+    starknet = ">=2.6.3"
     snips = { path = "snips" }
+```
 
 Here starknet and snips are the dependencies of the package. The
 `starknet` dependency is hosted on the Scarb registry (we do not need to
@@ -103,6 +105,7 @@ inside, and initialize a new Git repository with a `.gitignore` file.
 Upon opening `Scarb.toml` in a text editor, you should see something
 similar to the code snippet below:
 
+```toml
     [package]
     name = "hello_scarb"
     version = "0.1.0"
@@ -110,22 +113,27 @@ similar to the code snippet below:
     # See more keys and their definitions at https://docs.swmansion.com/scarb/docs/reference/manifest.html
     [dependencies]
     # foo = { path = "vendor/foo" }
+```
 
 # Building a Scarb Project
 
 Clear all content in `src/lib.cairo` and replace with the following:
 
-    // src/lib.cairo
-    mod hello_scarb;
+
+```rust,noplayground
+// src/lib.cairo
+mod hello_scarb;
+```
 
 Next, create a new file titled `src/hello_scarb.cairo` and add the
 following:
 
-    // src/hello_scarb.cairo
-    use debug::PrintTrait;
-    fn main() {
-        'Hello, Scarb!'.print();
-    }
+```rust,noplayground
+// src/hello_scarb.cairo
+fn main() {
+    println!("Hello, Scarb!");
+}
+```
 
 In this instance, the `lib.cairo` file contains a module declaration
 referencing _hello_scarb_, which includes the _hello_scarb.cairo_
@@ -178,7 +186,7 @@ After adding the dependency, remember to save the file.
 Alternatively, you can use the `scarb add` command to add dependencies
 to your project. Open your terminal and execute the following command:
 
-    $ scarb add alexandria_math --git https://github.com/keep-starknet-strange/alexandria.git
+    scarb add alexandria_math --git https://github.com/keep-starknet-strange/alexandria.git
 
 This command will add the alexandria_math dependency from the specified
 Git repository to your project.
@@ -197,12 +205,15 @@ For example, let’s assume you have added the alexandria_math
 dependency. Now, you can import and utilize functions from the
 alexandria_math library in your `src/hello_scarb.cairo` file:
 
-    // src/hello_scarb.cairo
-    use alexandria_math::fibonacci;
 
-    fn main() -> felt252 {
-        fibonacci::fib(0, 1, 10)
-    }
+```rust,noplayground
+// src/hello_scarb.cairo
+use alexandria_math::fibonacci;
+
+fn main() -> felt252 {
+    fibonacci::fib(0, 1, 10)
+}
+```
 
 In the above example, we import the fibonacci function from the
 alexandria_math library and utilize it in the main function.
@@ -235,11 +246,11 @@ commands:
 
 One of the most important features since `scarb 2.3.0` version is `Components`. Think of components as Lego blocks. They allow you to enrich your contracts by plugging in a module that you or someone else wrote.
 
-Lets see and example. Recover our project from [Testnet Deployment](./ch02-05-testnet-deployment.md) section. We used the `Ownable-Starknet` example to interact with the blockchain, now we are going to use the same project, but we will refactor the code in order to use `components`
+Lets see and example. Recover our project from [Getting Started](./ch01-00-getting-started.html#cairo-example-contract) section. We used the `Ownable-Starknet` example to interact with the blockchain, now we are going to use the same project, but we will refactor the code in order to use `components`
 
 This is how our smart contract looks now
 
-```rust
+```rust,noplayground
 // ...rest of the code
 
 #[starknet::component]

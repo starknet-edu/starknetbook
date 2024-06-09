@@ -41,11 +41,11 @@ bash script_devnet
 
 You will see output details from the devnet.
 
-## Goerli Testnet
+## Sepolia Testnet
 
-**Description**: This script connects to the Goerli testnet, reads the latest block number, and retrieves the transaction receipt for a specific transaction hash.
+**Description**: This script connects to the Sepolia testnet, reads the latest block number, and retrieves the transaction receipt for a specific transaction hash.
 
-For Goerli testnet interactions, create a file named `script_testnet`:
+For Sepolia testnet interactions, create a file named `script_testnet`:
 
 ```bash
 touch script_testnet
@@ -60,7 +60,7 @@ chain=$(starkli chain-id --rpc $url)
 echo "Connected to the Starknet testnet with chain id: $chain"
 
 block=$(starkli block-number --rpc $url)
-echo "The latest block number on Goerli is: $block"
+echo "The latest block number on Sepolia is: $block"
 
 echo "Input your transaction hash: "
 read hash
@@ -74,6 +74,7 @@ Run the script:
 bash script_testnet
 ```
 
-You will need to input a `testnet API URL` and a `transaction hash`. Example hash: 0x2dd73eb1802aef84e8d73334ce0e5856b18df6626fe1a67bb247fcaaccaac8c.
+You will need to input a `testnet API URL` and a `transaction hash`. Example 
+url `https://free-rpc.nethermind.io/sepolia-juno/rpc/v0_7` and hash: `0x18bfdf15e0c46cd729551988004e2ba7a8b4f64f74820105cb538074b025e4e`.
 
 These are brief examples but you get the idea. You can create custom Bash scripts to customize your interactions with Starknet.

@@ -1,6 +1,6 @@
 # Starknet Devnet
 
-Starknet Devnet is a development network (devnet) implemented in Rust, similar to the Python-based [`starknet-devnet-rs`](https://0xspaceshard.github.io/starknet-devnet/docs/intro).
+[Starknet Devnet](https://0xspaceshard.github.io/starknet-devnet-rs/) is a development network (devnet) implemented in Rust, similar to the Python-based starknet-devnet.
 
 ## Installation
 
@@ -98,36 +98,7 @@ cargo run -- --dump-path ./dumps/contract_1 --seed 912753742
 ##### Additional options
 
 ```shell
-Options:
-      --accounts <ACCOUNTS>
-          Specify the number of accounts to be predeployed; [default: 10]
-      --account-class <ACCOUNT_CLASS>
-          Specify the class used by predeployed accounts; [default: cairo0] [possible values: cairo0, cairo1]
-      --account-class-custom <PATH>
-          Specify the path to a Cairo Sierra artifact to be used by predeployed accounts;
-  -e, --initial-balance <DECIMAL_VALUE>
-          Specify the initial balance in WEI of accounts to be predeployed; [default: 1000000000000000000000]
-      --seed <SEED>
-          Specify the seed for randomness of accounts to be predeployed; if not provided, it is randomly generated
-      --host <HOST>
-          Specify the address to listen at; [default: 127.0.0.1]
-      --port <PORT>
-          Specify the port to listen at; [default: 5050]
-      --timeout <TIMEOUT>
-          Specify the server timeout in seconds; [default: 120]
-      --gas-price <GAS_PRICE>
-          Specify the gas price in wei per gas unit; [default: 100000000000]
-      --chain-id <CHAIN_ID>
-          Specify the chain ID; [default: TESTNET] [possible values: MAINNET, TESTNET]
-      --dump-on <WHEN>
-          Specify when to dump the state of Devnet; [possible values: exit, transaction]
-      --dump-path <DUMP_PATH>
-          Specify the path to dump to;
-  -h, --help
-          Print help
-  -V, --version
-          Print version
-
+cargo run -- --help
 ```
 
 > However, the main difference for the Rust version is the syntax for flags. For example, use `cargo run -- --port 5006` or `cargo run -- --dump-on exit ...` for the Rust Devnet. Other flags can be used in the standard format.

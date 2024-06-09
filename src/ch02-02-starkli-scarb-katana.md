@@ -17,15 +17,15 @@ don’t, refer to Basic Installation in this chapter.
 **Important:** Before we proceed with this example, please ensure that the versions of both `katana` and `starkli` match the specified versions provided below.
 
 ```console
-    katana --version  # 0.6.0-alpha.7
-    starkli --version  # 0.2.8 (f59724e)
+    katana --version  # 0.7.0-alpha.5
+    starkli --version  # 0.2.9 (0535f44)
 ```
 
 If this is not your case, you have to install them like this:
 
 ```sh
-    dojoup -v 0.6.0-alpha.7
-    starkliup -v 0.2.8
+    dojoup -v 0.7.0-alpha.5
+    starkliup -v 0.2.9
 ```
 
 Now begin by initiating a Scarb project:
@@ -49,14 +49,14 @@ Amend the `Scarb.toml` file to integrate the `starknet` dependency and introduce
 
 ```toml
     [dependencies]
-    starknet = ">=2.5.4"
+    starknet = ">=2.6.3"
 
     [[target.starknet-contract]]
 ```
 
 For streamlined Starkli command execution, establish environment variables. Two primary variables are essential:
 
-- One for your account, a pre-funded account on the local development network
+- One for your account, a pre-funded account on the local development network (you can refer to [this chapter](/ch01-00-getting-started.html#smart-wallet-setup))
 - Another for designating the network, specifically the local katana devnet
 
 In the `src/` directory, create a `.env` file with the following:
@@ -77,7 +77,7 @@ Deploying a Starknet smart contract requires two primary steps:
 
 Begin with the `src/lib.cairo` file, which provides a foundational template. Remove its contents and insert the following:
 
-```rust
+```rust,noplayground
 #[starknet::interface]
 trait IHello<T> {
     fn get_name(self: @T) -> felt252;
@@ -134,7 +134,7 @@ katana
 To declare your contract, execute:
 
 ```bash
-starkli declare target/dev/my_contract_hello.contract_class.json
+starkli declare target/dev/my_contract_hello.contract_class.json --compiler-version 2.6.2
 ```
 
 Facing an "Error: Invalid contract class"? It indicates a version mismatch between Scarb's compiler and Starkli. Refer to the earlier steps to sync the versions. Typically, Starkli supports compiler versions approved by mainnet, even if the most recent Scarb version isn't compatible.
@@ -144,7 +144,7 @@ unique hash serves as the identifier for your contract class within
 Starknet. For example:
 
 ```bash
-Class hash declared: 0x00bfb49ff80fd7ef5e84662d6d256d49daf75e0c5bd279b20a786f058ca21418
+Class hash declared: 0x01df629957ef5568db6dab46618947063e7a28dad5e1ffbac97ba643d3c861cc
 ```
 
 Consider this hash as the contract class's _address_.
@@ -153,7 +153,7 @@ If you try to declare an already existing contract class, don't fret. Just proce
 
 ```bash
 Not declaring class as its already declared. Class hash:
-0x00bfb49ff80fd7ef5e84662d6d256d49daf75e0c5bd279b20a786f058ca21418
+0x01df629957ef5568db6dab46618947063e7a28dad5e1ffbac97ba643d3c861cc
 ```
 
 ## Deploying Starknet Smart Contracts
@@ -193,17 +193,18 @@ Now deploy using a class hash and constructor input:
 
 ```bash
     starkli deploy \
-        0x00bfb49ff80fd7ef5e84662d6d256d49daf75e0c5bd279b20a786f058ca21418 \
+        0x01df629957ef5568db6dab46618947063e7a28dad5e1ffbac97ba643d3c861cc \
         0x737461726b6e6574626f6f6b
 ```
 
 After running, expect an output similar to:
 
 ```bash
-    Deploying class 0x00bfb49ff80fd7ef5e84662d6d256d49daf75e0c5bd279b20a786f058ca21418 with salt 0x054645c0d1e766ddd927b3bde150c0a3dc0081af7fb82160c1582e05f6018794...
-    The contract will be deployed at address 0x07cdd583619462c2b14532eddb2b169b8f8d94b63bfb5271dae6090f95147a44
-    Contract deployment transaction: 0x00413d9638fecb75eb07593b5c76d13a68e4af7962c368c5c2e810e7a310d54c
-    Contract deployed: 0x07cdd583619462c2b14532eddb2b169b8f8d94b63bfb5271dae6090f95147a44
+    Deploying class 0x01df629957ef5568db6dab46618947063e7a28dad5e1ffbac97ba643d3c861cc with salt 0x07976cd9b291256305e866ed7fcce7dec2930d939ea8b62ae6da7f5c6d344306...
+    The contract will be deployed at address 0x0111595c7be27d2096ecfb49eee217d562303562cbfbfdefcc6f84936967e8f6
+    Contract deployment transaction: 0x01a699a18c1586f72f467bb8a144d74d646e90c3c9ff88bc58bcf8cf831c2ad5
+    Contract deployed:
+    0x0111595c7be27d2096ecfb49eee217d562303562cbfbfdefcc6f84936967e8f6
 ```
 
 ## Interacting with Starknet Contracts
@@ -220,12 +221,11 @@ requires no arguments:
 
 ```bash
     starkli call \
-        <CONTRACT_ADDRESS> \
+        0x0111595c7be27d2096ecfb49eee217d562303562cbfbfdefcc6f84936967e8f6 \
         get_name
 ```
 
-Replace `<CONTRACT_ADDRESS>` with the address of your contract. The
-command will return the owner’s address, which was initially set during
+The command will return the owner’s address, which was initially set during
 the contract’s deployment:
 
 ```bash
@@ -252,14 +252,14 @@ To alter the contract's state, use the `invoke` command. For instance, if you wa
 
 ```bash
     starkli invoke \
-        <CONTRACT_ADDRESS> \
+        0x0111595c7be27d2096ecfb49eee217d562303562cbfbfdefcc6f84936967e8f6 \
         set_name \
         <felt252>
 ```
 
 Where:
 
-- **`<CONTRACT_ADDRESS>`** is the address of your contract.
+- **`0x0111595c7be27d2096ecfb49eee217d562303562cbfbfdefcc6f84936967e8f6`** is the address of your contract (from output of `starkli deploy`).
 - **`<felt252>`** is the new value for the **`name`** field, in felt252 format.
 
 For example, to update the name to "Omar", first convert the string "Omar" to its felt252 representation:
@@ -277,7 +277,7 @@ This will return:
 Now, proceed with the `invoke` command:
 
 ```bash
-    starkli invoke 0x07cdd583619462c2b14532eddb2b169b8f8d94b63bfb5271dae6090f95147a44 set_name 0x4f6d6172
+    starkli invoke 0x0111595c7be27d2096ecfb49eee217d562303562cbfbfdefcc6f84936967e8f6 set_name 0x4f6d6172
 ```
 
 Bravo! You've adeptly modified and interfaced with your Starknet contract.
