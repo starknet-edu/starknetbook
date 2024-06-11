@@ -85,7 +85,8 @@ Then there is also the Itachi Sequencer option.
 
 - **Ordering**: It employs MEVless for txpool management. You can also
   choose from multiple consensus methods, like
-  Bullshark, Tendermint, or Hotstuff. And you can implement any consensus you want.
+  Bullshark, Tendermint, or Hotstuff. And you can implement any consensus you want,
+  such as Proof of Stake (PoS), Proof of Burn (PoB), etc. 
 
 - **Execution**: Runs on Blockifier.
 
