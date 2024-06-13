@@ -215,7 +215,7 @@ Furthermore, establish a `.env` file at the root of your project. This file shou
 
 ```sh
 DEPLOYER_PRIVATE_KEY=<YOUR_WALLET_ADDRESS_PRIVATE_KEY>
-RPC_ENDPOINT="<INFURA_STARKNET_GOERLI_API_KEY>"
+RPC_ENDPOINT="<INFURA_STARKNET_SEPOLIA_API_KEY>"
 ```
 
 Your environment is successfully set up.
@@ -386,7 +386,7 @@ export async function declareContract({
 
 ## STEP 10: Deploying the Account Contract
 
-To deploy the account contract, calculate its address using the contract's class hash. After determining the address, fund it using the [Starknet Faucet](https://faucet.goerli.starknet.io/) to cover gas fees during deployment:
+To deploy the account contract, calculate its address using the contract's class hash. After determining the address, fund it using the [Starknet Faucet](https://starknet-faucet.vercel.app/) to cover gas fees during deployment:
 
 ```ts
 interface DeployAccountConfig {

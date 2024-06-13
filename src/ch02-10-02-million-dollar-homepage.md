@@ -31,7 +31,7 @@ const connectors = [
   new InjectedConnector({ options: { id: "argentX" } }),
 ];
 const provider = new Provider({
-  sequencer: { network: constants.NetworkName.SN_GOERLI },
+  sequencer: { network: constants.NetworkName.SN_SEPOLIA },
 });
 return (
   <StarknetConfig

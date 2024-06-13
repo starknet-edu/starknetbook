@@ -4,7 +4,7 @@
 
 ## Features
 
-- **Remote & Local Analysis**: Works with contracts on Mainnet/Goerli and local compilations.
+- **Remote & Local Analysis**: Works with contracts on Mainnet/Sepolia and local compilations.
 - **Decompiler**: Transforms assembly into decompiled code using SSA (Static Single Assignment).
 - **Call Flow Analysis**: Generates Call Flow Graphs.
 - **Static Analysis**: Conducts various types of analyses (security/optimization/analytics) on contracts.

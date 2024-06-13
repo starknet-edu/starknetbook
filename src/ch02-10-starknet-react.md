@@ -28,7 +28,7 @@ Wrap your app in the `StarknetConfig` component to configure and provide a React
 
 ```javascript
 export default function App({ children }) {
-  const chains = [goerli, mainnet];
+  const chains = [sepolia, mainnet];
   const provider = publicProvider();
   const { connectors } = useInjectedConnectors({
     // Show these connectors if the user has no connector installed.
