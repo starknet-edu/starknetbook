@@ -35,6 +35,7 @@ For those who prefer a self-managed setup of all dependencies, refer to the comp
 Create a data directory, `$HOME/pathfinder`, to store persistent files used by `pathfinder`:
 
 ```bash
+# Ensure the directory has been created before invoking docker
 mkdir -p $HOME/pathfinder
 ```
 
@@ -50,7 +51,7 @@ sudo docker run \
   -p 9545:9545 \
   --user "$(id -u):$(id -g)" \
   -e RUST_LOG=info \
-  -e PATHFINDER_ETHEREUM_API_URL="https://goerli.infura.io/v3/<project-id>" \
+  -e PATHFINDER_ETHEREUM_API_URL="https://sepolia.infura.io/v3/<project-id>" \
   -v $HOME/pathfinder:/usr/share/pathfinder/data \
   eqlabs/pathfinder
 ```
@@ -108,7 +109,7 @@ sudo docker run \
   -p 9545:9545 \
   --user "$(id -u):$(id -g)" \
   -e RUST_LOG=info \
-  -e PATHFINDER_ETHEREUM_API_URL="https://goerli.infura.io/v3/<project-id>" \
+  -e PATHFINDER_ETHEREUM_API_URL="https://sepolia.infura.io/v3/<project-id>" \
   -v $HOME/pathfinder:/usr/share/pathfinder/data \
   eqlabs/pathfinder
 ```
@@ -165,7 +166,7 @@ acl = private
 You can then download a compressed database using the command:
 
 ```shell
-rclone copy -P pathfinder-snapshots:pathfinder-snapshots/testnet_0.9.0_880310.sqlite.zst .
+rclone copy -P pathfinder-snapshots:pathfinder-snapshots/sepolia-testnet_0.11.0_47191.sqlite.zst .
 ```
 
 ### Uncompressing database snapshots
@@ -175,18 +176,21 @@ rclone copy -P pathfinder-snapshots:pathfinder-snapshots/testnet_0.9.0_880310.sq
 We're storing database snapshots as SQLite database files compressed with [zstd](https://github.com/facebook/zstd). You can uncompress the files you've downloaded using the following command:
 
 ```shell
-zstd -T0 -d testnet_0.9.0_880310.sqlite.zst -o goerli.sqlite
+zstd -T0 -d sepolia-testnet_0.11.0_47191.sqlite.zst -o testnet-sepolia.sqlite
 ```
 
-This produces uncompressed database file `goerli.sqlite` that can then be used by pathfinder.
+This produces uncompressed database file `testnet-sepolia.sqlite` that can then be used by pathfinder.
 
 ### Available database snapshots
 
-| Network     | Block  | Pathfinder version required | Filename                              | Download URL                                                                                        | Compressed size | SHA2-256 checksum of compressed file                               |
-| ----------- | ------ | --------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------ |
-| testnet     | 880310 | >= 0.9.0                    | `testnet_0.9.0_880310.sqlite.zst`     | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/testnet_0.9.0_880310.sqlite.zst)     | 102.36 GB       | `55f7e30e4cc3ba3fb0cd610487e5eb4a69428af1aacc340ba60cf1018b58b51c` |
-| mainnet     | 309113 | >= 0.9.0                    | `mainnet_0.9.0_309113.sqlite.zst`     | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/mainnet_0.9.0_309113.sqlite.zst)     | 279.85 GB       | `0430900a18cd6ae26465280bbe922ed5d37cfcc305babfc164e21d927b4644ce` |
-| integration | 315152 | >= 0.9.1                    | `integration_0.9.1_315152.sqlite.zst` | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/integration_0.9.1_315152.sqlite.zst) | 8.45 GB         | `2ad5ab46163624bd6d9aaa0dff3cdd5c7406e69ace78f1585f9d8f011b8b9526` |
+| Network         | Block  | Pathfinder version required | Mode    | Filename                                          | Download URL                                                                                                    | Compressed size | SHA2-256 checksum of compressed file                               |
+| --------------- | ------ | --------------------------- | ------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------ |
+| Sepolia testnet | 47191  | >= 0.11.0                   | archive | `sepolia-testnet_0.11.0_47191.sqlite.zst`         | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/sepolia-testnet_0.11.0_47191.sqlite.zst)         | 1.91 GB         | `82704d8382bac460550c3d31dd3c1f4397c4c43a90fb0e38110b0cd07cd94831` |
+| Sepolia testnet | 61322  | >= 0.12.0                   | archive | `sepolia-testnet_0.12.0_61322_archive.sqlite.zst` | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/sepolia-testnet_0.12.0_61322_archive.sqlite.zst) | 3.56 GB         | `d25aa259ce62bb4b2e3ff49d243217799c99cd8b7e594a7bb24d4c091d980828` |
+| Sepolia testnet | 61322  | >= 0.12.0                   | pruned  | `sepolia-testnet_0.12.0_61322_pruned.sqlite.zst`  | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/sepolia-testnet_0.12.0_61322_pruned.sqlite.zst)  | 1.26 GB         | `f2da766a8f8be93170997b3e5f268c0146aec1147c8ec569d0d6fdd5cd9bc3f1` |
+| Mainnet         | 595424 | >= 0.11.0                   | archive | `mainnet_0.11.0_595424.sqlite.zst`                | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/mainnet_0.11.0_595424.sqlite.zst)                | 469.63 GB       | `e42bae71c97c1a403116a7362f15f5180b19e8cc647efb1357f1ae8924dce654` |
+| Mainnet         | 635054 | >= 0.12.0                   | archive | `mainnet_0.12.0_635054_archive.sqlite.zst`        | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/mainnet_0.12.0_635054_archive.sqlite.zst)        | 383.86 GB       | `d401902684cecaae4a88d6c0219498a0da1bbdb3334ea5b91e3a16212db9ee43` |
+| Mainnet         | 635054 | >= 0.12.0                   | pruned  | `mainnet_0.12.0_635054_pruned.sqlite.zst`         | [Download](https://pub-1fac64c3c0334cda85b45bcc02635c32.r2.dev/mainnet_0.12.0_635054_pruned.sqlite.zst)         | 59.89 GB        | `1d854423278611b414130ac05f486c66ef475f47a1c930c2af5296c9906f9ae0` |
 
 ## Configuration
 
@@ -208,7 +212,31 @@ sudo docker run --rm eqlabs/pathfinder:latest --help
 
 Block times on `mainnet` can be prohibitively long for certain applications. As a workaround, Starknet added the concept of a `pending` block which is the block currently under construction. This is supported by pathfinder, and usage is documented in the [JSON-RPC API](#json-rpc-api) with various methods accepting `"block_id"="pending"`.
 
-Note that `pending` support is disabled by default and must be enabled by setting `poll-pending=true` in the configuration options.
+### State trie pruning
+
+Pathfinder allows you to control the number of blocks of state trie history to preserve. You can choose between archive:
+
+```
+--storage.state-tries = archive
+```
+
+which stores all of history, or to keep only the last `k+1` blocks:
+
+```
+--storage.state-tries = k
+```
+
+The latest block is always stored, though in the future we plan an option to disable this entirely. Currently at least one block is required to trustlessly verify Starknet's state update.
+
+State trie data consumes a massive amount of storage space. You can expect an overall storage reduction of ~75% when going from archive to pruned mode.
+
+The downside to pruning this data is that storage proofs are only available for blocks that are not pruned i.e. with `--storage.state-tries = k` you can only serve storage proofs for the latest `k+1` blocks.
+
+Note that this only impacts storage proofs - for all other considerations pathfinder is still an archive mode and no data is dropped.
+
+Also note that you cannot switch between archive and pruned modes. You may however change `k` between different runs of pathfinder.
+
+If you don't care about storage proofs, you can maximise storage savings by setting `--storage.state-tries = 0`, which will only store the latest block's state trie.
 
 ### Logging
 
@@ -236,32 +264,33 @@ The Starknet network can be selected with the `--network` configuration option.
 If `--network` is not specified, network selection will default to match your Ethereum endpoint:
 
 - Starknet mainnet for Ethereum mainnet,
-- Starknet testnet for Ethereum Goerli
+- Starknet testnet for Ethereum Sepolia
 
 #### Custom networks & gateway proxies
 
 You can specify a custom network with `--network custom` and specifying the `--gateway-url`, `feeder-gateway-url` and `chain-id` options.
-Note that `chain-id` should be specified as text e.g. `SN_GOERLI`.
+Note that `chain-id` should be specified as text e.g. `SN_SEPOLIA`.
 
 This can be used to interact with a custom Starknet gateway, or to use a gateway proxy.
 
-## JSON-RPC API
-
 You can interact with Starknet using the JSON-RPC API. Pathfinder supports the official Starknet RPC API and in addition supplements this with its own pathfinder specific extensions such as `pathfinder_getProof`.
 
-Currently pathfinder supports `v0.3`, `v0.4`, and `v0.5` versions of the Starknet JSON-RPC specification.
+Currently, pathfinder supports `v0.4`, `v0.5`, `v0.6` and `v0.7` versions of the Starknet JSON-RPC specification.
 The `path` of the URL used to access the JSON-RPC server determines which version of the API is served:
 
-- the `v0.3.0` API is exposed on the `/rpc/v0.3` and `/rpc/v0_3` path
-- the `v0.4.0` API is exposed on the `/`, `/rpc/v0.4` and `/rpc/v0_4` path
-- the `v0.5.1` API is exposed on the `/rpc/v0.5` and `/rpc/v0_5` path
-- the pathfinder extension API is exposed on `/rpc/pathfinder/v0.1`
+- the `v0.4.0` API is exposed on the `/rpc/v0.4` and `/rpc/v0_4` path
+- the `v0.5.1` API is exposed on the `/`, `/rpc/v0.5` and `/rpc/v0_5` path
+- the `v0.6.0` API is exposed on the `/rpc/v0_6` path via HTTP and on `/ws/rpc/v0_6` via Websocket
+- the `v0.7.0` API is exposed on the `/rpc/v0_7` path via HTTP and on `/ws/rpc/v0_7` via Websocket
+- the pathfinder extension API is exposed on `/rpc/pathfinder/v0.1` via HTTP and `/ws/rpc/pathfinder/v0_1` via Websocket.
+
+Version of the API, which is served on the root (`/`) path via HTTP and on `/ws` via Websocket, can be configured via the pathfinder parameter `--rpc.root-version` (or the `RPC_ROOT_VERSION` environment variable).
 
 Note that the pathfinder extension is versioned separately from the Starknet specification itself.
 
 ### Pathfinder extension API
 
-You can find the API specification [here](https://github.com/eqlabs/pathfinder/blob/main/doc/rpc/pathfinder_rpc_api.json).
+Here are links to our [API extensions](doc/rpc/pathfinder_rpc_api.json) and [websocket API](doc/rpc/pathfinder_ws.json).
 
 ## Monitoring API
 
@@ -303,6 +332,7 @@ rpc_method_calls_total{method="starknet_getEvents", version="v0.3"}
 
 - `gateway_requests_total`
 - `gateway_requests_failed_total`
+- `gateway_request_duration_seconds`
 
 Labels:
 
@@ -318,6 +348,7 @@ Labels:
     - `decode`
     - `starknet`
     - `rate_limiting`
+    - `timeout`
 
 Valid examples:
 
@@ -343,6 +374,7 @@ These **will not work**:
 - `block_latency` delay between current block being published and sync'd locally
 - `block_download` time taken to download current block's data excluding classes
 - `block_processing` time taken to process and store the current block
+- `block_processing_duration_seconds` histogram of time taken to process and store a block
 
 ### Build info metrics
 
