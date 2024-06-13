@@ -142,7 +142,7 @@ To compile using Remix:
 
 <img  alt="Permissions" src="img/ch01-remix-permissions.png" class="center" style="width: 100%;" />
 
-   - Click on `Compile lib.cairo`.
+- Click on `Compile lib.cairo`.
 
 <img  alt="Compilation simple" src="img/ch01-remix-compilation.png" class="center" style="width: 100%;" />
 
@@ -253,9 +253,7 @@ With the contract now active on the development network, interaction becomes pos
 
 ```json
 {
-  "resp": [
-      "0x6b0ee6f418e47408cf56c6f98261c1c5693276943be12db9597b933d363df"
-  ],
+  "resp": ["0x6b0ee6f418e47408cf56c6f98261c1c5693276943be12db9597b933d363df"],
   "contract": "lib.cairo",
   "function": "get_owner"
 }
@@ -277,9 +275,7 @@ For these transactions, the terminal logs will exhibit a `finality_status` varia
 
 ```json
 {
-  "resp": [
-      "0x5495d56633745aa3b97bdb89c255d522e98fd2cb481974efe898560839aa472"
-  ],
+  "resp": ["0x5495d56633745aa3b97bdb89c255d522e98fd2cb481974efe898560839aa472"],
   "contract": "lib.cairo",
   "function": "get_owner"
 }

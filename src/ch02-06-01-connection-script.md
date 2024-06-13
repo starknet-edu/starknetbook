@@ -74,7 +74,7 @@ Run the script:
 bash script_testnet
 ```
 
-You will need to input a `testnet API URL` and a `transaction hash`. Example 
+You will need to input a `testnet API URL` and a `transaction hash`. Example
 url `https://free-rpc.nethermind.io/sepolia-juno/rpc/v0_7` and hash: `0x18bfdf15e0c46cd729551988004e2ba7a8b4f64f74820105cb538074b025e4e`.
 
 These are brief examples but you get the idea. You can create custom Bash scripts to customize your interactions with Starknet.

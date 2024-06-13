@@ -207,6 +207,7 @@ file is a JSON file that contains the details of your smart wallet. We also have
 ```bash
     starkli account fetch <SMART_WALLET_ADDRESS> --output ~/.starkli-wallets/deployer/my_account_1.json --rpc https://starknet-sepolia.public.blastapi.io/rpc/v0_7
 ```
+
 or
 
 ```bash
@@ -354,7 +355,7 @@ Starknet. For example:
 You can think of this hash as the contract class’s _address._ Use a
 block explorer like
 [StarkScan](https://sepolia.starkscan.co/class/0x05f5a609d87c3e6d8846e5b33ecd0cb999aca9462c166cc8f59bd600d6668a7c)
-to verify this hash on the blockchain (*Note:* it may take around 5 minutes to see the declared class in a block explorer).
+to verify this hash on the blockchain (_Note:_ it may take around 5 minutes to see the declared class in a block explorer).
 
 If the contract class you’re attempting to declare already exists, it is
 ok we can continue. You’ll receive a message like:
@@ -409,8 +410,8 @@ output like the following:
 
 The contract is now live on the Starknet testnet. You can verify its
 status using a block explorer like
-[StarkScan](https://sepolia.starkscan.co/contract/0x065e9ffa67bf5e0cc3ccadeccf84393c3c42892f241065402683f1b1c7bea076) 
-(*Note:* it may take around 5 minutes to see the deployed contract in a block explorer).
+[StarkScan](https://sepolia.starkscan.co/contract/0x065e9ffa67bf5e0cc3ccadeccf84393c3c42892f241065402683f1b1c7bea076)
+(_Note:_ it may take around 5 minutes to see the deployed contract in a block explorer).
 On the "Read/Write Contract" tab, you’ll see the contract’s external
 functions.
 

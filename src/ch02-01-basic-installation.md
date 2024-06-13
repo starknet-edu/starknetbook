@@ -36,7 +36,7 @@ starkli --version
 
 To upgrade Starkli, simply repeat the steps.
 
-*Note:* to install from source refer to the [installation instructions](https://book.starkli.rs/installation#install-from-source)
+_Note:_ to install from source refer to the [installation instructions](https://book.starkli.rs/installation#install-from-source)
 
 ## Scarb Package Manager Installation
 
@@ -116,6 +116,6 @@ katana --version
 
 To upgrade Katana, rerun the installation command.
 
-*Note:* to install from source refer to the [installation instructions](https://book.dojoengine.org/toolchain/katana#installing-from-source)
+_Note:_ to install from source refer to the [installation instructions](https://book.dojoengine.org/toolchain/katana#installing-from-source)
 
 You are now set to code in Cairo and deploy to Starknet.

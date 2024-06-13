@@ -119,7 +119,6 @@ similar to the code snippet below:
 
 Clear all content in `src/lib.cairo` and replace with the following:
 
-
 ```rust,noplayground
 // src/lib.cairo
 mod hello_scarb;
@@ -204,7 +203,6 @@ them in your Cairo code.
 For example, let’s assume you have added the alexandria_math
 dependency. Now, you can import and utilize functions from the
 alexandria_math library in your `src/hello_scarb.cairo` file:
-
 
 ```rust,noplayground
 // src/hello_scarb.cairo
