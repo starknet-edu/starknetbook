@@ -302,7 +302,6 @@ async function main() {
 Have in mind that the url is the mainnet url, but you can also use the testnet url.
 
 ```bash
-https://goerli.starknet.a5a.ch
 https://mainnet.starknet.a5a.ch
 https://sepolia.starknet.a5a.ch
 ```

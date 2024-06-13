@@ -180,7 +180,7 @@ For transactions on Starknet, an RPC provider is essential. This guide uses [Inf
 Steps for Infura:
 
 - Create an account.
-- Start a new project for Starknet Goerli.
+- Start a new project for Starknet Sepolia.
 - Obtain the RPC URL.
 - Add this URL to `envars.sh`:
 

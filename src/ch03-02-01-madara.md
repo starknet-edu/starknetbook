@@ -155,7 +155,7 @@ run Madara app rpc :
 ./target/release/madara --dev --unsafe-rpc-external --rpc-methods Safe   --rpc-max-connections 5000
 ```
 
-you can now interact with madara rpc  
+You can now interact with Madara rpc
 Eg you can get the chain using the rpc
 
 ```bash
@@ -424,7 +424,7 @@ Follow the official Argent X installation [instructions](https://www.argent.xyz/
 
 ## Use Argent X with Madara
 
-Argent X includes the Mainnet, Sepolia, and Goerli networks by default, but connecting with your local Madara chain requires manual configuration. This involves adding a custom network within Argent X's settings.
+Argent X includes the Mainnet and Sepolia by default, but connecting with your local Madara chain requires manual configuration. This involves adding a custom network within Argent X's settings.
 
 ### Configuring Argent X for Madara appchain
 
@@ -481,7 +481,7 @@ Follow the official Braavos installation [instructions](https://braavos.app/faq/
 
 ## Use Braavos with Madara appchain
 
-Braavos includes the Mainnet, Sepolia, and Goerli networks by default, but connecting with your local Madara chain requires manual configuration. This involves adding a custom network within Braavos's settings.
+Braavos includes the Mainnet and Sepolia by default, but connecting with your local Madara chain requires manual configuration. This involves adding a custom network within Braavos's settings.
 
 ## Configuring Braavos for Madara
 
