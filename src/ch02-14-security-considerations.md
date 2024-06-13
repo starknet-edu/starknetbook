@@ -341,11 +341,7 @@ However, understanding Cairo's [storage layout](https://book.cairo-lang.org/ch13
 ```javascript
 import { Provider, hash } from "starknet";
 
-const provider = new Provider({
-  sequencer: {
-    network: "goerli-alpha",
-  },
-});
+const provider = new RpcProvider({ nodeUrl: constants.NetworkName.SN_SEPOLIA });
 
 var passHash = hash.starknetKeccak("password");
 console.log(
