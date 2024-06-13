@@ -109,7 +109,7 @@ While we value all perspectives, it’s often the technical insights that
 steer us forward.
 
 Members can influence Starknet by voting on changes. Here’s the process:
-A new version is tested on the Goerli Testnet. Members then have six
+A new version is tested on the Sepolia Testnet. Members then have six
 days to review it. A Snapshot proposal is made, and the community votes.
 A majority of _YES_ votes means an upgrade to the Mainnet.
 

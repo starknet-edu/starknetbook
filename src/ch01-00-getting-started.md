@@ -141,7 +141,7 @@ To compile using Remix:
 - Accept the permissions. Click `Remember my choice` to avoid this step in the future.
 
 <img  alt="Permissions" src="img/ch01-remix-permissions.png" class="center" style="width: 100%;" />
-   
+
    - Click on `Compile lib.cairo`.
 
 <img  alt="Compilation simple" src="img/ch01-remix-compilation.png" class="center" style="width: 100%;" />
@@ -295,7 +295,7 @@ First, you need to create a Starknet account.
 
 ### Smart Wallet Setup
 
-Before deploying your smart contract to Starknet, you must handle the transaction cost. While deploying to the Starknet Goerli Testnet is free, a smart wallet account is essential. You can set up a smart wallet using either:
+Before deploying your smart contract to Starknet, you must handle the transaction cost. While deploying to the Starknet Sepolia Testnet is free, a smart wallet account is essential. You can set up a smart wallet using either:
 
 - [Argent](https://www.argent.xyz/argent-x/)
 - [Braavos](https://braavos.app/)

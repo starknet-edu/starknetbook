@@ -113,7 +113,7 @@ This command deploys the contract without requiring `to-cairo-string`, and a new
 To interact with the Testnet, use a third-party JSON-RPC API provider like Infura or Alchemy. With your provider URL, execute the following command to get the latest block number:
 
 ```bash
-starkli block-number --rpc https://starknet-goerli.g.alchemy.com/v2/V0WI...
+starkli block-number --rpc https://starknet-sepolia.g.alchemy.com/v2/...
 ```
 
 This command will return a response like:
