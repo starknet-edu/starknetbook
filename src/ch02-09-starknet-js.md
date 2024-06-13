@@ -73,11 +73,7 @@ Openzeppelin has already declared an instance of the account hash that we will b
 
 ### Provider
 
-The provider allows you to interact with the Starknet
-network. You can think of it as a "read" connection to the blockchain,
-as it doesn’t allow signing transactions or messages. Just like in
-Ethereum, you can use a default provider, or use services such as Infura
-or Alchemy, both of which support Starknet, to create an RPC provider.
+A provider is an abstraction that allows us to easily establish a connection with a specified Starknet node provider so we can read on-chain data. We have the option of connecting to our own local node via Pathfinder or Juno, a default node provided by Starknet.js, a development node, or a third-party node provider like Alchemy, Blast, or Infura.
 
 Our code example utilizes blast's public provider to fetch latest block number on Starknet mainnet.
 
