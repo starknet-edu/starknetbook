@@ -194,7 +194,7 @@ The file should now include:
 #!/bin/bash
 export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
 export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
-export STARKNET_RPC=https://starknet-goerli.infura.io/v3/your-api-key
+export STARKNET_RPC=https://starknet-sepolia.infura.io/v3/your-api-key
 ```
 
 Replace `your-api-key` with the actual API key provided by Infura.
@@ -243,7 +243,7 @@ Deploy the account with Starkli:
 starkli account deploy ~/.starkli-wallets/custom/account.json
 ```
 
-Starkli will wait for you to fund the address displayed with at least the estimated fee from Starknet's [faucet](https://faucet.goerli.starknet.io/).
+Starkli will wait for you to fund the address displayed with at least the estimated fee from Starknet's [faucet](https://starknet-faucet.vercel.app/).
 
 Once funded, press **`ENTER`** to deploy:
 
@@ -274,7 +274,7 @@ Here's a summary of all the steps from declaration to interaction:
 # [1] Set up environment variables in envars.sh
 export STARKNET_KEYSTORE=~/.starkli-wallets/custom/keystore.json
 export STARKNET_ACCOUNT=~/.starkli-wallets/custom/account.json
-export STARKNET_RPC=https://starknet-goerli.infura.io/v3/your-api-key
+export STARKNET_RPC=https://starknet-sepolia.infura.io/v3/your-api-key
 
 # [2] Generate keystore.json
 starkli signer keystore new ~/.starkli-wallets/custom/keystore.json
