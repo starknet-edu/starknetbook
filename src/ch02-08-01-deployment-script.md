@@ -12,16 +12,15 @@ Please note that this is a basic example. You should adapt it to suit your speci
 
 ```bash
 # scarb --version
-scarb 2.4.3
-cairo: 2.4.3
-sierra: 1.4.0
+scarb 2.6.4
+cairo: 2.6.3
+sierra: 1.5.0
 
 # snforge --version
-snforge 0.14.0
+snforge 0.24.0
 
 # sncast --version
-sncast 0.14.0
-The Rust Devnet
+sncast 0.24.0
 ```
 
 #### Additional Tools

@@ -37,7 +37,7 @@ The project structure is as follows:
 
 Ensure the CASM and SIERRA code generation is active in the `Scarb.toml` file:
 
-```shell
+```toml
 # ...
 [[target.starknet-contract]]
 casm = true
@@ -61,7 +61,7 @@ Follow the instructions and then run:
 3. Check your `snforge` version, run :
    `snforge --version`
 
-At the time of this tutorial, we used `snforge` version `snforge 0.21.0` which is the latest at this time.
+At the time of this tutorial, we used `snforge` version `snforge 0.24.0` which is the latest at this time.
 
 ### Test
 
@@ -70,11 +70,11 @@ Run tests using `snforge test`:
 ```shell
 snforge test
 
-Collected 2 test(s) from testing package
+Collected 2 test(s) from project_name package
 Running 0 test(s) from src/
 Running 2 test(s) from tests/
-[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
-[PASS] tests::test_contract::test_increase_balance (gas: ~3065)
+[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~104)
+[PASS] tests::test_contract::test_increase_balance (gas: ~170)
 Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 ```
 
@@ -82,10 +82,10 @@ Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 
 For those with an established Scarb project who wish to incorporate `snforge`, ensure the `snforge_std` package is declared as a dependency. Insert the line below in the [dependencies] section of your `Scarb.toml`:
 
-```shell
+```toml
 # ...
-[dependencies]
-snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.21.0" }
+[dev-dependencies]
+snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry.git", tag = "v0.24.0" }
 ```
 
 Ensure the tag version corresponds with your `snforge` version. To verify your `snforge` version:
@@ -97,7 +97,7 @@ snforge --version
 Or, add this dependency using the `scarb` command:
 
 ```shell
-scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git --tag v0.21.0
+scarb add snforge_std --git https://github.com/foundry-rs/starknet-foundry.git --tag v0.24.0
 ```
 
 With these steps, your existing Scarb project is now **`snforge`**-ready.
@@ -118,11 +118,11 @@ Sample output might resemble:
 
 ```shell
 
-Collected 2 test(s) from testing package
+Collected 2 test(s) from project_name package
 Running 0 test(s) from src/
 Running 2 test(s) from tests/
-[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~1839)
-[PASS] tests::test_contract::test_increase_balance (gas: ~3065)
+[PASS] tests::test_contract::test_cannot_increase_balance_with_zero_value (gas: ~104)
+[PASS] tests::test_contract::test_increase_balance (gas: ~170)
 Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 ```
 
@@ -130,9 +130,9 @@ Tests: 2 passed, 0 failed, 0 skipped, 0 ignored, 0 filtered out
 
 The example provided below demonstrates how to test a Starknet contract using `snforge`.
 
-```
+```rust,noplayground
 #[starknet::interface]
-trait IHelloStarknet<TContractState> {
+pub trait IHelloStarknet<TContractState> {
     fn increase_balance(ref self: TContractState, amount: felt252);
     fn get_balance(self: @TContractState) -> felt252;
 }
@@ -141,7 +141,7 @@ trait IHelloStarknet<TContractState> {
 mod HelloStarknet {
     #[storage]
     struct Storage {
-        balance: felt252,
+        balance: felt252, 
     }
 
     #[abi(embed_v0)]
@@ -156,7 +156,6 @@ mod HelloStarknet {
         }
     }
 }
-
 ```
 
 Remember, the identifier following `mod` signifies the contract name. Here, the contract name is `HelloStarknet`.
@@ -165,24 +164,25 @@ Remember, the identifier following `mod` signifies the contract name. Here, the 
 
 Below is a test for the **`HelloStarknet`** contract. This test deploys **`HelloStarknet`** and interacts with its functions:
 
-```
+```rust,noplayground
 use starknet::ContractAddress;
 
 use snforge_std::{declare, ContractClassTrait};
 
-use testing::IHelloStarknetSafeDispatcher;
-use testing::IHelloStarknetSafeDispatcherTrait;
-use testing::IHelloStarknetDispatcher;
-use testing::IHelloStarknetDispatcherTrait;
+use .::IHelloStarknetSafeDispatcher;
+use .::IHelloStarknetSafeDispatcherTrait;
+use .::IHelloStarknetDispatcher;
+use .::IHelloStarknetDispatcherTrait;
 
-fn deploy_contract(name: felt252) -> ContractAddress {
-    let contract = declare(name);
-    contract.deploy(@ArrayTrait::new()).unwrap()
+fn deploy_contract(name: ByteArray) -> ContractAddress {
+    let contract = declare(name).unwrap();
+    let (contract_address, _) = contract.deploy(@ArrayTrait::new()).unwrap();
+    contract_address
 }
 
 #[test]
 fn test_increase_balance() {
-    let contract_address = deploy_contract('HelloStarknet');
+    let contract_address = deploy_contract("HelloStarknet");
 
     let dispatcher = IHelloStarknetDispatcher { contract_address };
 
@@ -196,18 +196,17 @@ fn test_increase_balance() {
 }
 
 #[test]
+#[feature("safe_dispatcher")]
 fn test_cannot_increase_balance_with_zero_value() {
-    let contract_address = deploy_contract('HelloStarknet');
+    let contract_address = deploy_contract("HelloStarknet");
 
     let safe_dispatcher = IHelloStarknetSafeDispatcher { contract_address };
 
-    #[feature("safe_dispatcher")]
     let balance_before = safe_dispatcher.get_balance().unwrap();
     assert(balance_before == 0, 'Invalid balance');
 
-    #[feature("safe_dispatcher")]
     match safe_dispatcher.increase_balance(0) {
-        Result::Ok(_) => panic_with_felt252('Should have panicked'),
+        Result::Ok(_) => core::panic_with_felt252('Should have panicked'),
         Result::Err(panic_data) => {
             assert(*panic_data.at(0) == 'Amount cannot be 0', *panic_data.at(0));
         }
@@ -232,15 +231,15 @@ There are several methods to test smart contracts, such as unit tests, integrati
 
 ## ERC20 Contract Example
 
-After setting up your foundry project, add the following dependency to your `Scarb.toml` (in this case we are using version 0.8.1 of the OpenZeppelin Cairo contracts, due to the fact that it uses components):
+After setting up your foundry project, add the following dependency to your `Scarb.toml` (in this case we are using version 0.13.0 of the OpenZeppelin Cairo contracts, due to the fact that it uses components):
 
-```shell
-openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.8.1" }
+```toml
+openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.13.0" }
 ```
 
 Here's a basic ERC20 contract:
 
-```
+```rust,noplayground
 use starknet::ContractAddress;
 #[starknet::interface]
 trait IERC20<TContractState> {
@@ -492,7 +491,7 @@ This contract allows minting tokens to a recipient during deployment, checking b
 
 Organize your test file and include the required imports:
 
-```
+```rust,noplayground
 #[cfg(test)]
 mod test {
     use core::serde::Serde;
@@ -517,39 +516,35 @@ Get it using the declare function from [Starknet Foundry](#https://foundry-rs.gi
 
 Supply values for the constructor arguments when deploying
 
-```
-
-    fn deploy_contract() -> ContractAddress {
-        let erc20contract_class = declare('
-        ERC20Token');
-        let file = FileTrait::new('data/constructor_args.txt');
-        let constructor_args = read_txt(@file);
-        let contract_address = erc20contract_class.deploy(@constructor_args).unwrap();
-        contract_address
-    }
-
+```rust,noplayground
+fn deploy_contract() -> ContractAddress {
+    let erc20contract_class = declare('
+    ERC20Token');
+    let file = FileTrait::new('data/constructor_args.txt');
+    let constructor_args = read_txt(@file);
+    let contract_address = erc20contract_class.deploy(@constructor_args).unwrap();
+    contract_address
+}
 ```
 
 Generate an address
 
-```
+```rust,noplayground
+mod Account {
+    use starknet::ContractAddress;
+    use core::traits::TryInto;
 
-    mod Account {
-        use starknet::ContractAddress;
-        use core::traits::TryInto;
-
-        fn User1() -> ContractAddress {
-            'user1'.try_into().unwrap()
-        }
-        fn User2() -> ContractAddress {
-            'user2'.try_into().unwrap()
-        }
-
-        fn admin() -> ContractAddress {
-            'admin'.try_into().unwrap()
-        }
+    fn User1() -> ContractAddress {
+        'user1'.try_into().unwrap()
+    }
+    fn User2() -> ContractAddress {
+        'user2'.try_into().unwrap()
     }
 
+    fn admin() -> ContractAddress {
+        'admin'.try_into().unwrap()
+    }
+}
 ```
 
 Use `declare` and `ContractClassTrait` from `snforge_std`. Then, initialize the `supply` and `recipient`, declare the contract, compute the calldata, and deploy.
@@ -560,182 +555,182 @@ Use `declare` and `ContractClassTrait` from `snforge_std`. Then, initialize the 
 
 To begin, test the deployment helper function to confirm the details provided:
 
-```
+```rust,noplayground
 #[test]
-    fn test_constructor() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
-        // let name = dispatcher.get_name();
-        let name = dispatcher.get_name();
+fn test_constructor() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
+    // let name = dispatcher.get_name();
+    let name = dispatcher.get_name();
 
-        assert(name == 'ERC20Token', 'name is not correct');
-    }
+    assert(name == 'ERC20Token', 'name is not correct');
+}
 
-    #[test]
-    fn test_decimal_is_correct() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
-        let decimal = dispatcher.get_decimals();
+#[test]
+fn test_decimal_is_correct() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
+    let decimal = dispatcher.get_decimals();
 
-        assert(decimal == 18, 'Decimal is not correct');
-    }
+    assert(decimal == 18, 'Decimal is not correct');
+}
 
-    #[test]
-    fn test_total_supply() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
-        let total_supply = dispatcher.get_total_supply();
+#[test]
+fn test_total_supply() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
+    let total_supply = dispatcher.get_total_supply();
 
-        assert(total_supply == 1000000, 'Total supply is wrong');
-    }
+    assert(total_supply == 1000000, 'Total supply is wrong');
+}
 
-    #[test]
-    fn test_address_balance() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
-        let balance = dispatcher.get_total_supply();
-        let admin_balance = dispatcher.balance_of(Account::admin());
-        assert(admin_balance == balance, Errors::INVALID_BALANCE);
+#[test]
+fn test_address_balance() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
+    let balance = dispatcher.get_total_supply();
+    let admin_balance = dispatcher.balance_of(Account::admin());
+    assert(admin_balance == balance, Errors::INVALID_BALANCE);
 
-        start_prank(CheatTarget::One(contract_address), Account::admin());
+    start_prank(CheatTarget::One(contract_address), Account::admin());
 
-        dispatcher.transfer(Account::user1(), 10);
-        let new_admin_balance = dispatcher.balance_of(Account::admin());
-        assert(new_admin_balance == balance - 10, Errors::INVALID_BALANCE);
-        stop_prank(CheatTarget::One(contract_address));
+    dispatcher.transfer(Account::user1(), 10);
+    let new_admin_balance = dispatcher.balance_of(Account::admin());
+    assert(new_admin_balance == balance - 10, Errors::INVALID_BALANCE);
+    stop_prank(CheatTarget::One(contract_address));
 
-        let user1_balance = dispatcher.balance_of(Account::user1());
-        assert(user1_balance == 10, Errors::INVALID_BALANCE);
-    }
+    let user1_balance = dispatcher.balance_of(Account::user1());
+    assert(user1_balance == 10, Errors::INVALID_BALANCE);
+}
 
-    #[test]
-    #[fuzzer(runs: 22, seed: 38)]
-    fn test_allowance(amount: u256) {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
+#[test]
+#[fuzzer(runs: 22, seed: 38)]
+fn test_allowance(amount: u256) {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
 
-        start_prank(CheatTarget::One(contract_address), Account::admin());
-        dispatcher.approve(contract_address, 20);
+    start_prank(CheatTarget::One(contract_address), Account::admin());
+    dispatcher.approve(contract_address, 20);
 
-        let currentAllowance = dispatcher.allowance(Account::admin(), contract_address);
+    let currentAllowance = dispatcher.allowance(Account::admin(), contract_address);
 
-        assert(currentAllowance == 20, Errors::NOT_ALLOWED);
-        stop_prank(CheatTarget::One(contract_address));
-    }
+    assert(currentAllowance == 20, Errors::NOT_ALLOWED);
+    stop_prank(CheatTarget::One(contract_address));
+}
 
-    #[test]
-    fn test_transfer() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
+#[test]
+fn test_transfer() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
 
-        // Get original balances
-        let original_sender_balance = dispatcher.balance_of(Account::admin());
-        let original_recipient_balance = dispatcher.balance_of(Account::user1());
+    // Get original balances
+    let original_sender_balance = dispatcher.balance_of(Account::admin());
+    let original_recipient_balance = dispatcher.balance_of(Account::user1());
 
-        start_prank(CheatTarget::One(contract_address), Account::admin());
+    start_prank(CheatTarget::One(contract_address), Account::admin());
 
-        dispatcher.transfer(Account::user1(), 50);
+    dispatcher.transfer(Account::user1(), 50);
 
-        // Confirm that the funds have been sent!
-        assert(
-            dispatcher.balance_of(Account::admin()) == original_sender_balance - 50,
-            Errors::FUNDS_NOT_SENT
-        );
+    // Confirm that the funds have been sent!
+    assert(
+        dispatcher.balance_of(Account::admin()) == original_sender_balance - 50,
+        Errors::FUNDS_NOT_SENT
+    );
 
-        // Confirm that the funds have been recieved!
-        assert(
-            dispatcher.balance_of(Account::user1()) == original_recipient_balance + 50,
-            Errors::FUNDS_NOT_RECIEVED
-        );
+    // Confirm that the funds have been recieved!
+    assert(
+        dispatcher.balance_of(Account::user1()) == original_recipient_balance + 50,
+        Errors::FUNDS_NOT_RECIEVED
+    );
 
-        stop_prank(CheatTarget::One(contract_address));
-    }
+    stop_prank(CheatTarget::One(contract_address));
+}
 
 
-    #[test]
-    fn test_transfer_from() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
+#[test]
+fn test_transfer_from() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
 
-        start_prank(CheatTarget::One(contract_address), Account::admin());
-        dispatcher.approve(Account::user1(), 20);
-        stop_prank(CheatTarget::One(contract_address));
+    start_prank(CheatTarget::One(contract_address), Account::admin());
+    dispatcher.approve(Account::user1(), 20);
+    stop_prank(CheatTarget::One(contract_address));
 
-        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 20, Errors::NOT_ALLOWED);
+    assert(dispatcher.allowance(Account::admin(), Account::user1()) == 20, Errors::NOT_ALLOWED);
 
-        start_prank(CheatTarget::One(contract_address), Account::user1());
-        dispatcher.transfer_from(Account::admin(), Account::user2(), 10);
-        assert(
-            dispatcher.allowance(Account::admin(), Account::user1()) == 10, Errors::FUNDS_NOT_SENT
-        );
-        stop_prank(CheatTarget::One(contract_address));
-    }
+    start_prank(CheatTarget::One(contract_address), Account::user1());
+    dispatcher.transfer_from(Account::admin(), Account::user2(), 10);
+    assert(
+        dispatcher.allowance(Account::admin(), Account::user1()) == 10, Errors::FUNDS_NOT_SENT
+    );
+    stop_prank(CheatTarget::One(contract_address));
+}
 
-    #[test]
-    #[should_panic(expected: ('Amount Not Allowed',))]
-    fn test_transfer_from_should_fail() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
-        start_prank(CheatTarget::One(contract_address), Account::admin());
-        dispatcher.approve(Account::user1(), 20);
-        stop_prank(CheatTarget::One(contract_address));
+#[test]
+#[should_panic(expected: ('Amount Not Allowed',))]
+fn test_transfer_from_should_fail() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
+    start_prank(CheatTarget::One(contract_address), Account::admin());
+    dispatcher.approve(Account::user1(), 20);
+    stop_prank(CheatTarget::One(contract_address));
 
-        start_prank(CheatTarget::One(contract_address), Account::user1());
-        dispatcher.transfer_from(Account::admin(), Account::user2(), 40);
-    }
+    start_prank(CheatTarget::One(contract_address), Account::user1());
+    dispatcher.transfer_from(Account::admin(), Account::user2(), 40);
+}
 
-    #[test]
-    #[should_panic(expected: ('You have no token approved',))]
-    fn test_transfer_from_failed_when_not_approved() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
-        start_prank(CheatTarget::One(contract_address), Account::user1());
-        dispatcher.transfer_from(Account::admin(), Account::user2(), 5);
-    }
+#[test]
+#[should_panic(expected: ('You have no token approved',))]
+fn test_transfer_from_failed_when_not_approved() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
+    start_prank(CheatTarget::One(contract_address), Account::user1());
+    dispatcher.transfer_from(Account::admin(), Account::user2(), 5);
+}
 
-    #[test]
-    fn test_approve() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
+#[test]
+fn test_approve() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
 
-        start_prank(CheatTarget::One(contract_address), Account::admin());
-        dispatcher.approve(Account::user1(), 50);
-        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 50, Errors::NOT_ALLOWED);
-    }
+    start_prank(CheatTarget::One(contract_address), Account::admin());
+    dispatcher.approve(Account::user1(), 50);
+    assert(dispatcher.allowance(Account::admin(), Account::user1()) == 50, Errors::NOT_ALLOWED);
+}
 
-    #[test]
-    fn test_increase_allowance() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
+#[test]
+fn test_increase_allowance() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
 
-        start_prank(CheatTarget::One(contract_address), Account::admin());
-        dispatcher.approve(Account::user1(), 30);
-        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 30, Errors::NOT_ALLOWED);
+    start_prank(CheatTarget::One(contract_address), Account::admin());
+    dispatcher.approve(Account::user1(), 30);
+    assert(dispatcher.allowance(Account::admin(), Account::user1()) == 30, Errors::NOT_ALLOWED);
 
-        dispatcher.increase_allowance(Account::user1(), 20);
+    dispatcher.increase_allowance(Account::user1(), 20);
 
-        assert(
-            dispatcher.allowance(Account::admin(), Account::user1()) == 50,
-            Errors::ERROR_INCREASING_ALLOWANCE
-        );
-    }
+    assert(
+        dispatcher.allowance(Account::admin(), Account::user1()) == 50,
+        Errors::ERROR_INCREASING_ALLOWANCE
+    );
+}
 
-    #[test]
-    fn test_decrease_allowance() {
-        let contract_address = deploy_contract();
-        let dispatcher = IERC20Dispatcher { contract_address };
+#[test]
+fn test_decrease_allowance() {
+    let contract_address = deploy_contract();
+    let dispatcher = IERC20Dispatcher { contract_address };
 
-        start_prank(CheatTarget::One(contract_address), Account::admin());
-        dispatcher.approve(Account::user1(), 30);
-        assert(dispatcher.allowance(Account::admin(), Account::user1()) == 30, Errors::NOT_ALLOWED);
+    start_prank(CheatTarget::One(contract_address), Account::admin());
+    dispatcher.approve(Account::user1(), 30);
+    assert(dispatcher.allowance(Account::admin(), Account::user1()) == 30, Errors::NOT_ALLOWED);
 
-        dispatcher.decrease_allowance(Account::user1(), 5);
+    dispatcher.decrease_allowance(Account::user1(), 5);
 
-        assert(
-            dispatcher.allowance(Account::admin(), Account::user1()) == 25,
-            Errors::ERROR_DECREASING_ALLOWANCE
-        );
-    }
+    assert(
+        dispatcher.allowance(Account::admin(), Account::user1()) == 25,
+        Errors::ERROR_DECREASING_ALLOWANCE
+    );
+}
 ```
 
 Running `snforge test` produces:

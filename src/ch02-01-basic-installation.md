@@ -12,7 +12,7 @@ Essential tools to install:
     manager that compiles code to [Sierra](https://docs.starknet.io/documentation/architecture_and_concepts/Smart_Contracts/cairo-and-sierra), a mid-level language between
     Cairo and CASM.
 
-3.  [Katana](https://github.com/dojoengine/dojo) - Katana is a Starknet node, built for local development.
+3.  [Katana](https://book.dojoengine.org/toolchain/katana) - Katana is a Starknet node, built for local development.
 
 For support or queries, visit our [GitHub
 Issues](https://github.com/starknet-edu/starknetbook/issues) or contact
@@ -35,6 +35,8 @@ starkli --version
 ```
 
 To upgrade Starkli, simply repeat the steps.
+
+*Note:* to install from source refer to the [installation instructions](https://book.starkli.rs/installation#install-from-source)
 
 ## Scarb Package Manager Installation
 
@@ -69,13 +71,13 @@ asdf plugin add scarb
 This will allow you to download specific versions:
 
 ```bash
-asdf install scarb 2.5.4
+asdf install scarb 2.6.4
 ```
 
 and set a global version:
 
 ```bash
-asdf global scarb 2.5.4
+asdf global scarb 2.6.4
 ```
 
 Otherwise, you can simply run the following command in your terminal, and follow the onscreen instructions. This
@@ -89,9 +91,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh
 
 ```bash
 scarb --version
-scarb 2.5.4 (28dee92c8 2024-02-14)
-cairo: 2.5.4 (https://crates.io/crates/cairo-lang-compiler/2.5.4)
-sierra: 1.4.0
+scarb 2.6.4 (c4c7c0bac 2024-03-19)
+cairo: 2.6.3 (https://crates.io/crates/cairo-lang-compiler/2.6.3)
+sierra: 1.5.0
 ```
 
 For Windows, follow manual setup in the [Scarb
@@ -113,5 +115,7 @@ katana --version
 ```
 
 To upgrade Katana, rerun the installation command.
+
+*Note:* to install from source refer to the [installation instructions](https://book.dojoengine.org/toolchain/katana#installing-from-source)
 
 You are now set to code in Cairo and deploy to Starknet.

@@ -23,7 +23,7 @@ don’t, refer to Basic Installation in this chapter.
 
 - Install [rust](#https://www.rust-lang.org/tools/install)
 - The required Rust version is specified in [rust-toolchain.toml](#https://github.com/0xSpaceShard/starknet-devnet-rs/blob/main/rust-toolchain.toml) and handled automatically by cargo.
-- Run `rustc --version  ` to comfirm the rust version.
+- Run `rustc --version` to comfirm the rust version.
 
 ## Run as a binary
 
