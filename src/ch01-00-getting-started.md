@@ -4,7 +4,7 @@ Starknet is a scalable layer 2 solution on Ethereum. This guide will walk you th
 
 We will use the [Starknet Remix Plugin](https://github.com/NethermindEth/starknet-remix-plugin?tab=readme-ov-file) to compile, deploy, and interact with our smart contract. It's a great tool for getting started with Starknet development because you don't need to install anything on your computer.
 
-1. Visit the [Remix IDE](https://remix.ethereum.org/#activate=Starknet&lang=en&optimize=false&runs=200) website with the Starknet plugin enabled.
+1. Visit the [Remix IDE](https://remix.ethereum.org/#activate=Starknet&lang=en&optimize=false&runs=200) website with the Starknet plugin enabled. (Or, click [this link](https://remix.ethereum.org/#activate=Starknet) to directly open Remix activated with Starknet Plugin.)
 
 <img alt="Start" src="img/ch01-remix-start.png" class="center" style="width: 100%;" />
 
@@ -141,7 +141,7 @@ To compile using Remix:
 - Accept the permissions. Click `Remember my choice` to avoid this step in the future.
 
 <img  alt="Permissions" src="img/ch01-remix-permissions.png" class="center" style="width: 100%;" />
-   
+
    - Click on `Compile lib.cairo`.
 
 <img  alt="Compilation simple" src="img/ch01-remix-compilation.png" class="center" style="width: 100%;" />
