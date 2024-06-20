@@ -1,5 +1,7 @@
 # The Starknet Book
 
+> :warning: **ARCHIVE NOTICE**: This project has been archived and is no longer maintained. The Starknet book's content has been integrated into various documentation sources, including [Starknet’s official documentation](https://docs.starknet.io/). Thank you to all contributors. For continued updates and contributions, please refer to [starknet-docs](https://docs.starknet.io/).
+
 The Starknet Book is a work in progress, shaped by ongoing community
 input. Some sections may be incomplete or still under review and are
 marked under a 🚧 emoji. We welcome your suggestions, feedback, and
