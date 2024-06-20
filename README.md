@@ -6,15 +6,18 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+> :warning: **ARCHIVE NOTICE**: This project has been archived and is no longer maintained. The Starknet book's content has been integrated into various documentation sources, including [Starknet’s official documentation](https://docs.starknet.io/). Thank you to all contributors. For continued updates and contributions, please refer to [starknet-docs](https://docs.starknet.io/).
+
 This repository contains the source for [The Starknet Book](https://book.starknet.io).
 
 ## Contribution
 
-**Currently this repository is under migration process, we will move the different chapters and sections of the Starknet Book to  and [starknet-docs](https://docs.starknet.io/). We encourage users to look at [starknet-docs](https://docs.starknet.io/) repository and contribute with updated content.**
+**The repository is no longer accepting updates as the content has moved to [starknet-docs](https://docs.starknet.io/). We encourage users to refer to and contribute to the official documentation.**
 
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
